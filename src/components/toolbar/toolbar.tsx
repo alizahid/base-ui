@@ -3,7 +3,8 @@ import { type ComponentProps, createContext, useContext, useMemo } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
-import { controlSize, focusRing, inputSurface } from '../../lib/styles'
+import { bareFieldBox } from '../../lib/field-box'
+import { controlSize, focusRing } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
 
 export const toolbarVariants = tv({
@@ -27,7 +28,8 @@ export const toolbarVariants = tv({
     ],
     separator: 'shrink-0 self-stretch bg-gray-a6',
     group: 'flex gap-1',
-    input: ['min-w-0', inputSurface],
+    // The box itself is the shared field box (`bareFieldBox`), see `ToolbarInput`
+    input: 'min-w-0 rounded-inner-1',
   },
   variants: {
     orientation: {
@@ -48,12 +50,12 @@ export const toolbarVariants = tv({
       sm: {
         button: [controlSize.xs, 'min-w-6 rounded-inner-1 px-1.5'],
         link: 'px-1.5 text-xs',
-        input: [controlSize.xs, 'rounded-inner-1'],
+        input: 'px-1.5',
       },
       md: {
         button: [controlSize.sm, 'min-w-8 rounded-inner-1 px-2'],
         link: 'px-2 text-sm',
-        input: [controlSize.sm, 'rounded-inner-1'],
+        input: 'px-2',
       },
     },
   },
@@ -160,6 +162,9 @@ export type ToolbarInputProps = Omit<ComponentProps<typeof BaseToolbar.Input>, '
 
 export function ToolbarInput({ className, ...props }: ToolbarInputProps) {
   const styles = useStyles()
+  const { size } = useContext(ToolbarContext)
+  // One step smaller than a `TextField` of the same size, like the buttons
+  const box = bareFieldBox({ size: size === 'sm' ? 'xs' : 'sm' })
 
-  return <BaseToolbar.Input {...props} className={cn(styles.input(), className)} />
+  return <BaseToolbar.Input {...props} className={cn(box, styles.input(), className)} />
 }

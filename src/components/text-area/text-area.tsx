@@ -3,18 +3,14 @@ import type { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
-import { type FieldBoxVariants, fieldBoxVariants } from '../../lib/field-box'
+import { bareFieldBox, type FieldBoxVariants } from '../../lib/field-box'
 import type { Radius } from '../../lib/theme'
 
 /** What a text area adds to the shared box (`fieldBoxVariants`). */
 export const textAreaVariants = tv({
   // The box has a fixed height and no padding; a text area grows and has its own padding
-  base: 'block h-auto',
+  base: 'h-auto',
   variants: {
-    variant: {
-      surface: 'placeholder:text-gray-a10',
-      soft: 'placeholder:text-accent-12/60 disabled:placeholder:text-gray-a9',
-    },
     // `rounded-panel-*`: a tall box must not turn into a pill when the theme radius is full
     size: {
       xs: 'min-h-12 rounded-panel-sm px-1.5 py-1',
@@ -32,7 +28,6 @@ export const textAreaVariants = tv({
   defaultVariants: {
     resize: 'none',
     size: 'md',
-    variant: 'surface',
   },
 })
 
@@ -68,11 +63,7 @@ export function TextArea({
       data-radius={radius}
       // Base UI's Input gives the label, validation and state attributes of a Field
       render={<textarea {...props} />}
-      className={cn(
-        fieldBoxVariants({ size, variant }).root(),
-        textAreaVariants({ resize, size, variant }),
-        className,
-      )}
+      className={cn(bareFieldBox({ size, variant }), textAreaVariants({ resize, size }), className)}
     />
   )
 }

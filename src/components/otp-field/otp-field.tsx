@@ -1,23 +1,23 @@
 import { OTPField as BaseOtpField } from '@base-ui/react/otp-field'
 import type { ComponentProps } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants/lite'
+import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
-import { controlSize, inputSurface } from '../../lib/styles'
+import { bareFieldBox, type FieldBoxVariants } from '../../lib/field-box'
 import type { Radius } from '../../lib/theme'
 
 export const otpFieldVariants = tv({
   slots: {
     root: 'flex items-center',
-    // Each box looks like an `Input`
-    input: [inputSurface, 'text-center tabular-nums'],
+    // Each box is the shared field box (`bareFieldBox`), made square
+    input: 'text-center tabular-nums',
   },
   variants: {
     size: {
-      xs: { root: 'gap-1', input: [controlSize.xs, 'w-6 px-0'] },
-      sm: { root: 'gap-1.5', input: [controlSize.sm, 'w-8 px-0'] },
-      md: { root: 'gap-2', input: [controlSize.md, 'w-10 px-0'] },
-      lg: { root: 'gap-2', input: [controlSize.lg, 'w-12 px-0'] },
+      xs: { root: 'gap-1', input: 'w-6' },
+      sm: { root: 'gap-1.5', input: 'w-8' },
+      md: { root: 'gap-2', input: 'w-10' },
+      lg: { root: 'gap-2', input: 'w-12' },
     },
   },
   defaultVariants: {
@@ -29,7 +29,7 @@ export type OtpFieldProps = Omit<
   ComponentProps<typeof BaseOtpField.Root>,
   'children' | 'className' | 'color' | 'length'
 > &
-  VariantProps<typeof otpFieldVariants> & {
+  FieldBoxVariants & {
     className?: string
     /** Classes for the parts that `OtpField` renders inside itself. */
     classNames?: {
@@ -60,8 +60,10 @@ export function OtpField({
   placeholder,
   radius,
   size,
+  variant,
   ...props
 }: OtpFieldProps) {
+  const box = bareFieldBox({ size, variant })
   const styles = otpFieldVariants({ size })
 
   return (
@@ -76,7 +78,7 @@ export function OtpField({
         <BaseOtpField.Input
           // The first box is named by the field label
           aria-label={index === 0 ? undefined : `Character ${index + 1} of ${length}`}
-          className={cn(styles.input(), classNames?.input)}
+          className={cn(box, styles.input(), classNames?.input)}
           key={index}
           placeholder={placeholder}
         />

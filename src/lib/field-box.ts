@@ -1,5 +1,6 @@
 import { createContext } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
+import { cn } from './cn'
 import { controlSize } from './styles'
 
 /**
@@ -98,3 +99,17 @@ export type FieldBoxVariants = VariantProps<typeof fieldBoxVariants>
 
 /** Lets a `TextField.Slot` use the size and variant of the box it is in. */
 export const FieldBoxContext = createContext<FieldBoxVariants>({})
+
+const placeholder = {
+  surface: 'placeholder:text-gray-a10',
+  soft: 'placeholder:text-accent-12/60 disabled:placeholder:text-gray-a9',
+}
+
+/**
+ * The same box for an `<input>` or `<textarea>` that has no wrapper around it,
+ * so the element is the box itself (OtpField, Toolbar.Input, TextArea).
+ * It has no side padding; add your own `px-*`.
+ */
+export function bareFieldBox({ size, variant }: FieldBoxVariants = {}) {
+  return cn(fieldBoxVariants({ size, variant }).root(), 'block', placeholder[variant ?? 'surface'])
+}

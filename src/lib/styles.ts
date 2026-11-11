@@ -1,6 +1,6 @@
 /**
  * Class strings shared by several components, so things that should look
- * the same (popups, menu items, text inputs, ...) really do.
+ * the same (popups, menu items, ...). The box of text inputs is in `field-box.ts` really do.
  */
 
 /** Keyboard focus ring. */
@@ -33,14 +33,6 @@ export const listLabel = 'flex h-8 select-none items-center px-3 text-gray-a10 t
 
 /** A divider line inside a list popup. */
 export const listSeparator = '-mx-1 my-1 h-px bg-gray-a5'
-
-/** The box of a text input: inputs, select triggers, number fields, ... */
-export const inputSurface = [
-  'bg-surface text-gray-12 inset-ring inset-ring-gray-a7 placeholder:text-gray-a10',
-  '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
-  'data-invalid:inset-ring-(--red-a8)',
-  'data-disabled:cursor-not-allowed data-disabled:bg-gray-a2 data-disabled:text-gray-a11',
-].join(' ')
 
 /**
  * Heights of "control" sized parts. A button, an input and a select trigger
