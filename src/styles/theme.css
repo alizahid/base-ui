@@ -250,7 +250,7 @@
 }
 
 /* Defaults. Set again on every theme class, so nested light/dark areas work. */
-:root, .light, .light-theme, .dark, .dark-theme {
+:where(:root, .light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--blue-1);
   --accent-2: var(--blue-2);
   --accent-3: var(--blue-3);
@@ -393,9 +393,9 @@
   --sky-surface: #eef9fdcc;
   --sky-indicator: var(--sky-9);
   --sky-track: var(--sky-9);
-  --gray-surface: #ffffffcc;
-  --gray-indicator: var(--gray-9);
-  --gray-track: var(--gray-9);
+  --neutral-surface: #ffffffcc;
+  --neutral-indicator: var(--neutral-9);
+  --neutral-track: var(--neutral-9);
   --mauve-surface: #ffffffcc;
   --mauve-indicator: var(--mauve-9);
   --mauve-track: var(--mauve-9);
@@ -499,9 +499,9 @@
   --sky-surface: #13233b80;
   --sky-indicator: var(--sky-9);
   --sky-track: color-mix(in oklab, var(--sky-8), var(--sky-9) 65%);
-  --gray-surface: #21212180;
-  --gray-indicator: var(--gray-9);
-  --gray-track: var(--gray-9);
+  --neutral-surface: #21212180;
+  --neutral-indicator: var(--neutral-9);
+  --neutral-track: var(--neutral-9);
   --mauve-surface: #22212380;
   --mauve-indicator: var(--mauve-9);
   --mauve-track: var(--mauve-9);
@@ -520,7 +520,7 @@
 }
 
 /* Panels are see-through with a blur by default. data-panel-background="solid" turns that off. */
-:root, .light, .light-theme, .dark, .dark-theme, [data-panel-background="translucent"] {
+:where(:root, .light, .light-theme, .dark, .dark-theme), [data-panel-background="translucent"] {
   --panel: var(--panel-translucent);
   --backdrop-filter-panel: blur(64px);
 }
@@ -532,36 +532,36 @@
 
 /* The theme gray: data-gray points the gray at another scale. */
 [data-gray="gray"],
-[data-gray="gray"] :where(.light, .light-theme, .dark, .dark-theme) {
-  --gray-1: var(--gray-1);
-  --gray-2: var(--gray-2);
-  --gray-3: var(--gray-3);
-  --gray-4: var(--gray-4);
-  --gray-5: var(--gray-5);
-  --gray-6: var(--gray-6);
-  --gray-7: var(--gray-7);
-  --gray-8: var(--gray-8);
-  --gray-9: var(--gray-9);
-  --gray-10: var(--gray-10);
-  --gray-11: var(--gray-11);
-  --gray-12: var(--gray-12);
-  --gray-a1: var(--gray-a1);
-  --gray-a2: var(--gray-a2);
-  --gray-a3: var(--gray-a3);
-  --gray-a4: var(--gray-a4);
-  --gray-a5: var(--gray-a5);
-  --gray-a6: var(--gray-a6);
-  --gray-a7: var(--gray-a7);
-  --gray-a8: var(--gray-a8);
-  --gray-a9: var(--gray-a9);
-  --gray-a10: var(--gray-a10);
-  --gray-a11: var(--gray-a11);
-  --gray-a12: var(--gray-a12);
-  --gray-surface: var(--gray-surface);
+:where([data-gray="gray"]) :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--neutral-1);
+  --gray-2: var(--neutral-2);
+  --gray-3: var(--neutral-3);
+  --gray-4: var(--neutral-4);
+  --gray-5: var(--neutral-5);
+  --gray-6: var(--neutral-6);
+  --gray-7: var(--neutral-7);
+  --gray-8: var(--neutral-8);
+  --gray-9: var(--neutral-9);
+  --gray-10: var(--neutral-10);
+  --gray-11: var(--neutral-11);
+  --gray-12: var(--neutral-12);
+  --gray-a1: var(--neutral-a1);
+  --gray-a2: var(--neutral-a2);
+  --gray-a3: var(--neutral-a3);
+  --gray-a4: var(--neutral-a4);
+  --gray-a5: var(--neutral-a5);
+  --gray-a6: var(--neutral-a6);
+  --gray-a7: var(--neutral-a7);
+  --gray-a8: var(--neutral-a8);
+  --gray-a9: var(--neutral-a9);
+  --gray-a10: var(--neutral-a10);
+  --gray-a11: var(--neutral-a11);
+  --gray-a12: var(--neutral-a12);
+  --gray-surface: var(--neutral-surface);
 }
 
 [data-gray="mauve"],
-[data-gray="mauve"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-gray="mauve"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --gray-1: var(--mauve-1);
   --gray-2: var(--mauve-2);
   --gray-3: var(--mauve-3);
@@ -590,7 +590,7 @@
 }
 
 [data-gray="slate"],
-[data-gray="slate"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-gray="slate"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --gray-1: var(--slate-1);
   --gray-2: var(--slate-2);
   --gray-3: var(--slate-3);
@@ -619,7 +619,7 @@
 }
 
 [data-gray="sage"],
-[data-gray="sage"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-gray="sage"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --gray-1: var(--sage-1);
   --gray-2: var(--sage-2);
   --gray-3: var(--sage-3);
@@ -648,7 +648,7 @@
 }
 
 [data-gray="olive"],
-[data-gray="olive"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-gray="olive"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --gray-1: var(--olive-1);
   --gray-2: var(--olive-2);
   --gray-3: var(--olive-3);
@@ -677,7 +677,7 @@
 }
 
 [data-gray="sand"],
-[data-gray="sand"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-gray="sand"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --gray-1: var(--sand-1);
   --gray-2: var(--sand-2);
   --gray-3: var(--sand-3);
@@ -742,9 +742,13 @@
   --radius-thumb: 9999px;
 }
 
-/* The `color` prop: data-color points the accent at another scale. */
+/*
+ * The `color` prop: data-color points the accent at another scale.
+ * The second selector keeps the color inside a nested light/dark area. It has no
+ * weight of its own, so a color set on that nested element itself always wins.
+ */
 [data-color="tomato"],
-[data-color="tomato"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="tomato"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--tomato-1);
   --accent-2: var(--tomato-2);
   --accent-3: var(--tomato-3);
@@ -776,7 +780,7 @@
 }
 
 [data-color="red"],
-[data-color="red"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="red"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--red-1);
   --accent-2: var(--red-2);
   --accent-3: var(--red-3);
@@ -808,7 +812,7 @@
 }
 
 [data-color="ruby"],
-[data-color="ruby"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="ruby"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--ruby-1);
   --accent-2: var(--ruby-2);
   --accent-3: var(--ruby-3);
@@ -840,7 +844,7 @@
 }
 
 [data-color="crimson"],
-[data-color="crimson"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="crimson"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--crimson-1);
   --accent-2: var(--crimson-2);
   --accent-3: var(--crimson-3);
@@ -872,7 +876,7 @@
 }
 
 [data-color="pink"],
-[data-color="pink"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="pink"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--pink-1);
   --accent-2: var(--pink-2);
   --accent-3: var(--pink-3);
@@ -904,7 +908,7 @@
 }
 
 [data-color="plum"],
-[data-color="plum"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="plum"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--plum-1);
   --accent-2: var(--plum-2);
   --accent-3: var(--plum-3);
@@ -936,7 +940,7 @@
 }
 
 [data-color="purple"],
-[data-color="purple"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="purple"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--purple-1);
   --accent-2: var(--purple-2);
   --accent-3: var(--purple-3);
@@ -968,7 +972,7 @@
 }
 
 [data-color="violet"],
-[data-color="violet"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="violet"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--violet-1);
   --accent-2: var(--violet-2);
   --accent-3: var(--violet-3);
@@ -1000,7 +1004,7 @@
 }
 
 [data-color="iris"],
-[data-color="iris"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="iris"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--iris-1);
   --accent-2: var(--iris-2);
   --accent-3: var(--iris-3);
@@ -1032,7 +1036,7 @@
 }
 
 [data-color="indigo"],
-[data-color="indigo"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="indigo"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--indigo-1);
   --accent-2: var(--indigo-2);
   --accent-3: var(--indigo-3);
@@ -1064,7 +1068,7 @@
 }
 
 [data-color="blue"],
-[data-color="blue"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="blue"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--blue-1);
   --accent-2: var(--blue-2);
   --accent-3: var(--blue-3);
@@ -1096,7 +1100,7 @@
 }
 
 [data-color="cyan"],
-[data-color="cyan"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="cyan"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--cyan-1);
   --accent-2: var(--cyan-2);
   --accent-3: var(--cyan-3);
@@ -1128,7 +1132,7 @@
 }
 
 [data-color="teal"],
-[data-color="teal"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="teal"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--teal-1);
   --accent-2: var(--teal-2);
   --accent-3: var(--teal-3);
@@ -1160,7 +1164,7 @@
 }
 
 [data-color="jade"],
-[data-color="jade"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="jade"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--jade-1);
   --accent-2: var(--jade-2);
   --accent-3: var(--jade-3);
@@ -1192,7 +1196,7 @@
 }
 
 [data-color="green"],
-[data-color="green"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="green"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--green-1);
   --accent-2: var(--green-2);
   --accent-3: var(--green-3);
@@ -1224,7 +1228,7 @@
 }
 
 [data-color="grass"],
-[data-color="grass"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="grass"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--grass-1);
   --accent-2: var(--grass-2);
   --accent-3: var(--grass-3);
@@ -1256,7 +1260,7 @@
 }
 
 [data-color="bronze"],
-[data-color="bronze"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="bronze"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--bronze-1);
   --accent-2: var(--bronze-2);
   --accent-3: var(--bronze-3);
@@ -1288,7 +1292,7 @@
 }
 
 [data-color="gold"],
-[data-color="gold"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="gold"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--gold-1);
   --accent-2: var(--gold-2);
   --accent-3: var(--gold-3);
@@ -1320,7 +1324,7 @@
 }
 
 [data-color="brown"],
-[data-color="brown"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="brown"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--brown-1);
   --accent-2: var(--brown-2);
   --accent-3: var(--brown-3);
@@ -1352,7 +1356,7 @@
 }
 
 [data-color="orange"],
-[data-color="orange"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="orange"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--orange-1);
   --accent-2: var(--orange-2);
   --accent-3: var(--orange-3);
@@ -1384,7 +1388,7 @@
 }
 
 [data-color="amber"],
-[data-color="amber"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="amber"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--amber-1);
   --accent-2: var(--amber-2);
   --accent-3: var(--amber-3);
@@ -1416,7 +1420,7 @@
 }
 
 [data-color="yellow"],
-[data-color="yellow"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="yellow"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--yellow-1);
   --accent-2: var(--yellow-2);
   --accent-3: var(--yellow-3);
@@ -1448,7 +1452,7 @@
 }
 
 [data-color="lime"],
-[data-color="lime"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="lime"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--lime-1);
   --accent-2: var(--lime-2);
   --accent-3: var(--lime-3);
@@ -1480,7 +1484,7 @@
 }
 
 [data-color="mint"],
-[data-color="mint"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="mint"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--mint-1);
   --accent-2: var(--mint-2);
   --accent-3: var(--mint-3);
@@ -1512,7 +1516,7 @@
 }
 
 [data-color="sky"],
-[data-color="sky"] :where(.light, .light-theme, .dark, .dark-theme) {
+:where([data-color="sky"]) :where(.light, .light-theme, .dark, .dark-theme) {
   --accent-1: var(--sky-1);
   --accent-2: var(--sky-2);
   --accent-3: var(--sky-3);
