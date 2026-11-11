@@ -15,7 +15,7 @@ export const switchVariants = tv({
       focusRing,
     ],
     thumb: [
-      'block rounded-[max(calc(var(--radius-ui-thumb)-1px),0px)] bg-white shadow-sm transition-transform',
+      'block rounded-[calc(var(--ui-radius)-1px)] bg-white shadow-sm transition-transform',
       'group-data-disabled/switch:bg-gray-2 group-data-disabled/switch:shadow-none',
     ],
   },

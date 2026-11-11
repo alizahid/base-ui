@@ -56,15 +56,42 @@
   --color-panel: var(--panel);
   --color-surface: var(--surface);
   --color-overlay: var(--overlay);
+}
 
-  /* Corner radius that follows the theme: rounded-ui-sm, rounded-ui-md, ... */
-  --radius-ui-xs: max(calc(0.125rem * var(--radius-factor)), var(--radius-full));
-  --radius-ui-sm: max(calc(0.25rem * var(--radius-factor)), var(--radius-full));
-  --radius-ui-md: max(calc(0.375rem * var(--radius-factor)), var(--radius-full));
-  --radius-ui-lg: max(calc(0.5rem * var(--radius-factor)), var(--radius-full));
-  --radius-ui-xl: max(calc(0.75rem * var(--radius-factor)), var(--radius-full));
-  /* For switches and slider thumbs: round unless the theme radius is none or small */
-  --radius-ui-thumb: max(calc(0.25rem * var(--radius-factor)), var(--radius-thumb));
+/*
+ * Corner radius that follows the theme: rounded-ui-sm, rounded-ui-md, ...
+ * Each one also sets --ui-radius on the element, so a part inside it can
+ * match the curve, for example rounded-[calc(var(--ui-radius)-1px)].
+ */
+@utility rounded-ui-xs {
+  --ui-radius: max(calc(0.125rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-ui-sm {
+  --ui-radius: max(calc(0.25rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-ui-md {
+  --ui-radius: max(calc(0.375rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-ui-lg {
+  --ui-radius: max(calc(0.5rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-ui-xl {
+  --ui-radius: max(calc(0.75rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
+/* For switches and slider thumbs: round unless the theme radius is none or small */
+@utility rounded-ui-thumb {
+  --ui-radius: max(calc(0.25rem * var(--radius-factor)), var(--radius-thumb));
+  border-radius: var(--ui-radius);
 }
 
 /* Defaults. Set again on every theme class, so nested light/dark areas work. */
