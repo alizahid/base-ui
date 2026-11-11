@@ -9,14 +9,35 @@ import type { Radius } from '../../lib/theme'
 export const numberFieldVariants = tv({
   slots: {
     // The box itself comes from `fieldBoxVariants`; this only adds what a number field needs
-    root: 'inline-flex w-40 overflow-hidden',
-    group: 'flex size-full items-stretch',
+    root: 'inline-flex w-40',
+    // `contents`: the group is only there for Base UI, the box lays out its children
+    group: 'contents',
+    // The slots on both sides already keep the text away from the edges
     input: 'px-0 text-center tabular-nums',
+    // The minus and plus buttons sit in a slot, away from the edges, like a ghost
+    // IconButton inside a `TextField.Slot` (same sizes as the Combobox buttons)
     button: [
-      'flex aspect-square h-full shrink-0 cursor-default select-none items-center justify-center text-gray-a11',
+      'flex shrink-0 cursor-default select-none items-center justify-center rounded-ui-xs text-gray-a11',
+      '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
       'hover:bg-gray-a3 active:bg-gray-a4',
       'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
     ],
+  },
+  variants: {
+    size: {
+      sm: { button: '-m-0.5 size-5 [&>svg]:size-3' },
+      md: { button: '-m-1 size-5.5 [&>svg]:size-3.5' },
+      lg: { button: '-m-1.5 size-7 rounded-ui-sm [&>svg]:size-4' },
+      xl: { button: '-m-2 size-8 rounded-ui-sm [&>svg]:size-4' },
+    },
+    variant: {
+      surface: {},
+      soft: { button: 'text-accent-12 hover:bg-accent-a4 active:bg-accent-a5' },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    variant: 'surface',
   },
 })
 
@@ -44,7 +65,11 @@ export type NumberFieldProps = Omit<
     radius?: Radius
   }
 
-/** Includes Base UI's `NumberField.Group`, `Decrement`, `Input` and `Increment`. */
+/**
+ * Includes Base UI's `NumberField.Group`, `Decrement`, `Input` and `Increment`.
+ * The minus and plus buttons are not tab stops (Base UI's default): the input is,
+ * and the arrow keys change the value.
+ */
 export function NumberField({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
@@ -58,7 +83,7 @@ export function NumberField({
   ...props
 }: NumberFieldProps) {
   const box = fieldBoxVariants({ size, variant })
-  const styles = numberFieldVariants()
+  const styles = numberFieldVariants({ size, variant })
 
   return (
     <BaseNumberField.Root
@@ -68,9 +93,11 @@ export function NumberField({
       className={cn(box.root(), styles.root(), className)}
     >
       <BaseNumberField.Group className={cn(styles.group(), classNames?.group)}>
-        <BaseNumberField.Decrement className={cn(styles.button(), classNames?.decrement)}>
-          <MinusIcon />
-        </BaseNumberField.Decrement>
+        <div className={box.slot()} data-side="left">
+          <BaseNumberField.Decrement className={cn(styles.button(), classNames?.decrement)}>
+            <MinusIcon />
+          </BaseNumberField.Decrement>
+        </div>
         <BaseNumberField.Input
           // The label names the text box, not the wrapping div
           aria-label={ariaLabel}
@@ -78,9 +105,11 @@ export function NumberField({
           className={cn(box.input(), styles.input(), classNames?.input)}
           placeholder={placeholder}
         />
-        <BaseNumberField.Increment className={cn(styles.button(), classNames?.increment)}>
-          <PlusIcon />
-        </BaseNumberField.Increment>
+        <div className={box.slot()} data-side="right">
+          <BaseNumberField.Increment className={cn(styles.button(), classNames?.increment)}>
+            <PlusIcon />
+          </BaseNumberField.Increment>
+        </div>
       </BaseNumberField.Group>
     </BaseNumberField.Root>
   )
@@ -88,7 +117,7 @@ export function NumberField({
 
 function MinusIcon() {
   return (
-    <svg aria-hidden="true" className="size-[1em]" fill="none" viewBox="0 0 16 16">
+    <svg aria-hidden="true" fill="none" viewBox="0 0 16 16">
       <path d="M3.5 8h9" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   )
@@ -96,7 +125,7 @@ function MinusIcon() {
 
 function PlusIcon() {
   return (
-    <svg aria-hidden="true" className="size-[1em]" fill="none" viewBox="0 0 16 16">
+    <svg aria-hidden="true" fill="none" viewBox="0 0 16 16">
       <path d="M3.5 8h9M8 3.5v9" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
     </svg>
   )

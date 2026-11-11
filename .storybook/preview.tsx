@@ -57,6 +57,8 @@ const preview: Preview = {
     backgrounds: { disable: true },
     controls: { expanded: true },
     layout: 'fullscreen',
+    // The one-page playground first, then the components
+    options: { storySort: { order: ['Playground', 'Components'] } },
   },
 }
 
