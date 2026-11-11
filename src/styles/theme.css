@@ -52,12 +52,19 @@
   --color-gray-a11: var(--gray-a11);
   --color-gray-a12: var(--gray-a12);
 
+  /* Surfaces: bg-panel (popups, cards), bg-surface (inputs), bg-overlay (backdrops) */
+  --color-panel: var(--panel);
+  --color-surface: var(--surface);
+  --color-overlay: var(--overlay);
+
   /* Corner radius that follows the theme: rounded-ui-sm, rounded-ui-md, ... */
   --radius-ui-xs: max(calc(0.125rem * var(--radius-factor)), var(--radius-full));
   --radius-ui-sm: max(calc(0.25rem * var(--radius-factor)), var(--radius-full));
   --radius-ui-md: max(calc(0.375rem * var(--radius-factor)), var(--radius-full));
   --radius-ui-lg: max(calc(0.5rem * var(--radius-factor)), var(--radius-full));
   --radius-ui-xl: max(calc(0.75rem * var(--radius-factor)), var(--radius-full));
+  /* For switches and slider thumbs: round unless the theme radius is none or small */
+  --radius-ui-thumb: max(calc(0.25rem * var(--radius-factor)), var(--radius-thumb));
 }
 
 /* Defaults. Set again on every theme class, so nested light/dark areas work. */
@@ -111,6 +118,19 @@
   --gray-a10: var(--slate-a10);
   --gray-a11: var(--slate-a11);
   --gray-a12: var(--slate-a12);
+}
+
+/* Surfaces (same values as Radix Themes) */
+:root, .light, .light-theme {
+  --panel: #fff;
+  --surface: rgb(255 255 255 / 0.85);
+  --overlay: rgb(0 0 0 / 0.4);
+}
+
+.dark, .dark-theme {
+  --panel: var(--gray-2);
+  --surface: rgb(0 0 0 / 0.25);
+  --overlay: rgb(0 0 0 / 0.7);
 }
 
 /* The theme gray: data-gray points the gray at another scale. */
@@ -286,31 +306,37 @@
 :root {
   --radius-factor: 1;
   --radius-full: 0px;
+  --radius-thumb: 9999px;
 }
 
 [data-radius="none"] {
   --radius-factor: 0;
   --radius-full: 0px;
+  --radius-thumb: 0px;
 }
 
 [data-radius="small"] {
   --radius-factor: 0.75;
   --radius-full: 0px;
+  --radius-thumb: 0px;
 }
 
 [data-radius="medium"] {
   --radius-factor: 1;
   --radius-full: 0px;
+  --radius-thumb: 9999px;
 }
 
 [data-radius="large"] {
   --radius-factor: 1.5;
   --radius-full: 0px;
+  --radius-thumb: 9999px;
 }
 
 [data-radius="full"] {
   --radius-factor: 1.5;
   --radius-full: 9999px;
+  --radius-thumb: 9999px;
 }
 
 /* The `color` prop: data-color points the accent at another scale. */

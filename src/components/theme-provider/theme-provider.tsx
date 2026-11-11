@@ -26,6 +26,26 @@ export function useTheme() {
   return useContext(ThemeContext) ?? defaultTheme
 }
 
+/**
+ * Props that carry the current theme onto an element outside the provider's
+ * `div`. Popups are rendered in a portal at the end of `<body>`, so every
+ * portal spreads these to keep the color, gray, radius and light/dark look.
+ */
+export function useThemeProps() {
+  const theme = useContext(ThemeContext)
+
+  if (!theme) {
+    return {}
+  }
+
+  return {
+    className: theme.appearance === 'inherit' ? undefined : theme.appearance,
+    'data-color': theme.color,
+    'data-gray': theme.gray,
+    'data-radius': theme.radius,
+  }
+}
+
 export type ThemeProviderProps = Omit<useRender.ComponentProps<'div'>, 'color'> &
   Partial<Theme> & {
     /**

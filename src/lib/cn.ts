@@ -9,7 +9,7 @@ export type { ClassValue } from 'cn'
 export const cn = createCn({
   extend: {
     theme: {
-      radius: ['ui-xs', 'ui-sm', 'ui-md', 'ui-lg', 'ui-xl'],
+      radius: ['ui-xs', 'ui-sm', 'ui-md', 'ui-lg', 'ui-xl', 'ui-thumb'],
     },
   },
 })

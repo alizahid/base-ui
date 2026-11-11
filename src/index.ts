@@ -1,4 +1,6 @@
 export * from './components/button'
+export * from './components/dialog'
+export * from './components/switch'
 export * from './components/theme-provider'
 export { cn } from './lib/cn'
 export { type Color, colors, type ThemeColor } from './lib/colors'
