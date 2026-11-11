@@ -3,16 +3,9 @@ import type { ComponentProps, ComponentType, ReactNode } from 'react'
 import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
+import { FieldBoxContext, type FieldBoxVariants, fieldBoxVariants } from '../../lib/field-box'
 import { type PositionerProps, splitPositionerProps } from '../../lib/positioner'
-import {
-  type ControlSize,
-  controlSize,
-  inputSurface,
-  listItem,
-  listLabel,
-  listPopup,
-  listSeparator,
-} from '../../lib/styles'
+import { type ControlSize, listItem, listLabel, listPopup, listSeparator } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
 import { CheckIcon, ChevronDownIcon, XIcon } from '../dropdown-menu/shared'
 import { useThemeProps } from '../theme-provider'
@@ -43,33 +36,31 @@ export const useComboboxFilter = BaseCombobox.useFilter
 /** The items left after filtering. Same as Base UI's `Combobox.useFilteredItems`. */
 export const useComboboxFilteredItems = BaseCombobox.useFilteredItems
 
-/** The input box. Also used by Autocomplete. */
+/**
+ * What the Combobox adds to the shared box (`fieldBoxVariants`): the small
+ * clear / open buttons, and the taller box that holds chips. Also used by Autocomplete.
+ */
 export const comboboxInputVariants = tv({
   slots: {
-    root: [
-      'flex w-full min-w-0 items-center gap-1',
-      inputSurface,
-      // The focus ring goes on the box, not on the bare input inside
-      'has-[input:focus-visible]:outline-2',
-    ],
-    input:
-      'h-full min-w-0 flex-1 bg-transparent outline-none placeholder:text-gray-a10 disabled:cursor-not-allowed',
+    root: '',
+    input: '',
+    buttons: 'gap-1',
     button: [
-      'flex size-5 shrink-0 items-center justify-center rounded-ui-sm text-gray-a11 outline-none',
+      'flex size-5 shrink-0 items-center justify-center rounded-inner-2 text-gray-a11 outline-none',
       'hover:bg-gray-a3 hover:text-gray-12',
       'data-disabled:pointer-events-none data-disabled:text-gray-a8',
     ],
   },
   variants: {
     size: {
-      xs: { root: [controlSize.xs, 'pr-1'], button: 'size-4 [&>svg]:size-3.5' },
-      sm: { root: [controlSize.sm, 'pr-1.5'] },
-      md: { root: [controlSize.md, 'pr-2.5'] },
-      lg: { root: [controlSize.lg, 'pr-3.5'], button: 'size-6' },
+      xs: { button: 'size-4 [&>svg]:size-3.5' },
+      sm: {},
+      md: {},
+      lg: { button: 'size-6' },
     },
     /** The box grows with the chips inside it. */
     chips: {
-      true: { root: 'h-auto flex-wrap py-1', input: 'h-6 min-w-12' },
+      true: { root: 'h-auto flex-wrap gap-1 py-1', input: 'h-6 min-w-12 px-1' },
     },
   },
   compoundVariants: [
@@ -84,6 +75,8 @@ export const comboboxInputVariants = tv({
 })
 
 type InputOwnProps = {
+  /** `TextField.Slot` parts: icons, text or buttons shown inside the box. */
+  children?: ReactNode
   className?: string
   /** Classes for the parts that `Input` renders inside itself. */
   classNames?: {
@@ -109,11 +102,15 @@ type InputOwnProps = {
    * @default 'md'
    */
   size?: ControlSize
+  /**
+   * @default 'surface'
+   */
+  variant?: FieldBoxVariants['variant']
 }
 
 type BaseInputProps = Omit<
   ComponentProps<typeof BaseCombobox.Input>,
-  'className' | 'color' | 'size'
+  'children' | 'className' | 'color' | 'size'
 >
 
 type InputBoxProps = BaseInputProps &
@@ -131,6 +128,7 @@ type InputBoxProps = BaseInputProps &
 
 /** InputGroup + Input + Clear + Trigger. Shared by Combobox and Autocomplete. Not a public part. */
 export function InputBox({
+  children,
   className,
   classNames,
   color,
@@ -139,28 +137,46 @@ export function InputBox({
   showClear = true,
   showTrigger = true,
   size,
+  variant,
   ...props
 }: InputBoxProps) {
+  const box = fieldBoxVariants({ size, variant })
   const styles = comboboxInputVariants({ size })
 
   return (
-    <parts.InputGroup
-      data-color={colorAttribute(color)}
-      data-radius={radius}
-      className={cn(styles.root(), className)}
-    >
-      <BaseCombobox.Input {...props} className={cn(styles.input(), classNames?.input)} />
-      {showClear && (
-        <BaseCombobox.Clear aria-label="Clear" className={cn(styles.button(), classNames?.clear)}>
-          <XIcon />
-        </BaseCombobox.Clear>
-      )}
-      {showTrigger && (
-        <parts.Trigger aria-label="Open list" className={cn(styles.button(), classNames?.trigger)}>
-          <ChevronDownIcon />
-        </parts.Trigger>
-      )}
-    </parts.InputGroup>
+    <FieldBoxContext.Provider value={{ size, variant }}>
+      <parts.InputGroup
+        data-color={colorAttribute(color)}
+        data-radius={radius}
+        className={cn(box.root(), styles.root(), className)}
+      >
+        <BaseCombobox.Input
+          {...props}
+          className={cn(box.input(), styles.input(), classNames?.input)}
+        />
+        {children}
+        {(showClear || showTrigger) && (
+          <div className={cn(box.slot(), styles.buttons())} data-side="right">
+            {showClear && (
+              <BaseCombobox.Clear
+                aria-label="Clear"
+                className={cn(styles.button(), classNames?.clear)}
+              >
+                <XIcon />
+              </BaseCombobox.Clear>
+            )}
+            {showTrigger && (
+              <parts.Trigger
+                aria-label="Open list"
+                className={cn(styles.button(), classNames?.trigger)}
+              >
+                <ChevronDownIcon />
+              </parts.Trigger>
+            )}
+          </div>
+        )}
+      </parts.InputGroup>
+    </FieldBoxContext.Provider>
   )
 }
 
@@ -175,7 +191,7 @@ export function ComboboxInput(props: ComboboxInputProps) {
 }
 
 export type ComboboxChipsProps<Value = unknown> = Omit<BaseInputProps, 'children'> &
-  Omit<InputOwnProps, 'showClear' | 'showTrigger'> & {
+  Omit<InputOwnProps, 'children' | 'showClear' | 'showTrigger'> & {
     /** A function that gets the picked values and returns one `Chip` for each. */
     children: (value: Value[]) => ReactNode
   }
@@ -192,15 +208,17 @@ export function ComboboxChips<Value = unknown>({
   placeholder,
   radius,
   size,
+  variant,
   ...props
 }: ComboboxChipsProps<Value>) {
+  const box = fieldBoxVariants({ size, variant })
   const styles = comboboxInputVariants({ chips: true, size })
 
   return (
     <BaseCombobox.InputGroup
       data-color={colorAttribute(color)}
       data-radius={radius}
-      className={cn(styles.root(), className)}
+      className={cn(box.root(), styles.root(), className)}
     >
       <BaseCombobox.Chips className="flex min-w-0 flex-1 flex-wrap items-center gap-1">
         <BaseCombobox.Value>
@@ -211,7 +229,7 @@ export function ComboboxChips<Value = unknown>({
                 // The placeholder is only useful while nothing is picked
                 placeholder={value.length > 0 ? undefined : placeholder}
                 {...props}
-                className={cn(styles.input(), classNames?.input)}
+                className={cn(box.input(), styles.input(), classNames?.input)}
               />
             </>
           )}

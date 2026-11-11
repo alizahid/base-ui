@@ -2,9 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { Button } from '../button'
 import { Checkbox } from '../checkbox'
+import { Combobox } from '../combobox'
 import { Field } from '../field'
 import { Fieldset } from '../fieldset'
+import { NumberField } from '../number-field'
 import { RadioGroup } from '../radio-group'
+import { Select } from '../select'
 import { Switch } from '../switch'
 import { TextField } from '../text-field'
 import { Form } from './form'
@@ -132,5 +135,67 @@ export const ClassNameOverride: Story = {
       </Field.Root>
       <Button type="submit">Join</Button>
     </Form>
+  ),
+}
+
+const boxSizes = ['xs', 'sm', 'md', 'lg'] as const
+const boxVariants = ['surface', 'soft'] as const
+const fruits = ['Apple', 'Banana', 'Cherry']
+
+/** TextField, NumberField, Combobox and Select share one box, so they line up. */
+export const SameBox: Story = {
+  render: () => (
+    <div className="flex w-max flex-col gap-3">
+      {boxVariants.map((variant) =>
+        boxSizes.map((size) => (
+          <div className="flex items-center gap-2" key={`${variant}-${size}`}>
+            <TextField.Root className="w-36" placeholder="Text" size={size} variant={variant} />
+            <NumberField
+              aria-label="Amount"
+              className="w-32"
+              defaultValue={10}
+              size={size}
+              variant={variant}
+            />
+            <div className="w-40">
+              <Combobox.Root items={fruits}>
+                <Combobox.Input placeholder="Fruit" size={size} variant={variant} />
+                <Combobox.Content>
+                  {(item: string) => (
+                    <Combobox.Item key={item} value={item}>
+                      {item}
+                    </Combobox.Item>
+                  )}
+                </Combobox.Content>
+              </Combobox.Root>
+            </div>
+            <Select.Root size={size}>
+              <Select.Trigger placeholder="Fruit" variant={variant} />
+              <Select.Content>
+                {fruits.map((fruit) => (
+                  <Select.Item key={fruit} value={fruit}>
+                    {fruit}
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Root>
+            <Button size={size}>Go</Button>
+          </div>
+        )),
+      )}
+      <div className="flex items-center gap-2">
+        <TextField.Root className="w-36" disabled placeholder="Text" />
+        <NumberField aria-label="Amount" className="w-32" defaultValue={10} disabled />
+        <div className="w-40">
+          <Combobox.Root disabled items={fruits}>
+            <Combobox.Input placeholder="Fruit" />
+          </Combobox.Root>
+        </div>
+        <Select.Root disabled>
+          <Select.Trigger placeholder="Fruit" />
+        </Select.Root>
+        <Button disabled>Go</Button>
+      </div>
+    </div>
   ),
 }

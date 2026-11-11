@@ -3,6 +3,7 @@ import { type ComponentProps, createContext, useContext } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
+import { fieldBoxVariants } from '../../lib/field-box'
 import { type PositionerProps, splitPositionerProps } from '../../lib/positioner'
 import {
   type ControlSize,
@@ -48,7 +49,7 @@ export type SelectGroupProps = ComponentProps<typeof BaseSelect.Group>
 export const selectTriggerVariants = tv({
   slots: {
     root: [
-      'group/trigger inline-flex shrink-0 cursor-default select-none items-center justify-between gap-2 whitespace-nowrap align-top',
+      'group/trigger inline-flex w-auto shrink-0 cursor-default select-none items-center justify-between gap-2 whitespace-nowrap align-top',
       'data-disabled:cursor-not-allowed',
     ],
     value: 'min-w-0 truncate data-placeholder:text-gray-a10',
@@ -56,14 +57,10 @@ export const selectTriggerVariants = tv({
   },
   variants: {
     variant: {
-      surface: { root: [inputSurface, 'hover:not-data-disabled:inset-ring-gray-a8'] },
+      // Surface and soft start from the shared box (`fieldBoxVariants`), see `SelectTrigger`
+      surface: { root: 'hover:not-data-disabled:inset-ring-gray-a8' },
       soft: {
-        root: [
-          'bg-accent-a3 text-accent-12',
-          '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
-          'hover:bg-accent-a4 data-popup-open:bg-accent-a4',
-          'data-disabled:bg-gray-a3 data-disabled:text-gray-a8',
-        ],
+        root: 'hover:not-data-disabled:bg-accent-a4 data-popup-open:bg-accent-a4',
         value: 'data-placeholder:text-accent-12 data-placeholder:opacity-60',
         icon: 'text-accent-a11',
       },
@@ -130,13 +127,15 @@ export function SelectTrigger({
 }: SelectTriggerProps) {
   const size = useContext(SelectSizeContext)
   const styles = selectTriggerVariants({ size, variant })
+  // The same box as TextField. Ghost has no box.
+  const box = variant === 'ghost' ? undefined : fieldBoxVariants({ size, variant }).root()
 
   return (
     <BaseSelect.Trigger
       data-color={colorAttribute(color)}
       data-radius={radius}
       {...props}
-      className={cn(styles.root(), className)}
+      className={cn(box, styles.root(), className)}
     >
       <BaseSelect.Value className={cn(styles.value(), classNames?.value)} placeholder={placeholder}>
         {children}

@@ -1,42 +1,22 @@
 import { NumberField as BaseNumberField } from '@base-ui/react/number-field'
 import type { ComponentProps } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants/lite'
+import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
-import { controlSize } from '../../lib/styles'
+import { type FieldBoxVariants, fieldBoxVariants } from '../../lib/field-box'
 import type { Radius } from '../../lib/theme'
 
 export const numberFieldVariants = tv({
   slots: {
-    // The root is the visible box. Same look as `inputSurface`, but the
-    // focus ring shows when the input inside has focus.
-    root: [
-      'inline-block w-40 overflow-hidden bg-surface text-gray-12 inset-ring inset-ring-gray-a7',
-      '-outline-offset-1 outline-accent-8 has-[input:focus-visible]:outline-2',
-      'data-invalid:inset-ring-(--red-a8)',
-      'data-disabled:cursor-not-allowed data-disabled:bg-gray-a2 data-disabled:text-gray-a11',
-    ],
+    // The box itself comes from `fieldBoxVariants`; this only adds what a number field needs
+    root: 'inline-flex w-40 overflow-hidden',
     group: 'flex size-full items-stretch',
-    input: [
-      'min-w-0 flex-1 bg-transparent text-center tabular-nums outline-none placeholder:text-gray-a10',
-      'data-disabled:cursor-not-allowed',
-    ],
+    input: 'px-0 text-center tabular-nums',
     button: [
       'flex aspect-square h-full shrink-0 select-none items-center justify-center text-gray-a11',
       'hover:bg-gray-a3 active:bg-gray-a4',
       'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
     ],
-  },
-  variants: {
-    size: {
-      xs: { root: [controlSize.xs, 'px-0'] },
-      sm: { root: [controlSize.sm, 'px-0'] },
-      md: { root: [controlSize.md, 'px-0'] },
-      lg: { root: [controlSize.lg, 'px-0'] },
-    },
-  },
-  defaultVariants: {
-    size: 'md',
   },
 })
 
@@ -44,7 +24,7 @@ export type NumberFieldProps = Omit<
   ComponentProps<typeof BaseNumberField.Root>,
   'children' | 'className' | 'color'
 > &
-  VariantProps<typeof numberFieldVariants> & {
+  FieldBoxVariants & {
     className?: string
     /** Classes for the parts that `NumberField` renders inside itself. */
     classNames?: {
@@ -74,16 +54,18 @@ export function NumberField({
   placeholder,
   radius,
   size,
+  variant,
   ...props
 }: NumberFieldProps) {
-  const styles = numberFieldVariants({ size })
+  const box = fieldBoxVariants({ size, variant })
+  const styles = numberFieldVariants()
 
   return (
     <BaseNumberField.Root
       data-color={colorAttribute(color)}
       data-radius={radius}
       {...props}
-      className={cn(styles.root(), className)}
+      className={cn(box.root(), styles.root(), className)}
     >
       <BaseNumberField.Group className={cn(styles.group(), classNames?.group)}>
         <BaseNumberField.Decrement className={cn(styles.button(), classNames?.decrement)}>
@@ -93,7 +75,7 @@ export function NumberField({
           // The label names the text box, not the wrapping div
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
-          className={cn(styles.input(), classNames?.input)}
+          className={cn(box.input(), styles.input(), classNames?.input)}
           placeholder={placeholder}
         />
         <BaseNumberField.Increment className={cn(styles.button(), classNames?.increment)}>
