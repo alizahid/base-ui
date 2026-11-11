@@ -74,7 +74,7 @@ Select, Separator, Slider, Switch, Tabs, TextField, Toast, Toggle, ToggleGroup, 
 - Every `rounded-*` class sets `--ui-radius` on its element. A part inside it uses
   `rounded-inner-px`, `rounded-inner-0.5` or `rounded-inner-[3px]` (outer radius minus the gap),
   so one `className` on the outer part reshapes both.
-- The inner radius never goes below 2px (set `--ui-radius-min` to change it), unless the
+- The inner radius never goes below 4px (set `--ui-radius-min` to change it), unless the
   outer part is squarer than that.
 
 ## Development

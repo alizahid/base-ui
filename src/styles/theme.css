@@ -137,16 +137,16 @@
  * For a part that sits inside a rounded part: the outer radius minus the gap
  * between the two, so both curves line up. rounded-inner-px, rounded-inner-0.5
  * (spacing scale), rounded-inner-[3px].
- * It never goes below --ui-radius-min (2px), unless the outer part is squarer
+ * It never goes below --ui-radius-min (4px), unless the outer part is squarer
  * than that. So a part far from the edge keeps a small curve instead of 0.
  */
 @utility rounded-inner-px {
-  border-radius: max(calc(var(--ui-radius) - 1px), min(var(--ui-radius), var(--ui-radius-min, 2px)));
+  border-radius: max(calc(var(--ui-radius) - 1px), min(var(--ui-radius), var(--ui-radius-min, 4px)));
 }
 
 @utility rounded-inner-* {
-  border-radius: max(calc(var(--ui-radius) - --spacing(--value(number))), min(var(--ui-radius), var(--ui-radius-min, 2px)));
-  border-radius: max(calc(var(--ui-radius) - --value([length])), min(var(--ui-radius), var(--ui-radius-min, 2px)));
+  border-radius: max(calc(var(--ui-radius) - --spacing(--value(number))), min(var(--ui-radius), var(--ui-radius-min, 4px)));
+  border-radius: max(calc(var(--ui-radius) - --value([length])), min(var(--ui-radius), var(--ui-radius-min, 4px)));
 }
 
 /* For switches and slider thumbs: round unless the theme radius is none or small */
