@@ -19,11 +19,11 @@ const meta = {
       <Fieldset.Legend>Billing details</Fieldset.Legend>
       <Field.Root>
         <Field.Label>Company</Field.Label>
-        <TextField placeholder="Company name" />
+        <TextField.Root placeholder="Company name" />
       </Field.Root>
       <Field.Root>
         <Field.Label>Tax ID</Field.Label>
-        <TextField placeholder="Tax number" />
+        <TextField.Root placeholder="Tax number" />
       </Field.Root>
     </Fieldset.Root>
   ),
@@ -48,7 +48,7 @@ export const ClassNameOverride: Story = {
       </Fieldset.Legend>
       <Field.Root>
         <Field.Label>Company</Field.Label>
-        <TextField placeholder="Company name" />
+        <TextField.Root placeholder="Company name" />
       </Field.Root>
     </Fieldset.Root>
   ),

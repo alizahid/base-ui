@@ -19,7 +19,7 @@ const meta = {
   render: (args) => (
     <Field.Root {...args}>
       <Field.Label>Name</Field.Label>
-      <TextField placeholder="Your name" required />
+      <TextField.Root placeholder="Your name" required />
       <Field.Description>Visible on your profile.</Field.Description>
       <Field.Error />
     </Field.Root>
@@ -38,7 +38,7 @@ export const Validation: Story = {
   render: (args) => (
     <Field.Root {...args}>
       <Field.Label>Email</Field.Label>
-      <TextField placeholder="you@example.com" required type="email" />
+      <TextField.Root placeholder="you@example.com" required type="email" />
       <Field.Error match="valueMissing">Please enter your email.</Field.Error>
       <Field.Error match="typeMismatch">This is not a valid email address.</Field.Error>
     </Field.Root>
@@ -50,7 +50,7 @@ export const Invalid: Story = {
   render: (args) => (
     <Field.Root {...args}>
       <Field.Label>Username</Field.Label>
-      <TextField defaultValue="admin" />
+      <TextField.Root defaultValue="admin" />
       <Field.Error match>This username is already taken.</Field.Error>
     </Field.Root>
   ),
@@ -65,7 +65,7 @@ export const WithControl: Story = {
   render: (args) => (
     <Field.Root {...args}>
       <Field.Label>City</Field.Label>
-      <Field.Control placeholder="Where you live" render={<TextField />} />
+      <Field.Control placeholder="Where you live" render={<TextField.Root />} />
       <Field.Description>Uses Field.Control with render.</Field.Description>
     </Field.Root>
   ),
@@ -99,7 +99,7 @@ export const ClassNameOverride: Story = {
   render: (args) => (
     <Field.Root {...args} className="gap-3">
       <Field.Label className="text-accent-11 text-lg">Big label</Field.Label>
-      <TextField />
+      <TextField.Root />
       <Field.Description className="text-xs italic">Small italic description</Field.Description>
       <Field.Error className="font-bold text-xs" match>
         Small bold error

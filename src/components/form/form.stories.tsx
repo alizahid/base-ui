@@ -30,7 +30,7 @@ export const Playground: Story = {
     <Form {...args} onSubmit={(event) => event.preventDefault()}>
       <Field.Root name="email">
         <Field.Label>Email</Field.Label>
-        <TextField placeholder="you@example.com" required type="email" />
+        <TextField.Root placeholder="you@example.com" required type="email" />
         <Field.Error />
       </Field.Root>
       <Button className="self-start" type="submit">
@@ -47,7 +47,7 @@ export const ServerErrors: Story = {
     <Form {...args} onSubmit={(event) => event.preventDefault()}>
       <Field.Root name="username">
         <Field.Label>Username</Field.Label>
-        <TextField defaultValue="admin" />
+        <TextField.Root defaultValue="admin" />
         <Field.Error />
       </Field.Root>
       <Button className="self-start" type="submit">
@@ -66,13 +66,13 @@ export const FormExample: Story = {
       <Form {...args} onFormSubmit={(formValues) => setValues(formValues)}>
         <Field.Root name="name">
           <Field.Label>Full name</Field.Label>
-          <TextField placeholder="Ada Lovelace" required />
+          <TextField.Root placeholder="Ada Lovelace" required />
           <Field.Error match="valueMissing">Please enter your name.</Field.Error>
         </Field.Root>
 
         <Field.Root name="email">
           <Field.Label>Email</Field.Label>
-          <TextField placeholder="you@example.com" required type="email" />
+          <TextField.Root placeholder="you@example.com" required type="email" />
           <Field.Description>We only use it to send receipts.</Field.Description>
           <Field.Error match="valueMissing">Please enter your email.</Field.Error>
           <Field.Error match="typeMismatch">This is not a valid email address.</Field.Error>
@@ -128,7 +128,7 @@ export const ClassNameOverride: Story = {
     >
       <Field.Root className="flex-1 items-stretch" name="email">
         <Field.Label>Email</Field.Label>
-        <TextField placeholder="you@example.com" />
+        <TextField.Root placeholder="you@example.com" />
       </Field.Root>
       <Button type="submit">Join</Button>
     </Form>
