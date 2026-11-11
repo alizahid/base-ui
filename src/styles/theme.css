@@ -88,6 +88,35 @@
   border-radius: var(--ui-radius);
 }
 
+/*
+ * For boxes that hold content (dialogs, popups, cards): rounded-panel-md, ...
+ * Same as rounded-ui-* but never a pill, also when the theme radius is full.
+ */
+@utility rounded-panel-xs {
+  --ui-radius: calc(0.125rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-panel-sm {
+  --ui-radius: calc(0.25rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-panel-md {
+  --ui-radius: calc(0.375rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-panel-lg {
+  --ui-radius: calc(0.5rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-panel-xl {
+  --ui-radius: calc(0.75rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
 /* For switches and slider thumbs: round unless the theme radius is none or small */
 @utility rounded-ui-thumb {
   --ui-radius: max(calc(0.25rem * var(--radius-factor)), var(--radius-thumb));

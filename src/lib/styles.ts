@@ -15,7 +15,7 @@ export const popupAnimation = [
 
 /** The box of a floating popup. */
 export const popupSurface =
-  'rounded-ui-lg bg-panel text-gray-12 shadow-lg inset-ring inset-ring-gray-a5 outline-none'
+  'rounded-panel-lg bg-panel text-gray-12 shadow-lg inset-ring inset-ring-gray-a5 outline-none'
 
 /** A list popup: menus, select lists, combobox lists. */
 export const listPopup = `${popupSurface} ${popupAnimation} min-w-32 max-w-(--available-width) p-1`

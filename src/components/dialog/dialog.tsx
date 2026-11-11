@@ -18,7 +18,7 @@ export type DialogCloseProps = ComponentProps<typeof BaseDialog.Close>
 
 export const dialogContentVariants = tv({
   base: [
-    'relative w-full rounded-ui-xl bg-panel text-gray-12 shadow-xl inset-ring inset-ring-gray-a5 outline-none',
+    'relative w-full rounded-panel-xl bg-panel text-gray-12 shadow-xl inset-ring inset-ring-gray-a5 outline-none',
     'transition-[opacity,scale] duration-150',
     'data-starting-style:scale-95 data-starting-style:opacity-0',
     'data-ending-style:scale-95 data-ending-style:opacity-0',
