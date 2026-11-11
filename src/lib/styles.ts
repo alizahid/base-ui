@@ -37,7 +37,7 @@ export const listSeparator = '-mx-1 my-1 h-px bg-gray-a5'
 export const inputSurface = [
   'bg-surface text-gray-12 inset-ring inset-ring-gray-a7 placeholder:text-gray-a10',
   '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
-  'data-invalid:inset-ring-red-a8',
+  'data-invalid:inset-ring-(--red-a8)',
   'data-disabled:cursor-not-allowed data-disabled:bg-gray-a2 data-disabled:text-gray-a11',
 ].join(' ')
 

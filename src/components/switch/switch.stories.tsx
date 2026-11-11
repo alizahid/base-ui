@@ -63,6 +63,19 @@ export const Radius: Story = {
   ),
 }
 
+/** A `rounded-*` class on the switch also reshapes the thumb. */
+export const ClassNameOverride: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      <Switch {...args} className="rounded-none" />
+      <Switch {...args} className="rounded-sm" />
+      <Switch {...args} className="rounded-md" />
+      <Switch {...args} className="rounded-[5px]" />
+      <Switch {...args} className="rounded-full" radius="none" />
+    </div>
+  ),
+}
+
 export const WithLabel: Story = {
   render: (args) => (
     <label className="flex items-center gap-2 text-sm">
