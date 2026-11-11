@@ -57,10 +57,11 @@ Components use `rounded-ui-xs` to `rounded-ui-xl`, which follow the theme radius
 
 ## Components
 
-Accordion, AlertDialog, Autocomplete, Avatar, Button, Checkbox, CheckboxGroup, Collapsible,
-Combobox, ContextMenu, Dialog, Drawer, DropdownMenu, Field, Fieldset, Form, HoverCard, Menubar,
-Meter, NavigationMenu, NumberField, OtpField, Popover, Progress, Radio, RadioGroup, ScrollArea,
-Select, Separator, Slider, Switch, Tabs, TextField, Toast, Toggle, ToggleGroup, Toolbar, Tooltip.
+Accordion, AlertDialog, Autocomplete, Avatar, Badge, Button, Callout, Card, Checkbox,
+CheckboxGroup, Collapsible, Combobox, ContextMenu, Dialog, Drawer, DropdownMenu, Field, Fieldset,
+Form, HoverCard, IconButton, Menubar, Meter, NavigationMenu, NumberField, OtpField, Popover,
+Progress, Radio, RadioGroup, ScrollArea, SegmentedControl, Select, Separator, Skeleton, Slider,
+Spinner, Switch, Tabs, TextArea, TextField, Toast, Toggle, ToggleGroup, Toolbar, Tooltip.
 
 - The API follows Radix Themes: `Dialog.Root`, `Dialog.Trigger`, `Dialog.Content`, ...
 - Plumbing parts (portal, backdrop, positioner, thumb, indicator) are built in and not exposed.

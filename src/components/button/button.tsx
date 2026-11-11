@@ -4,6 +4,7 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
+import { Spinner } from '../spinner'
 
 export const buttonVariants = tv({
   base: [
@@ -101,26 +102,12 @@ export function Button({
         <>
           <span className="invisible contents">{children}</span>
           <span className="absolute inset-0 flex items-center justify-center">
-            <Spinner />
+            <Spinner className="size-[1em]" />
           </span>
         </>
       ) : (
         children
       )}
     </BaseButton>
-  )
-}
-
-function Spinner() {
-  return (
-    <svg aria-hidden="true" className="size-[1em] animate-spin" fill="none" viewBox="0 0 16 16">
-      <circle cx="8" cy="8" opacity="0.25" r="6.5" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M14.5 8A6.5 6.5 0 0 0 8 1.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="2"
-      />
-    </svg>
   )
 }

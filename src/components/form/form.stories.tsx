@@ -9,6 +9,7 @@ import { NumberField } from '../number-field'
 import { RadioGroup } from '../radio-group'
 import { Select } from '../select'
 import { Switch } from '../switch'
+import { TextArea } from '../text-area'
 import { TextField } from '../text-field'
 import { Form } from './form'
 
@@ -195,6 +196,10 @@ export const SameBox: Story = {
           <Select.Trigger placeholder="Fruit" />
         </Select.Root>
         <Button disabled>Go</Button>
+      </div>
+      <div className="flex items-start gap-2">
+        <TextArea aria-label="Note" className="w-64" placeholder="Text area, surface" />
+        <TextArea aria-label="Note" className="w-64" placeholder="Text area, soft" variant="soft" />
       </div>
     </div>
   ),
