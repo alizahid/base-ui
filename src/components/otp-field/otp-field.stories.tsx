@@ -19,6 +19,7 @@ const meta = {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
     size: { control: 'inline-radio', options: sizes },
+    variant: { control: 'inline-radio', options: ['surface', 'soft'] },
   },
 } satisfies Meta<typeof OtpField>
 
@@ -83,4 +84,17 @@ export const ClassNameOverride: Story = {
     classNames: { input: 'h-14 w-12 rounded-none bg-accent-a3 text-xl inset-ring-accent-a8' },
     defaultValue: '12',
   },
+}
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {(['surface', 'soft'] as const).map((variant) => (
+        <div className="flex flex-col gap-2" key={variant}>
+          <OtpField {...args} defaultValue="123" variant={variant} />
+          <OtpField {...args} defaultValue="123" disabled variant={variant} />
+        </div>
+      ))}
+    </div>
+  ),
 }

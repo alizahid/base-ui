@@ -118,3 +118,23 @@ export const ClassNameOverride: Story = {
     </ToggleGroup.Root>
   ),
 }
+
+export const Radius: Story = {
+  render: (args) => (
+    <div className="flex flex-col items-start gap-4">
+      {radii.map((radius) => (
+        <ToggleGroup.Root
+          key={radius}
+          {...args}
+          defaultValue={['left']}
+          radius={radius}
+          variant="soft"
+        >
+          <ToggleGroup.Item value="left">Left</ToggleGroup.Item>
+          <ToggleGroup.Item value="center">Center</ToggleGroup.Item>
+          <ToggleGroup.Item value="right">Right</ToggleGroup.Item>
+        </ToggleGroup.Root>
+      ))}
+    </div>
+  ),
+}

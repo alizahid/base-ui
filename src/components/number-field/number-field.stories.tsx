@@ -20,6 +20,7 @@ const meta = {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
     size: { control: 'inline-radio', options: sizes },
+    variant: { control: 'inline-radio', options: ['surface', 'soft'] },
   },
 } satisfies Meta<typeof NumberField>
 
@@ -93,4 +94,17 @@ export const ClassNameOverride: Story = {
       input: 'font-bold text-accent-11',
     },
   },
+}
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {(['surface', 'soft'] as const).map((variant) => (
+        <div className="flex gap-2" key={variant}>
+          <NumberField {...args} variant={variant} />
+          <NumberField {...args} disabled variant={variant} />
+        </div>
+      ))}
+    </div>
+  ),
 }

@@ -84,3 +84,17 @@ export const States: Story = {
     </div>
   ),
 }
+
+export const Colors: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-2">
+      {colors.map((color) => (
+        <IconButton key={color} {...args} aria-label={color} color={color} variant="soft" />
+      ))}
+    </div>
+  ),
+}
+
+export const ClassNameOverride: Story = {
+  args: { className: 'rounded-full bg-accent-12 text-gray-1 hover:bg-accent-11' },
+}

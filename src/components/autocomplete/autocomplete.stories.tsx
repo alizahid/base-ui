@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { colors } from '../../lib/colors'
 import { radii } from '../../lib/theme'
+import { TextField } from '../text-field'
 import { Autocomplete } from '.'
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as const
@@ -20,6 +21,7 @@ const meta = {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
     size: { control: 'inline-radio', options: sizes },
+    variant: { control: 'inline-radio', options: ['surface', 'soft'] },
   },
 } satisfies Meta<typeof Autocomplete.Input>
 
@@ -166,6 +168,43 @@ export const ClassNameOverride: Story = {
             </Autocomplete.Item>
           )}
         </Autocomplete.Content>
+      </Autocomplete.Root>
+    </div>
+  ),
+}
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      {(['surface', 'soft'] as const).map((variant) => (
+        <Autocomplete.Root defaultValue="design" items={tags} key={variant}>
+          <Autocomplete.Input {...args} variant={variant} />
+          <TagList />
+        </Autocomplete.Root>
+      ))}
+    </div>
+  ),
+}
+
+/** A `TextField.Slot` inside the input, for example a search icon on the left. */
+export const WithSlot: Story = {
+  render: (args) => (
+    <div className="w-64">
+      <Autocomplete.Root items={tags}>
+        <Autocomplete.Input {...args}>
+          <TextField.Slot>
+            <svg aria-hidden="true" className="size-4" fill="none" viewBox="0 0 16 16">
+              <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5" />
+              <path
+                d="m10.5 10.5 3 3"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="1.5"
+              />
+            </svg>
+          </TextField.Slot>
+        </Autocomplete.Input>
+        <TagList />
       </Autocomplete.Root>
     </div>
   ),

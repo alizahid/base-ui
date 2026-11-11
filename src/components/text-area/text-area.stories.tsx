@@ -99,3 +99,16 @@ export const Radius: Story = {
 export const ClassNameOverride: Story = {
   args: { className: 'min-h-32 rounded-none bg-accent-a3', placeholder: 'Tall, square and tinted' },
 }
+
+export const Colors: Story = {
+  render: (args) => (
+    <div className="grid grid-cols-2 gap-2">
+      {(['tomato', 'pink', 'violet', 'cyan', 'jade', 'amber'] as const).map((color) => (
+        <div className="contents" key={color}>
+          <TextArea {...args} color={color} placeholder={color} size="sm" />
+          <TextArea {...args} color={color} placeholder={color} size="sm" variant="soft" />
+        </div>
+      ))}
+    </div>
+  ),
+}

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { colors } from '../../lib/colors'
+import { radii } from '../../lib/theme'
 import { Tabs } from '.'
 
 const sizes = ['sm', 'md'] as const
@@ -133,5 +134,22 @@ export const ClassNameOverride: Story = {
         Documents.
       </Tabs.Content>
     </Tabs.Root>
+  ),
+}
+
+/** The radius shows on the hover highlight of a tab. */
+export const Radius: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-8">
+      {radii.map((radius) => (
+        <Tabs.Root key={radius} {...args} radius={radius}>
+          <Tabs.List>
+            <Tabs.Trigger value="account">Radius {radius}</Tabs.Trigger>
+            <Tabs.Trigger value="documents">Documents</Tabs.Trigger>
+            <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+          </Tabs.List>
+        </Tabs.Root>
+      ))}
+    </div>
   ),
 }

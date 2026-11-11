@@ -65,3 +65,7 @@ export const InButton: Story = {
     </div>
   ),
 }
+
+export const ClassNameOverride: Story = {
+  args: { className: 'size-8 text-accent-9' },
+}

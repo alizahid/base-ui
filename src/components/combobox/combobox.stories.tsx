@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { colors } from '../../lib/colors'
 import { radii } from '../../lib/theme'
+import { TextField } from '../text-field'
 import { Combobox } from '.'
 
 const sizes = ['xs', 'sm', 'md', 'lg'] as const
@@ -20,6 +21,7 @@ const meta = {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
     size: { control: 'inline-radio', options: sizes },
+    variant: { control: 'inline-radio', options: ['surface', 'soft'] },
   },
 } satisfies Meta<typeof Combobox.Input>
 
@@ -208,4 +210,52 @@ export const ClassNameOverride: Story = {
       </Combobox.Root>
     </div>
   ),
+}
+
+export const Variants: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      {(['surface', 'soft'] as const).map((variant) => (
+        <Combobox.Root defaultValue="Banana" items={fruits} key={variant}>
+          <Combobox.Input {...args} variant={variant} />
+          <FruitList />
+        </Combobox.Root>
+      ))}
+      <Combobox.Root defaultValue={['Apple', 'Kiwi']} items={fruits} multiple>
+        <Combobox.Chips aria-label="Fruits" variant="soft">
+          {(value: string[]) =>
+            value.map((fruit) => <Combobox.Chip key={fruit}>{fruit}</Combobox.Chip>)
+          }
+        </Combobox.Chips>
+        <FruitList />
+      </Combobox.Root>
+    </div>
+  ),
+}
+
+/** A `TextField.Slot` inside the input, for example a search icon on the left. */
+export const WithSlot: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      {sizes.map((size) => (
+        <Combobox.Root items={fruits} key={size}>
+          <Combobox.Input {...args} size={size}>
+            <TextField.Slot>
+              <SearchIcon />
+            </TextField.Slot>
+          </Combobox.Input>
+          <FruitList />
+        </Combobox.Root>
+      ))}
+    </div>
+  ),
+}
+
+function SearchIcon() {
+  return (
+    <svg aria-hidden="true" className="size-[1em]" fill="none" viewBox="0 0 16 16">
+      <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="m10.5 10.5 3 3" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" />
+    </svg>
+  )
 }

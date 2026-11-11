@@ -129,3 +129,14 @@ export const Radius: Story = {
     </div>
   ),
 }
+
+export const ClassNameOverride: Story = {
+  render: (args) => (
+    <Callout.Root {...args} className="rounded-none border-accent-9 border-l-4 bg-transparent">
+      <Callout.Icon>
+        <InfoIcon />
+      </Callout.Icon>
+      <Callout.Text className="text-gray-12">{text}</Callout.Text>
+    </Callout.Root>
+  ),
+}
