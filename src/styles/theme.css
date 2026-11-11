@@ -149,6 +149,38 @@
   border-radius: max(calc(var(--ui-radius) - --value([length])), min(var(--ui-radius), var(--ui-radius-min, 4px)));
 }
 
+/*
+ * SegmentedControl: the track works out how many items it has and which one is
+ * picked (up to 10), so the indicator can slide to it with plain CSS.
+ */
+@utility segmented-track {
+  &:has(> span:nth-of-type(1):last-of-type) { --segmented-count: 1; }
+  &:has(> span:nth-of-type(1)[data-checked]) { --segmented-index: 0; }
+  &:has(> span:nth-of-type(2):last-of-type) { --segmented-count: 2; }
+  &:has(> span:nth-of-type(2)[data-checked]) { --segmented-index: 1; }
+  &:has(> span:nth-of-type(3):last-of-type) { --segmented-count: 3; }
+  &:has(> span:nth-of-type(3)[data-checked]) { --segmented-index: 2; }
+  &:has(> span:nth-of-type(4):last-of-type) { --segmented-count: 4; }
+  &:has(> span:nth-of-type(4)[data-checked]) { --segmented-index: 3; }
+  &:has(> span:nth-of-type(5):last-of-type) { --segmented-count: 5; }
+  &:has(> span:nth-of-type(5)[data-checked]) { --segmented-index: 4; }
+  &:has(> span:nth-of-type(6):last-of-type) { --segmented-count: 6; }
+  &:has(> span:nth-of-type(6)[data-checked]) { --segmented-index: 5; }
+  &:has(> span:nth-of-type(7):last-of-type) { --segmented-count: 7; }
+  &:has(> span:nth-of-type(7)[data-checked]) { --segmented-index: 6; }
+  &:has(> span:nth-of-type(8):last-of-type) { --segmented-count: 8; }
+  &:has(> span:nth-of-type(8)[data-checked]) { --segmented-index: 7; }
+  &:has(> span:nth-of-type(9):last-of-type) { --segmented-count: 9; }
+  &:has(> span:nth-of-type(9)[data-checked]) { --segmented-index: 8; }
+  &:has(> span:nth-of-type(10):last-of-type) { --segmented-count: 10; }
+  &:has(> span:nth-of-type(10)[data-checked]) { --segmented-index: 9; }
+}
+
+@utility segmented-indicator {
+  width: calc(100% / var(--segmented-count, 1));
+  translate: calc(100% * var(--segmented-index, 0)) 0;
+}
+
 /* For switches and slider thumbs: round unless the theme radius is none or small */
 @utility rounded-ui-thumb {
   --ui-radius: max(calc(0.25rem * var(--radius-factor)), var(--radius-thumb));
