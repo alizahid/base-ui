@@ -235,7 +235,7 @@ export function ComboboxChip({ children, className, classNames, ...props }: Comb
     <BaseCombobox.Chip
       {...props}
       className={cn(
-        'inline-flex h-6 cursor-default items-center gap-0.5 rounded-ui-sm bg-accent-a3 pr-1 pl-2 font-medium text-accent-a11 text-xs outline-none',
+        'inline-flex h-6 cursor-default items-center gap-0.5 rounded-inner-2 bg-accent-a3 pr-1 pl-2 font-medium text-accent-a11 text-xs outline-none',
         'data-highlighted:bg-accent-9 data-highlighted:text-accent-contrast',
         className,
       )}

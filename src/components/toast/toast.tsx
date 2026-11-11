@@ -63,7 +63,7 @@ export const toastVariants = tv({
     title: 'font-medium',
     description: 'text-gray-11',
     close: [
-      '-mt-1 -mr-1 flex size-6 shrink-0 items-center justify-center rounded-ui-sm text-gray-a11',
+      '-mt-1 -mr-1 flex size-6 shrink-0 items-center justify-center rounded-inner-3 text-gray-a11',
       'hover:bg-gray-a3 active:bg-gray-a4',
       focusRing,
     ],

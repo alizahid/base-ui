@@ -193,7 +193,8 @@ export function NavigationMenuLink({ className, ...props }: NavigationMenuLinkPr
     <BaseNavigationMenu.Link
       {...props}
       className={cn(
-        // Like `rounded-ui-md`, but it stops at 8px so a tall link never turns into a pill
+        // Like `rounded-ui-md`, but it stops at 8px so a tall link never turns into a pill.
+        // Not `rounded-inner-*`: a link is also used in the bar, outside any rounded popup.
         'block rounded-[min(max(calc(0.375rem*var(--radius-factor)),var(--radius-full)),0.5rem)] p-2 text-gray-12 text-sm no-underline',
         'outline-accent-8 -outline-offset-1 focus-visible:outline-2',
         'hover:bg-accent-a3 data-active:bg-accent-a3 data-active:text-accent-11',
