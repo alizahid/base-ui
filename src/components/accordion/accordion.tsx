@@ -51,21 +51,21 @@ export const accordionVariants = tv({
         trigger: 'rounded-panel-sm',
       },
     },
-    // The content has the same space on all four sides, so it does not sit right
-    // under the hover fill of its row
+    // Above the content there is half the side padding. That is enough to keep it off
+    // the hover fill of its row, without a big gap under the title when nothing is hovered.
     size: {
       sm: {
         trigger: 'gap-2 px-3 py-2 text-xs tracking-[0.0025em]',
-        inner: 'p-3 text-xs tracking-[0.0025em]',
+        inner: 'px-3 pt-1.5 pb-3 text-xs tracking-[0.0025em]',
       },
       md: {
         trigger: 'gap-3 px-4 py-3 text-sm',
-        inner: 'p-4 text-sm',
+        inner: 'px-4 pt-2 pb-4 text-sm',
       },
       lg: {
         trigger: 'gap-4 px-5 py-4 text-base',
         icon: 'size-[11px]',
-        inner: 'p-5 text-base',
+        inner: 'px-5 pt-2.5 pb-5 text-base',
       },
     },
   },
