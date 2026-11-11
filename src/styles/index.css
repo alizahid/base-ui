@@ -1,0 +1,15 @@
+/*
+ * Import this file after Tailwind in your own CSS:
+ *
+ *   @import "tailwindcss";
+ *   @import "base-ui-themes/styles.css";
+ */
+
+@import "./colors.css";
+@import "./theme.css";
+
+/* Let Tailwind find the classes used by the components */
+@source "../";
+
+/* `dark:` follows the same `.dark` class as Radix Colors */
+@custom-variant dark (&:where(.dark, .dark *, .dark-theme, .dark-theme *));
