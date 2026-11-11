@@ -8,6 +8,7 @@ import type { Radius } from '../../lib/theme'
 
 export const toolbarVariants = tv({
   slots: {
+    // Parts inside use rounded-inner-1: the toolbar radius minus its 4px padding
     root: 'inline-flex gap-1 rounded-ui-lg bg-panel p-1 text-gray-12 inset-ring inset-ring-gray-a5',
     button: [
       'inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap font-medium text-gray-12',
@@ -20,7 +21,7 @@ export const toolbarVariants = tv({
       'outline-accent-8 focus-visible:outline-2',
     ],
     link: [
-      'inline-flex shrink-0 items-center rounded-ui-sm text-gray-a11 underline-offset-4',
+      'inline-flex shrink-0 items-center rounded-inner-1 text-gray-a11 underline-offset-4',
       'hover:text-accent-a11 hover:underline',
       focusRing,
     ],
@@ -45,14 +46,14 @@ export const toolbarVariants = tv({
     // The parts are one step smaller than a `Button` of the same size
     size: {
       sm: {
-        button: [controlSize.xs, 'min-w-6 px-1.5'],
+        button: [controlSize.xs, 'min-w-6 rounded-inner-1 px-1.5'],
         link: 'px-1.5 text-xs',
-        input: controlSize.xs,
+        input: [controlSize.xs, 'rounded-inner-1'],
       },
       md: {
-        button: [controlSize.sm, 'min-w-8 px-2'],
+        button: [controlSize.sm, 'min-w-8 rounded-inner-1 px-2'],
         link: 'px-2 text-sm',
-        input: controlSize.sm,
+        input: [controlSize.sm, 'rounded-inner-1'],
       },
     },
   },

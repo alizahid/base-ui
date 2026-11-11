@@ -67,5 +67,5 @@ export type MenubarTriggerProps = Omit<ComponentProps<typeof BaseMenu.Trigger>, 
 
 /** The button in the bar that opens a menu. */
 export function MenubarTrigger({ className, ...props }: MenubarTriggerProps) {
-  return <BaseMenu.Trigger {...props} className={cn(barTrigger, 'rounded-ui-sm', className)} />
+  return <BaseMenu.Trigger {...props} className={cn(barTrigger, 'rounded-inner-1', className)} />
 }

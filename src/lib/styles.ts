@@ -22,7 +22,8 @@ export const listPopup = `${popupSurface} ${popupAnimation} min-w-32 max-w-(--av
 
 /** A row inside a list popup. Highlight uses the accent color, like Radix Themes. */
 export const listItem = [
-  'relative flex h-8 cursor-default select-none items-center gap-2 rounded-ui-sm px-3 text-sm outline-none',
+  // The popup has 4px of padding (p-1), so the row radius is the popup radius minus 4px
+  'relative flex h-8 cursor-default select-none items-center gap-2 rounded-inner-1 px-3 text-sm outline-none',
   'data-highlighted:bg-accent-9 data-highlighted:text-accent-contrast',
   'data-disabled:text-gray-a8',
 ].join(' ')
