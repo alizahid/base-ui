@@ -55,6 +55,26 @@ Components use `rounded-ui-xs` to `rounded-ui-xl`, which follow the theme radius
 - The provider is a thin layer over plain attributes: `data-color`, `data-gray`,
   `data-radius` and the `light` / `dark` class. They also work on any element by hand.
 
+## Components
+
+Accordion, AlertDialog, Autocomplete, Avatar, Button, Checkbox, CheckboxGroup, Collapsible,
+Combobox, ContextMenu, Dialog, Drawer, DropdownMenu, Field, Fieldset, Form, HoverCard, Menubar,
+Meter, NavigationMenu, NumberField, OtpField, Popover, Progress, Radio, RadioGroup, ScrollArea,
+Select, Separator, Slider, Switch, Tabs, TextField, Toast, Toggle, ToggleGroup, Toolbar, Tooltip.
+
+- The API follows Radix Themes: `Dialog.Root`, `Dialog.Trigger`, `Dialog.Content`, ...
+- Plumbing parts (portal, backdrop, positioner, thumb, indicator) are built in and not exposed.
+  Where one is rendered for you, a `classNames` prop lets you style it.
+- Popups keep the theme of the `ThemeProvider` they are used in.
+
+## Radius
+
+- `rounded-ui-*` follows the theme radius and becomes a pill when the radius is `full`.
+- `rounded-panel-*` follows the theme radius but never becomes a pill (dialogs, popups).
+- Every `rounded-*` class sets `--ui-radius` on its element. A part inside it uses
+  `rounded-inner-px`, `rounded-inner-0.5` or `rounded-inner-[3px]` (outer radius minus the gap),
+  so one `className` on the outer part reshapes both.
+
 ## Development
 
 ```bash

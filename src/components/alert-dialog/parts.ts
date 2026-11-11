@@ -1,0 +1,16 @@
+export {
+  AlertDialogAction as Action,
+  type AlertDialogActionProps as ActionProps,
+  AlertDialogCancel as Cancel,
+  type AlertDialogCancelProps as CancelProps,
+  AlertDialogContent as Content,
+  type AlertDialogContentProps as ContentProps,
+  AlertDialogDescription as Description,
+  type AlertDialogDescriptionProps as DescriptionProps,
+  AlertDialogRoot as Root,
+  type AlertDialogRootProps as RootProps,
+  AlertDialogTitle as Title,
+  type AlertDialogTitleProps as TitleProps,
+  AlertDialogTrigger as Trigger,
+  type AlertDialogTriggerProps as TriggerProps,
+} from './alert-dialog'
