@@ -14,12 +14,10 @@ export const accordionVariants = tv({
     item: 'group/item border-gray-a5 border-b last:border-b-0',
     header: 'flex',
     trigger: [
-      'group/trigger relative flex w-full cursor-default select-none items-center justify-between text-left font-medium outline-none',
+      'group/trigger flex w-full cursor-default select-none items-center justify-between text-left font-medium',
       'hover:bg-gray-a2 active:bg-gray-a3',
-      // The focus ring floats 4px inside the row with rounded corners, like a menu row.
-      // So it never touches the edges of the box and looks the same on every row.
-      'after:pointer-events-none after:absolute after:inset-1 after:rounded-inner-1 after:outline-accent-8',
-      'focus-visible:after:outline-2',
+      // The ring is drawn inside, so the box around it does not cut it off
+      '-outline-offset-2 outline-accent-8 focus-visible:outline-2',
       'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
     ],
     icon: [
@@ -43,26 +41,31 @@ export const accordionVariants = tv({
           'after:pointer-events-none after:absolute after:inset-px after:[border-radius:calc(var(--ui-radius)-1px)]',
           'after:shadow-[0_0_0_1px_color-mix(in_oklab,var(--gray-a5),var(--gray-5)_25%)]',
         ],
+        // The first and the last row follow the corners of the box, so the focus ring does too
+        trigger: [
+          'group-first/item:rounded-t-(--ui-radius)',
+          'group-last/item:not-data-panel-open:rounded-b-(--ui-radius)',
+        ],
       },
-      // Ghost has no box around it, so the rows are rounded themselves
       ghost: {
-        root: 'rounded-panel-md',
         trigger: 'rounded-panel-sm',
       },
     },
+    // The content has the same space on all four sides, so it does not sit right
+    // under the hover fill of its row
     size: {
       sm: {
         trigger: 'gap-2 px-3 py-2 text-xs tracking-[0.0025em]',
-        inner: 'px-3 pb-3 text-xs tracking-[0.0025em]',
+        inner: 'p-3 text-xs tracking-[0.0025em]',
       },
       md: {
         trigger: 'gap-3 px-4 py-3 text-sm',
-        inner: 'px-4 pb-4 text-sm',
+        inner: 'p-4 text-sm',
       },
       lg: {
         trigger: 'gap-4 px-5 py-4 text-base',
         icon: 'size-[11px]',
-        inner: 'px-5 pb-5 text-base',
+        inner: 'p-5 text-base',
       },
     },
   },
