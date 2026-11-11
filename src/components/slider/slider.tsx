@@ -5,53 +5,105 @@ import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
 
+// Values follow Radix Themes' Slider.
 export const sliderVariants = tv({
   slots: {
-    root: 'data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
-    // The padding makes the area you can grab bigger than the thin track
+    root: [
+      'data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
+      // Disabled sliders are blended into the page, like Radix Themes does
+      'data-disabled:mix-blend-multiply dark:data-disabled:mix-blend-screen',
+    ],
+    // As tall as the track. The `before` part makes the area you can grab bigger.
     control: [
-      'flex touch-none select-none items-center justify-center',
-      'data-[orientation=horizontal]:w-full data-[orientation=horizontal]:py-2',
-      'data-[orientation=vertical]:h-full data-[orientation=vertical]:px-2',
+      'relative flex touch-none select-none items-center justify-center',
+      'before:absolute before:content-[""]',
+      'data-[orientation=horizontal]:w-full data-[orientation=horizontal]:before:inset-x-0 data-[orientation=horizontal]:before:-inset-y-2',
+      'data-[orientation=vertical]:h-full data-[orientation=vertical]:before:-inset-x-2 data-[orientation=vertical]:before:inset-y-0',
       'data-disabled:cursor-not-allowed',
     ],
-    track: [
-      'rounded-ui-thumb',
-      'data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
-    ],
-    indicator: 'rounded-[inherit] data-disabled:bg-gray-a5',
+    track: 'relative data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
+    indicator:
+      'rounded-[inherit] data-disabled:bg-transparent data-disabled:bg-none data-disabled:shadow-none',
     thumb: [
-      'rounded-ui-thumb bg-white shadow-sm ring-1 ring-gray-a6',
-      'outline-accent-8 outline-offset-2 has-[:focus-visible]:outline-2',
-      'data-disabled:bg-gray-2 data-disabled:shadow-none',
+      'rounded-[max(calc(0.1875rem*var(--radius-factor)),var(--radius-thumb))] bg-white',
+      'data-disabled:bg-gray-1',
     ],
   },
   variants: {
     variant: {
       surface: {
-        track: 'bg-gray-a3 inset-ring inset-ring-gray-a5',
-        indicator: 'bg-accent-9',
+        track:
+          'bg-gray-a3 shadow-[inset_0_0_0_1px_var(--gray-a5)] data-disabled:shadow-[inset_0_0_0_1px_var(--gray-a4)]',
+        indicator: 'bg-accent-track shadow-[inset_0_0_0_1px_var(--gray-a5)]',
+        thumb: [
+          'shadow-[0_0_0_1px_var(--black-a4)]',
+          // Keyboard focus adds two rings around the normal shadow
+          'has-[:focus-visible]:shadow-[0_0_0_1px_var(--black-a4),0_0_0_3px_var(--accent-3),0_0_0_5px_var(--accent-8)]',
+          'data-disabled:shadow-[0_0_0_1px_var(--gray-6)]',
+        ],
       },
       soft: {
-        track: 'bg-gray-a4',
-        indicator: 'bg-accent-a10',
+        // The white layer adds a little contrast in dark mode
+        track:
+          'bg-[linear-gradient(var(--white-a1),var(--white-a1))] bg-gray-a4 data-disabled:bg-none',
+        indicator: 'bg-[linear-gradient(var(--accent-a5),var(--accent-a5))] bg-accent-6',
+        thumb: [
+          'shadow-[0_0_0_1px_var(--black-a3),0_0_0_1px_var(--gray-a2),0_0_0_1px_var(--accent-a2),0_1px_2px_var(--gray-a4),0_1px_3px_-0.5px_var(--gray-a3)]',
+          'has-[:focus-visible]:shadow-[0_0_0_1px_var(--black-a3),0_0_0_1px_var(--gray-a2),0_0_0_1px_var(--accent-a2),0_1px_2px_var(--gray-a4),0_1px_3px_-0.5px_var(--gray-a3),0_0_0_3px_var(--accent-3),0_0_0_5px_var(--accent-8)]',
+          'data-disabled:shadow-[0_0_0_1px_var(--gray-5)]',
+        ],
       },
     },
+    // Radix Themes sizes 1 to 3: a 6, 8 or 10px track. The thumb is 4px bigger
+    // than the track and then sticks out a quarter of the track on each side.
+    // The track radius is a third of its size, or a pill when the theme allows.
     size: {
       sm: {
-        track: 'data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5',
-        thumb: 'size-2.5',
+        track: [
+          'rounded-[max(calc(2px*var(--radius-factor)),calc(var(--radius-thumb)*var(--radius-factor)))]',
+          'data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5',
+        ],
+        thumb: 'size-[13px]',
       },
       md: {
-        track: 'data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2',
-        thumb: 'size-3',
+        track: [
+          'rounded-[max(calc(8px/3*var(--radius-factor)),calc(var(--radius-thumb)*var(--radius-factor)))]',
+          'data-[orientation=horizontal]:h-2 data-[orientation=vertical]:w-2',
+        ],
+        thumb: 'size-4',
       },
       lg: {
-        track: 'data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5',
-        thumb: 'size-3.5',
+        track: [
+          'rounded-[max(calc(10px/3*var(--radius-factor)),calc(var(--radius-thumb)*var(--radius-factor)))]',
+          'data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5',
+        ],
+        thumb: 'size-[19px]',
       },
     },
+    /** A darker filled part (light mode only, like Radix Themes). */
+    highContrast: {
+      true: '',
+    },
   },
+  compoundVariants: [
+    {
+      highContrast: true,
+      variant: 'surface',
+      class: {
+        indicator: 'bg-[linear-gradient(var(--black-a8),var(--black-a8))] dark:bg-none',
+      },
+    },
+    {
+      highContrast: true,
+      variant: 'soft',
+      class: {
+        indicator: [
+          'bg-[linear-gradient(var(--accent-a5),var(--accent-a5)),linear-gradient(var(--black-a8),var(--black-a8))]',
+          'dark:bg-[linear-gradient(var(--accent-a5),var(--accent-a5))]',
+        ],
+      },
+    },
+  ],
   defaultVariants: {
     size: 'md',
     variant: 'surface',
@@ -91,13 +143,14 @@ export function Slider({
   className,
   classNames,
   color,
+  highContrast,
   radius,
   size,
   thumbLabels,
   variant,
   ...props
 }: SliderProps) {
-  const styles = sliderVariants({ size, variant })
+  const styles = sliderVariants({ highContrast, size, variant })
 
   const value = props.value ?? props.defaultValue
   const thumbCount = Array.isArray(value) ? value.length : 1
@@ -109,6 +162,8 @@ export function Slider({
       aria-label={range ? ariaLabel : undefined}
       data-color={colorAttribute(color)}
       data-radius={radius}
+      // The thumb stops at the ends of the track, like in Radix Themes
+      thumbAlignment="edge"
       {...props}
       className={cn(styles.root(), className)}
     >

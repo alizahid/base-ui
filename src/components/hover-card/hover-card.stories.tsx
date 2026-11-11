@@ -6,7 +6,7 @@ const sizes = ['sm', 'md', 'lg'] as const
 const meta = {
   title: 'Components/HoverCard',
   component: HoverCard.Content,
-  args: { align: 'center', arrow: false, side: 'bottom', sideOffset: 8, size: 'md' },
+  args: { align: 'start', arrow: false, side: 'bottom', sideOffset: 8, size: 'md' },
   argTypes: {
     align: { control: 'inline-radio', options: ['start', 'center', 'end'] },
     side: { control: 'inline-radio', options: ['top', 'right', 'bottom', 'left'] },

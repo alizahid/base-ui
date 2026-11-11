@@ -81,8 +81,9 @@ export function NavigationMenuRoot({
               'relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)',
               'transition-[opacity,scale,width,height]',
               motion,
-              'data-starting-style:scale-95 data-starting-style:opacity-0',
-              'data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-150 data-ending-style:ease-out',
+              // Opens and closes like the other popups (Radix Themes: from 97%, 100ms out)
+              'data-starting-style:scale-[0.97] data-starting-style:opacity-0',
+              'data-ending-style:scale-[0.97] data-ending-style:opacity-0 data-ending-style:duration-100',
               classNames?.popup,
             )}
           >
@@ -110,8 +111,10 @@ export type NavigationMenuListProps = Omit<
 export function NavigationMenuList({ className, ...props }: NavigationMenuListProps) {
   return (
     <BaseNavigationMenu.List
+      // A `Link` that sits in the bar looks for this, see `NavigationMenuLink`
+      data-nav-list=""
       {...props}
-      className={cn('relative inline-flex list-none gap-1', className)}
+      className={cn('relative inline-flex list-none items-center gap-1', className)}
     />
   )
 }
@@ -143,7 +146,7 @@ export function NavigationMenuTrigger({
       {children}
       <BaseNavigationMenu.Icon
         className={cn(
-          '-mr-1 text-gray-a11 transition-transform duration-200 data-popup-open:rotate-180',
+          'opacity-90 transition-transform duration-200 data-popup-open:rotate-180',
           classNames?.icon,
         )}
       >
@@ -193,11 +196,14 @@ export function NavigationMenuLink({ className, ...props }: NavigationMenuLinkPr
     <BaseNavigationMenu.Link
       {...props}
       className={cn(
-        // Like `rounded-ui-md`, but it stops at 8px so a tall link never turns into a pill.
-        // Not `rounded-inner-*`: a link is also used in the bar, outside any rounded popup.
-        'block rounded-[min(max(calc(0.375rem*var(--radius-factor)),var(--radius-full)),0.5rem)] p-2 text-gray-12 text-sm no-underline',
+        // In the popup: a row like a menu item, but it can be taller than one line
+        'block rounded-panel-sm px-3 py-1.5 text-gray-12 text-sm no-underline',
         'outline-accent-8 -outline-offset-1 focus-visible:outline-2',
-        'hover:bg-accent-a3 data-active:bg-accent-a3 data-active:text-accent-11',
+        'hover:bg-gray-a3 data-active:bg-accent-a3 data-active:text-accent-12',
+        // In the bar, next to the triggers: the same look as a trigger
+        'in-data-nav-list:inline-flex in-data-nav-list:h-7 in-data-nav-list:items-center in-data-nav-list:rounded-ui-sm in-data-nav-list:px-2 in-data-nav-list:py-0',
+        'in-data-nav-list:not-data-active:text-gray-a11 in-data-nav-list:hover:text-gray-12',
+        'in-data-nav-list:data-active:bg-transparent in-data-nav-list:data-active:font-medium in-data-nav-list:data-active:text-gray-12',
         className,
       )}
     />

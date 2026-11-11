@@ -5,35 +5,60 @@ import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
 
+// Values follow Radix Themes' Avatar. Our sizes are Radix sizes 1 to 6.
 export const avatarVariants = tv({
   slots: {
-    root: 'inline-flex shrink-0 select-none items-center justify-center overflow-hidden align-middle font-medium uppercase',
-    image: 'size-full object-cover',
-    fallback: 'flex size-full items-center justify-center',
+    root: 'inline-flex shrink-0 select-none items-center justify-center align-middle',
+    image: 'size-full rounded-[inherit] object-cover',
+    // The colors are on the fallback, so a see-through image has nothing behind it
+    fallback:
+      'flex size-full items-center justify-center rounded-[inherit] font-medium uppercase leading-none',
   },
   variants: {
     variant: {
-      soft: { root: 'bg-accent-a3 text-accent-a11' },
-      solid: { root: 'bg-accent-9 text-accent-contrast' },
+      soft: { fallback: 'bg-accent-a3 text-accent-a11' },
+      solid: { fallback: 'bg-accent-9 text-accent-contrast' },
     },
     size: {
-      xs: { root: 'size-6 rounded-ui-sm text-xs' },
-      sm: { root: 'size-8 rounded-ui-md text-sm' },
-      md: { root: 'size-10 rounded-ui-md text-base' },
-      lg: { root: 'size-12 rounded-ui-lg text-lg' },
-      xl: { root: 'size-16 rounded-ui-lg text-2xl' },
+      sm: { root: 'size-6 rounded-ui-sm tracking-[0.0025em]' },
+      md: { root: 'size-8 rounded-ui-sm' },
+      lg: { root: 'size-10 rounded-ui-md' },
+      xl: { root: 'size-12 rounded-ui-md tracking-[-0.0025em]' },
+      '2xl': { root: 'size-16 rounded-ui-lg tracking-[-0.00625em]' },
+      '3xl': { root: 'size-20 rounded-ui-xl tracking-[-0.0075em]' },
+    },
+    // One letter is drawn one step bigger than two letters (up to size `xl`)
+    letters: { one: '', two: '' },
+    /** Stronger colors, using the darkest step of the color. */
+    highContrast: {
+      true: '',
     },
   },
+  compoundVariants: [
+    { size: 'sm', letters: 'one', class: { fallback: 'text-sm' } },
+    { size: 'sm', letters: 'two', class: { fallback: 'text-xs' } },
+    { size: 'md', letters: 'one', class: { fallback: 'text-base' } },
+    { size: 'md', letters: 'two', class: { fallback: 'text-sm' } },
+    { size: 'lg', letters: 'one', class: { fallback: 'text-lg' } },
+    { size: 'lg', letters: 'two', class: { fallback: 'text-base' } },
+    { size: 'xl', letters: 'one', class: { fallback: 'text-xl' } },
+    { size: 'xl', letters: 'two', class: { fallback: 'text-lg' } },
+    { size: '2xl', class: { fallback: 'text-2xl' } },
+    { size: '3xl', class: { fallback: 'text-[1.75rem]' } },
+    { highContrast: true, variant: 'solid', class: { fallback: 'bg-accent-12 text-accent-1' } },
+    { highContrast: true, variant: 'soft', class: { fallback: 'text-accent-12' } },
+  ],
   defaultVariants: {
+    letters: 'two',
+    size: 'lg',
     variant: 'soft',
-    size: 'md',
   },
 })
 
 type ImageProps = ComponentProps<typeof BaseAvatar.Image>
 
 export type AvatarProps = Omit<ComponentProps<typeof BaseAvatar.Root>, 'className' | 'color'> &
-  VariantProps<typeof avatarVariants> &
+  Omit<VariantProps<typeof avatarVariants>, 'letters'> &
   Pick<ImageProps, 'alt' | 'crossOrigin' | 'onLoadingStatusChange' | 'referrerPolicy' | 'src'> & {
     className?: string
     /** Classes for the parts that `Avatar` renders inside itself. */
@@ -64,6 +89,7 @@ export function Avatar({
   crossOrigin,
   fallback,
   fallbackDelay,
+  highContrast,
   onLoadingStatusChange,
   radius,
   referrerPolicy,
@@ -72,7 +98,10 @@ export function Avatar({
   variant,
   ...props
 }: AvatarProps) {
-  const styles = avatarVariants({ size, variant })
+  const content = fallback ?? children
+  // Like Radix Themes: a single letter gets a bigger font
+  const letters = typeof content === 'string' && content.length === 1 ? 'one' : 'two'
+  const styles = avatarVariants({ highContrast, letters, size, variant })
 
   return (
     <BaseAvatar.Root
@@ -95,7 +124,7 @@ export function Avatar({
         className={cn(styles.fallback(), classNames?.fallback)}
         delay={fallbackDelay}
       >
-        {fallback ?? children}
+        {content}
       </BaseAvatar.Fallback>
     </BaseAvatar.Root>
   )

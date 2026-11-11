@@ -52,9 +52,10 @@ export function MenubarRoot({ className, color, radius, ...props }: MenubarRootP
       data-color={colorAttribute(color)}
       data-radius={radius}
       {...props}
+      // No box around the bar: only the triggers, like a Radix Themes `TabNav`
       className={cn(
-        'inline-flex gap-1 rounded-ui-md bg-surface p-1 inset-ring inset-ring-gray-a6',
-        'data-[orientation=vertical]:flex-col',
+        'inline-flex items-center gap-1 text-gray-12',
+        'data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch',
         className,
       )}
     />
@@ -67,5 +68,5 @@ export type MenubarTriggerProps = Omit<ComponentProps<typeof BaseMenu.Trigger>, 
 
 /** The button in the bar that opens a menu. */
 export function MenubarTrigger({ className, ...props }: MenubarTriggerProps) {
-  return <BaseMenu.Trigger {...props} className={cn(barTrigger, 'rounded-inner-1', className)} />
+  return <BaseMenu.Trigger {...props} className={cn(barTrigger, className)} />
 }

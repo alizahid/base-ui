@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Field } from '../field'
 import { TextArea } from './text-area'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg'] as const
 const variants = ['surface', 'soft'] as const
 const resizes = ['none', 'vertical', 'horizontal', 'both'] as const
 
@@ -105,8 +105,8 @@ export const Colors: Story = {
     <div className="grid grid-cols-2 gap-2">
       {(['tomato', 'pink', 'violet', 'cyan', 'jade', 'amber'] as const).map((color) => (
         <div className="contents" key={color}>
-          <TextArea {...args} color={color} placeholder={color} size="sm" />
-          <TextArea {...args} color={color} placeholder={color} size="sm" variant="soft" />
+          <TextArea {...args} color={color} placeholder={color} size="md" />
+          <TextArea {...args} color={color} placeholder={color} size="md" variant="soft" />
         </div>
       ))}
     </div>

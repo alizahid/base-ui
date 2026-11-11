@@ -133,7 +133,7 @@ export const Vertical: Story = {
 
 export const ClassNameOverride: Story = {
   render: () => (
-    <Menubar.Root className="gap-0 rounded-none bg-transparent p-0 inset-ring-0">
+    <Menubar.Root className="gap-0 border-gray-a5 border-b">
       <Menubar.Menu>
         <Menubar.Trigger className="rounded-none data-popup-open:bg-accent-9 data-popup-open:text-accent-contrast">
           File

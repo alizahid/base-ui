@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Button } from '../button'
 import { TextField } from '.'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 const variants = ['surface', 'soft'] as const
 
 const meta = {
@@ -144,7 +144,7 @@ export const Slots: Story = {
           <SearchIcon />
         </TextField.Slot>
         <TextField.Slot side="right">
-          <Button className="rounded-inner-2" size="xs" variant="soft">
+          <Button className="rounded-inner-1" size="sm" variant="soft">
             Go
           </Button>
         </TextField.Slot>
@@ -164,9 +164,9 @@ export const SlotSizes: Story = {
     <div className="flex flex-col gap-4">
       {(
         [
-          ['sm', 'xs', 'rounded-inner-1'],
-          ['md', 'xs', 'rounded-inner-2'],
+          ['md', 'sm', 'rounded-inner-1'],
           ['lg', 'sm', 'rounded-inner-2'],
+          ['xl', 'md', 'rounded-inner-2'],
         ] as const
       ).map(([size, buttonSize, inner]) => (
         <TextField.Root key={size} {...args} placeholder={`Size ${size}`} size={size}>

@@ -3,58 +3,90 @@ import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
+import { controlSize } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
 import { Spinner } from '../spinner'
 
+// Values follow Radix Themes' Button. `data-popup-open` is set when the button
+// is the trigger of an open menu, popover or dialog; it keeps the hover look.
 export const buttonVariants = tv({
   base: [
-    'relative inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap align-top font-medium',
-    'outline-accent-8 outline-offset-2 focus-visible:outline-2',
+    'relative inline-flex shrink-0 cursor-default select-none items-center justify-center whitespace-nowrap align-top',
+    'outline-accent-8 focus-visible:outline-2',
     'data-disabled:cursor-not-allowed',
   ],
   variants: {
     variant: {
       solid: [
-        'bg-accent-9 text-accent-contrast',
-        'hover:bg-accent-10',
-        'active:bg-accent-10 active:brightness-92 active:saturate-110',
+        'bg-accent-9 font-medium text-accent-contrast outline-offset-2 [&_svg]:opacity-90',
+        'hover:bg-accent-10 data-popup-open:bg-accent-10',
+        'active:bg-accent-10 active:brightness-92 active:saturate-110 dark:active:brightness-108 dark:active:saturate-100',
         'data-disabled:bg-gray-a3 data-disabled:text-gray-a8 data-disabled:filter-none',
       ],
       soft: [
-        'bg-accent-a3 text-accent-a11',
-        'hover:bg-accent-a4',
+        'bg-accent-a3 font-medium text-accent-a11 -outline-offset-1 [&_svg]:opacity-90',
+        'hover:bg-accent-a4 data-popup-open:bg-accent-a4',
         'active:bg-accent-a5',
         'data-disabled:bg-gray-a3 data-disabled:text-gray-a8',
       ],
       surface: [
-        'bg-accent-a2 text-accent-a11 inset-ring inset-ring-accent-a7',
-        'hover:inset-ring-accent-a8',
+        'bg-accent-surface font-medium text-accent-a11 inset-ring inset-ring-accent-a7 -outline-offset-1 [&_svg]:opacity-90',
+        'hover:inset-ring-accent-a8 data-popup-open:inset-ring-accent-a8',
         'active:bg-accent-a3 active:inset-ring-accent-a8',
         'data-disabled:bg-gray-a2 data-disabled:text-gray-a8 data-disabled:inset-ring-gray-a6',
       ],
       outline: [
-        'text-accent-a11 inset-ring inset-ring-accent-a8',
-        'hover:bg-accent-a2',
+        'font-medium text-accent-a11 inset-ring inset-ring-accent-a8 -outline-offset-1 [&_svg]:opacity-90',
+        'hover:bg-accent-a2 data-popup-open:bg-accent-a2',
         'active:bg-accent-a3',
         'data-disabled:bg-transparent data-disabled:text-gray-a8 data-disabled:inset-ring-gray-a7',
       ],
+      // Ghost has no fixed height: it wraps its text with a little padding
       ghost: [
-        'text-accent-a11',
-        'hover:bg-accent-a3',
+        'text-accent-a11 -outline-offset-1',
+        'hover:bg-accent-a3 data-popup-open:bg-accent-a3',
         'active:bg-accent-a4',
         'data-disabled:bg-transparent data-disabled:text-gray-a8',
       ],
     },
     size: {
-      xs: 'h-6 gap-1 rounded-ui-sm px-2 text-xs',
-      sm: 'h-8 gap-2 rounded-ui-md px-3 text-sm',
-      md: 'h-10 gap-3 rounded-ui-md px-4 text-base',
-      lg: 'h-12 gap-3 rounded-ui-lg px-6 text-lg',
+      sm: [controlSize.sm, 'gap-1'],
+      md: [controlSize.md, 'gap-2'],
+      lg: [controlSize.lg, 'gap-3'],
+      xl: [controlSize.xl, 'gap-3'],
+    },
+    /** Stronger text and fills, using the darkest step of the color. */
+    highContrast: {
+      true: '',
     },
   },
+  compoundVariants: [
+    { variant: 'ghost', size: 'sm', class: 'h-auto gap-1 px-2 py-1' },
+    { variant: 'ghost', size: 'md', class: 'h-auto gap-1 px-2 py-1' },
+    { variant: 'ghost', size: 'lg', class: 'h-auto gap-2 px-3 py-1.5' },
+    { variant: 'ghost', size: 'xl', class: 'h-auto gap-2 px-4 py-2' },
+    {
+      highContrast: true,
+      variant: 'solid',
+      class: [
+        'bg-accent-12 text-gray-1',
+        'hover:bg-accent-12 hover:brightness-110 hover:contrast-88 hover:saturate-110',
+        'data-popup-open:bg-accent-12 data-popup-open:brightness-110 data-popup-open:contrast-88 data-popup-open:saturate-110',
+        'active:bg-accent-12 active:brightness-116 active:contrast-82 active:saturate-120',
+        'dark:active:brightness-95 dark:active:contrast-100 dark:active:saturate-120',
+      ],
+    },
+    { highContrast: true, variant: ['soft', 'surface', 'ghost'], class: 'text-accent-12' },
+    {
+      highContrast: true,
+      variant: 'outline',
+      class:
+        'text-accent-12 shadow-[inset_0_0_0_1px_var(--accent-a7),inset_0_0_0_1px_var(--gray-a11)]',
+    },
+  ],
   defaultVariants: {
-    variant: 'solid',
     size: 'md',
+    variant: 'solid',
   },
 })
 
@@ -83,6 +115,7 @@ export function Button({
   className,
   color,
   disabled,
+  highContrast,
   loading = false,
   radius,
   size,
@@ -96,7 +129,7 @@ export function Button({
       data-radius={radius}
       disabled={disabled || loading}
       {...props}
-      className={cn(buttonVariants({ size, variant }), className)}
+      className={cn(buttonVariants({ highContrast, size, variant }), className)}
     >
       {loading ? (
         <>

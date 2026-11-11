@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../button'
 import { Drawer } from '.'
 
-const sizes = ['sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 const sides = ['left', 'right', 'top', 'bottom'] as const
 
 type PlaygroundArgs = Drawer.ContentProps & { side: Drawer.Side }
@@ -10,7 +10,7 @@ type PlaygroundArgs = Drawer.ContentProps & { side: Drawer.Side }
 const meta: Meta<PlaygroundArgs> = {
   title: 'Components/Drawer',
   component: Drawer.Content,
-  args: { side: 'right', size: 'md' },
+  args: { side: 'right', size: 'lg' },
   argTypes: {
     side: { control: 'inline-radio', options: sides },
     size: { control: 'inline-radio', options: sizes },
@@ -28,7 +28,7 @@ export const Playground: Story = {
       <Drawer.Trigger render={<Button />}>Open drawer</Drawer.Trigger>
       <Drawer.Content {...args}>
         <Drawer.Title>Edit profile</Drawer.Title>
-        <Drawer.Description>
+        <Drawer.Description className="mb-4">
           Make changes to your profile here. Swipe or press Escape to close.
         </Drawer.Description>
         <div className="flex justify-end gap-3">
@@ -48,7 +48,9 @@ export const Sides: Story = {
           <Drawer.Trigger render={<Button variant="soft" />}>{side}</Drawer.Trigger>
           <Drawer.Content>
             <Drawer.Title>From the {side}</Drawer.Title>
-            <Drawer.Description>Swipe towards the {side} edge to close.</Drawer.Description>
+            <Drawer.Description className="mb-4">
+              Swipe towards the {side} edge to close.
+            </Drawer.Description>
             <Drawer.Close render={<Button variant="soft" />}>Close</Drawer.Close>
           </Drawer.Content>
         </Drawer.Root>
@@ -65,7 +67,9 @@ export const Sizes: Story = {
           <Drawer.Trigger render={<Button variant="soft" />}>Size {size}</Drawer.Trigger>
           <Drawer.Content size={size}>
             <Drawer.Title>Size {size}</Drawer.Title>
-            <Drawer.Description>The padding and the width change with the size.</Drawer.Description>
+            <Drawer.Description className="mb-4">
+              The padding and the width change with the size.
+            </Drawer.Description>
             <Drawer.Close render={<Button variant="soft" />}>Close</Drawer.Close>
           </Drawer.Content>
         </Drawer.Root>
@@ -102,7 +106,9 @@ export const ClassNameOverride: Story = {
         classNames={{ backdrop: 'bg-accent-a6' }}
       >
         <Drawer.Title>Custom look</Drawer.Title>
-        <Drawer.Description>Square corners, wider, and a tinted backdrop.</Drawer.Description>
+        <Drawer.Description className="mb-4">
+          Square corners, wider, and a tinted backdrop.
+        </Drawer.Description>
         <Drawer.Close render={<Button />}>Close</Drawer.Close>
       </Drawer.Content>
     </Drawer.Root>

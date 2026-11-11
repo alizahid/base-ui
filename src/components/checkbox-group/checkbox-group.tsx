@@ -4,13 +4,20 @@ import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import { Checkbox, type CheckboxProps } from '../checkbox'
 
-type GroupStyle = Pick<CheckboxProps, 'size' | 'variant'>
+type GroupStyle = Pick<CheckboxProps, 'highContrast' | 'size' | 'variant'>
 
 // Lets the root set the size and variant of every item
 const CheckboxGroupContext = createContext<GroupStyle>({})
 
-/** Text size of an item label for each checkbox size. */
-const labelSize = { sm: 'gap-1.5 text-xs', md: 'gap-2 text-sm', lg: 'gap-2 text-base' } as const
+/** Text size of an item label for each size. Radix Themes uses Text sizes 1 to 3 here. */
+const labelSize = {
+  sm: 'text-xs tracking-[0.0025em]',
+  md: 'text-sm',
+  lg: 'text-base',
+} as const
+
+/** Top margin that centers the checkbox on the first line of the label text. */
+const nudge = { sm: 'mt-px', md: 'mt-0.5', lg: 'mt-0.5' } as const
 
 export type CheckboxGroupRootProps = Omit<
   ComponentProps<typeof BaseCheckboxGroup>,
@@ -28,18 +35,19 @@ export type CheckboxGroupRootProps = Omit<
 export function CheckboxGroupRoot({
   className,
   color,
+  highContrast,
   size,
   variant,
   ...props
 }: CheckboxGroupRootProps) {
-  const context = useMemo(() => ({ size, variant }), [size, variant])
+  const context = useMemo(() => ({ highContrast, size, variant }), [highContrast, size, variant])
 
   return (
     <CheckboxGroupContext.Provider value={context}>
       <BaseCheckboxGroup
         data-color={colorAttribute(color)}
         {...props}
-        className={cn('flex flex-col items-start gap-2', className)}
+        className={cn('flex flex-col gap-1', className)}
       />
     </CheckboxGroupContext.Provider>
   )
@@ -60,6 +68,7 @@ export function CheckboxGroupItem({
   children,
   className,
   classNames,
+  highContrast: highContrastProp,
   size: sizeProp,
   variant: variantProp,
   ...props
@@ -67,20 +76,23 @@ export function CheckboxGroupItem({
   const group = useContext(CheckboxGroupContext)
   const size = sizeProp ?? group.size ?? 'md'
   const variant = variantProp ?? group.variant
+  const highContrast = highContrastProp ?? group.highContrast
 
   return (
     <label
       className={cn(
-        'inline-flex select-none items-center text-gray-12',
-        'has-data-disabled:cursor-not-allowed has-data-disabled:text-gray-a8',
+        // `w-fit` so the empty space to the right of the text is not clickable
+        'flex w-fit cursor-default select-none items-start gap-[0.5em] text-gray-12',
+        'has-data-disabled:cursor-not-allowed',
         labelSize[size],
         className,
       )}
     >
       <Checkbox
         {...props}
-        className={classNames?.checkbox}
+        className={cn(nudge[size], classNames?.checkbox)}
         classNames={{ indicator: classNames?.indicator }}
+        highContrast={highContrast}
         size={size}
         variant={variant}
       />

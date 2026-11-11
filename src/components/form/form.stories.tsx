@@ -139,7 +139,8 @@ export const ClassNameOverride: Story = {
   ),
 }
 
-const boxSizes = ['xs', 'sm', 'md', 'lg'] as const
+// The sizes all of these controls have (Select stops at `lg`, like in Radix Themes)
+const boxSizes = ['sm', 'md', 'lg'] as const
 const boxVariants = ['surface', 'soft'] as const
 const fruits = ['Apple', 'Banana', 'Cherry']
 

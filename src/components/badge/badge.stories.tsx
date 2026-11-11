@@ -9,7 +9,7 @@ const sizes = ['sm', 'md', 'lg'] as const
 const meta = {
   title: 'Components/Badge',
   component: Badge,
-  args: { children: 'New', color: 'accent', size: 'sm', variant: 'soft' },
+  args: { children: 'New', color: 'accent', highContrast: false, size: 'sm', variant: 'soft' },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
@@ -44,6 +44,25 @@ export const Sizes: Story = {
           Size {size}
         </Badge>
       ))}
+    </div>
+  ),
+}
+
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="grid grid-cols-[repeat(4,max-content)] gap-3">
+      {[false, true].map((highContrast) =>
+        variants.map((variant) => (
+          <Badge
+            key={`${variant}-${highContrast}`}
+            {...args}
+            highContrast={highContrast}
+            variant={variant}
+          >
+            {variant}
+          </Badge>
+        )),
+      )}
     </div>
   ),
 }

@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Button } from '../button'
 import { NumberField } from './number-field'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/NumberField',

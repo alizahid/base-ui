@@ -6,17 +6,17 @@ import { type Color, colorAttribute } from '../../lib/colors'
 import { bareFieldBox, type FieldBoxVariants } from '../../lib/field-box'
 import type { Radius } from '../../lib/theme'
 
-/** What a text area adds to the shared box (`fieldBoxVariants`). */
+/** What a text area adds to the shared box (`fieldBoxVariants`). Values follow Radix Themes' TextArea. */
 export const textAreaVariants = tv({
   // The box has a fixed height and no padding; a text area grows and has its own padding
   base: 'h-auto',
   variants: {
+    // Radix Themes sizes 1 to 3.
     // `rounded-panel-*`: a tall box must not turn into a pill when the theme radius is full
     size: {
-      xs: 'min-h-12 rounded-panel-sm px-1.5 py-1',
-      sm: 'min-h-16 rounded-panel-md px-2 py-1.5',
-      md: 'min-h-20 rounded-panel-md px-3 py-2',
-      lg: 'min-h-24 rounded-panel-lg px-4 py-3',
+      sm: 'min-h-12 rounded-panel-sm px-1.5 py-1',
+      md: 'min-h-16 rounded-panel-sm px-2 py-1.5',
+      lg: 'min-h-20 rounded-panel-md px-3 py-2',
     },
     resize: {
       none: 'resize-none',
@@ -32,7 +32,7 @@ export const textAreaVariants = tv({
 })
 
 export type TextAreaProps = Omit<ComponentProps<'textarea'>, 'color'> &
-  FieldBoxVariants & {
+  Pick<FieldBoxVariants, 'variant'> & {
     /**
      * The color scale to use. `accent` follows the theme.
      * @default 'accent'
@@ -45,6 +45,11 @@ export type TextAreaProps = Omit<ComponentProps<'textarea'>, 'color'> &
      * @default 'none'
      */
     resize?: 'none' | 'vertical' | 'horizontal' | 'both'
+    /**
+     * `sm`, `md` and `lg` are Radix Themes sizes 1 to 3.
+     * @default 'md'
+     */
+    size?: 'sm' | 'md' | 'lg'
   }
 
 /** A multi-line text input. Works on its own and inside `Field.Root`. */

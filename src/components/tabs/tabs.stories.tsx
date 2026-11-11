@@ -8,7 +8,13 @@ const sizes = ['sm', 'md'] as const
 const meta = {
   title: 'Components/Tabs',
   component: Tabs.Root,
-  args: { color: 'accent', defaultValue: 'account', orientation: 'horizontal', size: 'md' },
+  args: {
+    color: 'accent',
+    defaultValue: 'account',
+    highContrast: false,
+    orientation: 'horizontal',
+    size: 'md',
+  },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
@@ -66,6 +72,12 @@ export const Sizes: Story = {
       ))}
     </div>
   ),
+}
+
+/** The line under the active tab uses the darkest step of the color. */
+export const HighContrast: Story = {
+  ...Playground,
+  args: { highContrast: true },
 }
 
 export const Vertical: Story = {

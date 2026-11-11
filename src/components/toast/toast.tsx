@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import type { ThemeColor } from '../../lib/colors'
-import { focusRing, popupSurface } from '../../lib/styles'
+import { popupSurface } from '../../lib/styles'
 import { Button } from '../button'
 import { useThemeProps } from '../theme-provider'
 
@@ -50,6 +50,8 @@ const stack = [
   'data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]',
 ].join(' ')
 
+// Radix Themes has no toast. The box is the popover box (solid panel, shadow 5,
+// radius 4, 16px padding) with 14px text.
 export const toastVariants = tv({
   slots: {
     viewport: 'fixed z-1 w-[calc(100vw-2rem)] sm:w-90',
@@ -63,9 +65,10 @@ export const toastVariants = tv({
     title: 'font-medium',
     description: 'text-gray-11',
     close: [
-      '-mt-1 -mr-1 flex size-6 shrink-0 items-center justify-center rounded-inner-3 text-gray-a11',
+      // Like a small gray ghost IconButton of Radix Themes (24px)
+      '-mt-1 -mr-1 flex size-6 shrink-0 cursor-default items-center justify-center rounded-ui-xs text-gray-a11',
       'hover:bg-gray-a3 active:bg-gray-a4',
-      focusRing,
+      'outline-accent-8 -outline-offset-1 focus-visible:outline-2',
     ],
   },
   variants: {
@@ -206,7 +209,7 @@ function ToastList({
                 </div>
                 {toast.actionProps && (
                   <BaseToast.Action
-                    render={<Button className={classNames?.action} size="xs" variant="soft" />}
+                    render={<Button className={classNames?.action} size="sm" variant="soft" />}
                   />
                 )}
                 <BaseToast.Close

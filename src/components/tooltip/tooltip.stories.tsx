@@ -14,7 +14,6 @@ const meta = {
     content: 'Add to library',
     disabled: false,
     side: 'top',
-    sideOffset: 8,
   },
   argTypes: {
     align: { control: 'inline-radio', options: ['start', 'center', 'end'] },

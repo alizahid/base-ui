@@ -7,6 +7,7 @@
 
 @import "./colors.css";
 @import "./theme.css";
+@import "./keyframes.css";
 
 /* Let Tailwind find the classes used by the components */
 @source "../";

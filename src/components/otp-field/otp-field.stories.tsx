@@ -3,7 +3,7 @@ import { colors } from '../../lib/colors'
 import { radii } from '../../lib/theme'
 import { OtpField } from './otp-field'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/OtpField',

@@ -3,7 +3,7 @@ import { radii } from '../../lib/theme'
 import { Card } from './card'
 
 const variants = ['surface', 'ghost'] as const
-const sizes = ['sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl', '2xl'] as const
 
 function Content() {
   return (
@@ -17,7 +17,7 @@ function Content() {
 const meta = {
   title: 'Components/Card',
   component: Card,
-  args: { children: <Content />, className: 'w-64', size: 'md', variant: 'surface' },
+  args: { children: <Content />, className: 'w-64', size: 'sm', variant: 'surface' },
   argTypes: {
     children: { control: false },
     radius: { control: 'inline-radio', options: radii },
@@ -44,7 +44,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <div className="flex items-start gap-4">
+    <div className="flex flex-wrap items-start gap-4">
       {sizes.map((size) => (
         <Card key={size} {...args} className="w-48" size={size} />
       ))}
@@ -63,6 +63,18 @@ export const Radius: Story = {
 }
 
 /** With `render`, the whole card is a link or a button and reacts to hover and focus. */
+/** The border is drawn on top of the content, so a picture that touches the edge is still framed. */
+export const EdgeToEdge: Story = {
+  render: (args) => (
+    <Card {...args} className="w-64 p-0">
+      <div className="h-24 bg-linear-to-br from-accent-9 to-accent-7" />
+      <div className="p-3">
+        <Content />
+      </div>
+    </Card>
+  ),
+}
+
 export const Clickable: Story = {
   render: (args) => (
     <div className="flex items-start gap-4">
@@ -72,6 +84,9 @@ export const Clickable: Story = {
   ),
 }
 
+/** The background is on `::before` and the border on `::after`. */
 export const ClassNameOverride: Story = {
-  args: { className: 'w-64 rounded-none bg-accent-a3 inset-ring-accent-a6' },
+  args: {
+    className: 'w-64 rounded-none before:bg-accent-a3 after:shadow-[0_0_0_1px_var(--accent-a6)]',
+  },
 }

@@ -4,10 +4,11 @@ import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
 
+// Values follow Radix Themes' Callout.
 export const calloutVariants = tv({
   slots: {
     // The icon goes in the first column, the text in the second
-    root: 'grid grid-cols-[auto_1fr] items-start text-accent-a11 has-[>:only-child]:grid-cols-1',
+    root: 'grid grid-cols-[auto_1fr] items-start text-left text-accent-a11 has-[>:only-child]:grid-cols-1',
     // As tall as one line of text, so the icon lines up with the first line
     icon: 'col-start-1 flex items-center [&>svg]:shrink-0',
     text: 'col-start-2 m-0 only:col-start-1',
@@ -20,17 +21,24 @@ export const calloutVariants = tv({
     },
     size: {
       sm: {
-        root: 'gap-x-2 gap-y-1 rounded-panel-md p-3 text-sm',
+        root: 'gap-2 rounded-panel-md p-3',
         icon: 'h-5 [&>svg]:size-4',
+        text: 'text-sm',
       },
       md: {
-        root: 'gap-x-3 gap-y-2 rounded-panel-lg p-4 text-base',
-        icon: 'h-6 [&>svg]:size-4',
+        root: 'gap-x-3 gap-y-2 rounded-panel-lg p-4',
+        icon: 'h-5 [&>svg]:size-4',
+        text: 'text-sm',
       },
       lg: {
-        root: 'gap-x-4 gap-y-3 rounded-panel-xl p-6 text-lg',
-        icon: 'h-7 [&>svg]:size-5',
+        root: 'gap-x-4 gap-y-3 rounded-panel-xl p-6',
+        icon: 'h-6 [&>svg]:size-5',
+        text: 'text-base',
       },
+    },
+    /** Darker text, using the darkest step of the color. */
+    highContrast: {
+      true: { root: 'text-accent-12' },
     },
   },
   defaultVariants: {
@@ -58,6 +66,7 @@ export type CalloutRootProps = Omit<ComponentProps<'div'>, 'color'> &
 export function CalloutRoot({
   className,
   color,
+  highContrast,
   radius,
   size,
   variant,
@@ -69,7 +78,7 @@ export function CalloutRoot({
         data-color={colorAttribute(color)}
         data-radius={radius}
         {...props}
-        className={cn(calloutVariants({ size, variant }).root(), className)}
+        className={cn(calloutVariants({ highContrast, size, variant }).root(), className)}
       />
     </SizeContext.Provider>
   )

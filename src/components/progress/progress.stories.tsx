@@ -9,7 +9,14 @@ const variants = ['surface', 'soft'] as const
 const meta = {
   title: 'Components/Progress',
   component: Progress,
-  args: { 'aria-label': 'Uploading', color: 'accent', size: 'md', value: 60, variant: 'surface' },
+  args: {
+    'aria-label': 'Uploading',
+    color: 'accent',
+    highContrast: false,
+    size: 'md',
+    value: 60,
+    variant: 'surface',
+  },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
@@ -47,6 +54,16 @@ export const Sizes: Story = {
     <div className="flex flex-col gap-4">
       {sizes.map((size) => (
         <Progress key={size} {...args} size={size} />
+      ))}
+    </div>
+  ),
+}
+
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      {variants.map((variant) => (
+        <Progress key={variant} {...args} highContrast variant={variant} />
       ))}
     </div>
   ),

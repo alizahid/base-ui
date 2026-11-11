@@ -1,13 +1,14 @@
 import { Autocomplete as BaseAutocomplete } from '@base-ui/react/autocomplete'
 import type { ComponentProps } from 'react'
 import { cn } from '../../lib/cn'
-import { listItem, listLabel, listSeparator } from '../../lib/styles'
+import { listVariants } from '../../lib/styles'
 import {
   ComboboxContent,
   type ComboboxContentProps,
   type ComboboxInputProps,
   InputBox,
 } from '../combobox/combobox'
+import { useListStyle } from '../dropdown-menu/shared'
 
 export const AutocompleteRoot = BaseAutocomplete.Root
 
@@ -51,7 +52,9 @@ export type AutocompleteItemProps = Omit<
 }
 
 export function AutocompleteItem({ className, ...props }: AutocompleteItemProps) {
-  return <BaseAutocomplete.Item {...props} className={cn(listItem, className)} />
+  const styles = listVariants(useListStyle())
+
+  return <BaseAutocomplete.Item {...props} className={cn(styles.item(), className)} />
 }
 
 export type AutocompleteLabelProps = Omit<
@@ -63,7 +66,9 @@ export type AutocompleteLabelProps = Omit<
 
 /** A small heading. Must be inside `Group`. */
 export function AutocompleteLabel({ className, ...props }: AutocompleteLabelProps) {
-  return <BaseAutocomplete.GroupLabel {...props} className={cn(listLabel, className)} />
+  const styles = listVariants(useListStyle())
+
+  return <BaseAutocomplete.GroupLabel {...props} className={cn(styles.label(), className)} />
 }
 
 export type AutocompleteSeparatorProps = Omit<
@@ -74,5 +79,7 @@ export type AutocompleteSeparatorProps = Omit<
 }
 
 export function AutocompleteSeparator({ className, ...props }: AutocompleteSeparatorProps) {
-  return <BaseAutocomplete.Separator {...props} className={cn(listSeparator, className)} />
+  return (
+    <BaseAutocomplete.Separator {...props} className={cn(listVariants().separator(), className)} />
+  )
 }

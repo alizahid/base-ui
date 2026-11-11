@@ -3,46 +3,75 @@ import { type ComponentProps, createContext, useContext, useMemo } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
-import { focusRing } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
 
+// Values follow Radix Themes' Tabs (`base-tab-list.css`).
 export const tabsVariants = tv({
   slots: {
     root: 'text-gray-12',
-    list: 'relative flex',
-    indicator: 'absolute bg-accent-10 transition-[translate,width,height] duration-200 ease-out',
+    list: 'relative flex justify-start whitespace-nowrap',
+    // Radix draws a fixed 2px line on the active tab. Ours is Base UI's indicator,
+    // so it slides to the active tab. Same color and thickness.
+    indicator:
+      'absolute bg-accent-indicator transition-[translate,width,height] duration-200 ease-out',
     trigger: [
-      'group/tab relative flex shrink-0 select-none items-center text-gray-a11 outline-none',
-      'data-active:text-gray-12',
+      'group/tab relative flex shrink-0 cursor-default select-none items-center text-gray-a11 outline-none',
+      'hover:text-gray-12 data-active:text-gray-12',
       'data-disabled:cursor-not-allowed data-disabled:text-gray-a8',
     ],
     // The pill inside a tab. It gets the hover color and the focus ring.
     triggerInner: [
-      'grid items-center rounded-ui-sm outline-accent-8',
-      'group-hover/tab:bg-gray-a3 group-data-disabled/tab:bg-transparent',
+      'grid items-center -outline-offset-2 outline-accent-8',
+      'group-hover/tab:bg-gray-a3 group-focus-visible/tab:group-hover/tab:bg-accent-a3',
+      'group-data-disabled/tab:bg-transparent',
       'group-focus-visible/tab:outline-2',
     ],
-    content: focusRing,
+    // The label. The active tab is bolder; a slightly tighter letter spacing
+    // (Radix: -0.01em) keeps its width close to the inactive one.
+    label: [
+      'col-start-1 row-start-1 flex items-center justify-center gap-2 tracking-normal',
+      'group-data-active/tab:font-medium group-data-active/tab:tracking-[-0.01em]',
+    ],
+    // A hidden copy of the label in the active weight. It sets the width of the
+    // tab, so the tab does not change size when it becomes active.
+    labelHidden:
+      'invisible col-start-1 row-start-1 flex items-center justify-center gap-2 font-medium tracking-[-0.01em]',
+    content: 'relative outline-accent-8 focus-visible:outline-2',
   },
   variants: {
     orientation: {
       horizontal: {
-        list: 'shadow-[inset_0_-1px_0_0_var(--color-gray-a5)]',
+        list: [
+          'overflow-x-auto shadow-[inset_0_-1px_0_0_var(--gray-a5)]',
+          '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+        ],
         indicator: 'bottom-0 left-0 h-0.5 w-(--active-tab-width) translate-x-(--active-tab-left)',
         trigger: 'justify-center',
-        content: 'pt-4',
+        content: 'pt-3',
       },
+      // Radix has no vertical tabs. Same parts, with the line on the right.
       vertical: {
         root: 'flex',
-        list: 'flex-col shadow-[inset_-1px_0_0_0_var(--color-gray-a5)]',
+        list: 'flex-col shadow-[inset_-1px_0_0_0_var(--gray-a5)]',
         indicator: 'top-0 right-0 h-(--active-tab-height) w-0.5 translate-y-(--active-tab-top)',
         trigger: 'justify-start',
-        content: 'grow pl-4',
+        content: 'grow pl-3',
       },
     },
+    // Radix sizes 1 and 2: 32px and 40px tall
     size: {
-      sm: { trigger: 'h-9 px-1 text-xs', triggerInner: 'px-1 py-0.5' },
-      md: { trigger: 'h-10 px-2 text-sm', triggerInner: 'px-2 py-1' },
+      sm: {
+        trigger: 'h-8 px-1 text-xs',
+        triggerInner: 'rounded-panel-xs px-1 py-0.5',
+      },
+      md: {
+        trigger: 'h-10 px-2 text-sm',
+        triggerInner: 'rounded-panel-sm px-2 py-1',
+      },
+    },
+    /** A darker line under the active tab. */
+    highContrast: {
+      true: { indicator: 'bg-accent-12' },
     },
   },
   defaultVariants: {
@@ -51,7 +80,7 @@ export const tabsVariants = tv({
   },
 })
 
-type Variants = Pick<VariantProps<typeof tabsVariants>, 'orientation' | 'size'>
+type Variants = Pick<VariantProps<typeof tabsVariants>, 'highContrast' | 'orientation' | 'size'>
 
 // The size and the direction are set once on `Root` and read by the parts
 const TabsContext = createContext<Variants>({})
@@ -61,7 +90,7 @@ function useStyles() {
 }
 
 export type TabsRootProps = Omit<ComponentProps<typeof BaseTabs.Root>, 'className' | 'color'> &
-  Pick<Variants, 'size'> & {
+  Pick<Variants, 'highContrast' | 'size'> & {
     className?: string
     /**
      * The color scale to use. `accent` follows the theme.
@@ -75,12 +104,16 @@ export type TabsRootProps = Omit<ComponentProps<typeof BaseTabs.Root>, 'classNam
 export function TabsRoot({
   className,
   color,
+  highContrast,
   orientation = 'horizontal',
   radius,
   size,
   ...props
 }: TabsRootProps) {
-  const context = useMemo(() => ({ orientation, size }), [orientation, size])
+  const context = useMemo(
+    () => ({ highContrast, orientation, size }),
+    [highContrast, orientation, size],
+  )
 
   return (
     <TabsContext.Provider value={context}>
@@ -132,14 +165,8 @@ export function TabsTrigger({ children, className, classNames, ...props }: TabsT
   return (
     <BaseTabs.Tab {...props} className={cn(styles.trigger(), className)}>
       <span className={cn(styles.triggerInner(), classNames?.inner)}>
-        <span className="col-start-1 row-start-1 flex items-center gap-2 group-data-active/tab:font-medium">
-          {children}
-        </span>
-        {/* A hidden bold copy keeps the tab the same width when it becomes active */}
-        <span
-          aria-hidden="true"
-          className="invisible col-start-1 row-start-1 flex items-center gap-2 font-medium"
-        >
+        <span className={styles.label()}>{children}</span>
+        <span aria-hidden="true" className={styles.labelHidden()}>
           {children}
         </span>
       </span>

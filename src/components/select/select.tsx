@@ -5,20 +5,22 @@ import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import { fieldBoxVariants } from '../../lib/field-box'
 import { type PositionerProps, splitPositionerProps } from '../../lib/positioner'
-import {
-  type ControlSize,
-  controlSize,
-  listItem,
-  listLabel,
-  listPopup,
-  listSeparator,
-} from '../../lib/styles'
+import { controlSize, listVariants } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '../dropdown-menu/shared'
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ListStyleProvider,
+  useListStyle,
+} from '../dropdown-menu/shared'
 import { useThemeProps } from '../theme-provider'
 
-// `Root` sets the size, `Trigger`, `Content` and the rows read it
-const SelectSizeContext = createContext<ControlSize>('md')
+/** Radix Themes sizes 1 to 3: a 24, 32 or 40px tall trigger. */
+export type SelectSize = 'sm' | 'md' | 'lg'
+
+// `Root` sets the size, `Trigger` and `Content` read it
+const SelectSizeContext = createContext<SelectSize>('md')
 
 export type SelectRootProps<Value, Multiple extends boolean | undefined = false> = ComponentProps<
   typeof BaseSelect.Root<Value, Multiple>
@@ -27,7 +29,7 @@ export type SelectRootProps<Value, Multiple extends boolean | undefined = false>
    * The size of the trigger and of the rows in the list.
    * @default 'md'
    */
-  size?: ControlSize
+  size?: SelectSize
 }
 
 export function SelectRoot<Value, Multiple extends boolean | undefined = false>({
@@ -45,41 +47,51 @@ export const SelectGroup = BaseSelect.Group
 
 export type SelectGroupProps = ComponentProps<typeof BaseSelect.Group>
 
+// Values follow Radix Themes' Select trigger (select.css)
 export const selectTriggerVariants = tv({
   slots: {
     root: [
-      'group/trigger inline-flex w-auto shrink-0 cursor-default select-none items-center justify-between gap-2 whitespace-nowrap align-top',
+      'group/trigger inline-flex w-auto shrink-0 cursor-default select-none items-center justify-between whitespace-nowrap text-start align-top font-normal',
       'data-disabled:cursor-not-allowed',
     ],
-    value: 'min-w-0 truncate data-placeholder:text-gray-a10',
-    icon: 'shrink-0 text-gray-a11 group-data-disabled/trigger:text-gray-a8',
+    value: 'min-w-0 truncate',
+    // The arrow has the color of the text
+    icon: 'shrink-0 group-data-disabled/trigger:text-gray-a9',
   },
   variants: {
     variant: {
       // Surface and soft start from the shared box (`fieldBoxVariants`), see `SelectTrigger`
-      surface: { root: 'hover:not-data-disabled:inset-ring-gray-a8' },
+      surface: {
+        root: 'hover:not-data-disabled:inset-ring-gray-a8 data-popup-open:inset-ring-gray-a8',
+        value: 'data-placeholder:text-gray-a10',
+        icon: 'opacity-90',
+      },
       soft: {
         root: 'hover:not-data-disabled:bg-accent-a4 data-popup-open:bg-accent-a4',
         value: 'data-placeholder:text-accent-12 data-placeholder:opacity-60',
-        icon: 'text-accent-a11',
+        icon: 'opacity-90',
       },
+      // Ghost has no box and no fixed height: it wraps its text with a little padding
       ghost: {
         root: [
           'text-accent-12',
           '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
-          'hover:bg-accent-a3 data-popup-open:bg-accent-a3',
-          'data-disabled:bg-transparent data-disabled:text-gray-a8',
+          'hover:not-data-disabled:bg-accent-a3 data-popup-open:bg-accent-a3',
+          'data-disabled:text-gray-a11',
         ],
-        icon: 'text-accent-a11',
+        value: 'data-placeholder:text-accent-12 data-placeholder:opacity-60',
       },
     },
     size: {
-      xs: { root: [controlSize.xs, 'gap-1'], icon: 'size-3.5' },
-      sm: { root: controlSize.sm },
-      md: { root: controlSize.md },
-      lg: { root: [controlSize.lg, 'gap-3'] },
+      sm: { root: [controlSize.sm, 'gap-1'] },
+      md: { root: [controlSize.md, 'gap-1.5'] },
+      lg: { root: [controlSize.lg, 'gap-2'], icon: 'size-[11px]' },
     },
   },
+  compoundVariants: [
+    { variant: 'ghost', size: ['sm', 'md'], class: { root: 'h-auto px-2 py-1' } },
+    { variant: 'ghost', size: 'lg', class: { root: 'h-auto px-3 py-1.5' } },
+  ],
   defaultVariants: {
     variant: 'surface',
     size: 'md',
@@ -147,32 +159,8 @@ export function SelectTrigger({
   )
 }
 
-export const selectItemVariants = tv({
-  slots: {
-    // Room on the left for the check icon
-    item: [listItem, 'pr-6 pl-8'],
-    indicator: 'absolute left-2 inline-flex items-center justify-center',
-    label: [listLabel, 'pl-8'],
-  },
-  variants: {
-    size: {
-      xs: {
-        item: 'h-6 pr-4 pl-6 text-xs',
-        indicator: 'left-1 [&>svg]:size-3.5',
-        label: 'h-6 pl-6',
-      },
-      sm: { item: 'h-7' },
-      md: {},
-      lg: { item: 'h-10 text-base', label: 'h-10 text-sm' },
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-})
-
 const scrollArrow =
-  'z-1 flex h-5 w-full cursor-default items-center justify-center bg-panel text-gray-11'
+  'z-1 flex h-5 w-full cursor-default items-center justify-center bg-panel-solid text-gray-11'
 
 export type SelectContentProps = Omit<
   ComponentProps<typeof BaseSelect.Popup>,
@@ -193,28 +181,49 @@ export type SelectContentProps = Omit<
      * @default 'accent'
      */
     color?: Color
+    /**
+     * With the `solid` variant: the highlighted row uses the darkest step of the color.
+     * @default false
+     */
+    highContrast?: boolean
+    /**
+     * The look of the highlighted row: a full color fill (`solid`) or a light tint (`soft`).
+     * @default 'solid'
+     */
+    variant?: 'solid' | 'soft'
   }
 
 /**
  * The list box. Base UI's `Portal`, `Positioner`, `Popup`, `List` and the two
  * scroll arrows in one.
+ *
+ * Like in Radix Themes, the list opens on top of the trigger with the picked row
+ * over it. Set `alignItemWithTrigger={false}` to open it below the trigger instead.
  */
 export function SelectContent({
+  // Used when the list opens below the trigger. Radix Themes lines it up with the start.
+  align = 'start',
   alignItemWithTrigger,
   children,
   className,
   classNames,
   color,
   container,
+  highContrast,
   sideOffset = 4,
+  variant,
   ...props
 }: SelectContentProps) {
   const themeProps = useThemeProps()
+  const size = useContext(SelectSizeContext)
+  const style = { highContrast, size, variant }
+  const styles = listVariants(style)
   const [positionerProps, popupProps] = splitPositionerProps(props)
 
   return (
     <BaseSelect.Portal {...themeProps} container={container}>
       <BaseSelect.Positioner
+        align={align}
         alignItemWithTrigger={alignItemWithTrigger}
         sideOffset={sideOffset}
         {...positionerProps}
@@ -224,10 +233,10 @@ export function SelectContent({
           data-color={colorAttribute(color)}
           {...popupProps}
           className={cn(
-            listPopup,
-            'min-w-(--anchor-width) overflow-hidden p-0',
-            // When the popup sits on top of the trigger it should not zoom in
-            'data-[side=none]:min-w-[calc(var(--anchor-width)+1.5rem)] data-[side=none]:scale-100 data-[side=none]:transition-none',
+            styles.content(),
+            'min-w-(--anchor-width) overflow-hidden',
+            // When the popup sits on top of the trigger it does not move or zoom, like in Radix Themes
+            'data-[side=none]:min-w-[calc(var(--anchor-width)+var(--list-pl))] data-[side=none]:transition-none',
             className,
           )}
         >
@@ -238,11 +247,12 @@ export function SelectContent({
           </BaseSelect.ScrollUpArrow>
           <BaseSelect.List
             className={cn(
-              'max-h-(--available-height) scroll-py-6 overflow-y-auto overscroll-contain p-1',
+              styles.viewport(),
+              'max-h-(--available-height) scroll-py-6',
               classNames?.list,
             )}
           >
-            {children}
+            <ListStyleProvider value={style}>{children}</ListStyleProvider>
           </BaseSelect.List>
           <BaseSelect.ScrollDownArrow
             className={cn(scrollArrow, 'bottom-0 rounded-b-[inherit]', classNames?.scrollArrow)}
@@ -266,11 +276,16 @@ export type SelectItemProps = Omit<ComponentProps<typeof BaseSelect.Item>, 'clas
 
 /** A row. Includes Base UI's `ItemIndicator` (check icon on the left) and `ItemText`. */
 export function SelectItem({ children, className, classNames, ...props }: SelectItemProps) {
-  const size = useContext(SelectSizeContext)
-  const styles = selectItemVariants({ size })
+  const styles = listVariants(useListStyle())
 
   return (
-    <BaseSelect.Item {...props} className={cn(styles.item(), className)}>
+    // `data-inset` makes room on the left for the check mark. Radix Themes
+    // leaves the same room on the right.
+    <BaseSelect.Item
+      data-inset=""
+      {...props}
+      className={cn(styles.item(), 'pr-(--list-pl)', className)}
+    >
       <BaseSelect.ItemIndicator className={cn(styles.indicator(), classNames?.indicator)}>
         <CheckIcon />
       </BaseSelect.ItemIndicator>
@@ -287,13 +302,10 @@ export type SelectLabelProps = Omit<ComponentProps<typeof BaseSelect.GroupLabel>
 
 /** A small heading. Must be inside `Group`. */
 export function SelectLabel({ className, ...props }: SelectLabelProps) {
-  const size = useContext(SelectSizeContext)
+  const styles = listVariants(useListStyle())
 
   return (
-    <BaseSelect.GroupLabel
-      {...props}
-      className={cn(selectItemVariants({ size }).label(), className)}
-    />
+    <BaseSelect.GroupLabel {...props} className={cn(styles.label(), 'pr-(--list-pl)', className)} />
   )
 }
 
@@ -305,5 +317,5 @@ export type SelectSeparatorProps = Omit<
 }
 
 export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
-  return <BaseSelect.Separator {...props} className={cn(listSeparator, className)} />
+  return <BaseSelect.Separator {...props} className={cn(listVariants().separator(), className)} />
 }

@@ -95,6 +95,21 @@ export const Disabled: Story = {
   ),
 }
 
+/** `highContrast` uses the darkest step of the color. */
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex gap-12">
+      {variants.map((variant) => (
+        <RadioGroup.Root key={variant} {...args} highContrast variant={variant}>
+          <RadioGroup.Item value="default">Default</RadioGroup.Item>
+          <RadioGroup.Item value="comfortable">Comfortable</RadioGroup.Item>
+          <RadioGroup.Item value="compact">Compact</RadioGroup.Item>
+        </RadioGroup.Root>
+      ))}
+    </div>
+  ),
+}
+
 /** `className` wins over the default styles. */
 export const ClassNameOverride: Story = {
   render: (args) => (

@@ -3,8 +3,13 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 
+// One turn takes 800ms, like Radix Themes
+const duration = 800
+const leaves = [0, 1, 2, 3, 4, 5, 6, 7]
+
+// Radix sizes 1 to 3: 12px, 16px and 20px
 export const spinnerVariants = tv({
-  base: 'shrink-0 animate-spin',
+  base: 'block shrink-0 opacity-65',
   variants: {
     size: {
       sm: 'size-3',
@@ -45,23 +50,33 @@ export function Spinner({
     return children
   }
 
+  // Eight leaves in a circle. Each one fades out, one after the other.
+  // It is an SVG, so it scales with any `size-*` class.
   const spinner = (
-    <svg
-      aria-hidden="true"
-      data-color={colorAttribute(color)}
-      fill="none"
-      viewBox="0 0 16 16"
-      {...props}
-      className={cn(spinnerVariants({ size }), color && 'text-accent-a11', className)}
-    >
-      <circle cx="8" cy="8" opacity="0.25" r="6.5" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M14.5 8A6.5 6.5 0 0 0 8 1.5"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="2"
-      />
-    </svg>
+    <>
+      <svg
+        aria-hidden="true"
+        data-color={colorAttribute(color)}
+        fill="currentColor"
+        viewBox="0 0 16 16"
+        {...props}
+        className={cn(spinnerVariants({ size }), color && 'text-accent-a11', className)}
+      >
+        {leaves.map((leaf) => (
+          <rect
+            className="animate-[ui-spinner-leaf-fade_800ms_linear_infinite]"
+            height="4.8"
+            key={leaf}
+            rx="1"
+            style={{ animationDelay: `${((leaf - 8) / 8) * duration}ms` }}
+            transform={`rotate(${leaf * 45} 8 8)`}
+            width="2"
+            x="7"
+            y="0"
+          />
+        ))}
+      </svg>
+    </>
   )
 
   if (children === undefined) {

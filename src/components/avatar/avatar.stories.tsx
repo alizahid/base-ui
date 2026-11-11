@@ -3,7 +3,7 @@ import { colors } from '../../lib/colors'
 import { radii } from '../../lib/theme'
 import { Avatar } from './avatar'
 
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+const sizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl'] as const
 const variants = ['soft', 'solid'] as const
 
 // A tiny inline picture, so the stories do not need the network
@@ -14,7 +14,14 @@ const picture = `data:image/svg+xml,${encodeURIComponent(
 const meta = {
   title: 'Components/Avatar',
   component: Avatar,
-  args: { alt: 'Ada Lovelace', color: 'accent', fallback: 'AL', size: 'md', variant: 'soft' },
+  args: {
+    alt: 'Ada Lovelace',
+    color: 'accent',
+    fallback: 'AL',
+    highContrast: false,
+    size: 'lg',
+    variant: 'soft',
+  },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
@@ -56,11 +63,28 @@ export const Sizes: Story = {
           <Avatar key={size} {...args} size={size} />
         ))}
       </div>
+      {/* One letter is drawn a little bigger than two */}
+      <div className="flex items-center gap-4">
+        {sizes.map((size) => (
+          <Avatar key={size} {...args} fallback="A" size={size} />
+        ))}
+      </div>
       <div className="flex items-center gap-4">
         {sizes.map((size) => (
           <Avatar key={size} {...args} size={size} src={picture} />
         ))}
       </div>
+    </div>
+  ),
+}
+
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="grid grid-cols-[repeat(2,max-content)] gap-4">
+      {variants.map((variant) => [
+        <Avatar key={variant} {...args} variant={variant} />,
+        <Avatar key={`${variant}-high`} {...args} highContrast variant={variant} />,
+      ])}
     </div>
   ),
 }
@@ -93,7 +117,7 @@ export const Radius: Story = {
 /** `className` on the root, `classNames` for the fallback inside. */
 export const ClassNameOverride: Story = {
   args: {
-    className: 'size-14 rounded-none bg-gray-a3',
-    classNames: { fallback: 'text-gray-12 italic' },
+    className: 'size-14 rounded-none',
+    classNames: { fallback: 'bg-gray-a3 text-gray-12 italic' },
   },
 }

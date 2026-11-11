@@ -43,6 +43,17 @@ export const States: Story = {
   ),
 }
 
+/** `highContrast` makes the track darker when on (light mode only). */
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      <Switch {...args} />
+      <Switch {...args} highContrast />
+      <Switch {...args} disabled highContrast />
+    </div>
+  ),
+}
+
 export const Colors: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-4">

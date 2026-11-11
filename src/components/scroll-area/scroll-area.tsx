@@ -4,23 +4,25 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import type { Radius } from '../../lib/theme'
 
+// Values follow Radix Themes' ScrollArea.
 export const scrollAreaVariants = tv({
   slots: {
     root: 'relative overflow-hidden',
     viewport: [
       'size-full overscroll-contain rounded-[inherit]',
-      '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
+      '-outline-offset-2 outline-accent-8 focus-visible:outline-2',
     ],
     content: '',
+    // The track is always tinted (gray-a3), with 4px of space around it
     scrollbar: [
-      'pointer-events-none m-1 flex touch-none select-none rounded-ui-thumb opacity-0 transition-[opacity,background-color]',
-      'hover:bg-gray-a3',
+      'pointer-events-none m-1 flex touch-none select-none rounded-ui-xs bg-gray-a3 opacity-0',
+      'transition-opacity duration-[120ms] ease-out',
       // Shown while the pointer is over the area, or while it scrolls
       'data-hovering:pointer-events-auto data-hovering:opacity-100',
       'data-scrolling:pointer-events-auto data-scrolling:opacity-100 data-scrolling:duration-0',
     ],
     thumb: [
-      'relative rounded-[inherit] bg-gray-a8 transition-colors hover:bg-gray-a9 active:bg-gray-a10',
+      'relative rounded-[inherit] bg-gray-a8 transition-colors duration-100 hover:bg-gray-a9',
       // A bigger area to grab than the thin line that is drawn
       'before:absolute before:top-1/2 before:left-1/2 before:size-full before:min-h-4 before:min-w-4 before:-translate-1/2',
     ],
@@ -30,6 +32,7 @@ export const scrollAreaVariants = tv({
       vertical: { thumb: 'w-full' },
       horizontal: { scrollbar: 'flex-col', thumb: 'h-full' },
     },
+    // Radix sizes 1 to 3: 4px, 8px and 12px thick
     size: { sm: '', md: '', lg: '' },
   },
   compoundVariants: [
@@ -42,7 +45,7 @@ export const scrollAreaVariants = tv({
   ],
   defaultVariants: {
     orientation: 'vertical',
-    size: 'md',
+    size: 'sm',
   },
 })
 
@@ -63,7 +66,7 @@ export type ScrollAreaProps = Omit<ComponentProps<typeof BaseScrollArea.Root>, '
     radius?: Radius
     /**
      * Which scrollbars to show.
-     * @default 'vertical'
+     * @default 'both'
      */
     scrollbars?: 'vertical' | 'horizontal' | 'both'
   }
@@ -74,7 +77,7 @@ export function ScrollArea({
   className,
   classNames,
   radius,
-  scrollbars = 'vertical',
+  scrollbars = 'both',
   size,
   ...props
 }: ScrollAreaProps) {

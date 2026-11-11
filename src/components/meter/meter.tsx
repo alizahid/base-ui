@@ -18,12 +18,13 @@ export function Meter({
   className,
   classNames,
   color,
+  highContrast,
   radius,
   size,
   variant,
   ...props
 }: MeterProps) {
-  const styles = meterVariants({ size, variant })
+  const styles = meterVariants({ highContrast, size, variant })
 
   return (
     <BaseMeter.Root

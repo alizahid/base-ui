@@ -103,6 +103,22 @@ export const WithLabel: Story = {
   ),
 }
 
+/** `highContrast` uses the darkest step of the color. */
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {variants.map((variant) => (
+        <div className="flex items-center gap-4" key={variant}>
+          <Checkbox {...args} variant={variant} />
+          <Checkbox {...args} highContrast variant={variant} />
+          <Checkbox {...args} highContrast indeterminate variant={variant} />
+          <Checkbox {...args} disabled highContrast variant={variant} />
+        </div>
+      ))}
+    </div>
+  ),
+}
+
 /** `className` wins over the default styles. */
 export const ClassNameOverride: Story = {
   args: {

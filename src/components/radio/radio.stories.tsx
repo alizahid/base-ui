@@ -87,6 +87,21 @@ export const Colors: Story = {
   ),
 }
 
+/** `highContrast` uses the darkest step of the color. */
+export const HighContrast: Story = {
+  render: (args) => (
+    <>
+      {variants.map((variant) => (
+        <div className="flex items-center gap-4" key={variant}>
+          <Radio {...args} value="a" variant={variant} />
+          <Radio {...args} highContrast value="a" variant={variant} />
+          <Radio {...args} disabled highContrast value="a" variant={variant} />
+        </div>
+      ))}
+    </>
+  ),
+}
+
 /** `className` wins over the default styles. */
 export const ClassNameOverride: Story = {
   args: {

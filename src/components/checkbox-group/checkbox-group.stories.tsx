@@ -94,6 +94,21 @@ export const Disabled: Story = {
   ),
 }
 
+/** `highContrast` uses the darkest step of the color. */
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex gap-12">
+      {variants.map((variant) => (
+        <CheckboxGroup.Root key={variant} {...args} highContrast variant={variant}>
+          <CheckboxGroup.Item value="apple">Apple</CheckboxGroup.Item>
+          <CheckboxGroup.Item value="banana">Banana</CheckboxGroup.Item>
+          <CheckboxGroup.Item value="cherry">Cherry</CheckboxGroup.Item>
+        </CheckboxGroup.Root>
+      ))}
+    </div>
+  ),
+}
+
 /** `className` wins over the default styles. */
 export const ClassNameOverride: Story = {
   render: (args) => (

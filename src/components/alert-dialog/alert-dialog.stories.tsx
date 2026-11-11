@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../button'
 import { AlertDialog } from '.'
 
-const sizes = ['sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/AlertDialog',
   component: AlertDialog.Content,
-  args: { size: 'md' },
+  args: { size: 'lg' },
   argTypes: {
     size: { control: 'inline-radio', options: sizes },
   },
@@ -23,7 +23,7 @@ export const Playground: Story = {
       <AlertDialog.Trigger render={<Button color="red" />}>Revoke access</AlertDialog.Trigger>
       <AlertDialog.Content {...args}>
         <AlertDialog.Title>Revoke access</AlertDialog.Title>
-        <AlertDialog.Description>
+        <AlertDialog.Description className="mb-4">
           Are you sure? This application will no longer be accessible.
         </AlertDialog.Description>
         <div className="flex justify-end gap-3">
@@ -43,8 +43,8 @@ export const Sizes: Story = {
           <AlertDialog.Trigger render={<Button variant="soft" />}>Size {size}</AlertDialog.Trigger>
           <AlertDialog.Content size={size}>
             <AlertDialog.Title>Size {size}</AlertDialog.Title>
-            <AlertDialog.Description>
-              The padding and the width change with the size.
+            <AlertDialog.Description className="mb-4">
+              The padding and the corners change with the size.
             </AlertDialog.Description>
             <div className="flex justify-end gap-3">
               <AlertDialog.Cancel render={<Button variant="soft" />}>Cancel</AlertDialog.Cancel>
@@ -67,7 +67,7 @@ export const ClassNameOverride: Story = {
         classNames={{ backdrop: 'bg-accent-a6' }}
       >
         <AlertDialog.Title>Custom look</AlertDialog.Title>
-        <AlertDialog.Description>
+        <AlertDialog.Description className="mb-4">
           Square corners, wider, and a tinted backdrop.
         </AlertDialog.Description>
         <AlertDialog.Cancel render={<Button />}>Close</AlertDialog.Cancel>

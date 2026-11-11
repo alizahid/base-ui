@@ -1,0 +1,72 @@
+/* Keyframes used by Spinner, Skeleton and Progress. Timings follow Radix Themes. */
+
+@keyframes ui-spinner-leaf-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+@keyframes ui-skeleton-pulse {
+  from {
+    background-color: var(--gray-a3);
+  }
+  to {
+    background-color: var(--gray-a4);
+  }
+}
+
+@keyframes ui-progress-grow {
+  0% {
+    transform: scaleX(0.01);
+  }
+  20% {
+    transform: scaleX(0.1);
+  }
+  30% {
+    transform: scaleX(0.6);
+  }
+  40%,
+  50% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes ui-progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes ui-progress-fade {
+  100% {
+    background-color: var(--progress-pulse-from);
+  }
+}
+@keyframes ui-progress-pulse {
+  0% {
+    background-color: var(--progress-pulse-from);
+  }
+  100% {
+    background-color: var(--progress-pulse-to);
+  }
+}
+@keyframes ui-progress-fade-contrast {
+  100% {
+    opacity: 0.8;
+  }
+}
+@keyframes ui-progress-pulse-contrast {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

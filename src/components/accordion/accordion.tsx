@@ -4,21 +4,24 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
+import { ChevronDownIcon } from '../dropdown-menu/shared'
 
+// Radix Themes has no accordion. This one is made to sit next to its Card:
+// the same box, hairlines and grays, with calm rows like a menu.
 export const accordionVariants = tv({
   slots: {
     root: 'flex w-full flex-col text-gray-12',
-    item: 'border-gray-a5 border-b last:border-b-0',
+    item: 'group/item border-gray-a5 border-b last:border-b-0',
     header: 'flex',
     trigger: [
-      'group/trigger flex w-full select-none items-center justify-between text-left font-medium',
-      'hover:bg-gray-a2',
+      'group/trigger flex w-full cursor-default select-none items-center justify-between text-left font-medium',
+      'hover:bg-gray-a2 active:bg-gray-a3',
       // The ring is drawn inside, so the box around it does not cut it off
       '-outline-offset-2 outline-accent-8 focus-visible:outline-2',
-      'data-disabled:cursor-not-allowed data-disabled:text-gray-a8 data-disabled:hover:bg-transparent',
+      'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
     ],
     icon: [
-      'shrink-0 text-gray-a10 transition-transform duration-200',
+      'shrink-0 text-gray-a11 transition-transform duration-200',
       'group-data-panel-open/trigger:rotate-180 group-data-disabled/trigger:text-gray-a8',
     ],
     content: [
@@ -30,28 +33,37 @@ export const accordionVariants = tv({
   variants: {
     variant: {
       surface: {
-        // A box, so the corners stay box-like even when the theme radius is `full`
-        root: 'overflow-hidden rounded-panel-lg bg-panel inset-ring inset-ring-gray-a5',
+        // The same box as `Card`: ::before is the see-through panel, ::after the hairline
+        // on top (color from Radix Themes' `base-card.css`). It never becomes a pill.
+        root: [
+          'relative overflow-hidden rounded-panel-lg contain-paint',
+          'before:pointer-events-none before:absolute before:inset-px before:-z-1 before:[border-radius:calc(var(--ui-radius)-1px)] before:bg-panel before:backdrop-panel',
+          'after:pointer-events-none after:absolute after:inset-px after:[border-radius:calc(var(--ui-radius)-1px)]',
+          'after:shadow-[0_0_0_1px_color-mix(in_oklab,var(--gray-a5),var(--gray-5)_25%)]',
+        ],
+        // The first and the last row follow the corners of the box, so the focus ring does too
+        trigger: [
+          'group-first/item:rounded-t-(--ui-radius)',
+          'group-last/item:not-data-panel-open:rounded-b-(--ui-radius)',
+        ],
       },
       ghost: {
-        trigger: 'rounded-ui-sm',
+        trigger: 'rounded-panel-sm',
       },
     },
     size: {
       sm: {
-        trigger: 'gap-3 px-3 py-2 text-sm',
-        icon: 'size-3.5',
-        inner: 'px-3 pb-3 text-sm',
+        trigger: 'gap-2 px-3 py-2 text-xs tracking-[0.0025em]',
+        inner: 'px-3 pb-3 text-xs tracking-[0.0025em]',
       },
       md: {
-        trigger: 'gap-4 px-4 py-3 text-base',
-        icon: 'size-4',
-        inner: 'px-4 pb-4 text-base',
+        trigger: 'gap-3 px-4 py-3 text-sm',
+        inner: 'px-4 pb-4 text-sm',
       },
       lg: {
-        trigger: 'gap-4 px-5 py-4 text-lg',
-        icon: 'size-5',
-        inner: 'px-5 pb-5 text-lg',
+        trigger: 'gap-4 px-5 py-4 text-base',
+        icon: 'size-[11px]',
+        inner: 'px-5 pb-5 text-base',
       },
     },
   },
@@ -148,20 +160,7 @@ export function AccordionTrigger({
     <BaseAccordion.Header className={cn(styles.header(), classNames?.header)} render={<Heading />}>
       <BaseAccordion.Trigger {...props} className={cn(styles.trigger(), className)}>
         {children}
-        <svg
-          aria-hidden="true"
-          className={cn(styles.icon(), classNames?.icon)}
-          fill="none"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="m4 6 4 4 4-4"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-          />
-        </svg>
+        <ChevronDownIcon className={cn(styles.icon(), classNames?.icon)} />
       </BaseAccordion.Trigger>
     </BaseAccordion.Header>
   )

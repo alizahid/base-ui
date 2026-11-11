@@ -5,16 +5,18 @@ import { Button } from '../button'
 import { DropdownMenu } from '.'
 
 const sizes = ['sm', 'md'] as const
+const variants = ['solid', 'soft'] as const
 
 const meta = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu.Content,
-  args: { color: 'accent', size: 'md' },
+  args: { color: 'accent', highContrast: false, size: 'md', variant: 'solid' },
   argTypes: {
     align: { control: 'inline-radio', options: ['start', 'center', 'end'] },
     color: { control: 'select', options: ['accent', ...colors] },
     side: { control: 'inline-radio', options: ['top', 'right', 'bottom', 'left'] },
     size: { control: 'inline-radio', options: sizes },
+    variant: { control: 'inline-radio', options: variants },
   },
 } satisfies Meta<typeof DropdownMenu.Content>
 
@@ -72,6 +74,44 @@ export const Sizes: Story = {
               </DropdownMenu.SubContent>
             </DropdownMenu.Sub>
             <DropdownMenu.CheckboxItem defaultChecked>Show hidden files</DropdownMenu.CheckboxItem>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+      ))}
+    </div>
+  ),
+}
+
+/**
+ * `variant` is the look of the highlighted row: a full color fill (`solid`) or a
+ * light tint (`soft`). `highContrast` makes the solid fill use the darkest step.
+ */
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-4">
+      {(
+        [
+          { label: 'solid', variant: 'solid' },
+          { label: 'soft', variant: 'soft' },
+          { highContrast: true, label: 'solid, high contrast', variant: 'solid' },
+        ] as const
+      ).map(({ label, ...props }) => (
+        <DropdownMenu.Root key={label}>
+          <DropdownMenu.Trigger render={<Button variant="soft" />}>{label}</DropdownMenu.Trigger>
+          <DropdownMenu.Content {...props}>
+            <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
+            <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
+            <DropdownMenu.CheckboxItem defaultChecked>Show hidden files</DropdownMenu.CheckboxItem>
+            <DropdownMenu.Sub>
+              <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+              <DropdownMenu.SubContent>
+                <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
+                <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
+              </DropdownMenu.SubContent>
+            </DropdownMenu.Sub>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Item color="red" shortcut="⌘ ⌫">
+              Delete
+            </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       ))}

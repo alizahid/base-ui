@@ -23,7 +23,7 @@ const box = 'h-48 w-72 rounded-ui-md inset-ring inset-ring-gray-a5'
 const meta = {
   title: 'Components/ScrollArea',
   component: ScrollArea,
-  args: { className: box, scrollbars: 'vertical', size: 'md' },
+  args: { className: box, scrollbars: 'both', size: 'sm' },
   argTypes: {
     radius: { control: 'inline-radio', options: radii },
     scrollbars: { control: 'inline-radio', options: scrollbars },

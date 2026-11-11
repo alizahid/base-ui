@@ -34,7 +34,7 @@ function Card({ active, text, title }: { active?: boolean; text: string; title: 
   return (
     <NavigationMenu.Link active={active} href="#">
       <div className="font-medium">{title}</div>
-      <div className="text-gray-11">{text}</div>
+      <div className="text-gray-a11">{text}</div>
     </NavigationMenu.Link>
   )
 }
@@ -67,9 +67,8 @@ function Items() {
         </NavigationMenu.Content>
       </NavigationMenu.Item>
       <NavigationMenu.Item>
-        <NavigationMenu.Link className="flex h-8 items-center px-3 font-medium" href="#">
-          GitHub
-        </NavigationMenu.Link>
+        {/* A link straight in the bar looks like a trigger */}
+        <NavigationMenu.Link href="#">GitHub</NavigationMenu.Link>
       </NavigationMenu.Item>
     </NavigationMenu.List>
   )

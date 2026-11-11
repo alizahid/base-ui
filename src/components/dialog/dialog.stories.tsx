@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from '../button'
 import { Dialog } from '.'
 
-const sizes = ['sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/Dialog',
   component: Dialog.Content,
-  args: { size: 'md' },
+  args: { size: 'lg' },
   argTypes: {
     size: { control: 'inline-radio', options: sizes },
   },
@@ -23,7 +23,7 @@ export const Playground: Story = {
       <Dialog.Trigger render={<Button />}>Edit profile</Dialog.Trigger>
       <Dialog.Content {...args}>
         <Dialog.Title>Edit profile</Dialog.Title>
-        <Dialog.Description>Make changes to your profile here.</Dialog.Description>
+        <Dialog.Description className="mb-4">Make changes to your profile here.</Dialog.Description>
         <div className="flex justify-end gap-3">
           <Dialog.Close render={<Button variant="soft" />}>Cancel</Dialog.Close>
           <Dialog.Close render={<Button />}>Save</Dialog.Close>
@@ -41,7 +41,9 @@ export const Sizes: Story = {
           <Dialog.Trigger render={<Button variant="soft" />}>Size {size}</Dialog.Trigger>
           <Dialog.Content size={size}>
             <Dialog.Title>Size {size}</Dialog.Title>
-            <Dialog.Description>The padding and the width change with the size.</Dialog.Description>
+            <Dialog.Description className="mb-4">
+              The padding and the corners change with the size.
+            </Dialog.Description>
             <Dialog.Close render={<Button variant="soft" />}>Close</Dialog.Close>
           </Dialog.Content>
         </Dialog.Root>
@@ -57,7 +59,9 @@ export const ClassNameOverride: Story = {
       <Dialog.Trigger render={<Button variant="outline" />}>Open</Dialog.Trigger>
       <Dialog.Content className="max-w-2xl rounded-none" classNames={{ backdrop: 'bg-accent-a6' }}>
         <Dialog.Title>Custom look</Dialog.Title>
-        <Dialog.Description>Square corners, wider, and a tinted backdrop.</Dialog.Description>
+        <Dialog.Description className="mb-4">
+          Square corners, wider, and a tinted backdrop.
+        </Dialog.Description>
         <Dialog.Close render={<Button />}>Close</Dialog.Close>
       </Dialog.Content>
     </Dialog.Root>

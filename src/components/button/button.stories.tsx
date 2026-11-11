@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Button } from './button'
 
 const variants = ['solid', 'soft', 'surface', 'outline', 'ghost'] as const
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/Button',
@@ -13,6 +13,7 @@ const meta = {
     children: 'Button',
     color: 'accent',
     disabled: false,
+    highContrast: false,
     loading: false,
     size: 'md',
     variant: 'solid',
@@ -79,6 +80,23 @@ export const Radius: Story = {
           radius full + rounded-tl-none
         </Button>
       </div>
+    </div>
+  ),
+}
+
+/** Stronger text and fills, using the darkest step of the color. */
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {[false, true].map((highContrast) => (
+        <div className="flex flex-wrap items-center gap-4" key={String(highContrast)}>
+          {variants.map((variant) => (
+            <Button key={variant} {...args} highContrast={highContrast} variant={variant}>
+              {variant}
+            </Button>
+          ))}
+        </div>
+      ))}
     </div>
   ),
 }

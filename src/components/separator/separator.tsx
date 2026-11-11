@@ -4,6 +4,7 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 
+// Values follow Radix Themes' Separator: 16px, 32px, 64px or the full length
 export const separatorVariants = tv({
   base: 'block shrink-0',
   variants: {
@@ -31,7 +32,8 @@ export const separatorVariants = tv({
   ],
   defaultVariants: {
     orientation: 'horizontal',
-    size: 'full',
+    // Short by default, like Radix Themes. Use `size="full"` for a divider.
+    size: 'sm',
     colored: false,
   },
 })

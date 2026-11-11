@@ -178,7 +178,9 @@ export const AboveDialog: Story = {
         <Dialog.Trigger render={<Button variant="soft" />}>Open dialog</Dialog.Trigger>
         <Dialog.Content>
           <Dialog.Title>Dialog</Dialog.Title>
-          <Dialog.Description>Create a toast while the dialog is open.</Dialog.Description>
+          <Dialog.Description className="mb-4">
+            Create a toast while the dialog is open.
+          </Dialog.Description>
           <AddButton />
         </Dialog.Content>
       </Dialog.Root>

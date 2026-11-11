@@ -1,17 +1,16 @@
 import { Menu as BaseMenu } from '@base-ui/react/menu'
 import type { ComponentProps, ComponentType } from 'react'
-import { tv } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import { type PositionerProps, splitPositionerProps } from '../../lib/positioner'
-import { listItem, listLabel, listPopup, listSeparator } from '../../lib/styles'
+import { listVariants } from '../../lib/styles'
 import { useThemeProps } from '../theme-provider'
 import {
   CheckIcon,
   ChevronRightIcon,
-  type DropdownMenuSize,
-  DropdownMenuSizeProvider,
-  useMenuSize,
+  type ListStyle,
+  ListStyleProvider,
+  useListStyle,
 } from './shared'
 
 export const DropdownMenuRoot = BaseMenu.Root
@@ -34,61 +33,6 @@ export const DropdownMenuSub = BaseMenu.SubmenuRoot
 
 export type DropdownMenuSubProps = ComponentProps<typeof BaseMenu.SubmenuRoot>
 
-export const menuContentVariants = tv({
-  // `group/menu` lets the rows see if the menu has checkbox or radio items
-  base: [listPopup, 'group/menu max-h-(--available-height) overflow-y-auto overscroll-contain'],
-})
-
-export const menuItemVariants = tv({
-  base: [
-    listItem,
-    'group/item data-popup-open:not-data-highlighted:bg-accent-a3',
-    // A colored item, for example a red "Delete"
-    'data-color:not-data-disabled:not-data-highlighted:text-accent-11',
-  ],
-  variants: {
-    size: {
-      // Rows move right when the menu has checkbox or radio items, so all text lines up
-      sm: 'h-6 px-2 text-xs group-has-[[data-inset]]/menu:pl-6',
-      md: 'group-has-[[data-inset]]/menu:pl-8',
-    },
-    /** Leaves room on the left for the check icon. */
-    inset: {
-      true: '',
-    },
-  },
-  compoundVariants: [
-    { inset: true, size: 'sm', class: 'pl-6' },
-    { inset: true, size: 'md', class: 'pl-8' },
-  ],
-  defaultVariants: {
-    size: 'md',
-  },
-})
-
-export const menuLabelVariants = tv({
-  base: listLabel,
-  variants: {
-    size: {
-      sm: 'h-6 px-2 group-has-[[data-inset]]/menu:pl-6',
-      md: 'group-has-[[data-inset]]/menu:pl-8',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-})
-
-const indicatorVariants = tv({
-  base: 'absolute inline-flex items-center justify-center',
-  variants: {
-    size: {
-      sm: 'left-1 [&>svg]:size-3.5',
-      md: 'left-2',
-    },
-  },
-})
-
 type ContentOwnProps = Pick<ComponentProps<typeof BaseMenu.Portal>, 'container' | 'keepMounted'> & {
   className?: string
   /** Classes for the parts that `Content` renders around itself. */
@@ -101,10 +45,20 @@ type ContentOwnProps = Pick<ComponentProps<typeof BaseMenu.Portal>, 'container' 
    */
   color?: Color
   /**
+   * With the `solid` variant: the highlighted row uses the darkest step of the color.
+   * @default false
+   */
+  highContrast?: boolean
+  /**
    * The height and the text size of the rows.
    * @default 'md'
    */
-  size?: DropdownMenuSize
+  size?: 'sm' | 'md'
+  /**
+   * The look of the highlighted row: a full color fill (`solid`) or a light tint (`soft`).
+   * @default 'solid'
+   */
+  variant?: 'solid' | 'soft'
 }
 
 type PopupProps = Omit<ComponentProps<typeof BaseMenu.Popup>, 'className' | 'color'>
@@ -114,35 +68,58 @@ type ContentImplProps = PopupProps &
   PositionerProps<ComponentProps<typeof BaseMenu.Positioner>> & {
     // Menu and ContextMenu have their own positioner
     positioner: ComponentType<ComponentProps<typeof BaseMenu.Positioner>>
+    /** A submenu: it sits a bit higher, so its first row is level with the row that opened it. */
+    sub?: boolean
   }
 
 /** Portal + Positioner + Popup. Shared by Menu and ContextMenu. Not a public part. */
 export function DropdownMenuContentImpl({
   className,
   classNames,
+  collisionPadding = 10,
   color,
   container,
+  highContrast,
   keepMounted,
   positioner: Positioner,
-  size: sizeProp,
+  size,
+  sub,
+  variant,
   ...props
 }: ContentImplProps) {
   const themeProps = useThemeProps()
-  // A submenu keeps the size of its parent menu
-  const parentSize = useMenuSize()
-  const size = sizeProp ?? parentSize
-  const [positionerProps, popupProps] = splitPositionerProps(props)
+  // A submenu keeps the look of its parent menu
+  const parent = useListStyle()
+  const style: ListStyle = {
+    highContrast: highContrast ?? parent.highContrast,
+    size: size ?? parent.size ?? 'md',
+    variant: variant ?? parent.variant,
+  }
+  const styles = listVariants(style)
+  const [{ alignOffset, ...positionerProps }, popupProps] = splitPositionerProps(props)
+  // Radix Themes moves a submenu up by the padding of the menu box (4px or 8px)
+  const subAlignOffset = style.size === 'sm' ? -4 : -8
 
   return (
     <BaseMenu.Portal {...themeProps} container={container} keepMounted={keepMounted}>
-      <Positioner {...positionerProps} className={cn('outline-none', classNames?.positioner)}>
-        <DropdownMenuSizeProvider value={size}>
+      <Positioner
+        {...positionerProps}
+        alignOffset={alignOffset ?? (sub ? subAlignOffset : undefined)}
+        collisionPadding={collisionPadding}
+        className={cn('outline-none', classNames?.positioner)}
+      >
+        <ListStyleProvider value={style}>
           <BaseMenu.Popup
             data-color={colorAttribute(color)}
             {...popupProps}
-            className={cn(menuContentVariants(), className)}
+            className={cn(
+              styles.content(),
+              styles.viewport(),
+              'flex max-h-(--available-height) flex-col',
+              className,
+            )}
           />
-        </DropdownMenuSizeProvider>
+        </ListStyleProvider>
       </Positioner>
     </BaseMenu.Portal>
   )
@@ -152,27 +129,35 @@ export type DropdownMenuContentProps = PopupProps &
   ContentOwnProps &
   PositionerProps<ComponentProps<typeof BaseMenu.Positioner>>
 
-/** The menu box. Base UI's `Portal`, `Positioner` and `Popup` in one. */
-export function DropdownMenuContent({ sideOffset = 4, ...props }: DropdownMenuContentProps) {
+/**
+ * The menu box. Base UI's `Portal`, `Positioner` and `Popup` in one.
+ * Like in Radix Themes it opens 4px below the trigger, lined up with its start.
+ */
+export function DropdownMenuContent({
+  align = 'start',
+  sideOffset = 4,
+  ...props
+}: DropdownMenuContentProps) {
   return (
-    <DropdownMenuContentImpl {...props} positioner={BaseMenu.Positioner} sideOffset={sideOffset} />
+    <DropdownMenuContentImpl
+      {...props}
+      align={align}
+      positioner={BaseMenu.Positioner}
+      sideOffset={sideOffset}
+    />
   )
 }
 
 export type DropdownMenuSubContentProps = DropdownMenuContentProps
 
 /** The box of a submenu. Goes inside `Sub`, next to `SubTrigger`. */
-export function DropdownMenuSubContent({
-  alignOffset = -4,
-  sideOffset = 2,
-  ...props
-}: DropdownMenuSubContentProps) {
+export function DropdownMenuSubContent({ sideOffset = 1, ...props }: DropdownMenuSubContentProps) {
   return (
     <DropdownMenuContentImpl
       {...props}
-      alignOffset={alignOffset}
       positioner={BaseMenu.Positioner}
       sideOffset={sideOffset}
+      sub
     />
   )
 }
@@ -186,11 +171,7 @@ type ItemOwnProps = {
 }
 
 function Shortcut({ children }: { children: string }) {
-  return (
-    <span className="ml-auto pl-4 text-gray-a10 text-xs group-data-disabled/item:text-gray-a8 group-data-highlighted/item:text-accent-contrast">
-      {children}
-    </span>
-  )
+  return <span className={listVariants().shortcut()}>{children}</span>
 }
 
 export type DropdownMenuItemProps = Omit<
@@ -206,13 +187,13 @@ export function DropdownMenuItem({
   shortcut,
   ...props
 }: DropdownMenuItemProps) {
-  const size = useMenuSize()
+  const styles = listVariants(useListStyle())
 
   return (
     <BaseMenu.Item
       data-color={colorAttribute(color)}
       {...props}
-      className={cn(menuItemVariants({ size }), className)}
+      className={cn(styles.item({ colored: color !== undefined }), className)}
     >
       {children}
       {shortcut && <Shortcut>{shortcut}</Shortcut>}
@@ -240,18 +221,16 @@ export function DropdownMenuCheckboxItem({
   shortcut,
   ...props
 }: DropdownMenuCheckboxItemProps) {
-  const size = useMenuSize()
+  const styles = listVariants(useListStyle())
 
   return (
     <BaseMenu.CheckboxItem
       data-color={colorAttribute(color)}
       data-inset=""
       {...props}
-      className={cn(menuItemVariants({ inset: true, size }), className)}
+      className={cn(styles.item({ colored: color !== undefined }), className)}
     >
-      <BaseMenu.CheckboxItemIndicator
-        className={cn(indicatorVariants({ size }), classNames?.indicator)}
-      >
+      <BaseMenu.CheckboxItemIndicator className={cn(styles.indicator(), classNames?.indicator)}>
         <CheckIcon />
       </BaseMenu.CheckboxItemIndicator>
       {children}
@@ -280,18 +259,16 @@ export function DropdownMenuRadioItem({
   shortcut,
   ...props
 }: DropdownMenuRadioItemProps) {
-  const size = useMenuSize()
+  const styles = listVariants(useListStyle())
 
   return (
     <BaseMenu.RadioItem
       data-color={colorAttribute(color)}
       data-inset=""
       {...props}
-      className={cn(menuItemVariants({ inset: true, size }), className)}
+      className={cn(styles.item({ colored: color !== undefined }), className)}
     >
-      <BaseMenu.RadioItemIndicator
-        className={cn(indicatorVariants({ size }), classNames?.indicator)}
-      >
+      <BaseMenu.RadioItemIndicator className={cn(styles.indicator(), classNames?.indicator)}>
         <CheckIcon />
       </BaseMenu.RadioItemIndicator>
       {children}
@@ -313,21 +290,25 @@ export function DropdownMenuSubTrigger({
   color,
   ...props
 }: DropdownMenuSubTriggerProps) {
-  const size = useMenuSize()
+  const { size, ...style } = useListStyle()
+  const styles = listVariants({ size, ...style })
 
   return (
     <BaseMenu.SubmenuTrigger
       data-color={colorAttribute(color)}
       {...props}
-      className={cn(menuItemVariants({ size }), className)}
+      className={cn(styles.item({ colored: color !== undefined }), className)}
     >
       {children}
-      <ChevronRightIcon
+      {/* Radix Themes: the arrow is gray-12 and 2px closer to the edge than the text */}
+      <span
         className={cn(
-          '-mr-1 ml-auto text-gray-a10 group-data-disabled/item:text-gray-a8 group-data-highlighted/item:text-accent-contrast',
-          size === 'sm' && 'size-3.5',
+          styles.shortcut(),
+          '-mr-0.5 not-group-data-highlighted/item:not-group-data-disabled/item:text-gray-12',
         )}
-      />
+      >
+        <ChevronRightIcon className={size === 'sm' ? 'size-2' : undefined} />
+      </span>
     </BaseMenu.SubmenuTrigger>
   )
 }
@@ -341,9 +322,9 @@ export type DropdownMenuLabelProps = Omit<
 
 /** A small heading. Must be inside `Group` or `RadioGroup`. */
 export function DropdownMenuLabel({ className, ...props }: DropdownMenuLabelProps) {
-  const size = useMenuSize()
+  const styles = listVariants(useListStyle())
 
-  return <BaseMenu.GroupLabel {...props} className={cn(menuLabelVariants({ size }), className)} />
+  return <BaseMenu.GroupLabel {...props} className={cn(styles.label(), className)} />
 }
 
 export type DropdownMenuSeparatorProps = Omit<
@@ -354,5 +335,5 @@ export type DropdownMenuSeparatorProps = Omit<
 }
 
 export function DropdownMenuSeparator({ className, ...props }: DropdownMenuSeparatorProps) {
-  return <BaseMenu.Separator {...props} className={cn(listSeparator, className)} />
+  return <BaseMenu.Separator {...props} className={cn(listVariants().separator(), className)} />
 }

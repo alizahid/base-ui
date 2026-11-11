@@ -19,7 +19,7 @@ function InfoIcon() {
 const meta = {
   title: 'Components/Callout',
   component: Callout.Root,
-  args: { color: 'accent', size: 'md', variant: 'soft' },
+  args: { color: 'accent', highContrast: false, size: 'md', variant: 'soft' },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
     radius: { control: 'inline-radio', options: radii },
@@ -72,6 +72,21 @@ export const Sizes: Story = {
     <div className="flex flex-col gap-4">
       {sizes.map((size) => (
         <Callout.Root key={size} {...args} size={size}>
+          <Callout.Icon>
+            <InfoIcon />
+          </Callout.Icon>
+          <Callout.Text>{text}</Callout.Text>
+        </Callout.Root>
+      ))}
+    </div>
+  ),
+}
+
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      {variants.map((variant) => (
+        <Callout.Root key={variant} {...args} highContrast variant={variant}>
           <Callout.Icon>
             <InfoIcon />
           </Callout.Icon>

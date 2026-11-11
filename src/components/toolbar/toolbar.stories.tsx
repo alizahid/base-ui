@@ -4,7 +4,7 @@ import { colors } from '../../lib/colors'
 import { radii } from '../../lib/theme'
 import { Toolbar } from '.'
 
-const sizes = ['sm', 'md'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/Toolbar',

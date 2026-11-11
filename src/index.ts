@@ -47,4 +47,13 @@ export * from './components/toolbar'
 export * from './components/tooltip'
 export { cn } from './lib/cn'
 export { type Color, colors, type ThemeColor } from './lib/colors'
-export { type Appearance, appearances, type Gray, grays, type Radius, radii } from './lib/theme'
+export {
+  type Appearance,
+  appearances,
+  type Gray,
+  grays,
+  type PanelBackground,
+  panelBackgrounds,
+  type Radius,
+  radii,
+} from './lib/theme'

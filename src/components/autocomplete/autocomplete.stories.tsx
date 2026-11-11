@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { TextField } from '../text-field'
 import { Autocomplete } from '.'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/Autocomplete',
@@ -46,9 +46,9 @@ const tags = [
   'typescript',
 ]
 
-function TagList({ color }: { color?: (typeof colors)[number] | 'accent' }) {
+function TagList(props: Omit<Autocomplete.ContentProps, 'children' | 'empty'>) {
   return (
-    <Autocomplete.Content color={color} empty="No tags found">
+    <Autocomplete.Content {...props} empty="No tags found">
       {(tag: string) => (
         <Autocomplete.Item key={tag} value={tag}>
           {tag}
@@ -182,6 +182,30 @@ export const Variants: Story = {
           <TagList />
         </Autocomplete.Root>
       ))}
+    </div>
+  ),
+}
+
+/** `Content` has the same `size`, `variant` and `highContrast` props as a menu. */
+export const ContentVariants: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      <Autocomplete.Root items={tags}>
+        <Autocomplete.Input {...args} placeholder="solid" />
+        <TagList />
+      </Autocomplete.Root>
+      <Autocomplete.Root items={tags}>
+        <Autocomplete.Input {...args} placeholder="soft" />
+        <TagList variant="soft" />
+      </Autocomplete.Root>
+      <Autocomplete.Root items={tags}>
+        <Autocomplete.Input {...args} placeholder="solid, high contrast" />
+        <TagList highContrast />
+      </Autocomplete.Root>
+      <Autocomplete.Root items={tags}>
+        <Autocomplete.Input {...args} placeholder="size sm" size="sm" />
+        <TagList size="sm" />
+      </Autocomplete.Root>
     </div>
   ),
 }

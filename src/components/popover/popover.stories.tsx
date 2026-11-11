@@ -4,13 +4,13 @@ import { Dialog } from '../dialog'
 import { Tooltip } from '../tooltip'
 import { Popover } from '.'
 
-const sizes = ['sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 const sides = ['top', 'right', 'bottom', 'left'] as const
 
 const meta = {
   title: 'Components/Popover',
   component: Popover.Content,
-  args: { align: 'center', arrow: false, side: 'bottom', sideOffset: 8, size: 'md' },
+  args: { align: 'start', arrow: false, side: 'bottom', sideOffset: 8, size: 'md' },
   argTypes: {
     align: { control: 'inline-radio', options: ['start', 'center', 'end'] },
     side: { control: 'inline-radio', options: sides },
@@ -49,7 +49,7 @@ export const Sizes: Story = {
           <Popover.Trigger render={<Button variant="soft" />}>Size {size}</Popover.Trigger>
           <Popover.Content size={size}>
             <Popover.Title>Size {size}</Popover.Title>
-            <Popover.Description>The padding and the text change.</Popover.Description>
+            <Popover.Description>The padding and the corners change.</Popover.Description>
           </Popover.Content>
         </Popover.Root>
       ))}
@@ -82,8 +82,8 @@ export const WithClose: Story = {
         <Popover.Title>Share this page</Popover.Title>
         <Popover.Description>Anyone with the link can view it.</Popover.Description>
         <div className="mt-4 flex justify-end gap-2">
-          <Popover.Close render={<Button size="sm" variant="soft" />}>Cancel</Popover.Close>
-          <Popover.Close render={<Button size="sm" />}>Copy link</Popover.Close>
+          <Popover.Close render={<Button variant="soft" />}>Cancel</Popover.Close>
+          <Popover.Close render={<Button />}>Copy link</Popover.Close>
         </div>
       </Popover.Content>
     </Popover.Root>
@@ -114,7 +114,9 @@ export const InsideDialog: Story = {
       <Dialog.Trigger render={<Button variant="soft" />}>Open dialog</Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Title>Dialog</Dialog.Title>
-        <Dialog.Description>The popover opens above the dialog.</Dialog.Description>
+        <Dialog.Description className="mb-4">
+          The popover opens above the dialog.
+        </Dialog.Description>
         <Popover.Root>
           <Popover.Trigger render={<Button />}>Open popover</Popover.Trigger>
           <Popover.Content arrow>
@@ -122,9 +124,7 @@ export const InsideDialog: Story = {
             <Popover.Description>The tooltip opens above the popover.</Popover.Description>
             <div className="mt-3">
               <Tooltip content="Above everything" delay={0}>
-                <Button size="sm" variant="soft">
-                  Hover me
-                </Button>
+                <Button variant="soft">Hover me</Button>
               </Tooltip>
             </div>
           </Popover.Content>

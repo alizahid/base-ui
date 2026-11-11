@@ -2,13 +2,15 @@ import { useRender } from '@base-ui/react/use-render'
 import { createContext, useContext, useMemo } from 'react'
 import { cn } from '../../lib/cn'
 import type { ThemeColor } from '../../lib/colors'
-import type { Appearance, Gray, Radius } from '../../lib/theme'
+import type { Appearance, Gray, PanelBackground, Radius } from '../../lib/theme'
 
 export type Theme = {
   /** `inherit` means the appearance comes from a parent, for example a `dark` class on `<html>`. */
   appearance: Appearance
   color: ThemeColor
   gray: Gray
+  /** `translucent` gives cards a see-through background with a blur behind it. */
+  panelBackground: PanelBackground
   radius: Radius
 }
 
@@ -16,6 +18,7 @@ const defaultTheme: Theme = {
   appearance: 'inherit',
   color: 'blue',
   gray: 'slate',
+  panelBackground: 'translucent',
   radius: 'medium',
 }
 
@@ -42,6 +45,7 @@ export function useThemeProps() {
     className: theme.appearance === 'inherit' ? undefined : theme.appearance,
     'data-color': theme.color,
     'data-gray': theme.gray,
+    'data-panel-background': theme.panelBackground,
     'data-radius': theme.radius,
   }
 }
@@ -65,6 +69,7 @@ export function ThemeProvider({
   color: colorProp,
   gray: grayProp,
   hasBackground: hasBackgroundProp,
+  panelBackground: panelBackgroundProp,
   radius: radiusProp,
   render,
   ...props
@@ -77,10 +82,11 @@ export function ThemeProvider({
   const color = colorProp ?? inherited.color
   const gray = grayProp ?? inherited.gray
   const radius = radiusProp ?? inherited.radius
+  const panelBackground = panelBackgroundProp ?? inherited.panelBackground
 
   const theme = useMemo(
-    () => ({ appearance, color, gray, radius }),
-    [appearance, color, gray, radius],
+    () => ({ appearance, color, gray, panelBackground, radius }),
+    [appearance, color, gray, panelBackground, radius],
   )
 
   const explicitAppearance = appearanceProp !== undefined && appearanceProp !== 'inherit'
@@ -93,6 +99,7 @@ export function ThemeProvider({
       // on this element and nested providers behave the same at any depth
       'data-color': color,
       'data-gray': gray,
+      'data-panel-background': panelBackground,
       'data-radius': radius,
       ...props,
       className: cn(

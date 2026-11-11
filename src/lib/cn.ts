@@ -4,7 +4,7 @@ export type { ClassValue } from 'cn'
 
 /**
  * Same as `cn` from the `cn` package, but it also knows the `rounded-ui-*`,
- * `rounded-panel-*` and `rounded-inner-*` classes from our theme, so `className="rounded-full"` can override them.
+ * `rounded-panel-*`, `rounded-inner-*` and `shadow-ui-*` classes from our theme, so `className="rounded-full"` can override them.
  */
 export const cn = createCn({
   extend: {
@@ -13,18 +13,10 @@ export const cn = createCn({
     },
     theme: {
       radius: [
-        'ui-xs',
-        'ui-sm',
-        'ui-md',
-        'ui-lg',
-        'ui-xl',
+        ...['xs', 'sm', 'md', 'lg', 'xl', '2xl'].flatMap((size) => [`ui-${size}`, `panel-${size}`]),
         'ui-thumb',
-        'panel-xs',
-        'panel-sm',
-        'panel-md',
-        'panel-lg',
-        'panel-xl',
       ],
+      shadow: ['ui-1', 'ui-2', 'ui-3', 'ui-4', 'ui-5', 'ui-6'],
     },
   },
 })

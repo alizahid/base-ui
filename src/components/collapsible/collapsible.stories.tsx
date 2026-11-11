@@ -25,7 +25,7 @@ function Recovery() {
 export const Playground: Story = {
   render: (args) => (
     <Collapsible.Root {...args} className="w-64">
-      <Collapsible.Trigger render={<Button size="sm" variant="soft" />}>
+      <Collapsible.Trigger render={<Button size="md" variant="soft" />}>
         Recovery keys
       </Collapsible.Trigger>
       <Collapsible.Content>
@@ -70,7 +70,7 @@ export const PlainTrigger: Story = {
 export const ClassNameOverride: Story = {
   render: (args) => (
     <Collapsible.Root {...args} className="w-64">
-      <Collapsible.Trigger render={<Button size="sm" variant="outline" />}>
+      <Collapsible.Trigger render={<Button size="md" variant="outline" />}>
         Slow and tinted
       </Collapsible.Trigger>
       <Collapsible.Content className="bg-accent-a3 duration-700">

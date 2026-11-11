@@ -68,9 +68,21 @@ Spinner, Switch, Tabs, TextArea, TextField, Toast, Toggle, ToggleGroup, Toolbar,
   Where one is rendered for you, a `classNames` prop lets you style it.
 - Popups keep the theme of the `ThemeProvider` they are used in.
 
+## Sizes and look
+
+The sizes, spacing, colors and shadows are ported from the Radix Themes CSS.
+
+- Controls (Button, TextField, Select, ...) use `sm`, `md`, `lg`, `xl` = 24, 32, 40, 48px.
+  `md` is the default.
+- `highContrast` is available on the components that have it in Radix Themes.
+- Shadows: `shadow-ui-1` to `shadow-ui-6`, with light and dark versions.
+- Panels: popups use `bg-panel-solid`. Cards use `bg-panel` with `backdrop-panel`, which is
+  see-through with a blur. Set `panelBackground="solid"` on `ThemeProvider` to turn that off.
+
 ## Radius
 
-- `rounded-ui-*` follows the theme radius and becomes a pill when the radius is `full`.
+- `rounded-ui-xs` to `rounded-ui-2xl` (3, 4, 6, 8, 12, 16px) follow the theme radius and become
+  a pill when the radius is `full`.
 - `rounded-panel-*` follows the theme radius but never becomes a pill (dialogs, popups).
 - Every `rounded-*` class sets `--ui-radius` on its element. A part inside it uses
   `rounded-inner-px`, `rounded-inner-0.5` or `rounded-inner-[3px]` (outer radius minus the gap),

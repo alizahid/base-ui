@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { ToggleGroup } from '.'
 
 const variants = ['soft', 'surface', 'outline', 'ghost'] as const
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/ToggleGroup',
@@ -52,6 +52,12 @@ export const Variants: Story = {
       ))}
     </div>
   ),
+}
+
+/** `highContrast` uses the darkest step of the color for the text. */
+export const HighContrast: Story = {
+  args: { highContrast: true },
+  render: Variants.render,
 }
 
 export const Sizes: Story = {

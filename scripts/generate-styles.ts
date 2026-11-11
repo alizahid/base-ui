@@ -6,21 +6,52 @@ import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { colors } from '../src/lib/colors'
 import { grays, type Radius } from '../src/lib/theme'
+import radixTokens from './radix-tokens.json'
 
 const DEFAULT_ACCENT = 'blue'
 const DEFAULT_GRAY = 'slate'
 
-// Bright scales where white text on step 9 is hard to read (same as Radix Themes)
-const darkContrast: Record<string, string> = {
-  amber: '#21201c',
-  yellow: '#21201c',
-  lime: '#1d211c',
-  mint: '#1a211e',
-  sky: '#1c2024',
+// Per-color values taken from Radix Themes (text color on step 9, tinted surface,
+// and the colors of indicators and tracks), for light and dark
+type ColorTokens = {
+  contrast: string
+  light: { surface: string; indicator: string; track: string }
+  dark: { surface: string; indicator: string; track: string }
 }
 
-// Same sizes as Tailwind's rounded-xs ... rounded-xl
-const radius = { xs: '0.125rem', sm: '0.25rem', md: '0.375rem', lg: '0.5rem', xl: '0.75rem' }
+const colorTokens = radixTokens as Record<string, ColorTokens>
+
+// Same sizes as Radix Themes radius 1 to 6: 3, 4, 6, 8, 12 and 16px
+const radius = {
+  xs: '0.1875rem',
+  sm: '0.25rem',
+  md: '0.375rem',
+  lg: '0.5rem',
+  xl: '0.75rem',
+  '2xl': '1rem',
+}
+
+// The six shadows of Radix Themes. 1 is an inner shadow for inputs, 2 and 3 are for
+// cards and small popups, 4 to 6 for menus, popovers and dialogs. Each one also
+// draws the hairline border.
+const shadows = {
+  light: [
+    'inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0 var(--gray-a2), inset 0 1.5px 2px 0 var(--black-a2)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 0 0 0.5px var(--black-a1), 0 1px 1px 0 var(--gray-a2), 0 2px 1px -1px var(--black-a1), 0 1px 3px 0 var(--black-a1)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 2px 3px -2px var(--gray-a3), 0 3px 12px -4px var(--black-a2), 0 4px 16px -8px var(--black-a2)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 8px 40px var(--black-a1), 0 12px 32px -16px var(--gray-a3)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px 60px var(--black-a3), 0 12px 32px -16px var(--gray-a5)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px 60px var(--black-a3), 0 16px 64px var(--gray-a2), 0 16px 36px -20px var(--gray-a7)',
+  ],
+  dark: [
+    'inset 0 -1px 1px 0 var(--gray-a3), inset 0 0 0 1px var(--gray-a3), inset 0 3px 4px 0 var(--black-a5), inset 0 0 0 1px var(--gray-a4)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 0 0 0.5px var(--black-a3), 0 1px 1px 0 var(--black-a6), 0 2px 1px -1px var(--black-a6), 0 1px 3px 0 var(--black-a5)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 2px 3px -2px var(--black-a3), 0 3px 8px -2px var(--black-a6), 0 4px 12px -4px var(--black-a7)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 8px 40px var(--black-a3), 0 12px 32px -16px var(--black-a5)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px 60px var(--black-a5), 0 12px 32px -16px var(--black-a7)',
+    '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px 60px var(--black-a4), 0 16px 64px var(--black-a6), 0 16px 36px -20px var(--black-a11)',
+  ],
+}
 
 // Same factors as Radix Themes
 const radiusFactor: Record<Radius, number> = {
@@ -43,7 +74,32 @@ function scale(slot: string, name: string) {
 }
 
 function accent(name: string) {
-  return [...scale('accent', name), `  --accent-contrast: ${darkContrast[name] ?? '#fff'};`]
+  return [
+    ...scale('accent', name),
+    `  --accent-contrast: ${colorTokens[name]?.contrast ?? '#fff'};`,
+    `  --accent-surface: var(--${name}-surface);`,
+    `  --accent-indicator: var(--${name}-indicator);`,
+    `  --accent-track: var(--${name}-track);`,
+  ]
+}
+
+function gray(name: string) {
+  return [...scale('gray', name), `  --gray-surface: var(--${name}-surface);`]
+}
+
+// The per-color values for one mode, for every color and gray
+function colorValues(mode: 'light' | 'dark') {
+  return [...colors, ...grays].flatMap((name) => {
+    const values = colorTokens[name]?.[mode]
+
+    return values
+      ? [
+          `  --${name}-surface: ${values.surface};`,
+          `  --${name}-indicator: ${values.indicator};`,
+          `  --${name}-track: ${values.track};`,
+        ]
+      : []
+  })
 }
 
 // colors.css
@@ -51,6 +107,12 @@ const imports = [...colors, ...grays].flatMap((name) =>
   ['', '-alpha', '-dark', '-dark-alpha'].map(
     (suffix) => `@import "@radix-ui/colors/${name}${suffix}.css";`,
   ),
+)
+
+// Pure black and white with alpha, used by the shadows and the backdrop
+imports.push(
+  '@import "@radix-ui/colors/black-alpha.css";',
+  '@import "@radix-ui/colors/white-alpha.css";',
 )
 
 writeFileSync(
@@ -70,12 +132,37 @@ const theme = [
   '@theme inline {',
   ...tokens('accent'),
   '  --color-accent-contrast: var(--accent-contrast);',
+  '  /* bg-accent-surface: the tinted see-through fill of "surface" variants */',
+  '  --color-accent-surface: var(--accent-surface);',
+  '  /* bg-accent-indicator / bg-accent-track: checked marks, and filled tracks of sliders and switches */',
+  '  --color-accent-indicator: var(--accent-indicator);',
+  '  --color-accent-track: var(--accent-track);',
   ...tokens('gray'),
+  '  --color-gray-surface: var(--gray-surface);',
   '',
-  '  /* Surfaces: bg-panel (popups, cards), bg-surface (inputs), bg-overlay (backdrops) */',
+  '  /* Pure black and white with alpha: bg-black-a3, text-white-a11, ... */',
+  ...steps.map((step) => `  --color-black-a${step}: var(--black-a${step});`),
+  ...steps.map((step) => `  --color-white-a${step}: var(--white-a${step});`),
+  '',
+  '  /*',
+  '   * Surfaces:',
+  '   * bg-panel        cards and other boxes on the page (see-through by default, use with backdrop-panel)',
+  '   * bg-panel-solid  popups: menus, dialogs, popovers',
+  '   * bg-surface      inputs',
+  '   * bg-overlay      the backdrop behind a dialog',
+  '   */',
   '  --color-panel: var(--panel);',
+  '  --color-panel-solid: var(--panel-solid);',
   '  --color-surface: var(--surface);',
   '  --color-overlay: var(--overlay);',
+  '',
+  '  /* Shadows: shadow-ui-1 to shadow-ui-6 */',
+  ...shadows.light.map((_, index) => `  --shadow-ui-${index + 1}: var(--ui-shadow-${index + 1});`),
+  '}',
+  '',
+  '/* The blur behind a see-through panel. Nothing when the theme uses solid panels. */',
+  '@utility backdrop-panel {',
+  '  backdrop-filter: var(--backdrop-filter-panel);',
   '}',
   '',
   '/*',
@@ -158,27 +245,44 @@ const theme = [
   '/* Defaults. Set again on every theme class, so nested light/dark areas work. */',
   `${themes} {`,
   ...accent(DEFAULT_ACCENT),
-  ...scale('gray', DEFAULT_GRAY),
+  ...gray(DEFAULT_GRAY),
   '}',
   '',
-  '/* Surfaces (same values as Radix Themes) */',
+  '/* Surfaces, shadows and per-color values (same as Radix Themes) */',
   ':root, .light, .light-theme {',
-  '  --panel: #fff;',
+  '  --panel-solid: #fff;',
+  '  --panel-translucent: rgb(255 255 255 / 0.7);',
   '  --surface: rgb(255 255 255 / 0.85);',
-  '  --overlay: rgb(0 0 0 / 0.4);',
+  '  --overlay: var(--black-a6);',
+  ...shadows.light.map((value, index) => `  --ui-shadow-${index + 1}: ${value};`),
+  ...colorValues('light'),
   '}',
   '',
   '.dark, .dark-theme {',
-  '  --panel: var(--gray-2);',
+  '  --panel-solid: var(--gray-2);',
+  '  --panel-translucent: var(--gray-a2);',
   '  --surface: rgb(0 0 0 / 0.25);',
-  '  --overlay: rgb(0 0 0 / 0.7);',
+  '  --overlay: var(--black-a8);',
+  ...shadows.dark.map((value, index) => `  --ui-shadow-${index + 1}: ${value};`),
+  ...colorValues('dark'),
+  '}',
+  '',
+  '/* Panels are see-through with a blur by default. data-panel-background="solid" turns that off. */',
+  `${themes}, [data-panel-background="translucent"] {`,
+  '  --panel: var(--panel-translucent);',
+  '  --backdrop-filter-panel: blur(64px);',
+  '}',
+  '',
+  '[data-panel-background="solid"] {',
+  '  --panel: var(--panel-solid);',
+  '  --backdrop-filter-panel: none;',
   '}',
   '',
   '/* The theme gray: data-gray points the gray at another scale. */',
   ...grays.flatMap((name) => [
     `[data-gray="${name}"],`,
     `[data-gray="${name}"] :where(.light, .light-theme, .dark, .dark-theme) {`,
-    ...scale('gray', name),
+    ...gray(name),
     '}',
     '',
   ]),

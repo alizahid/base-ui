@@ -5,7 +5,7 @@ import { type Color, colorAttribute } from '../../lib/colors'
 import type { Radius } from '../../lib/theme'
 import { Toggle, type ToggleProps } from '../toggle'
 
-type GroupStyle = Pick<ToggleProps, 'size' | 'variant'>
+type GroupStyle = Pick<ToggleProps, 'highContrast' | 'size' | 'variant'>
 
 // Lets the root set the size and variant of every item
 const ToggleGroupContext = createContext<GroupStyle>({})
@@ -28,12 +28,13 @@ export type ToggleGroupRootProps = Omit<
 export function ToggleGroupRoot({
   className,
   color,
+  highContrast,
   radius,
   size,
   variant,
   ...props
 }: ToggleGroupRootProps) {
-  const context = useMemo(() => ({ size, variant }), [size, variant])
+  const context = useMemo(() => ({ highContrast, size, variant }), [highContrast, size, variant])
 
   return (
     <ToggleGroupContext.Provider value={context}>
@@ -50,8 +51,15 @@ export function ToggleGroupRoot({
 export type ToggleGroupItemProps = ToggleProps
 
 /** A `Toggle` that takes its size and variant from the group. */
-export function ToggleGroupItem({ size, variant, ...props }: ToggleGroupItemProps) {
+export function ToggleGroupItem({ highContrast, size, variant, ...props }: ToggleGroupItemProps) {
   const group = useContext(ToggleGroupContext)
 
-  return <Toggle {...props} size={size ?? group.size} variant={variant ?? group.variant} />
+  return (
+    <Toggle
+      {...props}
+      highContrast={highContrast ?? group.highContrast}
+      size={size ?? group.size}
+      variant={variant ?? group.variant}
+    />
+  )
 }

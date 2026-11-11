@@ -12,6 +12,7 @@ const meta = {
   args: {
     'aria-label': 'Storage used',
     color: 'accent',
+    highContrast: false,
     size: 'md',
     value: 60,
     variant: 'surface',
@@ -53,6 +54,16 @@ export const Sizes: Story = {
     <div className="flex flex-col gap-4">
       {sizes.map((size) => (
         <Meter key={size} {...args} size={size} />
+      ))}
+    </div>
+  ),
+}
+
+export const HighContrast: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      {variants.map((variant) => (
+        <Meter key={variant} {...args} highContrast variant={variant} />
       ))}
     </div>
   ),

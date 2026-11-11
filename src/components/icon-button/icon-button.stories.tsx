@@ -5,7 +5,7 @@ import { Button } from '../button'
 import { IconButton } from './icon-button'
 
 const variants = ['solid', 'soft', 'surface', 'outline', 'ghost'] as const
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 function StarIcon() {
   return (
@@ -23,6 +23,7 @@ const meta = {
     children: <StarIcon />,
     color: 'accent',
     disabled: false,
+    highContrast: false,
     loading: false,
     size: 'md',
     variant: 'solid',

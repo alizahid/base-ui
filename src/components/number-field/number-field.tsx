@@ -13,7 +13,7 @@ export const numberFieldVariants = tv({
     group: 'flex size-full items-stretch',
     input: 'px-0 text-center tabular-nums',
     button: [
-      'flex aspect-square h-full shrink-0 select-none items-center justify-center text-gray-a11',
+      'flex aspect-square h-full shrink-0 cursor-default select-none items-center justify-center text-gray-a11',
       'hover:bg-gray-a3 active:bg-gray-a4',
       'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
     ],

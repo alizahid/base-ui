@@ -4,32 +4,37 @@ import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
 import { bareFieldBox } from '../../lib/field-box'
-import { controlSize, focusRing } from '../../lib/styles'
+import { controlSize } from '../../lib/styles'
 import type { Radius } from '../../lib/theme'
 
+// Radix Themes has no toolbar. This one is a bar that looks like its Card,
+// holding buttons that look like its gray ghost buttons.
 export const toolbarVariants = tv({
   slots: {
-    // Parts inside use rounded-inner-1: the toolbar radius minus its 4px padding
-    root: 'inline-flex gap-1 rounded-ui-lg bg-panel p-1 text-gray-12 inset-ring inset-ring-gray-a5',
+    // Parts inside use rounded-inner-*: the toolbar radius minus its padding.
+    // The hairline color is the one of Radix Themes' Card.
+    root: [
+      'inline-flex bg-panel text-gray-12 backdrop-panel',
+      'inset-ring inset-ring-[color-mix(in_oklab,var(--gray-a5),var(--gray-5)_25%)]',
+    ],
     button: [
-      'inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap font-medium text-gray-12',
+      'inline-flex shrink-0 cursor-default select-none items-center justify-center whitespace-nowrap text-gray-12',
       'hover:bg-gray-a3 active:bg-gray-a4',
-      // Pressed toggles and open menu triggers stay highlighted
+      // Pressed toggles look like a soft button. Open menu triggers keep the hover look.
       'data-pressed:bg-accent-a4 data-pressed:text-accent-a11',
-      'data-popup-open:bg-gray-a4',
+      'data-popup-open:bg-gray-a3',
       'data-disabled:cursor-not-allowed data-disabled:bg-transparent data-disabled:text-gray-a8',
-      // No gap around the ring: the toolbar has little room around its buttons
-      'outline-accent-8 focus-visible:outline-2',
+      '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
     ],
     link: [
-      'inline-flex shrink-0 items-center rounded-inner-1 text-gray-a11 underline-offset-4',
+      'inline-flex shrink-0 items-center text-gray-a11 underline-offset-4',
       'hover:text-accent-a11 hover:underline',
-      focusRing,
+      '-outline-offset-1 outline-accent-8 focus-visible:outline-2',
     ],
     separator: 'shrink-0 self-stretch bg-gray-a6',
-    group: 'flex gap-1',
+    group: 'flex',
     // The box itself is the shared field box (`bareFieldBox`), see `ToolbarInput`
-    input: 'min-w-0 rounded-inner-1',
+    input: 'min-w-0',
   },
   variants: {
     orientation: {
@@ -45,25 +50,59 @@ export const toolbarVariants = tv({
         group: 'flex-col items-stretch',
       },
     },
-    // The parts are one step smaller than a `Button` of the same size
+    // The whole bar is as tall as a `Button` of the same size (24, 32, 40, 48px),
+    // so the parts inside are one step smaller.
     size: {
       sm: {
-        button: [controlSize.xs, 'min-w-6 rounded-inner-1 px-1.5'],
-        link: 'px-1.5 text-xs',
-        input: 'px-1.5',
+        root: 'gap-0.5 p-0.5',
+        group: 'gap-0.5',
+        button: 'h-5 min-w-5 gap-1 rounded-inner-0.5 px-1 text-xs tracking-[0.0025em]',
+        link: 'rounded-inner-0.5 px-1 text-xs tracking-[0.0025em]',
+        input: 'h-5 rounded-inner-0.5 px-1',
       },
       md: {
-        button: [controlSize.sm, 'min-w-8 rounded-inner-1 px-2'],
-        link: 'px-2 text-sm',
-        input: 'px-2',
+        root: 'gap-1 p-1',
+        group: 'gap-1',
+        button: [controlSize.sm, 'min-w-6 gap-1 rounded-inner-1 px-1.5'],
+        link: 'rounded-inner-1 px-1.5 text-xs tracking-[0.0025em]',
+        input: 'rounded-inner-1 px-1.5',
+      },
+      lg: {
+        root: 'gap-1 p-1',
+        group: 'gap-1',
+        button: [controlSize.md, 'min-w-8 gap-2 rounded-inner-1 px-2'],
+        link: 'rounded-inner-1 px-2 text-sm',
+        input: 'rounded-inner-1 px-2',
+      },
+      xl: {
+        root: 'gap-1 p-1',
+        group: 'gap-1',
+        button: [controlSize.lg, 'min-w-10 gap-3 rounded-inner-1 px-3'],
+        link: 'rounded-inner-1 px-3 text-base',
+        input: 'rounded-inner-1 px-3',
       },
     },
   },
+  // A bar in a row may become a pill when the theme radius is `full`.
+  // A column never does: a tall pill looks wrong.
+  compoundVariants: [
+    { orientation: 'horizontal', size: 'sm', class: { root: 'rounded-ui-sm' } },
+    { orientation: 'horizontal', size: 'md', class: { root: 'rounded-ui-md' } },
+    { orientation: 'horizontal', size: 'lg', class: { root: 'rounded-ui-lg' } },
+    { orientation: 'horizontal', size: 'xl', class: { root: 'rounded-ui-xl' } },
+    { orientation: 'vertical', size: 'sm', class: { root: 'rounded-panel-sm' } },
+    { orientation: 'vertical', size: 'md', class: { root: 'rounded-panel-md' } },
+    { orientation: 'vertical', size: 'lg', class: { root: 'rounded-panel-lg' } },
+    { orientation: 'vertical', size: 'xl', class: { root: 'rounded-panel-xl' } },
+  ],
   defaultVariants: {
     orientation: 'horizontal',
     size: 'md',
   },
 })
+
+// The size of the shared field box that fits in a toolbar of each size
+const inputSize = { sm: 'sm', md: 'sm', lg: 'md', xl: 'lg' } as const
 
 type Variants = VariantProps<typeof toolbarVariants>
 
@@ -164,7 +203,7 @@ export function ToolbarInput({ className, ...props }: ToolbarInputProps) {
   const styles = useStyles()
   const { size } = useContext(ToolbarContext)
   // One step smaller than a `TextField` of the same size, like the buttons
-  const box = bareFieldBox({ size: size === 'sm' ? 'xs' : 'sm' })
+  const box = bareFieldBox({ size: inputSize[size ?? 'md'] })
 
   return <BaseToolbar.Input {...props} className={cn(box, styles.input(), className)} />
 }

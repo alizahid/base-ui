@@ -2,6 +2,7 @@ import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
 import { type ComponentProps, createContext, useContext } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
+import { dialogDescription, dialogTitle } from '../dialog/dialog'
 import { useThemeProps } from '../theme-provider'
 
 export type DrawerSide = 'left' | 'right' | 'top' | 'bottom'
@@ -47,6 +48,8 @@ export const DrawerClose = BaseDrawer.Close
 
 export type DrawerCloseProps = ComponentProps<typeof BaseDrawer.Close>
 
+// The look is Radix Themes' Dialog (solid panel, shadow 6, same paddings and
+// corners per size), attached to a screen edge. Radix Themes has no drawer.
 export const drawerContentVariants = tv({
   slots: {
     // Fades with the swipe: --drawer-swipe-progress goes from 0 to 1 while dragging
@@ -63,7 +66,7 @@ export const drawerContentVariants = tv({
     // --tw-ring-shadow paints a strip in the panel color past the screen edge,
     // so no gap shows when the panel is pulled a little away from its edge.
     popup: [
-      'max-h-full w-full overflow-y-auto overscroll-contain rounded-panel-xl bg-panel text-gray-12 shadow-xl inset-ring inset-ring-gray-a5 outline-none',
+      'max-h-full w-full overflow-y-auto overscroll-contain bg-panel-solid text-gray-12 shadow-ui-6 outline-none',
       'transition-[translate] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
       'data-swiping:select-none data-swiping:duration-0',
       'data-ending-style:duration-[calc(var(--drawer-swipe-strength)*300ms)]',
@@ -74,41 +77,42 @@ export const drawerContentVariants = tv({
       left: {
         viewport: 'justify-start pr-12',
         popup: [
-          'rounded-l-none [--tw-ring-shadow:-3rem_0_0_var(--panel)] translate-x-(--drawer-swipe-movement-x)',
+          'rounded-l-none [--tw-ring-shadow:-3rem_0_0_var(--panel-solid)] translate-x-(--drawer-swipe-movement-x)',
           'data-ending-style:-translate-x-full data-starting-style:-translate-x-full',
         ],
       },
       right: {
         viewport: 'justify-end pl-12',
         popup: [
-          'rounded-r-none [--tw-ring-shadow:3rem_0_0_var(--panel)] translate-x-(--drawer-swipe-movement-x)',
+          'rounded-r-none [--tw-ring-shadow:3rem_0_0_var(--panel-solid)] translate-x-(--drawer-swipe-movement-x)',
           'data-ending-style:translate-x-full data-starting-style:translate-x-full',
         ],
       },
       top: {
         viewport: 'items-start pb-12',
         popup: [
-          'rounded-t-none [--tw-ring-shadow:0_-3rem_0_var(--panel)] translate-y-(--drawer-swipe-movement-y)',
+          'rounded-t-none [--tw-ring-shadow:0_-3rem_0_var(--panel-solid)] translate-y-(--drawer-swipe-movement-y)',
           'data-ending-style:-translate-y-full data-starting-style:-translate-y-full',
         ],
       },
       bottom: {
         viewport: 'items-end pt-12',
         popup: [
-          'rounded-b-none [--tw-ring-shadow:0_3rem_0_var(--panel)] translate-y-(--drawer-swipe-movement-y)',
+          'rounded-b-none [--tw-ring-shadow:0_3rem_0_var(--panel-solid)] translate-y-(--drawer-swipe-movement-y)',
           'data-ending-style:translate-y-full data-starting-style:translate-y-full',
         ],
       },
     },
     size: {
-      sm: { popup: 'p-4' },
-      md: { popup: 'p-6' },
-      lg: { popup: 'p-8' },
+      sm: { popup: 'rounded-panel-lg p-3' },
+      md: { popup: 'rounded-panel-lg p-4' },
+      lg: { popup: 'rounded-panel-xl p-6' },
+      xl: { popup: 'rounded-panel-xl p-8' },
     },
   },
   defaultVariants: {
     side: 'right',
-    size: 'md',
+    size: 'lg',
   },
 })
 
@@ -116,7 +120,8 @@ export const drawerContentVariants = tv({
 const sideWidths = {
   sm: 'max-w-xs',
   md: 'max-w-sm',
-  lg: 'max-w-lg',
+  lg: 'max-w-md',
+  xl: 'max-w-xl',
 }
 
 export type DrawerContentProps = Omit<ComponentProps<typeof BaseDrawer.Popup>, 'className'> &
@@ -142,7 +147,7 @@ export function DrawerContent({
   classNames,
   container,
   keepMounted,
-  size = 'md',
+  size = 'lg',
   ...props
 }: DrawerContentProps) {
   const themeProps = useThemeProps()
@@ -171,7 +176,7 @@ export type DrawerTitleProps = Omit<ComponentProps<typeof BaseDrawer.Title>, 'cl
 }
 
 export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
-  return <BaseDrawer.Title {...props} className={cn('mb-2 font-bold text-xl', className)} />
+  return <BaseDrawer.Title {...props} className={cn(dialogTitle, className)} />
 }
 
 export type DrawerDescriptionProps = Omit<
@@ -182,5 +187,5 @@ export type DrawerDescriptionProps = Omit<
 }
 
 export function DrawerDescription({ className, ...props }: DrawerDescriptionProps) {
-  return <BaseDrawer.Description {...props} className={cn('mb-4 text-gray-11', className)} />
+  return <BaseDrawer.Description {...props} className={cn(dialogDescription, className)} />
 }

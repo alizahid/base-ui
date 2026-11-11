@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Toggle } from './toggle'
 
 const variants = ['soft', 'surface', 'outline', 'ghost'] as const
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 function StarIcon() {
   return (
@@ -67,11 +67,18 @@ export const Sizes: Story = {
   ),
 }
 
+/** For a toggle with only an icon, `aspect-square px-0` makes it square like an `IconButton`. */
 export const WithIcon: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-4">
       {sizes.map((size) => (
-        <Toggle key={size} {...args} aria-label="Favorite" size={size}>
+        <Toggle
+          key={size}
+          {...args}
+          aria-label="Favorite"
+          className="aspect-square px-0"
+          size={size}
+        >
           <StarIcon />
         </Toggle>
       ))}
@@ -81,6 +88,12 @@ export const WithIcon: Story = {
       </Toggle>
     </div>
   ),
+}
+
+/** `highContrast` uses the darkest step of the color for the text. */
+export const HighContrast: Story = {
+  args: { highContrast: true },
+  render: Variants.render,
 }
 
 export const Disabled: Story = {

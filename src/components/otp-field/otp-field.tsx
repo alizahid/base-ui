@@ -14,10 +14,10 @@ export const otpFieldVariants = tv({
   },
   variants: {
     size: {
-      xs: { root: 'gap-1', input: 'w-6' },
-      sm: { root: 'gap-1.5', input: 'w-8' },
-      md: { root: 'gap-2', input: 'w-10' },
-      lg: { root: 'gap-2', input: 'w-12' },
+      sm: { root: 'gap-1', input: 'w-6' },
+      md: { root: 'gap-1.5', input: 'w-8' },
+      lg: { root: 'gap-2', input: 'w-10' },
+      xl: { root: 'gap-2', input: 'w-12' },
     },
   },
   defaultVariants: {

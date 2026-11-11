@@ -11,3 +11,7 @@ export type Radius = (typeof radii)[number]
 export const appearances = ['inherit', 'light', 'dark'] as const
 
 export type Appearance = (typeof appearances)[number]
+
+export const panelBackgrounds = ['translucent', 'solid'] as const
+
+export type PanelBackground = (typeof panelBackgrounds)[number]

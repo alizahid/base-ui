@@ -7,7 +7,7 @@ const sizes = ['sm', 'md', 'lg', 'full'] as const
 const meta = {
   title: 'Components/Separator',
   component: Separator,
-  args: { orientation: 'horizontal', size: 'full' },
+  args: { orientation: 'horizontal', size: 'sm' },
   argTypes: {
     color: { control: 'select', options: [undefined, 'accent', ...colors] },
     orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] },
@@ -62,7 +62,7 @@ export const InText: Story = {
   render: (args) => (
     <div className="text-sm">
       <p>Tools for building high-quality, accessible UI.</p>
-      <Separator {...args} className="my-3" />
+      <Separator {...args} className="my-3" size="full" />
       <div className="flex h-5 items-center gap-3">
         Themes
         <Separator {...args} orientation="vertical" />

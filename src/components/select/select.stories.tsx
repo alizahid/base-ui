@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { Select } from '.'
 
 const variants = ['surface', 'soft', 'ghost'] as const
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg'] as const
 
 const meta = {
   title: 'Components/Select',
@@ -94,6 +94,31 @@ export const Sizes: Story = {
         <Select.Root defaultValue="apple" items={labels} key={size} size={size}>
           <Select.Trigger {...args} />
           <Select.Content>
+            <Fruits />
+          </Select.Content>
+        </Select.Root>
+      ))}
+    </div>
+  ),
+}
+
+/**
+ * `variant` on `Content` is the look of the highlighted row: a full color fill
+ * (`solid`) or a light tint (`soft`). `highContrast` makes the solid fill darker.
+ */
+export const ContentVariants: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-4">
+      {(
+        [
+          { label: 'solid', variant: 'solid' },
+          { label: 'soft', variant: 'soft' },
+          { highContrast: true, label: 'solid, high contrast', variant: 'solid' },
+        ] as const
+      ).map(({ label, ...props }) => (
+        <Select.Root items={labels} key={label}>
+          <Select.Trigger {...args} placeholder={label} />
+          <Select.Content {...props}>
             <Fruits />
           </Select.Content>
         </Select.Root>
@@ -201,7 +226,11 @@ export const ClassNameOverride: Story = {
         <Select.Item className="rounded-none" value="apple">
           Apple
         </Select.Item>
-        <Select.Item className="rounded-none" classNames={{ indicator: 'left-1' }} value="banana">
+        <Select.Item
+          className="rounded-none"
+          classNames={{ indicator: 'text-accent-9' }}
+          value="banana"
+        >
           Banana
         </Select.Item>
       </Select.Content>

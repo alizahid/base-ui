@@ -4,7 +4,7 @@ import { radii } from '../../lib/theme'
 import { TextField } from '../text-field'
 import { Combobox } from '.'
 
-const sizes = ['xs', 'sm', 'md', 'lg'] as const
+const sizes = ['sm', 'md', 'lg', 'xl'] as const
 
 const meta = {
   title: 'Components/Combobox',
@@ -52,9 +52,9 @@ const fruits = [
   'Watermelon',
 ]
 
-function FruitList({ color }: { color?: (typeof colors)[number] | 'accent' }) {
+function FruitList(props: Omit<Combobox.ContentProps, 'children' | 'empty'>) {
   return (
-    <Combobox.Content color={color} empty="No fruits found">
+    <Combobox.Content {...props} empty="No fruits found">
       {(fruit: string) => (
         <Combobox.Item key={fruit} value={fruit}>
           {fruit}
@@ -228,6 +228,33 @@ export const Variants: Story = {
           }
         </Combobox.Chips>
         <FruitList />
+      </Combobox.Root>
+    </div>
+  ),
+}
+
+/**
+ * `Content` has the same `size`, `variant` and `highContrast` props as a menu:
+ * small rows, and a solid or a soft highlight.
+ */
+export const ContentVariants: Story = {
+  render: (args) => (
+    <div className="flex w-64 flex-col gap-4">
+      <Combobox.Root items={fruits}>
+        <Combobox.Input {...args} placeholder="solid" />
+        <FruitList />
+      </Combobox.Root>
+      <Combobox.Root items={fruits}>
+        <Combobox.Input {...args} placeholder="soft" />
+        <FruitList variant="soft" />
+      </Combobox.Root>
+      <Combobox.Root items={fruits}>
+        <Combobox.Input {...args} placeholder="solid, high contrast" />
+        <FruitList highContrast />
+      </Combobox.Root>
+      <Combobox.Root items={fruits}>
+        <Combobox.Input {...args} placeholder="size sm" size="sm" />
+        <FruitList size="sm" />
       </Combobox.Root>
     </div>
   ),

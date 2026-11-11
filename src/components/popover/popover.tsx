@@ -3,7 +3,6 @@ import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type PositionerProps, splitPositionerProps } from '../../lib/positioner'
-import { popupAnimation, popupSurface } from '../../lib/styles'
 import { useThemeProps } from '../theme-provider'
 
 export const PopoverRoot = BasePopover.Root
@@ -18,14 +17,40 @@ export const PopoverClose = BasePopover.Close
 
 export type PopoverCloseProps = ComponentProps<typeof BasePopover.Close>
 
-/** The box of a popover like popup. Also used by `HoverCard`. */
+/**
+ * How floating popups open and close in Radix Themes (`.rt-PopperContent`):
+ * a fade, a small scale and a 4px slide towards their place. 160ms in, 100ms out.
+ * Also used by `HoverCard`.
+ */
+export const popperAnimation = [
+  'origin-(--transform-origin) transition-[opacity,translate,scale] duration-160 ease-[cubic-bezier(0.16,1,0.3,1)]',
+  'motion-reduce:transition-none data-instant:transition-none',
+  'data-starting-style:scale-97 data-starting-style:opacity-0',
+  'data-ending-style:scale-97 data-ending-style:opacity-0 data-ending-style:duration-100',
+  'data-[side=top]:data-ending-style:translate-y-1 data-[side=top]:data-starting-style:translate-y-1',
+  'data-[side=bottom]:data-ending-style:-translate-y-1 data-[side=bottom]:data-starting-style:-translate-y-1',
+  'data-[side=left]:data-ending-style:translate-x-1 data-[side=left]:data-starting-style:translate-x-1',
+  'data-[side=right]:data-ending-style:-translate-x-1 data-[side=right]:data-starting-style:-translate-x-1',
+  'data-[side=inline-start]:data-ending-style:translate-x-1 data-[side=inline-start]:data-starting-style:translate-x-1',
+  'data-[side=inline-end]:data-ending-style:-translate-x-1 data-[side=inline-end]:data-starting-style:-translate-x-1',
+].join(' ')
+
+// Values follow Radix Themes' Popover (popover.css).
 export const popoverContentVariants = tv({
-  base: [popupSurface, popupAnimation, 'max-w-(--available-width)'],
+  base: [
+    'relative bg-panel-solid text-gray-12 shadow-ui-5 outline-none',
+    // At least as wide as the trigger, at most 480px (Radix's default `maxWidth`)
+    // and never wider than the free space. A `max-w-*` class changes it.
+    'min-w-(--anchor-width) max-w-[min(480px,var(--available-width))]',
+    popperAnimation,
+  ],
   variants: {
+    // Radix sizes 1 to 4: padding 12, 16, 24, 32px
     size: {
-      sm: 'p-3 text-sm',
-      md: 'p-4 text-base',
-      lg: 'p-6 text-lg',
+      sm: 'rounded-panel-lg p-3',
+      md: 'rounded-panel-lg p-4',
+      lg: 'rounded-panel-xl p-6',
+      xl: 'rounded-panel-xl p-8',
     },
   },
   defaultVariants: {
@@ -36,9 +61,11 @@ export const popoverContentVariants = tv({
 /**
  * A small arrow that looks like a corner of the panel: a turned square that
  * sits half outside the popup, with a border on its two outer sides.
+ * The border color is the hairline of the popup shadow (Radix shadows 4 and 5).
  */
 export const panelArrow = [
-  'size-2.5 rotate-45 border-gray-a5 bg-panel',
+  'size-2.5 rotate-45 bg-panel-solid',
+  'border-[color-mix(in_oklab,var(--gray-a3),var(--gray-3)_25%)] dark:border-[color-mix(in_oklab,var(--gray-a6),var(--gray-6)_25%)]',
   'data-[side=top]:-bottom-[5px] data-[side=top]:border-r data-[side=top]:border-b',
   'data-[side=bottom]:-top-[5px] data-[side=bottom]:border-t data-[side=bottom]:border-l',
   'data-[side=left]:-right-[5px] data-[side=left]:border-t data-[side=left]:border-r',
@@ -64,7 +91,11 @@ export type PopoverContentProps = Omit<ComponentProps<typeof BasePopover.Popup>,
     }
   }
 
-/** The popover box. Base UI's `Portal`, `Positioner`, `Popup` and `Arrow` in one. */
+/**
+ * The popover box. Base UI's `Portal`, `Positioner`, `Popup` and `Arrow` in one.
+ * Like in Radix Themes it lines up with the start of the trigger, 8px away,
+ * and stays 10px from the screen edges.
+ */
 export function PopoverContent({
   arrow = false,
   children,
@@ -81,13 +112,16 @@ export function PopoverContent({
   return (
     <BasePopover.Portal {...themeProps} container={container} keepMounted={keepMounted}>
       <BasePopover.Positioner
+        align="start"
+        collisionPadding={10}
         sideOffset={8}
         {...positionerProps}
         className={classNames?.positioner}
       >
         <BasePopover.Popup
           {...popupProps}
-          className={cn(popoverContentVariants({ size }), className)}
+          // Long content scrolls inside the box. Not with an arrow: it would be cut off.
+          className={cn(popoverContentVariants({ size }), !arrow && 'overflow-auto', className)}
         >
           {arrow && <BasePopover.Arrow className={cn(panelArrow, classNames?.arrow)} />}
           {children}

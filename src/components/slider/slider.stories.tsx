@@ -83,6 +83,12 @@ export const Disabled: Story = {
   render: Variants.render,
 }
 
+/** `highContrast` makes the filled part darker (light mode only). */
+export const HighContrast: Story = {
+  args: { highContrast: true },
+  render: Variants.render,
+}
+
 export const Colors: Story = {
   render: (args) => (
     <div className="grid grid-cols-2 gap-x-6 gap-y-2">
@@ -114,7 +120,7 @@ export const ClassNameOverride: Story = {
     classNames: {
       indicator: 'bg-accent-12',
       thumb: 'size-5 rounded-ui-sm bg-accent-9',
-      track: 'data-[orientation=horizontal]:h-1 bg-accent-a4',
+      track: 'bg-accent-a4 data-[orientation=horizontal]:h-1',
     },
   },
 }

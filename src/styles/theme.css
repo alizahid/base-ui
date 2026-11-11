@@ -27,6 +27,11 @@
   --color-accent-a11: var(--accent-a11);
   --color-accent-a12: var(--accent-a12);
   --color-accent-contrast: var(--accent-contrast);
+  /* bg-accent-surface: the tinted see-through fill of "surface" variants */
+  --color-accent-surface: var(--accent-surface);
+  /* bg-accent-indicator / bg-accent-track: checked marks, and filled tracks of sliders and switches */
+  --color-accent-indicator: var(--accent-indicator);
+  --color-accent-track: var(--accent-track);
   --color-gray-1: var(--gray-1);
   --color-gray-2: var(--gray-2);
   --color-gray-3: var(--gray-3);
@@ -51,11 +56,58 @@
   --color-gray-a10: var(--gray-a10);
   --color-gray-a11: var(--gray-a11);
   --color-gray-a12: var(--gray-a12);
+  --color-gray-surface: var(--gray-surface);
 
-  /* Surfaces: bg-panel (popups, cards), bg-surface (inputs), bg-overlay (backdrops) */
+  /* Pure black and white with alpha: bg-black-a3, text-white-a11, ... */
+  --color-black-a1: var(--black-a1);
+  --color-black-a2: var(--black-a2);
+  --color-black-a3: var(--black-a3);
+  --color-black-a4: var(--black-a4);
+  --color-black-a5: var(--black-a5);
+  --color-black-a6: var(--black-a6);
+  --color-black-a7: var(--black-a7);
+  --color-black-a8: var(--black-a8);
+  --color-black-a9: var(--black-a9);
+  --color-black-a10: var(--black-a10);
+  --color-black-a11: var(--black-a11);
+  --color-black-a12: var(--black-a12);
+  --color-white-a1: var(--white-a1);
+  --color-white-a2: var(--white-a2);
+  --color-white-a3: var(--white-a3);
+  --color-white-a4: var(--white-a4);
+  --color-white-a5: var(--white-a5);
+  --color-white-a6: var(--white-a6);
+  --color-white-a7: var(--white-a7);
+  --color-white-a8: var(--white-a8);
+  --color-white-a9: var(--white-a9);
+  --color-white-a10: var(--white-a10);
+  --color-white-a11: var(--white-a11);
+  --color-white-a12: var(--white-a12);
+
+  /*
+   * Surfaces:
+   * bg-panel        cards and other boxes on the page (see-through by default, use with backdrop-panel)
+   * bg-panel-solid  popups: menus, dialogs, popovers
+   * bg-surface      inputs
+   * bg-overlay      the backdrop behind a dialog
+   */
   --color-panel: var(--panel);
+  --color-panel-solid: var(--panel-solid);
   --color-surface: var(--surface);
   --color-overlay: var(--overlay);
+
+  /* Shadows: shadow-ui-1 to shadow-ui-6 */
+  --shadow-ui-1: var(--ui-shadow-1);
+  --shadow-ui-2: var(--ui-shadow-2);
+  --shadow-ui-3: var(--ui-shadow-3);
+  --shadow-ui-4: var(--ui-shadow-4);
+  --shadow-ui-5: var(--ui-shadow-5);
+  --shadow-ui-6: var(--ui-shadow-6);
+}
+
+/* The blur behind a see-through panel. Nothing when the theme uses solid panels. */
+@utility backdrop-panel {
+  backdrop-filter: var(--backdrop-filter-panel);
 }
 
 /*
@@ -64,7 +116,7 @@
  * match the curve, for example rounded-[calc(var(--ui-radius)-1px)].
  */
 @utility rounded-ui-xs {
-  --ui-radius: max(calc(0.125rem * var(--radius-factor)), var(--radius-full));
+  --ui-radius: max(calc(0.1875rem * var(--radius-factor)), var(--radius-full));
   border-radius: var(--ui-radius);
 }
 
@@ -88,12 +140,17 @@
   border-radius: var(--ui-radius);
 }
 
+@utility rounded-ui-2xl {
+  --ui-radius: max(calc(1rem * var(--radius-factor)), var(--radius-full));
+  border-radius: var(--ui-radius);
+}
+
 /*
  * For boxes that hold content (dialogs, popups, cards): rounded-panel-md, ...
  * Same as rounded-ui-* but never a pill, also when the theme radius is full.
  */
 @utility rounded-panel-xs {
-  --ui-radius: calc(0.125rem * var(--radius-factor));
+  --ui-radius: calc(0.1875rem * var(--radius-factor));
   border-radius: var(--ui-radius);
 }
 
@@ -114,6 +171,11 @@
 
 @utility rounded-panel-xl {
   --ui-radius: calc(0.75rem * var(--radius-factor));
+  border-radius: var(--ui-radius);
+}
+
+@utility rounded-panel-2xl {
+  --ui-radius: calc(1rem * var(--radius-factor));
   border-radius: var(--ui-radius);
 }
 
@@ -214,6 +276,9 @@
   --accent-a11: var(--blue-a11);
   --accent-a12: var(--blue-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--blue-surface);
+  --accent-indicator: var(--blue-indicator);
+  --accent-track: var(--blue-track);
   --gray-1: var(--slate-1);
   --gray-2: var(--slate-2);
   --gray-3: var(--slate-3);
@@ -238,19 +303,231 @@
   --gray-a10: var(--slate-a10);
   --gray-a11: var(--slate-a11);
   --gray-a12: var(--slate-a12);
+  --gray-surface: var(--slate-surface);
 }
 
-/* Surfaces (same values as Radix Themes) */
+/* Surfaces, shadows and per-color values (same as Radix Themes) */
 :root, .light, .light-theme {
-  --panel: #fff;
+  --panel-solid: #fff;
+  --panel-translucent: rgb(255 255 255 / 0.7);
   --surface: rgb(255 255 255 / 0.85);
-  --overlay: rgb(0 0 0 / 0.4);
+  --overlay: var(--black-a6);
+  --ui-shadow-1: inset 0 0 0 1px var(--gray-a5), inset 0 1.5px 2px 0 var(--gray-a2), inset 0 1.5px 2px 0 var(--black-a2);
+  --ui-shadow-2: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 0 0 0.5px var(--black-a1), 0 1px 1px 0 var(--gray-a2), 0 2px 1px -1px var(--black-a1), 0 1px 3px 0 var(--black-a1);
+  --ui-shadow-3: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 2px 3px -2px var(--gray-a3), 0 3px 12px -4px var(--black-a2), 0 4px 16px -8px var(--black-a2);
+  --ui-shadow-4: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 8px 40px var(--black-a1), 0 12px 32px -16px var(--gray-a3);
+  --ui-shadow-5: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px 60px var(--black-a3), 0 12px 32px -16px var(--gray-a5);
+  --ui-shadow-6: 0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%), 0 12px 60px var(--black-a3), 0 16px 64px var(--gray-a2), 0 16px 36px -20px var(--gray-a7);
+  --tomato-surface: #fff6f5cc;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
+  --red-surface: #fff5f5cc;
+  --red-indicator: var(--red-9);
+  --red-track: var(--red-9);
+  --ruby-surface: #fff5f6cc;
+  --ruby-indicator: var(--ruby-9);
+  --ruby-track: var(--ruby-9);
+  --crimson-surface: #fef5f8cc;
+  --crimson-indicator: var(--crimson-9);
+  --crimson-track: var(--crimson-9);
+  --pink-surface: #fef5facc;
+  --pink-indicator: var(--pink-9);
+  --pink-track: var(--pink-9);
+  --plum-surface: #fdf5fdcc;
+  --plum-indicator: var(--plum-9);
+  --plum-track: var(--plum-9);
+  --purple-surface: #faf5fecc;
+  --purple-indicator: var(--purple-9);
+  --purple-track: var(--purple-9);
+  --violet-surface: #f9f6ffcc;
+  --violet-indicator: var(--violet-9);
+  --violet-track: var(--violet-9);
+  --iris-surface: #f6f6ffcc;
+  --iris-indicator: var(--iris-9);
+  --iris-track: var(--iris-9);
+  --indigo-surface: #f5f8ffcc;
+  --indigo-indicator: var(--indigo-9);
+  --indigo-track: var(--indigo-9);
+  --blue-surface: #f1f9ffcc;
+  --blue-indicator: var(--blue-9);
+  --blue-track: var(--blue-9);
+  --cyan-surface: #eff9facc;
+  --cyan-indicator: var(--cyan-9);
+  --cyan-track: var(--cyan-9);
+  --teal-surface: #f0faf8cc;
+  --teal-indicator: var(--teal-9);
+  --teal-track: var(--teal-9);
+  --jade-surface: #f1faf5cc;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
+  --green-surface: #f1faf4cc;
+  --green-indicator: var(--green-9);
+  --green-track: var(--green-9);
+  --grass-surface: #f3faf3cc;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
+  --bronze-surface: #fdf5f3cc;
+  --bronze-indicator: var(--bronze-9);
+  --bronze-track: var(--bronze-9);
+  --gold-surface: #f9f8efcc;
+  --gold-indicator: var(--gold-9);
+  --gold-track: var(--gold-9);
+  --brown-surface: #fbf8f4cc;
+  --brown-indicator: var(--brown-9);
+  --brown-track: var(--brown-9);
+  --orange-surface: #fff5e9cc;
+  --orange-indicator: var(--orange-9);
+  --orange-track: var(--orange-9);
+  --amber-surface: #fefae4cc;
+  --amber-indicator: var(--amber-9);
+  --amber-track: var(--amber-9);
+  --yellow-surface: #fefbe4cc;
+  --yellow-indicator: var(--yellow-10);
+  --yellow-track: var(--yellow-10);
+  --lime-surface: #f6f9f0cc;
+  --lime-indicator: var(--lime-9);
+  --lime-track: var(--lime-9);
+  --mint-surface: #effaf8cc;
+  --mint-indicator: var(--mint-9);
+  --mint-track: var(--mint-9);
+  --sky-surface: #eef9fdcc;
+  --sky-indicator: var(--sky-9);
+  --sky-track: var(--sky-9);
+  --gray-surface: #ffffffcc;
+  --gray-indicator: var(--gray-9);
+  --gray-track: var(--gray-9);
+  --mauve-surface: #ffffffcc;
+  --mauve-indicator: var(--mauve-9);
+  --mauve-track: var(--mauve-9);
+  --slate-surface: #ffffffcc;
+  --slate-indicator: var(--slate-9);
+  --slate-track: var(--slate-9);
+  --sage-surface: #ffffffcc;
+  --sage-indicator: var(--sage-9);
+  --sage-track: var(--sage-9);
+  --olive-surface: #ffffffcc;
+  --olive-indicator: var(--olive-9);
+  --olive-track: var(--olive-9);
+  --sand-surface: #ffffffcc;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
 }
 
 .dark, .dark-theme {
-  --panel: var(--gray-2);
+  --panel-solid: var(--gray-2);
+  --panel-translucent: var(--gray-a2);
   --surface: rgb(0 0 0 / 0.25);
-  --overlay: rgb(0 0 0 / 0.7);
+  --overlay: var(--black-a8);
+  --ui-shadow-1: inset 0 -1px 1px 0 var(--gray-a3), inset 0 0 0 1px var(--gray-a3), inset 0 3px 4px 0 var(--black-a5), inset 0 0 0 1px var(--gray-a4);
+  --ui-shadow-2: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 0 0 0.5px var(--black-a3), 0 1px 1px 0 var(--black-a6), 0 2px 1px -1px var(--black-a6), 0 1px 3px 0 var(--black-a5);
+  --ui-shadow-3: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 2px 3px -2px var(--black-a3), 0 3px 8px -2px var(--black-a6), 0 4px 12px -4px var(--black-a7);
+  --ui-shadow-4: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 8px 40px var(--black-a3), 0 12px 32px -16px var(--black-a5);
+  --ui-shadow-5: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px 60px var(--black-a5), 0 12px 32px -16px var(--black-a7);
+  --ui-shadow-6: 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%), 0 12px 60px var(--black-a4), 0 16px 64px var(--black-a6), 0 16px 36px -20px var(--black-a11);
+  --tomato-surface: #2d191580;
+  --tomato-indicator: var(--tomato-9);
+  --tomato-track: var(--tomato-9);
+  --red-surface: #2f151780;
+  --red-indicator: var(--red-9);
+  --red-track: var(--red-9);
+  --ruby-surface: #2b191d80;
+  --ruby-indicator: var(--ruby-9);
+  --ruby-track: var(--ruby-9);
+  --crimson-surface: #2f151f80;
+  --crimson-indicator: var(--crimson-9);
+  --crimson-track: var(--crimson-9);
+  --pink-surface: #31132980;
+  --pink-indicator: var(--pink-9);
+  --pink-track: var(--pink-9);
+  --plum-surface: #2f152f80;
+  --plum-indicator: var(--plum-9);
+  --plum-track: var(--plum-9);
+  --purple-surface: #2b173580;
+  --purple-indicator: var(--purple-9);
+  --purple-track: var(--purple-9);
+  --violet-surface: #25193980;
+  --violet-indicator: var(--violet-9);
+  --violet-track: var(--violet-9);
+  --iris-surface: #1d1b3980;
+  --iris-indicator: var(--iris-9);
+  --iris-track: var(--iris-9);
+  --indigo-surface: #171d3b80;
+  --indigo-indicator: var(--indigo-9);
+  --indigo-track: var(--indigo-9);
+  --blue-surface: #11213d80;
+  --blue-indicator: var(--blue-9);
+  --blue-track: var(--blue-9);
+  --cyan-surface: #11252d80;
+  --cyan-indicator: var(--cyan-9);
+  --cyan-track: var(--cyan-9);
+  --teal-surface: #13272580;
+  --teal-indicator: var(--teal-9);
+  --teal-track: var(--teal-9);
+  --jade-surface: #13271f80;
+  --jade-indicator: var(--jade-9);
+  --jade-track: var(--jade-9);
+  --green-surface: #15251d80;
+  --green-indicator: var(--green-9);
+  --green-track: var(--green-9);
+  --grass-surface: #19231b80;
+  --grass-indicator: var(--grass-9);
+  --grass-track: var(--grass-9);
+  --bronze-surface: #27211d80;
+  --bronze-indicator: var(--bronze-9);
+  --bronze-track: var(--bronze-9);
+  --gold-surface: #25231d80;
+  --gold-indicator: var(--gold-9);
+  --gold-track: var(--gold-9);
+  --brown-surface: #271f1b80;
+  --brown-indicator: var(--brown-9);
+  --brown-track: var(--brown-9);
+  --orange-surface: #271d1380;
+  --orange-indicator: var(--orange-9);
+  --orange-track: var(--orange-9);
+  --amber-surface: #271f1380;
+  --amber-indicator: var(--amber-9);
+  --amber-track: color-mix(in oklab, var(--amber-8), var(--amber-9) 75%);
+  --yellow-surface: #231f1380;
+  --yellow-indicator: var(--yellow-9);
+  --yellow-track: color-mix(in oklab, var(--yellow-8), var(--yellow-9) 65%);
+  --lime-surface: #1b211580;
+  --lime-indicator: var(--lime-9);
+  --lime-track: color-mix(in oklab, var(--lime-8), var(--lime-9) 65%);
+  --mint-surface: #15272780;
+  --mint-indicator: var(--mint-9);
+  --mint-track: color-mix(in oklab, var(--mint-8), var(--mint-9) 65%);
+  --sky-surface: #13233b80;
+  --sky-indicator: var(--sky-9);
+  --sky-track: color-mix(in oklab, var(--sky-8), var(--sky-9) 65%);
+  --gray-surface: #21212180;
+  --gray-indicator: var(--gray-9);
+  --gray-track: var(--gray-9);
+  --mauve-surface: #22212380;
+  --mauve-indicator: var(--mauve-9);
+  --mauve-track: var(--mauve-9);
+  --slate-surface: #1f212380;
+  --slate-indicator: var(--slate-9);
+  --slate-track: var(--slate-9);
+  --sage-surface: #1e201f80;
+  --sage-indicator: var(--sage-9);
+  --sage-track: var(--sage-9);
+  --olive-surface: #1f201e80;
+  --olive-indicator: var(--olive-9);
+  --olive-track: var(--olive-9);
+  --sand-surface: #21212080;
+  --sand-indicator: var(--sand-9);
+  --sand-track: var(--sand-9);
+}
+
+/* Panels are see-through with a blur by default. data-panel-background="solid" turns that off. */
+:root, .light, .light-theme, .dark, .dark-theme, [data-panel-background="translucent"] {
+  --panel: var(--panel-translucent);
+  --backdrop-filter-panel: blur(64px);
+}
+
+[data-panel-background="solid"] {
+  --panel: var(--panel-solid);
+  --backdrop-filter-panel: none;
 }
 
 /* The theme gray: data-gray points the gray at another scale. */
@@ -280,6 +557,7 @@
   --gray-a10: var(--gray-a10);
   --gray-a11: var(--gray-a11);
   --gray-a12: var(--gray-a12);
+  --gray-surface: var(--gray-surface);
 }
 
 [data-gray="mauve"],
@@ -308,6 +586,7 @@
   --gray-a10: var(--mauve-a10);
   --gray-a11: var(--mauve-a11);
   --gray-a12: var(--mauve-a12);
+  --gray-surface: var(--mauve-surface);
 }
 
 [data-gray="slate"],
@@ -336,6 +615,7 @@
   --gray-a10: var(--slate-a10);
   --gray-a11: var(--slate-a11);
   --gray-a12: var(--slate-a12);
+  --gray-surface: var(--slate-surface);
 }
 
 [data-gray="sage"],
@@ -364,6 +644,7 @@
   --gray-a10: var(--sage-a10);
   --gray-a11: var(--sage-a11);
   --gray-a12: var(--sage-a12);
+  --gray-surface: var(--sage-surface);
 }
 
 [data-gray="olive"],
@@ -392,6 +673,7 @@
   --gray-a10: var(--olive-a10);
   --gray-a11: var(--olive-a11);
   --gray-a12: var(--olive-a12);
+  --gray-surface: var(--olive-surface);
 }
 
 [data-gray="sand"],
@@ -420,6 +702,7 @@
   --gray-a10: var(--sand-a10);
   --gray-a11: var(--sand-a11);
   --gray-a12: var(--sand-a12);
+  --gray-surface: var(--sand-surface);
 }
 
 /* The theme radius */
@@ -487,6 +770,9 @@
   --accent-a11: var(--tomato-a11);
   --accent-a12: var(--tomato-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--tomato-surface);
+  --accent-indicator: var(--tomato-indicator);
+  --accent-track: var(--tomato-track);
 }
 
 [data-color="red"],
@@ -516,6 +802,9 @@
   --accent-a11: var(--red-a11);
   --accent-a12: var(--red-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--red-surface);
+  --accent-indicator: var(--red-indicator);
+  --accent-track: var(--red-track);
 }
 
 [data-color="ruby"],
@@ -545,6 +834,9 @@
   --accent-a11: var(--ruby-a11);
   --accent-a12: var(--ruby-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--ruby-surface);
+  --accent-indicator: var(--ruby-indicator);
+  --accent-track: var(--ruby-track);
 }
 
 [data-color="crimson"],
@@ -574,6 +866,9 @@
   --accent-a11: var(--crimson-a11);
   --accent-a12: var(--crimson-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--crimson-surface);
+  --accent-indicator: var(--crimson-indicator);
+  --accent-track: var(--crimson-track);
 }
 
 [data-color="pink"],
@@ -603,6 +898,9 @@
   --accent-a11: var(--pink-a11);
   --accent-a12: var(--pink-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--pink-surface);
+  --accent-indicator: var(--pink-indicator);
+  --accent-track: var(--pink-track);
 }
 
 [data-color="plum"],
@@ -632,6 +930,9 @@
   --accent-a11: var(--plum-a11);
   --accent-a12: var(--plum-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--plum-surface);
+  --accent-indicator: var(--plum-indicator);
+  --accent-track: var(--plum-track);
 }
 
 [data-color="purple"],
@@ -661,6 +962,9 @@
   --accent-a11: var(--purple-a11);
   --accent-a12: var(--purple-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--purple-surface);
+  --accent-indicator: var(--purple-indicator);
+  --accent-track: var(--purple-track);
 }
 
 [data-color="violet"],
@@ -690,6 +994,9 @@
   --accent-a11: var(--violet-a11);
   --accent-a12: var(--violet-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--violet-surface);
+  --accent-indicator: var(--violet-indicator);
+  --accent-track: var(--violet-track);
 }
 
 [data-color="iris"],
@@ -719,6 +1026,9 @@
   --accent-a11: var(--iris-a11);
   --accent-a12: var(--iris-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--iris-surface);
+  --accent-indicator: var(--iris-indicator);
+  --accent-track: var(--iris-track);
 }
 
 [data-color="indigo"],
@@ -748,6 +1058,9 @@
   --accent-a11: var(--indigo-a11);
   --accent-a12: var(--indigo-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--indigo-surface);
+  --accent-indicator: var(--indigo-indicator);
+  --accent-track: var(--indigo-track);
 }
 
 [data-color="blue"],
@@ -777,6 +1090,9 @@
   --accent-a11: var(--blue-a11);
   --accent-a12: var(--blue-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--blue-surface);
+  --accent-indicator: var(--blue-indicator);
+  --accent-track: var(--blue-track);
 }
 
 [data-color="cyan"],
@@ -806,6 +1122,9 @@
   --accent-a11: var(--cyan-a11);
   --accent-a12: var(--cyan-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--cyan-surface);
+  --accent-indicator: var(--cyan-indicator);
+  --accent-track: var(--cyan-track);
 }
 
 [data-color="teal"],
@@ -835,6 +1154,9 @@
   --accent-a11: var(--teal-a11);
   --accent-a12: var(--teal-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--teal-surface);
+  --accent-indicator: var(--teal-indicator);
+  --accent-track: var(--teal-track);
 }
 
 [data-color="jade"],
@@ -864,6 +1186,9 @@
   --accent-a11: var(--jade-a11);
   --accent-a12: var(--jade-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--jade-surface);
+  --accent-indicator: var(--jade-indicator);
+  --accent-track: var(--jade-track);
 }
 
 [data-color="green"],
@@ -893,6 +1218,9 @@
   --accent-a11: var(--green-a11);
   --accent-a12: var(--green-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--green-surface);
+  --accent-indicator: var(--green-indicator);
+  --accent-track: var(--green-track);
 }
 
 [data-color="grass"],
@@ -922,6 +1250,9 @@
   --accent-a11: var(--grass-a11);
   --accent-a12: var(--grass-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--grass-surface);
+  --accent-indicator: var(--grass-indicator);
+  --accent-track: var(--grass-track);
 }
 
 [data-color="bronze"],
@@ -951,6 +1282,9 @@
   --accent-a11: var(--bronze-a11);
   --accent-a12: var(--bronze-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--bronze-surface);
+  --accent-indicator: var(--bronze-indicator);
+  --accent-track: var(--bronze-track);
 }
 
 [data-color="gold"],
@@ -980,6 +1314,9 @@
   --accent-a11: var(--gold-a11);
   --accent-a12: var(--gold-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--gold-surface);
+  --accent-indicator: var(--gold-indicator);
+  --accent-track: var(--gold-track);
 }
 
 [data-color="brown"],
@@ -1009,6 +1346,9 @@
   --accent-a11: var(--brown-a11);
   --accent-a12: var(--brown-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--brown-surface);
+  --accent-indicator: var(--brown-indicator);
+  --accent-track: var(--brown-track);
 }
 
 [data-color="orange"],
@@ -1038,6 +1378,9 @@
   --accent-a11: var(--orange-a11);
   --accent-a12: var(--orange-a12);
   --accent-contrast: #fff;
+  --accent-surface: var(--orange-surface);
+  --accent-indicator: var(--orange-indicator);
+  --accent-track: var(--orange-track);
 }
 
 [data-color="amber"],
@@ -1067,6 +1410,9 @@
   --accent-a11: var(--amber-a11);
   --accent-a12: var(--amber-a12);
   --accent-contrast: #21201c;
+  --accent-surface: var(--amber-surface);
+  --accent-indicator: var(--amber-indicator);
+  --accent-track: var(--amber-track);
 }
 
 [data-color="yellow"],
@@ -1096,6 +1442,9 @@
   --accent-a11: var(--yellow-a11);
   --accent-a12: var(--yellow-a12);
   --accent-contrast: #21201c;
+  --accent-surface: var(--yellow-surface);
+  --accent-indicator: var(--yellow-indicator);
+  --accent-track: var(--yellow-track);
 }
 
 [data-color="lime"],
@@ -1125,6 +1474,9 @@
   --accent-a11: var(--lime-a11);
   --accent-a12: var(--lime-a12);
   --accent-contrast: #1d211c;
+  --accent-surface: var(--lime-surface);
+  --accent-indicator: var(--lime-indicator);
+  --accent-track: var(--lime-track);
 }
 
 [data-color="mint"],
@@ -1154,6 +1506,9 @@
   --accent-a11: var(--mint-a11);
   --accent-a12: var(--mint-a12);
   --accent-contrast: #1a211e;
+  --accent-surface: var(--mint-surface);
+  --accent-indicator: var(--mint-indicator);
+  --accent-track: var(--mint-track);
 }
 
 [data-color="sky"],
@@ -1183,4 +1538,7 @@
   --accent-a11: var(--sky-a11);
   --accent-a12: var(--sky-a12);
   --accent-contrast: #1c2024;
+  --accent-surface: var(--sky-surface);
+  --accent-indicator: var(--sky-indicator);
+  --accent-track: var(--sky-track);
 }
