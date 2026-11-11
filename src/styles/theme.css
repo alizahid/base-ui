@@ -51,6 +51,13 @@
   --color-gray-a10: var(--gray-a10);
   --color-gray-a11: var(--gray-a11);
   --color-gray-a12: var(--gray-a12);
+
+  /* Corner radius that follows the theme: rounded-ui-sm, rounded-ui-md, ... */
+  --radius-ui-xs: max(calc(0.125rem * var(--radius-factor)), var(--radius-full));
+  --radius-ui-sm: max(calc(0.25rem * var(--radius-factor)), var(--radius-full));
+  --radius-ui-md: max(calc(0.375rem * var(--radius-factor)), var(--radius-full));
+  --radius-ui-lg: max(calc(0.5rem * var(--radius-factor)), var(--radius-full));
+  --radius-ui-xl: max(calc(0.75rem * var(--radius-factor)), var(--radius-full));
 }
 
 /* Defaults. Set again on every theme class, so nested light/dark areas work. */
@@ -104,6 +111,206 @@
   --gray-a10: var(--slate-a10);
   --gray-a11: var(--slate-a11);
   --gray-a12: var(--slate-a12);
+}
+
+/* The theme gray: data-gray points the gray at another scale. */
+[data-gray="gray"],
+[data-gray="gray"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--gray-1);
+  --gray-2: var(--gray-2);
+  --gray-3: var(--gray-3);
+  --gray-4: var(--gray-4);
+  --gray-5: var(--gray-5);
+  --gray-6: var(--gray-6);
+  --gray-7: var(--gray-7);
+  --gray-8: var(--gray-8);
+  --gray-9: var(--gray-9);
+  --gray-10: var(--gray-10);
+  --gray-11: var(--gray-11);
+  --gray-12: var(--gray-12);
+  --gray-a1: var(--gray-a1);
+  --gray-a2: var(--gray-a2);
+  --gray-a3: var(--gray-a3);
+  --gray-a4: var(--gray-a4);
+  --gray-a5: var(--gray-a5);
+  --gray-a6: var(--gray-a6);
+  --gray-a7: var(--gray-a7);
+  --gray-a8: var(--gray-a8);
+  --gray-a9: var(--gray-a9);
+  --gray-a10: var(--gray-a10);
+  --gray-a11: var(--gray-a11);
+  --gray-a12: var(--gray-a12);
+}
+
+[data-gray="mauve"],
+[data-gray="mauve"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--mauve-1);
+  --gray-2: var(--mauve-2);
+  --gray-3: var(--mauve-3);
+  --gray-4: var(--mauve-4);
+  --gray-5: var(--mauve-5);
+  --gray-6: var(--mauve-6);
+  --gray-7: var(--mauve-7);
+  --gray-8: var(--mauve-8);
+  --gray-9: var(--mauve-9);
+  --gray-10: var(--mauve-10);
+  --gray-11: var(--mauve-11);
+  --gray-12: var(--mauve-12);
+  --gray-a1: var(--mauve-a1);
+  --gray-a2: var(--mauve-a2);
+  --gray-a3: var(--mauve-a3);
+  --gray-a4: var(--mauve-a4);
+  --gray-a5: var(--mauve-a5);
+  --gray-a6: var(--mauve-a6);
+  --gray-a7: var(--mauve-a7);
+  --gray-a8: var(--mauve-a8);
+  --gray-a9: var(--mauve-a9);
+  --gray-a10: var(--mauve-a10);
+  --gray-a11: var(--mauve-a11);
+  --gray-a12: var(--mauve-a12);
+}
+
+[data-gray="slate"],
+[data-gray="slate"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--slate-1);
+  --gray-2: var(--slate-2);
+  --gray-3: var(--slate-3);
+  --gray-4: var(--slate-4);
+  --gray-5: var(--slate-5);
+  --gray-6: var(--slate-6);
+  --gray-7: var(--slate-7);
+  --gray-8: var(--slate-8);
+  --gray-9: var(--slate-9);
+  --gray-10: var(--slate-10);
+  --gray-11: var(--slate-11);
+  --gray-12: var(--slate-12);
+  --gray-a1: var(--slate-a1);
+  --gray-a2: var(--slate-a2);
+  --gray-a3: var(--slate-a3);
+  --gray-a4: var(--slate-a4);
+  --gray-a5: var(--slate-a5);
+  --gray-a6: var(--slate-a6);
+  --gray-a7: var(--slate-a7);
+  --gray-a8: var(--slate-a8);
+  --gray-a9: var(--slate-a9);
+  --gray-a10: var(--slate-a10);
+  --gray-a11: var(--slate-a11);
+  --gray-a12: var(--slate-a12);
+}
+
+[data-gray="sage"],
+[data-gray="sage"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--sage-1);
+  --gray-2: var(--sage-2);
+  --gray-3: var(--sage-3);
+  --gray-4: var(--sage-4);
+  --gray-5: var(--sage-5);
+  --gray-6: var(--sage-6);
+  --gray-7: var(--sage-7);
+  --gray-8: var(--sage-8);
+  --gray-9: var(--sage-9);
+  --gray-10: var(--sage-10);
+  --gray-11: var(--sage-11);
+  --gray-12: var(--sage-12);
+  --gray-a1: var(--sage-a1);
+  --gray-a2: var(--sage-a2);
+  --gray-a3: var(--sage-a3);
+  --gray-a4: var(--sage-a4);
+  --gray-a5: var(--sage-a5);
+  --gray-a6: var(--sage-a6);
+  --gray-a7: var(--sage-a7);
+  --gray-a8: var(--sage-a8);
+  --gray-a9: var(--sage-a9);
+  --gray-a10: var(--sage-a10);
+  --gray-a11: var(--sage-a11);
+  --gray-a12: var(--sage-a12);
+}
+
+[data-gray="olive"],
+[data-gray="olive"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--olive-1);
+  --gray-2: var(--olive-2);
+  --gray-3: var(--olive-3);
+  --gray-4: var(--olive-4);
+  --gray-5: var(--olive-5);
+  --gray-6: var(--olive-6);
+  --gray-7: var(--olive-7);
+  --gray-8: var(--olive-8);
+  --gray-9: var(--olive-9);
+  --gray-10: var(--olive-10);
+  --gray-11: var(--olive-11);
+  --gray-12: var(--olive-12);
+  --gray-a1: var(--olive-a1);
+  --gray-a2: var(--olive-a2);
+  --gray-a3: var(--olive-a3);
+  --gray-a4: var(--olive-a4);
+  --gray-a5: var(--olive-a5);
+  --gray-a6: var(--olive-a6);
+  --gray-a7: var(--olive-a7);
+  --gray-a8: var(--olive-a8);
+  --gray-a9: var(--olive-a9);
+  --gray-a10: var(--olive-a10);
+  --gray-a11: var(--olive-a11);
+  --gray-a12: var(--olive-a12);
+}
+
+[data-gray="sand"],
+[data-gray="sand"] :where(.light, .light-theme, .dark, .dark-theme) {
+  --gray-1: var(--sand-1);
+  --gray-2: var(--sand-2);
+  --gray-3: var(--sand-3);
+  --gray-4: var(--sand-4);
+  --gray-5: var(--sand-5);
+  --gray-6: var(--sand-6);
+  --gray-7: var(--sand-7);
+  --gray-8: var(--sand-8);
+  --gray-9: var(--sand-9);
+  --gray-10: var(--sand-10);
+  --gray-11: var(--sand-11);
+  --gray-12: var(--sand-12);
+  --gray-a1: var(--sand-a1);
+  --gray-a2: var(--sand-a2);
+  --gray-a3: var(--sand-a3);
+  --gray-a4: var(--sand-a4);
+  --gray-a5: var(--sand-a5);
+  --gray-a6: var(--sand-a6);
+  --gray-a7: var(--sand-a7);
+  --gray-a8: var(--sand-a8);
+  --gray-a9: var(--sand-a9);
+  --gray-a10: var(--sand-a10);
+  --gray-a11: var(--sand-a11);
+  --gray-a12: var(--sand-a12);
+}
+
+/* The theme radius */
+:root {
+  --radius-factor: 1;
+  --radius-full: 0px;
+}
+
+[data-radius="none"] {
+  --radius-factor: 0;
+  --radius-full: 0px;
+}
+
+[data-radius="small"] {
+  --radius-factor: 0.75;
+  --radius-full: 0px;
+}
+
+[data-radius="medium"] {
+  --radius-factor: 1;
+  --radius-full: 0px;
+}
+
+[data-radius="large"] {
+  --radius-factor: 1.5;
+  --radius-full: 0px;
+}
+
+[data-radius="full"] {
+  --radius-factor: 1.5;
+  --radius-full: 9999px;
 }
 
 /* The `color` prop: data-color points the accent at another scale. */

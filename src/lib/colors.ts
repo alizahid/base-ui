@@ -34,7 +34,10 @@ export const colors = [
  * `accent` means "use the accent color of the surrounding theme".
  * Any other value switches the component to that Radix Colors scale.
  */
-export type Color = 'accent' | (typeof colors)[number]
+export type Color = 'accent' | ThemeColor
+
+/** A real color scale name, without `accent`. */
+export type ThemeColor = (typeof colors)[number]
 
 /**
  * Turns the `color` prop into the `data-color` attribute that the CSS reads.

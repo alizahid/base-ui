@@ -23,6 +23,28 @@ import { Button } from 'base-ui-themes'
 <Button className="rounded-full">Rounded</Button>
 ```
 
+## Theme
+
+Wrap your app in a `ThemeProvider` to set the defaults for everything inside.
+
+```tsx
+import { ThemeProvider } from 'base-ui-themes'
+
+;<ThemeProvider appearance="dark" color="violet" gray="mauve" radius="large">
+  <App />
+</ThemeProvider>
+```
+
+- `color`: the accent color (default `blue`)
+- `gray`: `gray`, `mauve`, `slate`, `sage`, `olive` or `sand` (default `slate`)
+- `radius`: `none`, `small`, `medium`, `large` or `full` (default `medium`)
+- `appearance`: `light`, `dark` or `inherit` (default `inherit`)
+- Providers can be nested. Anything not set comes from the parent.
+- `useTheme()` returns the current values.
+
+Radius priority on a component: `className` > `radius` prop > `ThemeProvider`.
+Components use `rounded-ui-xs` to `rounded-ui-xl`, which follow the theme radius.
+
 ## Colors
 
 - The default accent is `blue` and the default gray is `slate`.
@@ -30,9 +52,8 @@ import { Button } from 'base-ui-themes'
   `gray-12` (plus alpha steps like `accent-a3`, and `accent-contrast` for text on step 9).
 - `color="pink"` on a component sets `data-color="pink"`, which points the accent at the
   pink scale for that element.
-- `data-color` works on any element. Put it on `<html>` or a wrapper to change the accent
-  for everything inside.
-- Dark mode: add the `dark` class to `<html>` or any wrapper.
+- The provider is a thin layer over plain attributes: `data-color`, `data-gray`,
+  `data-radius` and the `light` / `dark` class. They also work on any element by hand.
 
 ## Development
 

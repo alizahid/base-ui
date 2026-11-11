@@ -1,3 +1,5 @@
 export * from './components/button'
+export * from './components/theme-provider'
 export { cn } from './lib/cn'
-export { type Color, colors } from './lib/colors'
+export { type Color, colors, type ThemeColor } from './lib/colors'
+export { type Appearance, appearances, type Gray, grays, type Radius, radii } from './lib/theme'

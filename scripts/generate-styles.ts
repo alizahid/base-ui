@@ -5,6 +5,7 @@
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { colors } from '../src/lib/colors'
+import { grays, type Radius } from '../src/lib/theme'
 
 const DEFAULT_ACCENT = 'blue'
 const DEFAULT_GRAY = 'slate'
@@ -16,6 +17,18 @@ const darkContrast: Record<string, string> = {
   lime: '#1d211c',
   mint: '#1a211e',
   sky: '#1c2024',
+}
+
+// Same sizes as Tailwind's rounded-xs ... rounded-xl
+const radius = { xs: '0.125rem', sm: '0.25rem', md: '0.375rem', lg: '0.5rem', xl: '0.75rem' }
+
+// Same factors as Radix Themes
+const radiusFactor: Record<Radius, number> = {
+  none: 0,
+  small: 0.75,
+  medium: 1,
+  large: 1.5,
+  full: 1.5,
 }
 
 const steps = Array.from({ length: 12 }, (_, index) => index + 1)
@@ -34,7 +47,7 @@ function accent(name: string) {
 }
 
 // colors.css
-const imports = [...colors, DEFAULT_GRAY].flatMap((name) =>
+const imports = [...colors, ...grays].flatMap((name) =>
   ['', '-alpha', '-dark', '-dark-alpha'].map(
     (suffix) => `@import "@radix-ui/colors/${name}${suffix}.css";`,
   ),
@@ -58,6 +71,12 @@ const theme = [
   ...tokens('accent'),
   '  --color-accent-contrast: var(--accent-contrast);',
   ...tokens('gray'),
+  '',
+  '  /* Corner radius that follows the theme: rounded-ui-sm, rounded-ui-md, ... */',
+  ...Object.entries(radius).map(
+    ([name, size]) =>
+      `  --radius-ui-${name}: max(calc(${size} * var(--radius-factor)), var(--radius-full));`,
+  ),
   '}',
   '',
   '/* Defaults. Set again on every theme class, so nested light/dark areas work. */',
@@ -66,6 +85,27 @@ const theme = [
   ...scale('gray', DEFAULT_GRAY),
   '}',
   '',
+  '/* The theme gray: data-gray points the gray at another scale. */',
+  ...grays.flatMap((name) => [
+    `[data-gray="${name}"],`,
+    `[data-gray="${name}"] :where(.light, .light-theme, .dark, .dark-theme) {`,
+    ...scale('gray', name),
+    '}',
+    '',
+  ]),
+  '/* The theme radius */',
+  ':root {',
+  '  --radius-factor: 1;',
+  '  --radius-full: 0px;',
+  '}',
+  '',
+  ...Object.entries(radiusFactor).flatMap(([name, factor]) => [
+    `[data-radius="${name}"] {`,
+    `  --radius-factor: ${factor};`,
+    `  --radius-full: ${name === 'full' ? '9999px' : '0px'};`,
+    '}',
+    '',
+  ]),
   '/* The `color` prop: data-color points the accent at another scale. */',
   ...colors.flatMap((name) => [
     `[data-color="${name}"],`,

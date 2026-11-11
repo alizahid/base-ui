@@ -3,6 +3,7 @@ import type { ComponentProps } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants/lite'
 import { cn } from '../../lib/cn'
 import { type Color, colorAttribute } from '../../lib/colors'
+import type { Radius } from '../../lib/theme'
 
 export const buttonVariants = tv({
   base: [
@@ -44,10 +45,10 @@ export const buttonVariants = tv({
       ],
     },
     size: {
-      xs: 'h-6 gap-1 rounded-sm px-2 text-xs',
-      sm: 'h-8 gap-2 rounded-md px-3 text-sm',
-      md: 'h-10 gap-3 rounded-md px-4 text-base',
-      lg: 'h-12 gap-3 rounded-lg px-6 text-lg',
+      xs: 'h-6 gap-1 rounded-ui-sm px-2 text-xs',
+      sm: 'h-8 gap-2 rounded-ui-md px-3 text-sm',
+      md: 'h-10 gap-3 rounded-ui-md px-4 text-base',
+      lg: 'h-12 gap-3 rounded-ui-lg px-6 text-lg',
     },
   },
   defaultVariants: {
@@ -69,6 +70,11 @@ export type ButtonProps = Omit<ComponentProps<typeof BaseButton>, 'className' | 
      * @default false
      */
     loading?: boolean
+    /**
+     * How round the corners are. Follows the theme when not set.
+     * A `rounded-*` class in `className` still wins over this.
+     */
+    radius?: Radius
   }
 
 export function Button({
@@ -77,6 +83,7 @@ export function Button({
   color,
   disabled,
   loading = false,
+  radius,
   size,
   variant,
   ...props
@@ -85,6 +92,7 @@ export function Button({
     <BaseButton
       aria-busy={loading || undefined}
       data-color={colorAttribute(color)}
+      data-radius={radius}
       disabled={disabled || loading}
       {...props}
       className={cn(buttonVariants({ size, variant }), className)}

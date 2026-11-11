@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { colors } from '../../lib/colors'
+import { radii } from '../../lib/theme'
 import { Button } from './button'
 
 const variants = ['solid', 'soft', 'surface', 'outline', 'ghost'] as const
@@ -18,6 +19,7 @@ const meta = {
   },
   argTypes: {
     color: { control: 'select', options: ['accent', ...colors] },
+    radius: { control: 'inline-radio', options: radii },
     size: { control: 'inline-radio', options: sizes },
     variant: { control: 'inline-radio', options: variants },
   },
@@ -53,6 +55,30 @@ export const Sizes: Story = {
           ))}
         </div>
       ))}
+    </div>
+  ),
+}
+
+/** The `radius` prop wins over the theme, and `className` wins over the prop. */
+export const Radius: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center gap-4">
+        <Button {...args}>From theme</Button>
+        {radii.map((radius) => (
+          <Button key={radius} {...args} radius={radius}>
+            {radius}
+          </Button>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button {...args} className="rounded-none" radius="full">
+          radius full + rounded-none
+        </Button>
+        <Button {...args} className="rounded-tl-none" radius="full">
+          radius full + rounded-tl-none
+        </Button>
+      </div>
     </div>
   ),
 }
