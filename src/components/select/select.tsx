@@ -8,7 +8,6 @@ import { type PositionerProps, splitPositionerProps } from '../../lib/positioner
 import {
   type ControlSize,
   controlSize,
-  inputSurface,
   listItem,
   listLabel,
   listPopup,
