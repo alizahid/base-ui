@@ -71,7 +71,7 @@ export const selectTriggerVariants = tv({
         value: 'data-placeholder:text-accent-12 data-placeholder:opacity-60',
         icon: 'opacity-90',
       },
-      // Ghost has no box and no fixed height: it wraps its text with a little padding
+      // Ghost has no box, but the same height and padding as the other variants
       ghost: {
         root: [
           'text-accent-12',
@@ -88,10 +88,6 @@ export const selectTriggerVariants = tv({
       lg: { root: [controlSize.lg, 'gap-2'], icon: 'size-[11px]' },
     },
   },
-  compoundVariants: [
-    { variant: 'ghost', size: ['sm', 'md'], class: { root: 'h-auto px-2 py-1' } },
-    { variant: 'ghost', size: 'lg', class: { root: 'h-auto px-3 py-1.5' } },
-  ],
   defaultVariants: {
     variant: 'surface',
     size: 'md',

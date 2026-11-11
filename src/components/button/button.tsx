@@ -41,9 +41,10 @@ export const buttonVariants = tv({
         'active:bg-accent-a3',
         'data-disabled:bg-transparent data-disabled:text-gray-a8 data-disabled:inset-ring-gray-a7',
       ],
-      // Ghost has no fixed height: it wraps its text with a little padding
+      // Ghost has the same size and weight as the other variants, just no background
+      // until hover. (In Radix Themes it is smaller and wraps its text.)
       ghost: [
-        'text-accent-a11 -outline-offset-1',
+        'font-medium text-accent-a11 -outline-offset-1 [&_svg]:opacity-90',
         'hover:bg-accent-a3 data-popup-open:bg-accent-a3',
         'active:bg-accent-a4',
         'data-disabled:bg-transparent data-disabled:text-gray-a8',
@@ -61,10 +62,6 @@ export const buttonVariants = tv({
     },
   },
   compoundVariants: [
-    { variant: 'ghost', size: 'sm', class: 'h-auto gap-1 px-2 py-1' },
-    { variant: 'ghost', size: 'md', class: 'h-auto gap-1 px-2 py-1' },
-    { variant: 'ghost', size: 'lg', class: 'h-auto gap-2 px-3 py-1.5' },
-    { variant: 'ghost', size: 'xl', class: 'h-auto gap-2 px-4 py-2' },
     {
       highContrast: true,
       variant: 'solid',
