@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { type ReactNode, useState } from 'react'
+import type { ReactNode } from 'react'
 import {
   Accordion,
   AlertDialog,
@@ -49,20 +49,32 @@ import {
   ToggleGroup,
   Toolbar,
   Tooltip,
-  useTheme,
   useToast,
 } from '..'
 import { colors } from '../lib/colors'
 import { grays, panelBackgrounds, radii } from '../lib/theme'
 
 /**
- * Every component on one page, one of each. The panel on the right changes
- * the color, gray, appearance, radius and panels for all of them at once.
+ * Every component on one page, one of each. The Controls panel changes the
+ * color, gray, appearance, radius and panels for all of them at once.
  */
 const meta = {
   title: 'Playground',
-  parameters: { controls: { disable: true } },
-} satisfies Meta
+  args: {
+    appearance: 'light',
+    color: 'blue',
+    gray: 'slate',
+    panelBackground: 'translucent',
+    radius: 'medium',
+  },
+  argTypes: {
+    appearance: { control: 'inline-radio', options: ['light', 'dark'] },
+    color: { control: 'select', options: colors },
+    gray: { control: 'inline-radio', options: grays },
+    panelBackground: { control: 'inline-radio', options: panelBackgrounds },
+    radius: { control: 'inline-radio', options: radii },
+  },
+} satisfies Meta<Theme>
 
 export default meta
 
@@ -596,135 +608,11 @@ function Overlays() {
   )
 }
 
-// The round color buttons in the theme panel
-function Swatches<Value extends string>({
-  label,
-  onChange,
-  options,
-  swatch,
-  value,
-}: {
-  label: string
-  onChange: (value: Value) => void
-  options: readonly Value[]
-  /** Classes and attributes that paint one swatch in its own color. */
-  swatch: (option: Value) => { className: string; 'data-color'?: string; 'data-gray'?: string }
-  value: Value
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <span className="font-medium text-sm">{label}</span>
-      <div aria-label={label} className="grid grid-cols-13 gap-1.5" role="radiogroup">
-        {options.map((option) => {
-          const { className, ...attributes } = swatch(option)
-
-          return (
-            <Tooltip content={option} key={option}>
-              <button
-                {...attributes}
-                aria-checked={option === value}
-                aria-label={option}
-                className={`size-5.5 cursor-default rounded-full outline-offset-2 outline-gray-12 focus-visible:outline-2 aria-checked:outline-2 ${className}`}
-                onClick={() => onChange(option)}
-                role="radio"
-                type="button"
-              />
-            </Tooltip>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-// A row of options in the theme panel
-function Options<Value extends string>({
-  label,
-  onChange,
-  options,
-  value,
-}: {
-  label: string
-  onChange: (value: Value) => void
-  options: readonly Value[]
-  value: Value
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <span className="font-medium text-sm">{label}</span>
-      <SegmentedControl.Root
-        aria-label={label}
-        className="w-full"
-        onValueChange={(next) => onChange(next as Value)}
-        size="sm"
-        value={value}
-      >
-        {options.map((option) => (
-          <SegmentedControl.Item className="min-w-0 px-0 capitalize" key={option} value={option}>
-            {option}
-          </SegmentedControl.Item>
-        ))}
-      </SegmentedControl.Root>
-    </div>
-  )
-}
-
-/** The floating panel that changes the theme of the page, like the one in Radix Themes. */
-function ThemePanel({ onChange, theme }: { onChange: (theme: Theme) => void; theme: Theme }) {
-  const set = (change: Partial<Theme>) => onChange({ ...theme, ...change })
-
-  return (
-    <Card
-      className="fixed top-4 right-4 z-10 flex max-h-[calc(100dvh-2rem)] w-96 flex-col gap-4 overflow-y-auto overflow-x-hidden shadow-ui-5"
-      size="md"
-    >
-      <span className="font-bold text-base">Theme</span>
-      <Swatches
-        label="Accent color"
-        onChange={(color) => set({ color })}
-        options={colors}
-        swatch={(color) => ({ className: 'bg-accent-9', 'data-color': color })}
-        value={theme.color}
-      />
-      <Swatches
-        label="Gray color"
-        onChange={(gray) => set({ gray })}
-        options={grays}
-        swatch={(gray) => ({ className: 'bg-gray-9', 'data-gray': gray })}
-        value={theme.gray}
-      />
-      <Options
-        label="Appearance"
-        onChange={(appearance) => set({ appearance })}
-        options={['light', 'dark'] as const}
-        value={theme.appearance === 'dark' ? 'dark' : 'light'}
-      />
-      <Options
-        label="Radius"
-        onChange={(radius) => set({ radius })}
-        options={radii}
-        value={theme.radius}
-      />
-      <Options
-        label="Panel background"
-        onChange={(panelBackground) => set({ panelBackground })}
-        options={panelBackgrounds}
-        value={theme.panelBackground}
-      />
-    </Card>
-  )
-}
-
-function Page() {
-  // Start from the theme picked in the Storybook toolbar
-  const [theme, setTheme] = useState<Theme>(useTheme())
-
-  return (
+export const AllComponents: Story = {
+  render: (theme) => (
     <ThemeProvider {...theme} className="-m-4 min-h-dvh p-4" hasBackground>
       <Toast.Provider>
-        <ThemePanel onChange={setTheme} theme={theme} />
-        {/* Leave room for the panel on wide screens */}
-        <div className="flex max-w-5xl flex-col gap-12 p-4 xl:mr-104">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-4">
           <Buttons />
           <Separator size="full" />
           <Inputs />
@@ -735,9 +623,5 @@ function Page() {
         </div>
       </Toast.Provider>
     </ThemeProvider>
-  )
-}
-
-export const AllComponents: Story = {
-  render: () => <Page />,
+  ),
 }
