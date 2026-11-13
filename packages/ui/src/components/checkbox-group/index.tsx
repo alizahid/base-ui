@@ -17,6 +17,8 @@ export type CheckboxGroupRootProps = ComponentProps &
     style?: CSSProperties
   }
 
+// size, variant and highContrast become css variables here, which every
+// Checkbox inside inherits
 export function Root({
   className,
   color,
@@ -48,6 +50,8 @@ export function Root({
 
 export type CheckboxGroupItemProps = CheckboxProps
 
+// a Checkbox with its label. size goes on the label, so both the text and the
+// Checkbox pick it up
 export function Item({
   children,
   className,

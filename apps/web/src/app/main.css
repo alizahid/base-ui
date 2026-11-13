@@ -70,5 +70,5 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  @apply relative bg-(--gray-1) text-(--gray-12);
+  @apply relative bg-(--gray-3) text-(--gray-12);
 }

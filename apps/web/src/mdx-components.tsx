@@ -18,7 +18,7 @@ import { type ComponentProps } from 'react'
 function Example(props: ComponentProps<'div'>) {
   return (
     <div
-      className="mt-4 flex min-h-32 flex-wrap items-center justify-center gap-4 rounded-lg bg-(--gray-2) p-6"
+      className="mt-4 flex min-h-32 flex-wrap items-center justify-center gap-4 rounded-lg bg-(--gray-1) p-6"
       {...props}
     />
   )

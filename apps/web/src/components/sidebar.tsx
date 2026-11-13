@@ -12,8 +12,8 @@ export function Sidebar() {
   const t = useTranslations('nav')
 
   return (
-    <nav className="flex flex-col">
-      <h2 className="mb-2 text-(--gray-11)">{t('components')}</h2>
+    <nav className="flex flex-col gap-1">
+      <h2 className="mb-1 text-(--gray-11)">{t('components')}</h2>
 
       {pages.map((page) => {
         const href = `/components/${page}`
@@ -21,8 +21,8 @@ export function Sidebar() {
         return (
           <Link
             className={cn(
-              '-mx-1.5 rounded-md px-1.5 py-0.5 text-(--gray-12) ring-(--accent-8) outline-none hover:underline focus-visible:ring-2',
-              pathname === href && 'bg-(--accent-5) font-bold',
+              '-mx-1.5 rounded-sm px-1.5 py-0.5 text-(--gray-12) ring-(--accent-8) outline-none hover:bg-(--accent-4) focus-visible:ring-2',
+              pathname === href && 'bg-(--accent-5) font-medium',
             )}
             href={href}
             key={page}

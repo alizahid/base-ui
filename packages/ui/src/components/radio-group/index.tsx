@@ -6,7 +6,12 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { type ControlProps, controlStyles, group } from '../../lib/control.js'
+import {
+  type ControlProps,
+  controlRadio,
+  controlStyles,
+  group,
+} from '../../lib/control.js'
 import { merge } from '../../lib/stylex.js'
 import { Radio, type RadioProps } from '../radio/index.js'
 
@@ -17,6 +22,8 @@ export type RadioGroupRootProps = ComponentProps &
     style?: CSSProperties
   }
 
+// size, variant and highContrast become css variables here, which every
+// Radio inside inherits
 export function Root({
   className,
   color,
@@ -33,6 +40,7 @@ export function Root({
       {...merge(
         stylex.props(
           group.main,
+          controlRadio.main,
           ...controlStyles({
             highContrast,
             size,
@@ -48,6 +56,8 @@ export function Root({
 
 export type RadioGroupItemProps = RadioProps
 
+// a Radio with its label. size goes on the label, so both the text and the
+// Radio pick it up
 export function Item({
   children,
   className,

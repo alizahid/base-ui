@@ -28,6 +28,8 @@ export function Field({
 }: FieldProps) {
   return (
     <Component.Root
+      // an `error` from the caller (a form library, the server) forces the
+      // invalid state; without one base ui's own validation decides
       invalid={error ? true : undefined}
       {...props}
       {...merge(stylex.props(styles.main), className, style)}
@@ -46,6 +48,10 @@ export function Field({
         </Component.Description>
       ) : null}
 
+      {/* with an `error` this always shows it. without one, base ui shows its
+          own validation message when the field is invalid. children is only
+          passed alongside an error, as an explicit undefined would blank
+          base ui's message */}
       <Component.Error
         {...(error ? { children: error, match: true } : null)}
         {...stylex.props(styles.error)}

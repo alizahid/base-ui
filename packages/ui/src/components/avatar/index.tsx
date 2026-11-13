@@ -69,6 +69,8 @@ export function Avatar({
   )
 }
 
+// the root is a size container, so the fallback's font size (in cqmin) scales
+// with whatever size the avatar is
 const styles = stylex.create({
   double: {
     fontSize: '40cqmin',
@@ -90,8 +92,8 @@ const styles = stylex.create({
     width: '100%',
   },
   main: {
-    backgroundColor: 'var(--background)',
-    color: 'var(--color)',
+    backgroundColor: 'var(--avatar-background)',
+    color: 'var(--avatar-color)',
     containerType: 'size',
     fontWeight: '500',
     overflow: 'hidden',
@@ -100,30 +102,32 @@ const styles = stylex.create({
   single: {
     fontSize: '60cqmin',
   },
+  // trims the line box down to the letters, so they sit dead centre
   text: {
     textBoxEdge: 'cap alphabetic',
     textBoxTrim: 'trim-both',
   },
 })
 
+// variants only set variables, the main style decides where they apply
 const variants = stylex.create({
   soft: {
-    '--background': 'var(--accent-3)',
-    '--color': 'var(--accent-11)',
+    '--avatar-background': 'var(--accent-3)',
+    '--avatar-color': 'var(--accent-11)',
   },
   solid: {
-    '--background': 'var(--accent-9)',
-    '--color': 'var(--accent-contrast)',
+    '--avatar-background': 'var(--accent-9)',
+    '--avatar-color': 'var(--accent-contrast)',
   },
 })
 
 const contrast = stylex.create({
   soft: {
-    '--color': 'var(--accent-12)',
+    '--avatar-color': 'var(--accent-12)',
   },
   solid: {
-    '--background': 'var(--accent-12)',
-    '--color': 'var(--gray-1)',
+    '--avatar-background': 'var(--accent-12)',
+    '--avatar-color': 'var(--accent-1)',
   },
 })
 

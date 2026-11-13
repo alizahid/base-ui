@@ -4,6 +4,7 @@ import { type CSSProperties } from 'react'
 
 type Style = ReturnType<typeof stylex.props>
 
+// adds a consumer's className and style to the output of stylex.props
 export function merge(
   input: Style,
   className?: string,
