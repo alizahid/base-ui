@@ -1,0 +1,68 @@
+# Alert Dialog
+
+## Examples
+
+### Basic
+
+<Example>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button color="red" />}>Revoke access</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-sm">
+      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+      <AlertDialog.Description>Are you sure? This application will no longer be accessible and any existing sessions will be expired.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>Revoke access</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+</Example>
+
+### Size
+
+<Example>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>Size 1</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="1">
+      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+      <AlertDialog.Description>The quick brown fox jumps over the lazy dog.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>Revoke access</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>Size 2</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="2">
+      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+      <AlertDialog.Description>The quick brown fox jumps over the lazy dog.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>Revoke access</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>Size 3</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="3">
+      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+      <AlertDialog.Description>The quick brown fox jumps over the lazy dog.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>Revoke access</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>Size 4</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="4">
+      <AlertDialog.Title>Revoke access</AlertDialog.Title>
+      <AlertDialog.Description>The quick brown fox jumps over the lazy dog.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>Cancel</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>Revoke access</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+</Example>

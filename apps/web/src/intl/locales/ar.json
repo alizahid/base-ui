@@ -11,11 +11,13 @@
     "title": "Base UI"
   },
   "nav": {
+    "alert-dialog": "مربع حوار التنبيه",
     "avatar": "الصورة الرمزية",
     "button": "الزر",
     "checkbox": "خانة الاختيار",
     "checkbox-group": "مجموعة خانات الاختيار",
     "components": "المكونات",
+    "dialog": "مربع الحوار",
     "field": "الحقل",
     "icon-button": "زر الأيقونة",
     "radio": "زر الاختيار",

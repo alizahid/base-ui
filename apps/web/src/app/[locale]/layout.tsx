@@ -81,7 +81,7 @@ export default async function Layout({
                 </div>
               </aside>
 
-              <main className="my-12 flex-1">{children}</main>
+              <main className="min-h-screen flex-1 py-12">{children}</main>
             </BaseProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

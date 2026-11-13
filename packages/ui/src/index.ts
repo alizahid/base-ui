@@ -10,6 +10,16 @@ export * from './components/provider/index.js'
 
 // components
 
+export type {
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
+  AlertDialogContentProps,
+  AlertDialogDescriptionProps,
+  AlertDialogRootProps,
+  AlertDialogTitleProps,
+  AlertDialogTriggerProps,
+} from './components/alert-dialog/index.js'
+export * as AlertDialog from './components/alert-dialog/index.js'
 export * from './components/avatar/index.js'
 export { Button, type ButtonProps } from './components/button/index.js'
 export * from './components/checkbox/index.js'
@@ -18,6 +28,15 @@ export type {
   CheckboxGroupRootProps,
 } from './components/checkbox-group/index.js'
 export * as CheckboxGroup from './components/checkbox-group/index.js'
+export type {
+  DialogCloseProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from './components/dialog/index.js'
+export * as Dialog from './components/dialog/index.js'
 export * from './components/field/index.js'
 export * from './components/icon-button/index.js'
 export * from './components/radio/index.js'

@@ -1,8 +1,10 @@
 export const pages = [
+  'alert-dialog',
   'avatar',
   'button',
   'checkbox',
   'checkbox-group',
+  'dialog',
   'field',
   'icon-button',
   'radio',

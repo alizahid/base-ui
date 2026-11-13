@@ -1,0 +1,68 @@
+# مربع حوار التنبيه
+
+## أمثلة
+
+### أساسي
+
+<Example>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-sm">
+      <AlertDialog.Title>إلغاء الوصول</AlertDialog.Title>
+      <AlertDialog.Description>هل أنت متأكد؟ لن يكون هذا التطبيق متاحًا بعد الآن وستنتهي جميع الجلسات الحالية.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>إلغاء</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+</Example>
+
+### الحجم
+
+<Example>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>الحجم 1</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="1">
+      <AlertDialog.Title>إلغاء الوصول</AlertDialog.Title>
+      <AlertDialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>إلغاء</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>الحجم 2</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="2">
+      <AlertDialog.Title>إلغاء الوصول</AlertDialog.Title>
+      <AlertDialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>إلغاء</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>الحجم 3</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="3">
+      <AlertDialog.Title>إلغاء الوصول</AlertDialog.Title>
+      <AlertDialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>إلغاء</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+  <AlertDialog.Root>
+    <AlertDialog.Trigger render={<Button variant="soft" />}>الحجم 4</AlertDialog.Trigger>
+    <AlertDialog.Content className="max-w-xs" size="4">
+      <AlertDialog.Title>إلغاء الوصول</AlertDialog.Title>
+      <AlertDialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</AlertDialog.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <AlertDialog.Cancel render={<Button color="gray" variant="soft" />}>إلغاء</AlertDialog.Cancel>
+        <AlertDialog.Action render={<Button color="red" />}>إلغاء الوصول</AlertDialog.Action>
+      </div>
+    </AlertDialog.Content>
+  </AlertDialog.Root>
+</Example>

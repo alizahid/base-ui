@@ -1,3 +1,7 @@
+/* the library's styles sit between tailwind's base and its utilities, so a
+   tailwind class on a component overrides the component's own style */
+@layer theme, base, ui, components, utilities;
+
 @import "tailwindcss";
 
 @import "@radix-ui/colors/tomato.css";
@@ -65,7 +69,7 @@
 @import "@radix-ui/colors/sand-dark.css";
 
 @import "@repo/ui/theme.css";
-@import "@repo/ui/styles.css";
+@import "@repo/ui/styles.css" layer(ui);
 
 @custom-variant dark (&:where(.dark, .dark *));
 

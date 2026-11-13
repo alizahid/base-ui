@@ -556,6 +556,10 @@
 :where(:root),
 [data-gray] {
   --panel-background: white;
+  --dialog-shadow:
+    0 0 0 1px var(--gray-4), 0 12px 60px rgb(0 0 0 / 0.15),
+    0 16px 64px rgb(0 0 0 / 0.02), 0 16px 36px -20px rgb(0 0 0 / 0.55);
+  --overlay: rgb(0 0 0 / 0.4);
   --panel-shadow:
     0 0 0 1px var(--gray-4), 0 12px 60px rgb(0 0 0 / 0.15),
     0 12px 32px -16px rgb(0 0 0 / 0.2);
@@ -564,6 +568,10 @@
 :is(.dark, .dark-theme),
 :is(.dark, .dark-theme) [data-gray] {
   --panel-background: var(--gray-2);
+  --dialog-shadow:
+    0 0 0 1px var(--gray-6), 0 12px 60px rgb(0 0 0 / 0.2),
+    0 16px 64px rgb(0 0 0 / 0.4), 0 16px 36px -20px rgb(0 0 0 / 0.9);
+  --overlay: rgb(0 0 0 / 0.6);
   --panel-shadow:
     0 0 0 1px var(--gray-6), 0 12px 60px rgb(0 0 0 / 0.3),
     0 12px 32px -16px rgb(0 0 0 / 0.5);

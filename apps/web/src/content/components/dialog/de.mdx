@@ -1,0 +1,97 @@
+# Dialog
+
+## Beispiele
+
+### Einfach
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button />}>Profil bearbeiten</Dialog.Trigger>
+    <Dialog.Content className="max-w-sm">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Nimm Änderungen an deinem Profil vor.</Dialog.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="Name">
+          <TextField.Root defaultValue="Ali Zahid" />
+        </Field>
+        <Field label="E-Mail">
+          <TextField.Root defaultValue="ali@example.com" type="email" />
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end gap-3">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Abbrechen</Dialog.Close>
+        <Dialog.Close render={<Button />}>Speichern</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### Größe
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Größe 1</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="1">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Größe 2</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="2">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Größe 3</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="3">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Größe 4</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="4">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### Ausrichtung
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Oben</Dialog.Trigger>
+    <Dialog.Content align="start" className="max-w-sm">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>Mitte</Dialog.Trigger>
+    <Dialog.Content align="center" className="max-w-sm">
+      <Dialog.Title>Profil bearbeiten</Dialog.Title>
+      <Dialog.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>Schließen</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>

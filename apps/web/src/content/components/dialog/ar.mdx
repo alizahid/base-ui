@@ -1,0 +1,97 @@
+# مربع الحوار
+
+## أمثلة
+
+### أساسي
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button />}>تعديل الملف الشخصي</Dialog.Trigger>
+    <Dialog.Content className="max-w-sm">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>أجرِ تغييرات على ملفك الشخصي.</Dialog.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="الاسم">
+          <TextField.Root defaultValue="Ali Zahid" />
+        </Field>
+        <Field label="البريد الإلكتروني">
+          <TextField.Root defaultValue="ali@example.com" type="email" />
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end gap-3">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إلغاء</Dialog.Close>
+        <Dialog.Close render={<Button />}>حفظ</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### الحجم
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>الحجم 1</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="1">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>الحجم 2</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="2">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>الحجم 3</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="3">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>الحجم 4</Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="4">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### المحاذاة
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>البداية</Dialog.Trigger>
+    <Dialog.Content align="start" className="max-w-sm">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}>الوسط</Dialog.Trigger>
+    <Dialog.Content align="center" className="max-w-sm">
+      <Dialog.Title>تعديل الملف الشخصي</Dialog.Title>
+      <Dialog.Description>نص تجريبي لعرض محتوى مربع الحوار.</Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}>إغلاق</Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>

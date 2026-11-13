@@ -1,8 +1,10 @@
 import {
+  AlertDialog,
   Avatar,
   Button,
   Checkbox,
   CheckboxGroup,
+  Dialog,
   Field,
   IconButton,
   Radio,
@@ -44,9 +46,26 @@ export function useMDXComponents(): MDXComponents {
   // nested components don't fit the MDXComponents index signature
   return {
     ...components,
+    AlertDialog: {
+      Action: AlertDialog.Action,
+      Cancel: AlertDialog.Cancel,
+      Content: AlertDialog.Content,
+      Description: AlertDialog.Description,
+      Root: AlertDialog.Root,
+      Title: AlertDialog.Title,
+      Trigger: AlertDialog.Trigger,
+    },
     CheckboxGroup: {
       Item: CheckboxGroup.Item,
       Root: CheckboxGroup.Root,
+    },
+    Dialog: {
+      Close: Dialog.Close,
+      Content: Dialog.Content,
+      Description: Dialog.Description,
+      Root: Dialog.Root,
+      Title: Dialog.Title,
+      Trigger: Dialog.Trigger,
     },
     RadioGroup: {
       Item: RadioGroup.Item,

@@ -11,11 +11,13 @@
     "title": "Base UI"
   },
   "nav": {
+    "alert-dialog": "Warndialog",
     "avatar": "Avatar",
     "button": "Button",
     "checkbox": "Checkbox",
     "checkbox-group": "Checkbox-Gruppe",
     "components": "Komponenten",
+    "dialog": "Dialog",
     "field": "Feld",
     "icon-button": "Icon-Button",
     "radio": "Radio",
