@@ -14,6 +14,7 @@ export const pages = [
   'radio',
   'radio-group',
   'select',
+  'slider',
   'spinner',
   'switch',
   'text-area',
