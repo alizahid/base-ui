@@ -4,6 +4,7 @@ export * from './components/provider/index.js'
 
 // components
 
+export * from './components/avatar/index.js'
 export * from './components/button/index.js'
 export * from './components/spinner/index.js'
 

@@ -8,7 +8,7 @@ const options = {
   },
   bundle: true,
   entryPoints: ['src/index.ts'],
-  external: ['react', 'cn'],
+  external: ['react', 'react-dom', 'cn'],
   format: 'esm',
   metafile: true,
   outdir: 'dist',

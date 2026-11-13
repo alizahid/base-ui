@@ -1,0 +1,152 @@
+'use client'
+
+import {
+  Avatar as Component,
+  type AvatarRootProps as ComponentProps,
+} from '@base-ui/react/avatar'
+import * as stylex from '@stylexjs/stylex'
+import { type CSSProperties } from 'react'
+
+import { type ColorToken } from '../../lib/colors.js'
+import { type RadiusToken, radii } from '../../lib/radii.js'
+import { merge } from '../../lib/stylex.js'
+
+export type AvatarProps = ComponentProps & {
+  className?: string
+  color?: ColorToken
+  delay?: number
+  fallback: string
+  radius?: RadiusToken
+  size?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+  src?: string
+  style?: CSSProperties
+  variant?: 'solid' | 'soft'
+}
+
+export function Avatar({
+  className,
+  color,
+  delay,
+  fallback,
+  radius,
+  size = '2',
+  src,
+  style,
+  variant = 'solid',
+  ...props
+}: AvatarProps) {
+  return (
+    <Component.Root
+      data-accent={color}
+      {...props}
+      {...merge(
+        stylex.props(
+          styles.main,
+          variants[variant],
+          sizes[size],
+          radius && radii[radius],
+        ),
+        className,
+        style,
+      )}
+    >
+      <Component.Image {...stylex.props(styles.image)} src={src} />
+
+      <Component.Fallback {...stylex.props(styles.fallback)} delay={delay}>
+        <span
+          {...stylex.props(
+            fallback.length > 1 ? styles.double : styles.single,
+            styles.text,
+          )}
+        >
+          {fallback.toUpperCase()}
+        </span>
+      </Component.Fallback>
+    </Component.Root>
+  )
+}
+
+const styles = stylex.create({
+  double: {
+    fontSize: '40cqmin',
+  },
+  fallback: {
+    alignItems: 'center',
+    display: 'flex',
+    height: '100%',
+    inset: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    width: '100%',
+  },
+  image: {
+    height: '100%',
+    inset: 0,
+    objectFit: 'cover',
+    position: 'absolute',
+    width: '100%',
+  },
+  main: {
+    containerType: 'size',
+    fontWeight: '500',
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  single: {
+    fontSize: '70cqmin',
+  },
+  text: {
+    textBoxEdge: 'cap alphabetic',
+    textBoxTrim: 'trim-both',
+  },
+})
+
+const variants = stylex.create({
+  soft: {
+    backgroundColor: 'var(--accent-3)',
+    color: 'var(--accent-11)',
+  },
+  solid: {
+    backgroundColor: 'var(--accent-9)',
+    color: 'var(--accent-contrast)',
+  },
+})
+
+const sizes = stylex.create({
+  1: {
+    height: 'calc(var(--spacing) * 6)',
+    width: 'calc(var(--spacing) * 6)',
+  },
+  2: {
+    height: 'calc(var(--spacing) * 8)',
+    width: 'calc(var(--spacing) * 8)',
+  },
+  3: {
+    height: 'calc(var(--spacing) * 10)',
+    width: 'calc(var(--spacing) * 10)',
+  },
+  4: {
+    height: 'calc(var(--spacing) * 12)',
+    width: 'calc(var(--spacing) * 12)',
+  },
+  5: {
+    height: 'calc(var(--spacing) * 16)',
+    width: 'calc(var(--spacing) * 16)',
+  },
+  6: {
+    height: 'calc(var(--spacing) * 20)',
+    width: 'calc(var(--spacing) * 20)',
+  },
+  7: {
+    height: 'calc(var(--spacing) * 24)',
+    width: 'calc(var(--spacing) * 24)',
+  },
+  8: {
+    height: 'calc(var(--spacing) * 32)',
+    width: 'calc(var(--spacing) * 32)',
+  },
+  9: {
+    height: 'calc(var(--spacing) * 40)',
+    width: 'calc(var(--spacing) * 40)',
+  },
+})

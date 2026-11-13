@@ -44,8 +44,6 @@ const spinner = stylex.keyframes({
   },
 })
 
-console.log('spinner', spinner)
-
 const styles = stylex.create({
   leaf: {
     '::before': {
