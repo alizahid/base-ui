@@ -4,6 +4,7 @@ export const pages = [
   'button',
   'checkbox',
   'checkbox-group',
+  'combobox',
   'dialog',
   'field',
   'icon-button',

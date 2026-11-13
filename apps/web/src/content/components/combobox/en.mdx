@@ -1,0 +1,165 @@
+export const fruits = [
+  { label: 'Apple', value: 'apple' },
+  { label: 'Apricot', value: 'apricot' },
+  { label: 'Banana', value: 'banana' },
+  { label: 'Blueberry', value: 'blueberry' },
+  { label: 'Cherry', value: 'cherry' },
+  { label: 'Grape', value: 'grape' },
+  { label: 'Lemon', value: 'lemon' },
+  { label: 'Mango', value: 'mango' },
+  { label: 'Orange', value: 'orange' },
+  { label: 'Peach', value: 'peach' },
+  { label: 'Pear', value: 'pear' },
+  { label: 'Strawberry', value: 'strawberry' },
+]
+
+# Combobox
+
+## Examples
+
+### Size
+
+<Example>
+  <Combobox.Root items={fruits} size="1">
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+  <Combobox.Root items={fruits} size="2">
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+  <Combobox.Root items={fruits} size="3">
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+</Example>
+
+### Variant
+
+<Example>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" variant="surface" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" variant="soft" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+</Example>
+
+### Content variant
+
+<Example>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." variant="solid" />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." variant="soft" />
+  </Combobox.Root>
+</Example>
+
+### Color
+
+<Example>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" color="indigo" variant="soft" />
+    <Combobox.Content empty="No fruits found." color="indigo" />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" color="cyan" variant="soft" />
+    <Combobox.Content empty="No fruits found." color="cyan" />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" color="orange" variant="soft" />
+    <Combobox.Content empty="No fruits found." color="orange" />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" color="crimson" variant="soft" />
+    <Combobox.Content empty="No fruits found." color="crimson" />
+  </Combobox.Root>
+</Example>
+
+### High contrast
+
+<Example>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." highContrast />
+  </Combobox.Root>
+  <Combobox.Root items={fruits}>
+    <Combobox.Input placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." color="gray" highContrast />
+  </Combobox.Root>
+</Example>
+
+### Disabled
+
+<Example>
+  <Combobox.Root items={fruits} disabled>
+    <Combobox.Input placeholder="Pick a fruit" variant="surface" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+  <Combobox.Root items={fruits} disabled>
+    <Combobox.Input placeholder="Pick a fruit" variant="soft" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+</Example>
+
+### In a field
+
+<Example>
+  <Field className="w-64" hint="Start typing to filter." label="Favourite fruit">
+    <Combobox.Root items={fruits}>
+      <Combobox.Input placeholder="Pick a fruit" />
+      <Combobox.Content empty="No fruits found." />
+    </Combobox.Root>
+  </Field>
+  <Field className="w-64" error="Pick one to continue." label="Favourite fruit">
+    <Combobox.Root items={fruits}>
+      <Combobox.Input placeholder="Pick a fruit" />
+      <Combobox.Content empty="No fruits found." />
+    </Combobox.Root>
+  </Field>
+</Example>
+
+### Multiple
+
+<Example>
+  <Combobox.Root defaultValue={[fruits[0], fruits[2]]} items={fruits} multiple>
+    <Combobox.Input className="w-80" placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+
+  <Combobox.Root defaultValue={[fruits[4]]} items={fruits} multiple>
+    <Combobox.Input className="w-80" placeholder="Pick a fruit" variant="soft" />
+    <Combobox.Content empty="No fruits found." />
+  </Combobox.Root>
+</Example>
+
+### Search inside the popup
+
+<Example>
+  <Combobox.Root items={fruits}>
+    <Combobox.Trigger placeholder="Pick a fruit" />
+    <Combobox.Content empty="No fruits found." search={<Combobox.Search placeholder="Search…" />} />
+  </Combobox.Root>
+
+  <Combobox.Root items={fruits}>
+    <Combobox.Trigger placeholder="Pick a fruit" variant="soft" />
+    <Combobox.Content empty="No fruits found." search={<Combobox.Search placeholder="Search…" />} />
+  </Combobox.Root>
+</Example>
+
+### Collapsed value
+
+<Example>
+  <CollapsedCombobox empty="No fruits found." items={fruits} more="more" placeholder="Pick a fruit" search="Search…" />
+</Example>
+
+### Async
+
+<Example>
+  <AsyncCombobox empty="No fruits found." hint="Type to search." items={fruits} loading="Loading…" placeholder="Pick a fruit" />
+</Example>

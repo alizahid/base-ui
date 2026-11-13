@@ -21,7 +21,7 @@ export function Sidebar() {
         return (
           <Link
             className={cn(
-              '-mx-1.5 rounded-sm px-1.5 py-0.5 text-(--gray-12) ring-(--accent-8) outline-none hover:bg-(--accent-4) focus-visible:ring-2',
+              '-mx-6 px-6 py-1 text-(--gray-12) ring-(--accent-8) outline-none hover:bg-(--accent-4) focus-visible:ring-2',
               pathname === href && 'bg-(--accent-5) font-medium',
             )}
             href={href}

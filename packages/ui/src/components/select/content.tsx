@@ -9,9 +9,10 @@ import { type CSSProperties, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { ChevronDownIcon } from '../../lib/icons.js'
+import { menu, menuSizes, menuVariants } from '../../lib/menu.js'
+import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
-import { SizeContext } from './context.js'
 
 export type SelectContentProps = SelectPopupProps & {
   className?: string
@@ -43,10 +44,10 @@ export function Content({
           {...props}
           {...merge(
             stylex.props(
-              styles.content,
-              contentVariants[variant],
-              highContrast && variant === 'solid' && styles.contrast,
-              contentSizes[size],
+              menu.content,
+              menuVariants[variant],
+              highContrast && variant === 'solid' && menu.contrast,
+              menuSizes[size],
             ),
             className,
             style,
@@ -60,7 +61,7 @@ export function Content({
             <ChevronDownIcon {...stylex.props(styles.chevron, styles.flip)} />
           </Component.ScrollUpArrow>
 
-          <Component.List {...stylex.props(styles.list)}>
+          <Component.List {...stylex.props(menu.list)}>
             {children}
           </Component.List>
 
@@ -120,89 +121,14 @@ const styles = stylex.create({
     top: 0,
   },
   chevron: {
-    height: 9,
-    width: 9,
-  },
-  content: {
-    backgroundColor: 'var(--panel-background)',
-    boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
-    color: 'var(--gray-12)',
-    maxHeight: 'var(--available-height)',
-    minWidth: 'var(--anchor-width)',
-    // base ui focuses the popup when it opens; the highlighted item shows focus
-    outline: 'none',
-    overflow: 'hidden',
-    transformOrigin: 'var(--transform-origin)',
-  },
-  contrast: {
-    '--select-highlight': 'var(--accent-12)',
-    '--select-highlight-color': 'var(--accent-1)',
+    height: 15,
+    width: 15,
   },
   flip: {
     transform: 'scaleY(-1)',
   },
-  list: {
-    boxSizing: 'border-box',
-    maxHeight: 'var(--available-height)',
-    outline: 'none',
-    overflowY: 'auto',
-    padding: 'var(--select-content-padding)',
-    position: 'relative',
-    // keeps the highlighted item clear of the scroll arrows
-    scrollPaddingBlock: 'calc(var(--spacing) * 6)',
-  },
   positioner: {
     outline: 'none',
     zIndex: 1,
-  },
-})
-
-// what a highlighted item looks like
-const contentVariants = stylex.create({
-  soft: {
-    '--select-highlight': 'var(--accent-4)',
-    '--select-highlight-color': 'inherit',
-  },
-  solid: {
-    '--select-highlight': 'var(--accent-9)',
-    '--select-highlight-color': 'var(--accent-contrast)',
-  },
-})
-
-// set on the popup; the items, labels and separators inside inherit them
-const contentSizes = stylex.create({
-  1: {
-    '--select-check-size': '8px',
-    '--select-content-padding': 'var(--spacing)',
-    '--select-indicator-width': 'calc(var(--spacing) * 5)',
-    '--select-item-height': 'calc(var(--spacing) * 6)',
-    '--select-item-radius': 'var(--radius-sm)',
-    '--select-separator-margin': 'calc(var(--spacing) * 2)',
-    borderRadius: 'var(--radius-lg)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
-  },
-  2: {
-    '--select-check-size': '10px',
-    '--select-content-padding': 'calc(var(--spacing) * 2)',
-    '--select-indicator-width': 'calc(var(--spacing) * 6)',
-    '--select-item-height': 'calc(var(--spacing) * 8)',
-    '--select-item-radius': 'var(--radius-md)',
-    '--select-separator-margin': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-xl)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
-  },
-  3: {
-    '--select-check-size': '10px',
-    '--select-content-padding': 'calc(var(--spacing) * 2)',
-    '--select-indicator-width': 'calc(var(--spacing) * 6)',
-    '--select-item-height': 'calc(var(--spacing) * 8)',
-    '--select-item-radius': 'var(--radius-md)',
-    '--select-separator-margin': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-xl)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-sm--line-height)',
   },
 })

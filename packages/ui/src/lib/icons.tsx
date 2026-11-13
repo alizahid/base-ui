@@ -1,45 +1,51 @@
 import { type ComponentProps } from 'react'
 
-// the icons radix themes uses inside its own components, from its internal
-// icons.tsx. drawn on a 9x9 grid and heavier than the public radix icons set.
-// internal: not exported from the package. size them with a className
+// from radix icons (radix-ui.com/icons), with their names. the paths are
+// copied in rather than adding the package as a dependency. drawn on a 15x15
+// grid, so they are sharpest at 15px. internal: not exported from the package.
+// size them with a className
 
 type Props = ComponentProps<'svg'>
 
 function Icon(props: Props) {
   return (
-    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 9 9" {...props} />
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 15 15"
+      {...props}
+    />
+  )
+}
+
+export function CheckIcon(props: Props) {
+  return (
+    <Icon {...props}>
+      <path d="M10.6015 3.90815C10.7903 3.61941 11.1779 3.53792 11.4667 3.72651C11.7555 3.91533 11.837 4.30288 11.6484 4.59175L7.39837 11.0917C7.29822 11.2449 7.13558 11.3469 6.95404 11.3701C6.77251 11.3932 6.58945 11.3359 6.45404 11.2128L3.70404 8.71284L3.62005 8.61811C3.44857 8.38342 3.4589 8.05252 3.66205 7.82905C3.86511 7.60576 4.19344 7.56371 4.4433 7.71186L4.54584 7.78706L6.75287 9.79292L10.6015 3.90815Z" />
+    </Icon>
   )
 }
 
 export function ChevronDownIcon(props: Props) {
   return (
     <Icon {...props}>
-      <path d="M0.135232 3.15803C0.324102 2.95657 0.640521 2.94637 0.841971 3.13523L4.5 6.56464L8.158 3.13523C8.3595 2.94637 8.6759 2.95657 8.8648 3.15803C9.0536 3.35949 9.0434 3.67591 8.842 3.86477L4.84197 7.6148C4.64964 7.7951 4.35036 7.7951 4.15803 7.6148L0.158031 3.86477C-0.0434285 3.67591 -0.0536285 3.35949 0.135232 3.15803Z" />
+      <path d="M11.1581 6.13499C11.3595 5.94644 11.6763 5.95708 11.8651 6.15843C12.0536 6.3599 12.043 6.67669 11.8416 6.86546L7.84165 10.6155C7.64941 10.7954 7.35029 10.7954 7.15805 10.6155L3.15805 6.86546L3.09165 6.78831C2.95746 6.59859 2.96967 6.33468 3.13461 6.15843C3.29985 5.98217 3.56347 5.95169 3.76157 6.07347L3.84165 6.13499L7.49985 9.5637L11.1581 6.13499Z" />
     </Icon>
   )
 }
 
-export function ThickCheckIcon(props: Props) {
+export function Cross2Icon(props: Props) {
   return (
     <Icon {...props}>
-      <path
-        clipRule="evenodd"
-        d="M8.53547 0.62293C8.88226 0.849446 8.97976 1.3142 8.75325 1.66099L4.5083 8.1599C4.38833 8.34356 4.19397 8.4655 3.9764 8.49358C3.75883 8.52167 3.53987 8.45309 3.3772 8.30591L0.616113 5.80777C0.308959 5.52987 0.285246 5.05559 0.563148 4.74844C0.84105 4.44128 1.31533 4.41757 1.62249 4.69547L3.73256 6.60459L7.49741 0.840706C7.72393 0.493916 8.18868 0.396414 8.53547 0.62293Z"
-        fillRule="evenodd"
-      />
+      <path d="M10.9688 3.21871C11.1933 2.99416 11.5567 2.99416 11.7813 3.21871C12.0056 3.44328 12.0057 3.80673 11.7813 4.03121L8.31251 7.49996L11.7813 10.9687L11.8555 11.0586C12.0026 11.2817 11.9777 11.5848 11.7813 11.7812C11.5849 11.9776 11.2818 12.0026 11.0586 11.8554L10.9688 11.7812L7.50001 8.31246L4.03126 11.7812C3.80677 12.0057 3.44332 12.0056 3.21876 11.7812C2.99421 11.5567 2.99421 11.1933 3.21876 10.9687L6.68751 7.49996L3.21876 4.03121L3.14454 3.94137C2.99723 3.71819 3.0223 3.41517 3.21876 3.21871C3.41522 3.02225 3.71823 2.99719 3.94141 3.14449L4.03126 3.21871L7.50001 6.68746L10.9688 3.21871Z" />
     </Icon>
   )
 }
 
-export function ThickDividerHorizontalIcon(props: Props) {
+export function MinusIcon(props: Props) {
   return (
     <Icon {...props}>
-      <path
-        clipRule="evenodd"
-        d="M0.75 4.5C0.75 4.08579 1.08579 3.75 1.5 3.75H7.5C7.91421 3.75 8.25 4.08579 8.25 4.5C8.25 4.91421 7.91421 5.25 7.5 5.25H1.5C1.08579 5.25 0.75 4.91421 0.75 4.5Z"
-        fillRule="evenodd"
-      />
+      <path d="M12.25 7C12.5261 7 12.75 7.22386 12.75 7.5C12.75 7.77614 12.5261 8 12.25 8H2.75C2.47386 8 2.25 7.77614 2.25 7.5C2.25 7.22386 2.47386 7 2.75 7H12.25Z" />
     </Icon>
   )
 }

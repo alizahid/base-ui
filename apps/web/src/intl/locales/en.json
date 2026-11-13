@@ -16,6 +16,7 @@
     "button": "Button",
     "checkbox": "Checkbox",
     "checkbox-group": "Checkbox Group",
+    "combobox": "Combobox",
     "components": "Components",
     "dialog": "Dialog",
     "field": "Field",

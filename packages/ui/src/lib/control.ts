@@ -103,21 +103,18 @@ export const controlContrast = stylex.create({
 export const controlSizes = stylex.create({
   1: {
     '--control-font-size': 'var(--text-xs)',
-    '--control-indicator-size': '9px',
     '--control-line-height': 'var(--text-xs--line-height)',
     '--control-radius': 'var(--radius-xs)',
     '--control-size': 'calc(var(--spacing) * 3.5)',
   },
   2: {
     '--control-font-size': 'var(--text-sm)',
-    '--control-indicator-size': '10px',
     '--control-line-height': 'var(--text-sm--line-height)',
     '--control-radius': 'var(--radius-sm)',
     '--control-size': 'calc(var(--spacing) * 4)',
   },
   3: {
     '--control-font-size': 'var(--text-base)',
-    '--control-indicator-size': '12px',
     '--control-line-height': 'var(--text-base--line-height)',
     '--control-radius': 'var(--radius-sm)',
     '--control-size': 'calc(var(--spacing) * 5)',

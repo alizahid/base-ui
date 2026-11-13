@@ -251,6 +251,25 @@ export const currencyItems = Object.fromEntries(
   </Select.Root>
 </Example>
 
+### Multiple
+
+<Example>
+  <Select.Root defaultValue={["apple", "banana"]} items={items} multiple>
+    <Select.Trigger className="w-48" placeholder="Pick a fruit" />
+    <Select.Content>
+      <Select.Item value="apple">Apple</Select.Item>
+      <Select.Item value="banana">Banana</Select.Item>
+      <Select.Item value="cherry">Cherry</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Collapsed value
+
+<Example>
+  <CollapsedSelect items={items} more="more" placeholder="Pick a fruit" />
+</Example>
+
 ### In a field
 
 <Example>

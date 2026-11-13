@@ -5,7 +5,7 @@ import {
   type SelectRootProps as ComponentRootProps,
 } from '@base-ui/react/select'
 
-import { type Size, SizeContext } from './context.js'
+import { type Size, SizeContext } from '../../lib/size.js'
 
 export type SelectRootProps<
   Value,

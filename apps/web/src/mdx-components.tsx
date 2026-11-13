@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  Combobox,
   Dialog,
   Field,
   IconButton,
@@ -18,6 +19,9 @@ import {
 import { type MDXComponents } from 'mdx/types'
 import { type ComponentProps } from 'react'
 
+import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
+import { CollapsedSelect } from './components/demos/select'
+
 function Example(props: ComponentProps<'div'>) {
   return (
     <div
@@ -28,9 +32,12 @@ function Example(props: ComponentProps<'div'>) {
 }
 
 const components: MDXComponents = {
+  AsyncCombobox,
   Avatar,
   Button,
   Checkbox,
+  CollapsedCombobox,
+  CollapsedSelect,
   Example,
   Field,
   h1: (props) => <h1 className="mb-4 text-4xl font-bold" {...props} />,
@@ -59,6 +66,7 @@ export function useMDXComponents(): MDXComponents {
       Item: CheckboxGroup.Item,
       Root: CheckboxGroup.Root,
     },
+    Combobox,
     Dialog: {
       Close: Dialog.Close,
       Content: Dialog.Content,

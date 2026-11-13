@@ -251,6 +251,25 @@ export const currencyItems = Object.fromEntries(
   </Select.Root>
 </Example>
 
+### Mehrfachauswahl
+
+<Example>
+  <Select.Root defaultValue={["apple", "banana"]} items={items} multiple>
+    <Select.Trigger className="w-48" placeholder="Obst wählen" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Zusammengefasster Wert
+
+<Example>
+  <CollapsedSelect items={items} more="weitere" placeholder="Obst wählen" />
+</Example>
+
 ### In einem Feld
 
 <Example>

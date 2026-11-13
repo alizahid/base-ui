@@ -7,7 +7,7 @@ import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { type ControlProps, control, controlStyles } from '../../lib/control.js'
-import { ThickCheckIcon, ThickDividerHorizontalIcon } from '../../lib/icons.js'
+import { CheckIcon, MinusIcon } from '../../lib/icons.js'
 import { merge } from '../../lib/stylex.js'
 
 export type CheckboxProps = ComponentProps &
@@ -48,9 +48,9 @@ export function Checkbox({
     >
       <Component.Indicator {...stylex.props(styles.indicator)}>
         {props.indeterminate ? (
-          <ThickDividerHorizontalIcon {...stylex.props(styles.icon)} />
+          <MinusIcon {...stylex.props(styles.icon)} />
         ) : (
-          <ThickCheckIcon {...stylex.props(styles.icon)} />
+          <CheckIcon {...stylex.props(styles.icon)} />
         )}
       </Component.Indicator>
     </Component.Root>
@@ -59,8 +59,8 @@ export function Checkbox({
 
 const styles = stylex.create({
   icon: {
-    height: 'var(--control-indicator-size, 10px)',
-    width: 'var(--control-indicator-size, 10px)',
+    height: '100%',
+    width: '100%',
   },
   indicator: {
     display: 'flex',
