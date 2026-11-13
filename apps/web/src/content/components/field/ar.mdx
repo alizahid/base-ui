@@ -1,0 +1,23 @@
+# الحقل
+
+## أمثلة
+
+### مع تلميح
+
+<Example>
+  <Field className="w-64" hint="لن نشارك بريدك الإلكتروني أبدًا." label="البريد الإلكتروني">
+    <TextField.Root type="email" />
+  </Field>
+</Example>
+
+### مع خطأ
+
+<Example>
+  <Field className="w-64" error="هذا البريد الإلكتروني مستخدم بالفعل." label="البريد الإلكتروني">
+    <TextField.Root defaultValue="ali@example.com" type="email" />
+  </Field>
+
+  <Field className="w-64" error="هذا البريد الإلكتروني مستخدم بالفعل." label="البريد الإلكتروني">
+    <TextField.Root defaultValue="ali@example.com" type="email" variant="soft" />
+  </Field>
+</Example>

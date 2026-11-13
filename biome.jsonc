@@ -37,6 +37,9 @@
   },
   "linter": {
     "rules": {
+      "a11y": {
+        "noLabelWithoutControl": "off"
+      },
       "performance": {
         "noJsxPropsBind": "off"
       },

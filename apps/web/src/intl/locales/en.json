@@ -14,6 +14,8 @@
     "avatar": "Avatar",
     "button": "Button",
     "components": "Components",
-    "spinner": "Spinner"
+    "field": "Field",
+    "spinner": "Spinner",
+    "text-field": "Text Field"
   }
 }

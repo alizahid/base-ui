@@ -1,0 +1,65 @@
+import { EnvelopeSimpleIcon, MagnifyingGlassIcon } from '@phosphor-icons/react/ssr'
+
+# Text Field
+
+## Examples
+
+### Size
+
+<Example>
+  <TextField.Root placeholder="Search…" size="1" />
+  <TextField.Root placeholder="Search…" size="2" />
+  <TextField.Root placeholder="Search…" size="3" />
+</Example>
+
+### Variant
+
+<Example>
+  <TextField.Root placeholder="Search…" variant="surface" />
+  <TextField.Root placeholder="Search…" variant="soft" />
+</Example>
+
+### Color
+
+<Example>
+  <TextField.Root color="indigo" placeholder="Search…" variant="soft" />
+  <TextField.Root color="cyan" placeholder="Search…" variant="soft" />
+  <TextField.Root color="orange" placeholder="Search…" variant="soft" />
+  <TextField.Root color="crimson" placeholder="Search…" variant="soft" />
+</Example>
+
+### Radius
+
+<Example>
+  <TextField.Root placeholder="Search…" radius="none" />
+  <TextField.Root placeholder="Search…" radius="md" />
+  <TextField.Root placeholder="Search…" radius="xl" />
+  <TextField.Root placeholder="Search…" radius="full" />
+</Example>
+
+### With slots
+
+<Example>
+  <TextField.Root placeholder="Search…">
+    <TextField.Slot>
+      <MagnifyingGlassIcon className="size-[1lh]" />
+    </TextField.Slot>
+  </TextField.Root>
+
+  <TextField.Root placeholder="Email" type="email" variant="soft">
+    <TextField.Slot>
+      <EnvelopeSimpleIcon className="size-[1lh]" />
+    </TextField.Slot>
+
+    <TextField.Slot side="end">
+      <Button size="1" variant="ghost">OK</Button>
+    </TextField.Slot>
+  </TextField.Root>
+</Example>
+
+### Disabled
+
+<Example>
+  <TextField.Root disabled placeholder="Search…" variant="surface" />
+  <TextField.Root disabled placeholder="Search…" variant="soft" />
+</Example>

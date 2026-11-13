@@ -1,4 +1,10 @@
-export const pages = ['avatar', 'button', 'spinner'] as const
+export const pages = [
+  'avatar',
+  'button',
+  'field',
+  'spinner',
+  'text-field',
+] as const
 
 export type Page = (typeof pages)[number]
 
