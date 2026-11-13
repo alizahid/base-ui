@@ -16,6 +16,7 @@ export const pages = [
   'select',
   'spinner',
   'switch',
+  'text-area',
   'text-field',
   'tooltip',
 ] as const

@@ -23,6 +23,7 @@ export * from './components/radio-group/index.js'
 export * from './components/select/index.js'
 export * from './components/spinner/index.js'
 export * from './components/switch/index.js'
+export * from './components/text-area/index.js'
 export * from './components/text-field/index.js'
 export * from './components/tooltip/index.js'
 

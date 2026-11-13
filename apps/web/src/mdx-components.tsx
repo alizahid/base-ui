@@ -16,6 +16,7 @@ import {
   Select,
   Spinner,
   Switch,
+  TextArea,
   TextField,
   Tooltip,
 } from '@repo/ui'
@@ -95,6 +96,10 @@ export function useMDXComponents(): MDXComponents {
       Root: Select.Root,
       Separator: Select.Separator,
       Trigger: Select.Trigger,
+    },
+    TextArea: {
+      Root: TextArea.Root,
+      Slot: TextArea.Slot,
     },
     TextField: {
       Root: TextField.Root,

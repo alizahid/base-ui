@@ -29,6 +29,7 @@
     "select": "Select",
     "spinner": "Spinner",
     "switch": "Switch",
+    "text-area": "Text Area",
     "text-field": "Text Field",
     "tooltip": "Tooltip"
   }

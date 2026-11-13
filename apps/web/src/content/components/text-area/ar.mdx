@@ -1,0 +1,83 @@
+import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
+
+# منطقة النص
+
+## أمثلة
+
+### الحجم
+
+<Example>
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" size="1" />
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" size="2" />
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" size="3" />
+</Example>
+
+### النمط
+
+<Example>
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" variant="surface" />
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" variant="soft" />
+</Example>
+
+### اللون
+
+<Example>
+  <TextArea.Root className="w-64" color="indigo" placeholder="الرد على التعليق…" variant="soft" />
+  <TextArea.Root className="w-64" color="orange" placeholder="الرد على التعليق…" variant="soft" />
+  <TextArea.Root className="w-64" color="gray" placeholder="الرد على التعليق…" variant="soft" />
+</Example>
+
+### نصف القطر
+
+<Example>
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" radius="none" />
+  <TextArea.Root className="w-64" placeholder="الرد على التعليق…" radius="xl" />
+</Example>
+
+### تغيير الحجم تلقائيًا
+
+<Example>
+  <TextArea.Root autoResize className="w-64" placeholder="يكبر أثناء الكتابة…" />
+  <TextArea.Root autoResize className="max-h-40 w-64" placeholder="يكبر حتى أقصى ارتفاع ثم يُمرَّر…" />
+</Example>
+
+### مع الفتحات
+
+<Example>
+  <TextArea.Root aria-label="الرسالة" autoResize className="max-h-40 w-80" placeholder="اكتب رسالة…">
+    <TextArea.Slot className="-ms-1">
+      <IconButton aria-label="إرفاق" color="gray" size="1" variant="ghost">
+        <PaperclipIcon className="size-[1lh]" />
+      </IconButton>
+    </TextArea.Slot>
+
+    <TextArea.Slot className="-me-1 self-end" side="end">
+      <Button size="1">إرسال</Button>
+    </TextArea.Slot>
+  </TextArea.Root>
+
+  <TextArea.Root aria-label="الرسالة" className="w-80" placeholder="اكتب رسالة…" variant="soft">
+    <TextArea.Slot>
+      <PencilSimpleIcon className="size-[1lh]" />
+    </TextArea.Slot>
+  </TextArea.Root>
+</Example>
+
+### داخل حقل
+
+<Example>
+  <Field className="w-64" hint="بضع كلمات عنك." label="نبذة">
+    <TextArea.Root autoResize placeholder="أخبرنا عن نفسك…" />
+  </Field>
+
+  <Field className="w-64" error="النبذة طويلة جدًا." label="نبذة">
+    <TextArea.Root autoResize defaultValue="أخبرنا عن نفسك…" />
+  </Field>
+</Example>
+
+### معطّل
+
+<Example>
+  <TextArea.Root className="w-64" disabled placeholder="الرد على التعليق…" variant="surface" />
+  <TextArea.Root className="w-64" disabled placeholder="الرد على التعليق…" variant="soft" />
+</Example>

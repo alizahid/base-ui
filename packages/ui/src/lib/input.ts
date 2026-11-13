@@ -1,16 +1,16 @@
 import * as stylex from '@stylexjs/stylex'
 
-// the text input look shared by TextField and Combobox: a wrapper holding the
-// input and any slots
+// the text input look shared by TextField, TextArea and Combobox: a wrapper
+// holding the input and any slots
 
 // stylex doesn't order these against each other, so wherever one property
 // uses more than one of them they must not overlap
-const invalid = ':has(input[data-invalid])'
+const invalid = ':has(:is(input, textarea)[data-invalid])'
 const readOnly =
-  ':has(input:is(:disabled, :read-only)):not(:has(input[data-invalid]))'
+  ':has(:is(input, textarea):is(:disabled, :read-only)):not(:has(:is(input, textarea)[data-invalid]))'
 // 1password marks the fields it fills with its own attribute
 const autofill =
-  ':has(input:is(:autofill, [data-com-onepassword-filled])):not(:has(input:is(:disabled, :read-only, [data-invalid])))'
+  ':has(:is(input, textarea):is(:autofill, [data-com-onepassword-filled])):not(:has(:is(input, textarea):is(:disabled, :read-only, [data-invalid])))'
 const date =
   ':is([type="date"], [type="datetime-local"], [type="time"], [type="week"], [type="month"])'
 
@@ -124,7 +124,8 @@ export const input = stylex.create({
   main: {
     // a slot shows the same cursor as the input next to it
     '--text-field-cursor': {
-      ':has(input:is(:disabled, :read-only):placeholder-shown)': 'not-allowed',
+      ':has(:is(input, textarea):is(:disabled, :read-only):placeholder-shown)':
+        'not-allowed',
       default: 'text',
     },
     '--text-field-focus': {
@@ -163,9 +164,10 @@ export const input = stylex.create({
     display: 'flex',
     fontWeight: '400',
     outline: {
-      ':has(input:focus:not([data-invalid]))':
+      ':has(:is(input, textarea):focus:not([data-invalid]))':
         '2px solid var(--text-field-focus)',
-      ':has(input[data-invalid]:focus)': '2px solid var(--red-8)',
+      ':has(:is(input, textarea)[data-invalid]:focus)':
+        '2px solid var(--red-8)',
       default: 'none',
     },
     outlineOffset: -1,
@@ -278,5 +280,131 @@ export const inputSizes = stylex.create({
     fontSize: 'var(--text-base)',
     height: 'calc(var(--spacing) * 10)',
     lineHeight: 'var(--text-base--line-height)',
+  },
+})
+
+// ported from radix themes' text-area.css. the wrapper is `input.main`
+export const textArea = stylex.create({
+  // grows with its content, up to a max-height on the wrapper. browsers
+  // without field-sizing keep the wrapper's height and scroll
+  autoResize: {
+    fieldSizing: 'content',
+  },
+  main: {
+    '--text-field-placeholder-opacity': {
+      ':is(:disabled, :read-only)': '0.5',
+    },
+    '::-webkit-scrollbar': {
+      height: 'calc(var(--spacing) * 3)',
+      width: 'calc(var(--spacing) * 3)',
+    },
+    '::-webkit-scrollbar-thumb': {
+      backgroundClip: 'content-box',
+      backgroundColor: 'var(--gray-a8)',
+      borderColor: 'transparent',
+      borderRadius: 'calc(var(--spacing) * 3)',
+      borderStyle: 'solid',
+      borderWidth: 'var(--spacing)',
+    },
+    '::-webkit-scrollbar-track': {
+      backgroundClip: 'content-box',
+      backgroundColor: 'var(--gray-a3)',
+      borderColor: 'transparent',
+      borderRadius: 'calc(var(--spacing) * 3)',
+      borderStyle: 'solid',
+      borderWidth: 'var(--spacing)',
+    },
+    '::placeholder': {
+      color: 'var(--text-field-placeholder)',
+      opacity: 'var(--text-field-placeholder-opacity)',
+    },
+    '::selection': {
+      backgroundColor: 'var(--text-field-selection)',
+    },
+    backgroundClip: {
+      ':is(:autofill, [data-com-onepassword-filled])': 'text',
+    },
+    backgroundColor: 'transparent',
+    borderRadius: 'inherit',
+    borderStyle: 'none',
+    color: {
+      ':is(:disabled, :read-only)': 'var(--gray-a11)',
+      default: 'inherit',
+    },
+    // an arrow over the scrollbar
+    cursor: {
+      ':is(:disabled, :read-only):placeholder-shown': 'not-allowed',
+      default: 'auto',
+    },
+    display: 'block',
+    flexGrow: 1,
+    font: 'inherit',
+    // lets it shrink and scroll under a max-height on the wrapper
+    minHeight: 0,
+    minWidth: 0,
+    outline: 'none',
+    paddingBlock: 'var(--text-area-padding-y)',
+    // a slot brings its own padding on its side
+    paddingInlineEnd: {
+      ':has(~ [data-side="end"])': 0,
+      default: 'var(--text-area-padding-x)',
+    },
+    paddingInlineStart: {
+      ':has(~ [data-side="start"])': 0,
+      default: 'var(--text-area-padding-x)',
+    },
+    resize: 'none',
+    textAlign: 'inherit',
+    WebkitTextFillColor: {
+      ':is(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only)':
+        'var(--gray-12)',
+      ':is(:disabled, :read-only)': 'var(--gray-a11)',
+    },
+    width: '100%',
+  },
+  // sits beside the first line and stays there while the text scrolls. a
+  // consumer's className can align it elsewhere
+  slot: {
+    alignSelf: 'flex-start',
+    minHeight: 'calc(1lh + var(--text-area-padding-y) * 2)',
+  },
+})
+
+export const textAreaSizes = stylex.create({
+  1: {
+    '--text-area-padding-x':
+      'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
+    '--text-area-padding-y':
+      'calc(var(--spacing) - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
+    '--text-field-slot-padding': 'var(--spacing)',
+    borderRadius: 'var(--radius-sm)',
+    fontSize: 'var(--text-xs)',
+    lineHeight: 'var(--text-xs--line-height)',
+    minHeight: 'calc(var(--spacing) * 10)',
+  },
+  2: {
+    '--text-area-padding-x':
+      'calc(var(--spacing) * 2 - var(--text-field-border-width))',
+    '--text-area-padding-y':
+      'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
+    '--text-field-slot-padding': 'calc(var(--spacing) * 2)',
+    borderRadius: 'var(--radius-md)',
+    fontSize: 'var(--text-sm)',
+    lineHeight: 'var(--text-sm--line-height)',
+    minHeight: 'calc(var(--spacing) * 16)',
+  },
+  3: {
+    '--text-area-padding-x':
+      'calc(var(--spacing) * 3 - var(--text-field-border-width))',
+    '--text-area-padding-y':
+      'calc(var(--spacing) * 2 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--spacing) * 3)',
+    '--text-field-slot-padding': 'calc(var(--spacing) * 3)',
+    borderRadius: 'var(--radius-lg)',
+    fontSize: 'var(--text-base)',
+    lineHeight: 'var(--text-base--line-height)',
+    minHeight: 'calc(var(--spacing) * 20)',
   },
 })
