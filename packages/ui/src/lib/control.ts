@@ -17,25 +17,24 @@ export type ControlProps = {
 const on = ':is(:is([data-checked], [data-indeterminate]):not([data-disabled]))'
 const disabled = ':is([data-disabled])'
 
-// ported from radix themes' base-checkbox.css and base-radio.css, with solid
-// colors in place of alpha ones
+// ported from radix themes' base-checkbox.css and base-radio.css
 
 export const control = stylex.create({
   main: {
     alignItems: 'center',
     backgroundColor: {
-      [disabled]: 'var(--gray-3)',
-      [on]: 'var(--control-background-checked, var(--accent-9))',
-      default: 'var(--control-background, var(--gray-1))',
+      [disabled]: 'var(--gray-a3)',
+      [on]: 'var(--control-background-checked, var(--accent-indicator))',
+      default: 'var(--control-background, var(--surface))',
     },
     boxShadow: {
       [disabled]:
-        'inset 0 0 0 1px var(--control-border-disabled, var(--gray-6))',
+        'inset 0 0 0 1px var(--control-border-disabled, var(--gray-a6))',
       [on]: 'none',
-      default: 'inset 0 0 0 1px var(--control-border, var(--gray-7))',
+      default: 'inset 0 0 0 1px var(--control-border, var(--gray-a7))',
     },
     color: {
-      [disabled]: 'var(--gray-8)',
+      [disabled]: 'var(--gray-a8)',
       default: 'var(--control-indicator, var(--accent-contrast))',
     },
     cursor: {
@@ -46,21 +45,26 @@ export const control = stylex.create({
     flexShrink: 0,
     height: 'var(--control-size, calc(var(--spacing) * 4))',
     justifyContent: 'center',
+    // in a group item this centres the control on the first line of text
+    marginBlock: 'var(--control-offset, 0px)',
     outline: {
-      ':focus-visible': '2px solid var(--accent-8)',
+      ':focus-visible': '2px solid var(--control-focus, var(--focus-8))',
       default: 'none',
     },
     outlineOffset: 2,
+    position: 'relative',
     verticalAlign: 'top',
     width: 'var(--control-size, calc(var(--spacing) * 4))',
   },
 })
 
-// radix tints a soft radio a step lighter than a soft checkbox. set on the
-// Radio and on RadioGroup.Root, so it resolves wherever the variant is set
+// radix tints a soft radio a step lighter than a soft checkbox, and gives it
+// a translucent focus ring. set on the Radio and on RadioGroup.Root, so they
+// resolve wherever the variant is set
 export const controlRadio = stylex.create({
   main: {
-    '--control-soft-background': 'var(--accent-4)',
+    '--control-soft-background': 'var(--accent-a4)',
+    '--control-soft-focus': 'var(--focus-a8)',
   },
 })
 
@@ -68,23 +72,25 @@ export const controlRadio = stylex.create({
 // which `controlContrast` swaps in
 export const controlVariants = stylex.create({
   soft: {
-    '--control-background': 'var(--control-soft-background, var(--accent-5))',
+    '--control-background': 'var(--control-soft-background, var(--accent-a5))',
     '--control-background-checked':
-      'var(--control-soft-background, var(--accent-5))',
+      'var(--control-soft-background, var(--accent-a5))',
     '--control-border': 'transparent',
     '--control-border-disabled': 'transparent',
     '--control-contrast-background-checked':
-      'var(--control-soft-background, var(--accent-5))',
+      'var(--control-soft-background, var(--accent-a5))',
     '--control-contrast-indicator': 'var(--accent-12)',
-    '--control-indicator': 'var(--accent-11)',
+    '--control-focus': 'var(--control-soft-focus, var(--focus-8))',
+    '--control-indicator': 'var(--accent-a11)',
   },
   surface: {
-    '--control-background': 'var(--gray-1)',
-    '--control-background-checked': 'var(--accent-9)',
-    '--control-border': 'var(--gray-7)',
-    '--control-border-disabled': 'var(--gray-6)',
+    '--control-background': 'var(--surface)',
+    '--control-background-checked': 'var(--accent-indicator)',
+    '--control-border': 'var(--gray-a7)',
+    '--control-border-disabled': 'var(--gray-a6)',
     '--control-contrast-background-checked': 'var(--accent-12)',
     '--control-contrast-indicator': 'var(--accent-1)',
+    '--control-focus': 'var(--focus-8)',
     '--control-indicator': 'var(--accent-contrast)',
   },
 })
@@ -123,9 +129,13 @@ export const controlSizes = stylex.create({
 
 // `main` is a group's Root, `item` the label around a control and its text
 export const group = stylex.create({
+  // the control sits on the first line of the label, however many lines the
+  // text runs to. `lh` is resolved on the control, which inherits the label's
+  // line height
   item: {
-    alignItems: 'center',
-    color: 'var(--gray-12)',
+    '--control-offset':
+      'calc((1lh - var(--control-size, calc(var(--spacing) * 4))) / 2)',
+    alignItems: 'flex-start',
     cursor: {
       ':has([data-disabled])': 'not-allowed',
       default: 'pointer',
@@ -140,6 +150,9 @@ export const group = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 'var(--spacing)',
+  },
+  text: {
+    minWidth: 0,
   },
 })
 

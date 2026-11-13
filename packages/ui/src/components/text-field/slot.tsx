@@ -3,10 +3,12 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps as ReactComponentProps } from 'react'
 
+import { type ColorToken } from '../../lib/colors.js'
 import { input } from '../../lib/input.js'
 import { merge } from '../../lib/stylex.js'
 
-export type TextFieldSlotProps = ReactComponentProps<'div'> & {
+export type TextFieldSlotProps = Omit<ReactComponentProps<'div'>, 'color'> & {
+  color?: ColorToken | 'gray'
   side?: 'start' | 'end'
 }
 
@@ -14,6 +16,7 @@ export type TextFieldSlotProps = ReactComponentProps<'div'> & {
 // data-side lets the input drop its indent on an edge that has a slot
 export function Slot({
   className,
+  color,
   side = 'start',
   style,
   ...props
@@ -21,6 +24,7 @@ export function Slot({
   return (
     <div
       {...props}
+      data-accent={color}
       data-side={side}
       {...merge(
         stylex.props(input.slot, side === 'start' ? input.start : input.end),

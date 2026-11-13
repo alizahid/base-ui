@@ -134,7 +134,7 @@ const styles = stylex.create({
     backgroundColor: 'transparent',
     borderStyle: 'none',
     color: {
-      ':is([data-disabled])': 'var(--gray-9)',
+      ':is([data-disabled])': 'var(--gray-a9)',
       default: 'inherit',
     },
     cursor: {
@@ -209,12 +209,12 @@ const styles = stylex.create({
 
 const chipVariants = stylex.create({
   soft: {
-    '--combobox-chip': 'var(--accent-5)',
-    '--combobox-chip-highlight': 'var(--accent-6)',
+    '--combobox-chip': 'var(--accent-a5)',
+    '--combobox-chip-highlight': 'var(--accent-a6)',
   },
   surface: {
-    '--combobox-chip': 'var(--accent-3)',
-    '--combobox-chip-highlight': 'var(--accent-5)',
+    '--combobox-chip': 'var(--accent-a3)',
+    '--combobox-chip-highlight': 'var(--accent-a5)',
   },
 })
 

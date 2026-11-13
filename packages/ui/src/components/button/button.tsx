@@ -80,14 +80,16 @@ export function ButtonBase({
 export const Button: (props: ButtonProps) => ReactNode = ButtonBase
 
 // stylex doesn't order these against each other, so they must not overlap.
-// data-disabled rather than :disabled so links rendered as buttons match too
+// data-disabled rather than :disabled so links rendered as buttons match too.
+// a button that has opened a popup keeps its hover look and ignores presses
 const off = ':is([data-disabled])'
-const hover = ':is(:hover:not(:active, [data-disabled]))'
-const active = ':is(:active:not([data-disabled]))'
-const pressed = ':is(:is(:hover, :active):not([data-disabled]))'
+const open = ':is([data-popup-open]:not([data-disabled]))'
+const hover = ':is(:hover:not(:active, [data-disabled], [data-popup-open]))'
+const active = ':is(:active:not([data-disabled], [data-popup-open]))'
 
-// ported from radix themes' base-button.css, with solid colors in place of
-// alpha ones
+// ported from radix themes' base-button.css, with a pointer cursor and
+// without the classic variant. hover styles only apply where hovering is
+// possible, so they don't stick after a tap
 const styles = stylex.create({
   hidden: {
     display: 'contents',
@@ -101,20 +103,34 @@ const styles = stylex.create({
     position: 'absolute',
   },
   main: {
+    // the spinner is fully opaque inside a disabled or loading button
+    '--spinner-opacity': {
+      [off]: '1',
+    },
     alignItems: 'center',
     backgroundColor: {
       [active]: 'var(--button-background-active)',
+      [hover]: {
+        '@media (hover: hover)': 'var(--button-background-hover)',
+        default: null,
+      },
       [off]: 'var(--button-background-disabled)',
-      [hover]: 'var(--button-background-hover)',
+      [open]: 'var(--button-background-hover)',
       default: 'var(--button-background)',
     },
     boxShadow: {
+      [active]: 'var(--button-shadow-hover, var(--button-shadow, none))',
+      [hover]: {
+        '@media (hover: hover)':
+          'var(--button-shadow-hover, var(--button-shadow, none))',
+        default: null,
+      },
       [off]: 'var(--button-shadow-disabled, none)',
-      [pressed]: 'var(--button-shadow-hover, var(--button-shadow, none))',
+      [open]: 'var(--button-shadow-hover, var(--button-shadow, none))',
       default: 'var(--button-shadow, none)',
     },
     color: {
-      [off]: 'var(--gray-8)',
+      [off]: 'var(--gray-a8)',
       default: 'var(--button-color)',
     },
     cursor: {
@@ -124,13 +140,18 @@ const styles = stylex.create({
     display: 'inline-flex',
     filter: {
       [active]: 'var(--button-filter-active, none)',
-      [hover]: 'var(--button-filter-hover, none)',
+      [hover]: {
+        '@media (hover: hover)': 'var(--button-filter-hover, none)',
+        default: null,
+      },
+      [open]: 'var(--button-filter-hover, none)',
     },
     flexShrink: 0,
+    fontStyle: 'normal',
     fontWeight: '500',
     justifyContent: 'center',
     outline: {
-      ':focus-visible': '2px solid var(--accent-8)',
+      ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
     },
     outlineOffset: 'var(--button-outline-offset, -1px)',
@@ -145,45 +166,45 @@ const styles = stylex.create({
 const variants = stylex.create({
   ghost: {
     '--button-background': 'transparent',
-    '--button-background-active': 'var(--accent-4)',
+    '--button-background-active': 'var(--accent-a4)',
     '--button-background-disabled': 'transparent',
-    '--button-background-hover': 'var(--accent-3)',
-    '--button-color': 'var(--accent-11)',
+    '--button-background-hover': 'var(--accent-a3)',
+    '--button-color': 'var(--accent-a11)',
   },
   outline: {
     '--button-background': 'transparent',
-    '--button-background-active': 'var(--accent-3)',
+    '--button-background-active': 'var(--accent-a3)',
     '--button-background-disabled': 'transparent',
-    '--button-background-hover': 'var(--accent-2)',
-    '--button-color': 'var(--accent-11)',
-    '--button-shadow': 'inset 0 0 0 1px var(--accent-8)',
-    '--button-shadow-disabled': 'inset 0 0 0 1px var(--gray-7)',
+    '--button-background-hover': 'var(--accent-a2)',
+    '--button-color': 'var(--accent-a11)',
+    '--button-shadow': 'inset 0 0 0 1px var(--accent-a8)',
+    '--button-shadow-disabled': 'inset 0 0 0 1px var(--gray-a7)',
   },
   soft: {
-    '--button-background': 'var(--accent-3)',
-    '--button-background-active': 'var(--accent-5)',
-    '--button-background-disabled': 'var(--gray-3)',
-    '--button-background-hover': 'var(--accent-4)',
-    '--button-color': 'var(--accent-11)',
+    '--button-background': 'var(--accent-a3)',
+    '--button-background-active': 'var(--accent-a5)',
+    '--button-background-disabled': 'var(--gray-a3)',
+    '--button-background-hover': 'var(--accent-a4)',
+    '--button-color': 'var(--accent-a11)',
   },
   solid: {
     '--button-background': 'var(--accent-9)',
     '--button-background-active': 'var(--accent-10)',
-    '--button-background-disabled': 'var(--gray-3)',
+    '--button-background-disabled': 'var(--gray-a3)',
     '--button-background-hover': 'var(--accent-10)',
     '--button-color': 'var(--accent-contrast)',
     '--button-filter-active': 'var(--button-solid-active-filter)',
     '--button-outline-offset': '2px',
   },
   surface: {
-    '--button-background': 'var(--accent-2)',
-    '--button-background-active': 'var(--accent-3)',
-    '--button-background-disabled': 'var(--gray-2)',
-    '--button-background-hover': 'var(--accent-2)',
-    '--button-color': 'var(--accent-11)',
-    '--button-shadow': 'inset 0 0 0 1px var(--accent-7)',
-    '--button-shadow-disabled': 'inset 0 0 0 1px var(--gray-6)',
-    '--button-shadow-hover': 'inset 0 0 0 1px var(--accent-8)',
+    '--button-background': 'var(--accent-surface)',
+    '--button-background-active': 'var(--accent-a3)',
+    '--button-background-disabled': 'var(--gray-a2)',
+    '--button-background-hover': 'var(--accent-surface)',
+    '--button-color': 'var(--accent-a11)',
+    '--button-shadow': 'inset 0 0 0 1px var(--accent-a7)',
+    '--button-shadow-disabled': 'inset 0 0 0 1px var(--gray-a6)',
+    '--button-shadow-hover': 'inset 0 0 0 1px var(--accent-a8)',
   },
 })
 
@@ -195,7 +216,7 @@ const contrast = stylex.create({
   outline: {
     '--button-color': 'var(--accent-12)',
     '--button-shadow':
-      'inset 0 0 0 1px var(--accent-7), inset 0 0 0 1px var(--gray-11)',
+      'inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11)',
   },
   soft: {
     '--button-color': 'var(--accent-12)',

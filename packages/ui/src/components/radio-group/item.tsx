@@ -15,6 +15,11 @@ export function Item({
   style,
   ...props
 }: RadioGroupItemProps) {
+  // on its own, with no label text, it is just the Radio
+  if (!children) {
+    return <Radio className={className} size={size} style={style} {...props} />
+  }
+
   return (
     <label
       {...merge(
@@ -30,7 +35,7 @@ export function Item({
     >
       <Radio {...props} />
 
-      {children}
+      <span {...stylex.props(group.text)}>{children}</span>
     </label>
   )
 }

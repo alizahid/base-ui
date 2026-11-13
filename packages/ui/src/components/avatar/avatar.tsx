@@ -75,9 +75,14 @@ const styles = stylex.create({
   double: {
     fontSize: '40cqmin',
   },
+  // the variant's fill is on the fallback, not the root, so it never shows
+  // behind an image with transparency
   fallback: {
     alignItems: 'center',
+    backgroundColor: 'var(--avatar-background)',
+    color: 'var(--avatar-color)',
     display: 'flex',
+    fontStyle: 'normal',
     height: '100%',
     inset: 0,
     justifyContent: 'center',
@@ -92,14 +97,17 @@ const styles = stylex.create({
     width: '100%',
   },
   main: {
-    backgroundColor: 'var(--avatar-background)',
-    color: 'var(--avatar-color)',
+    alignItems: 'center',
     containerType: 'size',
+    display: 'inline-flex',
     // keeps its square in a flex row, as in radix
     flexShrink: 0,
     fontWeight: '500',
+    justifyContent: 'center',
     overflow: 'hidden',
     position: 'relative',
+    userSelect: 'none',
+    verticalAlign: 'middle',
   },
   single: {
     fontSize: '60cqmin',
@@ -114,8 +122,8 @@ const styles = stylex.create({
 // variants only set variables, the main style decides where they apply
 const variants = stylex.create({
   soft: {
-    '--avatar-background': 'var(--accent-3)',
-    '--avatar-color': 'var(--accent-11)',
+    '--avatar-background': 'var(--accent-a3)',
+    '--avatar-color': 'var(--accent-a11)',
   },
   solid: {
     '--avatar-background': 'var(--accent-9)',

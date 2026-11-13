@@ -65,9 +65,9 @@ export default async function Layout({
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <BaseProvider
               accent="plum"
-              className="mx-auto flex max-w-6xl flex-col gap-12 px-6 md:flex-row"
+              className="mx-auto flex max-w-6xl flex-col border-(--gray-a6) md:flex-row xl:border-x"
             >
-              <aside className="w-64 bg-(--gray-1) p-6">
+              <aside className="w-full border-b border-(--gray-a6) p-6 md:w-64 md:border-r md:border-b-0">
                 <div className="sticky top-6 flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-bold">{t('title')}</span>
@@ -81,7 +81,7 @@ export default async function Layout({
                 </div>
               </aside>
 
-              <main className="min-h-screen flex-1 py-12">{children}</main>
+              <main className="min-h-screen flex-1 p-6">{children}</main>
             </BaseProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

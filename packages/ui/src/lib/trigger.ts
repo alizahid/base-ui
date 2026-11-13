@@ -8,23 +8,25 @@ const off = ':is([data-disabled])'
 
 const invalid = ':is([data-invalid]:not([data-disabled]))'
 
-const open =
-  ':is(:is(:hover, [data-popup-open]):not([data-disabled], [data-invalid]))'
+const open = ':is([data-popup-open]:not([data-disabled], [data-invalid]))'
 
-// ported from radix themes' select.css, with solid colors in place of alpha
-// ones. the invalid state is ours, for Field. a ghost trigger is a standard
+// only where hovering is possible, so it doesn't stick after a tap
+const hover =
+  ':is(:hover:not([data-popup-open], [data-disabled], [data-invalid]))'
+
+// ported from radix themes' select.css. the invalid state is ours, for Field. a ghost trigger is a standard
 // one with a transparent background, without radix's negative margins
 export const trigger = stylex.create({
   icon: {
     color: 'var(--select-icon)',
     flexShrink: 0,
     height: 'var(--select-icon-size)',
-    opacity: 0.9,
+    opacity: 'var(--select-icon-opacity, 0.9)',
     width: 'var(--select-icon-size)',
   },
   trigger: {
     '--select-icon': {
-      [off]: 'var(--gray-9)',
+      [off]: 'var(--gray-a9)',
       default: 'currentColor',
     },
     // the placeholder look is decided here, where data-placeholder is set, and
@@ -41,18 +43,26 @@ export const trigger = stylex.create({
     backgroundColor: {
       [invalid]: 'var(--select-background-invalid)',
       [off]: 'var(--select-background-disabled)',
+      [hover]: {
+        '@media (hover: hover)': 'var(--select-background-hover)',
+        default: null,
+      },
       [open]: 'var(--select-background-hover)',
       default: 'var(--select-background)',
     },
     boxShadow: {
       [invalid]: 'var(--select-shadow-invalid, none)',
       [off]: 'var(--select-shadow-disabled, none)',
+      [hover]: {
+        '@media (hover: hover)': 'var(--select-shadow-hover, none)',
+        default: null,
+      },
       [open]: 'var(--select-shadow-hover, none)',
       default: 'var(--select-shadow, none)',
     },
     boxSizing: 'border-box',
     color: {
-      [off]: 'var(--gray-11)',
+      [off]: 'var(--gray-a11)',
       default: 'var(--select-color)',
     },
     cursor: {
@@ -64,7 +74,7 @@ export const trigger = stylex.create({
     fontWeight: '400',
     justifyContent: 'space-between',
     outline: {
-      ':is(:focus-visible:not([data-invalid]))': '2px solid var(--accent-8)',
+      ':is(:focus-visible:not([data-invalid]))': '2px solid var(--focus-8)',
       ':is([data-invalid]:focus-visible)': '2px solid var(--red-8)',
       default: 'none',
     },
@@ -87,32 +97,33 @@ export const triggerVariants = stylex.create({
   ghost: {
     '--select-background': 'transparent',
     '--select-background-disabled': 'transparent',
-    '--select-background-hover': 'var(--accent-3)',
-    '--select-background-invalid': 'var(--red-3)',
+    '--select-background-hover': 'var(--accent-a3)',
+    '--select-background-invalid': 'var(--red-a3)',
     '--select-color': 'var(--accent-12)',
+    '--select-icon-opacity': '1',
     '--select-placeholder': 'var(--accent-12)',
     '--select-placeholder-opacity': '0.6',
   },
   soft: {
-    '--select-background': 'var(--accent-3)',
-    '--select-background-disabled': 'var(--gray-3)',
-    '--select-background-hover': 'var(--accent-4)',
-    '--select-background-invalid': 'var(--red-3)',
+    '--select-background': 'var(--accent-a3)',
+    '--select-background-disabled': 'var(--gray-a3)',
+    '--select-background-hover': 'var(--accent-a4)',
+    '--select-background-invalid': 'var(--red-a3)',
     '--select-color': 'var(--accent-12)',
     '--select-placeholder': 'var(--accent-12)',
     '--select-placeholder-opacity': '0.6',
   },
   surface: {
-    '--select-background': 'var(--gray-1)',
-    '--select-background-disabled': 'var(--gray-2)',
-    '--select-background-hover': 'var(--gray-1)',
-    '--select-background-invalid': 'var(--gray-1)',
+    '--select-background': 'var(--surface)',
+    '--select-background-disabled': 'var(--gray-a2)',
+    '--select-background-hover': 'var(--surface)',
+    '--select-background-invalid': 'var(--surface)',
     '--select-color': 'var(--gray-12)',
-    '--select-placeholder': 'var(--gray-10)',
+    '--select-placeholder': 'var(--gray-a10)',
     '--select-placeholder-opacity': '1',
-    '--select-shadow': 'inset 0 0 0 1px var(--gray-7)',
-    '--select-shadow-disabled': 'inset 0 0 0 1px var(--gray-6)',
-    '--select-shadow-hover': 'inset 0 0 0 1px var(--gray-8)',
+    '--select-shadow': 'inset 0 0 0 1px var(--gray-a7)',
+    '--select-shadow-disabled': 'inset 0 0 0 1px var(--gray-a6)',
+    '--select-shadow-hover': 'inset 0 0 0 1px var(--gray-a8)',
     '--select-shadow-invalid': 'inset 0 0 0 1px var(--red-8)',
   },
 })

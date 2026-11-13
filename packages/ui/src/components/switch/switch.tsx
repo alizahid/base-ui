@@ -59,8 +59,8 @@ const checkedIdle = ':is([data-checked]:not(:active, [data-disabled]))'
 const checkedActive = ':is([data-checked]:active:not([data-disabled]))'
 const checkedEnabled = ':is([data-checked]:not([data-disabled]))'
 
-// ported from radix themes' switch.css, with solid colors in place of alpha
-// ones. the track is one wide gradient that slides behind the thumb
+// ported from radix themes' switch.css. the track is one wide gradient that
+// slides behind the thumb
 const styles = stylex.create({
   main: {
     '--switch-width': 'calc(var(--switch-height) * 1.75)',
@@ -100,7 +100,7 @@ const styles = stylex.create({
       [disabled]: 'var(--switch-disabled-blend-mode)',
     },
     outline: {
-      ':focus-visible': '2px solid var(--accent-8)',
+      ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
     },
     outlineOffset: 2,
@@ -127,8 +127,12 @@ const styles = stylex.create({
       'max(0px, calc(var(--switch-radius, calc(infinity * 1px)) - 1px))',
     boxShadow: {
       [checkedEnabled]: 'var(--switch-thumb-shadow-checked)',
-      [disabled]: '0 0 0 1px var(--gray-3), 0 1px 3px rgb(0 0 0 / 0.05)',
+      [disabled]: '0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1)',
       default: 'var(--switch-thumb-shadow)',
+    },
+    filter: {
+      [disabled]: 'none',
+      default: 'var(--switch-thumb-filter, none)',
     },
     height: 'calc(var(--switch-height) - 2px)',
     marginInlineStart: {
@@ -148,35 +152,38 @@ const styles = stylex.create({
 
 // variants only set variables, the main and thumb styles decide where they apply
 const variants = stylex.create({
+  // radix stacks translucent accent layers here, so the soft track tints with
+  // whatever is behind it
   soft: {
-    '--switch-color': 'var(--gray-3)',
-    '--switch-color-active': 'var(--gray-4)',
+    '--switch-color': 'var(--gray-a3)',
+    '--switch-color-active': 'var(--gray-a4)',
     '--switch-color-checked': 'transparent',
-    '--switch-color-disabled': 'var(--gray-4)',
+    '--switch-color-disabled': 'var(--gray-a4)',
     '--switch-filter-active': 'none',
     '--switch-image':
-      'linear-gradient(to right, var(--accent-6) 40%, var(--gray-3) 60%)',
+      'linear-gradient(to right, var(--accent-a4) 40%, transparent 60%), linear-gradient(to right, var(--accent-a4) 40%, transparent 60%), linear-gradient(to right, var(--accent-a4) 40%, var(--white-a1) 60%), linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%)',
     '--switch-shadow': 'none',
     '--switch-shadow-disabled': 'none',
+    '--switch-thumb-filter': 'saturate(0.45)',
     '--switch-thumb-shadow':
-      '0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 3px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.05)',
+      '0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a1), 0 1px 3px var(--black-a1), 0 2px 4px -1px var(--black-a1)',
     '--switch-thumb-shadow-checked':
-      '0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 3px rgb(0 0 0 / 0.1)',
+      '0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a2), 0 1px 3px var(--accent-a3), 0 2px 4px -1px var(--accent-a3)',
   },
   surface: {
-    '--switch-color': 'var(--gray-3)',
-    '--switch-color-active': 'var(--gray-4)',
-    '--switch-color-checked': 'var(--gray-3)',
-    '--switch-color-disabled': 'var(--gray-3)',
+    '--switch-color': 'var(--gray-a3)',
+    '--switch-color-active': 'var(--gray-a4)',
+    '--switch-color-checked': 'var(--gray-a3)',
+    '--switch-color-disabled': 'var(--gray-a3)',
     '--switch-filter-active': 'var(--switch-active-filter)',
     '--switch-image':
-      'linear-gradient(to right, var(--accent-9) 40%, transparent 60%)',
-    '--switch-shadow': 'inset 0 0 0 1px var(--gray-5)',
-    '--switch-shadow-disabled': 'inset 0 0 0 1px var(--gray-3)',
+      'linear-gradient(to right, var(--accent-track) 40%, transparent 60%)',
+    '--switch-shadow': 'inset 0 0 0 1px var(--gray-a5)',
+    '--switch-shadow-disabled': 'inset 0 0 0 1px var(--gray-a3)',
     '--switch-thumb-shadow':
-      '0 0 1px 1px rgb(0 0 0 / 0.1), 0 1px 1px rgb(0 0 0 / 0.05), 0 2px 4px -1px rgb(0 0 0 / 0.05)',
+      '0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1), 0 2px 4px -1px var(--black-a1)',
     '--switch-thumb-shadow-checked':
-      '0 1px 3px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.05), 0 0 0 1px rgb(0 0 0 / 0.05), -1px 0 1px rgb(0 0 0 / 0.1)',
+      '0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2)',
   },
 })
 
@@ -185,14 +192,14 @@ const contrast = stylex.create({
   soft: {
     '--switch-filter-active': 'var(--switch-high-contrast-active-filter)',
     '--switch-image':
-      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-8) 40%, var(--gray-3) 60%)',
+      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, var(--white-a1) 60%), linear-gradient(to right, var(--accent-a3) 40%, var(--gray-a3) 60%)',
   },
   surface: {
     '--switch-filter-active': 'var(--switch-high-contrast-active-filter)',
     '--switch-image':
-      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-9) 40%, transparent 60%)',
+      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-track) 40%, transparent 60%)',
     '--switch-thumb-shadow-checked':
-      '0 1px 3px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.05), 0 0 0 1px rgb(0 0 0 / 0.1), -1px 0 1px rgb(0 0 0 / 0.1)',
+      '0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2), -1px 0 1px var(--black-a2)',
   },
 })
 

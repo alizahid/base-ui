@@ -3,6 +3,7 @@
 import {
   Select as Component,
   type SelectPopupProps,
+  type SelectPositionerProps,
 } from '@base-ui/react/select'
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
@@ -14,15 +15,19 @@ import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
 
-export type SelectContentProps = SelectPopupProps & {
-  className?: string
-  color?: ColorToken | 'gray'
-  highContrast?: boolean
-  style?: CSSProperties
-  variant?: 'solid' | 'soft'
-}
+export type SelectContentProps = SelectPopupProps &
+  Pick<SelectPositionerProps, 'align' | 'side' | 'sideOffset'> & {
+    className?: string
+    color?: ColorToken | 'gray'
+    highContrast?: boolean
+    style?: CSSProperties
+    variant?: 'solid' | 'soft'
+  }
 
 export function Content({
+  align,
+  side,
+  sideOffset = 4,
   children,
   className,
   color,
@@ -36,7 +41,12 @@ export function Content({
 
   return (
     <Component.Portal>
-      <Component.Positioner sideOffset={4} {...stylex.props(styles.positioner)}>
+      <Component.Positioner
+        align={align}
+        side={side}
+        sideOffset={sideOffset}
+        {...stylex.props(styles.positioner)}
+      >
         {/* portaled out of the provider's element, so its colors are set again */}
         <Component.Popup
           data-accent={color ?? theme.accent}
@@ -76,8 +86,7 @@ export function Content({
   )
 }
 
-// ported from radix themes' select.css, with solid colors in place of alpha
-// ones. the invalid state is ours, for Field. a ghost trigger is a standard
+// ported from radix themes' select.css. the invalid state is ours, for Field. a ghost trigger is a standard
 // one with a transparent background, without radix's negative margins
 const styles = stylex.create({
   // the ::before stretches the hover area past the popup's edge when the popup

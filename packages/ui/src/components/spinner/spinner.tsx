@@ -99,7 +99,7 @@ const styles = stylex.create({
   main: {
     '--duration': '800ms',
     display: 'block',
-    opacity: 0.65,
+    opacity: 'var(--spinner-opacity, 0.65)',
     position: 'relative',
   },
 })

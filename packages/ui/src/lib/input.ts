@@ -8,13 +8,13 @@ import * as stylex from '@stylexjs/stylex'
 const invalid = ':has(input[data-invalid])'
 const readOnly =
   ':has(input:is(:disabled, :read-only)):not(:has(input[data-invalid]))'
+// 1password marks the fields it fills with its own attribute
 const autofill =
-  ':has(input:autofill):not(:has(input:is(:disabled, :read-only, [data-invalid])))'
+  ':has(input:is(:autofill, [data-com-onepassword-filled])):not(:has(input:is(:disabled, :read-only, [data-invalid])))'
 const date =
   ':is([type="date"], [type="datetime-local"], [type="time"], [type="week"], [type="month"])'
 
-// ported from radix themes' text-field.css, with solid colors in place of
-// alpha ones. the invalid state is ours, for Field
+// ported from radix themes' text-field.css. the invalid state is ours, for Field
 export const input = stylex.create({
   // the edge-side padding gives up the border's width. radix uses a negative
   // margin for this; padding leaves margin free for a consumer's className
@@ -24,14 +24,33 @@ export const input = stylex.create({
     paddingInlineStart: 'var(--text-field-slot-padding)',
   },
   input: {
+    '--text-field-picker-margin': {
+      ':is([type="time"])': '0px',
+      default: 'var(--spacing)',
+    },
     '--text-field-placeholder-opacity': {
       ':is(:disabled, :read-only)': '0.5',
+    },
+    // the native date and time picker button
+    '::-webkit-calendar-picker-indicator': {
+      borderRadius: 'var(--radius-sm)',
+      boxSizing: 'content-box',
+      height: 'var(--text-field-native-icon-size)',
+      marginInlineEnd: 'calc(var(--spacing) * -1)',
+      marginInlineStart: 'var(--text-field-picker-margin)',
+      padding: 'var(--spacing)',
+      width: 'var(--text-field-native-icon-size)',
     },
     '::-webkit-inner-spin-button': {
       appearance: 'none',
     },
     '::-webkit-search-cancel-button': {
       appearance: 'none',
+    },
+    // safari's credentials and contacts autofill button
+    '::-webkit-textfield-decoration-container': {
+      marginRight: 'var(--text-field-decoration-margin)',
+      paddingRight: 'var(--text-field-decoration-padding)',
     },
     '::placeholder': {
       color: 'var(--text-field-placeholder)',
@@ -45,12 +64,30 @@ export const input = stylex.create({
       ':is([type="number"])': 'textfield',
     },
     backgroundClip: {
-      ':autofill': 'text',
+      ':is(:autofill, [data-com-onepassword-filled])': 'text',
     },
     backgroundColor: 'transparent',
+    // follows the wrapper's corners, so an autofill tint is clipped to them,
+    // but stays square on a side that has a slot
+    borderEndEndRadius: {
+      ':has(~ [data-side="end"])': 0,
+      default: 'inherit',
+    },
+    borderEndStartRadius: {
+      ':has(~ [data-side="start"])': 0,
+      default: 'inherit',
+    },
+    borderStartEndRadius: {
+      ':has(~ [data-side="end"])': 0,
+      default: 'inherit',
+    },
+    borderStartStartRadius: {
+      ':has(~ [data-side="start"])': 0,
+      default: 'inherit',
+    },
     borderStyle: 'none',
     color: {
-      ':is(:disabled, :read-only)': 'var(--gray-11)',
+      ':is(:disabled, :read-only)': 'var(--gray-a11)',
       default: 'inherit',
     },
     cursor: {
@@ -62,6 +99,8 @@ export const input = stylex.create({
     minWidth: 0,
     outline: 'none',
     padding: 0,
+    // radix nudges the size 2 text down half a pixel
+    paddingBlockEnd: 'var(--text-field-nudge, 0px)',
     paddingInlineEnd: {
       [`${date}:not(:has(~ [data-side="end"]))`]: 'var(--text-field-padding)',
     },
@@ -76,19 +115,28 @@ export const input = stylex.create({
       default: 'var(--text-field-padding)',
     },
     WebkitTextFillColor: {
-      ':autofill': 'var(--gray-12)',
-      ':is(:disabled, :read-only):not(:autofill)': 'var(--gray-11)',
+      ':is(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only)':
+        'var(--gray-12)',
+      ':is(:disabled, :read-only)': 'var(--gray-a11)',
     },
     width: '100%',
   },
   main: {
+    // a slot shows the same cursor as the input next to it
+    '--text-field-cursor': {
+      ':has(input:is(:disabled, :read-only):placeholder-shown)': 'not-allowed',
+      default: 'text',
+    },
     '--text-field-focus': {
       [readOnly]: 'var(--gray-8)',
-      default: 'var(--accent-8)',
+      default: 'var(--text-field-focus-color)',
     },
     '--text-field-selection': {
-      [readOnly]: 'var(--gray-5)',
-      default: 'var(--accent-5)',
+      [readOnly]: 'var(--gray-a5)',
+      default: 'var(--text-field-selection-color)',
+    },
+    '::selection': {
+      backgroundColor: 'var(--text-field-selection)',
     },
     alignItems: 'stretch',
     backgroundClip: 'var(--text-field-clip, border-box)',
@@ -98,6 +146,11 @@ export const input = stylex.create({
       [readOnly]: 'var(--text-field-background-disabled)',
       default: 'var(--text-field-background)',
     },
+    // surface tints for autofill and read-only sit on top of the surface
+    backgroundImage: {
+      [autofill]: 'var(--text-field-image-autofill, none)',
+      [readOnly]: 'var(--text-field-image-disabled, none)',
+    },
     boxShadow: {
       [autofill]: 'var(--text-field-shadow-autofill)',
       [invalid]: 'var(--text-field-shadow-invalid)',
@@ -106,7 +159,7 @@ export const input = stylex.create({
     },
     boxSizing: 'border-box',
     color: 'var(--text-field-color)',
-    cursor: 'text',
+    cursor: 'var(--text-field-cursor)',
     display: 'flex',
     fontWeight: '400',
     outline: {
@@ -122,8 +175,12 @@ export const input = stylex.create({
   slot: {
     alignItems: 'center',
     boxSizing: 'border-box',
-    color: 'var(--text-field-slot)',
-    cursor: 'text',
+    // a `color` on the slot tints it, as in radix
+    color: {
+      ':is([data-accent])': 'var(--accent-a11)',
+      default: 'var(--text-field-slot)',
+    },
+    cursor: 'var(--text-field-cursor)',
     display: 'flex',
     flexShrink: 0,
     gap: 'var(--text-field-slot-gap)',
@@ -139,42 +196,53 @@ export const input = stylex.create({
 // variants only set variables, the styles above decide where they apply
 export const inputVariants = stylex.create({
   soft: {
-    '--text-field-background': 'var(--accent-3)',
-    '--text-field-background-autofill': 'var(--accent-3)',
-    '--text-field-background-disabled': 'var(--gray-3)',
-    '--text-field-background-invalid': 'var(--red-3)',
+    '--text-field-background': 'var(--accent-a3)',
+    '--text-field-background-autofill': 'var(--accent-a3)',
+    '--text-field-background-disabled': 'var(--gray-a3)',
+    '--text-field-background-invalid': 'var(--red-a3)',
     '--text-field-border-width': '0px',
     '--text-field-color': 'var(--accent-12)',
+    '--text-field-focus-color': 'var(--focus-8)',
     '--text-field-placeholder': 'var(--accent-12)',
     '--text-field-placeholder-opacity': '0.6',
+    '--text-field-selection-color': 'var(--accent-a5)',
     '--text-field-shadow': 'none',
     '--text-field-shadow-autofill':
-      'inset 0 0 0 1px var(--accent-5), inset 0 0 0 1px var(--gray-4)',
+      'inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4)',
     '--text-field-shadow-disabled': 'none',
     '--text-field-shadow-invalid': 'none',
     '--text-field-slot': 'var(--accent-12)',
   },
   surface: {
-    '--text-field-background': 'var(--gray-1)',
-    '--text-field-background-autofill': 'var(--accent-2)',
-    '--text-field-background-disabled': 'var(--gray-2)',
-    '--text-field-background-invalid': 'var(--gray-1)',
+    '--text-field-background': 'var(--surface)',
+    '--text-field-background-autofill': 'var(--surface)',
+    '--text-field-background-disabled': 'var(--surface)',
+    '--text-field-background-invalid': 'var(--surface)',
     '--text-field-border-width': '1px',
     '--text-field-clip': 'content-box',
     '--text-field-color': 'var(--gray-12)',
-    '--text-field-placeholder': 'var(--gray-10)',
+    '--text-field-focus-color': 'var(--focus-8)',
+    '--text-field-image-autofill':
+      'linear-gradient(var(--focus-a2), var(--focus-a2))',
+    '--text-field-image-disabled':
+      'linear-gradient(var(--gray-a2), var(--gray-a2))',
+    '--text-field-placeholder': 'var(--gray-a10)',
     '--text-field-placeholder-opacity': '1',
-    '--text-field-shadow': 'inset 0 0 0 1px var(--gray-7)',
+    '--text-field-selection-color': 'var(--focus-a5)',
+    '--text-field-shadow': 'inset 0 0 0 1px var(--gray-a7)',
     '--text-field-shadow-autofill':
-      'inset 0 0 0 1px var(--accent-5), inset 0 0 0 1px var(--gray-5)',
-    '--text-field-shadow-disabled': 'inset 0 0 0 1px var(--gray-6)',
+      'inset 0 0 0 1px var(--focus-a5), inset 0 0 0 1px var(--gray-a5)',
+    '--text-field-shadow-disabled': 'inset 0 0 0 1px var(--gray-a6)',
     '--text-field-shadow-invalid': 'inset 0 0 0 1px var(--red-8)',
-    '--text-field-slot': 'var(--gray-11)',
+    '--text-field-slot': 'var(--gray-a11)',
   },
 })
 
 export const inputSizes = stylex.create({
   1: {
+    '--text-field-decoration-margin': '-2px',
+    '--text-field-decoration-padding': '0px',
+    '--text-field-native-icon-size': 'calc(var(--spacing) * 3)',
     '--text-field-padding':
       'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
     '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
@@ -185,6 +253,10 @@ export const inputSizes = stylex.create({
     lineHeight: 'var(--text-xs--line-height)',
   },
   2: {
+    '--text-field-decoration-margin': '0px',
+    '--text-field-decoration-padding': '2px',
+    '--text-field-native-icon-size': 'calc(var(--spacing) * 4)',
+    '--text-field-nudge': '0.5px',
     '--text-field-padding':
       'calc(var(--spacing) * 2 - var(--text-field-border-width))',
     '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
@@ -195,6 +267,9 @@ export const inputSizes = stylex.create({
     lineHeight: 'var(--text-sm--line-height)',
   },
   3: {
+    '--text-field-decoration-margin': '0px',
+    '--text-field-decoration-padding': '5px',
+    '--text-field-native-icon-size': 'calc(var(--spacing) * 4)',
     '--text-field-padding':
       'calc(var(--spacing) * 3 - var(--text-field-border-width))',
     '--text-field-slot-gap': 'calc(var(--spacing) * 3)',

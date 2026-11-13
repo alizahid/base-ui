@@ -113,7 +113,7 @@ const styles = stylex.create({
     width: 'var(--anchor-width)',
   },
   empty: {
-    color: 'var(--gray-10)',
+    color: 'var(--gray-a10)',
     paddingBlock: 'calc(var(--menu-content-padding) + var(--spacing) * 2)',
     paddingInline: 'calc(var(--menu-content-padding) + var(--spacing) * 2)',
   },

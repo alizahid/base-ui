@@ -28,7 +28,7 @@ import { CollapsedSelect } from './components/demos/select'
 function Example(props: ComponentProps<'div'>) {
   return (
     <div
-      className="mt-4 flex min-h-32 flex-wrap items-center justify-center gap-4 rounded-lg bg-(--gray-1) p-6"
+      className="mt-4 flex min-h-32 flex-wrap items-center justify-center gap-4 border border-(--gray-a6) p-6"
       {...props}
     />
   )

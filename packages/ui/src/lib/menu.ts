@@ -1,8 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 
 // the popup list shared by Select and Combobox: the surface, its items, group
-// labels and separators. ported from radix themes' select.css, with solid
-// colors in place of alpha ones
+// labels and separators. ported from radix themes' select.css
 export const menu = stylex.create({
   check: {
     height: 'var(--menu-check-size)',
@@ -40,7 +39,7 @@ export const menu = stylex.create({
     borderRadius: 'var(--menu-item-radius)',
     boxSizing: 'border-box',
     color: {
-      ':is([data-disabled])': 'var(--gray-8)',
+      ':is([data-disabled])': 'var(--gray-a8)',
       ':is([data-highlighted]:not([data-disabled]))':
         'var(--menu-highlight-color)',
     },
@@ -58,10 +57,17 @@ export const menu = stylex.create({
   },
   label: {
     alignItems: 'center',
-    color: 'var(--gray-10)',
+    color: 'var(--gray-a10)',
     cursor: 'default',
     display: 'flex',
+    // stays a step smaller than the items at size 3
+    fontSize: 'var(--menu-label-font-size)',
     height: 'var(--menu-item-height)',
+    lineHeight: 'var(--menu-label-line-height)',
+    // a label that comes straight after an item gets some room above it
+    marginBlockStart: {
+      ':is([role="option"] + *)': 'calc(var(--spacing) * 2)',
+    },
     paddingInlineEnd: 'var(--menu-separator-margin)',
     paddingInlineStart: 'var(--menu-indicator-width)',
     userSelect: 'none',
@@ -77,7 +83,7 @@ export const menu = stylex.create({
     scrollPaddingBlock: 'calc(var(--spacing) * 6)',
   },
   separator: {
-    backgroundColor: 'var(--gray-6)',
+    backgroundColor: 'var(--gray-a6)',
     height: 1,
     marginBlock: 'calc(var(--spacing) * 2)',
     marginInlineEnd: 'var(--menu-separator-margin)',
@@ -93,7 +99,7 @@ export const menu = stylex.create({
 // what a highlighted item looks like
 export const menuVariants = stylex.create({
   soft: {
-    '--menu-highlight': 'var(--accent-4)',
+    '--menu-highlight': 'var(--accent-a4)',
     '--menu-highlight-color': 'inherit',
   },
   solid: {
@@ -110,6 +116,8 @@ export const menuSizes = stylex.create({
     '--menu-indicator-width': 'calc(var(--spacing) * 5)',
     '--menu-item-height': 'calc(var(--spacing) * 6)',
     '--menu-item-radius': 'var(--radius-sm)',
+    '--menu-label-font-size': 'var(--text-xs)',
+    '--menu-label-line-height': 'var(--text-xs--line-height)',
     '--menu-separator-margin': 'calc(var(--spacing) * 2)',
     borderRadius: 'var(--radius-lg)',
     fontSize: 'var(--text-xs)',
@@ -121,6 +129,8 @@ export const menuSizes = stylex.create({
     '--menu-indicator-width': 'calc(var(--spacing) * 6)',
     '--menu-item-height': 'calc(var(--spacing) * 8)',
     '--menu-item-radius': 'var(--radius-md)',
+    '--menu-label-font-size': 'var(--text-sm)',
+    '--menu-label-line-height': 'var(--text-sm--line-height)',
     '--menu-separator-margin': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
     fontSize: 'var(--text-sm)',
@@ -132,6 +142,8 @@ export const menuSizes = stylex.create({
     '--menu-indicator-width': 'calc(var(--spacing) * 6)',
     '--menu-item-height': 'calc(var(--spacing) * 8)',
     '--menu-item-radius': 'var(--radius-md)',
+    '--menu-label-font-size': 'var(--text-sm)',
+    '--menu-label-line-height': 'var(--text-sm--line-height)',
     '--menu-separator-margin': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
     fontSize: 'var(--text-base)',

@@ -15,6 +15,13 @@ export function Item({
   style,
   ...props
 }: CheckboxGroupItemProps) {
+  // on its own, with no label text, it is just the Checkbox
+  if (!children) {
+    return (
+      <Checkbox className={className} size={size} style={style} {...props} />
+    )
+  }
+
   return (
     <label
       {...merge(
@@ -30,7 +37,7 @@ export function Item({
     >
       <Checkbox {...props} />
 
-      {children}
+      <span {...stylex.props(group.text)}>{children}</span>
     </label>
   )
 }

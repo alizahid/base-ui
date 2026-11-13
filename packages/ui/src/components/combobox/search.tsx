@@ -33,7 +33,7 @@ export function Search({ className, style, ...props }: ComboboxSearchProps) {
 const styles = stylex.create({
   input: {
     '::placeholder': {
-      color: 'var(--gray-10)',
+      color: 'var(--gray-a10)',
       opacity: 1,
     },
     backgroundColor: 'transparent',
@@ -49,7 +49,7 @@ const styles = stylex.create({
   },
   // a row at the top of the popup, divided from the list
   main: {
-    boxShadow: 'inset 0 -1px var(--gray-6)',
+    boxShadow: 'inset 0 -1px var(--gray-a6)',
     padding: 'var(--menu-content-padding)',
   },
 })
