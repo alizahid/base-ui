@@ -621,3 +621,12 @@ textarea.mantine-Input-input::-webkit-scrollbar-thumb:hover { background-color: 
   --combobox-chevron-size-lg: 18px;
   --combobox-chevron-size-xl: 20px;
 }
+
+/* Radix sizes the spinner inside a button to half its height (12 / 16 / 20 / 24) */
+:is(.mantine-Button-loader, .mantine-ActionIcon-loader) .mantine-Loader-root:empty {
+  width: calc(var(--button-height, var(--ai-size)) / 2);
+  height: calc(var(--button-height, var(--ai-size)) / 2);
+}
+
+/* A Radix Select trigger indents its value one step more than a text field (8 / 12 / 16) */
+.mantine-Select-wrapper:where(:not([data-with-left-section])) { --input-padding-inline-start: calc(var(--input-padding) + var(--space-1)); }

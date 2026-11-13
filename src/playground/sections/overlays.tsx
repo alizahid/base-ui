@@ -135,8 +135,8 @@ export function OverlaysSection() {
           </Button>
         </Row>
         <Modal onClose={modalHandlers.close} opened={modal} title="Delete project">
-          <Text>This permanently removes the project and its 14 deployments. This cannot be undone.</Text>
-          <Group justify="flex-end" mt="lg">
+          <Text size="sm">This permanently removes the project and its 14 deployments. This cannot be undone.</Text>
+          <Group justify="flex-end" mt="md">
             <Button onClick={modalHandlers.close} variant="default">
               Cancel
             </Button>

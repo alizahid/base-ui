@@ -303,6 +303,7 @@ export function createRadixTheme(accent: Accent, gray: Gray): MantineThemeOverri
       Tooltip: { defaultProps: { withArrow: true, arrowSize: 6, offset: 6 } },
       // Radix Table size 2: 12px cell padding
       Table: { defaultProps: { verticalSpacing: 12, horizontalSpacing: 12 } },
+      Menu: { defaultProps: { offset: 4 } },
       Modal: { defaultProps: { centered: true, overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
       Drawer: { defaultProps: { overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
     },
