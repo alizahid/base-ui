@@ -13,7 +13,14 @@ export const menu = stylex.create({
     boxSizing: 'border-box',
     color: 'var(--gray-12)',
     maxHeight: 'var(--available-height)',
-    minWidth: 'var(--anchor-width)',
+    // a select lines the selected item's text up with the trigger's, which
+    // pulls the popup out past the trigger's start edge (data-side is "none"
+    // then). the extra width keeps it covering the trigger's far edge too
+    minWidth: {
+      ':is([data-side="none"])':
+        'calc(var(--anchor-width) + var(--menu-align-extra))',
+      default: 'var(--anchor-width)',
+    },
     // base ui focuses the popup when it opens; the highlighted item shows focus
     outline: 'none',
     overflow: 'hidden',
@@ -108,9 +115,13 @@ export const menuVariants = stylex.create({
   },
 })
 
-// set on the popup; the items, labels and separators inside inherit them
+// set on the popup; the items, labels and separators inside inherit them.
+// --menu-align-extra is how far the popup overhangs a select trigger of the
+// same size on both sides combined: its padding and gutters less the
+// trigger's own padding
 export const menuSizes = stylex.create({
   1: {
+    '--menu-align-extra': '20px',
     '--menu-check-size': '13px',
     '--menu-content-padding': 'var(--spacing)',
     '--menu-indicator-width': 'calc(var(--spacing) * 5)',
@@ -124,6 +135,7 @@ export const menuSizes = stylex.create({
     lineHeight: 'var(--text-xs--line-height)',
   },
   2: {
+    '--menu-align-extra': '28px',
     '--menu-check-size': '15px',
     '--menu-content-padding': 'calc(var(--spacing) * 2)',
     '--menu-indicator-width': 'calc(var(--spacing) * 6)',
@@ -137,6 +149,7 @@ export const menuSizes = stylex.create({
     lineHeight: 'var(--text-sm--line-height)',
   },
   3: {
+    '--menu-align-extra': '20px',
     '--menu-check-size': '15px',
     '--menu-content-padding': 'calc(var(--spacing) * 2)',
     '--menu-indicator-width': 'calc(var(--spacing) * 6)',
