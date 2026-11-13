@@ -1,0 +1,27 @@
+{
+  "name": "base-ui",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "ultracite fix",
+    "prepare": "husky",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "turbo": "^2.11.11",
+    "typescript": "7.0.2",
+    "ultracite": "8.2.0"
+  },
+  "packageManager": "bun@1.4.4",
+  "engines": {
+    "node": ">=24"
+  }
+}
