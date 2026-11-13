@@ -12,7 +12,7 @@ import { panel, panelSizes } from '../../lib/panel.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
 
-export type HoverCardContentProps = PreviewCardPopupProps &
+export type PreviewCardContentProps = PreviewCardPopupProps &
   Pick<PreviewCardPositionerProps, 'align' | 'side' | 'sideOffset'> & {
     className?: string
     size?: '1' | '2' | '3'
@@ -30,7 +30,7 @@ export function Content({
   size = '2',
   style,
   ...props
-}: HoverCardContentProps) {
+}: PreviewCardContentProps) {
   const theme = use(ThemeContext)
 
   return (

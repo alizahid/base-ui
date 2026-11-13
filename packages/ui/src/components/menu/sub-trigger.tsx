@@ -12,18 +12,18 @@ import { merge } from '../../lib/stylex.js'
 import { MenuContext } from './context.js'
 import { menu, menuContrast, menuVariants } from './styles.js'
 
-export type DropdownMenuSubTriggerProps = ComponentTriggerProps & {
+export type MenuSubTriggerProps = ComponentTriggerProps & {
   className?: string
   style?: CSSProperties
 }
 
-// the row that opens a submenu; goes inside DropdownMenu.Sub
+// the row that opens a submenu; goes inside Menu.Sub
 export function SubTrigger({
   children,
   className,
   style,
   ...props
-}: DropdownMenuSubTriggerProps) {
+}: MenuSubTriggerProps) {
   const { highContrast, variant } = use(MenuContext)
 
   return (

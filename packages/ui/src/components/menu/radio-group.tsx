@@ -5,9 +5,9 @@ import {
   type MenuRadioGroupProps as ComponentProps,
 } from '@base-ui/react/menu'
 
-export type DropdownMenuRadioGroupProps = ComponentProps
+export type MenuRadioGroupProps = ComponentProps
 
 // holds the selected `value` for the RadioItems inside
-export function RadioGroup(props: DropdownMenuRadioGroupProps) {
+export function RadioGroup(props: MenuRadioGroupProps) {
   return <Component.RadioGroup {...props} />
 }

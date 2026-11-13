@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { menu } from '../../lib/menu.js'
+import { listbox } from '../../lib/listbox.js'
 import { merge } from '../../lib/stylex.js'
 
 export type ComboboxSeparatorProps = ComponentSeparatorProps & {
@@ -23,7 +23,7 @@ export function Separator({
   return (
     <Component.Separator
       {...props}
-      {...merge(stylex.props(menu.separator), className, style)}
+      {...merge(stylex.props(listbox.separator), className, style)}
     />
   )
 }

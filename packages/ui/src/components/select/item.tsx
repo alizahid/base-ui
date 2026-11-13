@@ -8,7 +8,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { CheckIcon } from '../../lib/icons.js'
-import { menu } from '../../lib/menu.js'
+import { listbox } from '../../lib/listbox.js'
 import { merge } from '../../lib/stylex.js'
 
 export type SelectItemProps = ComponentItemProps & {
@@ -25,13 +25,13 @@ export function Item({
   return (
     <Component.Item
       {...props}
-      {...merge(stylex.props(menu.item), className, style)}
+      {...merge(stylex.props(listbox.item), className, style)}
     >
-      <Component.ItemIndicator {...stylex.props(menu.indicator)}>
-        <CheckIcon {...stylex.props(menu.check)} />
+      <Component.ItemIndicator {...stylex.props(listbox.indicator)}>
+        <CheckIcon {...stylex.props(listbox.check)} />
       </Component.ItemIndicator>
 
-      <Component.ItemText {...stylex.props(menu.text)}>
+      <Component.ItemText {...stylex.props(listbox.text)}>
         {children}
       </Component.ItemText>
     </Component.Item>

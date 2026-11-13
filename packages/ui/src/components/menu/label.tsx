@@ -10,13 +10,13 @@ import { type CSSProperties } from 'react'
 import { merge } from '../../lib/stylex.js'
 import { menu } from './styles.js'
 
-export type DropdownMenuLabelProps = ComponentProps & {
+export type MenuLabelProps = ComponentProps & {
   className?: string
   style?: CSSProperties
 }
 
-// a group's heading; goes inside DropdownMenu.Group
-export function Label({ className, style, ...props }: DropdownMenuLabelProps) {
+// a group's heading; goes inside Menu.Group
+export function Label({ className, style, ...props }: MenuLabelProps) {
   return (
     <Component.GroupLabel
       {...props}

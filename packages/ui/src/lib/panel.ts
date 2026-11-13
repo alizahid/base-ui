@@ -17,12 +17,12 @@ const right =
 const other =
   ':is(:is([data-starting-style], [data-ending-style]):not([data-side="top"], [data-side="bottom"], [data-side="left"], [data-side="right"]))'
 
-// the floating surface shared by Popover and HoverCard. ported from radix
+// the floating surface shared by Popover and PreviewCard. ported from radix
 // themes' popover.css and hover-card.css, which differ only in their sizes.
 // radix animates with keyframes; here base ui's starting and ending styles
 // drive a transition instead
 export const panel = stylex.create({
-  // a hover card has a lighter shadow than a popover, and no minimum width
+  // a preview card has a lighter shadow than a popover, and no minimum width
   card: {
     boxShadow: 'var(--card-shadow)',
     minWidth: 0,
@@ -72,7 +72,7 @@ export const panel = stylex.create({
   },
 })
 
-// HoverCard only goes up to 3
+// PreviewCard only goes up to 3
 export const panelSizes = stylex.create({
   1: {
     '--panel-padding': 'calc(var(--spacing) * 3)',

@@ -41,7 +41,7 @@ const styles = stylex.create({
     boxSizing: 'border-box',
     color: 'inherit',
     font: 'inherit',
-    height: 'var(--menu-item-height)',
+    height: 'var(--listbox-item-height)',
     outline: 'none',
     padding: 0,
     paddingInline: 'calc(var(--spacing) * 2)',
@@ -50,6 +50,6 @@ const styles = stylex.create({
   // a row at the top of the popup, divided from the list
   main: {
     boxShadow: 'inset 0 -1px var(--gray-a6)',
-    padding: 'var(--menu-content-padding)',
+    padding: 'var(--listbox-content-padding)',
   },
 })

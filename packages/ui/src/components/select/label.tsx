@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { menu } from '../../lib/menu.js'
+import { listbox } from '../../lib/listbox.js'
 import { merge } from '../../lib/stylex.js'
 
 export type SelectLabelProps = SelectGroupLabelProps & {
@@ -20,7 +20,7 @@ export function Label({ className, style, ...props }: SelectLabelProps) {
   return (
     <Component.GroupLabel
       {...props}
-      {...merge(stylex.props(menu.label), className, style)}
+      {...merge(stylex.props(listbox.label), className, style)}
     />
   )
 }

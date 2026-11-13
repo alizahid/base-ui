@@ -5,10 +5,10 @@ import {
   type PreviewCardTriggerProps as ComponentTriggerProps,
 } from '@base-ui/react/preview-card'
 
-export type HoverCardTriggerProps = ComponentTriggerProps
+export type PreviewCardTriggerProps = ComponentTriggerProps
 
-// renders a link by default, since a hover card usually previews where a link
+// renders a link by default, since a preview card usually previews where a link
 // goes. `render` swaps in another element
-export function Trigger(props: HoverCardTriggerProps) {
+export function Trigger(props: PreviewCardTriggerProps) {
   return <Component.Trigger {...props} />
 }

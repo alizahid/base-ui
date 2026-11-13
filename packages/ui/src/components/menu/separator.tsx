@@ -7,18 +7,12 @@ import { type ComponentProps, type CSSProperties } from 'react'
 import { merge } from '../../lib/stylex.js'
 import { menu } from './styles.js'
 
-export type DropdownMenuSeparatorProps = ComponentProps<
-  typeof Component.Separator
-> & {
+export type MenuSeparatorProps = ComponentProps<typeof Component.Separator> & {
   className?: string
   style?: CSSProperties
 }
 
-export function Separator({
-  className,
-  style,
-  ...props
-}: DropdownMenuSeparatorProps) {
+export function Separator({ className, style, ...props }: MenuSeparatorProps) {
   return (
     <Component.Separator
       {...props}

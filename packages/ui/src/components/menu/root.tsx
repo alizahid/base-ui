@@ -5,8 +5,8 @@ import {
   type MenuRootProps as ComponentRootProps,
 } from '@base-ui/react/menu'
 
-export type DropdownMenuRootProps = ComponentRootProps
+export type MenuRootProps = ComponentRootProps
 
-export function Root(props: DropdownMenuRootProps) {
+export function Root(props: MenuRootProps) {
   return <Component.Root {...props} />
 }

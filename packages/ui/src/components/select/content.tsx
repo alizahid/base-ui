@@ -10,7 +10,7 @@ import { type CSSProperties, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { ChevronDownIcon } from '../../lib/icons.js'
-import { menu, menuSizes, menuVariants } from '../../lib/menu.js'
+import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
 import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
@@ -54,10 +54,10 @@ export function Content({
           {...props}
           {...merge(
             stylex.props(
-              menu.content,
-              menuVariants[variant],
-              highContrast && variant === 'solid' && menu.contrast,
-              menuSizes[size],
+              listbox.content,
+              listboxVariants[variant],
+              highContrast && variant === 'solid' && listbox.contrast,
+              listboxSizes[size],
             ),
             className,
             style,
@@ -71,7 +71,7 @@ export function Content({
             <ChevronDownIcon {...stylex.props(styles.chevron, styles.flip)} />
           </Component.ScrollUpArrow>
 
-          <Component.List {...stylex.props(menu.list)}>
+          <Component.List {...stylex.props(listbox.list)}>
             {children}
           </Component.List>
 

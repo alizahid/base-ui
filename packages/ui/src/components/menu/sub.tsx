@@ -5,9 +5,9 @@ import {
   type MenuSubmenuRootProps as ComponentProps,
 } from '@base-ui/react/menu'
 
-export type DropdownMenuSubProps = ComponentProps
+export type MenuSubProps = ComponentProps
 
 // wraps a SubTrigger and its SubContent
-export function Sub(props: DropdownMenuSubProps) {
+export function Sub(props: MenuSubProps) {
   return <Component.SubmenuRoot {...props} />
 }

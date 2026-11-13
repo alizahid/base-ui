@@ -9,7 +9,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { menu, menuSizes, menuVariants } from '../../lib/menu.js'
+import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
 import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
@@ -59,10 +59,10 @@ export function Content({
           {...props}
           {...merge(
             stylex.props(
-              menu.content,
-              menuVariants[variant],
-              highContrast && variant === 'solid' && menu.contrast,
-              menuSizes[size],
+              listbox.content,
+              listboxVariants[variant],
+              highContrast && variant === 'solid' && listbox.contrast,
+              listboxSizes[size],
               styles.content,
             ),
             className,
@@ -85,7 +85,7 @@ export function Content({
             </Component.Empty>
           ) : null}
 
-          <Component.List {...stylex.props(menu.list, styles.list)}>
+          <Component.List {...stylex.props(listbox.list, styles.list)}>
             {children}
           </Component.List>
         </Component.Popup>
@@ -114,17 +114,17 @@ const styles = stylex.create({
   },
   empty: {
     color: 'var(--gray-a10)',
-    paddingBlock: 'calc(var(--menu-content-padding) + var(--spacing) * 2)',
-    paddingInline: 'calc(var(--menu-content-padding) + var(--spacing) * 2)',
+    paddingBlock: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
+    paddingInline: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
   },
   list: {
     maxHeight: 'min(22.5rem, var(--available-height))',
     overscrollBehavior: 'contain',
     padding: {
       ':is([data-empty])': 0,
-      default: 'var(--menu-content-padding)',
+      default: 'var(--listbox-content-padding)',
     },
-    scrollPaddingBlock: 'var(--menu-content-padding)',
+    scrollPaddingBlock: 'var(--listbox-content-padding)',
   },
   positioner: {
     outline: 'none',

@@ -2,10 +2,10 @@ import * as stylex from '@stylexjs/stylex'
 
 // the popup list shared by Select and Combobox: the surface, its items, group
 // labels and separators. ported from radix themes' select.css
-export const menu = stylex.create({
+export const listbox = stylex.create({
   check: {
-    height: 'var(--menu-check-size)',
-    width: 'var(--menu-check-size)',
+    height: 'var(--listbox-check-size)',
+    width: 'var(--listbox-check-size)',
   },
   content: {
     backgroundColor: 'var(--panel-background)',
@@ -18,7 +18,7 @@ export const menu = stylex.create({
     // then). the extra width keeps it covering the trigger's far edge too
     minWidth: {
       ':is([data-side="none"])':
-        'calc(var(--anchor-width) + var(--menu-align-extra))',
+        'calc(var(--anchor-width) + var(--listbox-align-extra))',
       default: 'var(--anchor-width)',
     },
     // base ui focuses the popup when it opens; the highlighted item shows focus
@@ -27,8 +27,8 @@ export const menu = stylex.create({
     transformOrigin: 'var(--transform-origin)',
   },
   contrast: {
-    '--menu-highlight': 'var(--accent-12)',
-    '--menu-highlight-color': 'var(--accent-1)',
+    '--listbox-highlight': 'var(--accent-12)',
+    '--listbox-highlight-color': 'var(--accent-1)',
   },
   indicator: {
     alignItems: 'center',
@@ -36,30 +36,31 @@ export const menu = stylex.create({
     insetInlineStart: 0,
     justifyContent: 'center',
     position: 'absolute',
-    width: 'var(--menu-indicator-width)',
+    width: 'var(--listbox-indicator-width)',
   },
   item: {
     alignItems: 'center',
     backgroundColor: {
-      ':is([data-highlighted]:not([data-disabled]))': 'var(--menu-highlight)',
+      ':is([data-highlighted]:not([data-disabled]))':
+        'var(--listbox-highlight)',
     },
-    borderRadius: 'var(--menu-item-radius)',
+    borderRadius: 'var(--listbox-item-radius)',
     boxSizing: 'border-box',
     color: {
       ':is([data-disabled])': 'var(--gray-a8)',
       ':is([data-highlighted]:not([data-disabled]))':
-        'var(--menu-highlight-color)',
+        'var(--listbox-highlight-color)',
     },
     cursor: 'default',
     display: 'flex',
-    height: 'var(--menu-item-height)',
+    height: 'var(--listbox-item-height)',
     outline: 'none',
     // radix pads both sides by the indicator's width; the end only needs the
     // same margin as the separator
-    paddingInlineEnd: 'var(--menu-separator-margin)',
-    paddingInlineStart: 'var(--menu-indicator-width)',
+    paddingInlineEnd: 'var(--listbox-separator-margin)',
+    paddingInlineStart: 'var(--listbox-indicator-width)',
     position: 'relative',
-    scrollMarginBlock: 'var(--menu-content-padding)',
+    scrollMarginBlock: 'var(--listbox-content-padding)',
     userSelect: 'none',
   },
   label: {
@@ -68,15 +69,15 @@ export const menu = stylex.create({
     cursor: 'default',
     display: 'flex',
     // stays a step smaller than the items at size 3
-    fontSize: 'var(--menu-label-font-size)',
-    height: 'var(--menu-item-height)',
-    lineHeight: 'var(--menu-label-line-height)',
+    fontSize: 'var(--listbox-label-font-size)',
+    height: 'var(--listbox-item-height)',
+    lineHeight: 'var(--listbox-label-line-height)',
     // a label that comes straight after an item gets some room above it
     marginBlockStart: {
       ':is([role="option"] + *)': 'calc(var(--spacing) * 2)',
     },
-    paddingInlineEnd: 'var(--menu-separator-margin)',
-    paddingInlineStart: 'var(--menu-indicator-width)',
+    paddingInlineEnd: 'var(--listbox-separator-margin)',
+    paddingInlineStart: 'var(--listbox-indicator-width)',
     userSelect: 'none',
   },
   list: {
@@ -84,7 +85,7 @@ export const menu = stylex.create({
     maxHeight: 'var(--available-height)',
     outline: 'none',
     overflowY: 'auto',
-    padding: 'var(--menu-content-padding)',
+    padding: 'var(--listbox-content-padding)',
     position: 'relative',
     // keeps the highlighted item clear of the scroll arrows
     scrollPaddingBlock: 'calc(var(--spacing) * 6)',
@@ -93,8 +94,8 @@ export const menu = stylex.create({
     backgroundColor: 'var(--gray-a6)',
     height: 1,
     marginBlock: 'calc(var(--spacing) * 2)',
-    marginInlineEnd: 'var(--menu-separator-margin)',
-    marginInlineStart: 'var(--menu-indicator-width)',
+    marginInlineEnd: 'var(--listbox-separator-margin)',
+    marginInlineStart: 'var(--listbox-indicator-width)',
   },
   // fills the row, so custom item content can lay itself out across it
   text: {
@@ -104,60 +105,60 @@ export const menu = stylex.create({
 })
 
 // what a highlighted item looks like
-export const menuVariants = stylex.create({
+export const listboxVariants = stylex.create({
   soft: {
-    '--menu-highlight': 'var(--accent-a4)',
-    '--menu-highlight-color': 'inherit',
+    '--listbox-highlight': 'var(--accent-a4)',
+    '--listbox-highlight-color': 'inherit',
   },
   solid: {
-    '--menu-highlight': 'var(--accent-9)',
-    '--menu-highlight-color': 'var(--accent-contrast)',
+    '--listbox-highlight': 'var(--accent-9)',
+    '--listbox-highlight-color': 'var(--accent-contrast)',
   },
 })
 
 // set on the popup; the items, labels and separators inside inherit them.
-// --menu-align-extra is how far the popup overhangs a select trigger of the
+// --listbox-align-extra is how far the popup overhangs a select trigger of the
 // same size on both sides combined: its padding and gutters less the
 // trigger's own padding
-export const menuSizes = stylex.create({
+export const listboxSizes = stylex.create({
   1: {
-    '--menu-align-extra': '20px',
-    '--menu-check-size': '13px',
-    '--menu-content-padding': 'var(--spacing)',
-    '--menu-indicator-width': 'calc(var(--spacing) * 5)',
-    '--menu-item-height': 'calc(var(--spacing) * 6)',
-    '--menu-item-radius': 'var(--radius-sm)',
-    '--menu-label-font-size': 'var(--text-xs)',
-    '--menu-label-line-height': 'var(--text-xs--line-height)',
-    '--menu-separator-margin': 'calc(var(--spacing) * 2)',
+    '--listbox-align-extra': '20px',
+    '--listbox-check-size': '13px',
+    '--listbox-content-padding': 'var(--spacing)',
+    '--listbox-indicator-width': 'calc(var(--spacing) * 5)',
+    '--listbox-item-height': 'calc(var(--spacing) * 6)',
+    '--listbox-item-radius': 'var(--radius-sm)',
+    '--listbox-label-font-size': 'var(--text-xs)',
+    '--listbox-label-line-height': 'var(--text-xs--line-height)',
+    '--listbox-separator-margin': 'calc(var(--spacing) * 2)',
     borderRadius: 'var(--radius-lg)',
     fontSize: 'var(--text-xs)',
     lineHeight: 'var(--text-xs--line-height)',
   },
   2: {
-    '--menu-align-extra': '28px',
-    '--menu-check-size': '15px',
-    '--menu-content-padding': 'calc(var(--spacing) * 2)',
-    '--menu-indicator-width': 'calc(var(--spacing) * 6)',
-    '--menu-item-height': 'calc(var(--spacing) * 8)',
-    '--menu-item-radius': 'var(--radius-md)',
-    '--menu-label-font-size': 'var(--text-sm)',
-    '--menu-label-line-height': 'var(--text-sm--line-height)',
-    '--menu-separator-margin': 'calc(var(--spacing) * 3)',
+    '--listbox-align-extra': '28px',
+    '--listbox-check-size': '15px',
+    '--listbox-content-padding': 'calc(var(--spacing) * 2)',
+    '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
+    '--listbox-item-height': 'calc(var(--spacing) * 8)',
+    '--listbox-item-radius': 'var(--radius-md)',
+    '--listbox-label-font-size': 'var(--text-sm)',
+    '--listbox-label-line-height': 'var(--text-sm--line-height)',
+    '--listbox-separator-margin': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
     fontSize: 'var(--text-sm)',
     lineHeight: 'var(--text-sm--line-height)',
   },
   3: {
-    '--menu-align-extra': '20px',
-    '--menu-check-size': '15px',
-    '--menu-content-padding': 'calc(var(--spacing) * 2)',
-    '--menu-indicator-width': 'calc(var(--spacing) * 6)',
-    '--menu-item-height': 'calc(var(--spacing) * 8)',
-    '--menu-item-radius': 'var(--radius-md)',
-    '--menu-label-font-size': 'var(--text-sm)',
-    '--menu-label-line-height': 'var(--text-sm--line-height)',
-    '--menu-separator-margin': 'calc(var(--spacing) * 3)',
+    '--listbox-align-extra': '20px',
+    '--listbox-check-size': '15px',
+    '--listbox-content-padding': 'calc(var(--spacing) * 2)',
+    '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
+    '--listbox-item-height': 'calc(var(--spacing) * 8)',
+    '--listbox-item-radius': 'var(--radius-md)',
+    '--listbox-label-font-size': 'var(--text-sm)',
+    '--listbox-label-line-height': 'var(--text-sm--line-height)',
+    '--listbox-separator-margin': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
     fontSize: 'var(--text-base)',
     lineHeight: 'var(--text-sm--line-height)',

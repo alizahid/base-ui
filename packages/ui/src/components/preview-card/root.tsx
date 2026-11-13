@@ -5,8 +5,8 @@ import {
   type PreviewCardRootProps as ComponentRootProps,
 } from '@base-ui/react/preview-card'
 
-export type HoverCardRootProps = ComponentRootProps
+export type PreviewCardRootProps = ComponentRootProps
 
-export function Root(props: HoverCardRootProps) {
+export function Root(props: PreviewCardRootProps) {
   return <Component.Root {...props} />
 }

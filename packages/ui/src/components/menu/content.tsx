@@ -15,7 +15,7 @@ import { ThemeContext } from '../../lib/theme.js'
 import { MenuContext } from './context.js'
 import { menu, menuSizes } from './styles.js'
 
-export type DropdownMenuContentProps = MenuPopupProps &
+export type MenuContentProps = MenuPopupProps &
   Pick<MenuPositionerProps, 'align' | 'alignOffset' | 'side' | 'sideOffset'> & {
     className?: string
     color?: ColorToken | 'gray'
@@ -39,7 +39,7 @@ export function Content({
   className,
   style,
   ...props
-}: DropdownMenuContentProps) {
+}: MenuContentProps) {
   const theme = use(ThemeContext)
 
   return (

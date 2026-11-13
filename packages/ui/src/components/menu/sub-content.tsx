@@ -14,13 +14,13 @@ import { ThemeContext } from '../../lib/theme.js'
 import { MenuContext } from './context.js'
 import { menu, menuSizes } from './styles.js'
 
-export type DropdownMenuSubContentProps = MenuPopupProps &
+export type MenuSubContentProps = MenuPopupProps &
   Pick<MenuPositionerProps, 'align' | 'alignOffset' | 'side' | 'sideOffset'> & {
     className?: string
     style?: CSSProperties
   }
 
-// the popup of a submenu; goes inside DropdownMenu.Sub. it takes its size,
+// the popup of a submenu; goes inside Menu.Sub. it takes its size,
 // variant and color from the menu's content
 export function SubContent({
   align,
@@ -30,7 +30,7 @@ export function SubContent({
   className,
   style,
   ...props
-}: DropdownMenuSubContentProps) {
+}: MenuSubContentProps) {
   const theme = use(ThemeContext)
   const { color, size } = use(MenuContext)
 
