@@ -18,9 +18,16 @@ import {
   YearPickerInput,
 } from '@mantine/dates'
 
+import { useState } from 'react'
 import { Demo, Section } from '../demo'
 
 const slots = ['09:00', '09:30', '10:00', '10:30', '11:00', '13:30', '14:00', '15:30', '16:00']
+
+/** MiniCalendar is controlled only, so the demo keeps the chosen day itself. */
+function MiniCalendarDemo() {
+  const [value, setValue] = useState<string | null>('2026-03-12')
+  return <MiniCalendar value={value} onChange={setValue} defaultDate="2026-03-09" />
+}
 
 export function DatesSection() {
   return (
@@ -33,7 +40,7 @@ export function DatesSection() {
       </Demo>
 
       <Demo title="MiniCalendar" description="Compact week strip for choosing a day.">
-        <MiniCalendar defaultValue="2026-03-12" defaultDate="2026-03-09" />
+        <MiniCalendarDemo />
       </Demo>
 
       <Demo title="DatePicker" description="Single, multiple and range selection.">
