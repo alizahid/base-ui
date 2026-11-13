@@ -1,0 +1,109 @@
+import { BoatIcon, CastleTurretIcon, HouseLineIcon, MountainsIcon, TreePalmIcon } from '@phosphor-icons/react/ssr'
+
+# علامات التبويب
+
+## أمثلة
+
+### أساسي
+
+<Example>
+  <Tabs.Root className="w-96" defaultValue="account">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+
+    <Tabs.Panel className="pt-4 text-sm" value="account">أجرِ تغييرات على حسابك.</Tabs.Panel>
+    <Tabs.Panel className="pt-4 text-sm" value="documents">اطّلع على مستنداتك وحدّثها.</Tabs.Panel>
+    <Tabs.Panel className="pt-4 text-sm" value="settings">عدّل ملفك الشخصي أو حدّث معلومات الاتصال.</Tabs.Panel>
+  </Tabs.Root>
+</Example>
+
+### مع أيقونات
+
+<Example>
+  <Tabs.Root defaultValue="beachfront" highContrast>
+    <Tabs.List>
+      <Tabs.Tab value="beachfront"><TreePalmIcon className="size-6" />على الشاطئ</Tabs.Tab>
+      <Tabs.Tab value="cabins"><HouseLineIcon className="size-6" />أكواخ</Tabs.Tab>
+      <Tabs.Tab value="boats"><BoatIcon className="size-6" />قوارب</Tabs.Tab>
+      <Tabs.Tab value="castles"><CastleTurretIcon className="size-6" />قلاع</Tabs.Tab>
+      <Tabs.Tab disabled value="mountains"><MountainsIcon className="size-6" />جبال</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### كروابط
+
+<Example>
+  <Tabs.Root defaultValue="overview">
+    <Tabs.List>
+      <Tabs.Tab nativeButton={false} render={<a href="#overview" />} value="overview">نظرة عامة</Tabs.Tab>
+      <Tabs.Tab nativeButton={false} render={<a href="#pricing" />} value="pricing">الأسعار</Tabs.Tab>
+      <Tabs.Tab nativeButton={false} render={<a href="#changelog" />} value="changelog">سجل التغييرات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### الحجم
+
+<Example>
+  <Tabs.Root className="w-96" defaultValue="account" size="1">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+  <Tabs.Root className="w-96" defaultValue="account" size="2">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### اللون
+
+<Example>
+  <Tabs.Root className="w-96" defaultValue="account" color="indigo">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+  <Tabs.Root className="w-96" defaultValue="account" color="orange">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### تباين عالٍ
+
+<Example>
+  <Tabs.Root className="w-96" defaultValue="account" highContrast>
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### معطّل
+
+<Example>
+  <Tabs.Root className="w-96" defaultValue="account">
+    <Tabs.List>
+      <Tabs.Tab value="account">الحساب</Tabs.Tab>
+      <Tabs.Tab value="documents">المستندات</Tabs.Tab>
+      <Tabs.Tab disabled value="settings">الإعدادات</Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
