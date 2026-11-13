@@ -20,6 +20,7 @@ export const pages = [
   'radio-group',
   'scroll-area',
   'select',
+  'separator',
   'slider',
   'spinner',
   'switch',
