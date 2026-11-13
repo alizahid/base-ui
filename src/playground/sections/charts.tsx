@@ -22,9 +22,18 @@ import {
   Treemap,
   WaffleChart,
 } from '@mantine/charts'
-import { Group, SimpleGrid, Stack, Text } from '@mantine/core'
+import type { ReactNode } from 'react'
 
-import { Demo, Section } from '../demo'
+import { Demo, Row, Section } from '../demo'
+
+/** One chart on its own line, kept to a readable width. */
+function Chart({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <Row label={label}>
+      <div style={{ maxWidth: 720 }}>{children}</div>
+    </Row>
+  )
+}
 
 const revenue = [
   { month: 'Jan', revenue: 12400, costs: 8200, signups: 320 },
@@ -74,7 +83,7 @@ export function ChartsSection() {
   return (
     <Section title="Charts">
       <Demo title="AreaChart" description="Monthly revenue and costs, default and stacked.">
-        <SimpleGrid cols={{ base: 1, md: 2 }}>
+        <Chart label="default">
           <AreaChart
             h={260}
             data={revenue}
@@ -85,6 +94,8 @@ export function ChartsSection() {
             ]}
             withLegend
           />
+        </Chart>
+        <Chart label="stacked">
           <AreaChart
             h={260}
             data={revenue}
@@ -96,11 +107,11 @@ export function ChartsSection() {
             ]}
             withLegend
           />
-        </SimpleGrid>
+        </Chart>
       </Demo>
 
       <Demo title="BarChart" description="Revenue by month, grouped and stacked.">
-        <SimpleGrid cols={{ base: 1, md: 2 }}>
+        <Chart label="grouped">
           <BarChart
             h={260}
             data={revenue}
@@ -111,6 +122,8 @@ export function ChartsSection() {
             ]}
             withLegend
           />
+        </Chart>
+        <Chart label="stacked">
           <BarChart
             h={260}
             data={revenue}
@@ -122,259 +135,282 @@ export function ChartsSection() {
             ]}
             withLegend
           />
-        </SimpleGrid>
+        </Chart>
       </Demo>
 
       <Demo title="LineChart" description="Signups and revenue over six months.">
-        <LineChart
-          h={260}
-          data={revenue}
-          dataKey="month"
-          series={[
-            { name: 'signups', color: 'indigo.6' },
-            { name: 'costs', color: 'crimson.6' },
-          ]}
-          curveType="linear"
-          withLegend
-        />
+        <Chart label="linear">
+          <LineChart
+            h={260}
+            data={revenue}
+            dataKey="month"
+            series={[
+              { name: 'signups', color: 'indigo.6' },
+              { name: 'costs', color: 'crimson.6' },
+            ]}
+            curveType="linear"
+            withLegend
+          />
+        </Chart>
       </Demo>
 
       <Demo title="CompositeChart" description="Bars, an area and a line in one chart.">
-        <CompositeChart
-          h={260}
-          data={revenue}
-          dataKey="month"
-          series={[
-            { name: 'revenue', color: 'indigo.6', type: 'bar' },
-            { name: 'costs', color: 'amber.6', type: 'area' },
-            { name: 'signups', color: 'teal.6', type: 'line' },
-          ]}
-          withLegend
-          maxBarWidth={36}
-        />
+        <Chart label="bar, area, line">
+          <CompositeChart
+            h={260}
+            data={revenue}
+            dataKey="month"
+            series={[
+              { name: 'revenue', color: 'indigo.6', type: 'bar' },
+              { name: 'costs', color: 'amber.6', type: 'area' },
+              { name: 'signups', color: 'teal.6', type: 'line' },
+            ]}
+            withLegend
+            maxBarWidth={36}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="DonutChart" description="Subscribers by plan.">
-        <Group justify="space-around">
+        <Chart label="labels">
           <DonutChart data={plans} chartLabel="9,780" withLabelsLine withLabels />
+        </Chart>
+        <Chart label="thin">
           <DonutChart data={plans} thickness={14} size={160} />
-        </Group>
+        </Chart>
       </Demo>
 
       <Demo title="PieChart" description="Share of subscribers by plan.">
-        <Group justify="space-around">
+        <Chart label="tooltip">
           <PieChart data={plans} withTooltip />
+        </Chart>
+        <Chart label="percent labels">
           <PieChart data={plans} withLabels labelsType="percent" />
-        </Group>
+        </Chart>
       </Demo>
 
       <Demo title="RadarChart" description="Web versus mobile scores.">
-        <RadarChart
-          h={300}
-          data={skills}
-          dataKey="metric"
-          withPolarRadiusAxis
-          withLegend
-          series={[
-            { name: 'web', color: 'indigo.6', opacity: 0.3 },
-            { name: 'mobile', color: 'teal.6', opacity: 0.3 },
-          ]}
-        />
+        <Chart label="two series">
+          <RadarChart
+            h={300}
+            data={skills}
+            dataKey="metric"
+            withPolarRadiusAxis
+            withLegend
+            series={[
+              { name: 'web', color: 'indigo.6', opacity: 0.3 },
+              { name: 'mobile', color: 'teal.6', opacity: 0.3 },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="ScatterChart" description="Order value against delivery time for two regions.">
-        <ScatterChart
-          h={260}
-          dataKey={{ x: 'hours', y: 'value' }}
-          labels={{ x: 'Delivery time', y: 'Order value' }}
-          unit={{ x: 'h', y: '$' }}
-          data={[
-            {
-              name: 'Europe',
-              color: 'indigo.6',
-              data: [
-                { hours: 4, value: 120 },
-                { hours: 12, value: 80 },
-                { hours: 20, value: 210 },
-                { hours: 30, value: 150 },
-                { hours: 44, value: 90 },
-              ],
-            },
-            {
-              name: 'Asia',
-              color: 'crimson.6',
-              data: [
-                { hours: 8, value: 60 },
-                { hours: 18, value: 140 },
-                { hours: 26, value: 70 },
-                { hours: 36, value: 200 },
-                { hours: 48, value: 110 },
-              ],
-            },
-          ]}
-        />
+        <Chart label="two groups">
+          <ScatterChart
+            h={260}
+            dataKey={{ x: 'hours', y: 'value' }}
+            labels={{ x: 'Delivery time', y: 'Order value' }}
+            unit={{ x: 'h', y: '$' }}
+            data={[
+              {
+                name: 'Europe',
+                color: 'indigo.6',
+                data: [
+                  { hours: 4, value: 120 },
+                  { hours: 12, value: 80 },
+                  { hours: 20, value: 210 },
+                  { hours: 30, value: 150 },
+                  { hours: 44, value: 90 },
+                ],
+              },
+              {
+                name: 'Asia',
+                color: 'crimson.6',
+                data: [
+                  { hours: 8, value: 60 },
+                  { hours: 18, value: 140 },
+                  { hours: 26, value: 70 },
+                  { hours: 36, value: 200 },
+                  { hours: 48, value: 110 },
+                ],
+              },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="BubbleChart" description="Weekly activity: hour, day and message volume.">
-        <BubbleChart
-          h={160}
-          color="violet.6"
-          range={[16, 225]}
-          label="Messages"
-          dataKey={{ x: 'hour', y: 'index', z: 'value' }}
-          data={[
-            { hour: '8am', index: 1, value: 200 },
-            { hour: '10am', index: 1, value: 450 },
-            { hour: '12pm', index: 1, value: 120 },
-            { hour: '2pm', index: 1, value: 780 },
-            { hour: '4pm', index: 1, value: 330 },
-            { hour: '6pm', index: 1, value: 90 },
-          ]}
-        />
+        <Chart label="volume">
+          <BubbleChart
+            h={160}
+            color="violet.6"
+            range={[16, 225]}
+            label="Messages"
+            dataKey={{ x: 'hour', y: 'index', z: 'value' }}
+            data={[
+              { hour: '8am', index: 1, value: 200 },
+              { hour: '10am', index: 1, value: 450 },
+              { hour: '12pm', index: 1, value: 120 },
+              { hour: '2pm', index: 1, value: 780 },
+              { hour: '4pm', index: 1, value: 330 },
+              { hour: '6pm', index: 1, value: 90 },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="RadialBarChart" description="Quota attainment per team.">
-        <RadialBarChart
-          h={280}
-          dataKey="value"
-          withLabels
-          withLegend
-          data={[
-            { name: 'Sales', value: 92, color: 'indigo.6' },
-            { name: 'Support', value: 74, color: 'teal.6' },
-            { name: 'Growth', value: 58, color: 'amber.6' },
-            { name: 'Design', value: 36, color: 'crimson.6' },
-          ]}
-        />
+        <Chart label="labels">
+          <RadialBarChart
+            h={280}
+            dataKey="value"
+            withLabels
+            withLegend
+            data={[
+              { name: 'Sales', value: 92, color: 'indigo.6' },
+              { name: 'Support', value: 74, color: 'teal.6' },
+              { name: 'Growth', value: 58, color: 'amber.6' },
+              { name: 'Design', value: 36, color: 'crimson.6' },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="FunnelChart" description="Conversion from visitor to customer.">
-        <FunnelChart data={funnel} withLabels labelsPosition="right" size={240} w={320} />
+        <Chart label="labels right">
+          <FunnelChart data={funnel} withLabels labelsPosition="right" size={240} w={320} />
+        </Chart>
       </Demo>
 
       <Demo title="Sparkline" description="Compact trend lines for dashboard cards.">
-        <Stack>
-          <Group>
-            <Text size="sm" w={110}>
-              MRR
-            </Text>
-            <Sparkline w={200} h={50} data={[10, 14, 12, 18, 22, 21, 28]} color="teal.6" />
-          </Group>
-          <Group>
-            <Text size="sm" w={110}>
-              Churn
-            </Text>
-            <Sparkline w={200} h={50} data={[8, 7, 9, 12, 11, 15, 16]} color="crimson.6" />
-          </Group>
-          <Group>
-            <Text size="sm" w={110}>
-              Trend colors
-            </Text>
-            <Sparkline
-              w={200}
-              h={50}
-              data={[10, 14, 12, 18, 22, 21, 28]}
-              trendColors={{ positive: 'teal.6', negative: 'crimson.6', neutral: 'gray.6' }}
-            />
-          </Group>
-        </Stack>
+        <Chart label="mrr">
+          <Sparkline w={200} h={50} data={[10, 14, 12, 18, 22, 21, 28]} color="teal.6" />
+        </Chart>
+        <Chart label="churn">
+          <Sparkline w={200} h={50} data={[8, 7, 9, 12, 11, 15, 16]} color="crimson.6" />
+        </Chart>
+        <Chart label="trend colors">
+          <Sparkline
+            w={200}
+            h={50}
+            data={[10, 14, 12, 18, 22, 21, 28]}
+            trendColors={{ positive: 'teal.6', negative: 'crimson.6', neutral: 'gray.6' }}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="Heatmap" description="Daily commit activity.">
-        <Heatmap data={heatmap} startDate="2025-01-01" endDate="2025-04-30" withTooltip withWeekdayLabels withMonthLabels />
+        <Chart label="four months">
+          <Heatmap data={heatmap} startDate="2025-01-01" endDate="2025-04-30" withTooltip withWeekdayLabels withMonthLabels />
+        </Chart>
       </Demo>
 
       <Demo title="CandlestickChart" description="Weekly share price.">
-        <CandlestickChart
-          h={260}
-          dataKey="week"
-          data={[
-            { week: 'W1', open: 100, high: 112, low: 96, close: 108 },
-            { week: 'W2', open: 108, high: 118, low: 104, close: 103 },
-            { week: 'W3', open: 103, high: 110, low: 98, close: 109 },
-            { week: 'W4', open: 109, high: 124, low: 107, close: 121 },
-            { week: 'W5', open: 121, high: 126, low: 112, close: 115 },
-            { week: 'W6', open: 115, high: 130, low: 113, close: 128 },
-          ]}
-        />
+        <Chart label="weekly">
+          <CandlestickChart
+            h={260}
+            dataKey="week"
+            data={[
+              { week: 'W1', open: 100, high: 112, low: 96, close: 108 },
+              { week: 'W2', open: 108, high: 118, low: 104, close: 103 },
+              { week: 'W3', open: 103, high: 110, low: 98, close: 109 },
+              { week: 'W4', open: 109, high: 124, low: 107, close: 121 },
+              { week: 'W5', open: 121, high: 126, low: 112, close: 115 },
+              { week: 'W6', open: 115, high: 130, low: 113, close: 128 },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="BarsList" description="Top pages by visits.">
-        <BarsList
-          barsLabel="Page"
-          valueLabel="Visits"
-          data={[
-            { name: '/pricing', value: 4200, color: 'indigo.6' },
-            { name: '/docs', value: 3100, color: 'indigo.6' },
-            { name: '/blog', value: 1800, color: 'indigo.6' },
-            { name: '/changelog', value: 900, color: 'indigo.6' },
-          ]}
-        />
+        <Chart label="top pages">
+          <BarsList
+            barsLabel="Page"
+            valueLabel="Visits"
+            data={[
+              { name: '/pricing', value: 4200, color: 'indigo.6' },
+              { name: '/docs', value: 3100, color: 'indigo.6' },
+              { name: '/blog', value: 1800, color: 'indigo.6' },
+              { name: '/changelog', value: 900, color: 'indigo.6' },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="Treemap" description="Revenue by product line.">
-        <Treemap
-          height={260}
-          data={[
-            { name: 'Subscriptions', color: 'indigo.6', children: [{ name: 'Pro', value: 480 }, { name: 'Team', value: 320 }] },
-            { name: 'Services', color: 'teal.6', children: [{ name: 'Consulting', value: 210 }, { name: 'Training', value: 90 }] },
-            { name: 'Marketplace', color: 'amber.6', value: 150 },
-          ]}
-        />
+        <Chart label="nested">
+          <Treemap
+            height={260}
+            data={[
+              { name: 'Subscriptions', color: 'indigo.6', children: [{ name: 'Pro', value: 480 }, { name: 'Team', value: 320 }] },
+              { name: 'Services', color: 'teal.6', children: [{ name: 'Consulting', value: 210 }, { name: 'Training', value: 90 }] },
+              { name: 'Marketplace', color: 'amber.6', value: 150 },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="SankeyChart" description="Traffic sources flowing to plans.">
-        <SankeyChart
-          height={260}
-          data={{
-            nodes: [
-              { name: 'Search', color: 'indigo.6' },
-              { name: 'Social', color: 'violet.6' },
-              { name: 'Referral', color: 'teal.6' },
-              { name: 'Free', color: 'gray.6' },
-              { name: 'Pro', color: 'amber.6' },
-            ],
-            links: [
-              { source: 0, target: 3, value: 500 },
-              { source: 0, target: 4, value: 200 },
-              { source: 1, target: 3, value: 300 },
-              { source: 1, target: 4, value: 60 },
-              { source: 2, target: 3, value: 120 },
-              { source: 2, target: 4, value: 140 },
-            ],
-          }}
-        />
+        <Chart label="flows">
+          <SankeyChart
+            height={260}
+            data={{
+              nodes: [
+                { name: 'Search', color: 'indigo.6' },
+                { name: 'Social', color: 'violet.6' },
+                { name: 'Referral', color: 'teal.6' },
+                { name: 'Free', color: 'gray.6' },
+                { name: 'Pro', color: 'amber.6' },
+              ],
+              links: [
+                { source: 0, target: 3, value: 500 },
+                { source: 0, target: 4, value: 200 },
+                { source: 1, target: 3, value: 300 },
+                { source: 1, target: 4, value: 60 },
+                { source: 2, target: 3, value: 120 },
+                { source: 2, target: 4, value: 140 },
+              ],
+            }}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="SunburstChart" description="Revenue split by region and plan.">
-        <SunburstChart
-          size={260}
-          withLabels
-          data={[
-            { name: 'Americas', color: 'indigo.6', children: [{ name: 'Pro US', value: 300 }, { name: 'Team US', value: 200 }] },
-            { name: 'Europe', color: 'teal.6', children: [{ name: 'Pro EU', value: 240 }, { name: 'Team EU', value: 120 }] },
-            { name: 'Asia', color: 'amber.6', children: [{ name: 'Pro APAC', value: 160 }, { name: 'Team APAC', value: 80 }] },
-          ]}
-        />
+        <Chart label="labels">
+          <SunburstChart
+            size={260}
+            withLabels
+            data={[
+              { name: 'Americas', color: 'indigo.6', children: [{ name: 'Pro US', value: 300 }, { name: 'Team US', value: 200 }] },
+              { name: 'Europe', color: 'teal.6', children: [{ name: 'Pro EU', value: 240 }, { name: 'Team EU', value: 120 }] },
+              { name: 'Asia', color: 'amber.6', children: [{ name: 'Pro APAC', value: 160 }, { name: 'Team APAC', value: 80 }] },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="BulletChart" description="Quarterly revenue against target.">
-        <BulletChart
-          value={72}
-          target={85}
-          label="Revenue"
-          ranges={[
-            { value: 50, color: 'gray.3' },
-            { value: 80, color: 'gray.2' },
-            { value: 100, color: 'gray.1' },
-          ]}
-          barColor="indigo.6"
-        />
+        <Chart label="target">
+          <BulletChart
+            value={72}
+            target={85}
+            label="Revenue"
+            ranges={[
+              { value: 50, color: 'gray.3' },
+              { value: 80, color: 'gray.2' },
+              { value: 100, color: 'gray.1' },
+            ]}
+            barColor="indigo.6"
+          />
+        </Chart>
       </Demo>
 
       <Demo title="GaugeChart" description="Server capacity in use.">
-        <Group>
+        <Chart label="single color">
           <GaugeChart value={68} label="68%" filledColor="indigo.6" />
+        </Chart>
+        <Chart label="sections">
           <GaugeChart
             value={85}
             label="85%"
@@ -384,23 +420,27 @@ export function ChartsSection() {
               { value: 100, color: 'crimson.6' },
             ]}
           />
-        </Group>
+        </Chart>
       </Demo>
 
       <Demo title="WaffleChart" description="Customer share by plan out of 100.">
-        <WaffleChart
-          withLegend
-          data={[
-            { name: 'Free', value: 55, color: 'gray.6' },
-            { name: 'Pro', value: 28, color: 'indigo.6' },
-            { name: 'Team', value: 12, color: 'teal.6' },
-            { name: 'Enterprise', value: 5, color: 'amber.6' },
-          ]}
-        />
+        <Chart label="legend">
+          <WaffleChart
+            withLegend
+            data={[
+              { name: 'Free', value: 55, color: 'gray.6' },
+              { name: 'Pro', value: 28, color: 'indigo.6' },
+              { name: 'Team', value: 12, color: 'teal.6' },
+              { name: 'Enterprise', value: 5, color: 'amber.6' },
+            ]}
+          />
+        </Chart>
       </Demo>
 
       <Demo title="MatrixChart" description="Support tickets by weekday and time of day.">
-        <MatrixChart data={matrix} withLegend />
+        <Chart label="legend">
+          <MatrixChart data={matrix} withLegend />
+        </Chart>
       </Demo>
     </Section>
   )

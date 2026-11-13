@@ -18,7 +18,10 @@ import Link from '@tiptap/extension-link'
 import { useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-import { Demo, Section } from '../demo'
+import * as RT from '@radix-ui/themes'
+import type { ReactNode } from 'react'
+
+import { Demo, Row, Section } from '../demo'
 
 const spotlightActions = [
   { id: 'home', label: 'Dashboard', description: 'Revenue and signups overview', leftSection: <HomeIcon />, onClick: () => undefined },
@@ -107,20 +110,59 @@ function Editor() {
   )
 }
 
+/** The same sign-up form built with Radix Themes, for comparison (no validation). */
+function RadixSignUpForm() {
+  const field = (label: string, placeholder: string, type?: 'password') => (
+    <label>
+      <RT.Text as="div" size="2" weight="medium" mb="1">
+        {label}
+      </RT.Text>
+      <RT.TextField.Root placeholder={placeholder} type={type} />
+    </label>
+  )
+
+  return (
+    <RT.Flex direction="column" gap="3" maxWidth="360px">
+      {field('Name', 'Ada Lovelace')}
+      {field('Email', 'ada@example.com')}
+      {field('Password', '', 'password')}
+      <RT.Flex gap="3">
+        <RT.Button>Sign up</RT.Button>
+        <RT.Button variant="surface" color="gray" highContrast>
+          Reset
+        </RT.Button>
+      </RT.Flex>
+    </RT.Flex>
+  )
+}
+
+/** One wide example on its own line, kept to a readable width. */
+function Wide({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <Row label={label}>
+      <div style={{ maxWidth: 720 }}>{children}</div>
+    </Row>
+  )
+}
+
 export function ExtensionsSection() {
   return (
     <Section title="Extensions">
       <Demo title="Notifications" description="Toasts from @mantine/notifications.">
-        <Group>
+        <Row label="default">
           <Button variant="default" onClick={() => notifications.show({ title: 'Heads up', message: 'Your trial ends in 3 days.' })}>
             Default
           </Button>
+        </Row>
+        <Row label="success">
           <Button
             color="teal"
             onClick={() => notifications.show({ title: 'Payment received', message: 'Invoice #1042 was paid.', color: 'teal' })}
           >
             Success
           </Button>
+        </Row>
+        <Row label="error">
           <Button
             color="red"
             onClick={() =>
@@ -129,6 +171,8 @@ export function ExtensionsSection() {
           >
             Error
           </Button>
+        </Row>
+        <Row label="loading, then update">
           <Button
             variant="light"
             onClick={() => {
@@ -142,11 +186,11 @@ export function ExtensionsSection() {
           >
             Loading then update
           </Button>
-        </Group>
+        </Row>
       </Demo>
 
       <Demo title="Modals manager" description="Imperative modals from @mantine/modals.">
-        <Group>
+        <Row label="confirm">
           <Button
             variant="default"
             onClick={() =>
@@ -160,6 +204,8 @@ export function ExtensionsSection() {
           >
             Confirm modal
           </Button>
+        </Row>
+        <Row label="content">
           <Button
             onClick={() =>
               modals.open({
@@ -175,98 +221,118 @@ export function ExtensionsSection() {
           >
             Content modal
           </Button>
-        </Group>
+        </Row>
       </Demo>
 
       <Demo title="Spotlight" description="Command palette opened with a button.">
-        <Button leftSection={<GearIcon />} onClick={() => spotlight.open()}>
-          Open spotlight
-        </Button>
-        <Spotlight actions={spotlightActions} nothingFound="Nothing found" highlightQuery searchProps={{ placeholder: 'Search...' }} />
+        <Row label="command palette">
+          <Button leftSection={<GearIcon />} onClick={() => spotlight.open()}>
+            Open spotlight
+          </Button>
+          <Spotlight actions={spotlightActions} nothingFound="Nothing found" highlightQuery searchProps={{ placeholder: 'Search...' }} />
+        </Row>
       </Demo>
 
       <Demo title="Carousel" description="Team cards with controls and indicators.">
-        <Carousel withIndicators slideSize={{ base: '100%', sm: '50%' }} slideGap="md" emblaOptions={{ loop: true }}>
-          {teams.map((team) => (
-            <Carousel.Slide key={team.name}>
-              <Paper withBorder p="lg">
-                <Title order={4}>{team.name}</Title>
-                <Text size="sm" c="dimmed">
-                  {team.members} members
-                </Text>
-                <Text mt="sm">{team.note}</Text>
-              </Paper>
-            </Carousel.Slide>
-          ))}
-        </Carousel>
+        <Wide label="indicators, loop">
+          <Carousel withIndicators slideSize={{ base: '100%', sm: '50%' }} slideGap="md" emblaOptions={{ loop: true }}>
+            {teams.map((team) => (
+              <Carousel.Slide key={team.name}>
+                <Paper withBorder p="lg">
+                  <Title order={4}>{team.name}</Title>
+                  <Text size="sm" c="dimmed">
+                    {team.members} members
+                  </Text>
+                  <Text mt="sm">{team.note}</Text>
+                </Paper>
+              </Carousel.Slide>
+            ))}
+          </Carousel>
+        </Wide>
       </Demo>
 
       <Demo title="Dropzone" description="Image upload with idle, accept and reject states; drag a file over it.">
-        <Dropzone onDrop={() => undefined} accept={IMAGE_MIME_TYPE} maxSize={5 * 1024 ** 2}>
-          <Group justify="center" gap="md" mih={120}>
-            <Dropzone.Accept>
-              <UploadIcon />
-            </Dropzone.Accept>
-            <Dropzone.Reject>
-              <Cross2Icon />
-            </Dropzone.Reject>
-            <Dropzone.Idle>
-              <ImageIcon />
-            </Dropzone.Idle>
-            <div>
-              <Text>Drag images here or click to select</Text>
-              <Text size="sm" c="dimmed">
-                PNG, JPG or WebP up to 5 MB
-              </Text>
-            </div>
-          </Group>
-        </Dropzone>
+        <Wide label="images">
+          <Dropzone onDrop={() => undefined} accept={IMAGE_MIME_TYPE} maxSize={5 * 1024 ** 2}>
+            <Group justify="center" gap="md" mih={120}>
+              <Dropzone.Accept>
+                <UploadIcon />
+              </Dropzone.Accept>
+              <Dropzone.Reject>
+                <Cross2Icon />
+              </Dropzone.Reject>
+              <Dropzone.Idle>
+                <ImageIcon />
+              </Dropzone.Idle>
+              <div>
+                <Text>Drag images here or click to select</Text>
+                <Text size="sm" c="dimmed">
+                  PNG, JPG or WebP up to 5 MB
+                </Text>
+              </div>
+            </Group>
+          </Dropzone>
+        </Wide>
       </Demo>
 
       <Demo title="NavigationProgress" description="Top-of-page progress bar.">
-        <Group>
+        <Row label="start">
           <Button variant="default" onClick={() => nprogress.start()}>
             Start
           </Button>
+        </Row>
+        <Row label="increment">
           <Button variant="default" onClick={() => nprogress.increment()}>
             Increment
           </Button>
+        </Row>
+        <Row label="complete">
           <Button variant="default" onClick={() => nprogress.complete()}>
             Complete
           </Button>
+        </Row>
+        <Row label="reset">
           <Button variant="default" onClick={() => nprogress.reset()}>
             Reset
           </Button>
-        </Group>
+        </Row>
       </Demo>
 
       <CodeHighlightAdapterProvider adapter={plainTextAdapter}>
         <Demo title="CodeHighlight" description="Code block with copy button and line numbers (plain text adapter).">
-          <CodeHighlight
-            language="tsx"
-            withLineNumbers
-            code={`export function Revenue({ total }: { total: number }) {
+          <Wide label="line numbers">
+            <CodeHighlight
+              language="tsx"
+              withLineNumbers
+              code={`export function Revenue({ total }: { total: number }) {
   return <Text fw={600}>{total.toLocaleString()}</Text>
 }`}
-          />
+            />
+          </Wide>
         </Demo>
 
         <Demo title="CodeHighlightTabs" description="Multiple files in tabs.">
-          <CodeHighlightTabs
-            code={[
-              { fileName: 'app.tsx', language: 'tsx', code: 'export const App = () => <Dashboard />' },
-              { fileName: 'package.json', language: 'json', code: '{\n  "name": "dashboard",\n  "version": "2.4.0"\n}' },
-            ]}
-          />
+          <Wide label="two files">
+            <CodeHighlightTabs
+              code={[
+                { fileName: 'app.tsx', language: 'tsx', code: 'export const App = () => <Dashboard />' },
+                { fileName: 'package.json', language: 'json', code: '{\n  "name": "dashboard",\n  "version": "2.4.0"\n}' },
+              ]}
+            />
+          </Wide>
         </Demo>
       </CodeHighlightAdapterProvider>
 
       <Demo title="RichTextEditor" description="Tiptap editor with StarterKit and Link.">
-        <Editor />
+        <Wide label="toolbar">
+          <Editor />
+        </Wide>
       </Demo>
 
-      <Demo title="useForm" description="Sign-up form with validation; submit it empty to see errors.">
-        <SignUpForm />
+      <Demo title="useForm" description="Sign-up form with validation; submit it empty to see errors." radix="TextField + Button">
+        <Row label="sign-up form" radix={<RadixSignUpForm />}>
+          <SignUpForm />
+        </Row>
       </Demo>
     </Section>
   )

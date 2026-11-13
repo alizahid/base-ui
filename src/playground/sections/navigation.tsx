@@ -2,12 +2,10 @@ import {
   Anchor,
   Breadcrumbs,
   Burger,
-  Group,
   Menu,
   Menubar,
   NavLink,
   Pagination,
-  SimpleGrid,
   Stack,
   Stepper,
   TableOfContents,
@@ -32,7 +30,9 @@ import {
 } from '@radix-ui/react-icons'
 import { useState } from 'react'
 
-import { Demo, Section } from '../demo'
+import * as RT from '@radix-ui/themes'
+
+import { Demo, Row, Section } from '../demo'
 
 const crumbs = [
   { title: 'Workspace', href: '#' },
@@ -78,42 +78,26 @@ function NavLinks() {
   )
 }
 
-function Burgers() {
+function ToggleBurger() {
   const [open, setOpen] = useState(false)
-
-  return (
-    <Group>
-      <Burger aria-label="Toggle menu" onClick={() => setOpen((o) => !o)} opened={open} />
-      <Burger aria-label="Toggle menu" opened size="sm" />
-      <Burger aria-label="Toggle menu" size="lg" />
-    </Group>
-  )
+  return <Burger aria-label="Toggle menu" onClick={() => setOpen((o) => !o)} opened={open} />
 }
 
-function Steppers() {
+function ClickableStepper() {
   const [step, setStep] = useState(1)
-
   return (
-    <Stack gap="xl">
-      <Stepper active={step} onStepClick={setStep}>
-        <Stepper.Step description="Create an account" label="Account" />
-        <Stepper.Step description="Verify your email" label="Verify" />
-        <Stepper.Step description="Pick a plan" label="Billing" />
-        <Stepper.Completed>All set, welcome aboard.</Stepper.Completed>
-      </Stepper>
-      <Stepper active={1} color="gray" orientation="vertical" size="sm">
-        <Stepper.Step description="Connect your repository" label="Source" />
-        <Stepper.Step description="Configure build settings" label="Build" />
-        <Stepper.Step description="Ship to production" label="Deploy" />
-      </Stepper>
-    </Stack>
+    <Stepper active={step} onStepClick={setStep}>
+      <Stepper.Step description="Create an account" label="Account" />
+      <Stepper.Step description="Verify your email" label="Verify" />
+      <Stepper.Step description="Pick a plan" label="Billing" />
+      <Stepper.Completed>All set, welcome aboard.</Stepper.Completed>
+    </Stepper>
   )
 }
 
-function TabsDemo() {
-  const body = (vertical = false) => {
-    const pad = vertical ? { pl: 'md', pt: 6 } : { pt: 'md' }
-    return (
+function tabsBody(vertical = false) {
+  const pad = vertical ? { pl: 'md', pt: 6 } : { pt: 'md' }
+  return (
     <>
       <Tabs.List>
         <Tabs.Tab leftSection={<HomeIcon />} value="overview">
@@ -122,9 +106,7 @@ function TabsDemo() {
         <Tabs.Tab leftSection={<ImageIcon />} value="assets">
           Assets
         </Tabs.Tab>
-        <Tabs.Tab leftSection={<GearIcon />} value="settings">
-          Settings
-        </Tabs.Tab>
+        <Tabs.Tab value="settings">Settings</Tabs.Tab>
         <Tabs.Tab disabled value="billing">
           Billing
         </Tabs.Tab>
@@ -139,109 +121,213 @@ function TabsDemo() {
         <Text size="sm">Domains, environment variables and members.</Text>
       </Tabs.Panel>
     </>
-    )
-  }
-
-  return (
-    <Stack gap="xl">
-      {(['default', 'outline', 'pills'] as const).map((variant) => (
-        <Tabs defaultValue="overview" key={variant} variant={variant}>
-          {body()}
-        </Tabs>
-      ))}
-      <Group align="flex-start" gap="xl" grow>
-        <Tabs defaultValue="overview" orientation="vertical">
-          {body(true)}
-        </Tabs>
-        <Tabs color="gray" defaultValue="overview" orientation="vertical" variant="pills">
-          {body(true)}
-        </Tabs>
-      </Group>
-    </Stack>
   )
 }
+
+function RadixTabs({ size, color }: { size?: '1' | '2'; color?: 'gray' }) {
+  const icon = { display: 'inline-flex', alignItems: 'center', gap: 8 }
+  return (
+    <RT.Tabs.Root defaultValue="overview">
+      <RT.Tabs.List color={color} size={size}>
+        <RT.Tabs.Trigger value="overview">
+          <span style={icon}>
+            <HomeIcon />
+            Overview
+          </span>
+        </RT.Tabs.Trigger>
+        <RT.Tabs.Trigger value="assets">
+          <span style={icon}>
+            <ImageIcon />
+            Assets
+          </span>
+        </RT.Tabs.Trigger>
+        <RT.Tabs.Trigger value="settings">Settings</RT.Tabs.Trigger>
+        <RT.Tabs.Trigger disabled value="billing">
+          Billing
+        </RT.Tabs.Trigger>
+      </RT.Tabs.List>
+      <RT.Box pt="3">
+        <RT.Tabs.Content value="overview">
+          <RT.Text size="2">Project overview and recent activity.</RT.Text>
+        </RT.Tabs.Content>
+        <RT.Tabs.Content value="assets">
+          <RT.Text size="2">Images, fonts and other uploaded files.</RT.Text>
+        </RT.Tabs.Content>
+        <RT.Tabs.Content value="settings">
+          <RT.Text size="2">Domains, environment variables and members.</RT.Text>
+        </RT.Tabs.Content>
+      </RT.Box>
+    </RT.Tabs.Root>
+  )
+}
+
+const toc = [
+  { depth: 1, value: 'Introduction', id: 'toc-intro' },
+  { depth: 2, value: 'Installation', id: 'toc-install' },
+  { depth: 2, value: 'Usage', id: 'toc-usage' },
+  { depth: 1, value: 'Reference', id: 'toc-ref' },
+]
 
 export function NavigationSection() {
   const [page, setPage] = useState(3)
 
   return (
     <Section title="Navigation">
-      <Demo title="Anchor" description="Styled link with underline variants.">
-        <Group>
+      <Demo title="Anchor" description="Styled link with underline variants." radix="Link">
+        <Row label="underline hover / auto" radix={<RT.Link href="#">Default link</RT.Link>}>
           <Anchor href="#">Default link</Anchor>
+        </Row>
+        <Row
+          label="underline always"
+          radix={
+            <RT.Link href="#" underline="always">
+              Always underlined
+            </RT.Link>
+          }
+        >
           <Anchor href="#" underline="always">
             Always underlined
           </Anchor>
+        </Row>
+        <Row
+          label="underline never / none"
+          radix={
+            <RT.Link href="#" underline="none">
+              Never underlined
+            </RT.Link>
+          }
+        >
           <Anchor href="#" underline="never">
             Never underlined
           </Anchor>
+        </Row>
+        <Row
+          label="color red"
+          radix={
+            <RT.Link color="red" href="#">
+              Danger link
+            </RT.Link>
+          }
+        >
           <Anchor c="red" href="#">
             Danger link
           </Anchor>
-        </Group>
+        </Row>
       </Demo>
 
       <Demo title="Breadcrumbs" description="Path to the current page.">
-        <Stack>
+        <Row label="default">
           <Breadcrumbs>{crumbs}</Breadcrumbs>
+        </Row>
+        <Row label="separator /">
           <Breadcrumbs separator="/">{crumbs}</Breadcrumbs>
-        </Stack>
+        </Row>
       </Demo>
 
       <Demo title="Burger" description="Menu toggle icon in a few sizes.">
-        <Burgers />
+        <Row label="toggle">
+          <ToggleBurger />
+        </Row>
+        <Row label="opened, size sm">
+          <Burger aria-label="Toggle menu" opened size="sm" />
+        </Row>
+        <Row label="size lg">
+          <Burger aria-label="Toggle menu" size="lg" />
+        </Row>
       </Demo>
 
       <Demo title="NavLink" description="Sidebar link with nested, active and disabled states.">
-        <SimpleGrid cols={{ base: 1, sm: 2 }}>
-          <NavLinks />
-        </SimpleGrid>
+        <Row label="list">
+          <div style={{ maxWidth: 420 }}>
+            <NavLinks />
+          </div>
+        </Row>
       </Demo>
 
       <Demo title="Pagination" description="Page controls in several sizes with edge buttons.">
-        <Stack>
+        <Row label="default">
           <Pagination onChange={setPage} total={10} value={page} />
+        </Row>
+        <Row label="size sm, edges">
           <Pagination radius="xl" size="sm" total={8} withEdges />
+        </Row>
+        <Row label="size lg, gray">
           <Pagination color="gray" size="lg" total={5} />
+        </Row>
+        <Row label="disabled">
           <Pagination disabled total={5} />
-        </Stack>
+        </Row>
       </Demo>
 
       <Demo title="Stepper" description="Progress through a multi-step flow, horizontal and vertical.">
-        <Steppers />
+        <Row label="horizontal">
+          <ClickableStepper />
+        </Row>
+        <Row label="vertical, sm, gray">
+          <Stepper active={1} color="gray" orientation="vertical" size="sm">
+            <Stepper.Step description="Connect your repository" label="Source" />
+            <Stepper.Step description="Configure build settings" label="Build" />
+            <Stepper.Step description="Ship to production" label="Deploy" />
+          </Stepper>
+        </Row>
       </Demo>
 
-      <Demo title="Tabs" description="Default, outline and pills variants, plus a vertical layout with icons.">
-        <TabsDemo />
+      <Demo title="Tabs" description="Default, outline and pills variants, plus a vertical layout with icons." radix="Tabs">
+        <Row label="default" radix={<RadixTabs />}>
+          <Tabs defaultValue="overview">{tabsBody()}</Tabs>
+        </Row>
+        <Row label="color gray" radix={<RadixTabs color="gray" />}>
+          <Tabs color="gray" defaultValue="overview">
+            {tabsBody()}
+          </Tabs>
+        </Row>
+        <Row label="outline">
+          <Tabs defaultValue="overview" variant="outline">
+            {tabsBody()}
+          </Tabs>
+        </Row>
+        <Row label="pills">
+          <Tabs defaultValue="overview" variant="pills">
+            {tabsBody()}
+          </Tabs>
+        </Row>
+        <Row label="vertical">
+          <Tabs defaultValue="overview" orientation="vertical">
+            {tabsBody(true)}
+          </Tabs>
+        </Row>
+        <Row label="vertical pills, gray">
+          <Tabs color="gray" defaultValue="overview" orientation="vertical" variant="pills">
+            {tabsBody(true)}
+          </Tabs>
+        </Row>
       </Demo>
 
       <Demo title="TableOfContents" description="In-page headings with scroll spy.">
-        <SimpleGrid cols={{ base: 1, sm: 3 }}>
-          {(['light', 'filled', 'none'] as const).map((variant) => (
+        {(['light', 'filled', 'none'] as const).map((variant) => (
+          <Row key={variant} label={variant}>
             <TableOfContents
-              initialData={[
-                { depth: 1, value: 'Introduction', id: 'toc-intro' },
-                { depth: 2, value: 'Installation', id: 'toc-install' },
-                { depth: 2, value: 'Usage', id: 'toc-usage' },
-                { depth: 1, value: 'Reference', id: 'toc-ref' },
-              ]}
-              key={variant}
-              scrollSpyOptions={{ selector: '[id^="section-"] > h2' }}
               getControlProps={({ data }) => ({ component: 'a', href: `#${data.id}`, children: data.value })}
+              initialData={toc}
+              maw={260}
+              scrollSpyOptions={{ selector: '[id^="section-"] > h2' }}
               variant={variant}
             />
-          ))}
-        </SimpleGrid>
+          </Row>
+        ))}
       </Demo>
 
       <Demo title="Tree" description="Expandable file tree.">
-        <SimpleGrid cols={{ base: 1, sm: 2 }}>
+        <Row label="default">
           <Tree data={fileTree} />
+        </Row>
+        <Row label="with lines">
           <Tree data={fileTree} withLines />
-        </SimpleGrid>
+        </Row>
       </Demo>
 
       <Demo title="Menubar" description="Application-style menu bar with dropdowns.">
+        <Row label="default">
         <Menubar>
           <Menubar.Menu>
             <Menubar.Target>File</Menubar.Target>
@@ -269,10 +355,11 @@ export function NavigationSection() {
             </Menubar.Dropdown>
           </Menubar.Menu>
         </Menubar>
+        </Row>
       </Demo>
 
       <Demo title="Toolbar" description="Grouped formatting controls with toggles and separators.">
-        <Stack>
+        <Row label="with border">
           <Toolbar withBorder>
             <Toolbar.Group>
               <Toolbar.Toggle aria-label="Bold">
@@ -298,6 +385,8 @@ export function NavigationSection() {
               </Toolbar.ToggleItem>
             </Toolbar.ToggleGroup>
           </Toolbar>
+        </Row>
+        <Row label="filled, sm, gray">
           <Toolbar color="gray" size="sm" variant="filled">
             <Toolbar.ToggleGroup defaultValue={['bold']} type="multiple">
               <Toolbar.ToggleItem aria-label="Bold" value="bold">
@@ -311,7 +400,7 @@ export function NavigationSection() {
               </Toolbar.ToggleItem>
             </Toolbar.ToggleGroup>
           </Toolbar>
-        </Stack>
+        </Row>
       </Demo>
     </Section>
   )

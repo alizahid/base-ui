@@ -34,7 +34,9 @@ import {
 } from '@radix-ui/react-icons'
 import { useState } from 'react'
 
-import { Demo, Section } from '../demo'
+import * as RT from '@radix-ui/themes'
+
+import { Demo, Row, Section } from '../demo'
 
 const positions = ['top', 'right', 'bottom', 'left'] as const
 
@@ -51,19 +53,87 @@ export function OverlaysSection() {
   const [win, winHandlers] = useDisclosure()
   const [tour, tourHandlers] = useDisclosure()
   const [view, setView] = useState('list')
+  const [columns, setColumns] = useState(['name', 'status'])
 
   return (
     <Section title="Overlays">
-      <Demo title="Modal" description="Default, centered with a form, and full screen.">
-        <Group>
+      <Demo title="Modal" description="Default, centered with a form, and full screen." radix="Dialog, AlertDialog">
+        <Row
+          label="confirm / alert dialog"
+          radix={
+            <RT.AlertDialog.Root>
+              <RT.AlertDialog.Trigger>
+                <RT.Button>Open modal</RT.Button>
+              </RT.AlertDialog.Trigger>
+              <RT.AlertDialog.Content maxWidth="450px">
+                <RT.AlertDialog.Title>Delete project</RT.AlertDialog.Title>
+                <RT.AlertDialog.Description size="2">
+                  This permanently removes the project and its 14 deployments. This cannot be undone.
+                </RT.AlertDialog.Description>
+                <RT.Flex gap="3" justify="end" mt="4">
+                  <RT.AlertDialog.Cancel>
+                    <RT.Button color="gray" highContrast variant="surface">
+                      Cancel
+                    </RT.Button>
+                  </RT.AlertDialog.Cancel>
+                  <RT.AlertDialog.Action>
+                    <RT.Button color="red">Delete</RT.Button>
+                  </RT.AlertDialog.Action>
+                </RT.Flex>
+              </RT.AlertDialog.Content>
+            </RT.AlertDialog.Root>
+          }
+        >
           <Button onClick={modalHandlers.open}>Open modal</Button>
+        </Row>
+        <Row
+          label="form / dialog"
+          radix={
+            <RT.Dialog.Root>
+              <RT.Dialog.Trigger>
+                <RT.Button color="gray" highContrast variant="surface">
+                  Centered form
+                </RT.Button>
+              </RT.Dialog.Trigger>
+              <RT.Dialog.Content maxWidth="450px">
+                <RT.Dialog.Title>Invite teammate</RT.Dialog.Title>
+                <RT.Flex direction="column" gap="3">
+                  <label>
+                    <RT.Text as="div" mb="1" size="2" weight="medium">
+                      Email
+                    </RT.Text>
+                    <RT.TextField.Root placeholder="name@company.com" />
+                  </label>
+                  <label>
+                    <RT.Text as="div" mb="1" size="2" weight="medium">
+                      Role
+                    </RT.Text>
+                    <RT.TextField.Root placeholder="Developer" />
+                  </label>
+                  <RT.Flex gap="3" justify="end" mt="1">
+                    <RT.Dialog.Close>
+                      <RT.Button color="gray" highContrast variant="surface">
+                        Cancel
+                      </RT.Button>
+                    </RT.Dialog.Close>
+                    <RT.Dialog.Close>
+                      <RT.Button>Send invite</RT.Button>
+                    </RT.Dialog.Close>
+                  </RT.Flex>
+                </RT.Flex>
+              </RT.Dialog.Content>
+            </RT.Dialog.Root>
+          }
+        >
           <Button onClick={centeredHandlers.open} variant="default">
             Centered form
           </Button>
+        </Row>
+        <Row label="full screen">
           <Button onClick={fullHandlers.open} variant="light">
             Full screen
           </Button>
-        </Group>
+        </Row>
         <Modal onClose={modalHandlers.close} opened={modal} title="Delete project">
           <Text>This permanently removes the project and its 14 deployments. This cannot be undone.</Text>
           <Group justify="flex-end" mt="lg">
@@ -93,13 +163,13 @@ export function OverlaysSection() {
       </Demo>
 
       <Demo title="Drawer" description="Side panels from each edge.">
-        <Group>
-          {positions.map((position) => (
-            <Button key={position} onClick={() => setDrawer(position)} variant="default">
+        {positions.map((position) => (
+          <Row key={position} label={`from ${position}`}>
+            <Button onClick={() => setDrawer(position)} variant="default">
               {position}
             </Button>
-          ))}
-        </Group>
+          </Row>
+        ))}
         <Drawer
           onClose={() => setDrawer(null)}
           opened={drawer !== null}
@@ -111,7 +181,9 @@ export function OverlaysSection() {
       </Demo>
 
       <Demo title="Dialog" description="Small floating dialog anchored to the corner.">
-        <Button onClick={dialogHandlers.toggle}>{dialog ? 'Hide dialog' : 'Show dialog'}</Button>
+        <Row label="with close button">
+          <Button onClick={dialogHandlers.toggle}>{dialog ? 'Hide dialog' : 'Show dialog'}</Button>
+        </Row>
         <Dialog onClose={dialogHandlers.close} opened={dialog} withCloseButton>
           <Text fw={500} mb="xs">
             Subscribe to updates
@@ -123,8 +195,32 @@ export function OverlaysSection() {
         </Dialog>
       </Demo>
 
-      <Demo title="Popover" description="Anchored panel with a small form, and one with an arrow.">
-        <Group>
+      <Demo title="Popover" description="Anchored panel with a small form, and one with an arrow." radix="Popover">
+        <Row
+          label="with a form"
+          radix={
+            <RT.Popover.Root>
+              <RT.Popover.Trigger>
+                <RT.Button color="gray" highContrast variant="surface">
+                  Rename file
+                </RT.Button>
+              </RT.Popover.Trigger>
+              <RT.Popover.Content align="center" width="280px">
+                <RT.Flex direction="column" gap="2">
+                  <label>
+                    <RT.Text as="div" mb="1" size="2" weight="medium">
+                      Name
+                    </RT.Text>
+                    <RT.TextField.Root defaultValue="quarterly-report.pdf" />
+                  </label>
+                  <RT.Popover.Close>
+                    <RT.Button size="1">Save</RT.Button>
+                  </RT.Popover.Close>
+                </RT.Flex>
+              </RT.Popover.Content>
+            </RT.Popover.Root>
+          }
+        >
           <Popover position="bottom" shadow="md" width={280}>
             <Popover.Target>
               <Button variant="default">Rename file</Button>
@@ -136,6 +232,20 @@ export function OverlaysSection() {
               </Stack>
             </Popover.Dropdown>
           </Popover>
+        </Row>
+        <Row
+          label="text, with arrow"
+          radix={
+            <RT.Popover.Root>
+              <RT.Popover.Trigger>
+                <RT.Button variant="soft">With arrow</RT.Button>
+              </RT.Popover.Trigger>
+              <RT.Popover.Content align="center">
+                <RT.Text size="2">Changes sync across all your devices.</RT.Text>
+              </RT.Popover.Content>
+            </RT.Popover.Root>
+          }
+        >
           <Popover withArrow>
             <Popover.Target>
               <Button variant="light">With arrow</Button>
@@ -144,66 +254,158 @@ export function OverlaysSection() {
               <Text size="sm">Changes sync across all your devices.</Text>
             </Popover.Dropdown>
           </Popover>
-        </Group>
+        </Row>
       </Demo>
 
-      <Demo title="HoverCard" description="Profile preview shown on hover.">
-        <HoverCard width={280} shadow="md" withArrow>
-          <HoverCard.Target>
-            <Button variant="subtle">@maya.chen</Button>
-          </HoverCard.Target>
-          <HoverCard.Dropdown>
-            <Group wrap="nowrap">
-              <Avatar>MC</Avatar>
-              <div>
-                <Text fw={500}>Maya Chen</Text>
-                <Text c="dimmed" size="sm">
-                  Product designer at Northwind. Building design systems.
-                </Text>
-              </div>
-            </Group>
-          </HoverCard.Dropdown>
-        </HoverCard>
+      <Demo title="HoverCard" description="Profile preview shown on hover." radix="HoverCard">
+        <Row
+          label="profile preview"
+          radix={
+            <RT.HoverCard.Root>
+              <RT.HoverCard.Trigger>
+                <RT.Button variant="ghost">@maya.chen</RT.Button>
+              </RT.HoverCard.Trigger>
+              <RT.HoverCard.Content align="center" width="280px">
+                <RT.Flex gap="3">
+                  <RT.Avatar fallback="MC" />
+                  <div>
+                    <RT.Text as="div" weight="medium">
+                      Maya Chen
+                    </RT.Text>
+                    <RT.Text as="div" color="gray" size="2">
+                      Product designer at Northwind. Building design systems.
+                    </RT.Text>
+                  </div>
+                </RT.Flex>
+              </RT.HoverCard.Content>
+            </RT.HoverCard.Root>
+          }
+        >
+          <HoverCard width={280} shadow="md" withArrow>
+            <HoverCard.Target>
+              <Button variant="subtle">@maya.chen</Button>
+            </HoverCard.Target>
+            <HoverCard.Dropdown>
+              <Group wrap="nowrap">
+                <Avatar>MC</Avatar>
+                <div>
+                  <Text fw={500}>Maya Chen</Text>
+                  <Text c="dimmed" size="sm">
+                    Product designer at Northwind. Building design systems.
+                  </Text>
+                </div>
+              </Group>
+            </HoverCard.Dropdown>
+          </HoverCard>
+        </Row>
       </Demo>
 
-      <Demo title="Tooltip" description="Positions, arrow, group and floating variants.">
-        <Stack>
-          <Group gap={120} justify="center" py="xl">
-            {positions.map((position) => (
-              <Tooltip key={position} label={`Tooltip ${position}`} opened position={position} withArrow>
+      <Demo title="Tooltip" description="Positions, arrow, group and floating variants." radix="Tooltip">
+        {positions.map((position) => (
+          <Row
+            key={position}
+            label={`${position}, always open`}
+            radix={
+              <RT.Box pl="110px" py="5">
+                <RT.Tooltip content={`Tooltip ${position}`} open side={position}>
+                  <RT.Button color="gray" highContrast variant="surface">
+                    {position}
+                  </RT.Button>
+                </RT.Tooltip>
+              </RT.Box>
+            }
+          >
+            <Box pl={110} py={24}>
+              <Tooltip label={`Tooltip ${position}`} opened position={position} withArrow>
                 <Button variant="default">{position}</Button>
               </Tooltip>
-            ))}
-          </Group>
-          <Group>
-            <Tooltip.Group closeDelay={100} openDelay={200}>
-              <Tooltip label="Copy link">
-                <Button leftSection={<CopyIcon />} variant="default">
-                  Copy
+            </Box>
+          </Row>
+        ))}
+        <Tooltip.Group closeDelay={100} openDelay={200}>
+          {(
+            [
+              ['Copy', 'Copy link', <CopyIcon key="i" />],
+              ['Download', 'Download file', <DownloadIcon key="i" />],
+              ['Share', 'Share with team', <Share1Icon key="i" />],
+            ] as const
+          ).map(([text, tip, icon]) => (
+            <Row
+              key={text}
+              label="on hover, grouped"
+              radix={
+                <RT.Tooltip content={tip}>
+                  <RT.Button color="gray" highContrast variant="surface">
+                    {icon}
+                    {text}
+                  </RT.Button>
+                </RT.Tooltip>
+              }
+            >
+              <Tooltip label={tip}>
+                <Button leftSection={icon} variant="default">
+                  {text}
                 </Button>
               </Tooltip>
-              <Tooltip label="Download file">
-                <Button leftSection={<DownloadIcon />} variant="default">
-                  Download
-                </Button>
-              </Tooltip>
-              <Tooltip label="Share with team">
-                <Button leftSection={<Share1Icon />} variant="default">
-                  Share
-                </Button>
-              </Tooltip>
-            </Tooltip.Group>
-          </Group>
+            </Row>
+          ))}
+        </Tooltip.Group>
+        <Row label="floating">
           <Tooltip.Floating label="Follows your cursor">
-            <Box p="xl" bd="1px dashed gray" ta="center">
+            <Box p="xl" bd="1px dashed gray" maw={420} ta="center">
               Hover this area
             </Box>
           </Tooltip.Floating>
-        </Stack>
+        </Row>
       </Demo>
 
-      <Demo title="Menu" description="Labels, icons, shortcuts, submenu, checkboxes and radios.">
-        <Group>
+      <Demo title="Menu" description="Labels, icons, shortcuts, submenu, checkboxes and radios." radix="DropdownMenu">
+        <Row
+          label="items, submenu, danger"
+          radix={
+            <RT.DropdownMenu.Root>
+              <RT.DropdownMenu.Trigger>
+                <RT.Button>Actions</RT.Button>
+              </RT.DropdownMenu.Trigger>
+              <RT.DropdownMenu.Content align="center" style={{ width: 220 }}>
+                <RT.DropdownMenu.Label>Application</RT.DropdownMenu.Label>
+                <RT.DropdownMenu.Item shortcut="⌘,">
+                  <RT.Flex align="center" gap="2">
+                    <GearIcon /> Settings
+                  </RT.Flex>
+                </RT.DropdownMenu.Item>
+                <RT.DropdownMenu.Item>
+                  <RT.Flex align="center" gap="2">
+                    <PersonIcon /> Profile
+                  </RT.Flex>
+                </RT.DropdownMenu.Item>
+                <RT.DropdownMenu.Item disabled>
+                  <RT.Flex align="center" gap="2">
+                    <ArchiveIcon /> Archive (disabled)
+                  </RT.Flex>
+                </RT.DropdownMenu.Item>
+                <RT.DropdownMenu.Sub>
+                  <RT.DropdownMenu.SubTrigger>
+                    <RT.Flex align="center" gap="2">
+                      <Share1Icon /> Share
+                    </RT.Flex>
+                  </RT.DropdownMenu.SubTrigger>
+                  <RT.DropdownMenu.SubContent>
+                    <RT.DropdownMenu.Item>Email</RT.DropdownMenu.Item>
+                    <RT.DropdownMenu.Item>Copy link</RT.DropdownMenu.Item>
+                  </RT.DropdownMenu.SubContent>
+                </RT.DropdownMenu.Sub>
+                <RT.DropdownMenu.Separator />
+                <RT.DropdownMenu.Label>Danger zone</RT.DropdownMenu.Label>
+                <RT.DropdownMenu.Item color="red">
+                  <RT.Flex align="center" gap="2">
+                    <TrashIcon /> Delete
+                  </RT.Flex>
+                </RT.DropdownMenu.Item>
+              </RT.DropdownMenu.Content>
+            </RT.DropdownMenu.Root>
+          }
+        >
           <Menu shadow="md" width={220}>
             <Menu.Target>
               <Button>Actions</Button>
@@ -233,14 +435,45 @@ export function OverlaysSection() {
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
-
+        </Row>
+        <Row
+          label="checkbox and radio items"
+          radix={
+            <RT.DropdownMenu.Root>
+              <RT.DropdownMenu.Trigger>
+                <RT.Button color="gray" highContrast variant="surface">
+                  View options
+                </RT.Button>
+              </RT.DropdownMenu.Trigger>
+              <RT.DropdownMenu.Content align="center" style={{ width: 220 }}>
+                <RT.DropdownMenu.Label>Columns</RT.DropdownMenu.Label>
+                {(['name', 'status', 'owner'] as const).map((column) => (
+                  <RT.DropdownMenu.CheckboxItem
+                    checked={columns.includes(column)}
+                    key={column}
+                    onCheckedChange={(on) => setColumns((c) => (on ? [...c, column] : c.filter((x) => x !== column)))}
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    {column[0].toUpperCase() + column.slice(1)}
+                  </RT.DropdownMenu.CheckboxItem>
+                ))}
+                <RT.DropdownMenu.Separator />
+                <RT.DropdownMenu.Label>Layout</RT.DropdownMenu.Label>
+                <RT.DropdownMenu.RadioGroup onValueChange={setView} value={view}>
+                  <RT.DropdownMenu.RadioItem value="list">List</RT.DropdownMenu.RadioItem>
+                  <RT.DropdownMenu.RadioItem value="grid">Grid</RT.DropdownMenu.RadioItem>
+                </RT.DropdownMenu.RadioGroup>
+              </RT.DropdownMenu.Content>
+            </RT.DropdownMenu.Root>
+          }
+        >
           <Menu shadow="md" width={220}>
             <Menu.Target>
               <Button variant="default">View options</Button>
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Label>Columns</Menu.Label>
-              <Menu.CheckboxGroup defaultValue={['name', 'status']}>
+              <Menu.CheckboxGroup onChange={setColumns} value={columns}>
                 <Menu.CheckboxItem value="name">Name</Menu.CheckboxItem>
                 <Menu.CheckboxItem value="status">Status</Menu.CheckboxItem>
                 <Menu.CheckboxItem value="owner">Owner</Menu.CheckboxItem>
@@ -253,35 +486,37 @@ export function OverlaysSection() {
               </Menu.RadioGroup>
             </Menu.Dropdown>
           </Menu>
-        </Group>
+        </Row>
       </Demo>
 
       <Demo title="Overlay" description="Dimmed layer over content, with blur.">
-        <Stack>
-          <Button onClick={overlayHandlers.toggle} w="fit-content">
-            {overlay ? 'Hide overlay' : 'Show overlay'}
-          </Button>
-          <Box h={140} pos="relative">
+        <Row label="toggle">
+          <Button onClick={overlayHandlers.toggle}>{overlay ? 'Hide overlay' : 'Show overlay'}</Button>
+        </Row>
+        <Row label="with blur">
+          <Box h={140} maw={420} pos="relative">
             <Text>Dashboard content sits underneath the overlay.</Text>
             {overlay && <Overlay backgroundOpacity={0.5} blur={2} />}
           </Box>
-        </Stack>
+        </Row>
       </Demo>
 
       <Demo title="LoadingOverlay" description="Spinner overlay while a section loads.">
-        <Stack>
-          <Button onClick={loadingHandlers.toggle} w="fit-content">
-            {loading ? 'Stop loading' : 'Start loading'}
-          </Button>
-          <Box h={140} pos="relative">
+        <Row label="toggle">
+          <Button onClick={loadingHandlers.toggle}>{loading ? 'Stop loading' : 'Start loading'}</Button>
+        </Row>
+        <Row label="with blur">
+          <Box h={140} maw={420} pos="relative">
             <Text>Billing history is refreshing.</Text>
             <LoadingOverlay overlayProps={{ blur: 2 }} visible={loading} />
           </Box>
-        </Stack>
+        </Row>
       </Demo>
 
       <Demo title="Affix" description="Element pinned to the viewport corner.">
-        <Button onClick={affixHandlers.toggle}>{affix ? 'Hide affix' : 'Show affix'}</Button>
+        <Row label="bottom right">
+          <Button onClick={affixHandlers.toggle}>{affix ? 'Hide affix' : 'Show affix'}</Button>
+        </Row>
         {affix && (
           <Affix position={{ bottom: 20, right: 20 }}>
             <Button onClick={affixHandlers.close}>Back to top</Button>
@@ -290,7 +525,9 @@ export function OverlaysSection() {
       </Demo>
 
       <Demo title="ActionBar" description="Bulk-action bar shown while items are selected.">
-        <Button onClick={barHandlers.toggle}>{bar ? 'Clear selection' : 'Select 3 files'}</Button>
+        <Row label="with actions">
+          <Button onClick={barHandlers.toggle}>{bar ? 'Clear selection' : 'Select 3 files'}</Button>
+        </Row>
         <ActionBar onClose={barHandlers.close} opened={bar}>
           <Text size="sm">3 files selected</Text>
           <ActionBar.Divider />
@@ -308,7 +545,9 @@ export function OverlaysSection() {
       </Demo>
 
       <Demo title="FloatingWindow" description="Draggable window, for example a notes scratchpad.">
-        <Button onClick={winHandlers.toggle}>{win ? 'Close window' : 'Open window'}</Button>
+        <Row label="draggable">
+          <Button onClick={winHandlers.toggle}>{win ? 'Close window' : 'Open window'}</Button>
+        </Row>
         {win && (
           <FloatingWindow initialPosition={{ top: 120, right: 40 }} p="md" shadow="md" withBorder>
             <Group justify="space-between" mb="xs">
@@ -323,22 +562,24 @@ export function OverlaysSection() {
       </Demo>
 
       <Demo title="Tour" description="Three-step product tour over elements in this demo.">
-        <Stack>
-          <Button onClick={tourHandlers.open} w="fit-content">
-            Start tour
+        <Row label="start">
+          <Button onClick={tourHandlers.open}>Start tour</Button>
+        </Row>
+        <Row label="step 1 target">
+          <Button id="tour-search" variant="default">
+            Search
           </Button>
-          <Group>
-            <Button id="tour-search" variant="default">
-              Search
-            </Button>
-            <Button id="tour-create" leftSection={<Pencil1Icon />}>
-              New project
-            </Button>
-            <Button id="tour-settings" leftSection={<GearIcon />} variant="light">
-              Settings
-            </Button>
-          </Group>
-        </Stack>
+        </Row>
+        <Row label="step 2 target">
+          <Button id="tour-create" leftSection={<Pencil1Icon />}>
+            New project
+          </Button>
+        </Row>
+        <Row label="step 3 target">
+          <Button id="tour-settings" leftSection={<GearIcon />} variant="light">
+            Settings
+          </Button>
+        </Row>
         <Tour active={tour} onClose={tourHandlers.close}>
           <Tour.Step target="#tour-search" title="Find anything">
             Search across projects, files and teammates.

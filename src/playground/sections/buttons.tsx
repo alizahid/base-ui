@@ -282,7 +282,7 @@ export function ButtonsSection() {
           </Button.Group>
         </Row>
         <Row label="vertical">
-          <Button.Group orientation="vertical">
+          <Button.Group orientation="vertical" w="fit-content">
             <Button variant="outline">Top</Button>
             <Button variant="outline">Bottom</Button>
           </Button.Group>
