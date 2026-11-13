@@ -18,6 +18,7 @@ export const pages = [
   'progress',
   'radio',
   'radio-group',
+  'scroll-area',
   'select',
   'slider',
   'spinner',
