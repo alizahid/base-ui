@@ -7,6 +7,7 @@ import {
   IconButton,
   Radio,
   RadioGroup,
+  Select,
   Spinner,
   Switch,
   TextField,
@@ -50,6 +51,15 @@ export function useMDXComponents(): MDXComponents {
     RadioGroup: {
       Item: RadioGroup.Item,
       Root: RadioGroup.Root,
+    },
+    Select: {
+      Content: Select.Content,
+      Group: Select.Group,
+      Item: Select.Item,
+      Label: Select.Label,
+      Root: Select.Root,
+      Separator: Select.Separator,
+      Trigger: Select.Trigger,
     },
     TextField: {
       Root: TextField.Root,

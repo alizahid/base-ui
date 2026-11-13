@@ -1,0 +1,296 @@
+export const items = { apple: 'Apfel', banana: 'Banane', cherry: 'Kirsche', carrot: 'Karotte', potato: 'Kartoffel' }
+
+export const currencies = [
+  { code: 'usd', flag: 'us', name: 'US-Dollar' },
+  { code: 'eur', flag: 'eu', name: 'Euro' },
+  { code: 'aed', flag: 'ae', name: 'VAE-Dirham' },
+  { code: 'gbp', flag: 'gb', name: 'Britisches Pfund' },
+]
+
+export const Flag = ({ flag }) => (
+  <img alt={flag} className="size-4 rounded-full" src={`https://flags.willa.app/flags/${flag}.svg`} />
+)
+
+{/* what the trigger shows for each value: the flag and the code */}
+export const currencyItems = Object.fromEntries(
+  currencies.map((currency) => [
+    currency.code,
+    <span className="flex items-center gap-2" key={currency.code}>
+      <Flag flag={currency.flag} />
+      <span className="uppercase">{currency.code}</span>
+    </span>,
+  ]),
+)
+
+# Auswahl
+
+## Beispiele
+
+### Größe
+
+<Example>
+  <Select.Root items={items} defaultValue="apple" size="1">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple" size="2">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple" size="3">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Variante
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Inhaltsvariante
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content variant="solid">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content variant="soft">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Farbe
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" color="indigo" variant="soft" />
+    <Select.Content color="indigo">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" color="cyan" variant="soft" />
+    <Select.Content color="cyan">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" color="orange" variant="soft" />
+    <Select.Content color="orange">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" color="crimson" variant="soft" />
+    <Select.Content color="crimson">
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Hoher Kontrast
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content highContrast>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content color="gray" highContrast>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Radius
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" radius="none" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" radius="md" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" radius="xl" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" radius="full" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Gruppen
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="Obst wählen" />
+    <Select.Content>
+      <Select.Group>
+        <Select.Label>Obst</Select.Label>
+        <Select.Item value="apple">Apfel</Select.Item>
+        <Select.Item value="banana">Banane</Select.Item>
+        <Select.Item value="cherry">Kirsche</Select.Item>
+      </Select.Group>
+      <Select.Separator />
+      <Select.Group>
+        <Select.Label>Gemüse</Select.Label>
+        <Select.Item value="carrot">Karotte</Select.Item>
+        <Select.Item value="potato" disabled>Kartoffel</Select.Item>
+      </Select.Group>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### Deaktiviert
+
+<Example>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="Obst wählen" variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="Obst wählen" variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="Obst wählen" variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple">Apfel</Select.Item>
+      <Select.Item value="banana">Banane</Select.Item>
+      <Select.Item value="cherry">Kirsche</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### In einem Feld
+
+<Example>
+  <Field className="w-64" hint="Das lässt sich später ändern." label="Lieblingsobst">
+    <Select.Root items={items}>
+      <Select.Trigger placeholder="Obst wählen" />
+      <Select.Content>
+        <Select.Item value="apple">Apfel</Select.Item>
+        <Select.Item value="banana">Banane</Select.Item>
+        <Select.Item value="cherry">Kirsche</Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+  <Field className="w-64" error="Bitte wähle eine Option." label="Lieblingsobst">
+    <Select.Root items={items}>
+      <Select.Trigger placeholder="Obst wählen" />
+      <Select.Content>
+        <Select.Item value="apple">Apfel</Select.Item>
+        <Select.Item value="banana">Banane</Select.Item>
+        <Select.Item value="cherry">Kirsche</Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+</Example>
+
+### Währungsauswahl
+
+<Example>
+  <Select.Root defaultValue="usd" items={currencyItems}>
+    <Select.Trigger aria-label="Währung" />
+    <Select.Content>
+      {currencies.map((currency) => (
+        <Select.Item key={currency.code} value={currency.code}>
+          <span className="flex items-center gap-2">
+            <Flag flag={currency.flag} />
+            <span className="flex-1">{currency.name}</span>
+            <span className="uppercase opacity-60">{currency.code}</span>
+          </span>
+        </Select.Item>
+      ))}
+    </Select.Content>
+  </Select.Root>
+</Example>

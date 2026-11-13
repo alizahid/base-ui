@@ -6,6 +6,10 @@ export * from './components/provider/index.js'
 
 // components
 
+// components
+
+// components
+
 export * from './components/avatar/index.js'
 export { Button, type ButtonProps } from './components/button/index.js'
 export * from './components/checkbox/index.js'
@@ -22,6 +26,16 @@ export type {
   RadioGroupRootProps,
 } from './components/radio-group/index.js'
 export * as RadioGroup from './components/radio-group/index.js'
+export type {
+  SelectContentProps,
+  SelectGroupProps,
+  SelectItemProps,
+  SelectLabelProps,
+  SelectRootProps,
+  SelectSeparatorProps,
+  SelectTriggerProps,
+} from './components/select/index.js'
+export * as Select from './components/select/index.js'
 export * from './components/spinner/index.js'
 export * from './components/switch/index.js'
 export type {

@@ -7,6 +7,7 @@ export const pages = [
   'icon-button',
   'radio',
   'radio-group',
+  'select',
   'spinner',
   'switch',
   'text-field',

@@ -1,0 +1,296 @@
+export const items = { apple: 'تفاح', banana: 'موز', cherry: 'كرز', carrot: 'جزر', potato: 'بطاطس' }
+
+export const currencies = [
+  { code: 'usd', flag: 'us', name: 'دولار أمريكي' },
+  { code: 'eur', flag: 'eu', name: 'يورو' },
+  { code: 'aed', flag: 'ae', name: 'درهم إماراتي' },
+  { code: 'gbp', flag: 'gb', name: 'جنيه إسترليني' },
+]
+
+export const Flag = ({ flag }) => (
+  <img alt={flag} className="size-4 rounded-full" src={`https://flags.willa.app/flags/${flag}.svg`} />
+)
+
+{/* what the trigger shows for each value: the flag and the code */}
+export const currencyItems = Object.fromEntries(
+  currencies.map((currency) => [
+    currency.code,
+    <span className="flex items-center gap-2" key={currency.code}>
+      <Flag flag={currency.flag} />
+      <span className="uppercase">{currency.code}</span>
+    </span>,
+  ]),
+)
+
+# قائمة الاختيار
+
+## أمثلة
+
+### الحجم
+
+<Example>
+  <Select.Root items={items} defaultValue="apple" size="1">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple" size="2">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple" size="3">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### النمط
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### نمط المحتوى
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content variant="solid">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content variant="soft">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### اللون
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" color="indigo" variant="soft" />
+    <Select.Content color="indigo">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" color="cyan" variant="soft" />
+    <Select.Content color="cyan">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" color="orange" variant="soft" />
+    <Select.Content color="orange">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" color="crimson" variant="soft" />
+    <Select.Content color="crimson">
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### تباين عالٍ
+
+<Example>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content highContrast>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} defaultValue="apple">
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content color="gray" highContrast>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### نصف القطر
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" radius="none" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" radius="md" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" radius="xl" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" radius="full" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### المجموعات
+
+<Example>
+  <Select.Root items={items}>
+    <Select.Trigger placeholder="اختر فاكهة" />
+    <Select.Content>
+      <Select.Group>
+        <Select.Label>الفواكه</Select.Label>
+        <Select.Item value="apple">تفاح</Select.Item>
+        <Select.Item value="banana">موز</Select.Item>
+        <Select.Item value="cherry">كرز</Select.Item>
+      </Select.Group>
+      <Select.Separator />
+      <Select.Group>
+        <Select.Label>الخضروات</Select.Label>
+        <Select.Item value="carrot">جزر</Select.Item>
+        <Select.Item value="potato" disabled>بطاطس</Select.Item>
+      </Select.Group>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### معطّل
+
+<Example>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="اختر فاكهة" variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="اختر فاكهة" variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={items} disabled>
+    <Select.Trigger placeholder="اختر فاكهة" variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple">تفاح</Select.Item>
+      <Select.Item value="banana">موز</Select.Item>
+      <Select.Item value="cherry">كرز</Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### داخل حقل
+
+<Example>
+  <Field className="w-64" hint="يمكنك تغيير هذا لاحقًا." label="الفاكهة المفضلة">
+    <Select.Root items={items}>
+      <Select.Trigger placeholder="اختر فاكهة" />
+      <Select.Content>
+        <Select.Item value="apple">تفاح</Select.Item>
+        <Select.Item value="banana">موز</Select.Item>
+        <Select.Item value="cherry">كرز</Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+  <Field className="w-64" error="اختر واحدة للمتابعة." label="الفاكهة المفضلة">
+    <Select.Root items={items}>
+      <Select.Trigger placeholder="اختر فاكهة" />
+      <Select.Content>
+        <Select.Item value="apple">تفاح</Select.Item>
+        <Select.Item value="banana">موز</Select.Item>
+        <Select.Item value="cherry">كرز</Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+</Example>
+
+### منتقي العملة
+
+<Example>
+  <Select.Root defaultValue="usd" items={currencyItems}>
+    <Select.Trigger aria-label="العملة" />
+    <Select.Content>
+      {currencies.map((currency) => (
+        <Select.Item key={currency.code} value={currency.code}>
+          <span className="flex items-center gap-2">
+            <Flag flag={currency.flag} />
+            <span className="flex-1">{currency.name}</span>
+            <span className="uppercase opacity-60">{currency.code}</span>
+          </span>
+        </Select.Item>
+      ))}
+    </Select.Content>
+  </Select.Root>
+</Example>

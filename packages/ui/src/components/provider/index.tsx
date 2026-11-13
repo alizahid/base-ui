@@ -1,6 +1,9 @@
+'use client'
+
 import { type ReactNode } from 'react'
 
 import { type ColorToken, type GrayToken, getGray } from '../../lib/colors.js'
+import { ThemeContext } from '../../lib/theme.js'
 
 export type BaseProviderProps = {
   accent?: ColorToken
@@ -16,8 +19,15 @@ export function BaseProvider({
   gray = getGray(accent),
 }: BaseProviderProps) {
   return (
-    <div className={className} data-accent={accent} data-gray={gray}>
-      {children}
-    </div>
+    <ThemeContext
+      value={{
+        accent,
+        gray,
+      }}
+    >
+      <div className={className} data-accent={accent} data-gray={gray}>
+        {children}
+      </div>
+    </ThemeContext>
   )
 }

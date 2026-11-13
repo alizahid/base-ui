@@ -550,3 +550,21 @@
   --switch-high-contrast-active-filter: brightness(1.08);
   --switch-active-filter: brightness(1.08);
 }
+
+/* popup surfaces. repeated on [data-gray] so the grays in them resolve to the
+   provider's gray rather than the root's */
+:where(:root),
+[data-gray] {
+  --panel-background: white;
+  --panel-shadow:
+    0 0 0 1px var(--gray-4), 0 12px 60px rgb(0 0 0 / 0.15),
+    0 12px 32px -16px rgb(0 0 0 / 0.2);
+}
+
+:is(.dark, .dark-theme),
+:is(.dark, .dark-theme) [data-gray] {
+  --panel-background: var(--gray-2);
+  --panel-shadow:
+    0 0 0 1px var(--gray-6), 0 12px 60px rgb(0 0 0 / 0.3),
+    0 12px 32px -16px rgb(0 0 0 / 0.5);
+}
