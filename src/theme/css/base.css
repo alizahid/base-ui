@@ -5,6 +5,8 @@ body {
   font-size: var(--mantine-font-size-sm);
   line-height: var(--mantine-line-height-sm);
   text-rendering: optimizeLegibility;
+  /* What sits behind content, for parts that must mask a line; Paper overrides it */
+  --surface-bg: var(--color-background);
 }
 ::selection { background: var(--accent-a5); }
 
@@ -24,3 +26,9 @@ body {
 .mantine-Title-root[data-order='3'] { letter-spacing: -0.00625em; }
 .mantine-Title-root[data-order='4'] { letter-spacing: -0.005em; }
 .mantine-Title-root[data-order='5'] { letter-spacing: -0.0025em; }
+
+/* Radix type scale: letter-spacing tightens as size grows */
+.mantine-Title-root { color: var(--gray-12); }
+.mantine-Text-root[data-size='xs'] { letter-spacing: var(--letter-spacing-1); }
+.mantine-Text-root[data-size='lg'] { letter-spacing: var(--letter-spacing-4); }
+.mantine-Text-root[data-size='xl'] { letter-spacing: var(--letter-spacing-5); }

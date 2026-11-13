@@ -458,7 +458,7 @@ export function InputsSection() {
 
       <Demo title="Slider" description="Single-value slider with marks and labels.">
         <Stack>
-          <Slider value={volume} onChange={setVolume} marks={marks} />
+          <Slider value={volume} onChange={setVolume} marks={marks} mb="lg" />
           {sizes.map((size) => (
             <Slider key={size} size={size} defaultValue={30} />
           ))}
@@ -469,7 +469,7 @@ export function InputsSection() {
 
       <Demo title="RangeSlider" description="Slider with two handles.">
         <Stack>
-          <RangeSlider value={range} onChange={setRange} marks={marks} minRange={10} />
+          <RangeSlider value={range} onChange={setRange} marks={marks} minRange={10} mb="lg" />
           <RangeSlider size="lg" color="red" defaultValue={[10, 40]} />
           <RangeSlider disabled defaultValue={[25, 75]} />
         </Stack>

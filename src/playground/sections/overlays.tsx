@@ -168,7 +168,7 @@ export function OverlaysSection() {
 
       <Demo title="Tooltip" description="Positions, arrow, group and floating variants.">
         <Stack>
-          <Group>
+          <Group gap={120} justify="center" py="xl">
             {positions.map((position) => (
               <Tooltip key={position} label={`Tooltip ${position}`} opened position={position} withArrow>
                 <Button variant="default">{position}</Button>

@@ -111,7 +111,9 @@ function Steppers() {
 }
 
 function TabsDemo() {
-  const body = (
+  const body = (vertical = false) => {
+    const pad = vertical ? { pl: 'md', pt: 6 } : { pt: 'md' }
+    return (
     <>
       <Tabs.List>
         <Tabs.Tab leftSection={<HomeIcon />} value="overview">
@@ -127,28 +129,34 @@ function TabsDemo() {
           Billing
         </Tabs.Tab>
       </Tabs.List>
-      <Tabs.Panel pt="sm" value="overview">
+      <Tabs.Panel {...pad} value="overview">
         <Text size="sm">Project overview and recent activity.</Text>
       </Tabs.Panel>
-      <Tabs.Panel pt="sm" value="assets">
+      <Tabs.Panel {...pad} value="assets">
         <Text size="sm">Images, fonts and other uploaded files.</Text>
       </Tabs.Panel>
-      <Tabs.Panel pt="sm" value="settings">
+      <Tabs.Panel {...pad} value="settings">
         <Text size="sm">Domains, environment variables and members.</Text>
       </Tabs.Panel>
     </>
-  )
+    )
+  }
 
   return (
     <Stack gap="xl">
       {(['default', 'outline', 'pills'] as const).map((variant) => (
         <Tabs defaultValue="overview" key={variant} variant={variant}>
-          {body}
+          {body()}
         </Tabs>
       ))}
-      <Tabs color="gray" defaultValue="overview" orientation="vertical" variant="pills">
-        {body}
-      </Tabs>
+      <Group align="flex-start" gap="xl" grow>
+        <Tabs defaultValue="overview" orientation="vertical">
+          {body(true)}
+        </Tabs>
+        <Tabs color="gray" defaultValue="overview" orientation="vertical" variant="pills">
+          {body(true)}
+        </Tabs>
+      </Group>
     </Stack>
   )
 }

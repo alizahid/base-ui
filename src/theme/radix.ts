@@ -11,6 +11,7 @@ import {
   type VariantColorsResolver,
 } from '@mantine/core'
 import tokens from '../radix-tokens.json'
+import { RadixCheckboxIcon } from './icons'
 
 export const accents = [
   'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan',
@@ -292,10 +293,17 @@ export function createRadixTheme(accent: Accent, gray: Gray): MantineThemeOverri
       ...Object.fromEntries(
         COLORED.map((name) => [
           name,
-          { classNames: (theme: MantineTheme, props: { color?: unknown }) => ({ root: accentClass(theme, props.color) }) },
+          {
+            classNames: (theme: MantineTheme, props: { color?: unknown }) => ({ root: accentClass(theme, props.color) }),
+            // Checkboxes draw the Radix check and dash
+            ...(name.startsWith('Checkbox') ? { defaultProps: { icon: RadixCheckboxIcon } } : {}),
+          },
         ]),
       ),
-      Modal: { defaultProps: { overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
+      Tooltip: { defaultProps: { withArrow: true, arrowSize: 6, offset: 6 } },
+      // Radix Table size 2: 12px cell padding
+      Table: { defaultProps: { verticalSpacing: 12, horizontalSpacing: 12 } },
+      Modal: { defaultProps: { centered: true, overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
       Drawer: { defaultProps: { overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
     },
   })

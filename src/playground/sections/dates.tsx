@@ -115,7 +115,7 @@ export function DatesSection() {
       <Demo title="TimePicker" description="Segmented time field with optional dropdown and presets.">
         <Stack maw={320}>
           <TimePicker label="24 hour" defaultValue="14:30" />
-          <TimePicker label="12 hour" format="12h" defaultValue="02:30 PM" />
+          <TimePicker label="12 hour" format="12h" defaultValue="14:30" />
           <TimePicker label="With dropdown" withDropdown clearable />
           <TimePicker label="With presets" withDropdown presets={['09:00', '12:00', '15:00', '18:00']} />
         </Stack>
@@ -129,10 +129,19 @@ export function DatesSection() {
       </Demo>
 
       <Demo title="TimeValue" description="Formatted time display.">
-        <Group>
-          <TimeValue value="14:30:00" />
-          <TimeValue value="14:30:00" format="12h" />
-          <TimeValue value="14:30:45" withSeconds />
+        <Group gap="xl">
+          <Stack gap={2}>
+            <Text size="xs" c="dimmed">24 hour</Text>
+            <Text><TimeValue value="14:30:00" /></Text>
+          </Stack>
+          <Stack gap={2}>
+            <Text size="xs" c="dimmed">12 hour</Text>
+            <Text><TimeValue value="14:30:00" format="12h" /></Text>
+          </Stack>
+          <Stack gap={2}>
+            <Text size="xs" c="dimmed">With seconds</Text>
+            <Text><TimeValue value="14:30:45" withSeconds /></Text>
+          </Stack>
         </Group>
       </Demo>
     </Section>

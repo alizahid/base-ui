@@ -1,118 +1,638 @@
-/* ---------- Popups: Radix panel-solid with shadow-5 ---------- */
+/*
+ * Overlays, ported from Radix Themes: popover.css, hover-card.css, tooltip.css, _internal/base-menu.css,
+ * select.css (content), _internal/base-dialog.css and animations.css.
+ * Everything here is Radix size 2 (menus, selects, popovers) or size 3 (dialogs).
+ * Popups render in portals, so they always use the page accent.
+ */
+
+/* ---------- Open animations (Radix animations.css) ---------- */
+@keyframes rx-slide-from-top {
+  from { transform: translateY(4px) scale(0.97); }
+  to { transform: translateY(0) scale(1); }
+}
+@keyframes rx-slide-from-bottom {
+  from { transform: translateY(-4px) scale(0.97); }
+  to { transform: translateY(0) scale(1); }
+}
+@keyframes rx-slide-from-left {
+  from { transform: translateX(4px) scale(0.97); }
+  to { transform: translateX(0) scale(1); }
+}
+@keyframes rx-slide-from-right {
+  from { transform: translateX(-4px) scale(0.97); }
+  to { transform: translateX(0) scale(1); }
+}
+@keyframes rx-pop {
+  from { transform: scale(0.97); }
+  to { transform: scale(1); }
+}
+@keyframes rx-dialog-content-show {
+  from { opacity: 0; transform: translateY(5px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Popover, HoverCard and every popup built on them ---------- */
 .mantine-Popover-dropdown,
-.mantine-Combobox-dropdown,
-.mantine-Menu-dropdown,
 .mantine-HoverCard-dropdown,
+.mantine-Menu-dropdown,
 .mantine-Menubar-dropdown {
+  /* The ring color of --shadow-5, reused for arrows */
+  --popover-border-color: color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%);
   background-color: var(--color-panel-solid);
   border: 0;
+  border-radius: var(--radius-4);
   box-shadow: var(--shadow-5);
   color: var(--gray-12);
+  padding: var(--space-4);
+  outline: 0;
 }
+[data-mantine-color-scheme='dark'] :is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+  --popover-border-color: color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%);
+}
+.mantine-HoverCard-dropdown { box-shadow: var(--shadow-4); }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-position]:is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+    animation-duration: 160ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-position^='top']:is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+    animation-name: rx-slide-from-top;
+    transform-origin: bottom center;
+  }
+  [data-position^='bottom']:is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+    animation-name: rx-slide-from-bottom;
+    transform-origin: top center;
+  }
+  [data-position^='left']:is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+    animation-name: rx-slide-from-left;
+    transform-origin: center right;
+  }
+  [data-position^='right']:is(.mantine-Popover-dropdown, .mantine-HoverCard-dropdown, .mantine-Menu-dropdown, .mantine-Menubar-dropdown) {
+    animation-name: rx-slide-from-right;
+    transform-origin: center left;
+  }
+  [data-position$='-start']:is([data-position^='top'], [data-position^='bottom']) { transform-origin-x: left; }
+  [data-position$='-end']:is([data-position^='top'], [data-position^='bottom']) { transform-origin-x: right; }
+}
+
 .mantine-Popover-arrow,
 .mantine-HoverCard-arrow,
-.mantine-Menu-arrow { background-color: var(--color-panel-solid); border-color: var(--gray-a3); }
+.mantine-Menu-arrow {
+  background-color: var(--color-panel-solid);
+  border: 1px solid var(--popover-border-color);
+}
 
-/* Menu rows: Radix highlights with a solid accent fill */
-.mantine-Menu-dropdown { padding: 8px; }
-.mantine-Menu-item,
-.mantine-Menubar-item {
-  height: 32px;
-  padding: 0 12px;
-  font-size: 14px;
-  border-radius: calc(var(--mantine-radius-sm) * 1);
-  color: var(--gray-12);
+/* ---------- Tooltip ---------- */
+.mantine-Tooltip-tooltip {
+  --tooltip-radius: var(--radius-2);
+  box-sizing: border-box;
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--tooltip-bg, var(--gray-12));
+  color: var(--tooltip-color, var(--gray-1));
+  border-radius: var(--radius-2);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+  user-select: none;
+  cursor: default;
 }
-.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) {
-  background-color: var(--accent-9);
-  color: var(--accent-contrast);
+[data-mantine-color-scheme] .mantine-Tooltip-tooltip {
+  background-color: var(--tooltip-bg, var(--gray-12));
+  color: var(--tooltip-color, var(--gray-1));
 }
-.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) .mantine-Menu-itemSection,
-.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) .mantine-Kbd-root { color: inherit; }
-.mantine-Menu-item[data-disabled],
-.mantine-Menu-item:disabled { color: var(--gray-a8); opacity: 1; }
-.mantine-Menu-item[style*='--menu-item-color'] { color: var(--menu-item-color); }
-.mantine-Menu-item[style*='--menu-item-color']:where(:hover, :focus, [data-hovered]):not([data-disabled]) {
-  background-color: var(--menu-item-color);
-  color: #fff;
+.mantine-Tooltip-tooltip[data-multiline] { max-width: 360px; }
+.mantine-Tooltip-arrow { border-radius: 0 !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .mantine-Tooltip-tooltip { animation: rx-pop 140ms cubic-bezier(0.16, 1, 0.3, 1); }
 }
-.mantine-Menu-itemSection { color: var(--gray-a11); }
-.mantine-Menu-itemSection[data-position='left'] { margin-inline-end: 8px; }
-.mantine-Menu-label { color: var(--gray-a10); font-size: 12px; padding: 0 12px; height: 32px; display: flex; align-items: center; }
-.mantine-Menu-divider { border-color: var(--gray-a6); margin: 8px 12px; }
 
-/* Combobox options (Select, MultiSelect, Autocomplete…) */
-.mantine-Combobox-dropdown { padding: 0; }
-.mantine-Combobox-options { padding: 8px; }
-.mantine-Combobox-option {
-  min-height: 32px;
+/* ---------- Menu (Radix BaseMenu, size 2, solid) ---------- */
+.mantine-Menu-dropdown,
+.mantine-Menubar-dropdown,
+.m_dc9b7c9f {
+  --menu-item-padding-left: var(--space-3);
+  --menu-item-padding-right: var(--space-3);
+  padding: var(--space-2);
+  min-width: 128px;
+}
+/* Like Radix, a menu with checkbox or radio rows indents everything to make room for the check */
+.m_dc9b7c9f:has(.mantine-Menu-itemIndicator) {
+  --menu-item-padding-left: var(--space-5);
+}
+
+.mantine-Menu-item {
   display: flex;
   align-items: center;
-  padding: 4px 12px;
-  border-radius: var(--mantine-radius-sm);
-  font-size: 14px;
+  gap: var(--space-2);
+  height: var(--space-6);
+  padding: 0 var(--menu-item-padding-right) 0 var(--menu-item-padding-left);
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+  border-radius: var(--radius-2);
   color: var(--gray-12);
+  scroll-margin: var(--space-2) 0;
+  cursor: default;
 }
-.mantine-Combobox-option[data-combobox-selected],
-.mantine-Combobox-option:hover:not([data-combobox-disabled]) {
+.mantine-Menu-item:focus-visible { outline: none; }
+.mantine-Menu-itemLabel { text-align: start; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mantine-Menu-itemSection { margin: 0 !important; }
+.mantine-Menu-itemSection[data-position='right'] {
+  margin-inline-start: auto !important;
+  padding-inline-start: var(--space-4);
+  color: var(--gray-a11);
+}
+.mantine-Menu-itemSection[data-position='right'] .mantine-Kbd-root {
+  all: unset;
+  font: inherit;
+  color: inherit;
+}
+
+/* Colored rows: Mantine passes the solid color in --menu-item-color */
+.mantine-Menu-item[style*='--menu-item-color'] {
+  color: color-mix(in oklab, var(--menu-item-color), var(--gray-12) 25%);
+}
+
+.mantine-Menu-item:where(:disabled, [data-disabled]) {
+  color: var(--gray-a8);
+  opacity: 1;
+  cursor: default;
+}
+.mantine-Menu-item:where(:disabled, [data-disabled]) .mantine-Menu-itemSection { color: inherit; }
+
+/* An open submenu trigger stays softly marked while its submenu has the highlight */
+.mantine-Menu-item:where([data-sub-menu-item][aria-expanded='true']) { background-color: var(--gray-a3); }
+
+.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):where(:not(:disabled, [data-disabled])) {
+  background-color: var(--menu-item-color, var(--accent-9));
+  color: var(--accent-contrast);
+}
+.mantine-Menu-item[style*='--menu-item-color']:where(:hover, :focus, [data-hovered], [data-menu-active]):where(:not(:disabled, [data-disabled])) {
+  color: #fff;
+}
+.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):where(:not(:disabled, [data-disabled])) .mantine-Menu-itemSection {
+  color: inherit;
+}
+
+/* Checkbox and radio rows: the check sits centered in the left padding */
+.mantine-Menu-itemIndicator {
+  position: absolute;
+  left: 0;
+  width: var(--menu-item-padding-left);
+  height: auto;
+  margin: 0;
+}
+.mantine-Menu-itemIndicator svg { width: 10px !important; height: 10px !important; }
+.mantine-Menu-itemIndicator svg:has(circle) { width: 6px !important; height: 6px !important; }
+
+/* Submenus line their first row up with the row that opened them */
+.mantine-Popover-dropdown.m_dc9b7c9f[data-position$='-start'] { margin-top: calc(var(--space-2) * -1); }
+.mantine-Popover-dropdown.m_dc9b7c9f[data-position$='-end'] { margin-top: var(--space-2); }
+
+/* Submenu chevron */
+.mantine-Menu-chevron {
+  width: 15px !important;
+  height: 15px !important;
+  margin-right: -4px;
+}
+.mantine-Menu-item:where([data-sub-menu-item]) { padding-inline-end: var(--menu-item-padding-right); }
+.mantine-Menu-item:where([data-sub-menu-item]) .mantine-Menu-itemSection[data-position='right'] { color: inherit; }
+
+.mantine-Menu-label {
+  display: flex;
+  align-items: center;
+  height: var(--space-6);
+  padding: 0 var(--menu-item-padding-right) 0 var(--menu-item-padding-left);
+  box-sizing: border-box;
+  color: var(--gray-a10);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+  font-weight: 400;
+  user-select: none;
+  cursor: default;
+}
+.mantine-Menu-item + .mantine-Menu-label { margin-top: var(--space-2); }
+
+.mantine-Menu-divider {
+  height: 1px;
+  border: 0;
+  background-color: var(--gray-a6);
+  margin: var(--space-2) var(--menu-item-padding-right) var(--space-2) var(--menu-item-padding-left);
+}
+
+/* Menu search (Menu.Search) */
+.m_ef8769b6 {
+  --menu-search-padding: var(--space-2);
+  box-shadow: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--gray-a5);
+  background: transparent;
+}
+[data-mantine-color-scheme] .m_ef8769b6 { background-color: transparent; border-color: var(--gray-a5); }
+.m_ef8769b6:focus { outline: 0; }
+
+/* ---------- Menubar ---------- */
+.mantine-Menubar-target {
+  height: var(--space-6);
+  padding: 0 var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  font-weight: 500;
+  color: var(--gray-12);
+  border-radius: max(var(--radius-2), var(--radius-full));
+  cursor: default;
+}
+[data-mantine-color-scheme] .mantine-Menubar-target:where(:hover, :focus-visible, [data-expanded]):where(:not(:disabled, [data-disabled])) {
+  background-color: var(--gray-a3);
+}
+[data-mantine-color-scheme] .mantine-Menubar-target:where([data-expanded]) { background-color: var(--gray-a4); }
+.mantine-Menubar-target:where(:disabled, [data-disabled]) { color: var(--gray-a8); opacity: 1; cursor: default; }
+
+/* ---------- Combobox dropdown (Radix Select content, size 2) ----------
+ * Select, MultiSelect, Autocomplete and TagsInput render the dropdown with their own class names,
+ * so Mantine's hashed class names are used here: m_88b62a41 dropdown, m_b2821a6e options, m_92253aa5 option. */
+.m_88b62a41 {
+  --combobox-padding: var(--space-2);
+  --select-item-indicator-width: var(--space-5);
+  padding: var(--combobox-padding);
+  min-width: 128px;
+}
+.m_88b62a41[data-composed] { padding-inline-end: 0; }
+.m_88b62a41,
+.m_b2821a6e {
+  --combobox-option-padding-xs: 0 var(--space-2);
+  --combobox-option-padding-sm: 0 var(--space-3);
+  --combobox-option-padding-md: 0 var(--space-3);
+  --combobox-option-padding-lg: 0 var(--space-4);
+  --combobox-option-padding-xl: 0 var(--space-4);
+}
+
+.m_92253aa5 {
+  display: flex;
+  align-items: center;
+  min-height: var(--space-6);
+  padding: var(--space-1) var(--space-3);
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  font-size: var(--combobox-option-fz, var(--font-size-2));
+  line-height: var(--line-height-2);
+  letter-spacing: var(--letter-spacing-2);
+  border-radius: var(--radius-2);
+  color: var(--gray-12);
+  scroll-margin: var(--space-2) 0;
+  user-select: none;
+  cursor: default;
+}
+/* Pickers with a check mark keep a gutter for it, so labels line up whether or not a row is checked */
+:is(.mantine-Select-option, .mantine-MultiSelect-option):not([data-reverse]) {
+  padding-inline: var(--select-item-indicator-width);
+}
+:is(.mantine-Select-option, .mantine-MultiSelect-option):not([data-reverse]) > .m_8ee53fc2 {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  translate: calc((var(--select-item-indicator-width) - 10px) / 2) -50%;
+}
+.m_8ee53fc2,
+.m_a530ee0a {
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/* Highlighted row: solid accent. The pointer wins; a keyboard row falls back to a soft mark while another row is hovered. */
+.m_92253aa5:where([data-combobox-selected]) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
-.mantine-Combobox-option[data-combobox-disabled] { color: var(--gray-a8); opacity: 1; }
-.mantine-Combobox-option[data-checked] { font-weight: 500; }
-.mantine-Combobox-groupLabel { color: var(--gray-a10); font-size: 12px; font-weight: 400; padding: 8px 12px 4px; }
-.mantine-Combobox-groupLabel::after { display: none; }
-.mantine-Combobox-empty { color: var(--gray-a11); }
-.mantine-Combobox-search { box-shadow: none; border-bottom: 1px solid var(--gray-a5); background: transparent; }
-.mantine-Combobox-search:focus { outline: 0; }
-.mantine-Combobox-header,
-.mantine-Combobox-footer { border-color: var(--gray-a5); color: var(--gray-a11); }
-.mantine-Combobox-chevron { color: var(--gray-a11); }
-
-/* Tooltip: Radix gray-12 bubble */
-.mantine-Tooltip-tooltip {
-  background-color: var(--gray-12);
-  color: var(--gray-1);
-  font-size: 12px;
-  line-height: 16px;
-  padding: 4px 8px;
+@media (hover: hover) {
+  [data-mantine-color-scheme] .m_92253aa5:hover:where(:not([data-combobox-disabled])) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+  }
+  .m_b2821a6e:has(.m_92253aa5:hover:not([data-combobox-disabled])) .m_92253aa5[data-combobox-selected]:not(:hover) {
+    background-color: var(--gray-a3);
+    color: var(--gray-12);
+  }
 }
-.mantine-Tooltip-arrow { background-color: var(--gray-12); }
-
-/* ---------- Modal / Drawer / Dialog ---------- */
-.mantine-Modal-content,
-.mantine-Drawer-content,
-.mantine-Dialog-root {
-  background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-6);
+@media (hover: none) {
+  [data-mantine-color-scheme] .m_92253aa5:active:where(:not([data-combobox-disabled])) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
+  }
 }
-.mantine-Modal-header,
-.mantine-Drawer-header { background-color: var(--color-panel-solid); padding: 24px 24px 12px; }
-.mantine-Modal-body,
-.mantine-Drawer-body { padding: 0 24px 24px; }
-.mantine-Modal-title,
-.mantine-Drawer-title { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -0.005em; }
+.m_92253aa5:where([data-combobox-disabled]) {
+  color: var(--gray-a8);
+  opacity: 1;
+  cursor: default;
+}
+/* Anything dimmed inside a highlighted row follows the row */
+.m_92253aa5:is([data-combobox-selected], :hover):not([data-combobox-disabled]) :is([data-dimmed], .mantine-Text-root) { color: inherit; }
+
+/* Group label = Radix Select.Label */
+.m_2bb2e9e5 {
+  display: flex;
+  align-items: center;
+  height: var(--space-6);
+  padding: 0 var(--space-3);
+  color: var(--gray-a10);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  font-weight: 400;
+  user-select: none;
+  cursor: default;
+}
+.m_2bb2e9e5::after { display: none; }
+.m_254f3e4f:has(:is(.mantine-Select-option, .mantine-MultiSelect-option):not([data-reverse])) > .m_2bb2e9e5 {
+  padding-inline: var(--select-item-indicator-width);
+}
+.m_254f3e4f + .m_254f3e4f { margin-top: var(--space-2); }
+
+.m_2530cd1d {
+  min-height: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1) var(--space-3);
+  color: var(--gray-a10);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+}
+
+/* Combobox.Search, Header and Footer */
+.m_985517d8 {
+  box-shadow: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--gray-a5);
+  background: transparent;
+  outline: 0 !important;
+  padding-inline: calc(var(--combobox-padding) + var(--space-3));
+}
+[data-mantine-color-scheme] .m_985517d8,
+[data-mantine-color-scheme] .m_985517d8:focus { background-color: transparent; border-color: var(--gray-a5); }
+.m_88b62a41[data-composed] .m_985517d8 { width: calc(100% + var(--combobox-padding)); }
+[data-mantine-color-scheme] :is(.m_858f94bd, .m_82b967cb) {
+  border-color: var(--gray-a5);
+  color: var(--gray-a11);
+  padding: var(--space-2) var(--space-3);
+}
+.m_2943220b { --_combobox-chevron-color: var(--combobox-chevron-color, var(--gray-a11)); }
+[data-mantine-color-scheme] .m_2943220b { --_combobox-chevron-color: var(--combobox-chevron-color, var(--gray-a11)); }
+
+/* ---------- Modal / Drawer (Radix Dialog, size 3) ---------- */
+.mantine-Modal-root {
+  --modal-size-xs: 320px;
+  --modal-size-sm: 380px;
+  --modal-size-md: 450px;
+  --modal-size-lg: 600px;
+  --modal-size-xl: 780px;
+  --modal-x-offset: var(--space-4);
+  --modal-y-offset: var(--space-6);
+}
 .mantine-Modal-overlay,
 .mantine-Drawer-overlay { background-color: var(--color-overlay); }
 
-.mantine-Notification-root {
+.mantine-Modal-content,
+.mantine-Drawer-content {
+  --dialog-content-padding: var(--space-5);
   background-color: var(--color-panel-solid);
-  box-shadow: var(--shadow-4);
-  border: 0;
-  padding: 12px 16px 12px 22px;
+  box-shadow: var(--shadow-6);
+  color: var(--gray-12);
+  outline: none;
 }
-.mantine-Notification-root[data-with-border] { box-shadow: var(--shadow-4), inset 0 0 0 1px var(--gray-a5); }
-.mantine-Notification-root::before { background-color: var(--notification-color, var(--accent-9)); top: 12px; bottom: 12px; left: 8px; width: 4px; }
-.mantine-Notification-title { font-weight: 500; color: var(--gray-12); }
-.mantine-Notification-description { color: var(--gray-11); }
-.mantine-Notification-icon { background-color: var(--notification-color, var(--accent-9)); }
+.mantine-Modal-content { border-radius: var(--radius-5); }
+.mantine-Modal-content[data-full-screen] { border-radius: 0; box-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .mantine-Modal-content:not([data-full-screen]) { animation: rx-dialog-content-show 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+}
 
-/* ---------- Spotlight ---------- */
-.mantine-Spotlight-content { background: var(--color-panel-solid); box-shadow: var(--shadow-6); }
-.mantine-Spotlight-search { box-shadow: none; border-bottom: 1px solid var(--gray-a5); border-radius: 0; background: transparent; }
-.mantine-Spotlight-search:focus { outline: 0; }
-.mantine-Spotlight-action { border-radius: var(--mantine-radius-sm); }
-.mantine-Spotlight-action[data-selected] { background: var(--accent-9); color: var(--accent-contrast); }
-.mantine-Spotlight-action[data-selected] .mantine-Spotlight-actionDescription { color: inherit; opacity: 0.85; }
-.mantine-Spotlight-actionDescription { color: var(--gray-a11); }
+.mantine-Modal-header,
+.mantine-Drawer-header {
+  background-color: var(--color-panel-solid);
+  min-height: 0;
+  padding: var(--dialog-content-padding) var(--dialog-content-padding) var(--space-3);
+  padding-inline-end: calc(var(--dialog-content-padding) - var(--space-1));
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+.mantine-Modal-header { border-start-start-radius: var(--radius-5); border-start-end-radius: var(--radius-5); }
+.mantine-Modal-content[data-full-screen] .mantine-Modal-header { border-radius: 0; }
+.mantine-Modal-title,
+.mantine-Drawer-title {
+  font-size: var(--font-size-5);
+  line-height: var(--line-height-5);
+  letter-spacing: var(--letter-spacing-5);
+  font-weight: 700;
+  color: var(--gray-12);
+}
+.mantine-Modal-body,
+.mantine-Drawer-body { padding: var(--dialog-content-padding); }
+.mantine-Modal-body:where(:not(:only-child)),
+.mantine-Drawer-body:where(:not(:only-child)) { padding-top: 0; }
 
+/* The close button is a gray ghost icon button, optically aligned with the title */
+.mantine-Modal-close,
+.mantine-Drawer-close,
+.mantine-Dialog-closeButton,
+.mantine-Notification-closeButton,
+.mantine-Tour-close {
+  --cb-size: 28px;
+  color: var(--gray-a11);
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+:is(.mantine-Modal-close, .mantine-Drawer-close, .mantine-Dialog-closeButton, .mantine-Notification-closeButton, .mantine-Tour-close):hover {
+  background-color: var(--gray-a3);
+}
+:is(.mantine-Modal-close, .mantine-Drawer-close, .mantine-Dialog-closeButton, .mantine-Notification-closeButton, .mantine-Tour-close):active {
+  background-color: var(--gray-a4);
+}
+
+/* ---------- Dialog (corner panel): a Radix popover that stays open ---------- */
+.mantine-Dialog-root {
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-5);
+  padding: var(--space-4);
+  color: var(--gray-12);
+}
+.mantine-Dialog-closeButton { top: var(--space-2); inset-inline-end: var(--space-2); }
+
+/* ---------- Overlay / LoadingOverlay ---------- */
+.mantine-LoadingOverlay-overlay { --overlay-bg: color-mix(in oklab, var(--color-background) 75%, transparent) !important; }
+
+/* ---------- Notification: a floating panel with a colored bar or icon ---------- */
+.mantine-Notification-root {
+  --notification-radius: var(--radius-4);
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-5);
+  padding: var(--space-3) var(--space-3) var(--space-3) calc(var(--space-4) + var(--space-2));
+  color: var(--gray-12);
+}
+[data-mantine-color-scheme] .mantine-Notification-root { background-color: var(--color-panel-solid); border: 0; }
+.mantine-Notification-root[data-with-icon] { padding-inline-start: var(--space-3); }
+.mantine-Notification-root::before {
+  width: 3px;
+  top: var(--space-3);
+  bottom: var(--space-3);
+  inset-inline-start: var(--space-3);
+  border-radius: 3px;
+  background-color: var(--notification-color, var(--accent-9));
+}
+.mantine-Notification-icon {
+  width: 24px;
+  height: 24px;
+  margin-inline-end: var(--space-3);
+  background-color: var(--notification-color, var(--accent-9));
+  color: #fff;
+}
+.mantine-Notification-loader { margin-inline-end: var(--space-3); }
+.mantine-Notification-body { margin-inline-end: var(--space-2); }
+[data-mantine-color-scheme] .mantine-Notification-title {
+  margin-bottom: 0;
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  font-weight: 500;
+  color: var(--gray-12);
+}
+[data-mantine-color-scheme] .mantine-Notification-description {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  color: var(--gray-12);
+}
+[data-mantine-color-scheme] .mantine-Notification-description[data-with-title] { color: var(--gray-a11); }
+.mantine-Notifications-root { --notifications-container-width: 380px; }
+
+/* ---------- Spotlight: a dialog holding a menu ---------- */
+.mantine-Spotlight-content {
+  background-color: var(--color-panel-solid);
+  box-shadow: var(--shadow-6);
+  border-radius: var(--radius-5);
+  animation: none;
+}
+.mantine-Spotlight-body { padding: 0; }
+.mantine-Spotlight-search {
+  --input-height: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding-inline: var(--space-4);
+  font-size: var(--font-size-3);
+  letter-spacing: var(--letter-spacing-3);
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--gray-12);
+  outline: 0 !important;
+}
+.mantine-Spotlight-search[data-with-left-section] { padding-inline-start: 44px; }
+.mantine-Spotlight-search::placeholder { color: var(--gray-a10); }
+[data-mantine-color-scheme] .mantine-Spotlight-actionsList {
+  --spotlight-actions-list-padding: var(--space-2);
+  border-color: var(--gray-a5);
+}
+.mantine-Spotlight-action {
+  min-height: var(--space-7);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-2);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  color: var(--gray-12);
+  cursor: default;
+}
+[data-mantine-color-scheme] .mantine-Spotlight-action:where(:not([data-selected])):hover { background-color: var(--gray-a3); }
+.mantine-Spotlight-action:where([data-selected]) {
+  --action-description-color: var(--accent-contrast);
+  --action-description-opacity: 0.8;
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+.mantine-Spotlight-actionSection:where([data-dimmed]) { color: var(--action-description-color, var(--gray-a11)); }
+.mantine-Spotlight-actionSection:where([data-position='left']) { margin-inline-end: var(--space-3); }
+.mantine-Spotlight-actionSection:where([data-position='right']) { margin-inline-start: var(--space-3); }
+.mantine-Spotlight-actionLabel { font-weight: 500; }
+.mantine-Spotlight-actionLabel mark { background-color: var(--accent-a5); color: inherit; border-radius: 2px; }
+.mantine-Spotlight-action[data-selected] .mantine-Spotlight-actionLabel mark { background-color: rgb(255 255 255 / 0.3); }
+.mantine-Spotlight-actionDescription {
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+  color: var(--action-description-color, var(--gray-a11));
+}
+.mantine-Spotlight-actionsGroup { margin-top: var(--space-2); }
+.mantine-Spotlight-actionsGroup::before {
+  display: flex;
+  align-items: center;
+  height: var(--space-6);
+  padding-inline-start: var(--space-3);
+  text-transform: none;
+  font-size: var(--font-size-2);
+  font-weight: 400;
+  color: var(--gray-a10);
+}
+.mantine-Spotlight-empty { color: var(--gray-a10); padding: var(--space-5); font-size: var(--font-size-2); }
+[data-mantine-color-scheme] .mantine-Spotlight-footer {
+  border-color: var(--gray-a5);
+  padding: var(--space-2) var(--space-4);
+  color: var(--gray-a11);
+  font-size: var(--font-size-1);
+}
+
+/* ---------- Tour: a popover with a title, text and step controls ---------- */
+.mantine-Tour-tooltip {
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-5);
+  padding: var(--space-4);
+  color: var(--gray-12);
+  max-width: min(360px, calc(100vw - 32px));
+}
+[data-mantine-color-scheme] .mantine-Tour-tooltip { background-color: var(--color-panel-solid); border: 0; }
+.mantine-Tour-title {
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-3);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+  padding-inline-end: var(--space-6);
+}
+.mantine-Tour-content {
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  color: var(--gray-11);
+}
+.mantine-Tour-controls { margin-top: var(--space-4); }
+.mantine-Tour-close { top: var(--space-2); right: var(--space-2); }
+[data-mantine-color-scheme] .mantine-Tour-stepCounter { color: var(--gray-a10); font-size: var(--font-size-1); }
+.mantine-Tour-beacon,
+.mantine-Tour-beaconPulse { background-color: var(--tour-beacon-color, var(--accent-9)); }
+
+/* ---------- ActionBar and FloatingWindow: floating panels ---------- */
+.mantine-ActionBar-root {
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: max(var(--radius-4), var(--radius-full));
+  box-shadow: var(--shadow-5);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  gap: var(--space-2);
+  color: var(--gray-12);
+}
+.mantine-ActionBar-divider { background-color: var(--gray-a6); margin-block: var(--space-1); }
+.mantine-FloatingWindow-root {
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: var(--radius-4);
+  box-shadow: var(--shadow-5);
+  color: var(--gray-12);
+}

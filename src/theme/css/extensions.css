@@ -1,70 +1,888 @@
-/* ---------- Dates ---------- */
-.mantine-DatePicker-day,
-.mantine-Calendar-day,
-[class*='mantine-'][class$='-day'] { border-radius: var(--mantine-radius-sm); }
-:is(.mantine-DatePicker-day, .mantine-Calendar-day, .mantine-DatePickerInput-day, .mantine-DateInput-day, .mantine-DateTimePicker-day, .mantine-MiniCalendar-day):hover:not([data-selected], [data-disabled]) { background: var(--gray-a3); }
-[data-dates-day][data-selected],
-[class*='-day'][data-selected],
-[class*='-pickerControl'][data-selected],
-[class*='-monthsListControl'][data-selected],
-[class*='-yearsListControl'][data-selected] { background: var(--accent-9); color: var(--accent-contrast); }
-[class*='-day'][data-in-range]:not([data-selected]) { background: var(--accent-a3); color: var(--accent-a11); }
-[class*='-day'][data-today]:not([data-selected]) { box-shadow: inset 0 0 0 1px var(--accent-a8); }
-[class*='-weekday'] { color: var(--gray-a10); font-weight: 400; }
-[class*='-calendarHeaderControl']:hover,
-[class*='-calendarHeaderLevel']:hover,
-[class*='-pickerControl']:hover:not([data-selected]),
-[class*='-monthsListControl']:hover:not([data-selected]),
-[class*='-yearsListControl']:hover:not([data-selected]) { background: var(--gray-a3); }
-[class*='-calendarHeaderLevel'] { font-weight: 500; }
+/*
+ * Extension packages: dates, charts, dropzone, carousel, tiptap, code-highlight, nprogress.
+ * Radix Themes has no calendar or chart, so these are built from its parts:
+ * ghost buttons for cells and header controls, solid accent for the selection, soft accent for ranges.
+ */
 
-/* ---------- Dropzone ---------- */
-.mantine-Dropzone-root {
-  border: 1px dashed var(--gray-a7);
-  background: var(--gray-a2);
-  border-radius: var(--mantine-radius-lg);
+/* ================================================================================================
+ * Dates
+ * ============================================================================================= */
+
+/* Every calendar level sits in a [data-calendar] wrapper, whatever component renders it */
+[data-calendar] {
+  --cal-radius: max(var(--radius-2), var(--radius-full));
+  --cal-cell: 32px;
+  --cal-fz: var(--font-size-2);
 }
-.mantine-Dropzone-root:hover { background: var(--gray-a3); }
-.mantine-Dropzone-root[data-accept] { border-color: var(--accent-a8); background: var(--accent-a3); color: var(--accent-a11); }
-.mantine-Dropzone-root[data-reject] { border-color: var(--red-a8); background: var(--red-a3); color: var(--red-a11); }
+[data-calendar][data-size='xs'] { --cal-cell: 28px; --cal-fz: var(--font-size-1); --cal-radius: max(var(--radius-1), var(--radius-full)); }
+[data-calendar][data-size='md'] { --cal-cell: 36px; --cal-fz: var(--font-size-2); }
+[data-calendar][data-size='lg'] { --cal-cell: 40px; --cal-fz: var(--font-size-3); --cal-radius: max(var(--radius-3), var(--radius-full)); }
+[data-calendar][data-size='xl'] { --cal-cell: 48px; --cal-fz: var(--font-size-4); --cal-radius: max(var(--radius-3), var(--radius-full)); }
 
-/* ---------- Carousel ---------- */
-.mantine-Carousel-control {
-  background: var(--color-panel-solid);
+/* Header: previous / level / next, as gray ghost buttons */
+[data-calendar] [class*='-calendarHeader '] {
+  --dch-control-size: var(--cal-cell) !important;
+  max-width: none;
+  margin-bottom: var(--space-2);
+  gap: 2px;
+  align-items: center;
+}
+[data-calendar] :is([data-level-control], [data-direction]) {
+  height: var(--cal-cell);
+  border-radius: var(--cal-radius);
+  color: var(--gray-12);
+  transition: none;
+}
+[data-calendar] button[data-direction] {
+  width: var(--cal-cell);
+  color: var(--gray-a11);
+}
+[data-calendar] button[data-direction] > svg { width: 16px; height: 16px; }
+[data-calendar] [data-level-control] {
+  font-size: var(--cal-fz);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-2);
+}
+@media (hover: hover) {
+  [data-calendar] :is([data-level-control], button[data-direction]):hover:not([data-disabled], [data-static], :disabled) {
+    background-color: var(--gray-a3);
+  }
+}
+[data-calendar] :is([data-level-control], button[data-direction]):active:not([data-disabled], [data-static], :disabled) {
+  background-color: var(--gray-a4);
+}
+[data-calendar] :is([data-level-control], button[data-direction]):is(:disabled, [data-disabled]) {
+  opacity: 1;
+  color: var(--gray-a8);
+}
+
+/* Weekday row */
+[data-month-level] thead th {
+  width: var(--cal-cell);
+  padding: 0 0 var(--space-1);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-a10);
+}
+
+/* Cells: 1px between rows, none between columns, so a range reads as one band */
+[data-month-level] tbody td[data-with-spacing] { padding: 1px 0; }
+[data-month-level] tbody td:not([data-with-spacing]) { padding: 0; }
+
+/* Day */
+[data-month-level] td > button:not([data-week-control]) {
+  --day-size: var(--cal-cell) !important;
+  font-size: var(--cal-fz);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
   color: var(--gray-12);
   border: 0;
-  box-shadow: var(--shadow-3);
+  border-radius: var(--cal-radius);
+  transition: none;
+}
+[data-month-level] td > button[data-weekend] { color: var(--gray-12); }
+[data-month-level] td > button[data-outside] { color: var(--gray-a8); opacity: 1; }
+[data-month-level] td > button:is(:disabled, [data-disabled]) { color: var(--gray-a7); opacity: 1; }
+[data-month-level] td > button[data-today][data-highlight-today]:not([data-selected], [data-in-range]) {
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--accent-a7);
+  color: var(--accent-a11);
+  font-weight: var(--font-weight-medium);
+}
+@media (hover: hover) {
+  [data-month-level] td > button:not([data-week-control]):hover:not([data-static], [data-disabled], :disabled, [data-selected], [data-in-range]) {
+    background-color: var(--gray-a3);
+  }
+}
+[data-month-level] td > button:not([data-week-control]):active:not([data-static], [data-disabled], :disabled, [data-selected], [data-in-range]) {
+  background-color: var(--gray-a4);
+}
+
+/* Range: soft band, squared inside, rounded at the two ends */
+[data-month-level] td > button[data-in-range],
+[data-month-level] td > button[data-in-range]:hover:not([data-disabled], [data-static]) {
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+  border-radius: 0;
+}
+@media (hover: hover) {
+  [data-month-level] td > button[data-in-range]:not([data-selected]):hover:not([data-disabled], [data-static]) {
+    background-color: var(--accent-a4);
+  }
+}
+[data-month-level] td > button[data-first-in-range] {
+  border-start-start-radius: var(--cal-radius);
+  border-end-start-radius: var(--cal-radius);
+}
+[data-month-level] td > button[data-last-in-range] {
+  border-start-end-radius: var(--cal-radius);
+  border-end-end-radius: var(--cal-radius);
+}
+/* The band also rounds off where a week row starts and ends */
+[data-month-level] td:first-child > button[data-in-range] {
+  border-start-start-radius: var(--cal-radius);
+  border-end-start-radius: var(--cal-radius);
+}
+[data-month-level] td:last-child > button[data-in-range] {
+  border-start-end-radius: var(--cal-radius);
+  border-end-end-radius: var(--cal-radius);
+}
+
+/* Selected: solid accent */
+[data-month-level] td > button[data-selected],
+[data-calendar] [data-picker-control][data-selected] {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+  font-weight: var(--font-weight-medium);
+}
+@media (hover: hover) {
+  [data-month-level] td > button[data-selected]:hover:not([data-disabled], [data-static]),
+  [data-calendar] [data-picker-control][data-selected]:hover {
+    background-color: var(--accent-10);
+  }
+}
+[data-month-level] td > button[data-selected]:active:not([data-disabled], [data-static]),
+[data-calendar] [data-picker-control][data-selected]:active {
+  background-color: var(--accent-10);
+  filter: var(--solid-active-filter);
+}
+
+/* Focus ring, tucked inside like Radix ghost buttons so it is not clipped by neighbours */
+[data-calendar] button:focus-visible,
+[data-calendar] select:focus-visible {
+  outline: 2px solid var(--focus-8);
+  outline-offset: -1px;
+  position: relative;
+  z-index: 1;
+}
+[data-calendar] button[data-selected]:focus-visible { outline-offset: 2px; }
+
+/* Month, year and quarter cells */
+[data-calendar] [data-picker-control] {
+  --dpc-size: var(--cal-cell) !important;
+  font-size: var(--cal-fz);
+  color: var(--gray-12);
+  border-radius: var(--cal-radius);
+  transition: none;
+}
+[data-calendar] td[data-with-spacing]:has(> [data-picker-control]) { padding: 1px; }
+@media (hover: hover) {
+  [data-calendar] [data-picker-control]:hover:not([data-disabled], :disabled, [data-selected], [data-in-range]) {
+    background-color: var(--gray-a3);
+  }
+}
+[data-calendar] [data-picker-control]:active:not([data-disabled], :disabled, [data-selected], [data-in-range]) {
+  background-color: var(--gray-a4);
+}
+[data-calendar] [data-picker-control]:is(:disabled, [data-disabled]) { color: var(--gray-a7); opacity: 1; }
+[data-calendar] [data-picker-control][data-in-range],
+[data-calendar] [data-picker-control][data-in-range]:hover {
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+  border-radius: 0;
+}
+[data-calendar] [data-picker-control][data-in-range][data-selected],
+[data-calendar] [data-picker-control][data-in-range][data-selected]:hover {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+[data-calendar] [data-picker-control][data-first-in-range] {
+  border-start-start-radius: var(--cal-radius);
+  border-end-start-radius: var(--cal-radius);
+}
+[data-calendar] [data-picker-control][data-last-in-range] {
+  border-start-end-radius: var(--cal-radius);
+  border-end-end-radius: var(--cal-radius);
+}
+[data-month-level] td > button[data-in-range][data-selected],
+[data-month-level] td > button[data-in-range][data-selected]:hover:not([data-disabled], [data-static]) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+/* Native month / year selects in the header */
+[data-calendar] [data-level-control] select { font-weight: var(--font-weight-medium); color: var(--gray-12); }
+
+/* Week numbers and the week picker's whole-row selection */
+.mantine-WeekPicker-weekNumber,
+[data-month-level] td:has(> [data-week-control]) {
+  width: var(--cal-cell);
+  font-size: var(--font-size-1);
+  color: var(--gray-a10);
+}
+[data-month-level] [data-week-control] { height: var(--cal-cell); border-radius: var(--cal-radius); }
+.mantine-WeekPicker-monthRow > td { padding: 1px 0; background-clip: content-box; border-radius: 0 !important; }
+.mantine-WeekPicker-monthRow > td:not(.mantine-WeekPicker-weekNumber):is(:first-child, .mantine-WeekPicker-weekNumber + td) {
+  border-start-start-radius: var(--cal-radius) !important;
+  border-end-start-radius: var(--cal-radius) !important;
+}
+.mantine-WeekPicker-monthRow > td:last-child {
+  border-start-end-radius: var(--cal-radius) !important;
+  border-end-end-radius: var(--cal-radius) !important;
+}
+.mantine-WeekPicker-monthRow:has([data-week-hovered]) > td { background-color: var(--gray-a3); }
+.mantine-WeekPicker-monthRow:has([data-in-range]) > td { background-color: var(--accent-a3); }
+.mantine-WeekPicker-monthRow:has([data-selected]) > td { background-color: var(--accent-9); }
+.mantine-WeekPicker-monthRow:has([data-selected]):hover > td { background-color: var(--accent-10); }
+.mantine-WeekPicker-monthRow.mantine-WeekPicker-monthRow > td:is(.mantine-WeekPicker-weekNumber, :has(> [data-hidden])) { background-color: transparent; }
+.mantine-WeekPicker-monthRow > td > button:not([data-week-control]),
+.mantine-WeekPicker-monthRow > td > button:not([data-week-control]):hover {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+.mantine-WeekPicker-monthRow:has([data-selected]) > td > button:not([data-week-control]) { color: var(--accent-contrast); }
+.mantine-WeekPicker-monthRow:has([data-in-range]):not(:has([data-selected])) > td > button:not([data-week-control]) { color: var(--accent-a11); }
+@media (hover: hover) {
+  [data-month-level] [data-week-control]:hover { background-color: var(--gray-a3); }
+}
+
+/* Presets column beside a picker */
+[class*='-presetsList'] { border-color: var(--gray-a5); padding-inline-end: var(--space-2); margin-inline-end: var(--space-2); gap: 1px; }
+[class*='-presetButton'] {
+  height: var(--space-6);
+  padding: 0 var(--space-3);
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-2);
+  color: var(--gray-12);
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+@media (hover: hover) {
+  [class*='-presetButton']:hover { background-color: var(--gray-a3); }
+}
+[class*='-presetButton']:active { background-color: var(--gray-a4); }
+
+/* MiniCalendar: a strip of ghost day buttons */
+.mantine-MiniCalendar-root { gap: 2px; }
+.mantine-MiniCalendar-days { gap: 2px; }
+.mantine-MiniCalendar-day {
+  min-width: 44px;
+  padding: var(--space-2);
+  gap: var(--space-1);
+  color: var(--gray-12);
+  border-radius: max(var(--radius-3), var(--radius-full));
+  transition: none;
+}
+.mantine-MiniCalendar-root[data-size='xs'] .mantine-MiniCalendar-day { min-width: 36px; border-radius: max(var(--radius-2), var(--radius-full)); }
+.mantine-MiniCalendar-dayMonth {
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-a11);
   opacity: 1;
 }
-.mantine-Carousel-indicator { background: var(--gray-a6); opacity: 1; }
-.mantine-Carousel-indicator[data-active] { background: var(--accent-9); }
+.mantine-MiniCalendar-dayNumber {
+  font-size: var(--font-size-3);
+  line-height: var(--line-height-2);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+.mantine-MiniCalendar-control {
+  width: var(--space-6);
+  height: var(--space-6);
+  align-self: center;
+  color: var(--gray-a11);
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+.mantine-MiniCalendar-control [data-chevron] { width: 16px; height: 16px; }
+@media (hover: hover) {
+  .mantine-MiniCalendar-day:hover:not([data-disabled], [data-selected]),
+  .mantine-MiniCalendar-control:hover:not([data-disabled]) { background-color: var(--gray-a3); }
+  .mantine-MiniCalendar-day[data-selected]:hover:not([data-disabled], [data-static]) { background-color: var(--accent-10); }
+}
+.mantine-MiniCalendar-day:active:not([data-disabled], [data-selected]),
+.mantine-MiniCalendar-control:active:not([data-disabled]) { background-color: var(--gray-a4); transform: none; }
+.mantine-MiniCalendar-day[data-selected] { background-color: var(--accent-9); color: var(--accent-contrast); }
+.mantine-MiniCalendar-day[data-selected] .mantine-MiniCalendar-dayMonth { color: inherit; opacity: 0.8; }
+.mantine-MiniCalendar-day[data-selected]:active { transform: none; filter: var(--solid-active-filter); }
+.mantine-MiniCalendar-day[data-disabled],
+.mantine-MiniCalendar-control[data-disabled] { opacity: 1; color: var(--gray-a7); }
+.mantine-MiniCalendar-day[data-disabled] .mantine-MiniCalendar-dayMonth { color: inherit; }
+.mantine-MiniCalendar-day:focus-visible,
+.mantine-MiniCalendar-control:focus-visible { outline: 2px solid var(--focus-8); outline-offset: -1px; }
 
-/* ---------- RichTextEditor ---------- */
-.mantine-RichTextEditor-root { border: 0; box-shadow: inset 0 0 0 1px var(--gray-a7); background: var(--color-surface); }
-.mantine-RichTextEditor-toolbar { background: transparent; border-color: var(--gray-a5); }
-.mantine-RichTextEditor-control { border-color: var(--gray-a6); background: var(--color-surface); color: var(--gray-12); }
-.mantine-RichTextEditor-control:hover { background: var(--gray-a3); }
-.mantine-RichTextEditor-control[data-active] { background: var(--accent-a3); color: var(--accent-a11); }
-.mantine-RichTextEditor-content { background: transparent; }
+/* Time fields: the focused segment gets the Radix text-selection tint, not a solid block */
+.mantine-TimePicker-field,
+[class*='-timeInput'] .mantine-TimePicker-field {
+  border-radius: max(1px, calc(var(--radius-1) * 0.67));
+  font-variant-numeric: tabular-nums;
+}
+.mantine-TimePicker-field:focus,
+.mantine-TimePicker-field:focus::placeholder {
+  background-color: var(--focus-a5, var(--accent-a5));
+  color: var(--gray-12);
+}
+.mantine-TimePicker-field:focus::placeholder { background-color: transparent; }
+.mantine-TimePicker-field::placeholder { color: var(--gray-a10); }
+.mantine-TimeInput-input::-webkit-datetime-edit-hour-field:focus,
+.mantine-TimeInput-input::-webkit-datetime-edit-minute-field:focus,
+.mantine-TimeInput-input::-webkit-datetime-edit-second-field:focus,
+.mantine-TimeInput-input::-webkit-datetime-edit-ampm-field:focus {
+  background-color: var(--accent-a5);
+  color: var(--gray-12);
+  border-radius: 2px;
+}
 
-/* ---------- Code highlight ---------- */
+/* TimePicker dropdown: columns of ghost items, solid when chosen (like a Radix menu) */
+.mantine-TimePicker-dropdown { padding: var(--space-2); }
+.mantine-TimePicker-controlsListGroup { gap: var(--space-1); }
+.mantine-TimePicker-controlsList { padding: 0; }
+.mantine-TimePicker-control,
+.mantine-TimePicker-presetControl {
+  height: var(--space-6);
+  min-width: 40px;
+  padding-inline: var(--space-2);
+  font-size: var(--font-size-2);
+  font-variant-numeric: tabular-nums;
+  color: var(--gray-12);
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+@media (hover: hover) {
+  :is(.mantine-TimePicker-control, .mantine-TimePicker-presetControl):hover:not([data-active]) {
+    background-color: var(--gray-a3);
+    color: var(--gray-12);
+  }
+}
+:is(.mantine-TimePicker-control, .mantine-TimePicker-presetControl):active:not([data-active]) { background-color: var(--gray-a4); }
+:is(.mantine-TimePicker-control, .mantine-TimePicker-presetControl)[data-active] {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+.mantine-TimePicker-presetsGroupLabel {
+  padding-inline-start: var(--space-2);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-regular);
+  color: var(--gray-a10);
+}
+.mantine-TimePicker-presetsGroupLabel::after { background-color: var(--gray-a5); }
+
+/* TimeGrid: surface buttons, solid when chosen */
+.mantine-TimeGrid-control {
+  height: var(--space-6);
+  padding: 0 var(--space-3);
+  border: 0;
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  color: var(--gray-12);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+.mantine-TimeGrid-root[data-size='xs'] .mantine-TimeGrid-control { height: var(--space-5); padding: 0 var(--space-2); font-size: var(--font-size-1); border-radius: max(var(--radius-1), var(--radius-full)); }
+.mantine-TimeGrid-root[data-size='md'] .mantine-TimeGrid-control { height: var(--space-7); padding: 0 var(--space-4); font-size: var(--font-size-3); border-radius: max(var(--radius-3), var(--radius-full)); }
+@media (hover: hover) {
+  .mantine-TimeGrid-control:hover:not([data-disabled], [data-active]) {
+    background-color: var(--color-surface);
+    box-shadow: inset 0 0 0 1px var(--gray-a8);
+  }
+  .mantine-TimeGrid-control[data-active]:hover:not([data-disabled]) { background-color: var(--accent-10); }
+}
+.mantine-TimeGrid-control:active:not([data-disabled], [data-active]) { background-color: var(--gray-a3); box-shadow: inset 0 0 0 1px var(--gray-a8); transform: none; }
+.mantine-TimeGrid-control[data-active] {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+  box-shadow: none;
+}
+.mantine-TimeGrid-control[data-active]:active { transform: none; filter: var(--solid-active-filter); }
+.mantine-TimeGrid-control:is(:disabled, [data-disabled]) {
+  opacity: 1;
+  background-color: var(--gray-a3);
+  box-shadow: none;
+  color: var(--gray-a8);
+}
+.mantine-TimeGrid-control:focus-visible { outline: 2px solid var(--focus-8); outline-offset: 2px; }
+
+/* ================================================================================================
+ * Charts
+ * ============================================================================================= */
+
+:is(
+  .mantine-AreaChart-root, .mantine-BarChart-root, .mantine-LineChart-root, .mantine-CompositeChart-root,
+  .mantine-ScatterChart-root, .mantine-BubbleChart-root, .mantine-RadarChart-root, .mantine-CandlestickChart-root,
+  .mantine-FunnelChart-root, .mantine-RadialBarChart-root, .mantine-PieChart-root, .mantine-DonutChart-root,
+  .mantine-Sparkline-root, .mantine-Treemap-root, .mantine-SankeyChart-root, .mantine-SunburstChart-root,
+  .mantine-BulletChart-root, .mantine-GaugeChart-root, .mantine-WaffleChart-root, .mantine-MatrixChart-root
+) {
+  --chart-text-color: var(--gray-a11);
+  --chart-grid-color: var(--gray-a4);
+  --chart-cursor-fill: var(--gray-a3);
+  --chart-cursor-color: var(--gray-a7);
+  --chart-empty-background: var(--gray-a3);
+  --chart-bar-label-color: var(--gray-a11);
+}
+:is(
+  .mantine-AreaChart-root, .mantine-BarChart-root, .mantine-LineChart-root, .mantine-CompositeChart-root,
+  .mantine-ScatterChart-root, .mantine-BubbleChart-root, .mantine-RadarChart-root, .mantine-CandlestickChart-root,
+  .mantine-FunnelChart-root, .mantine-RadialBarChart-root, .mantine-PieChart-root, .mantine-DonutChart-root,
+  .mantine-Treemap-root, .mantine-SankeyChart-root, .mantine-SunburstChart-root
+) svg:focus-visible {
+  outline: 2px solid var(--focus-8);
+  outline-offset: 2px;
+  border-radius: var(--radius-2);
+}
+
+/* Axes and grid: hairlines in alpha gray, small tabular labels */
+.recharts-cartesian-grid line { stroke: var(--gray-a4); }
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line { stroke: var(--gray-a6); }
+.recharts-cartesian-axis-tick-value,
+.recharts-polar-angle-axis-tick-value,
+.recharts-polar-radius-axis-tick-value {
+  fill: var(--gray-a11);
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+  font-variant-numeric: tabular-nums;
+}
+.recharts-polar-grid line,
+.recharts-polar-grid path,
+.recharts-polar-grid polygon,
+.recharts-polar-grid circle { stroke: var(--gray-a5); }
+.recharts-polar-angle-axis-line,
+.recharts-polar-radius-axis-line { stroke: var(--gray-a5); }
+.recharts-label { fill: var(--gray-a11); font-size: var(--font-size-1); }
+.recharts-reference-line line { stroke: var(--gray-a8); }
+.recharts-reference-line text { fill: var(--gray-a11); font-size: var(--font-size-1); }
+.recharts-tooltip-cursor { stroke: var(--gray-a7); }
+.recharts-rectangle.recharts-tooltip-cursor { stroke: none; fill: var(--gray-a3); }
+.recharts-brush > rect:first-child { stroke: var(--gray-a6); fill: transparent; }
+.recharts-brush-slide { fill: var(--accent-a3); }
+.recharts-brush-traveller rect { fill: var(--accent-9); }
+.recharts-pie-label-line { stroke: var(--gray-a7); }
+.recharts-pie-sector path,
+.recharts-pie-sector .recharts-sector { stroke: var(--color-panel-solid); }
+.mantine-DonutChart-label { fill: var(--gray-12); font-size: var(--font-size-3); font-weight: var(--font-weight-medium); }
+
+/* Tooltip: a small Radix panel */
+.mantine-ChartTooltip-tooltip,
+.mantine-RadialBarChart-tooltip,
+.mantine-ScatterChart-tooltip,
+.mantine-BubbleChart-tooltip {
+  min-width: 160px;
+  background-color: var(--color-panel-solid);
+  border: 0;
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-4);
+  color: var(--gray-12);
+}
+.mantine-ChartTooltip-tooltipLabel {
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-a11);
+}
+.mantine-ChartTooltip-tooltipBody { padding: 0 var(--space-3) var(--space-2); }
+.mantine-ChartTooltip-tooltip[data-type='radial'] .mantine-ChartTooltip-tooltipBody,
+.mantine-ChartTooltip-tooltipBody:first-child { padding-top: var(--space-2); }
+.mantine-ChartTooltip-tooltipItem {
+  font-size: var(--font-size-1);
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+}
+.mantine-ChartTooltip-tooltipItem + .mantine-ChartTooltip-tooltipItem { margin-top: var(--space-1); }
+.mantine-ChartTooltip-tooltipItemBody { gap: var(--space-2); margin-inline-end: var(--space-5); }
+.mantine-ChartTooltip-tooltipItemColor,
+.mantine-ChartLegend-legendItemColor {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: max(2px, var(--radius-full));
+}
+.mantine-ChartTooltip-tooltipItemName { font-size: inherit; color: var(--gray-a11); }
+.mantine-ChartTooltip-tooltipItemData { color: var(--gray-12); font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums; }
+.mantine-RadialBarChart-tooltip { padding: var(--space-2) var(--space-3); font-size: var(--font-size-1); gap: var(--space-4); }
+
+/* Legend */
+.mantine-ChartLegend-legend { gap: var(--space-1); }
+.mantine-ChartLegend-legendItem {
+  gap: 6px;
+  padding: var(--space-1) var(--space-2);
+  border-radius: max(var(--radius-1), var(--radius-full));
+  line-height: var(--line-height-1);
+}
+@media (hover: hover) {
+  .mantine-ChartLegend-legendItem:hover { background-color: var(--gray-a3); }
+}
+.mantine-ChartLegend-legendItem:active { background-color: var(--gray-a3); }
+.mantine-ChartLegend-legendItemName {
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+  color: var(--gray-a11);
+}
+
+/* Heatmap: accent steps instead of GitHub green */
+.mantine-Heatmap-root {
+  --heatmap-level-1: var(--accent-a4);
+  --heatmap-level-2: var(--accent-a6);
+  --heatmap-level-3: var(--accent-a8);
+  --heatmap-level-4: var(--accent-9);
+  --heatmap-empty-rect-bg: var(--gray-a3);
+}
+.mantine-Heatmap-monthLabel,
+.mantine-Heatmap-weekdayLabel,
+.mantine-MatrixChart-root text { fill: var(--gray-a10); }
+
+/* BarsList, BulletChart, GaugeChart, WaffleChart, MatrixChart: gray tracks, quiet labels */
+.mantine-BarsList-labelsRow { font-size: var(--font-size-1); font-weight: var(--font-weight-regular); color: var(--gray-a10); }
+.mantine-BarsList-bar { border-radius: max(var(--radius-1), var(--radius-full)); }
+.mantine-BarsList-barLabel { font-size: var(--font-size-2); }
+.mantine-BarsList-barValue { font-size: var(--font-size-2); font-variant-numeric: tabular-nums; color: var(--gray-a11); }
+.mantine-BulletChart-track { background-color: var(--gray-a3); }
+.mantine-BulletChart-label { font-weight: var(--font-weight-medium); color: var(--gray-12); }
+.mantine-BulletChart-rangeLabel,
+.mantine-BulletChart-targetLabel { color: var(--gray-a10); font-size: var(--font-size-1); }
+.mantine-BulletChart-target { background-color: var(--gray-12); }
+.mantine-GaugeChart-track { stroke: var(--gray-a3); }
+.mantine-GaugeChart-label { fill: var(--gray-12); font-weight: var(--font-weight-medium); }
+.mantine-WaffleChart-legendLabel,
+.mantine-MatrixChart-legendLabel { font-size: var(--font-size-1); color: var(--gray-a11); }
+.mantine-WaffleChart-cell[data-empty] { background-color: var(--gray-a3); }
+
+/* ================================================================================================
+ * Dropzone
+ * ============================================================================================= */
+
+.mantine-Dropzone-root {
+  --dropzone-radius: var(--radius-4);
+  border: 1px dashed var(--gray-a7);
+  background-color: var(--gray-a2);
+  color: var(--gray-12);
+  padding: var(--space-5);
+  transition: none;
+}
+@media (hover: hover) {
+  .mantine-Dropzone-root:hover:where([data-activate-on-click]:not([data-loading])) {
+    background-color: var(--gray-a3);
+    border-color: var(--gray-a8);
+  }
+}
+.mantine-Dropzone-root:active:where([data-activate-on-click]:not([data-loading])) { background-color: var(--gray-a4); }
+.mantine-Dropzone-root:focus-visible { outline: 2px solid var(--focus-8); outline-offset: 2px; }
+.mantine-Dropzone-root[data-accept] {
+  border-style: solid;
+  border-color: var(--accent-a8);
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+}
+.mantine-Dropzone-root[data-reject] {
+  border-style: solid;
+  border-color: var(--red-a8);
+  background-color: var(--red-a3);
+  color: var(--red-a11);
+}
+.mantine-Dropzone-root[data-disabled] {
+  background-color: var(--gray-a3);
+  border-color: var(--gray-a6);
+  color: var(--gray-a8);
+  cursor: not-allowed;
+}
+.mantine-Dropzone-fullScreen { background-color: var(--color-overlay); }
+
+/* ================================================================================================
+ * Carousel
+ * ============================================================================================= */
+
+.mantine-Carousel-root { --carousel-control-size: var(--space-6); }
+.mantine-Carousel-root[data-size='xs'] { --carousel-control-size: var(--space-5); }
+.mantine-Carousel-control,
+[data-mantine-color-scheme] .mantine-Carousel-control {
+  background-color: var(--color-panel-solid);
+  color: var(--gray-12);
+  border: 0;
+  border-radius: max(var(--radius-2), var(--radius-full));
+  box-shadow: var(--shadow-3);
+  opacity: 1;
+  transition: none;
+}
+.mantine-Carousel-control > svg { width: 16px; height: 16px; }
+@media (hover: hover) {
+  .mantine-Carousel-control:hover:not([data-inactive]) { background-color: color-mix(in oklab, var(--color-panel-solid), var(--gray-12) 5%); }
+}
+.mantine-Carousel-control:active:not([data-inactive]) { background-color: color-mix(in oklab, var(--color-panel-solid), var(--gray-12) 9%); transform: none; }
+.mantine-Carousel-control[data-inactive] { opacity: 0; cursor: default; pointer-events: none; }
+.mantine-Carousel-control:focus-visible,
+.mantine-Carousel-indicator:focus-visible { outline: 2px solid var(--focus-8); outline-offset: 2px; }
+.mantine-Carousel-indicators { gap: 6px; bottom: var(--space-3); }
+.mantine-Carousel-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: max(var(--radius-1), var(--radius-full), 3px);
+  background-color: var(--white-a12);
+  box-shadow: 0 0 0 1px var(--black-a3);
+  opacity: 0.55;
+  transition: width 160ms cubic-bezier(0.45, 0.05, 0.55, 0.95), opacity 100ms;
+}
+.mantine-Carousel-indicator[data-orientation='vertical'] { width: 6px; height: 6px; }
+.mantine-Carousel-indicator[data-active] { opacity: 1; width: 18px; }
+.mantine-Carousel-indicator[data-orientation='vertical'][data-active] { width: 6px; height: 18px; }
+@media (hover: hover) {
+  .mantine-Carousel-indicator:hover { opacity: 1; }
+}
+
+/* ================================================================================================
+ * RichTextEditor: a Radix TextArea surface with a ghost-button toolbar
+ * ============================================================================================= */
+
+.mantine-RichTextEditor-root {
+  border: 0;
+  border-radius: var(--radius-3);
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  color: var(--gray-12);
+}
+.mantine-RichTextEditor-root:has(.ProseMirror-focused) {
+  outline: 2px solid var(--focus-8);
+  outline-offset: -1px;
+}
+.mantine-RichTextEditor-toolbar,
+.mantine-RichTextEditor-toolbar[data-variant] {
+  gap: var(--space-1) var(--space-3);
+  padding: var(--space-2);
+  background-color: transparent;
+  border-bottom: 1px solid var(--gray-a5);
+  border-start-start-radius: var(--radius-3);
+  border-start-end-radius: var(--radius-3);
+}
+.mantine-RichTextEditor-toolbar[data-sticky] { background-color: var(--color-panel-solid); box-shadow: inset 0 1px 0 var(--gray-a7), inset 1px 0 0 var(--gray-a7), inset -1px 0 0 var(--gray-a7); }
+.mantine-RichTextEditor-controlsGroup { gap: 2px; background-color: transparent; }
+.mantine-RichTextEditor-control,
+.mantine-RichTextEditor-controlsGroup[data-variant] .mantine-RichTextEditor-control {
+  min-width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: max(var(--radius-2), var(--radius-full));
+  background-color: transparent;
+  color: var(--gray-a11);
+  transition: none;
+}
+.mantine-RichTextEditor-controlIcon { width: 16px; height: 16px; }
+@media (hover: hover) {
+  .mantine-RichTextEditor-control[data-interactive]:not([data-disabled], [data-active]):hover {
+    background-color: var(--gray-a3);
+    color: var(--gray-a11);
+  }
+  .mantine-RichTextEditor-control[data-active]:hover { background-color: var(--accent-a4); }
+}
+.mantine-RichTextEditor-control[data-interactive]:not([data-disabled], [data-active]):active { background-color: var(--gray-a4); color: var(--gray-a11); }
+.mantine-RichTextEditor-control[data-active] { background-color: var(--accent-a3); color: var(--accent-a11); }
+.mantine-RichTextEditor-control[data-active]:active { background-color: var(--accent-a5); }
+.mantine-RichTextEditor-control[data-disabled] { color: var(--gray-a8); background-color: transparent; cursor: not-allowed; }
+.mantine-RichTextEditor-control:focus-visible { outline: 2px solid var(--focus-8); outline-offset: -1px; }
+
+.mantine-RichTextEditor-content {
+  background-color: transparent;
+  border-radius: var(--radius-3);
+  color: var(--gray-12);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+}
+.mantine-RichTextEditor-content .ProseMirror { padding: var(--space-3) var(--space-4); }
+.mantine-RichTextEditor-content .ProseMirror p.is-editor-empty:first-of-type::before { color: var(--gray-a10); }
+.mantine-RichTextEditor-content :where(h1, h2, h3, h4, h5, h6) { color: var(--gray-12); font-weight: var(--font-weight-bold); }
+.mantine-RichTextEditor-content :where(a) { color: var(--accent-a11); text-decoration-color: var(--accent-a5); text-underline-offset: 0.15em; }
+.mantine-RichTextEditor-content :where(code) {
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+  border: 0;
+  border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
+  padding: 0.1em 0.25em;
+  font-size: 0.95em;
+}
+.mantine-RichTextEditor-content pre,
+[data-mantine-color-scheme] .mantine-RichTextEditor-content pre {
+  background-color: var(--gray-a2);
+  box-shadow: inset 0 0 0 1px var(--gray-a5);
+  color: var(--gray-12);
+  border-radius: var(--radius-3);
+  padding: var(--space-3) var(--space-4);
+  --code-color-comment: var(--gray-a10);
+  --code-color-var: var(--red-a11);
+  --code-color-number: var(--blue-a11);
+  --code-color-title: var(--pink-a11);
+  --code-color-keyword: var(--violet-a11);
+}
+.mantine-RichTextEditor-content :where(blockquote) {
+  border-inline-start: 4px solid var(--accent-a6);
+  background: transparent;
+  border-radius: 0;
+  padding: 0 0 0 var(--space-4);
+  color: var(--gray-12);
+}
+.mantine-RichTextEditor-content :where(hr) { border: 0; border-top: 1px solid var(--gray-a6); }
+.mantine-RichTextEditor-content :where(mark) { background-color: var(--accent-a5); color: inherit; }
+.mantine-RichTextEditor-content table { --rte-table-border-color: var(--gray-a5) !important; }
+.mantine-RichTextEditor-content :where(th) { background-color: var(--gray-a2); font-weight: var(--font-weight-medium); }
+.mantine-RichTextEditor-content .selectedCell { background-color: var(--accent-a3); }
+.mantine-RichTextEditor-content .column-resize-handle { background-color: var(--accent-9); }
+.mantine-RichTextEditor-content [data-type='details'] {
+  --rte-details-border-color: var(--gray-a5) !important;
+  --rte-details-button-hover: var(--gray-a3) !important;
+  border-radius: var(--radius-3);
+}
+.mantine-RichTextEditor-content ::selection { background-color: var(--accent-a5); }
+
+/* Link editor and color pickers that open from the toolbar */
+.mantine-RichTextEditor-linkEditorDropdown,
+.mantine-RichTextEditor-colorPickerDropdown,
+.mantine-RichTextEditor-tableInsertDropdown { background-color: var(--color-panel-solid); }
+.mantine-RichTextEditor-linkEditorExternalControl {
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  background-color: var(--color-surface);
+  color: var(--gray-a11);
+}
+.mantine-RichTextEditor-linkEditorExternalControl[data-active] { background-color: var(--accent-a3); color: var(--accent-a11); box-shadow: inset 0 0 0 1px var(--accent-a7); }
+.mantine-RichTextEditor-tableInsertCell { background-color: var(--gray-a3); border-radius: var(--radius-1); }
+.mantine-RichTextEditor-tableInsertCell[data-active] { background-color: var(--accent-9); }
+.mantine-RichTextEditor-tableInsertLabel { color: var(--gray-a11); }
+
+/* ================================================================================================
+ * CodeHighlight: a quiet gray code well
+ * ============================================================================================= */
+
 .mantine-CodeHighlight-codeHighlight,
-.mantine-CodeHighlightTabs-root { background: var(--gray-a2); box-shadow: inset 0 0 0 1px var(--gray-a5); border-radius: var(--mantine-radius-md); }
+.mantine-CodeHighlightTabs-root,
+.mantine-InlineCodeHighlight-inlineCodeHighlight,
+[data-mantine-color-scheme] :is(.mantine-CodeHighlight-codeHighlight, .mantine-CodeHighlightTabs-root, .mantine-InlineCodeHighlight-inlineCodeHighlight) {
+  --ch-background: var(--gray-2);
+  --ch-radius: var(--radius-3);
+  color: var(--gray-12);
+}
+[data-mantine-color-scheme='dark'] :is(.mantine-CodeHighlight-codeHighlight, .mantine-CodeHighlightTabs-root, .mantine-InlineCodeHighlight-inlineCodeHighlight) {
+  --ch-background: var(--gray-1);
+}
+.mantine-CodeHighlight-codeHighlight,
+.mantine-CodeHighlightTabs-root {
+  background-color: var(--ch-background);
+  border: 1px solid var(--gray-a5) !important;
+  border-radius: var(--radius-3);
+}
+/* Inside the tabs block the inner well has no frame of its own */
+.mantine-CodeHighlightTabs-root .mantine-CodeHighlightTabs-codeHighlight { border: 0 !important; border-radius: 0; }
 
-/* ---------- Charts ---------- */
-.recharts-cartesian-grid line { stroke: var(--gray-a5); }
-.recharts-cartesian-axis-tick-value { fill: var(--gray-a11); }
-.mantine-AreaChart-tooltip,
-.mantine-BarChart-tooltip,
-.mantine-LineChart-tooltip,
-[class*='mantine-'][class$='Chart-tooltip'],
-.mantine-ChartTooltip-tooltip { background: var(--color-panel-solid); border: 0; box-shadow: var(--shadow-5); border-radius: var(--mantine-radius-lg); }
+:is(.mantine-CodeHighlight-code, .mantine-CodeHighlightTabs-code) {
+  padding: var(--space-3) var(--space-4);
+  font-size: 13px;
+  line-height: var(--line-height-2);
+  --code-line-height: 20px;
+  color: var(--gray-12);
+}
+:is(.mantine-CodeHighlight-pre, .mantine-CodeHighlightTabs-pre, .mantine-CodeHighlight-codeWrapper, .mantine-CodeHighlightTabs-codeWrapper) { --code-line-height: 20px; }
+:is(.mantine-CodeHighlight-lineNumbers, .mantine-CodeHighlightTabs-lineNumbers) {
+  padding: var(--space-3) 0 var(--space-3) var(--space-4);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--gray-a8);
+  font-variant-numeric: tabular-nums;
+}
+:is(.mantine-CodeHighlight-lineNumbers, .mantine-CodeHighlightTabs-lineNumbers) + * :is(.mantine-CodeHighlight-code, .mantine-CodeHighlightTabs-code) { padding-inline-start: var(--space-3); }
 
-/* ---------- NavigationProgress ---------- */
-.mantine-NavigationProgress-section,
-.m_8f2832ae { background-color: var(--accent-9); }
+/* Copy / expand: ghost icon buttons */
+:is(.mantine-CodeHighlight-controls, .mantine-CodeHighlightTabs-controls) {
+  top: 6px;
+  right: 6px;
+  gap: 2px;
+  border-radius: var(--radius-2);
+}
+:is(.mantine-CodeHighlight-control, .mantine-CodeHighlightTabs-control),
+[data-mantine-color-scheme] :is(.mantine-CodeHighlight-control, .mantine-CodeHighlightTabs-control) {
+  --ai-size: 28px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  color: var(--gray-a11);
+  background-color: transparent;
+  border: 0;
+  opacity: 1;
+  border-radius: max(var(--radius-2), var(--radius-full));
+}
+:is(.mantine-CodeHighlight-control, .mantine-CodeHighlightTabs-control) svg { width: 16px; height: 16px; }
+@media (hover: hover) {
+  :is(.mantine-CodeHighlight-control, .mantine-CodeHighlightTabs-control):hover { background-color: var(--gray-a3); color: var(--gray-a11); }
+}
+:is(.mantine-CodeHighlight-control, .mantine-CodeHighlightTabs-control):active { background-color: var(--gray-a4); transform: none; }
 
-/* Radix calendars don't tint weekends */
-[class*='-day'][data-weekend]:not([data-selected], [data-outside]) { color: inherit; }
-[class*='-day'][data-outside] { color: var(--gray-a8); }
+:is(.mantine-CodeHighlight-showCodeButton, .mantine-CodeHighlightTabs-showCodeButton) {
+  color: var(--accent-a11);
+  background-color: var(--ch-background);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-medium);
+}
+:is(.mantine-CodeHighlight-codeHighlight, .mantine-CodeHighlightTabs-codeHighlight)[data-collapsed]::after {
+  background-image: linear-gradient(to top, var(--ch-background), transparent);
+}
 
+/* File tabs: the Radix tab list — text tabs with an accent underline */
+.mantine-CodeHighlightTabs-filesScrollarea { background-color: transparent; }
+.mantine-CodeHighlightTabs-files {
+  gap: 0;
+  padding: 0 var(--space-2);
+  background-color: transparent;
+  box-shadow: inset 0 -1px 0 0 var(--gray-a5);
+}
+.mantine-CodeHighlightTabs-file,
+[data-mantine-color-scheme] .mantine-CodeHighlightTabs-file {
+  position: relative;
+  height: var(--space-7);
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--gray-a11);
+  font-family: var(--mantine-font-family);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-2);
+  opacity: 1;
+  gap: 6px;
+}
+.mantine-CodeHighlightTabs-file > span,
+.mantine-CodeHighlightTabs-file { display: inline-flex; align-items: center; }
+@media (hover: hover) {
+  .mantine-CodeHighlightTabs-file:hover { color: var(--gray-12); background-color: transparent; }
+}
+.mantine-CodeHighlightTabs-file[data-active] {
+  color: var(--gray-12);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tab-active-letter-spacing);
+  background-color: transparent;
+}
+.mantine-CodeHighlightTabs-file[data-active]::before {
+  content: '';
+  position: absolute;
+  inset-inline: var(--space-2);
+  bottom: 0;
+  height: 2px;
+  background-color: var(--accent-indicator);
+}
+.mantine-CodeHighlightTabs-file:focus-visible { outline: 2px solid var(--focus-8); outline-offset: -2px; border-radius: var(--radius-1); }
+
+.mantine-InlineCodeHighlight-inlineCodeHighlight {
+  background-color: var(--accent-a3);
+  color: var(--accent-a11);
+  border: 0 !important;
+  border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
+  padding: 0.1em 0.25em;
+  font-size: 0.95em;
+}
+.mantine-InlineCodeHighlight-inlineCodeHighlight code { background-color: transparent; }
+
+/* ================================================================================================
+ * NavigationProgress
+ * ============================================================================================= */
+
+.mantine-NavigationProgress-root,
+.mantine-Progress-root.mantine-NavigationProgress-root {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.mantine-NavigationProgress-root .mantine-Progress-section,
+.mantine-NavigationProgress-section { background-color: var(--accent-9); border-radius: 0; }

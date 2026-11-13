@@ -1,145 +1,623 @@
-/* ---------- Buttons: Radix sizes 1–4 = Mantine xs–lg ---------- */
+/*
+ * Buttons and inputs, ported from Radix Themes (base-button.css, button.css, icon-button.css,
+ * text-field.css, text-area.css).
+ *
+ * Sizes: Mantine xs / sm / md / lg = Radix 1 / 2 / 3 / 4 (24 / 32 / 40 / 48px). xl continues the scale.
+ * Variants: filled = solid, light = soft, outline, subtle = ghost, default = gray surface, surface.
+ * Radius is set through Mantine's own variables (--button-radius, --ai-radius, --input-radius),
+ * so the `radius` prop and attached groups keep working.
+ */
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
 .mantine-Button-root {
-  --button-height-xs: 24px;
-  --button-height-sm: 32px;
-  --button-height-md: 40px;
-  --button-height-lg: 48px;
+  --button-height-xs: var(--space-5);
+  --button-height-sm: var(--space-6);
+  --button-height-md: var(--space-7);
+  --button-height-lg: var(--space-8);
   --button-height-xl: 56px;
   --button-height-compact-xs: 20px;
   --button-height-compact-sm: 24px;
   --button-height-compact-md: 28px;
   --button-height-compact-lg: 32px;
   --button-height-compact-xl: 40px;
-  --button-padding-x-xs: 8px;
-  --button-padding-x-sm: 12px;
-  --button-padding-x-md: 16px;
-  --button-padding-x-lg: 24px;
-  --button-padding-x-xl: 32px;
-  font-weight: 500;
-  letter-spacing: 0;
-  transition: background-color 80ms, color 80ms, box-shadow 80ms;
-}
-.mantine-Button-root[data-with-left-section] { padding-inline-start: calc(var(--button-padding-x) * 0.75); }
-.mantine-Button-root[data-with-right-section] { padding-inline-end: calc(var(--button-padding-x) * 0.75); }
-.mantine-Button-section[data-position='left'] { margin-inline-end: 8px; }
-.mantine-Button-section[data-position='right'] { margin-inline-start: 8px; }
-.mantine-Button-root:where(:active):not([data-disabled], :disabled) { transform: none; }
 
-.mantine-ActionIcon-root {
-  --ai-size-xs: 24px;
-  --ai-size-sm: 32px;
-  --ai-size-md: 40px;
-  --ai-size-lg: 48px;
-  --ai-size-xl: 56px;
-  --ai-size-input-xs: 24px;
-  --ai-size-input-sm: 32px;
-  --ai-size-input-md: 40px;
-  --ai-size-input-lg: 48px;
-  --ai-size-input-xl: 56px;
-}
-.mantine-ActionIcon-root:active:not([data-disabled], :disabled),
-.mantine-UnstyledButton-root:active { transform: none; }
+  /* Mantine draws a 1px border where Radix uses an inset shadow, so the padding gives that pixel back */
+  --button-padding-x-xs: calc(var(--space-2) - 1px);
+  --button-padding-x-sm: calc(var(--space-3) - 1px);
+  --button-padding-x-md: calc(var(--space-4) - 1px);
+  --button-padding-x-lg: calc(var(--space-5) - 1px);
+  --button-padding-x-xl: calc(var(--space-6) - 1px);
+  --button-padding-x-compact-xs: 5px;
+  --button-padding-x-compact-sm: 7px;
+  --button-padding-x-compact-md: 9px;
+  --button-padding-x-compact-lg: 11px;
+  --button-padding-x-compact-xl: 15px;
 
-/* Disabled controls: Radix uses a flat gray-a3 fill and gray-a8 text */
-.mantine-Button-root:is(:disabled, [data-disabled]):not([data-loading]),
-.mantine-ActionIcon-root:is(:disabled, [data-disabled]):not([data-loading]) {
-  background: var(--gray-a3);
-  color: var(--gray-a8);
-  border-color: transparent;
-}
+  --button-radius: max(var(--radius-2), var(--radius-full));
+  --button-gap: var(--space-2);
 
-/* The default variant is a Radix "surface" gray button: inset border, subtle hover */
-.mantine-Button-root[data-variant='default'],
-.mantine-ActionIcon-root[data-variant='default'] {
-  border-color: var(--gray-a7);
-}
-
-.mantine-CloseButton-root { color: var(--gray-a11); }
-.mantine-CloseButton-root:hover { background: var(--gray-a3); }
-
-/* ---------- Inputs: Radix TextField (surface) ---------- */
-.mantine-Input-wrapper {
-  --input-height-xs: 24px;
-  --input-height-sm: 32px;
-  --input-height-md: 40px;
-  --input-height-lg: 48px;
-  --input-height-xl: 56px;
-  --input-padding: 8px;
-  --input-placeholder-color: var(--gray-a10);
-  --input-disabled-bg: var(--gray-a3);
-  --input-disabled-color: var(--gray-a11);
-}
-.mantine-Input-wrapper[data-size='md'] { --input-padding: 12px; }
-.mantine-Input-wrapper[data-size='lg'],
-.mantine-Input-wrapper[data-size='xl'] { --input-padding: 16px; }
-
-.mantine-Input-input {
-  border: 0;
-  box-shadow: inset 0 0 0 1px var(--gray-a7);
-  background-color: var(--color-surface);
-  color: var(--gray-12);
+  flex-shrink: 0;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--button-fz, var(--font-size-2));
+  letter-spacing: var(--letter-spacing-2);
+  overflow: visible;
   transition: none;
 }
-.mantine-Input-input[data-variant='filled'] {
-  box-shadow: none;
-  background-color: var(--gray-a3);
+.mantine-Button-root:where([data-size='xs'], [data-size='compact-xs'], [data-size='compact-sm']) {
+  --button-radius: max(var(--radius-1), var(--radius-full));
+  --button-gap: var(--space-1);
+  letter-spacing: var(--letter-spacing-1);
 }
-.mantine-Input-input[data-variant='unstyled'] {
-  box-shadow: none;
-  background: transparent;
+.mantine-Button-root:where([data-size='compact-xs'], [data-size='compact-sm']) { --button-fz: var(--font-size-1); }
+.mantine-Button-root:where([data-size='compact-md'], [data-size='compact-lg']) { --button-fz: var(--font-size-2); }
+.mantine-Button-root:where([data-size='md'], [data-size='compact-xl']) {
+  --button-radius: max(var(--radius-3), var(--radius-full));
+  --button-gap: var(--space-3);
+  --button-fz: var(--font-size-3);
+  letter-spacing: var(--letter-spacing-3);
 }
-.mantine-Input-input:focus,
-.mantine-Input-input:focus-within,
-.mantine-Input-input[data-expanded] {
+.mantine-Button-root:where([data-size='lg']) {
+  --button-radius: max(var(--radius-4), var(--radius-full));
+  --button-gap: var(--space-3);
+  letter-spacing: var(--letter-spacing-4);
+}
+.mantine-Button-root:where([data-size='xl']) {
+  --button-radius: max(var(--radius-5), var(--radius-full));
+  --button-gap: var(--space-3);
+  letter-spacing: var(--letter-spacing-5);
+}
+
+/* Radix keeps the full padding next to an icon and spaces it with the button gap */
+.mantine-Button-root:where([data-with-left-section]) { padding-inline-start: var(--button-padding-x); }
+.mantine-Button-root:where([data-with-right-section]) { padding-inline-end: var(--button-padding-x); }
+.mantine-Button-section[data-position='left'] { margin-inline-end: var(--button-gap); }
+.mantine-Button-section[data-position='right'] { margin-inline-start: var(--button-gap); }
+.mantine-Button-root:not([data-variant='subtle'], [data-variant='transparent']) .mantine-Button-section :where(svg) { opacity: 0.9; }
+.mantine-Button-label { overflow: visible; }
+
+/* Ghost buttons use the regular weight */
+.mantine-Button-root:where([data-variant='subtle']) { font-weight: var(--font-weight-regular); }
+
+/* ==========================================================================
+   ActionIcon (Radix IconButton). The default size "md" is Radix size 2.
+   ========================================================================== */
+.mantine-ActionIcon-root {
+  --ai-size-xs: 20px;
+  --ai-size-sm: var(--space-5);
+  --ai-size-md: var(--space-6);
+  --ai-size-lg: var(--space-7);
+  --ai-size-xl: var(--space-8);
+  --ai-size-input-xs: var(--space-5);
+  --ai-size-input-sm: var(--space-6);
+  --ai-size-input-md: var(--space-7);
+  --ai-size-input-lg: var(--space-8);
+  --ai-size-input-xl: 56px;
+  --ai-radius: max(var(--radius-2), var(--radius-full));
+  flex-shrink: 0;
+  overflow: visible;
+}
+.mantine-ActionIcon-root:where([data-size='xs'], [data-size='sm'], [data-size='input-xs']) { --ai-radius: max(var(--radius-1), var(--radius-full)); }
+.mantine-ActionIcon-root:where([data-size='lg'], [data-size='input-md']) { --ai-radius: max(var(--radius-3), var(--radius-full)); }
+.mantine-ActionIcon-root:where([data-size='xl'], [data-size='input-lg']) { --ai-radius: max(var(--radius-4), var(--radius-full)); }
+.mantine-ActionIcon-root:where([data-size='input-xl']) { --ai-radius: max(var(--radius-5), var(--radius-full)); }
+
+/* ==========================================================================
+   Shared button states
+   ========================================================================== */
+.mantine-Button-root,
+.mantine-ActionIcon-root,
+.mantine-CloseButton-root,
+.mantine-UnstyledButton-root {
+  -webkit-tap-highlight-color: transparent;
+}
+/* No 1px "push" on press: Radix changes color instead */
+.mantine-active:active { transform: none; }
+
+/* solid */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='filled'], [data-variant='gradient']):active:not([data-loading], :disabled, [data-disabled]) {
+  filter: var(--solid-active-filter);
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):focus-visible {
   outline: 2px solid var(--focus-8);
   outline-offset: -1px;
 }
-.mantine-Input-input[data-error] {
-  box-shadow: inset 0 0 0 1px var(--red-a8);
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='filled'], [data-variant='gradient'], [data-variant='white']):focus-visible {
+  outline-offset: 2px;
+}
+
+/* soft */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='light']):focus-visible { outline-color: var(--accent-8); }
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='light']):active:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--accent-a5);
+}
+
+/* ghost */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='subtle']):active:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--accent-a4);
+}
+
+/* outline */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='outline']):active:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--accent-a3);
+}
+
+/* surface: the hover only darkens the border */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='surface']):hover:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--accent-surface);
+  border-color: var(--accent-a8);
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='surface']):active:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--accent-a3);
+  border-color: var(--accent-a8);
+}
+
+/* default: a gray surface button with high-contrast text */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='default']) {
+  background-color: var(--color-surface);
+  border-color: var(--gray-a7);
   color: var(--gray-12);
 }
-.mantine-Input-input[data-error]::placeholder { color: var(--red-a10); }
-.mantine-Input-input[data-error]:focus { outline-color: var(--red-8); }
-.mantine-Input-input:disabled,
-.mantine-Input-input[data-disabled] {
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='default']):hover:not([data-loading], :disabled, [data-disabled]) {
+  background-color: var(--color-surface);
+  border-color: var(--gray-a8);
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='default']):active:not([data-loading], :disabled, [data-disabled]) {
   background-color: var(--gray-a3);
-  box-shadow: inset 0 0 0 1px var(--gray-a6);
-  color: var(--gray-a11);
-  opacity: 1;
+  border-color: var(--gray-a8);
 }
-.mantine-Input-section { color: var(--gray-a11); }
+:is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='default'])[aria-expanded='true'] { border-color: var(--gray-a8); }
 
-.mantine-InputWrapper-label {
-  font-weight: 500;
+/* white keeps a readable accent text in dark mode */
+[data-mantine-color-scheme='dark'] :is(.mantine-Button-root, .mantine-ActionIcon-root):where([data-variant='white']) { color: var(--accent-9); }
+
+/* disabled and loading: flat gray, like Radix [data-disabled] */
+:is(.mantine-Button-root, .mantine-ActionIcon-root):is(:disabled, [data-disabled], [data-loading]) {
+  color: var(--gray-a8);
+  background: var(--gray-a3);
+  border-color: transparent;
+  filter: none;
+  cursor: var(--cursor-disabled, default);
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):is(:disabled, [data-disabled], [data-loading]):where([data-variant='subtle'], [data-variant='transparent']) {
+  background: transparent;
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):is(:disabled, [data-disabled], [data-loading]):where([data-variant='outline']) {
+  background: transparent;
+  border-color: var(--gray-a7);
+}
+:is(.mantine-Button-root, .mantine-ActionIcon-root):is(:disabled, [data-disabled], [data-loading]):where([data-variant='surface'], [data-variant='default']) {
+  background: var(--gray-a2);
+  border-color: var(--gray-a6);
+}
+
+/* loading: the content is hidden in place and a gray spinner sits on top */
+.mantine-Button-root::before { display: none; }
+.mantine-Button-root[data-loading] .mantine-Button-inner,
+.mantine-ActionIcon-root[data-loading] .mantine-ActionIcon-icon {
+  opacity: 0;
+  transform: none;
+  transition: none;
+}
+.mantine-ActionIcon-loader { background-color: transparent; }
+:is(.mantine-Button-loader, .mantine-ActionIcon-loader) :where(.mantine-Loader-root) {
+  --loader-color: var(--gray-a9) !important;
+}
+
+/* Attached groups: neighbours share one 1px line instead of two half-pixel borders */
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='horizontal'] > :not(:first-child) { border-inline-start-width: 0; }
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='horizontal'] > :not(:last-child) { border-inline-end-width: 1px; }
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='vertical'] > :not(:first-child) { border-top-width: 0; }
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='vertical'] > :not(:last-child) { border-bottom-width: 1px; }
+/* Solid neighbours get a hairline between them */
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='horizontal'] > :where([data-variant='filled'], :not([data-variant])):not(:last-child, :disabled, [data-disabled]) { border-inline-end-color: var(--white-a5); }
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='vertical'] > :where([data-variant='filled'], :not([data-variant])):not(:last-child, :disabled, [data-disabled]) { border-bottom-color: var(--white-a5); }
+/* A stacked group can't be a pill */
+:is(.mantine-ButtonGroup-group, .mantine-ActionIconGroup-group)[data-orientation='vertical'] { --radius-full: 0px; }
+.mantine-ButtonGroup-group :where(.mantine-Button-root):focus-visible,
+.mantine-ActionIconGroup-group :where(.mantine-ActionIcon-root):focus-visible { z-index: 1; }
+.mantine-ButtonGroupSection-groupSection,
+.mantine-ActionIconGroupSection-groupSection {
+  --section-height-xs: var(--space-5);
+  --section-height-sm: var(--space-6);
+  --section-height-md: var(--space-7);
+  --section-height-lg: var(--space-8);
+  --section-height-xl: 56px;
+  --section-padding-x-xs: 7px;
+  --section-padding-x-sm: 11px;
+  --section-padding-x-md: 15px;
+  --section-padding-x-lg: 23px;
+  --section-padding-x-xl: 31px;
+  --section-radius: max(var(--radius-2), var(--radius-full));
+  font-weight: var(--font-weight-medium);
+}
+.mantine-ActionIconGroupSection-groupSection {
+  --section-height-xs: 20px;
+  --section-height-sm: var(--space-5);
+  --section-height-md: var(--space-6);
+  --section-height-lg: var(--space-7);
+  --section-height-xl: var(--space-8);
+  --section-height: var(--section-height-md);
+  --section-padding-x-xs: 5px;
+  --section-padding-x-sm: 7px;
+  --section-padding-x-md: 9px;
+  --section-padding-x-lg: 11px;
+  --section-padding-x-xl: 15px;
+}
+:is(.mantine-ButtonGroupSection-groupSection, .mantine-ActionIconGroupSection-groupSection):where([data-variant='default']) {
+  background-color: var(--color-surface);
+  border-color: var(--gray-a7);
   color: var(--gray-12);
-  margin-bottom: 4px;
 }
+
+/* ==========================================================================
+   CloseButton: a gray ghost icon button
+   ========================================================================== */
+.mantine-CloseButton-root {
+  --cb-size-xs: 16px;
+  --cb-size-sm: 20px;
+  --cb-size-md: var(--space-5);
+  --cb-size-lg: var(--space-6);
+  --cb-size-xl: var(--space-7);
+  --cb-icon-size: 15px;
+  --cb-radius: max(var(--radius-1), var(--radius-full));
+  color: var(--gray-a11);
+}
+.mantine-CloseButton-root:where([data-size='xs']) { --cb-icon-size: 11px; }
+.mantine-CloseButton-root:where([data-size='sm']) { --cb-icon-size: 13px; }
+.mantine-CloseButton-root:where([data-size='lg']) { --cb-radius: max(var(--radius-2), var(--radius-full)); --cb-icon-size: 16px; }
+.mantine-CloseButton-root:where([data-size='xl']) { --cb-radius: max(var(--radius-3), var(--radius-full)); --cb-icon-size: 18px; }
+.mantine-CloseButton-root > svg { width: var(--cb-icon-size); height: var(--cb-icon-size); }
+.mantine-CloseButton-root:where([data-variant='subtle']):hover:not(:disabled, [data-disabled]) { background-color: var(--gray-a3); }
+.mantine-CloseButton-root:where([data-variant='subtle']):active:not(:disabled, [data-disabled]) { background-color: var(--gray-a4); }
+.mantine-CloseButton-root:focus-visible { outline: 2px solid var(--focus-8); outline-offset: -1px; }
+.mantine-CloseButton-root:is(:disabled, [data-disabled]) { color: var(--gray-a8); opacity: 1; cursor: var(--cursor-disabled, default); }
+
+/* ==========================================================================
+   Inputs: Radix TextField / TextArea, surface variant
+   ========================================================================== */
+.mantine-Input-wrapper {
+  --input-height-xs: var(--space-5);
+  --input-height-sm: var(--space-6);
+  --input-height-md: var(--space-7);
+  --input-height-lg: var(--space-8);
+  --input-height-xl: 56px;
+
+  /* Distance from the outer edge to the text is 6 / 8 / 12px; 1px of it is the border */
+  --input-padding: calc(var(--space-2) - 1px);
+  --input-radius: max(var(--radius-2), var(--radius-full));
+  --input-color: var(--gray-12);
+  --input-placeholder-color: var(--gray-a10);
+  --input-section-color: var(--gray-a11);
+  --input-disabled-bg: var(--color-surface);
+  --input-disabled-color: var(--gray-a11);
+  --input-focus-color: var(--focus-8);
+  --input-selection-color: var(--focus-a5);
+
+  /* A slot is as wide as the field is tall, so a 16px icon sits 8px from the edge (size 2) */
+  --input-left-section-size: var(--input-left-section-width, calc(var(--input-height) - 1px));
+  --input-right-section-size: var(--input-right-section-width, calc(var(--input-height) - 1px));
+  --left-section-start: 0px;
+  --right-section-end: 0px;
+  --section-y: 0px;
+
+  letter-spacing: var(--letter-spacing-2);
+}
+.mantine-Input-wrapper:where([data-size='xs']) {
+  --input-padding: calc(var(--space-1) * 1.5 - 1px);
+  letter-spacing: var(--letter-spacing-1);
+}
+.mantine-Input-wrapper:where([data-size='md']) {
+  --input-padding: calc(var(--space-3) - 1px);
+  --input-radius: max(var(--radius-3), var(--radius-full));
+  letter-spacing: var(--letter-spacing-3);
+}
+.mantine-Input-wrapper:where([data-size='lg']) {
+  --input-padding: calc(var(--space-4) - 1px);
+  --input-radius: max(var(--radius-4), var(--radius-full));
+  letter-spacing: var(--letter-spacing-4);
+}
+.mantine-Input-wrapper:where([data-size='xl']) {
+  --input-padding: calc(var(--space-4) - 1px);
+  --input-radius: max(var(--radius-5), var(--radius-full));
+  letter-spacing: var(--letter-spacing-5);
+}
+/* Text areas never go fully round */
+.mantine-Input-wrapper:where([data-multiline]) {
+  --input-radius: var(--radius-2);
+  --input-padding-y-xs: calc(var(--space-1) - 1px);
+  --input-padding-y-sm: calc(var(--space-1) * 1.5 - 1px);
+  --input-padding-y-md: calc(var(--space-2) - 1px);
+  --input-padding-y-lg: calc(var(--space-2) * 1.25 - 1px);
+  --input-padding-y-xl: calc(var(--space-3) - 1px);
+  --input-line-height: var(--line-height-2);
+}
+.mantine-Input-wrapper:where([data-multiline][data-size='xs']) { --input-line-height: var(--line-height-1); }
+.mantine-Input-wrapper:where([data-multiline][data-size='md']) { --input-radius: var(--radius-3); --input-line-height: var(--line-height-3); }
+.mantine-Input-wrapper:where([data-multiline][data-size='lg']) { --input-radius: var(--radius-4); --input-line-height: var(--line-height-4); }
+.mantine-Input-wrapper:where([data-multiline][data-size='xl']) { --input-radius: var(--radius-5); --input-line-height: var(--line-height-5); }
+
+/* surface */
+[data-mantine-color-scheme] .mantine-Input-wrapper:where([data-variant='default']) {
+  --input-bd: var(--gray-a7);
+  --input-bg: var(--color-surface);
+  --input-bd-focus: var(--gray-a7);
+}
+/* soft */
+[data-mantine-color-scheme] .mantine-Input-wrapper:where([data-variant='filled']) {
+  --input-bd: transparent;
+  --input-bg: var(--accent-a3);
+  --input-bd-focus: transparent;
+  --input-color: var(--accent-12);
+  --input-placeholder-color: color-mix(in oklab, var(--accent-12) 60%, transparent);
+  --input-section-color: var(--accent-12);
+  --input-focus-color: var(--accent-8);
+  --input-selection-color: var(--accent-a5);
+}
+[data-mantine-color-scheme] .mantine-Input-wrapper:where([data-variant='unstyled']) {
+  --input-focus-color: transparent;
+}
+/* error: what Radix gets from color="red" */
+[data-mantine-color-scheme] .mantine-Input-wrapper[data-error] {
+  --input-color: var(--gray-12);
+  --input-placeholder-color: var(--gray-a10);
+  --input-section-color: var(--gray-a11);
+  --input-focus-color: var(--red-8);
+  --input-selection-color: var(--red-a5);
+}
+[data-mantine-color-scheme] .mantine-Input-wrapper[data-error]:not([data-variant='unstyled']) { --input-bd: var(--red-a8); --input-bd-focus: var(--red-a8); }
+[data-mantine-color-scheme] .mantine-Input-wrapper[data-error][data-variant='filled'] { --input-bd: transparent; --input-bg: var(--red-a3); }
+[data-mantine-color-scheme] .mantine-Input-wrapper[data-success] { --input-section-color: var(--green-a11); --input-focus-color: var(--green-8); }
+[data-mantine-color-scheme] .mantine-Input-wrapper[data-success]:not([data-variant='unstyled']) { --input-bd: var(--green-a8); --input-bd-focus: var(--green-a8); }
+
+.mantine-Input-wrapper:where([data-with-left-section]) { --input-padding-inline-start: var(--input-left-section-size); }
+.mantine-Input-wrapper:where([data-with-right-section]) { --input-padding-inline-end: var(--input-right-section-size); }
+
+.mantine-Input-input {
+  font-weight: var(--font-weight-regular);
+  letter-spacing: inherit;
+  transition: none;
+}
+.mantine-Input-input::selection,
+.mantine-Input-input ::selection { background-color: var(--input-selection-color); }
+.mantine-Input-input:focus,
+.mantine-Input-input:focus-within,
+.mantine-Input-input[data-expanded] {
+  outline: 2px solid var(--input-focus-color);
+  outline-offset: -1px;
+}
+.mantine-Input-wrapper:where([data-variant='default']) .mantine-Input-input { background-clip: padding-box; }
+/* Fields that open a picker darken their border on hover, like a Radix Select trigger */
+.mantine-Input-wrapper:where([data-pointer][data-variant='default']):not([data-error]) .mantine-Input-input:hover:not(:disabled, [data-disabled]) { --input-bd: var(--gray-a8); }
+
+/* disabled and read-only: a gray wash over the surface, softer border, gray-11 text */
+.mantine-Input-input:is(:disabled, [data-disabled], :has(input:disabled)) {
+  opacity: 1;
+  cursor: var(--cursor-disabled, default);
+  background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+  color: var(--gray-a11);
+  -webkit-text-fill-color: var(--gray-a11);
+}
+.mantine-Input-wrapper:where([data-variant='default']) .mantine-Input-input:is(:disabled, [data-disabled], :has(input:disabled)) { --input-bd: var(--gray-a6); }
+.mantine-Input-wrapper:where([data-variant='filled']) .mantine-Input-input:is(:disabled, [data-disabled], :has(input:disabled)) {
+  background-color: var(--gray-a3);
+  background-image: none;
+}
+.mantine-Input-wrapper:where([data-variant='unstyled']) .mantine-Input-input:is(:disabled, [data-disabled]) { background: transparent; }
+.mantine-Input-input:is(:disabled, [data-disabled])::placeholder { opacity: 0.5; }
+.mantine-Input-input:where(input, textarea)[readonly]:not([data-pointer], [aria-haspopup], [role='combobox']) { caret-color: auto; }
+
+.mantine-Input-input:where(:autofill) {
+  -webkit-text-fill-color: var(--gray-12);
+  box-shadow: inset 0 0 0 100px color-mix(in oklab, var(--focus-a2), var(--color-panel-solid) 0%);
+}
+
+/* Text area scrollbars */
+textarea.mantine-Input-input::-webkit-scrollbar { width: var(--space-3); height: var(--space-3); }
+textarea.mantine-Input-input::-webkit-scrollbar-track,
+textarea.mantine-Input-input::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  border: var(--space-1) solid transparent;
+  border-radius: var(--space-3);
+}
+textarea.mantine-Input-input::-webkit-scrollbar-track { background-color: var(--gray-a3); }
+textarea.mantine-Input-input::-webkit-scrollbar-thumb { background-color: var(--gray-a8); }
+textarea.mantine-Input-input::-webkit-scrollbar-thumb:hover { background-color: var(--gray-a9); }
+
+/* Slots */
+.mantine-Input-section { color: var(--input-section-color); }
+.mantine-Input-section :where(.mantine-CloseButton-root) { --cb-size: var(--space-5); --cb-icon-size: 13px; }
+.mantine-Input-wrapper:where([data-size='xs']) .mantine-Input-section :where(.mantine-CloseButton-root) { --cb-size: 16px; --cb-icon-size: 11px; }
+.mantine-Input-placeholder { color: var(--input-placeholder-color); }
+
+/* ---------- Label, description, error ---------- */
+.mantine-InputWrapper-root { line-height: var(--line-height-2); }
+.mantine-InputWrapper-label {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--input-label-size, var(--font-size-2));
+  line-height: var(--line-height-2);
+  color: var(--gray-12);
+  margin-bottom: var(--space-1);
+  vertical-align: top;
+}
+.mantine-InputWrapper-root:has(> .mantine-InputWrapper-description) > .mantine-InputWrapper-label { margin-bottom: 0; }
 .mantine-InputWrapper-required { color: var(--red-a11); }
-.mantine-InputWrapper-description { color: var(--gray-a11); margin-bottom: 6px; }
-.mantine-InputWrapper-error { color: var(--red-a11); margin-top: 4px; }
+.mantine-InputWrapper-description,
+.mantine-InputWrapper-error {
+  line-height: var(--line-height-1);
+  letter-spacing: var(--letter-spacing-1);
+}
+.mantine-InputWrapper-description { color: var(--gray-a11); }
+.mantine-InputWrapper-label + .mantine-InputWrapper-description,
+.mantine-InputWrapper-root > .mantine-InputWrapper-description:first-child { margin-bottom: 6px; }
+.mantine-InputWrapper-error { color: var(--red-a11); }
+.mantine-Input-wrapper { --input-margin-top: 0px !important; --input-margin-bottom: 0px !important; }
+.mantine-Input-wrapper + :is(.mantine-InputWrapper-error, .mantine-InputWrapper-description) { margin-top: var(--space-1); }
 
-/* Number input steppers, password toggle */
-.mantine-NumberInput-controls { gap: 0; }
-.mantine-NumberInput-control { color: var(--gray-a11); border-color: var(--gray-a6); }
-.mantine-NumberInput-control:hover { background: var(--gray-a3); }
-.mantine-PasswordInput-visibilityToggle { color: var(--gray-a11); }
+/* ---------- NumberInput steppers ---------- */
+.mantine-NumberInput-root { --ni-right-section-width-xs: 20px; --ni-right-section-width-sm: 24px; --ni-right-section-width-md: 28px; --ni-right-section-width-lg: 32px; --ni-right-section-width-xl: 36px; }
+.mantine-NumberInput-controls {
+  --ni-chevron-size-xs: 10px;
+  --ni-chevron-size-sm: 12px;
+  --ni-chevron-size-md: 14px;
+  --ni-chevron-size-lg: 16px;
+  --ni-chevron-size-xl: 18px;
+  height: calc(var(--input-height) - 2px);
+  max-width: none;
+  width: calc(100% - 1px);
+  margin-inline-end: 1px;
+  padding-block: 2px;
+  padding-inline-end: 2px;
+  gap: 0;
+}
+.mantine-NumberInput-control {
+  --control-radius: max(calc(var(--input-radius) - 3px), 0px);
+  border: 0;
+  height: auto;
+  color: var(--gray-a11);
+  border-radius: min(var(--control-radius), 6px) !important;
+}
+.mantine-NumberInput-control:hover:not(:disabled) { background-color: var(--gray-a3); }
+.mantine-NumberInput-control:active:not(:disabled) { background-color: var(--gray-a4); }
+.mantine-NumberInput-control:disabled { opacity: 1; color: var(--gray-a8); }
+.mantine-NumberInput-root[data-error] .mantine-NumberInput-control { color: var(--gray-a11); }
 
-.mantine-PinInput-input { text-align: center; }
+/* ---------- PasswordInput ---------- */
+.mantine-PasswordInput-root {
+  --psi-button-size-xs: 16px;
+  --psi-button-size-sm: var(--space-5);
+  --psi-button-size-md: 28px;
+  --psi-button-size-lg: var(--space-6);
+  --psi-button-size-xl: var(--space-7);
+  --psi-icon-size-xs: 12px;
+  --psi-icon-size-sm: 15px;
+  --psi-icon-size-md: 16px;
+  --psi-icon-size-lg: 18px;
+  --psi-icon-size-xl: 20px;
+}
+.mantine-PasswordInput-innerInput { letter-spacing: inherit; line-height: inherit; }
+.mantine-PasswordInput-visibilityToggle {
+  --ai-radius: max(var(--radius-1), var(--radius-full));
+  color: var(--gray-a11);
+  background: transparent;
+  border-color: transparent;
+}
+.mantine-PasswordInput-visibilityToggle:hover:not(:disabled) { background-color: var(--gray-a3); color: var(--gray-a11); }
+.mantine-PasswordInput-visibilityToggle:active:not(:disabled) { background-color: var(--gray-a4); }
+
+/* ---------- PinInput ---------- */
+.mantine-PinInput-root {
+  --pin-input-size-xs: var(--space-5);
+  --pin-input-size-sm: var(--space-6);
+  --pin-input-size-md: var(--space-7);
+  --pin-input-size-lg: var(--space-8);
+  --pin-input-size-xl: 56px;
+}
+.mantine-PinInput-input { text-align: center; padding-inline: 0; font-variant-numeric: tabular-nums; }
+.mantine-PinInput-root .mantine-Input-wrapper { --input-radius: max(var(--radius-2), calc(var(--radius-full) * 0)); }
+
+/* ---------- ColorInput ---------- */
+.mantine-ColorInput-root {
+  --ci-eye-dropper-icon-size-xs: 12px;
+  --ci-eye-dropper-icon-size-sm: 15px;
+  --ci-eye-dropper-icon-size-md: 16px;
+  --ci-eye-dropper-icon-size-lg: 18px;
+  --ci-eye-dropper-icon-size-xl: 20px;
+}
+.mantine-ColorInput-eyeDropperButton {
+  --ci-button-size-xs: 16px;
+  --ci-button-size-sm: var(--space-5);
+  --ci-button-size-md: 28px;
+  --ci-button-size-lg: var(--space-6);
+  --ci-button-size-xl: var(--space-7);
+  --ai-radius: max(var(--radius-1), var(--radius-full));
+  color: var(--gray-a11);
+  background: transparent;
+  border-color: transparent;
+}
+.mantine-ColorInput-eyeDropperButton:hover:not(:disabled) { background-color: var(--gray-a3); color: var(--gray-a11); }
+.mantine-ColorInput-colorPreview {
+  --ci-preview-size-xs: 12px;
+  --ci-preview-size-sm: 16px;
+  --ci-preview-size-md: 20px;
+  --ci-preview-size-lg: 24px;
+  --ci-preview-size-xl: 28px;
+  --cs-radius: max(var(--radius-1), var(--radius-full));
+}
+
+/* ---------- Pills (values inside MultiSelect, TagsInput, PillsInput): a gray soft badge ---------- */
+.mantine-Pill-root {
+  --pill-fz-xs: 11px;
+  --pill-fz-sm: var(--font-size-1);
+  --pill-fz-md: var(--font-size-1);
+  --pill-fz-lg: var(--font-size-2);
+  --pill-fz-xl: var(--font-size-3);
+  --pill-height-xs: 16px;
+  --pill-height-sm: 20px;
+  --pill-height-md: 24px;
+  --pill-height-lg: 28px;
+  --pill-height-xl: 32px;
+  --pill-radius: max(var(--radius-1), var(--radius-full));
+  background-color: var(--gray-a3);
+  color: var(--gray-12);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-1);
+  padding-inline: 6px;
+}
+.mantine-Pill-root:where([data-size='md'], [data-size='lg'], [data-size='xl']) { --pill-radius: max(var(--radius-2), var(--radius-full)); padding-inline: var(--space-2); }
+[data-mantine-color-scheme] .mantine-Pill-root { background-color: var(--gray-a3); color: var(--gray-12); }
+[data-mantine-color-scheme] .mantine-Pill-root:where([data-disabled], :has(button:disabled)) { background-color: var(--gray-a3); color: var(--gray-a8); }
+.mantine-Pill-root:where([data-with-remove]:not(:has(button:disabled))) { padding-inline-end: 2px; }
+.mantine-Pill-label { line-height: var(--pill-height); }
+.mantine-Pill-remove {
+  --cb-size: calc(var(--pill-height) - 4px);
+  --cb-icon-size: 11px;
+  --cb-radius: max(calc(var(--radius-1) - 1px), var(--radius-full));
+  width: var(--cb-size);
+  height: var(--cb-size);
+  min-width: var(--cb-size);
+  min-height: var(--cb-size);
+  padding: 0;
+  margin-inline-start: 2px;
+  border-radius: var(--cb-radius);
+  color: var(--gray-a11);
+}
+.mantine-Pill-remove:hover:not(:disabled) { background-color: var(--gray-a4); color: var(--gray-12); }
+.mantine-PillGroup-group { --pg-gap-xs: 4px; --pg-gap-sm: 4px; --pg-gap-md: 6px; --pg-gap-lg: 8px; --pg-gap-xl: 8px; }
+.mantine-PillsInputField-field { letter-spacing: inherit; height: 20px; }
+.mantine-Input-wrapper:where([data-size='xs']) .mantine-PillsInputField-field { height: 16px; }
+.mantine-Input-wrapper:where([data-size='md']) .mantine-PillsInputField-field { height: 24px; }
+.mantine-Input-wrapper:where([data-size='lg']) .mantine-PillsInputField-field { height: 28px; }
+.mantine-Input-wrapper:where([data-size='xl']) .mantine-PillsInputField-field { height: 32px; }
+.mantine-PillsInputField-field:where([data-type='hidden'], [data-type='auto']:not(:focus)) { height: 1px; }
+/* Fields that hold pills grow with them and pad to keep a 20px pill centred in a 32px field */
+.mantine-Input-wrapper:where([data-multiline]):has(.mantine-PillGroup-group) { --input-padding-y-xs: 3px; --input-padding-y-sm: 5px; --input-padding-y-md: 7px; --input-padding-y-lg: 9px; --input-padding-y-xl: 11px; --input-radius: max(var(--radius-2), calc(var(--radius-full) * 0)); }
 
 /* ---------- Fieldset ---------- */
-.mantine-Fieldset-root { border-color: var(--gray-a6); background: transparent; border-radius: var(--mantine-radius-lg); }
-.mantine-Fieldset-root[data-variant='filled'] { background: var(--gray-a2); border-color: var(--gray-a5); }
-.mantine-Fieldset-legend { font-weight: 500; color: var(--gray-12); }
-
-/* ---------- Pills ---------- */
-.mantine-Pill-root {
-  background-color: var(--gray-a3);
-  color: var(--gray-12);
-  font-weight: 500;
-  border-radius: max(var(--mantine-radius-xs), var(--radius-full));
+.mantine-Fieldset-root {
+  --fieldset-radius: var(--radius-4);
+  padding: var(--space-4);
+  padding-top: var(--space-2);
 }
-.mantine-Pill-remove { color: var(--gray-a11); }
+[data-mantine-color-scheme] .mantine-Fieldset-root:where([data-variant='default']) { border-color: var(--gray-a6); background-color: transparent; }
+[data-mantine-color-scheme] .mantine-Fieldset-root:where([data-variant='filled']) { border-color: transparent; background-color: var(--gray-a2); }
+.mantine-Fieldset-root:where([data-variant='unstyled']) { padding: 0; }
+.mantine-Fieldset-legend {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray-12);
+  padding-inline: var(--space-1);
+  margin-inline-start: calc(var(--space-1) * -1);
+}
 
-/* Attached groups stay rectangular when the theme radius is "full" */
-.mantine-ButtonGroup-group,
-.mantine-ActionIconGroup-group { --radius-full: 0px; }
+/* The chevron of a Select-like field stays gray, also when the field has an error */
+.mantine-Input-section :where(.mantine-ComboboxChevron-chevron, [class*='-chevron']) { --combobox-chevron-color: var(--gray-a11); color: var(--gray-a11); opacity: 0.9; }
+.mantine-Input-wrapper:where([data-variant='filled']) .mantine-Input-section :where(.mantine-ComboboxChevron-chevron, [class*='-chevron']) { color: var(--accent-12); }
+.mantine-ComboboxChevron-chevron {
+  --combobox-chevron-size-xs: 12px;
+  --combobox-chevron-size-sm: 15px;
+  --combobox-chevron-size-md: 16px;
+  --combobox-chevron-size-lg: 18px;
+  --combobox-chevron-size-xl: 20px;
+}
