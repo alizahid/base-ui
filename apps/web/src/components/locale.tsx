@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from 'cn'
+import { IconButton } from '@repo/ui'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 
@@ -16,14 +16,11 @@ export function LocaleSwitcher() {
   return (
     <nav className="flex gap-2">
       {routing.locales.map((item) => (
-        <Link
-          className={cn(
-            'flex size-8 items-center justify-center rounded-md hover:bg-(--gray-3)',
-            item === locale && 'bg-(--accent-5)',
-          )}
-          href={pathname}
+        <IconButton
           key={item}
-          locale={item}
+          nativeButton={false}
+          render={<Link href={pathname} locale={item} role="link" />}
+          variant={item === locale ? 'soft' : 'ghost'}
         >
           <Image
             alt={t(item)}
@@ -33,7 +30,7 @@ export function LocaleSwitcher() {
             unoptimized
             width={20}
           />
-        </Link>
+        </IconButton>
       ))}
     </nav>
   )

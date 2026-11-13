@@ -67,6 +67,8 @@
 @import "@repo/ui/theme.css";
 @import "@repo/ui/styles.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   @apply relative bg-(--gray-1) text-(--gray-12);
 }

@@ -5,8 +5,9 @@ export * from './components/provider/index.js'
 // components
 
 export * from './components/avatar/index.js'
-export * from './components/button/index.js'
+export { Button, type ButtonProps } from './components/button/index.js'
 export * from './components/field/index.js'
+export * from './components/icon-button/index.js'
 export * from './components/spinner/index.js'
 export type {
   TextFieldRootProps,

@@ -15,6 +15,7 @@
     "button": "الزر",
     "components": "المكونات",
     "field": "الحقل",
+    "icon-button": "زر الأيقونة",
     "spinner": "مؤشر التحميل",
     "text-field": "حقل النص"
   }

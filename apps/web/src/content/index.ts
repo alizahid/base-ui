@@ -2,6 +2,7 @@ export const pages = [
   'avatar',
   'button',
   'field',
+  'icon-button',
   'spinner',
   'text-field',
 ] as const

@@ -1,4 +1,4 @@
-import { Avatar, Button, Field, Spinner, TextField } from '@repo/ui'
+import { Avatar, Button, Field, IconButton, Spinner, TextField } from '@repo/ui'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
 import { type MDXComponents } from 'mdx/types'
 import { type ComponentProps } from 'react'
@@ -20,6 +20,7 @@ const components: MDXComponents = {
   h1: (props) => <h1 className="mb-4 text-4xl font-bold" {...props} />,
   h2: (props) => <h2 className="mt-10 mb-4 text-2xl font-bold" {...props} />,
   h3: (props) => <h3 className="mt-8 text-lg font-bold" {...props} />,
+  IconButton,
   Spinner,
 }
 

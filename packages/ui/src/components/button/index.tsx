@@ -5,7 +5,7 @@ import {
   type ButtonProps as ComponentProps,
 } from '@base-ui/react/button'
 import * as stylex from '@stylexjs/stylex'
-import { type CSSProperties } from 'react'
+import { type CSSProperties, type ReactNode } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
@@ -23,7 +23,7 @@ export type ButtonProps = ComponentProps & {
   variant?: 'solid' | 'soft' | 'surface' | 'outline' | 'ghost'
 }
 
-export function Button({
+export function ButtonBase({
   children,
   className,
   color,
@@ -33,8 +33,11 @@ export function Button({
   size = '2',
   style,
   variant = 'solid',
+  xstyle,
   ...props
-}: ButtonProps) {
+}: ButtonProps & {
+  xstyle?: stylex.StyleXStyles
+}) {
   return (
     <Component
       data-accent={color}
@@ -46,6 +49,7 @@ export function Button({
           variants[variant],
           sizes[size],
           radius && radii[radius],
+          xstyle,
         ),
         className,
         style,
@@ -62,6 +66,8 @@ export function Button({
   )
 }
 
+export const Button: (props: ButtonProps) => ReactNode = ButtonBase
+
 const styles = stylex.create({
   loading: {
     alignItems: 'center',
@@ -75,8 +81,8 @@ const styles = stylex.create({
   main: {
     alignItems: 'center',
     backgroundColor: {
-      ':enabled:active': 'var(--background-active)',
-      ':enabled:hover': 'var(--background-hover)',
+      ':not(:disabled):active': 'var(--background-active)',
+      ':not(:disabled):hover:not(:active)': 'var(--background-hover)',
       default: 'var(--background)',
     },
     boxShadow: 'inset 0 0 0 1px var(--border)',
@@ -132,7 +138,7 @@ const variants = stylex.create({
     '--color': 'var(--accent-contrast)',
     filter: {
       ':disabled': 'grayscale(1)',
-      ':enabled:active': 'brightness(0.92) saturate(1.1)',
+      ':not(:disabled):active': 'brightness(0.92) saturate(1.1)',
     },
     outlineOffset: 2,
   },

@@ -15,6 +15,7 @@
     "button": "Button",
     "components": "Components",
     "field": "Field",
+    "icon-button": "Icon Button",
     "spinner": "Spinner",
     "text-field": "Text Field"
   }
