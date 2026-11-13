@@ -1,8 +1,12 @@
 export const pages = [
   'avatar',
   'button',
+  'checkbox',
+  'checkbox-group',
   'field',
   'icon-button',
+  'radio',
+  'radio-group',
   'spinner',
   'text-field',
 ] as const

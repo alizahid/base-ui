@@ -13,9 +13,13 @@
   "nav": {
     "avatar": "الصورة الرمزية",
     "button": "الزر",
+    "checkbox": "خانة الاختيار",
+    "checkbox-group": "مجموعة خانات الاختيار",
     "components": "المكونات",
     "field": "الحقل",
     "icon-button": "زر الأيقونة",
+    "radio": "زر الاختيار",
+    "radio-group": "مجموعة أزرار الاختيار",
     "spinner": "مؤشر التحميل",
     "text-field": "حقل النص"
   }

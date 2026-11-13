@@ -13,9 +13,13 @@
   "nav": {
     "avatar": "Avatar",
     "button": "Button",
+    "checkbox": "Checkbox",
+    "checkbox-group": "Checkbox-Gruppe",
     "components": "Komponenten",
     "field": "Feld",
     "icon-button": "Icon-Button",
+    "radio": "Radio",
+    "radio-group": "Radio-Gruppe",
     "spinner": "Spinner",
     "text-field": "Textfeld"
   }
