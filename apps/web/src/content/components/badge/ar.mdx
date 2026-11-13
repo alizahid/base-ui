@@ -1,0 +1,64 @@
+import { ArrowUpRightIcon, ClockIcon, PencilSimpleIcon, SealCheckIcon, TrendUpIcon, XCircleIcon } from '@phosphor-icons/react/ssr'
+
+# الشارة
+
+## أمثلة
+
+### الحجم
+
+<Example>
+  <Badge size="1">جديد</Badge>
+  <Badge size="2">جديد</Badge>
+  <Badge size="3">جديد</Badge>
+</Example>
+
+### النمط
+
+<Example>
+  <Badge variant="solid">جديد</Badge>
+  <Badge variant="soft">جديد</Badge>
+  <Badge variant="surface">جديد</Badge>
+  <Badge variant="outline">جديد</Badge>
+</Example>
+
+### اللون
+
+<Example>
+  <Badge color="orange">قيد التنفيذ</Badge>
+  <Badge color="green">مكتمل</Badge>
+  <Badge color="red">مرفوض</Badge>
+  <Badge color="gray">جديد</Badge>
+</Example>
+
+### تباين عالٍ
+
+<Example>
+  <Badge highContrast variant="solid">جديد</Badge>
+  <Badge highContrast variant="soft">جديد</Badge>
+  <Badge highContrast variant="surface">جديد</Badge>
+  <Badge highContrast variant="outline">جديد</Badge>
+</Example>
+
+### نصف القطر
+
+<Example>
+  <Badge radius="none">جديد</Badge>
+  <Badge radius="md">جديد</Badge>
+  <Badge radius="full">جديد</Badge>
+</Example>
+
+### مع أيقونات
+
+<Example>
+  <Badge className="ps-1" color="green"><SealCheckIcon className="size-3.5" />موثّق</Badge>
+  <Badge className="ps-1.5" color="orange" radius="full"><ClockIcon className="size-3.5" />قيد التنفيذ</Badge>
+  <Badge className="ps-1" color="red"><XCircleIcon className="size-3.5" />مرفوض</Badge>
+  <Badge className="ps-1" color="gray"><PencilSimpleIcon className="size-3.5" />مسودة</Badge>
+</Example>
+
+<Example>
+  <Badge className="ps-2" color="green" radius="full" size="2" variant="solid"><SealCheckIcon className="size-[1lh]" weight="fill" />موثّق</Badge>
+  <Badge className="ps-2" radius="full" size="2" variant="surface"><TrendUpIcon className="size-[1lh]" />رائج</Badge>
+  <Badge className="pe-2" color="gray" radius="full" size="2" variant="outline">المستندات<ArrowUpRightIcon className="size-[1lh]" /></Badge>
+  <Badge className="ps-2.5" color="green" radius="full" size="3"><SealCheckIcon className="size-[1lh]" />موثّق</Badge>
+</Example>

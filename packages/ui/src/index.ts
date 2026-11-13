@@ -9,6 +9,7 @@ export * from './components/provider/index.js'
 
 export * from './components/alert-dialog/index.js'
 export * from './components/avatar/index.js'
+export * from './components/badge/index.js'
 export * from './components/button/index.js'
 export * from './components/checkbox/index.js'
 export * from './components/checkbox-group/index.js'

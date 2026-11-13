@@ -1,6 +1,7 @@
 import {
   AlertDialog,
   Avatar,
+  Badge,
   Button,
   Checkbox,
   CheckboxGroup,
@@ -45,6 +46,7 @@ function Example(props: ComponentProps<'div'>) {
 const components: MDXComponents = {
   AsyncCombobox,
   Avatar,
+  Badge,
   Button,
   Checkbox,
   CollapsedCombobox,

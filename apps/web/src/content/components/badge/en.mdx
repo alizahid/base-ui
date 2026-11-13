@@ -1,0 +1,64 @@
+import { ArrowUpRightIcon, ClockIcon, PencilSimpleIcon, SealCheckIcon, TrendUpIcon, XCircleIcon } from '@phosphor-icons/react/ssr'
+
+# Badge
+
+## Examples
+
+### Size
+
+<Example>
+  <Badge size="1">New</Badge>
+  <Badge size="2">New</Badge>
+  <Badge size="3">New</Badge>
+</Example>
+
+### Variant
+
+<Example>
+  <Badge variant="solid">New</Badge>
+  <Badge variant="soft">New</Badge>
+  <Badge variant="surface">New</Badge>
+  <Badge variant="outline">New</Badge>
+</Example>
+
+### Color
+
+<Example>
+  <Badge color="orange">In progress</Badge>
+  <Badge color="green">Complete</Badge>
+  <Badge color="red">Rejected</Badge>
+  <Badge color="gray">New</Badge>
+</Example>
+
+### High contrast
+
+<Example>
+  <Badge highContrast variant="solid">New</Badge>
+  <Badge highContrast variant="soft">New</Badge>
+  <Badge highContrast variant="surface">New</Badge>
+  <Badge highContrast variant="outline">New</Badge>
+</Example>
+
+### Radius
+
+<Example>
+  <Badge radius="none">New</Badge>
+  <Badge radius="md">New</Badge>
+  <Badge radius="full">New</Badge>
+</Example>
+
+### With icons
+
+<Example>
+  <Badge className="ps-1" color="green"><SealCheckIcon className="size-3.5" />Verified</Badge>
+  <Badge className="ps-1.5" color="orange" radius="full"><ClockIcon className="size-3.5" />In progress</Badge>
+  <Badge className="ps-1" color="red"><XCircleIcon className="size-3.5" />Rejected</Badge>
+  <Badge className="ps-1" color="gray"><PencilSimpleIcon className="size-3.5" />Draft</Badge>
+</Example>
+
+<Example>
+  <Badge className="ps-2" color="green" radius="full" size="2" variant="solid"><SealCheckIcon className="size-[1lh]" weight="fill" />Verified</Badge>
+  <Badge className="ps-2" radius="full" size="2" variant="surface"><TrendUpIcon className="size-[1lh]" />Trending</Badge>
+  <Badge className="pe-2" color="gray" radius="full" size="2" variant="outline">Docs<ArrowUpRightIcon className="size-[1lh]" /></Badge>
+  <Badge className="ps-2.5" color="green" radius="full" size="3"><SealCheckIcon className="size-[1lh]" />Verified</Badge>
+</Example>

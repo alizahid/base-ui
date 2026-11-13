@@ -13,6 +13,7 @@
   "nav": {
     "alert-dialog": "Warndialog",
     "avatar": "Avatar",
+    "badge": "Badge",
     "button": "Button",
     "checkbox": "Checkbox",
     "checkbox-group": "Checkbox-Gruppe",
