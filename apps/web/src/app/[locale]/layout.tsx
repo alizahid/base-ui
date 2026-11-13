@@ -1,13 +1,13 @@
 import '../main.css'
 
 import { BaseProvider } from '@repo/ui'
+import { ThemeProvider } from '@wrksz/themes/next'
 import { cn } from 'cn'
 import { type Metadata } from 'next'
 import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
-import { ThemeProvider } from 'next-themes'
 
 import { LocaleSwitcher } from '../../components/locale'
 import { Sidebar } from '../../components/sidebar'

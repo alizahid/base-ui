@@ -2,8 +2,8 @@
 
 import { MoonIcon, SunIcon } from '@phosphor-icons/react/dist/ssr'
 import { IconButton } from '@repo/ui'
+import { useTheme } from '@wrksz/themes/client'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
 
 export function Theme() {
   const t = useTranslations('header')
