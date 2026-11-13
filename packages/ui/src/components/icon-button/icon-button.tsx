@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { ButtonBase, type ButtonProps } from '../button/index.js'
+import { ButtonBase, type ButtonProps } from '../button/button.js'
 
 export type IconButtonProps = ButtonProps
 

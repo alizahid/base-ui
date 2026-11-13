@@ -5,10 +5,7 @@ import {
   type InputProps as ComponentProps,
 } from '@base-ui/react/input'
 import * as stylex from '@stylexjs/stylex'
-import {
-  type CSSProperties,
-  type ComponentProps as ReactComponentProps,
-} from 'react'
+import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
@@ -59,51 +56,22 @@ export function Root({
   )
 }
 
-export type TextFieldSlotProps = ReactComponentProps<'div'> & {
-  side?: 'start' | 'end'
-}
-
-// rendered after the input whichever side it is on; `side` only orders it.
-// data-side lets the input drop its indent on an edge that has a slot
-export function Slot({
-  className,
-  side = 'start',
-  style,
-  ...props
-}: TextFieldSlotProps) {
-  return (
-    <div
-      {...props}
-      data-side={side}
-      {...merge(
-        stylex.props(styles.slot, side === 'start' ? styles.start : styles.end),
-        className,
-        style,
-      )}
-    />
-  )
-}
-
 // stylex doesn't order these against each other, so wherever one property
 // uses more than one of them they must not overlap
 const invalid = ':has(input[data-invalid])'
+
 const readOnly =
   ':has(input:is(:disabled, :read-only)):not(:has(input[data-invalid]))'
+
 const autofill =
   ':has(input:autofill):not(:has(input:is(:disabled, :read-only, [data-invalid])))'
+
 const date =
   ':is([type="date"], [type="datetime-local"], [type="time"], [type="week"], [type="month"])'
 
 // ported from radix themes' text-field.css, with solid colors in place of
 // alpha ones. the invalid state is ours, for Field
 const styles = stylex.create({
-  // the edge-side padding gives up the border's width. radix uses a negative
-  // margin for this; padding leaves margin free for a consumer's className
-  end: {
-    paddingInlineEnd:
-      'calc(var(--text-field-slot-padding) - var(--text-field-border-width))',
-    paddingInlineStart: 'var(--text-field-slot-padding)',
-  },
   input: {
     '--text-field-placeholder-opacity': {
       ':is(:disabled, :read-only)': '0.5',
@@ -199,21 +167,6 @@ const styles = stylex.create({
     outlineOffset: -1,
     padding: 'var(--text-field-border-width)',
     textAlign: 'start',
-  },
-  slot: {
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    color: 'var(--text-field-slot)',
-    cursor: 'text',
-    display: 'flex',
-    flexShrink: 0,
-    gap: 'var(--text-field-slot-gap)',
-  },
-  start: {
-    order: -1,
-    paddingInlineEnd: 'var(--text-field-slot-padding)',
-    paddingInlineStart:
-      'calc(var(--text-field-slot-padding) - var(--text-field-border-width))',
   },
 })
 

@@ -2,11 +2,6 @@
 
 import {
   Dialog as Component,
-  type DialogCloseProps as ComponentCloseProps,
-  type DialogDescriptionProps as ComponentDescriptionProps,
-  type DialogRootProps as ComponentRootProps,
-  type DialogTitleProps as ComponentTitleProps,
-  type DialogTriggerProps as ComponentTriggerProps,
   type DialogPopupProps,
 } from '@base-ui/react/dialog'
 import * as stylex from '@stylexjs/stylex'
@@ -14,20 +9,6 @@ import { type CSSProperties, use } from 'react'
 
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
-
-export type DialogRootProps = ComponentRootProps
-
-export function Root(props: DialogRootProps) {
-  return <Component.Root {...props} />
-}
-
-export type DialogTriggerProps = ComponentTriggerProps
-
-// unstyled: pass the element to open the dialog with as `render`, e.g.
-// render={<Button />}
-export function Trigger(props: DialogTriggerProps) {
-  return <Component.Trigger {...props} />
-}
 
 export type DialogContentProps = DialogPopupProps & {
   align?: 'start' | 'center'
@@ -73,46 +54,8 @@ export function Content({
   )
 }
 
-export type DialogTitleProps = ComponentTitleProps & {
-  className?: string
-  style?: CSSProperties
-}
-
-export function Title({ className, style, ...props }: DialogTitleProps) {
-  return (
-    <Component.Title
-      {...props}
-      {...merge(stylex.props(styles.title), className, style)}
-    />
-  )
-}
-
-export type DialogDescriptionProps = ComponentDescriptionProps & {
-  className?: string
-  style?: CSSProperties
-}
-
-export function Description({
-  className,
-  style,
-  ...props
-}: DialogDescriptionProps) {
-  return (
-    <Component.Description
-      {...props}
-      {...merge(stylex.props(styles.description), className, style)}
-    />
-  )
-}
-
-export type DialogCloseProps = ComponentCloseProps
-
-// unstyled, like Trigger: render={<Button />}
-export function Close(props: DialogCloseProps) {
-  return <Component.Close {...props} />
-}
-
 const hidden = ':is([data-starting-style], [data-ending-style])'
+
 const still = '@media (prefers-reduced-motion: reduce)'
 
 // ported from radix themes' base-dialog.css. radix animates with keyframes;
@@ -164,11 +107,6 @@ const styles = stylex.create({
     width: '100%',
     zIndex: 1,
   },
-  description: {
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
-    margin: 0,
-  },
   // keeps the dialog off the edges of the screen, and scrolls with it when
   // the dialog is taller than the screen
   padding: {
@@ -180,13 +118,6 @@ const styles = stylex.create({
   },
   start: {
     marginBlockStart: 0,
-  },
-  title: {
-    fontSize: 'var(--text-xl)',
-    fontWeight: '700',
-    lineHeight: 'var(--text-xl--line-height)',
-    margin: 0,
-    marginBlockEnd: 'calc(var(--spacing) * 3)',
   },
   viewport: {
     display: 'flex',
