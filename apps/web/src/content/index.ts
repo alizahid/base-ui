@@ -22,6 +22,7 @@ export const pages = [
   'switch',
   'text-area',
   'text-field',
+  'toast',
   'tooltip',
 ] as const
 

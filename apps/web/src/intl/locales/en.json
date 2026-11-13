@@ -35,6 +35,7 @@
     "switch": "Switch",
     "text-area": "Text Area",
     "text-field": "Text Field",
+    "toast": "Toast",
     "tooltip": "Tooltip"
   }
 }

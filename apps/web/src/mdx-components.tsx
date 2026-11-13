@@ -30,6 +30,7 @@ import { type ComponentProps } from 'react'
 
 import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CollapsedSelect } from './components/demos/select'
+import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 
 function Example(props: ComponentProps<'div'>) {
   return (
@@ -59,6 +60,8 @@ const components: MDXComponents = {
   Slider,
   Spinner,
   Switch,
+  ToastDemo,
+  ToastPromiseDemo,
   Tooltip,
 }
 

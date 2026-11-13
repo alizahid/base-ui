@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 
+import { Toaster } from '../../components/demos/toast'
 import { LocaleSwitcher } from '../../components/locale'
 import { Sidebar } from '../../components/sidebar'
 import { Theme } from '../../components/theme'
@@ -83,6 +84,8 @@ export default async function Layout({
               </aside>
 
               <main className="min-h-screen flex-1 p-6">{children}</main>
+
+              <Toaster />
             </BaseProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
