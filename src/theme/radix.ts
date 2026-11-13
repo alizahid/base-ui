@@ -2,10 +2,10 @@ import * as radix from '@radix-ui/colors'
 import {
   type CSSVariablesResolver,
   createTheme,
-  getRadius,
   defaultCssVariablesResolver,
   defaultVariantColorsResolver,
   type MantineColorsTuple,
+  type MantineTheme,
   type MantineThemeOverride,
   parseThemeColor,
   type VariantColorsResolver,
@@ -218,14 +218,34 @@ const variantColorResolver: VariantColorsResolver = (input) => {
 }
 
 const rem = (px: number) => `${px / 16}rem`
-const radius = (px: number) => `calc(${rem(px)} * var(--radius-factor, 1))`
+const radius = (n: number) => `var(--radius-${n})`
 
-type SizedProps = { size?: string | number; radius?: string | number }
-const SIZE_RADIUS: Record<string, string> = { xs: 'xs', sm: 'sm', md: 'md', lg: 'lg', xl: 'xl' }
-function controlRadius({ size, radius }: SizedProps) {
-  if (radius !== undefined) return getRadius(radius)
-  const key = typeof size === 'string' ? (SIZE_RADIUS[size.replace(/^(compact|input)-/, '')] ?? 'sm') : 'sm'
-  return `max(var(--mantine-radius-${key}), var(--radius-full))`
+/**
+ * Radix components read their color from --accent-*. A Mantine `color` prop becomes a class
+ * that swaps that scale for one component, the same way Radix's data-accent-color does.
+ */
+const ACCENT_KEYS = [...steps.flatMap((n) => [`${n}`, `a${n}`]), 'contrast', 'surface', 'indicator', 'track']
+export const accentClassesCss = [...accents, ...grays]
+  .map((c) => {
+    const vars = ACCENT_KEYS.map((k) => `--accent-${k}:var(--${c}-${k})`).join(';')
+    // Like Radix, the focus ring follows the component color, except for gray
+    const focus = c === 'gray' ? '' : ';--focus-8:var(--accent-8);--focus-a8:var(--accent-a8)'
+    return `.rx-accent-${c}{${vars}${focus}}`
+  })
+  .join('\n')
+
+/** Components with a `color` prop. Each gets the accent class on its root. */
+const COLORED = [
+  'ActionIcon', 'Alert', 'AngleSlider', 'Anchor', 'Avatar', 'Badge', 'Blockquote', 'Burger', 'Button', 'Checkbox',
+  'CheckboxIndicator', 'Chip', 'Code', 'Highlight', 'Indicator', 'Loader', 'Mark', 'NavLink', 'Notification',
+  'Pagination', 'Progress', 'Radio', 'RadioIndicator', 'RangeSlider', 'Rating', 'SegmentedControl', 'Slider',
+  'Stepper', 'Switch', 'TableOfContents', 'Tabs', 'ThemeIcon', 'Timeline', 'Toggle',
+]
+
+function accentClass(theme: MantineTheme, color: unknown) {
+  if (typeof color !== 'string') return undefined
+  const parsed = parseThemeColor({ color, theme })
+  return parsed.isThemeColor ? `rx-accent-${scaleOf(parsed.color)}` : undefined
 }
 
 export function createRadixTheme(accent: Accent, gray: Gray): MantineThemeOverride {
@@ -251,7 +271,7 @@ export function createRadixTheme(accent: Accent, gray: Gray): MantineThemeOverri
     lineHeights: { xs: '1.3333', sm: '1.4286', md: '1.5', lg: '1.4444', xl: '1.4' },
     fontWeights: { regular: '400', medium: '500', bold: '700' },
     spacing: { xs: rem(8), sm: rem(12), md: rem(16), lg: rem(24), xl: rem(32) },
-    radius: { xs: radius(3), sm: radius(4), md: radius(6), lg: radius(8), xl: radius(12) },
+    radius: { xs: radius(1), sm: radius(2), md: radius(3), lg: radius(4), xl: radius(5) },
     defaultRadius: 'sm',
     shadows: { xs: 'var(--shadow-2)', sm: 'var(--shadow-3)', md: 'var(--shadow-4)', lg: 'var(--shadow-5)', xl: 'var(--shadow-6)' },
     headings: {
@@ -269,21 +289,14 @@ export function createRadixTheme(accent: Accent, gray: Gray): MantineThemeOverri
     cursorType: 'default',
     focusRing: 'auto',
     components: {
-      // Radix ties the corner radius to the control size: size 1 → radius-1, size 2 → radius-2, …
-      Button: { vars: (_: unknown, p: SizedProps) => ({ root: { '--button-radius': controlRadius(p) } }) },
-      ActionIcon: { vars: (_: unknown, p: SizedProps) => ({ root: { '--ai-radius': controlRadius(p) } }) },
-      Input: { vars: (_: unknown, p: SizedProps) => ({ wrapper: { '--input-radius': controlRadius(p) } }) },
-      Card: { defaultProps: { radius: 'lg', padding: 'md' } },
-      Paper: { defaultProps: { radius: 'lg' } },
-      Modal: { defaultProps: { radius: 'xl', overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
+      ...Object.fromEntries(
+        COLORED.map((name) => [
+          name,
+          { classNames: (theme: MantineTheme, props: { color?: unknown }) => ({ root: accentClass(theme, props.color) }) },
+        ]),
+      ),
+      Modal: { defaultProps: { overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
       Drawer: { defaultProps: { overlayProps: { backgroundOpacity: 1, color: 'var(--color-overlay)' } } },
-      Popover: { defaultProps: { radius: 'lg', shadow: 'lg' } },
-      HoverCard: { defaultProps: { radius: 'lg', shadow: 'lg' } },
-      Menu: { defaultProps: { radius: 'lg', shadow: 'lg' } },
-      Combobox: { defaultProps: { radius: 'lg', shadow: 'lg' } },
-      Tooltip: { defaultProps: { radius: 'sm' } },
-      Notification: { defaultProps: { radius: 'lg' } },
-      Alert: { defaultProps: { radius: 'md' } },
     },
   })
 }

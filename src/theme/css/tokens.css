@@ -1,0 +1,73 @@
+/* Radix Themes tokens: space, type, radius, cursors */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 18px;
+  --font-size-5: 20px;
+  --font-size-6: 24px;
+  --font-size-7: 28px;
+  --font-size-8: 35px;
+  --font-size-9: 60px;
+
+  --line-height-1: 16px;
+  --line-height-2: 20px;
+  --line-height-3: 24px;
+  --line-height-4: 26px;
+  --line-height-5: 28px;
+  --line-height-6: 30px;
+  --line-height-7: 36px;
+  --line-height-8: 40px;
+  --line-height-9: 60px;
+
+  --letter-spacing-1: 0.0025em;
+  --letter-spacing-2: 0em;
+  --letter-spacing-3: 0em;
+  --letter-spacing-4: -0.0025em;
+  --letter-spacing-5: -0.005em;
+  --letter-spacing-6: -0.00625em;
+  --letter-spacing-7: -0.0075em;
+  --letter-spacing-8: -0.01em;
+  --letter-spacing-9: -0.025em;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --tab-active-letter-spacing: -0.01em;
+
+  /* Theme radius: none / small / medium / large / full, set by [data-radius] on <html> */
+  --radius-factor: 1;
+  --radius-full: 0px;
+  --radius-thumb: 9999px;
+  --radius-1: calc(3px * var(--radius-factor));
+  --radius-2: calc(4px * var(--radius-factor));
+  --radius-3: calc(6px * var(--radius-factor));
+  --radius-4: calc(8px * var(--radius-factor));
+  --radius-5: calc(12px * var(--radius-factor));
+  --radius-6: calc(16px * var(--radius-factor));
+
+  /* Brightness shift used for pressed solid controls */
+  --solid-active-filter: brightness(0.92) saturate(1.1);
+  --disabled-blend-mode: multiply;
+}
+[data-radius='none'] { --radius-factor: 0; --radius-thumb: 0.5px; }
+[data-radius='small'] { --radius-factor: 0.75; --radius-thumb: 0.5px; }
+[data-radius='large'] { --radius-factor: 1.5; }
+[data-radius='full'] { --radius-factor: 1.5; --radius-full: 9999px; }
+
+[data-mantine-color-scheme='dark'] {
+  --solid-active-filter: brightness(1.08);
+  --disabled-blend-mode: screen;
+}

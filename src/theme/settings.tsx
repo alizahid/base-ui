@@ -1,6 +1,6 @@
 import { MantineProvider } from '@mantine/core'
 import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from 'react'
-import { type Accent, autoGray, createRadixTheme, cssVariablesResolver, type Gray, type Radius } from './radix'
+import { type Accent, accentClassesCss, autoGray, createRadixTheme, cssVariablesResolver, type Gray, type Radius } from './radix'
 
 type Settings = { accent: Accent; gray: Gray | 'auto'; radius: Radius }
 type Ctx = Settings & { set: (patch: Partial<Settings>) => void }
@@ -35,6 +35,7 @@ export function RadixProvider({ children }: { children: ReactNode }) {
 
   return (
     <SettingsContext.Provider value={ctx}>
+      <style>{accentClassesCss}</style>
       <MantineProvider theme={theme} cssVariablesResolver={resolver} defaultColorScheme="auto">
         {children}
       </MantineProvider>
