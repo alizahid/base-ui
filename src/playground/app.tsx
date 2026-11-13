@@ -1,25 +1,4 @@
-import {
-  ActionIcon,
-  AppShell,
-  Box,
-  Burger,
-  Button,
-  CloseButton,
-  ColorSwatch,
-  Group,
-  NavLink,
-  Popover,
-  ScrollArea,
-  SegmentedControl,
-  SimpleGrid,
-  Stack,
-  Text,
-  TextInput,
-  Title,
-  Tooltip,
-  useMantineColorScheme,
-} from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
+import { ActionIcon, Button, CloseButton, Select, Text, Tooltip, useComputedColorScheme, useMantineColorScheme } from '@mantine/core'
 import { MagnifyingGlassIcon, MixerHorizontalIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { useEffect, useState } from 'react'
 import { accents, autoGray, grays, radii } from '../theme/radix'
@@ -37,19 +16,18 @@ import { NavigationSection } from './sections/navigation'
 import { OverlaysSection } from './sections/overlays'
 import { TypographySection } from './sections/typography'
 
-type NavItem = { id: string; title: string; demos: { id: string; title: string }[] }
+type NavGroup = { group: string; items: { value: string; label: string }[] }
 
-/** The table of contents, read from the rendered sections so it never drifts from them. */
+/** Every demo on the page, read from the rendered sections so the list never drifts from them. */
 function useNav() {
-  const [nav, setNav] = useState<NavItem[]>([])
+  const [nav, setNav] = useState<NavGroup[]>([])
   useEffect(() => {
     setNav(
-      [...document.querySelectorAll<HTMLElement>('[id^="section-"]')].map((section) => ({
-        id: section.id,
-        title: section.querySelector('h2')?.textContent ?? '',
-        demos: [...section.querySelectorAll<HTMLElement>(':scope > [id]')].map((d) => ({
-          id: d.id,
-          title: d.querySelector('h4')?.textContent ?? d.id,
+      [...document.querySelectorAll<HTMLElement>('[data-section-title]')].map((section) => ({
+        group: section.dataset.sectionTitle ?? '',
+        items: [...section.querySelectorAll<HTMLElement>('[data-demo-title]')].map((d) => ({
+          value: d.id,
+          label: d.dataset.demoTitle ?? d.id,
         })),
       })),
     )
@@ -57,172 +35,129 @@ function useNav() {
   return nav
 }
 
-function ThemePanel() {
-  const { accent, gray, radius, set } = useSettings()
-  const { colorScheme, setColorScheme } = useMantineColorScheme()
-  return (
-    <Popover position="bottom-end" width={328}>
-      <Popover.Target>
-        <Button variant="default" leftSection={<MixerHorizontalIcon />}>
-          Theme
-        </Button>
-      </Popover.Target>
-      <Popover.Dropdown>
-        <Stack gap="md">
-          <Stack gap={6}>
-            <Text size="xs" fw={500} c="dimmed">
-              Accent color
-            </Text>
-            <SimpleGrid cols={10} spacing={6} verticalSpacing={6}>
-              {accents.map((a) => (
-                <Tooltip key={a} label={a} withArrow={false}>
-                  <ColorSwatch
-                    component="button"
-                    color={`var(--${a}-9)`}
-                    size={20}
-                    withShadow={false}
-                    aria-label={a}
-                    aria-pressed={accent === a}
-                    onClick={() => set({ accent: a })}
-                    data-swatch
-                  />
-                </Tooltip>
-              ))}
-            </SimpleGrid>
-          </Stack>
-          <Stack gap={6}>
-            <Text size="xs" fw={500} c="dimmed">
-              Gray color
-            </Text>
-            <SimpleGrid cols={10} spacing={6}>
-              {(['auto', ...grays] as const).map((g) => (
-                <Tooltip key={g} label={g === 'auto' ? `auto (${autoGray(accent)})` : g} withArrow={false}>
-                  <ColorSwatch
-                    component="button"
-                    color={`var(--${g === 'auto' ? 'gray' : g === 'gray' ? 'gray' : g}-9)`}
-                    size={20}
-                    withShadow={false}
-                    aria-label={g}
-                    aria-pressed={gray === g}
-                    onClick={() => set({ gray: g })}
-                    data-swatch
-                  />
-                </Tooltip>
-              ))}
-            </SimpleGrid>
-          </Stack>
-          <Stack gap={6}>
-            <Text size="xs" fw={500} c="dimmed">
-              Radius
-            </Text>
-            <SegmentedControl
-              size="xs"
-              fullWidth
-              value={radius}
-              onChange={(v) => set({ radius: v as typeof radius })}
-              data={radii.map((r) => ({ value: r, label: r[0].toUpperCase() + r.slice(1) }))}
-            />
-          </Stack>
-          <Stack gap={6}>
-            <Text size="xs" fw={500} c="dimmed">
-              Appearance
-            </Text>
-            <SegmentedControl
-              size="xs"
-              fullWidth
-              value={colorScheme}
-              onChange={(v) => setColorScheme(v as typeof colorScheme)}
-              data={[
-                { value: 'light', label: 'Light' },
-                { value: 'dark', label: 'Dark' },
-                { value: 'auto', label: 'System' },
-              ]}
-            />
-          </Stack>
-        </Stack>
-      </Popover.Dropdown>
-    </Popover>
-  )
-}
+const RADIUS_PREVIEW = { none: '0', small: '4px', medium: '8px', large: '12px', full: '80%' } as const
+const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
 
-function SchemeToggle() {
-  const { toggleColorScheme } = useMantineColorScheme()
+function ThemePanel({ onClose }: { onClose: () => void }) {
+  const { accent, gray, radius, set } = useSettings()
+  const { setColorScheme } = useMantineColorScheme()
+  const scheme = useComputedColorScheme('light')
   return (
-    <ActionIcon variant="subtle" color="gray" size="lg" onClick={toggleColorScheme} aria-label="Toggle color scheme">
-      <SunIcon className="icon-light" />
-      <MoonIcon className="icon-dark" />
-    </ActionIcon>
+    <aside className="pg-panel" aria-label="Theme">
+      <CloseButton onClick={onClose} aria-label="Close theme panel" style={{ position: 'absolute', top: 12, right: 12 }} />
+      <div className="pg-panel-title">Theme</div>
+
+      <div className="pg-panel-label">Accent color</div>
+      <div className="pg-swatches">
+        {accents.map((a) => (
+          <Tooltip key={a} label={cap(a)}>
+            <button
+              type="button"
+              className="pg-swatch"
+              style={{ background: `var(--${a}-9)` }}
+              aria-label={a}
+              aria-pressed={accent === a}
+              onClick={() => set({ accent: a })}
+            />
+          </Tooltip>
+        ))}
+      </div>
+
+      <div className="pg-panel-label">Gray color</div>
+      <div className="pg-swatches">
+        {(['auto', ...grays] as const).map((g) => (
+          <Tooltip key={g} label={g === 'auto' ? `Auto (${autoGray(accent)})` : cap(g)}>
+            <button
+              type="button"
+              className="pg-swatch"
+              style={{ background: `var(--${g === 'auto' ? autoGray(accent) : g === 'gray' ? 'gray' : g}-9)` }}
+              aria-label={g}
+              aria-pressed={gray === g}
+              onClick={() => set({ gray: g })}
+            />
+          </Tooltip>
+        ))}
+      </div>
+
+      <div className="pg-panel-label">Appearance</div>
+      <div className="pg-options" style={{ gridTemplateColumns: '1fr 1fr' }}>
+        {(['light', 'dark'] as const).map((s) => (
+          <button key={s} type="button" className="pg-option" aria-pressed={scheme === s} onClick={() => setColorScheme(s)}>
+            {s === 'light' ? <SunIcon /> : <MoonIcon />}
+            {cap(s)}
+          </button>
+        ))}
+      </div>
+
+      <div className="pg-panel-label">Radius</div>
+      <div className="pg-options" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
+        {radii.map((r) => (
+          <div key={r}>
+            <button type="button" className="pg-option" data-radius style={{ width: '100%' }} aria-label={r} aria-pressed={radius === r} onClick={() => set({ radius: r })}>
+              <span className="pg-corner" style={{ borderTopLeftRadius: RADIUS_PREVIEW[r] }} />
+            </button>
+            <div className="pg-option-caption">{cap(r)}</div>
+          </div>
+        ))}
+      </div>
+    </aside>
   )
 }
 
 export function App() {
-  const [opened, { toggle, close }] = useDisclosure()
-  const [query, setQuery] = useState('')
+  const [panel, setPanel] = useState(() => window.innerWidth >= 1280)
+  const { toggleColorScheme } = useMantineColorScheme()
   const nav = useNav()
-  const q = query.trim().toLowerCase()
 
   return (
-    <AppShell header={{ height: 56 }} navbar={{ width: 248, breakpoint: 'sm', collapsed: { mobile: !opened } }} padding={{ base: "md", sm: "xl" }}>
-      <AppShell.Header px="md">
-        <Group h="100%" justify="space-between" wrap="nowrap">
-          <Group gap="sm" wrap="nowrap">
-            <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-            <Title order={6}>Mantine × Radix</Title>
-            <Text size="sm" c="dimmed" visibleFrom="xs">
-              Every Mantine component, in Radix Themes
-            </Text>
-          </Group>
-          <Group gap="xs" wrap="nowrap">
-            <SchemeToggle />
-            <ThemePanel />
-          </Group>
-        </Group>
-      </AppShell.Header>
-
-      <AppShell.Navbar>
-        <Box p="sm" pb={4}>
-          <TextInput
+    <>
+      <header className="pg-header">
+        <div className="pg-brand">
+          <Text fw={700}>Mantine × Radix Themes</Text>
+          <Text size="sm" c="dimmed" visibleFrom="md">
+            Every Mantine component, next to its Radix Themes twin
+          </Text>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Select
             placeholder="Find a component"
+            aria-label="Find a component"
+            data={nav}
+            value={null}
+            searchable
             leftSection={<MagnifyingGlassIcon />}
-            value={query}
-            onChange={(e) => setQuery(e.currentTarget.value)}
-            rightSection={query && <CloseButton size="sm" onClick={() => setQuery('')} aria-label="Clear" />}
+            maxDropdownHeight={360}
+            w={220}
+            visibleFrom="xs"
+            comboboxProps={{ position: 'bottom-end', width: 260 }}
+            onChange={(id) => id && document.getElementById(id)?.scrollIntoView()}
           />
-        </Box>
-        <ScrollArea flex={1} px="sm" pb="sm">
-          {nav.map((section) => {
-            const demos = section.demos.filter((d) => d.title.toLowerCase().includes(q))
-            if (!demos.length) return null
-            return (
-              <Box key={section.id} mt="md">
-                <Text size="xs" fw={500} c="dimmed" px={12} mb={4}>
-                  {section.title}
-                </Text>
-                {demos.map((d) => (
-                  <NavLink key={d.id} href={`#${d.id}`} label={d.title} onClick={close} />
-                ))}
-              </Box>
-            )
-          })}
-        </ScrollArea>
-      </AppShell.Navbar>
+          <ActionIcon variant="subtle" color="gray" onClick={toggleColorScheme} aria-label="Toggle color scheme">
+            <SunIcon className="icon-light" />
+            <MoonIcon className="icon-dark" />
+          </ActionIcon>
+          <Button variant="default" leftSection={<MixerHorizontalIcon />} onClick={() => setPanel((v) => !v)} aria-expanded={panel}>
+            Theme
+          </Button>
+        </div>
+      </header>
 
-      <AppShell.Main>
-        <Stack gap={64} maw={1040} mx="auto" pb={96}>
-          <ButtonsSection />
-          <InputsSection />
-          <ComboboxSection />
-          <NavigationSection />
-          <FeedbackSection />
-          <OverlaysSection />
-          <DataDisplaySection />
-          <TypographySection />
-          <LayoutSection />
-          <DatesSection />
-          <ChartsSection />
-          <ExtensionsSection />
-        </Stack>
-      </AppShell.Main>
-    </AppShell>
+      {panel && <ThemePanel onClose={() => setPanel(false)} />}
+
+      <main className="pg-main">
+        <ButtonsSection />
+        <InputsSection />
+        <ComboboxSection />
+        <NavigationSection />
+        <FeedbackSection />
+        <OverlaysSection />
+        <DataDisplaySection />
+        <TypographySection />
+        <LayoutSection />
+        <DatesSection />
+        <ChartsSection />
+        <ExtensionsSection />
+      </main>
+    </>
   )
 }

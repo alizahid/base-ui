@@ -1,0 +1,119 @@
+/* Page layout, modelled on the Radix Themes playground */
+.pg-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 16px;
+  background: var(--color-background);
+  box-shadow: 0 1px 0 var(--gray-a5);
+}
+.pg-brand { display: flex; align-items: baseline; gap: 12px; min-width: 0; white-space: nowrap; }
+.pg-main { padding: 0 16px 160px; }
+@media (min-width: 768px) { .pg-main { padding: 0 64px 160px; } }
+@media (min-width: 1280px) { .pg-main { padding-right: 440px; } }
+
+.pg-section-title {
+  margin-top: 88px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gray-a10);
+}
+.pg-demo { margin-top: 88px; scroll-margin-top: 72px; }
+.pg-section-title + .pg-demo { margin-top: 16px; }
+.pg-demo-title { font-size: 24px; line-height: 30px; letter-spacing: -0.00625em; }
+
+/* One example per line: label | Mantine | Radix Themes */
+.pg-rows { margin-top: 24px; display: grid; row-gap: 20px; }
+.pg-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  column-gap: 24px;
+  align-items: center;
+}
+.pg-rows[data-compare] .pg-row { grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr); }
+.pg-head { font-size: 12px; line-height: 16px; color: var(--gray-a10); padding-bottom: 4px; }
+.pg-label { font-size: 12px; line-height: 16px; color: var(--gray-a10); overflow-wrap: anywhere; }
+.pg-cell { min-width: 0; }
+.pg-none { font-size: 12px; line-height: 16px; color: var(--gray-a8); }
+
+@media (max-width: 767px) {
+  .pg-head { display: none; }
+  .pg-row,
+  .pg-rows[data-compare] .pg-row { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }
+  .pg-label:empty { display: none; }
+  .pg-rows[data-compare] .pg-cell::before {
+    content: attr(data-side);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--gray-a8);
+  }
+  .pg-row { padding-bottom: 12px; box-shadow: 0 1px 0 var(--gray-a3); }
+}
+
+/* Each Radix cell is its own Theme; it must not claim the viewport like a root Theme does */
+.radix-themes.pg-radix { min-height: 0; }
+
+/* Theme panel: a floating card at the top right, as on the Radix playground */
+.pg-panel {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  z-index: 90;
+  width: 360px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  border-radius: var(--radius-4);
+  background: var(--color-panel-solid);
+  box-shadow: var(--shadow-5);
+}
+@media (max-width: 480px) { .pg-panel { left: 16px; width: auto; } }
+.pg-panel-title { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -0.005em; }
+.pg-panel-label { margin: 20px 0 8px; font-size: 14px; line-height: 20px; font-weight: 500; }
+.pg-swatches { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; }
+.pg-swatch {
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 100%;
+  cursor: pointer;
+  outline-offset: 2px;
+}
+.pg-swatch[aria-pressed='true'] { outline: 2px solid var(--gray-12); }
+.pg-options { display: grid; gap: 8px; }
+.pg-option {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--radius-1);
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--gray-7);
+  color: var(--gray-12);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pg-option[aria-pressed='true'] { box-shadow: 0 0 0 2px var(--gray-12); }
+.pg-option[data-radius] { height: 56px; }
+.pg-corner {
+  width: 32px;
+  height: 32px;
+  border-top: 2px solid var(--accent-9);
+  border-left: 2px solid var(--accent-9);
+  background: linear-gradient(to bottom right, var(--accent-3), var(--accent-4));
+}
+.pg-option-caption { margin-top: 6px; text-align: center; font-size: 12px; line-height: 16px; color: var(--gray-a11); }

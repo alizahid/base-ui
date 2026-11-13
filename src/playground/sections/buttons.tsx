@@ -24,7 +24,8 @@ import {
 } from '@mantine/core'
 import { useState } from 'react'
 
-import { Demo, Section } from '../demo'
+import * as RT from '@radix-ui/themes'
+import { Demo, Row, Section } from '../demo'
 
 const variants = ['filled', 'light', 'outline', 'subtle', 'default', 'transparent', 'white', 'gradient'] as const
 const sizes = ['xs', 'sm', 'md', 'lg'] as const
@@ -35,38 +36,35 @@ export function ButtonsSection() {
 
   return (
     <Section title="Buttons">
-      <Demo title="ActionIcon" description="Icon-only button in every variant, size and color.">
-        <Stack>
-          <Group>
-            {variants.map((variant) => (
-              <ActionIcon key={variant} variant={variant} aria-label={variant}>
+      <Demo title="ActionIcon" description="Icon-only button in every variant, size and color." radix="IconButton">
+        {(
+          [
+            ['filled', 'solid'],
+            ['light', 'soft'],
+            ['outline', 'outline'],
+            ['subtle', 'ghost'],
+            ['surface', 'surface'],
+          ] as const
+        ).map(([m, r]) => (
+          <Row
+            key={m}
+            label={`${m} / ${r}`}
+            radix={
+              <RT.IconButton variant={r} aria-label={r}>
                 <GearIcon />
-              </ActionIcon>
-            ))}
-          </Group>
-          <Group>
-            {sizes.map((size) => (
-              <ActionIcon key={size} size={size} aria-label={size}>
-                <HeartIcon />
-              </ActionIcon>
-            ))}
-            <ActionIcon color="gray" aria-label="gray">
-              <HeartIcon />
+              </RT.IconButton>
+            }
+          >
+            <ActionIcon variant={m} aria-label={m}>
+              <GearIcon />
             </ActionIcon>
-            <ActionIcon color="red" variant="light" aria-label="red">
-              <HeartIcon />
-            </ActionIcon>
-            <ActionIcon color="green" variant="outline" aria-label="green">
-              <HeartIcon />
-            </ActionIcon>
-            <ActionIcon loading aria-label="loading">
-              <HeartIcon />
-            </ActionIcon>
-            <ActionIcon disabled aria-label="disabled">
-              <HeartIcon />
-            </ActionIcon>
-          </Group>
-        </Stack>
+          </Row>
+        ))}
+        <Row label="default">
+          <ActionIcon variant="default" aria-label="default">
+            <GearIcon />
+          </ActionIcon>
+        </Row>
       </Demo>
 
       <Demo title="ActionIcon.Group" description="Attached icon buttons for toolbars.">

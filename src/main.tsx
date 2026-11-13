@@ -16,7 +16,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { App } from './playground/app'
 import { RadixProvider } from './theme/settings'
+import '@radix-ui/themes/styles.css'
 import './theme/radix.css'
+import './playground/playground.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
