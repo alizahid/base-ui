@@ -7,6 +7,8 @@ export type SpinnerProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLSpanElement>,
   HTMLSpanElement
 > & {
+  // with children: true shows the spinner over their space, false shows them
+  loading?: boolean
   size?: '1' | '2' | '3' | '4'
 }
 
@@ -14,11 +16,16 @@ export function Spinner({
   children,
   className,
   disabled,
+  loading = true,
   size = '2',
   style,
   ...props
 }: SpinnerProps) {
-  return (
+  if (!loading) {
+    return children
+  }
+
+  const spinner = (
     <span
       {...props}
       {...merge(stylex.props(styles.main, sizes[size]), className, style)}
@@ -33,6 +40,22 @@ export function Spinner({
       <span {...stylex.props(styles.leaf)} />
     </span>
   )
+
+  if (children === undefined) {
+    return spinner
+  }
+
+  // the children keep their space, hidden, with the spinner centred over it,
+  // so nothing moves when loading ends
+  return (
+    <span {...stylex.props(styles.wrapper)}>
+      <span aria-hidden {...stylex.props(styles.hidden)}>
+        {children}
+      </span>
+
+      <span {...stylex.props(styles.overlay)}>{spinner}</span>
+    </span>
+  )
 }
 
 const spinner = stylex.keyframes({
@@ -45,6 +68,12 @@ const spinner = stylex.keyframes({
 })
 
 const styles = stylex.create({
+  // display: contents drops it from the accessibility tree in some browsers,
+  // so it is aria-hidden as well
+  hidden: {
+    display: 'contents',
+    visibility: 'hidden',
+  },
   leaf: {
     '::before': {
       backgroundColor: 'var(--gray-12)',
@@ -100,6 +129,22 @@ const styles = stylex.create({
     '--duration': '800ms',
     display: 'block',
     opacity: 'var(--spinner-opacity, 0.65)',
+    position: 'relative',
+  },
+  overlay: {
+    alignItems: 'center',
+    display: 'flex',
+    inset: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+  },
+  wrapper: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    // the hidden children are laid out as they would be in the parent, so
+    // the space they hold is the same size
+    gap: 'inherit',
+    justifyContent: 'center',
     position: 'relative',
   },
 })

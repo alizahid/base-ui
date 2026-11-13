@@ -10,3 +10,15 @@
   <Spinner size="3" />
   <Spinner size="4" />
 </Example>
+
+### With children
+
+<Example>
+  <Spinner loading><Switch defaultChecked /></Spinner>
+  <Spinner loading={false}><Switch defaultChecked /></Spinner>
+</Example>
+
+<Example>
+  <Button disabled><Spinner loading>Bookmark</Spinner></Button>
+  <Button><Spinner loading={false}>Bookmark</Spinner></Button>
+</Example>

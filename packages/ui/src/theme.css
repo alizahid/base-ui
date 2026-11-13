@@ -1428,3 +1428,11 @@
     --sky-track: color-mix(in oklab, var(--sky-8), var(--sky-9) 65%);
   }
 }
+
+/* a skeleton hides everything inside the element it is drawn on. here rather
+   than in the component, as stylex can't style an element's children */
+[data-skeleton] > *,
+[data-skeleton]::before,
+[data-skeleton]::after {
+  visibility: hidden !important;
+}

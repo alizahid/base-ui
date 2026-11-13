@@ -21,6 +21,7 @@ export const pages = [
   'scroll-area',
   'select',
   'separator',
+  'skeleton',
   'slider',
   'spinner',
   'switch',

@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@phosphor-icons/react/ssr'
+import { ArrowLeftIcon, ArrowRightIcon, CaretDownIcon, DownloadSimpleIcon } from '@phosphor-icons/react/ssr'
 
 # Button
 
@@ -63,8 +63,21 @@ import { ArrowRightIcon } from '@phosphor-icons/react/ssr'
 ### Mit Icons
 
 <Example>
-  <Button>Weiter <ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
-  <Button variant="soft">Weiter <ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" />Zurück</Button>
+  <Button>Weiter<ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button><DownloadSimpleIcon className="size-[1lh]" weight="bold" />Herunterladen<CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
+</Example>
+
+<Example>
+  <Button variant="soft"><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" />Zurück</Button>
+  <Button variant="soft">Weiter<ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button variant="soft"><DownloadSimpleIcon className="size-[1lh]" weight="bold" />Herunterladen<CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
+</Example>
+
+<Example>
+  <Button loading><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" />Zurück</Button>
+  <Button loading>Weiter<ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button loading><DownloadSimpleIcon className="size-[1lh]" weight="bold" />Herunterladen<CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
 </Example>
 
 ### Deaktiviert

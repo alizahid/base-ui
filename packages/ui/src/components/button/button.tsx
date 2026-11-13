@@ -60,18 +60,10 @@ export function ButtonBase({
         style,
       )}
     >
-      {loading ? (
-        <>
-          {/* keeps the button's width while the spinner shows */}
-          <span {...stylex.props(styles.hidden)}>{children}</span>
-
-          <span {...stylex.props(styles.loading)}>
-            <Spinner size={size} />
-          </span>
-        </>
-      ) : (
-        children
-      )}
+      {/* keeps the button's width while the spinner shows */}
+      <Spinner loading={Boolean(loading)} size={size}>
+        {children}
+      </Spinner>
     </Component>
   )
 }
@@ -91,17 +83,6 @@ const active = ':is(:active:not([data-disabled], [data-popup-open]))'
 // without the classic variant. hover styles only apply where hovering is
 // possible, so they don't stick after a tap
 const styles = stylex.create({
-  hidden: {
-    display: 'contents',
-    visibility: 'hidden',
-  },
-  loading: {
-    alignItems: 'center',
-    display: 'flex',
-    inset: 0,
-    justifyContent: 'center',
-    position: 'absolute',
-  },
   main: {
     // the spinner is fully opaque inside a disabled or loading button
     '--spinner-opacity': {
