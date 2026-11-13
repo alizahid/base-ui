@@ -1,0 +1,19 @@
+{
+  "header": {
+    "theme": "Design umschalten"
+  },
+  "locales": {
+    "ar": "العربية",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "metadata": {
+    "title": "Base UI"
+  },
+  "nav": {
+    "avatar": "Avatar",
+    "button": "Button",
+    "components": "Komponenten",
+    "spinner": "Spinner"
+  }
+}

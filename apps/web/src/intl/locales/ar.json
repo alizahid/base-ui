@@ -1,0 +1,19 @@
+{
+  "header": {
+    "theme": "تبديل المظهر"
+  },
+  "locales": {
+    "ar": "العربية",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "metadata": {
+    "title": "Base UI"
+  },
+  "nav": {
+    "avatar": "الصورة الرمزية",
+    "button": "الزر",
+    "components": "المكونات",
+    "spinner": "مؤشر التحميل"
+  }
+}

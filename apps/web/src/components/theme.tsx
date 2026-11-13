@@ -1,23 +1,23 @@
 'use client'
 
 import { MoonIcon, SunIcon } from '@phosphor-icons/react/dist/ssr'
-import { useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 
 export function Theme() {
-  const [dark, setDark] = useState(
-    typeof window === 'undefined'
-      ? false
-      : document.body.classList.contains('dark'),
-  )
+  const t = useTranslations('header')
+
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <button
-      onClick={() => {
-        setDark(document.body.classList.toggle('dark'))
-      }}
+      aria-label={t('theme')}
+      className="flex size-8 cursor-pointer items-center justify-center rounded-md hover:bg-(--gray-3)"
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       type="button"
     >
-      {dark ? <MoonIcon /> : <SunIcon />}
+      <SunIcon className="dark:hidden" />
+      <MoonIcon className="hidden dark:block" />
     </button>
   )
 }

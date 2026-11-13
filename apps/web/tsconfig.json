@@ -10,8 +10,8 @@
   "exclude": ["node_modules"],
   "extends": "@repo/typescript-config/next.json",
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "src",
+    "typings",
     "next-env.d.ts",
     "next.config.js",
     ".next/types/**/*.ts"
