@@ -4,4 +4,9 @@
  * Colors come from the Radix scales set up in radix.ts: --accent-*, --gray-*, --{color}-*, --shadow-*, --color-*.
  */
 @import './css/tokens.css';
-@import './css/legacy.css';
+@import './css/base.css';
+@import './css/buttons-inputs.css';
+@import './css/controls.css';
+@import './css/overlays.css';
+@import './css/display.css';
+@import './css/extensions.css';

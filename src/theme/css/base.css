@@ -1,0 +1,26 @@
+/* ---------- Base ---------- */
+body {
+  background: var(--color-background);
+  color: var(--gray-12);
+  font-size: var(--mantine-font-size-sm);
+  line-height: var(--mantine-line-height-sm);
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent-a5); }
+
+/* Radix focus ring: 2px accent-8, just outside the control */
+:where(*):focus-visible,
+.mantine-focus-auto:focus-visible,
+.mantine-focus-always:focus {
+  outline: 2px solid var(--focus-8);
+  outline-offset: 2px;
+}
+
+[data-mantine-color-scheme='light'] .icon-dark,
+[data-mantine-color-scheme='dark'] .icon-light { display: none; }
+
+.mantine-Title-root[data-order='1'] { letter-spacing: -0.01em; }
+.mantine-Title-root[data-order='2'] { letter-spacing: -0.0075em; }
+.mantine-Title-root[data-order='3'] { letter-spacing: -0.00625em; }
+.mantine-Title-root[data-order='4'] { letter-spacing: -0.005em; }
+.mantine-Title-root[data-order='5'] { letter-spacing: -0.0025em; }

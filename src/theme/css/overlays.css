@@ -1,0 +1,118 @@
+/* ---------- Popups: Radix panel-solid with shadow-5 ---------- */
+.mantine-Popover-dropdown,
+.mantine-Combobox-dropdown,
+.mantine-Menu-dropdown,
+.mantine-HoverCard-dropdown,
+.mantine-Menubar-dropdown {
+  background-color: var(--color-panel-solid);
+  border: 0;
+  box-shadow: var(--shadow-5);
+  color: var(--gray-12);
+}
+.mantine-Popover-arrow,
+.mantine-HoverCard-arrow,
+.mantine-Menu-arrow { background-color: var(--color-panel-solid); border-color: var(--gray-a3); }
+
+/* Menu rows: Radix highlights with a solid accent fill */
+.mantine-Menu-dropdown { padding: 8px; }
+.mantine-Menu-item,
+.mantine-Menubar-item {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 14px;
+  border-radius: calc(var(--mantine-radius-sm) * 1);
+  color: var(--gray-12);
+}
+.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) .mantine-Menu-itemSection,
+.mantine-Menu-item:where(:hover, :focus, [data-hovered], [data-menu-active]):not(:disabled, [data-disabled]) .mantine-Kbd-root { color: inherit; }
+.mantine-Menu-item[data-disabled],
+.mantine-Menu-item:disabled { color: var(--gray-a8); opacity: 1; }
+.mantine-Menu-item[style*='--menu-item-color'] { color: var(--menu-item-color); }
+.mantine-Menu-item[style*='--menu-item-color']:where(:hover, :focus, [data-hovered]):not([data-disabled]) {
+  background-color: var(--menu-item-color);
+  color: #fff;
+}
+.mantine-Menu-itemSection { color: var(--gray-a11); }
+.mantine-Menu-itemSection[data-position='left'] { margin-inline-end: 8px; }
+.mantine-Menu-label { color: var(--gray-a10); font-size: 12px; padding: 0 12px; height: 32px; display: flex; align-items: center; }
+.mantine-Menu-divider { border-color: var(--gray-a6); margin: 8px 12px; }
+
+/* Combobox options (Select, MultiSelect, Autocomplete…) */
+.mantine-Combobox-dropdown { padding: 0; }
+.mantine-Combobox-options { padding: 8px; }
+.mantine-Combobox-option {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--mantine-radius-sm);
+  font-size: 14px;
+  color: var(--gray-12);
+}
+.mantine-Combobox-option[data-combobox-selected],
+.mantine-Combobox-option:hover:not([data-combobox-disabled]) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+.mantine-Combobox-option[data-combobox-disabled] { color: var(--gray-a8); opacity: 1; }
+.mantine-Combobox-option[data-checked] { font-weight: 500; }
+.mantine-Combobox-groupLabel { color: var(--gray-a10); font-size: 12px; font-weight: 400; padding: 8px 12px 4px; }
+.mantine-Combobox-groupLabel::after { display: none; }
+.mantine-Combobox-empty { color: var(--gray-a11); }
+.mantine-Combobox-search { box-shadow: none; border-bottom: 1px solid var(--gray-a5); background: transparent; }
+.mantine-Combobox-search:focus { outline: 0; }
+.mantine-Combobox-header,
+.mantine-Combobox-footer { border-color: var(--gray-a5); color: var(--gray-a11); }
+.mantine-Combobox-chevron { color: var(--gray-a11); }
+
+/* Tooltip: Radix gray-12 bubble */
+.mantine-Tooltip-tooltip {
+  background-color: var(--gray-12);
+  color: var(--gray-1);
+  font-size: 12px;
+  line-height: 16px;
+  padding: 4px 8px;
+}
+.mantine-Tooltip-arrow { background-color: var(--gray-12); }
+
+/* ---------- Modal / Drawer / Dialog ---------- */
+.mantine-Modal-content,
+.mantine-Drawer-content,
+.mantine-Dialog-root {
+  background-color: var(--color-panel-solid);
+  box-shadow: var(--shadow-6);
+}
+.mantine-Modal-header,
+.mantine-Drawer-header { background-color: var(--color-panel-solid); padding: 24px 24px 12px; }
+.mantine-Modal-body,
+.mantine-Drawer-body { padding: 0 24px 24px; }
+.mantine-Modal-title,
+.mantine-Drawer-title { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: -0.005em; }
+.mantine-Modal-overlay,
+.mantine-Drawer-overlay { background-color: var(--color-overlay); }
+
+.mantine-Notification-root {
+  background-color: var(--color-panel-solid);
+  box-shadow: var(--shadow-4);
+  border: 0;
+  padding: 12px 16px 12px 22px;
+}
+.mantine-Notification-root[data-with-border] { box-shadow: var(--shadow-4), inset 0 0 0 1px var(--gray-a5); }
+.mantine-Notification-root::before { background-color: var(--notification-color, var(--accent-9)); top: 12px; bottom: 12px; left: 8px; width: 4px; }
+.mantine-Notification-title { font-weight: 500; color: var(--gray-12); }
+.mantine-Notification-description { color: var(--gray-11); }
+.mantine-Notification-icon { background-color: var(--notification-color, var(--accent-9)); }
+
+/* ---------- Spotlight ---------- */
+.mantine-Spotlight-content { background: var(--color-panel-solid); box-shadow: var(--shadow-6); }
+.mantine-Spotlight-search { box-shadow: none; border-bottom: 1px solid var(--gray-a5); border-radius: 0; background: transparent; }
+.mantine-Spotlight-search:focus { outline: 0; }
+.mantine-Spotlight-action { border-radius: var(--mantine-radius-sm); }
+.mantine-Spotlight-action[data-selected] { background: var(--accent-9); color: var(--accent-contrast); }
+.mantine-Spotlight-action[data-selected] .mantine-Spotlight-actionDescription { color: inherit; opacity: 0.85; }
+.mantine-Spotlight-actionDescription { color: var(--gray-a11); }
+

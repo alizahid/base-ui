@@ -1,0 +1,233 @@
+/* ---------- Checkbox / Radio / Switch ---------- */
+.mantine-Checkbox-root {
+  --checkbox-size-xs: 14px;
+  --checkbox-size-sm: 16px;
+  --checkbox-size-md: 20px;
+  --checkbox-size-lg: 24px;
+  --checkbox-size-xl: 28px;
+}
+.mantine-Checkbox-input,
+.mantine-CheckboxIndicator-indicator {
+  border: 0;
+  border-radius: max(var(--mantine-radius-xs), calc(var(--radius-full) / 2.5 * 0));
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+.mantine-Checkbox-input:checked,
+.mantine-Checkbox-input[data-indeterminate],
+.mantine-CheckboxIndicator-indicator[data-checked],
+.mantine-CheckboxIndicator-indicator[data-indeterminate] {
+  background-color: var(--checkbox-bg, var(--checkbox-color, var(--accent-indicator)));
+  box-shadow: none;
+}
+.mantine-Checkbox-root[data-variant='outline'] .mantine-Checkbox-input:is(:checked, [data-indeterminate]),
+.mantine-CheckboxIndicator-indicator[data-variant='outline']:is([data-checked], [data-indeterminate]) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--checkbox-color);
+}
+.mantine-Checkbox-input:focus-visible { outline: 2px solid var(--focus-8); outline-offset: 2px; }
+.mantine-Checkbox-input:is(:checked, [data-indeterminate]) + .mantine-Checkbox-icon,
+.mantine-CheckboxIndicator-indicator:is([data-checked], [data-indeterminate]) .mantine-CheckboxIndicator-icon { color: var(--checkbox-icon-color, var(--accent-contrast)); }
+.mantine-Checkbox-input:disabled + .mantine-Checkbox-icon,
+.mantine-CheckboxIndicator-indicator[data-disabled] .mantine-CheckboxIndicator-icon { color: var(--gray-a8); }
+.mantine-Checkbox-input:disabled,
+.mantine-CheckboxIndicator-indicator[data-disabled] {
+  background-color: var(--gray-a3);
+  box-shadow: inset 0 0 0 1px var(--gray-a6);
+}
+.mantine-Checkbox-input[data-error] { box-shadow: inset 0 0 0 1px var(--red-a8); }
+
+.mantine-Radio-root {
+  --radio-size-xs: 14px;
+  --radio-size-sm: 16px;
+  --radio-size-md: 20px;
+  --radio-size-lg: 24px;
+  --radio-size-xl: 28px;
+}
+.mantine-Radio-radio,
+.mantine-RadioIndicator-indicator {
+  border: 0;
+  background-color: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+}
+.mantine-Radio-radio:checked,
+.mantine-RadioIndicator-indicator[data-checked] {
+  background-color: var(--radio-bg, var(--radio-color, var(--accent-indicator)));
+  box-shadow: none;
+}
+.mantine-Radio-root[data-variant='outline'] .mantine-Radio-radio:checked,
+.mantine-RadioIndicator-indicator[data-variant='outline'][data-checked] {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px var(--radio-color);
+}
+.mantine-Radio-radio:checked + .mantine-Radio-icon,
+.mantine-RadioIndicator-indicator[data-checked] .mantine-RadioIndicator-icon { color: var(--radio-icon-color, var(--accent-contrast)); }
+.mantine-Radio-radio:disabled { background-color: var(--gray-a3); box-shadow: inset 0 0 0 1px var(--gray-a6); }
+
+.mantine-Checkbox-label,
+.mantine-Radio-label,
+.mantine-Switch-label { color: var(--gray-12); }
+.mantine-Checkbox-description,
+.mantine-Radio-description,
+.mantine-Switch-description { color: var(--gray-a11); }
+
+/* Radix switch: soft gray track, white thumb with a hairline shadow */
+.mantine-Switch-root {
+  --switch-height-xs: 16px;
+  --switch-height-sm: 20px;
+  --switch-height-md: 24px;
+  --switch-height-lg: 28px;
+  --switch-height-xl: 32px;
+  --switch-width-xs: 28px;
+  --switch-width-sm: 35px;
+  --switch-width-md: 42px;
+  --switch-width-lg: 49px;
+  --switch-width-xl: 56px;
+  --switch-thumb-size-xs: 14px;
+  --switch-thumb-size-sm: 18px;
+  --switch-thumb-size-md: 22px;
+  --switch-thumb-size-lg: 26px;
+  --switch-thumb-size-xl: 30px;
+  --switch-radius: max(calc(var(--mantine-radius-sm) * 1.5), var(--radius-thumb));
+}
+.mantine-Switch-track {
+  border: 0;
+  background-color: var(--gray-a5);
+  box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 1.5px 2px 0 var(--black-a1);
+  transition: background-color 140ms;
+  --switch-thumb-start: 1px;
+}
+.mantine-Switch-input:checked + .mantine-Switch-track {
+  background-color: var(--switch-color, var(--accent-track));
+  box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 1.5px 2px 0 var(--black-a1);
+}
+.mantine-Switch-thumb {
+  border: 0;
+  background-color: #fff;
+  box-shadow: 0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1), 0 2px 4px -1px var(--black-a3);
+}
+.mantine-Switch-thumb::before { display: none; }
+.mantine-Switch-trackLabel { color: var(--gray-a11); }
+.mantine-Switch-input:checked + .mantine-Switch-track .mantine-Switch-thumb::before { display: none; }
+.mantine-Switch-trackLabel { color: var(--accent-contrast); }
+.mantine-Switch-input:disabled + .mantine-Switch-track { background-color: var(--gray-a4); box-shadow: inset 0 0 0 1px var(--gray-a3); }
+.mantine-Switch-input:disabled + .mantine-Switch-track .mantine-Switch-thumb { background-color: var(--gray-2); box-shadow: 0 0 0 1px var(--gray-a2); }
+
+/* ---------- Chip ---------- */
+.mantine-Chip-label {
+  font-weight: 500;
+  border: 1px solid var(--gray-a7);
+  background: var(--color-surface);
+  color: var(--gray-12);
+}
+.mantine-Chip-label:hover:not([data-checked]) { background: var(--gray-a2); }
+.mantine-Chip-label[data-checked]:not([data-disabled]) { background-color: var(--chip-bg); color: var(--chip-color); border: var(--chip-bd); }
+.mantine-Chip-label[data-checked]:not([data-disabled]):hover { background-color: var(--chip-hover); }
+.mantine-Chip-iconWrapper { color: currentColor; }
+
+/* ---------- Slider: Radix track/range/thumb ---------- */
+.mantine-Slider-root,
+.mantine-RangeSlider-root {
+  --slider-size-xs: 4px;
+  --slider-size-sm: 6px;
+  --slider-size-md: 8px;
+  --slider-size-lg: 10px;
+  --slider-size-xl: 12px;
+  --slider-radius: max(calc(var(--mantine-radius-xs) * 0.75), var(--radius-thumb));
+  --slider-track-bg: var(--gray-a4);
+}
+:is(.mantine-Slider-track, .mantine-RangeSlider-track)::before {
+  background-color: var(--gray-a4);
+  box-shadow: inset 0 0 0 1px var(--gray-a5);
+}
+:is(.mantine-Slider-bar, .mantine-RangeSlider-bar) {
+  background-color: var(--slider-color, var(--accent-track));
+  box-shadow: inset 0 0 0 1px var(--gray-a5), inset 0 0 0 1px var(--accent-a8);
+}
+:is(.mantine-Slider-thumb, .mantine-RangeSlider-thumb) {
+  --slider-thumb-size: calc(var(--slider-size) + 10px);
+  border: 0;
+  background-color: #fff;
+  color: var(--gray-12);
+  border-radius: max(calc(var(--mantine-radius-xs) * 0.75), var(--radius-thumb));
+  box-shadow: 0 0 0 1px var(--black-a4), 0 1px 3px var(--black-a3);
+}
+:is(.mantine-Slider-thumb, .mantine-RangeSlider-thumb):focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 1px var(--black-a4), 0 0 0 4px var(--focus-a8);
+}
+:is(.mantine-Slider-mark, .mantine-RangeSlider-mark) { border: 0; width: 4px; height: 4px; background: var(--gray-a8); transform: translate(calc(var(--slider-size) / 2 - 2px), calc(var(--slider-size) / 2 - 2px)); }
+:is(.mantine-Slider-mark, .mantine-RangeSlider-mark)[data-filled] { background: var(--accent-contrast); opacity: 0.6; }
+:is(.mantine-Slider-markLabel, .mantine-RangeSlider-markLabel) { color: var(--gray-a11); font-size: 12px; }
+:is(.mantine-Slider-label, .mantine-RangeSlider-label) {
+  background: var(--gray-12);
+  color: var(--gray-1);
+  font-size: 12px;
+  border-radius: var(--mantine-radius-sm);
+}
+
+/* ---------- SegmentedControl: Radix's sliding pill ---------- */
+.mantine-SegmentedControl-root {
+  background-color: var(--gray-a3);
+  background-image: none;
+  padding: 0;
+  --sc-radius: max(var(--mantine-radius-sm), var(--radius-full));
+  --sc-padding-xs: 0 8px;
+  --sc-padding-sm: 0 12px;
+  --sc-padding-md: 0 16px;
+  --sc-padding-lg: 0 20px;
+  --sc-padding-xl: 0 24px;
+}
+.mantine-SegmentedControl-root[data-size='xs'] { --sc-height: 24px; }
+.mantine-SegmentedControl-root:not([data-size]),
+.mantine-SegmentedControl-root[data-size='sm'] { --sc-height: 32px; }
+.mantine-SegmentedControl-root[data-size='md'] { --sc-height: 40px; }
+.mantine-SegmentedControl-root[data-size='lg'] { --sc-height: 48px; }
+.mantine-SegmentedControl-label {
+  height: var(--sc-height, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-a11);
+  font-weight: 400;
+}
+.mantine-SegmentedControl-label[data-active] { color: var(--gray-12); font-weight: 500; }
+.mantine-SegmentedControl-label:not([data-active], [data-disabled]):hover { color: var(--gray-12); }
+.mantine-SegmentedControl-control::before { display: none; }
+.mantine-SegmentedControl-indicator {
+  background-color: var(--color-background);
+  box-shadow: none;
+  border: 1px solid var(--gray-a4);
+  border-radius: var(--sc-radius);
+}
+[data-mantine-color-scheme='dark'] .mantine-SegmentedControl-indicator { background-color: var(--gray-a3); border-color: var(--gray-a5); }
+.mantine-SegmentedControl-root[data-with-color] .mantine-SegmentedControl-indicator,
+.mantine-SegmentedControl-indicator[style*='--sc-color'] { background-color: var(--sc-color); border-color: transparent; }
+
+/* ---------- Rating, ColorPicker, AngleSlider ---------- */
+.mantine-Rating-starSymbol { --rating-color: var(--amber-9); }
+.mantine-ColorPicker-saturation,
+.mantine-ColorPicker-slider { box-shadow: inset 0 0 0 1px var(--gray-a5); }
+.mantine-ColorPicker-thumb { border: 2px solid #fff; box-shadow: 0 0 0 1px var(--black-a4), 0 1px 3px var(--black-a3); }
+.mantine-AngleSlider-root { background: var(--gray-a3); box-shadow: inset 0 0 0 1px var(--gray-a5); }
+.mantine-AngleSlider-thumb { background: var(--accent-9); }
+
+/* ---------- Progress & loaders ---------- */
+.mantine-Progress-root {
+  --progress-size-xs: 4px;
+  --progress-size-sm: 6px;
+  --progress-size-md: 8px;
+  --progress-size-lg: 12px;
+  --progress-size-xl: 16px;
+  --progress-radius: max(var(--mantine-radius-xs), var(--radius-thumb));
+  background-color: var(--gray-a3);
+  box-shadow: inset 0 0 0 1px var(--gray-a4);
+}
+.mantine-Progress-section { background-color: var(--progress-section-color, var(--accent-track)); }
+.mantine-Progress-label { font-weight: 500; }
+.mantine-RingProgress-curve[data-root] { stroke: var(--gray-a3); }
+.mantine-SemiCircleProgress-emptySegment { stroke: var(--gray-a3); }
+
+.mantine-Skeleton-root::before { background: var(--gray-a3); }
+.mantine-Skeleton-root::after { background: var(--gray-a4); }
+

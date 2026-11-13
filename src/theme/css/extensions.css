@@ -1,0 +1,70 @@
+/* ---------- Dates ---------- */
+.mantine-DatePicker-day,
+.mantine-Calendar-day,
+[class*='mantine-'][class$='-day'] { border-radius: var(--mantine-radius-sm); }
+:is(.mantine-DatePicker-day, .mantine-Calendar-day, .mantine-DatePickerInput-day, .mantine-DateInput-day, .mantine-DateTimePicker-day, .mantine-MiniCalendar-day):hover:not([data-selected], [data-disabled]) { background: var(--gray-a3); }
+[data-dates-day][data-selected],
+[class*='-day'][data-selected],
+[class*='-pickerControl'][data-selected],
+[class*='-monthsListControl'][data-selected],
+[class*='-yearsListControl'][data-selected] { background: var(--accent-9); color: var(--accent-contrast); }
+[class*='-day'][data-in-range]:not([data-selected]) { background: var(--accent-a3); color: var(--accent-a11); }
+[class*='-day'][data-today]:not([data-selected]) { box-shadow: inset 0 0 0 1px var(--accent-a8); }
+[class*='-weekday'] { color: var(--gray-a10); font-weight: 400; }
+[class*='-calendarHeaderControl']:hover,
+[class*='-calendarHeaderLevel']:hover,
+[class*='-pickerControl']:hover:not([data-selected]),
+[class*='-monthsListControl']:hover:not([data-selected]),
+[class*='-yearsListControl']:hover:not([data-selected]) { background: var(--gray-a3); }
+[class*='-calendarHeaderLevel'] { font-weight: 500; }
+
+/* ---------- Dropzone ---------- */
+.mantine-Dropzone-root {
+  border: 1px dashed var(--gray-a7);
+  background: var(--gray-a2);
+  border-radius: var(--mantine-radius-lg);
+}
+.mantine-Dropzone-root:hover { background: var(--gray-a3); }
+.mantine-Dropzone-root[data-accept] { border-color: var(--accent-a8); background: var(--accent-a3); color: var(--accent-a11); }
+.mantine-Dropzone-root[data-reject] { border-color: var(--red-a8); background: var(--red-a3); color: var(--red-a11); }
+
+/* ---------- Carousel ---------- */
+.mantine-Carousel-control {
+  background: var(--color-panel-solid);
+  color: var(--gray-12);
+  border: 0;
+  box-shadow: var(--shadow-3);
+  opacity: 1;
+}
+.mantine-Carousel-indicator { background: var(--gray-a6); opacity: 1; }
+.mantine-Carousel-indicator[data-active] { background: var(--accent-9); }
+
+/* ---------- RichTextEditor ---------- */
+.mantine-RichTextEditor-root { border: 0; box-shadow: inset 0 0 0 1px var(--gray-a7); background: var(--color-surface); }
+.mantine-RichTextEditor-toolbar { background: transparent; border-color: var(--gray-a5); }
+.mantine-RichTextEditor-control { border-color: var(--gray-a6); background: var(--color-surface); color: var(--gray-12); }
+.mantine-RichTextEditor-control:hover { background: var(--gray-a3); }
+.mantine-RichTextEditor-control[data-active] { background: var(--accent-a3); color: var(--accent-a11); }
+.mantine-RichTextEditor-content { background: transparent; }
+
+/* ---------- Code highlight ---------- */
+.mantine-CodeHighlight-codeHighlight,
+.mantine-CodeHighlightTabs-root { background: var(--gray-a2); box-shadow: inset 0 0 0 1px var(--gray-a5); border-radius: var(--mantine-radius-md); }
+
+/* ---------- Charts ---------- */
+.recharts-cartesian-grid line { stroke: var(--gray-a5); }
+.recharts-cartesian-axis-tick-value { fill: var(--gray-a11); }
+.mantine-AreaChart-tooltip,
+.mantine-BarChart-tooltip,
+.mantine-LineChart-tooltip,
+[class*='mantine-'][class$='Chart-tooltip'],
+.mantine-ChartTooltip-tooltip { background: var(--color-panel-solid); border: 0; box-shadow: var(--shadow-5); border-radius: var(--mantine-radius-lg); }
+
+/* ---------- NavigationProgress ---------- */
+.mantine-NavigationProgress-section,
+.m_8f2832ae { background-color: var(--accent-9); }
+
+/* Radix calendars don't tint weekends */
+[class*='-day'][data-weekend]:not([data-selected], [data-outside]) { color: inherit; }
+[class*='-day'][data-outside] { color: var(--gray-a8); }
+
