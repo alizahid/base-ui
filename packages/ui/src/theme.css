@@ -1040,6 +1040,7 @@
   --switch-high-contrast-active-filter: contrast(0.82) saturate(1.2)
     brightness(1.16);
   --switch-active-filter: brightness(0.92) saturate(1.1);
+  --progress-shine: var(--white-a5), var(--white-a9), var(--white-a5);
 }
 
 :is(.dark, .dark-theme) {
@@ -1051,6 +1052,7 @@
   --switch-high-contrast-overlay: transparent;
   --switch-high-contrast-active-filter: brightness(1.08);
   --switch-active-filter: brightness(1.08);
+  --progress-shine: var(--white-a3), var(--white-a6), var(--white-a3);
 }
 
 /* surfaces and shadows, as in radix themes. repeated on [data-gray] so the

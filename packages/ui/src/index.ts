@@ -1,5 +1,6 @@
 // provider
 
+export * from './components/progress/index.js'
 export * from './components/provider/index.js'
 
 // components

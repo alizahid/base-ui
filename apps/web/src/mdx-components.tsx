@@ -13,6 +13,7 @@ import {
   OTPField,
   Popover,
   PreviewCard,
+  Progress,
   Radio,
   RadioGroup,
   Select,
@@ -90,6 +91,7 @@ export function useMDXComponents(): MDXComponents {
     Menu,
     Popover,
     PreviewCard,
+    Progress,
     RadioGroup: {
       Item: RadioGroup.Item,
       Root: RadioGroup.Root,

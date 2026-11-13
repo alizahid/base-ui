@@ -13,6 +13,7 @@ export const pages = [
   'otp-field',
   'popover',
   'preview-card',
+  'progress',
   'radio',
   'radio-group',
   'select',

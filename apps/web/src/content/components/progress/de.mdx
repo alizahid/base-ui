@@ -1,0 +1,75 @@
+# Fortschritt
+
+## Beispiele
+
+### Größe
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" size="1" value={25} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" size="2" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" size="3" value={75} />
+</Example>
+
+### Variante
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" variant="surface" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" variant="soft" value={50} />
+</Example>
+
+### Farbe
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" color="indigo" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" color="cyan" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" color="orange" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" color="crimson" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" color="gray" value={50} />
+</Example>
+
+### Hoher Kontrast
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" highContrast value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" highContrast variant="soft" value={50} />
+</Example>
+
+### Radius
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" radius="none" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" radius="sm" value={50} />
+  <Progress.Root aria-label="Upload-Fortschritt" className="w-64" radius="full" value={50} />
+</Example>
+
+### Unbestimmt
+
+<Example>
+  <Progress.Root aria-label="Wird geladen" className="w-64" />
+  <Progress.Root aria-label="Wird geladen" className="w-64" variant="soft" />
+</Example>
+
+### Mit Beschriftung und Wert
+
+<Example>
+  <Progress.Root className="w-64" value={40}>
+    <Progress.Label>Wird hochgeladen</Progress.Label>
+    <Progress.Value />
+  </Progress.Root>
+
+  <Progress.Root className="w-64" color="orange" size="3" value={82}>
+    <Progress.Label>Genutzter Speicher</Progress.Label>
+    <Progress.Value />
+  </Progress.Root>
+</Example>
+
+### Höhe
+
+<Example>
+  <Progress.Root aria-label="Upload-Fortschritt" className="h-4 w-64" value={50} />
+
+  <Progress.Root className="h-12 w-64" radius="md" value={50}>
+    <Progress.Label>Wird hochgeladen</Progress.Label>
+    <Progress.Value />
+  </Progress.Root>
+</Example>
