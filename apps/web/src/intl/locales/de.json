@@ -22,6 +22,8 @@
     "field": "Feld",
     "icon-button": "Icon-Button",
     "menu": "Menü",
+    "number-field": "Zahlenfeld",
+    "otp-field": "OTP-Feld",
     "popover": "Popover",
     "preview-card": "Vorschaukarte",
     "radio": "Radio",

@@ -1,0 +1,61 @@
+# Zahlenfeld
+
+## Beispiele
+
+### Größe
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} size="1" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} size="2" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} size="3" />
+</Example>
+
+### Variante
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} variant="surface" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} variant="soft" />
+</Example>
+
+### Farbe
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} color="indigo" variant="soft" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} color="orange" variant="soft" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} color="gray" variant="soft" />
+</Example>
+
+### Radius
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} radius="none" />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} radius="full" />
+</Example>
+
+### Minimum, Maximum und Schritt
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={5} max={10} min={0} step={5} />
+</Example>
+
+### Format
+
+<Example>
+  <NumberField aria-label="Preis" className="w-40" defaultValue={1250} format={{ currency: 'USD', style: 'currency' }} step={50} />
+  <NumberField aria-label="Preis" className="w-32" defaultValue={0.25} format={{ style: 'percent' }} step={0.05} />
+</Example>
+
+### In einem Feld
+
+<Example>
+  <Field className="w-40" hint="Zwischen 1 und 10." label="Gäste">
+    <NumberField defaultValue={2} max={10} min={1} />
+  </Field>
+</Example>
+
+### Deaktiviert
+
+<Example>
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} disabled />
+  <NumberField aria-label="Menge" className="w-32" defaultValue={1} disabled variant="soft" />
+</Example>

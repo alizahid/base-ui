@@ -1,0 +1,89 @@
+# حقل رمز التحقق
+
+## أمثلة
+
+### الحجم
+
+<Example>
+  <Field label="رمز التحقق">
+    <OTPField length={6} size="1" />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} size="2" />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} size="3" />
+  </Field>
+</Example>
+
+### النمط
+
+<Example>
+  <Field label="رمز التحقق">
+    <OTPField length={6} defaultValue="123" variant="surface" />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} defaultValue="123" variant="soft" />
+  </Field>
+</Example>
+
+### اللون
+
+<Example>
+  <Field label="رمز التحقق">
+    <OTPField length={6} color="indigo" variant="soft" />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} color="orange" variant="soft" />
+  </Field>
+</Example>
+
+### نصف القطر
+
+<Example>
+  <Field label="رمز التحقق">
+    <OTPField length={6} radius="none" />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} radius="full" />
+  </Field>
+</Example>
+
+### الطول
+
+<Example>
+  <Field label="الرمز السري">
+    <OTPField length={4} />
+  </Field>
+</Example>
+
+### مخفي
+
+<Example>
+  <Field label="الرمز السري">
+    <OTPField defaultValue="12" length={4} mask />
+  </Field>
+</Example>
+
+### داخل حقل
+
+<Example>
+  <Field hint="أدخل الرمز المكوّن من 6 أرقام الذي أرسلناه إليك." label="رمز التحقق">
+    <OTPField length={6} />
+  </Field>
+
+  <Field error="هذا الرمز غير صحيح." label="رمز التحقق">
+    <OTPField defaultValue="123456" length={6} />
+  </Field>
+</Example>
+
+### معطّل
+
+<Example>
+  <Field label="رمز التحقق">
+    <OTPField length={6} defaultValue="123" disabled />
+  </Field>
+  <Field label="رمز التحقق">
+    <OTPField length={6} defaultValue="123" disabled variant="soft" />
+  </Field>
+</Example>

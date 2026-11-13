@@ -9,6 +9,8 @@ export const pages = [
   'field',
   'icon-button',
   'menu',
+  'number-field',
+  'otp-field',
   'popover',
   'preview-card',
   'radio',

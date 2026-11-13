@@ -1,0 +1,89 @@
+# OTP-Feld
+
+## Beispiele
+
+### Größe
+
+<Example>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} size="1" />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} size="2" />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} size="3" />
+  </Field>
+</Example>
+
+### Variante
+
+<Example>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} defaultValue="123" variant="surface" />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} defaultValue="123" variant="soft" />
+  </Field>
+</Example>
+
+### Farbe
+
+<Example>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} color="indigo" variant="soft" />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} color="orange" variant="soft" />
+  </Field>
+</Example>
+
+### Radius
+
+<Example>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} radius="none" />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} radius="full" />
+  </Field>
+</Example>
+
+### Länge
+
+<Example>
+  <Field label="PIN">
+    <OTPField length={4} />
+  </Field>
+</Example>
+
+### Maskiert
+
+<Example>
+  <Field label="PIN">
+    <OTPField defaultValue="12" length={4} mask />
+  </Field>
+</Example>
+
+### In einem Feld
+
+<Example>
+  <Field hint="Gib den 6-stelligen Code ein, den wir dir gesendet haben." label="Bestätigungscode">
+    <OTPField length={6} />
+  </Field>
+
+  <Field error="Dieser Code stimmt nicht." label="Bestätigungscode">
+    <OTPField defaultValue="123456" length={6} />
+  </Field>
+</Example>
+
+### Deaktiviert
+
+<Example>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} defaultValue="123" disabled />
+  </Field>
+  <Field label="Bestätigungscode">
+    <OTPField length={6} defaultValue="123" disabled variant="soft" />
+  </Field>
+</Example>

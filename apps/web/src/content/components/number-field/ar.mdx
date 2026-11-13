@@ -1,0 +1,61 @@
+# حقل الأرقام
+
+## أمثلة
+
+### الحجم
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} size="1" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} size="2" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} size="3" />
+</Example>
+
+### النمط
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} variant="surface" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} variant="soft" />
+</Example>
+
+### اللون
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} color="indigo" variant="soft" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} color="orange" variant="soft" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} color="gray" variant="soft" />
+</Example>
+
+### نصف القطر
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} radius="none" />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} radius="full" />
+</Example>
+
+### الحد الأدنى والأقصى والخطوة
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={5} max={10} min={0} step={5} />
+</Example>
+
+### التنسيق
+
+<Example>
+  <NumberField aria-label="السعر" className="w-40" defaultValue={1250} format={{ currency: 'USD', style: 'currency' }} step={50} />
+  <NumberField aria-label="السعر" className="w-32" defaultValue={0.25} format={{ style: 'percent' }} step={0.05} />
+</Example>
+
+### داخل حقل
+
+<Example>
+  <Field className="w-40" hint="بين 1 و10." label="الضيوف">
+    <NumberField defaultValue={2} max={10} min={1} />
+  </Field>
+</Example>
+
+### معطّل
+
+<Example>
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} disabled />
+  <NumberField aria-label="الكمية" className="w-32" defaultValue={1} disabled variant="soft" />
+</Example>
