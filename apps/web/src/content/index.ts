@@ -23,6 +23,7 @@ export const pages = [
   'slider',
   'spinner',
   'switch',
+  'table',
   'tabs',
   'text-area',
   'text-field',

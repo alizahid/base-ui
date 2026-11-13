@@ -47,17 +47,25 @@ export function Checkbox({
       )}
     >
       <Component.Indicator {...stylex.props(styles.indicator)}>
-        {props.indeterminate ? (
-          <MinusIcon {...stylex.props(styles.icon)} />
-        ) : (
-          <CheckIcon {...stylex.props(styles.icon)} />
-        )}
+        {/* both are rendered and css shows one, so a parent checkbox, whose
+            indeterminate state base ui works out, gets the right icon too */}
+        <CheckIcon {...stylex.props(styles.icon, styles.check)} />
+
+        <MinusIcon {...stylex.props(styles.icon, styles.minus)} />
       </Component.Indicator>
     </Component.Root>
   )
 }
 
+const indeterminate = ':is([data-indeterminate] *)'
+
 const styles = stylex.create({
+  check: {
+    display: {
+      [indeterminate]: 'none',
+      default: 'block',
+    },
+  },
   icon: {
     height: '100%',
     width: '100%',
@@ -67,5 +75,11 @@ const styles = stylex.create({
   },
   main: {
     borderRadius: 'var(--control-radius, var(--radius-sm))',
+  },
+  minus: {
+    display: {
+      [indeterminate]: 'block',
+      default: 'none',
+    },
   },
 })

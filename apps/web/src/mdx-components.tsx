@@ -24,6 +24,7 @@ import {
   Slider,
   Spinner,
   Switch,
+  Table,
   Tabs,
   TextArea,
   TextField,
@@ -128,6 +129,7 @@ export function useMDXComponents(): MDXComponents {
       Separator: Select.Separator,
       Trigger: Select.Trigger,
     },
+    Table,
     Tabs,
     TextArea: {
       Root: TextArea.Root,
