@@ -824,3 +824,12 @@
 .mantine-Burger-root:hover { background-color: var(--gray-a3); }
 .mantine-Burger-burger { --burger-color: var(--gray-12); }
 .mantine-Burger-root[class*='rx-accent-'] .mantine-Burger-burger { --burger-color: var(--accent-a11); }
+
+/* ---------- "white" variants ----------
+ * Mantine's white variant keeps a white fill in dark mode, where the accent text steps are light.
+ * These parts switch to a darkened solid step so the label stays readable. */
+[data-mantine-color-scheme='dark'] :is(.mantine-Badge-root, .mantine-ThemeIcon-root, .mantine-Alert-root)[data-variant='white'],
+[data-mantine-color-scheme='dark'] .mantine-Avatar-root[data-variant='white'] .mantine-Avatar-placeholder {
+  color: color-mix(in oklab, var(--accent-9), black 30%);
+}
+[data-mantine-color-scheme='dark'] .mantine-Alert-root[data-variant='white'] .mantine-Alert-message { color: var(--black-a12); }

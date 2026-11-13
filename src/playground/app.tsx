@@ -61,7 +61,7 @@ function ThemePanel() {
   const { accent, gray, radius, set } = useSettings()
   const { colorScheme, setColorScheme } = useMantineColorScheme()
   return (
-    <Popover position="bottom-end" width={300}>
+    <Popover position="bottom-end" width={328}>
       <Popover.Target>
         <Button variant="default" leftSection={<MixerHorizontalIcon />}>
           Theme
@@ -195,7 +195,7 @@ export function App() {
             if (!demos.length) return null
             return (
               <Box key={section.id} mt="md">
-                <Text size="xs" fw={500} c="dimmed" px={8} mb={4}>
+                <Text size="xs" fw={500} c="dimmed" px={12} mb={4}>
                   {section.title}
                 </Text>
                 {demos.map((d) => (

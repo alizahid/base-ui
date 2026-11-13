@@ -522,8 +522,9 @@
   animation: none;
 }
 .mantine-Spotlight-body { padding: 0; }
-.mantine-Spotlight-search {
-  --input-height: 48px;
+/* The class lands on both the wrapper and the input */
+.mantine-Spotlight-search { --input-height: 48px; border: 0; background: transparent; }
+input.mantine-Spotlight-search {
   height: 48px;
   min-height: 48px;
   padding-inline: calc(var(--space-2) + var(--space-3));
@@ -536,13 +537,15 @@
   color: var(--gray-12);
   outline: 0 !important;
 }
-.mantine-Spotlight-search[data-with-left-section] { padding-inline-start: 44px; }
+input.mantine-Spotlight-search[data-with-left-section] { padding-inline-start: 44px; }
 .mantine-Spotlight-search::placeholder { color: var(--gray-a10); }
 [data-mantine-color-scheme] .mantine-Spotlight-actionsList {
   --spotlight-actions-list-padding: var(--space-2);
   border-color: var(--gray-a5);
   margin-inline-end: 0;
 }
+/* The scroll area already reserves a gutter on the right */
+.mantine-Spotlight-actionsList:has([data-offset-scrollbars]) { padding-inline-end: 0; }
 .mantine-Spotlight-overlay {
   --overlay-bg: var(--color-overlay) !important;
   --overlay-filter: none !important;
