@@ -235,7 +235,7 @@ export function ExtensionsSection() {
 
       <Demo title="Carousel" description="Team cards with controls and indicators.">
         <Wide label="indicators, loop">
-          <Carousel withIndicators slideSize={{ base: '100%', sm: '50%' }} slideGap="md" emblaOptions={{ loop: true }}>
+          <Carousel withIndicators slideSize={{ base: '100%', sm: '50%' }} slideGap="md" emblaOptions={{ loop: true, align: 'start' }}>
             {teams.map((team) => (
               <Carousel.Slide key={team.name}>
                 <Paper withBorder p="lg">

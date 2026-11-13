@@ -39,13 +39,17 @@ export function DatesSection() {
           <Calendar defaultDate="2026-03-01" />
         </Row>
         <Row label="two months">
-          <Calendar defaultDate="2026-03-01" numberOfColumns={2} />
+          <div style={{ overflowX: 'auto' }}>
+            <Calendar defaultDate="2026-03-01" numberOfColumns={2} />
+          </div>
         </Row>
       </Demo>
 
       <Demo title="MiniCalendar" description="Compact week strip for choosing a day.">
         <Row label="week strip">
-          <MiniCalendarDemo />
+          <div style={{ overflowX: 'auto' }}>
+            <MiniCalendarDemo />
+          </div>
         </Row>
       </Demo>
 

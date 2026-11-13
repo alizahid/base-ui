@@ -753,7 +753,7 @@ export function InputsSection() {
                 <Group wrap="nowrap" align="flex-start">
                   <Checkbox.Indicator />
                   <div>
-                    <Text fw={500}>Email</Text>
+                    <Text fw={500} size="sm">Email</Text>
                     <Text size="sm" c="dimmed">
                       Weekly product updates
                     </Text>
@@ -764,7 +764,7 @@ export function InputsSection() {
                 <Group wrap="nowrap" align="flex-start">
                   <Checkbox.Indicator />
                   <div>
-                    <Text fw={500}>SMS</Text>
+                    <Text fw={500} size="sm">SMS</Text>
                     <Text size="sm" c="dimmed">
                       Critical alerts only
                     </Text>
@@ -775,7 +775,7 @@ export function InputsSection() {
                 <Group wrap="nowrap" align="flex-start">
                   <Checkbox.Indicator disabled />
                   <div>
-                    <Text fw={500}>Push</Text>
+                    <Text fw={500} size="sm">Push</Text>
                     <Text size="sm" c="dimmed">
                       Unavailable on web
                     </Text>
@@ -803,7 +803,7 @@ export function InputsSection() {
           <Checkbox.Card checked={singleCard} onChange={setSingleCard} p="md" radius="md" maw={W}>
             <Group wrap="nowrap" align="flex-start">
               <Checkbox.Indicator checked={singleCard} />
-              <Text fw={500}>Standalone card</Text>
+              <Text fw={500} size="sm">Standalone card</Text>
             </Group>
           </Checkbox.Card>
         </Row>
@@ -965,7 +965,7 @@ export function InputsSection() {
                   <Group wrap="nowrap" align="flex-start">
                     <Radio.Indicator />
                     <div>
-                      <Text fw={500}>{title}</Text>
+                      <Text fw={500} size="sm">{title}</Text>
                       <Text size="sm" c="dimmed">
                         {text}
                       </Text>
