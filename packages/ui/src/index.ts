@@ -12,13 +12,16 @@ export * from './components/checkbox-group/index.js'
 export * from './components/combobox/index.js'
 export * from './components/dialog/index.js'
 export * from './components/field/index.js'
+export * from './components/hover-card/index.js'
 export * from './components/icon-button/index.js'
+export * from './components/popover/index.js'
 export * from './components/radio/index.js'
 export * from './components/radio-group/index.js'
 export * from './components/select/index.js'
 export * from './components/spinner/index.js'
 export * from './components/switch/index.js'
 export * from './components/text-field/index.js'
+export * from './components/tooltip/index.js'
 
 // tokens
 

@@ -7,13 +7,16 @@ export const pages = [
   'combobox',
   'dialog',
   'field',
+  'hover-card',
   'icon-button',
+  'popover',
   'radio',
   'radio-group',
   'select',
   'spinner',
   'switch',
   'text-field',
+  'tooltip',
 ] as const
 
 export type Page = (typeof pages)[number]

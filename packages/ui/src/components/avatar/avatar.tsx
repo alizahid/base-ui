@@ -95,6 +95,8 @@ const styles = stylex.create({
     backgroundColor: 'var(--avatar-background)',
     color: 'var(--avatar-color)',
     containerType: 'size',
+    // keeps its square in a flex row, as in radix
+    flexShrink: 0,
     fontWeight: '500',
     overflow: 'hidden',
     position: 'relative',

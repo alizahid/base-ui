@@ -7,13 +7,16 @@ import {
   Combobox,
   Dialog,
   Field,
+  HoverCard,
   IconButton,
+  Popover,
   Radio,
   RadioGroup,
   Select,
   Spinner,
   Switch,
   TextField,
+  Tooltip,
 } from '@repo/ui'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
 import { type MDXComponents } from 'mdx/types'
@@ -47,6 +50,7 @@ const components: MDXComponents = {
   Radio,
   Spinner,
   Switch,
+  Tooltip,
 }
 
 export function useMDXComponents(): MDXComponents {
@@ -75,6 +79,8 @@ export function useMDXComponents(): MDXComponents {
       Title: Dialog.Title,
       Trigger: Dialog.Trigger,
     },
+    HoverCard,
+    Popover,
     RadioGroup: {
       Item: RadioGroup.Item,
       Root: RadioGroup.Root,

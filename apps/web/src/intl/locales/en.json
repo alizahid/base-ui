@@ -20,12 +20,15 @@
     "components": "Components",
     "dialog": "Dialog",
     "field": "Field",
+    "hover-card": "Hover Card",
     "icon-button": "Icon Button",
+    "popover": "Popover",
     "radio": "Radio",
     "radio-group": "Radio Group",
     "select": "Select",
     "spinner": "Spinner",
     "switch": "Switch",
-    "text-field": "Text Field"
+    "text-field": "Text Field",
+    "tooltip": "Tooltip"
   }
 }
