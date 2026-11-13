@@ -67,6 +67,8 @@ Spinner, Switch, Tabs, TextArea, TextField, Toast, Toggle, ToggleGroup, Toolbar,
 - Plumbing parts (portal, backdrop, positioner, thumb, indicator) are built in and not exposed.
   Where one is rendered for you, a `classNames` prop lets you style it.
 - Popups keep the theme of the `ThemeProvider` they are used in.
+- `Progress` is a plain bar for a task that is under way. `Meter` is a measurement in a range:
+  it has a `label`, shows its value, and `low` / `high` / `optimum` turn the bar amber or red.
 
 ## Sizes and look
 

@@ -363,7 +363,17 @@ function Display() {
         <Progress aria-label="Upload" className="w-64" value={60} />
       </Item>
       <Item name="Meter">
-        <Meter aria-label="Storage" className="w-64" value={35} />
+        <div className="flex w-64 flex-col gap-4">
+          <Meter
+            formatValue={(_, value) => `${value} GB of 100 GB`}
+            high={90}
+            label="Storage used"
+            low={70}
+            optimum={0}
+            value={35}
+          />
+          <Meter high={50} label="Battery" low={20} optimum={100} value={12} />
+        </div>
       </Item>
       <Item name="Spinner">
         <Spinner />
