@@ -12,6 +12,8 @@ export type BaseProviderProps = {
   className?: string
   direction?: 'ltr' | 'rtl'
   gray?: GrayToken
+  // the background of cards: see-through with a blur, or opaque
+  panelBackground?: 'solid' | 'translucent'
 }
 
 export function BaseProvider({
@@ -20,6 +22,7 @@ export function BaseProvider({
   className,
   direction = 'ltr',
   gray = getGray(accent),
+  panelBackground = 'translucent',
 }: BaseProviderProps) {
   return (
     <ThemeContext
@@ -32,7 +35,12 @@ export function BaseProvider({
           what makes submenus open towards the left in rtl, and arrow keys
           follow */}
       <DirectionProvider direction={direction}>
-        <div className={className} data-accent={accent} data-gray={gray}>
+        <div
+          className={className}
+          data-accent={accent}
+          data-gray={gray}
+          data-panel-background={panelBackground}
+        >
           {children}
         </div>
       </DirectionProvider>

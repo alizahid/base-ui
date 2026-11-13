@@ -1,0 +1,111 @@
+# Karte
+
+## Beispiele
+
+### Einfach
+
+<Example orientation="vertical">
+  <Card className="w-64">
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium">Teodros Girmay</div>
+        <div className="text-(--gray-a11)">Entwicklung</div>
+      </div>
+    </div>
+  </Card>
+</Example>
+
+### Größe
+
+<Example orientation="vertical">
+  <Card className="w-72" size="1">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+
+  <Card className="w-72" size="2">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+
+  <Card className="w-72" size="3">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+</Example>
+
+### Variante
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2" variant="surface">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+
+  <Card className="w-72" size="2" variant="ghost">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+</Example>
+
+### Mit Bild
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2">
+    <img alt="Kräftige Typografie auf buntem Hintergrund" className="-mx-4 -mt-4 mb-4 block h-36 w-[calc(100%+2rem)] max-w-none object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+
+    <div className="text-sm font-medium">Kräftige Typografie</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Typografie ist die Kunst und Technik, Schrift so zu setzen, dass Sprache lesbar wird.</div>
+  </Card>
+</Example>
+
+### Panel-Hintergrund
+
+<Example orientation="vertical">
+  <div className="flex flex-col gap-4 rounded-2xl bg-linear-to-tr from-(--plum-9) to-(--tomato-9) p-6">
+    <BaseProvider accent="plum" panelBackground="translucent">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium">Durchscheinend</div>
+        <div className="mt-1 text-sm text-(--gray-a11)">Der Standard. Zeigt, was hinter der Karte liegt.</div>
+      </Card>
+    </BaseProvider>
+
+    <BaseProvider accent="plum" panelBackground="solid">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium">Deckend</div>
+        <div className="mt-1 text-sm text-(--gray-a11)">Deckend, egal was dahinter liegt.</div>
+      </Card>
+    </BaseProvider>
+  </div>
+</Example>
+
+### Als Link
+
+<Example orientation="vertical">
+  <Card className="w-72" render={<a href="#card" />} size="2">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+
+  <Card className="w-72" render={<a href="#card" />} size="2" variant="ghost">
+    <div className="text-sm font-medium">Schnellstart</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">Starte dein nächstes Projekt in wenigen Minuten.</div>
+  </Card>
+</Example>
+
+### Als Button
+
+<Example orientation="vertical">
+  <Card className="w-64" render={<button type="button" />}>
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium">Teodros Girmay</div>
+        <div className="text-(--gray-a11)">Entwicklung</div>
+      </div>
+    </div>
+  </Card>
+</Example>

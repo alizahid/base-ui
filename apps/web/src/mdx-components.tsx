@@ -2,7 +2,9 @@ import {
   AlertDialog,
   Avatar,
   Badge,
+  BaseProvider,
   Button,
+  Card,
   Checkbox,
   CheckboxGroup,
   Combobox,
@@ -26,6 +28,7 @@ import {
   TextField,
   Tooltip,
 } from '@repo/ui'
+import { cn } from 'cn'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
 import { type MDXComponents } from 'mdx/types'
 import { type ComponentProps } from 'react'
@@ -34,10 +37,18 @@ import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 
-function Example(props: ComponentProps<'div'>) {
+type ExampleProps = ComponentProps<'div'> & {
+  orientation?: 'horizontal' | 'vertical'
+}
+
+// vertical stacks larger components instead of wrapping them
+function Example({ orientation = 'horizontal', ...props }: ExampleProps) {
   return (
     <div
-      className="mt-4 flex min-h-32 flex-wrap items-center justify-center gap-4 border border-(--gray-a6) p-6"
+      className={cn(
+        'mt-4 flex min-h-32 items-center justify-center gap-4 border border-(--gray-a6) p-6',
+        orientation === 'vertical' ? 'flex-col' : 'flex-wrap',
+      )}
       {...props}
     />
   )
@@ -47,13 +58,17 @@ const components: MDXComponents = {
   AsyncCombobox,
   Avatar,
   Badge,
+  BaseProvider,
   Button,
+  Card,
   Checkbox,
   CollapsedCombobox,
   CollapsedSelect,
   Example,
   Field,
-  h1: (props) => <h1 className="mb-4 text-4xl font-bold" {...props} />,
+  h1: (props) => (
+    <h1 className="mb-4 text-4xl font-bold text-(--accent-11)" {...props} />
+  ),
   h2: (props) => <h2 className="mt-10 mb-4 text-2xl font-bold" {...props} />,
   h3: (props) => <h3 className="mt-8 text-lg font-bold" {...props} />,
   IconButton,

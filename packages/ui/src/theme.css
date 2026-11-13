@@ -1061,6 +1061,7 @@
 [data-gray] {
   --surface: rgb(255 255 255 / 0.85);
   --panel-background: white;
+  --panel-translucent: rgb(255 255 255 / 0.7);
   --card-shadow:
     0 0 0 1px color-mix(in oklab, var(--gray-a3), var(--gray-3) 25%),
     0 8px 40px var(--black-a1), 0 12px 32px -16px var(--gray-a3);
@@ -1078,6 +1079,10 @@
 :is(.dark, .dark-theme) [data-gray] {
   --surface: rgb(0 0 0 / 0.25);
   --panel-background: var(--gray-2);
+  /* radix uses gray-a2 here, which all but disappears over anything
+     colourful. this stays close to the solid panel on a plain page and
+     reads as frosted over an image */
+  --panel-translucent: color-mix(in oklab, var(--gray-2) 65%, transparent);
   --card-shadow:
     0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%),
     0 8px 40px var(--black-a3), 0 12px 32px -16px var(--black-a5);
@@ -1089,6 +1094,19 @@
     0 12px 60px var(--black-a4), 0 16px 64px var(--black-a6),
     0 16px 36px -20px var(--black-a11);
   --overlay: var(--black-a8);
+}
+
+/* a card's background, from the provider's `panelBackground`. translucent, as
+   in radix themes, unless a provider says solid. floating panels (popovers,
+   menus, dialogs) are always solid */
+[data-panel-background="solid"] {
+  --panel: var(--panel-background);
+  --panel-backdrop: none;
+}
+
+[data-panel-background="translucent"] {
+  --panel: var(--panel-translucent);
+  --panel-backdrop: blur(64px);
 }
 
 /* focus rings, selection and autofill follow the component's color, except a

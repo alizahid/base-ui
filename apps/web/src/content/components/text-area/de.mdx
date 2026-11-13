@@ -6,7 +6,7 @@ import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
 
 ### Größe
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" size="1" />
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" size="2" />
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" size="3" />
@@ -14,14 +14,14 @@ import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
 
 ### Variante
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" variant="surface" />
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" variant="soft" />
 </Example>
 
 ### Farbe
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root className="w-64" color="indigo" placeholder="Auf Kommentar antworten…" variant="soft" />
   <TextArea.Root className="w-64" color="orange" placeholder="Auf Kommentar antworten…" variant="soft" />
   <TextArea.Root className="w-64" color="gray" placeholder="Auf Kommentar antworten…" variant="soft" />
@@ -29,21 +29,21 @@ import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
 
 ### Radius
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" radius="none" />
   <TextArea.Root className="w-64" placeholder="Auf Kommentar antworten…" radius="xl" />
 </Example>
 
 ### Automatische Größe
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root autoResize className="w-64" placeholder="Wächst beim Tippen…" />
   <TextArea.Root autoResize className="max-h-40 w-64" placeholder="Wächst bis zu einer Maximalhöhe und scrollt dann…" />
 </Example>
 
 ### Mit Slots
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root aria-label="Nachricht" autoResize className="max-h-40 w-80" placeholder="Nachricht schreiben…">
     <TextArea.Slot className="-ms-1">
       <IconButton aria-label="Anhängen" color="gray" size="1" variant="ghost">
@@ -65,7 +65,7 @@ import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
 
 ### In einem Feld
 
-<Example>
+<Example orientation="vertical">
   <Field className="w-64" hint="Ein paar Worte über dich." label="Bio">
     <TextArea.Root autoResize placeholder="Erzähl uns von dir…" />
   </Field>
@@ -77,7 +77,7 @@ import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
 
 ### Deaktiviert
 
-<Example>
+<Example orientation="vertical">
   <TextArea.Root className="w-64" disabled placeholder="Auf Kommentar antworten…" variant="surface" />
   <TextArea.Root className="w-64" disabled placeholder="Auf Kommentar antworten…" variant="soft" />
 </Example>

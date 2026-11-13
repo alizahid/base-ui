@@ -1,0 +1,111 @@
+# البطاقة
+
+## أمثلة
+
+### أساسي
+
+<Example orientation="vertical">
+  <Card className="w-64">
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium">تيودروس جيرماي</div>
+        <div className="text-(--gray-a11)">الهندسة</div>
+      </div>
+    </div>
+  </Card>
+</Example>
+
+### الحجم
+
+<Example orientation="vertical">
+  <Card className="w-72" size="1">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+
+  <Card className="w-72" size="2">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+
+  <Card className="w-72" size="3">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+</Example>
+
+### النمط
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2" variant="surface">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+
+  <Card className="w-72" size="2" variant="ghost">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+</Example>
+
+### مع صورة
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2">
+    <img alt="خطوط عريضة على خلفية ملوّنة" className="-mx-4 -mt-4 mb-4 block h-36 w-[calc(100%+2rem)] max-w-none object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+
+    <div className="text-sm font-medium">خطوط عريضة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">فن الخط هو فن وتقنية ترتيب الحروف لجعل اللغة المكتوبة مقروءة.</div>
+  </Card>
+</Example>
+
+### خلفية اللوحة
+
+<Example orientation="vertical">
+  <div className="flex flex-col gap-4 rounded-2xl bg-linear-to-tr from-(--plum-9) to-(--tomato-9) p-6">
+    <BaseProvider accent="plum" panelBackground="translucent">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium">شفافة</div>
+        <div className="mt-1 text-sm text-(--gray-a11)">الافتراضي. تُظهر ما خلف البطاقة.</div>
+      </Card>
+    </BaseProvider>
+
+    <BaseProvider accent="plum" panelBackground="solid">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium">معتمة</div>
+        <div className="mt-1 text-sm text-(--gray-a11)">معتمة أيًّا كان ما خلفها.</div>
+      </Card>
+    </BaseProvider>
+  </div>
+</Example>
+
+### كرابط
+
+<Example orientation="vertical">
+  <Card className="w-72" render={<a href="#card" />} size="2">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+
+  <Card className="w-72" render={<a href="#card" />} size="2" variant="ghost">
+    <div className="text-sm font-medium">بداية سريعة</div>
+    <div className="mt-1 text-sm text-(--gray-a11)">ابدأ مشروعك القادم في دقائق.</div>
+  </Card>
+</Example>
+
+### كزر
+
+<Example orientation="vertical">
+  <Card className="w-64" render={<button type="button" />}>
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium">تيودروس جيرماي</div>
+        <div className="text-(--gray-a11)">الهندسة</div>
+      </div>
+    </div>
+  </Card>
+</Example>
