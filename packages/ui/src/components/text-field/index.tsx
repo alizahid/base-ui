@@ -19,7 +19,7 @@ export type TextFieldRootProps = Omit<
   'className' | 'color' | 'size' | 'style'
 > & {
   className?: string
-  color?: ColorToken
+  color?: ColorToken | 'gray'
   radius?: RadiusToken
   size?: '1' | '2' | '3'
   style?: CSSProperties

@@ -1,4 +1,4 @@
-import { EnvelopeSimpleIcon, MagnifyingGlassIcon } from '@phosphor-icons/react/ssr'
+import { EnvelopeSimpleIcon, MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react/ssr'
 
 # حقل النص
 
@@ -26,6 +26,7 @@ import { EnvelopeSimpleIcon, MagnifyingGlassIcon } from '@phosphor-icons/react/s
   <TextField.Root color="cyan" placeholder="بحث…" variant="soft" />
   <TextField.Root color="orange" placeholder="بحث…" variant="soft" />
   <TextField.Root color="crimson" placeholder="بحث…" variant="soft" />
+  <TextField.Root color="gray" placeholder="بحث…" variant="soft" />
 </Example>
 
 ### نصف القطر
@@ -51,8 +52,10 @@ import { EnvelopeSimpleIcon, MagnifyingGlassIcon } from '@phosphor-icons/react/s
       <EnvelopeSimpleIcon className="size-[1lh]" />
     </TextField.Slot>
 
-    <TextField.Slot side="end">
-      <Button size="1" variant="ghost">OK</Button>
+    <TextField.Slot className="-me-1" side="end">
+      <IconButton aria-label="مسح" size="1" variant="ghost">
+        <XIcon className="size-[1lh]" weight="bold" />
+      </IconButton>
     </TextField.Slot>
   </TextField.Root>
 </Example>

@@ -13,6 +13,7 @@ export function Theme() {
   return (
     <IconButton
       aria-label={t('theme')}
+      highContrast
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       variant="ghost"
     >

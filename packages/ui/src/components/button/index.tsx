@@ -14,8 +14,9 @@ import { Spinner } from '../spinner/index.js'
 
 export type ButtonProps = ComponentProps & {
   className?: string
-  color?: ColorToken
+  color?: ColorToken | 'gray'
   disabled?: boolean
+  highContrast?: boolean
   loading?: boolean
   radius?: RadiusToken
   size?: '1' | '2' | '3' | '4'
@@ -28,6 +29,7 @@ export function ButtonBase({
   className,
   color,
   disabled,
+  highContrast,
   loading,
   radius,
   size = '2',
@@ -47,6 +49,8 @@ export function ButtonBase({
         stylex.props(
           styles.main,
           variants[variant],
+          highContrast &&
+            (variant === 'solid' ? contrast.solid : contrast.other),
           sizes[size],
           radius && radii[radius],
           xstyle,
@@ -148,6 +152,20 @@ const variants = stylex.create({
     '--background-hover': 'var(--accent-3)',
     '--border': 'var(--accent-7)',
     '--color': 'var(--accent-11)',
+  },
+})
+
+const contrast = stylex.create({
+  other: {
+    '--color': 'var(--accent-12)',
+  },
+  solid: {
+    '--background': 'var(--accent-12)',
+    '--background-active':
+      'color-mix(in oklab, var(--accent-12) 80%, var(--gray-1))',
+    '--background-hover':
+      'color-mix(in oklab, var(--accent-12) 90%, var(--gray-1))',
+    '--color': 'var(--gray-1)',
   },
 })
 

@@ -65,9 +65,9 @@ export default async function Layout({
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <BaseProvider
               accent="indigo"
-              className="mx-auto flex max-w-6xl flex-col gap-4 p-6 md:flex-row"
+              className="mx-auto flex max-w-6xl flex-col gap-6 p-6 md:flex-row"
             >
-              <aside className="w-1/5 min-w-3xs">
+              <aside className="w-50">
                 <div className="sticky top-6 flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-bold">{t('title')}</span>

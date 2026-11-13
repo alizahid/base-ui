@@ -13,9 +13,10 @@ import { merge } from '../../lib/stylex.js'
 
 export type AvatarProps = ComponentProps & {
   className?: string
-  color?: ColorToken
+  color?: ColorToken | 'gray'
   delay?: number
   fallback: string
+  highContrast?: boolean
   radius?: RadiusToken
   size?: '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
   src?: string
@@ -28,6 +29,7 @@ export function Avatar({
   color,
   delay,
   fallback,
+  highContrast,
   radius,
   size = '2',
   src,
@@ -43,6 +45,7 @@ export function Avatar({
         stylex.props(
           styles.main,
           variants[variant],
+          highContrast && contrast[variant],
           sizes[size],
           radius && radii[radius],
         ),
@@ -95,7 +98,7 @@ const styles = stylex.create({
     position: 'relative',
   },
   single: {
-    fontSize: '70cqmin',
+    fontSize: '60cqmin',
   },
   text: {
     textBoxEdge: 'cap alphabetic',
@@ -111,6 +114,16 @@ const variants = stylex.create({
   solid: {
     '--background': 'var(--accent-9)',
     '--color': 'var(--accent-contrast)',
+  },
+})
+
+const contrast = stylex.create({
+  soft: {
+    '--color': 'var(--accent-12)',
+  },
+  solid: {
+    '--background': 'var(--accent-12)',
+    '--color': 'var(--gray-1)',
   },
 })
 

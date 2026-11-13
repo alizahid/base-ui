@@ -67,7 +67,9 @@ export function getGray(color: ColorToken): GrayToken {
     return 'olive'
   }
 
-  if (['yellow', 'amber', 'orange', 'brown'].includes(color)) {
+  if (
+    ['yellow', 'amber', 'orange', 'brown', 'gold', 'bronze'].includes(color)
+  ) {
     return 'sand'
   }
 

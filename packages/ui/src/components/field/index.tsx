@@ -46,7 +46,6 @@ export function Field({
         </Component.Description>
       ) : null}
 
-      {/* `error` is for form libraries, otherwise base ui's own message shows */}
       <Component.Error
         {...(error ? { children: error, match: true } : null)}
         {...stylex.props(styles.error)}
