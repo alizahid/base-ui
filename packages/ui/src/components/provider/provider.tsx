@@ -1,5 +1,6 @@
 'use client'
 
+import { DirectionProvider } from '@base-ui/react/direction-provider'
 import { type ReactNode } from 'react'
 
 import { type ColorToken, type GrayToken, getGray } from '../../lib/colors.js'
@@ -9,6 +10,7 @@ export type BaseProviderProps = {
   accent?: ColorToken
   children: ReactNode
   className?: string
+  direction?: 'ltr' | 'rtl'
   gray?: GrayToken
 }
 
@@ -16,6 +18,7 @@ export function BaseProvider({
   accent = 'blue',
   children,
   className,
+  direction = 'ltr',
   gray = getGray(accent),
 }: BaseProviderProps) {
   return (
@@ -25,9 +28,14 @@ export function BaseProvider({
         gray,
       }}
     >
-      <div className={className} data-accent={accent} data-gray={gray}>
-        {children}
-      </div>
+      {/* base ui can't read the page's `dir`, so it has to be told: this is
+          what makes submenus open towards the left in rtl, and arrow keys
+          follow */}
+      <DirectionProvider direction={direction}>
+        <div className={className} data-accent={accent} data-gray={gray}>
+          {children}
+        </div>
+      </DirectionProvider>
     </ThemeContext>
   )
 }

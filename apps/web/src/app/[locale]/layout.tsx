@@ -66,8 +66,9 @@ export default async function Layout({
             <BaseProvider
               accent="plum"
               className="mx-auto flex max-w-6xl flex-col border-(--gray-a6) md:flex-row xl:border-x"
+              direction={directions[locale]}
             >
-              <aside className="w-full border-b border-(--gray-a6) p-6 md:w-64 md:border-r md:border-b-0">
+              <aside className="w-full border-b border-(--gray-a6) p-6 md:w-64 md:border-e md:border-b-0">
                 <div className="sticky top-6 flex flex-col gap-6">
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-bold">{t('title')}</span>

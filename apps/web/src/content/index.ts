@@ -6,6 +6,7 @@ export const pages = [
   'checkbox-group',
   'combobox',
   'dialog',
+  'dropdown-menu',
   'field',
   'hover-card',
   'icon-button',

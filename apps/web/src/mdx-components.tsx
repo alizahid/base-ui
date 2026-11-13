@@ -6,6 +6,7 @@ import {
   CheckboxGroup,
   Combobox,
   Dialog,
+  DropdownMenu,
   Field,
   HoverCard,
   IconButton,
@@ -79,6 +80,7 @@ export function useMDXComponents(): MDXComponents {
       Title: Dialog.Title,
       Trigger: Dialog.Trigger,
     },
+    DropdownMenu,
     HoverCard,
     Popover,
     RadioGroup: {

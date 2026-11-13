@@ -49,7 +49,12 @@ export function Content({
           data-gray={theme.gray}
           {...props}
           {...merge(
-            stylex.props(panel.content, panel.card, panelSizes[size]),
+            stylex.props(
+              panel.content,
+              panel.motion,
+              panel.card,
+              panelSizes[size],
+            ),
             className,
             style,
           )}

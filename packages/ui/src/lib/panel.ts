@@ -34,14 +34,17 @@ export const panel = stylex.create({
     color: 'var(--gray-12)',
     maxWidth: 480,
     minWidth: 'var(--anchor-width)',
-    opacity: {
-      [hidden]: 0,
-      default: 1,
-    },
     outline: 'none',
     overflow: 'auto',
     padding: 'var(--panel-padding)',
     position: 'relative',
+  },
+  // the fade and slide a popup opens and closes with
+  motion: {
+    opacity: {
+      [hidden]: 0,
+      default: 1,
+    },
     transform: {
       [other]: 'scale(0.97)',
       [bottom]: 'translateY(-4px) scale(0.97)',

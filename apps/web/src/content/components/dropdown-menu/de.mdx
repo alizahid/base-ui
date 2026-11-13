@@ -1,0 +1,301 @@
+# Dropdown-Menü
+
+## Beispiele
+
+### Einfach
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>
+
+### Größe
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Größe 1</DropdownMenu.Trigger>
+    <DropdownMenu.Content size="1">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Größe 2</DropdownMenu.Trigger>
+    <DropdownMenu.Content size="2">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>
+
+### Variante
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="solid">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content variant="soft">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>
+
+### Farbe
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button color="indigo" variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content color="indigo">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button color="cyan" variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content color="cyan">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button color="orange" variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content color="orange">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button color="crimson" variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content color="crimson">
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>
+
+### Hoher Kontrast
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content highContrast>
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button color="gray" variant="soft" />}>Optionen</DropdownMenu.Trigger>
+    <DropdownMenu.Content color="gray" highContrast>
+      <DropdownMenu.Item shortcut="⌘ E">Bearbeiten</DropdownMenu.Item>
+      <DropdownMenu.Item shortcut="⌘ D">Duplizieren</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item shortcut="⌘ N">Archivieren</DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger>Mehr</DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item>In Projekt verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Item>In Ordner verschieben…</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item>Erweiterte Optionen…</DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item>Teilen</DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Zu Favoriten hinzufügen</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item color="red" shortcut="⌘ ⌫">Löschen</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>
+
+### Checkbox- und Radio-Einträge
+
+<Example>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger render={<Button variant="soft" />}>Ansicht</DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.CheckboxItem defaultChecked shortcut="⌘ B">Seitenleiste anzeigen</DropdownMenu.CheckboxItem>
+      <DropdownMenu.CheckboxItem>Statusleiste anzeigen</DropdownMenu.CheckboxItem>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Group>
+        <DropdownMenu.Label>Sortieren nach</DropdownMenu.Label>
+        <DropdownMenu.RadioGroup defaultValue="name">
+          <DropdownMenu.RadioItem value="name">Name</DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="date">Datum</DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+      </DropdownMenu.Group>
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+</Example>

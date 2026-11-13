@@ -1,0 +1,177 @@
+import * as stylex from '@stylexjs/stylex'
+
+// ported from radix themes' base-menu.css. the popup sets the size variables
+// and the rows inside read them
+
+// stylex doesn't order these against each other, so they must not overlap
+const off = ':is([data-disabled])'
+const highlighted = ':is([data-highlighted]:not([data-disabled]))'
+const open = ':is([data-popup-open]:not([data-highlighted], [data-disabled]))'
+const tinted = ':is([data-accent]:not([data-highlighted], [data-disabled]))'
+
+export const menu = stylex.create({
+  check: {
+    height: 'var(--dropdown-menu-icon-size)',
+    width: 'var(--dropdown-menu-icon-size)',
+  },
+  // the chevron on a submenu trigger; flipped where text runs right to left
+  chevron: {
+    color: 'var(--dropdown-menu-chevron)',
+    height: 'var(--dropdown-menu-icon-size)',
+    marginInlineEnd: -2,
+    transform: {
+      ':dir(rtl)': 'scaleX(-1)',
+      default: 'none',
+    },
+    width: 'var(--dropdown-menu-icon-size)',
+  },
+  content: {
+    backgroundColor: 'var(--panel-background)',
+    boxShadow: 'var(--panel-shadow)',
+    boxSizing: 'border-box',
+    color: 'var(--gray-12)',
+    maxHeight: 'var(--available-height)',
+    outline: 'none',
+    overflow: 'auto',
+    padding: 'var(--dropdown-menu-content-padding)',
+  },
+  indicator: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    insetInlineStart: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    width: 'var(--dropdown-menu-item-padding-start)',
+  },
+  // every kind of row: item, checkbox item, radio item, submenu trigger
+  item: {
+    // the shortcut and the chevron are muted until the row is highlighted
+    '--dropdown-menu-chevron': {
+      [highlighted]: 'currentColor',
+      [off]: 'currentColor',
+      default: 'var(--gray-12)',
+    },
+    '--dropdown-menu-shortcut': {
+      [highlighted]: 'inherit',
+      [off]: 'inherit',
+      [open]: 'inherit',
+      default: 'var(--gray-a11)',
+    },
+    alignItems: 'center',
+    backgroundColor: {
+      [highlighted]: 'var(--dropdown-menu-highlight)',
+      [open]: 'var(--dropdown-menu-open)',
+    },
+    borderRadius: 'var(--dropdown-menu-item-radius)',
+    boxSizing: 'border-box',
+    // a `color` on an item tints its text
+    color: {
+      [highlighted]: 'var(--dropdown-menu-highlight-color)',
+      [off]: 'var(--gray-a8)',
+      [tinted]: 'var(--accent-a11)',
+    },
+    cursor: 'default',
+    display: 'flex',
+    gap: 'calc(var(--spacing) * 2)',
+    height: 'var(--dropdown-menu-item-height)',
+    outline: 'none',
+    paddingInlineEnd: 'var(--dropdown-menu-item-padding-end)',
+    paddingInlineStart: 'var(--dropdown-menu-item-padding-start)',
+    position: 'relative',
+    scrollMarginBlock: 'var(--dropdown-menu-content-padding)',
+    userSelect: 'none',
+  },
+  label: {
+    alignItems: 'center',
+    boxSizing: 'border-box',
+    color: 'var(--gray-a10)',
+    cursor: 'default',
+    display: 'flex',
+    height: 'var(--dropdown-menu-item-height)',
+    // a label that comes straight after a row gets some room above it
+    marginBlockStart: {
+      ':is([role^="menuitem"] + *)': 'calc(var(--spacing) * 2)',
+    },
+    paddingInlineEnd: 'var(--dropdown-menu-item-padding-end)',
+    paddingInlineStart: 'var(--dropdown-menu-item-padding-start)',
+    userSelect: 'none',
+  },
+  separator: {
+    backgroundColor: 'var(--gray-a6)',
+    height: 1,
+    marginBlock: 'calc(var(--spacing) * 2)',
+    marginInlineEnd: 'var(--dropdown-menu-item-padding-end)',
+    marginInlineStart: 'var(--dropdown-menu-item-padding-start)',
+  },
+  shortcut: {
+    alignItems: 'center',
+    color: 'var(--dropdown-menu-shortcut)',
+    display: 'flex',
+    marginInlineStart: 'auto',
+    paddingInlineStart: 'calc(var(--spacing) * 4)',
+  },
+})
+
+// what a highlighted row and an open submenu trigger look like. set on each
+// row rather than the popup, so a row with its own `color` uses that color
+export const menuVariants = stylex.create({
+  soft: {
+    '--dropdown-menu-highlight': 'var(--accent-a4)',
+    '--dropdown-menu-highlight-color': 'inherit',
+    '--dropdown-menu-open': 'var(--accent-a3)',
+  },
+  solid: {
+    '--dropdown-menu-highlight': 'var(--accent-9)',
+    '--dropdown-menu-highlight-color': 'var(--accent-contrast)',
+    '--dropdown-menu-open': 'var(--gray-a3)',
+  },
+})
+
+// solid only, and not for a row with its own color, which keeps its fill
+export const menuContrast = stylex.create({
+  main: {
+    '--dropdown-menu-highlight': {
+      ':is([data-accent])': 'var(--accent-9)',
+      default: 'var(--accent-12)',
+    },
+    '--dropdown-menu-highlight-color': {
+      ':is([data-accent])': 'var(--accent-contrast)',
+      default: 'var(--accent-1)',
+    },
+  },
+})
+
+// rows get a wider start gutter once the menu has a checkbox or radio item,
+// to make room for the checkmark
+const checkable = ':has([role="menuitemcheckbox"], [role="menuitemradio"])'
+
+export const menuSizes = stylex.create({
+  1: {
+    '--dropdown-menu-content-padding': 'var(--spacing)',
+    '--dropdown-menu-icon-size': '13px',
+    '--dropdown-menu-item-height': 'calc(var(--spacing) * 6)',
+    '--dropdown-menu-item-padding-end': 'calc(var(--spacing) * 2)',
+    '--dropdown-menu-item-padding-start': {
+      [checkable]: 'calc(var(--spacing) * 5)',
+      default: 'calc(var(--spacing) * 2)',
+    },
+    '--dropdown-menu-item-radius': 'var(--radius-sm)',
+    borderRadius: 'var(--radius-lg)',
+    fontSize: 'var(--text-xs)',
+    lineHeight: 'var(--text-xs--line-height)',
+  },
+  2: {
+    '--dropdown-menu-content-padding': 'calc(var(--spacing) * 2)',
+    '--dropdown-menu-icon-size': '15px',
+    '--dropdown-menu-item-height': 'calc(var(--spacing) * 8)',
+    '--dropdown-menu-item-padding-end': 'calc(var(--spacing) * 3)',
+    '--dropdown-menu-item-padding-start': {
+      [checkable]: 'calc(var(--spacing) * 6)',
+      default: 'calc(var(--spacing) * 3)',
+    },
+    '--dropdown-menu-item-radius': 'var(--radius-md)',
+    borderRadius: 'var(--radius-xl)',
+    fontSize: 'var(--text-sm)',
+    lineHeight: 'var(--text-sm--line-height)',
+  },
+})
