@@ -53,7 +53,12 @@ export function Field({
           passed alongside an error, as an explicit undefined would blank
           base ui's message */}
       <Component.Error
-        {...(error ? { children: error, match: true } : null)}
+        {...(error
+          ? {
+              children: error,
+              match: true,
+            }
+          : null)}
         {...stylex.props(styles.error)}
       />
     </Component.Root>
