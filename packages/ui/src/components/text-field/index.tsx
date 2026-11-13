@@ -14,7 +14,7 @@ import { type ColorToken } from '../../lib/colors.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
 import { merge } from '../../lib/stylex.js'
 
-export type RootProps = Omit<
+export type TextFieldRootProps = Omit<
   ComponentProps,
   'className' | 'color' | 'size' | 'style'
 > & {
@@ -26,8 +26,6 @@ export type RootProps = Omit<
   variant?: 'surface' | 'soft'
 }
 
-// className and style go to the wrapper, everything else to the input
-// the wrapper is a label so clicking the padding or a slot focuses the input
 export function Root({
   children,
   className,
@@ -37,7 +35,7 @@ export function Root({
   style,
   variant = 'surface',
   ...props
-}: RootProps) {
+}: TextFieldRootProps) {
   return (
     <label
       data-accent={color}
@@ -59,7 +57,7 @@ export function Root({
   )
 }
 
-export type SlotProps = ReactComponentProps<'div'> & {
+export type TextFieldSlotProps = ReactComponentProps<'div'> & {
   side?: 'start' | 'end'
 }
 
@@ -68,7 +66,7 @@ export function Slot({
   side = 'start',
   style,
   ...props
-}: SlotProps) {
+}: TextFieldSlotProps) {
   return (
     <div
       {...props}

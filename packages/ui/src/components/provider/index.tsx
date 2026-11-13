@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 
 import { type ColorToken, type GrayToken, getGray } from '../../lib/colors.js'
 
-type Props = {
+export type BaseProviderProps = {
   accent?: ColorToken
   children: ReactNode
   className?: string
@@ -14,7 +14,7 @@ export function BaseProvider({
   children,
   className,
   gray = getGray(accent),
-}: Props) {
+}: BaseProviderProps) {
   return (
     <div className={className} data-accent={accent} data-gray={gray}>
       {children}

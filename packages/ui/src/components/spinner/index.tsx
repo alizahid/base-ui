@@ -3,7 +3,7 @@ import { type ButtonHTMLAttributes, type DetailedHTMLProps } from 'react'
 
 import { merge } from '../../lib/stylex.js'
 
-export type Spinner = DetailedHTMLProps<
+export type SpinnerProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLSpanElement>,
   HTMLSpanElement
 > & {
@@ -17,7 +17,7 @@ export function Spinner({
   size = '2',
   style,
   ...props
-}: Spinner) {
+}: SpinnerProps) {
   return (
     <span
       {...props}

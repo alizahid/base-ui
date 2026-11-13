@@ -87,6 +87,8 @@ const styles = stylex.create({
     width: '100%',
   },
   main: {
+    backgroundColor: 'var(--background)',
+    color: 'var(--color)',
     containerType: 'size',
     fontWeight: '500',
     overflow: 'hidden',
@@ -103,12 +105,12 @@ const styles = stylex.create({
 
 const variants = stylex.create({
   soft: {
-    backgroundColor: 'var(--accent-3)',
-    color: 'var(--accent-11)',
+    '--background': 'var(--accent-3)',
+    '--color': 'var(--accent-11)',
   },
   solid: {
-    backgroundColor: 'var(--accent-9)',
-    color: 'var(--accent-contrast)',
+    '--background': 'var(--accent-9)',
+    '--color': 'var(--accent-contrast)',
   },
 })
 

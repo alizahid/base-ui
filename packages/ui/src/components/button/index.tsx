@@ -74,6 +74,13 @@ const styles = stylex.create({
   },
   main: {
     alignItems: 'center',
+    backgroundColor: {
+      ':enabled:active': 'var(--background-active)',
+      ':enabled:hover': 'var(--background-hover)',
+      default: 'var(--background)',
+    },
+    boxShadow: 'inset 0 0 0 1px var(--border)',
+    color: 'var(--color)',
     cursor: {
       ':disabled': 'not-allowed',
       default: 'pointer',
@@ -97,36 +104,32 @@ const styles = stylex.create({
 
 const variants = stylex.create({
   ghost: {
-    backgroundColor: {
-      ':enabled:active': 'var(--accent-4)',
-      ':enabled:hover': 'var(--accent-3)',
-      default: 'transparent',
-    },
-    color: 'var(--accent-11)',
+    '--background': 'transparent',
+    '--background-active': 'var(--accent-4)',
+    '--background-hover': 'var(--accent-3)',
+    '--border': 'transparent',
+    '--color': 'var(--accent-11)',
   },
   outline: {
-    backgroundColor: {
-      ':enabled:active': 'var(--accent-3)',
-      ':enabled:hover': 'var(--accent-2)',
-      default: 'transparent',
-    },
-    boxShadow: 'inset 0 0 0 1px var(--accent-7)',
-    color: 'var(--accent-11)',
+    '--background': 'transparent',
+    '--background-active': 'var(--accent-3)',
+    '--background-hover': 'var(--accent-2)',
+    '--border': 'var(--accent-7)',
+    '--color': 'var(--accent-11)',
   },
   soft: {
-    backgroundColor: {
-      ':enabled:active': 'var(--accent-5)',
-      ':enabled:hover': 'var(--accent-4)',
-      default: 'var(--accent-3)',
-    },
-    color: 'var(--accent-11)',
+    '--background': 'var(--accent-3)',
+    '--background-active': 'var(--accent-5)',
+    '--background-hover': 'var(--accent-4)',
+    '--border': 'transparent',
+    '--color': 'var(--accent-11)',
   },
   solid: {
-    backgroundColor: {
-      ':enabled:hover': 'var(--accent-10)',
-      default: 'var(--accent-9)',
-    },
-    color: 'var(--accent-contrast)',
+    '--background': 'var(--accent-9)',
+    '--background-active': 'var(--accent-10)',
+    '--background-hover': 'var(--accent-10)',
+    '--border': 'transparent',
+    '--color': 'var(--accent-contrast)',
     filter: {
       ':disabled': 'grayscale(1)',
       ':enabled:active': 'brightness(0.92) saturate(1.1)',
@@ -134,13 +137,11 @@ const variants = stylex.create({
     outlineOffset: 2,
   },
   surface: {
-    backgroundColor: {
-      ':enabled:active': 'var(--accent-4)',
-      ':enabled:hover': 'var(--accent-3)',
-      default: 'var(--accent-2)',
-    },
-    boxShadow: 'inset 0 0 0 1px var(--accent-7)',
-    color: 'var(--accent-11)',
+    '--background': 'var(--accent-2)',
+    '--background-active': 'var(--accent-4)',
+    '--background-hover': 'var(--accent-3)',
+    '--border': 'var(--accent-7)',
+    '--color': 'var(--accent-11)',
   },
 })
 

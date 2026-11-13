@@ -8,6 +8,10 @@ export * from './components/avatar/index.js'
 export * from './components/button/index.js'
 export * from './components/field/index.js'
 export * from './components/spinner/index.js'
+export type {
+  TextFieldRootProps,
+  TextFieldSlotProps,
+} from './components/text-field/index.js'
 export * as TextField from './components/text-field/index.js'
 
 // tokens
