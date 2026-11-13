@@ -8,6 +8,7 @@ export const pages = [
   'radio',
   'radio-group',
   'spinner',
+  'switch',
   'text-field',
 ] as const
 

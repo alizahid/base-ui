@@ -8,6 +8,7 @@ import {
   Radio,
   RadioGroup,
   Spinner,
+  Switch,
   TextField,
 } from '@repo/ui'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
@@ -35,6 +36,7 @@ const components: MDXComponents = {
   IconButton,
   Radio,
   Spinner,
+  Switch,
 }
 
 export function useMDXComponents(): MDXComponents {

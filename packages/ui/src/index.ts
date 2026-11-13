@@ -23,6 +23,7 @@ export type {
 } from './components/radio-group/index.js'
 export * as RadioGroup from './components/radio-group/index.js'
 export * from './components/spinner/index.js'
+export * from './components/switch/index.js'
 export type {
   TextFieldRootProps,
   TextFieldSlotProps,

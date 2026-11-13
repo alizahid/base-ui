@@ -21,6 +21,7 @@
     "radio": "Radio",
     "radio-group": "Radio-Gruppe",
     "spinner": "Spinner",
+    "switch": "Schalter",
     "text-field": "Textfeld"
   }
 }
