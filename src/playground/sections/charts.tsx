@@ -150,6 +150,7 @@ export function ChartsSection() {
             { name: 'signups', color: 'teal.6', type: 'line' },
           ]}
           withLegend
+          maxBarWidth={36}
         />
       </Demo>
 
@@ -248,7 +249,7 @@ export function ChartsSection() {
       </Demo>
 
       <Demo title="FunnelChart" description="Conversion from visitor to customer.">
-        <FunnelChart data={funnel} withLabels labelsPosition="inside" size={220} />
+        <FunnelChart data={funnel} withLabels labelsPosition="right" size={240} w={320} />
       </Demo>
 
       <Demo title="Sparkline" description="Compact trend lines for dashboard cards.">

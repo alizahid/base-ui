@@ -227,7 +227,7 @@ export function NavigationSection() {
               ]}
               key={variant}
               scrollSpyOptions={{ selector: '[id^="section-"] > h2' }}
-              getControlProps={({ data }) => ({ component: 'a', href: `#${data.id}` })}
+              getControlProps={({ data }) => ({ component: 'a', href: `#${data.id}`, children: data.value })}
               variant={variant}
             />
           ))}

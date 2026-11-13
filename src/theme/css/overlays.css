@@ -526,7 +526,7 @@
   --input-height: 48px;
   height: 48px;
   min-height: 48px;
-  padding-inline: var(--space-4);
+  padding-inline: calc(var(--space-2) + var(--space-3));
   font-size: var(--font-size-3);
   letter-spacing: var(--letter-spacing-3);
   box-shadow: none;
@@ -541,6 +541,11 @@
 [data-mantine-color-scheme] .mantine-Spotlight-actionsList {
   --spotlight-actions-list-padding: var(--space-2);
   border-color: var(--gray-a5);
+  margin-inline-end: 0;
+}
+.mantine-Spotlight-overlay {
+  --overlay-bg: var(--color-overlay) !important;
+  --overlay-filter: none !important;
 }
 .mantine-Spotlight-action {
   min-height: var(--space-7);
@@ -561,7 +566,7 @@
 .mantine-Spotlight-actionSection:where([data-dimmed]) { color: var(--action-description-color, var(--gray-a11)); }
 .mantine-Spotlight-actionSection:where([data-position='left']) { margin-inline-end: var(--space-3); }
 .mantine-Spotlight-actionSection:where([data-position='right']) { margin-inline-start: var(--space-3); }
-.mantine-Spotlight-actionLabel { font-weight: 500; }
+.mantine-Spotlight-actionLabel { font-weight: 500; font-size: var(--font-size-2); line-height: var(--line-height-2); }
 .mantine-Spotlight-actionLabel mark { background-color: var(--accent-a5); color: inherit; border-radius: 2px; }
 .mantine-Spotlight-action[data-selected] .mantine-Spotlight-actionLabel mark { background-color: rgb(255 255 255 / 0.3); }
 .mantine-Spotlight-actionDescription {

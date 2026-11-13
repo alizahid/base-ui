@@ -237,6 +237,13 @@
 @media (hover: hover) {
   [data-month-level] [data-week-control]:hover { background-color: var(--gray-a3); }
 }
+[data-month-level] td > button[data-week-control][data-selected],
+[data-month-level] td > button[data-week-control][data-selected]:hover {
+  background-color: transparent;
+  color: var(--accent-a11);
+  font-weight: var(--font-weight-medium);
+  filter: none;
+}
 
 /* Presets column beside a picker */
 [class*='-presetsList'] { border-color: var(--gray-a5); padding-inline-end: var(--space-2); margin-inline-end: var(--space-2); gap: 1px; }
@@ -315,6 +322,8 @@
   color: var(--gray-12);
 }
 .mantine-TimePicker-field:focus::placeholder { background-color: transparent; }
+.mantine-TimePicker-field:focus,
+.mantine-TimePicker-field:focus-visible { outline: 0; }
 .mantine-TimePicker-field::placeholder { color: var(--gray-a10); }
 .mantine-TimeInput-input::-webkit-datetime-edit-hour-field:focus,
 .mantine-TimeInput-input::-webkit-datetime-edit-minute-field:focus,
@@ -443,7 +452,6 @@
 .recharts-polar-grid circle { stroke: var(--gray-a5); }
 .recharts-polar-angle-axis-line,
 .recharts-polar-radius-axis-line { stroke: var(--gray-a5); }
-.recharts-label { fill: var(--gray-a11); font-size: var(--font-size-1); }
 .recharts-reference-line line { stroke: var(--gray-a8); }
 .recharts-reference-line text { fill: var(--gray-a11); font-size: var(--font-size-1); }
 .recharts-tooltip-cursor { stroke: var(--gray-a7); }
@@ -494,6 +502,8 @@
   min-height: 8px;
   border-radius: max(2px, var(--radius-full));
 }
+.mantine-ChartTooltip-tooltipItemColor { --cs-size: 8px !important; flex: none; }
+.mantine-ChartTooltip-tooltipItemColor > * { border-radius: inherit; box-shadow: none; }
 .mantine-ChartTooltip-tooltipItemName { font-size: inherit; color: var(--gray-a11); }
 .mantine-ChartTooltip-tooltipItemData { color: var(--gray-12); font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums; }
 .mantine-RadialBarChart-tooltip { padding: var(--space-2) var(--space-3); font-size: var(--font-size-1); gap: var(--space-4); }
@@ -524,6 +534,13 @@
   --heatmap-level-4: var(--accent-9);
   --heatmap-empty-rect-bg: var(--gray-a3);
 }
+.mantine-MatrixChart-root {
+  --matrix-level-1: var(--accent-a4);
+  --matrix-level-2: var(--accent-a6);
+  --matrix-level-3: var(--accent-a8);
+  --matrix-level-4: var(--accent-9);
+  --matrix-empty-bg: var(--gray-a3);
+}
 .mantine-Heatmap-monthLabel,
 .mantine-Heatmap-weekdayLabel,
 .mantine-MatrixChart-root text { fill: var(--gray-a10); }
@@ -531,7 +548,15 @@
 /* BarsList, BulletChart, GaugeChart, WaffleChart, MatrixChart: gray tracks, quiet labels */
 .mantine-BarsList-labelsRow { font-size: var(--font-size-1); font-weight: var(--font-weight-regular); color: var(--gray-a10); }
 .mantine-BarsList-bar { border-radius: max(var(--radius-1), var(--radius-full)); }
-.mantine-BarsList-barLabel { font-size: var(--font-size-2); }
+.mantine-BarsList-barLabel {
+  /* The bar color is inline; a panel-colored veil turns it into a Radix soft fill that dark text can sit on */
+  background-image: linear-gradient(color-mix(in oklab, var(--color-panel-solid) 76%, transparent) 0 0);
+  color: var(--gray-12) !important;
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-medium);
+  border-radius: max(var(--radius-2), var(--radius-full));
+  padding: 0 var(--space-3);
+}
 .mantine-BarsList-barValue { font-size: var(--font-size-2); font-variant-numeric: tabular-nums; color: var(--gray-a11); }
 .mantine-BulletChart-track { background-color: var(--gray-a3); }
 .mantine-BulletChart-label { font-weight: var(--font-weight-medium); color: var(--gray-12); }

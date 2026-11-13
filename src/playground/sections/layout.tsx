@@ -155,7 +155,7 @@ export function LayoutSection() {
       </Demo>
 
       <Demo title="ScrollArea" description="Scrollable list with styled scrollbars.">
-        <ScrollArea h={180} maw={320} type="always">
+        <ScrollArea h={180} maw={320} offsetScrollbars scrollbars="y" type="always">
           <Stack gap="xs" p="xs">
             {Array.from({ length: 20 }, (_, index) => box(`Notification ${index + 1}`))}
           </Stack>

@@ -172,7 +172,7 @@
 
 /* pills: soft buttons */
 .mantine-Tabs-root[data-variant='pills'] { --tabs-list-gap: var(--space-1); --tabs-radius: max(var(--radius-2), var(--radius-full)); }
-.mantine-Tabs-tab[data-variant='pills'] { height: var(--space-6); padding: 0 var(--space-3); --tab-color: var(--gray-a11); }
+.mantine-Tabs-tab[data-variant='pills'] { height: var(--space-6); padding: 0 var(--space-3); --tab-color: var(--gray-a11); color: var(--tab-color); }
 .mantine-Tabs-tab[data-variant='pills']:not([data-disabled], :disabled):hover { --tab-color: var(--gray-12); }
 .mantine-Tabs-tab[data-variant='pills']:where(:disabled, [data-disabled]) { --tab-color: var(--gray-a8); }
 .mantine-Tabs-tab[data-variant='pills']:not([data-disabled], :disabled):hover { --tab-bg: var(--gray-a3); }
@@ -273,6 +273,8 @@
 .mantine-Stepper-verticalSeparator[data-active] { border-color: var(--accent-9); }
 .mantine-Stepper-stepBody[data-icon-position='left'] { margin-inline-start: var(--space-3); }
 .mantine-Stepper-stepBody { justify-content: center; gap: 2px; }
+.mantine-Stepper-stepBody[data-orientation='vertical'] { justify-content: flex-start; padding-top: calc((var(--stepper-icon-size) - var(--line-height-2)) / 2); }
+.mantine-Stepper-stepCompletedIcon > svg { width: 44% !important; height: 44% !important; }
 .mantine-Stepper-stepLabel {
   font-size: max(var(--font-size-1), calc(var(--stepper-fz) - 2px));
   line-height: var(--line-height-2);
@@ -616,13 +618,12 @@
 }
 .mantine-ThemeIcon-root[data-variant='default'] {
   background: var(--color-surface);
-  border-color: transparent;
-  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  border-color: var(--gray-a7);
   color: var(--gray-12);
 }
 
 /* ---------- Timeline ---------- */
-.mantine-Timeline-root { --tl-color: var(--accent-9); }
+.mantine-Timeline-root { --tl-color: var(--accent-9); --tl-line-width: 2px; }
 .mantine-Timeline-item { --item-border-color: var(--gray-a6); color: var(--gray-12); }
 .mantine-Timeline-item[data-line-active]::before { border-color: var(--accent-9); }
 .mantine-Timeline-itemBullet {
@@ -782,7 +783,8 @@
 /* ---------- ScrollArea: Radix ScrollArea, size 2 ---------- */
 .mantine-ScrollArea-scrollbar {
   padding: 0;
-  margin: var(--space-1);
+  /* 8px bar + 2px either side fills Mantine's 12px scrollbar slot, so offsetScrollbars still lines up */
+  margin: 2px;
   border-radius: max(var(--radius-1), var(--radius-full));
   background-color: var(--gray-a3);
   transition: none;
