@@ -28,7 +28,7 @@ export function Code({ code, html, labels }: Props) {
 
   return (
     // code reads left to right in every locale
-    <div className="relative border-t border-(--gray-a6)" dir="ltr">
+    <div className="relative isolate border-t border-(--gray-a6)" dir="ltr">
       <Copy
         className="absolute top-3 right-3 z-1"
         code={code}

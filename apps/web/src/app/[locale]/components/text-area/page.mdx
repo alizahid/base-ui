@@ -52,7 +52,7 @@ export const generateMetadata = title('text-area')
   <TextArea.Root aria-label={useText('text-area.message')} autoResize className="max-h-40 w-80" placeholder={useText('text-area.write-a-message')}>
     <TextArea.Slot className="-ms-1">
       <IconButton aria-label={useText('text-area.attach')} color="gray" size="1" variant="ghost">
-        <PaperclipIcon className="size-[1lh]" />
+        <PaperclipIcon />
       </IconButton>
     </TextArea.Slot>
 
@@ -63,7 +63,7 @@ export const generateMetadata = title('text-area')
 
   <TextArea.Root aria-label={useText('text-area.message')} className="w-80" placeholder={useText('text-area.write-a-message')} variant="soft">
     <TextArea.Slot>
-      <PencilSimpleIcon className="size-[1lh]" />
+      <PencilSimpleIcon />
     </TextArea.Slot>
   </TextArea.Root>
 </Example>

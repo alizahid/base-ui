@@ -142,6 +142,15 @@ body {
   @apply relative bg-(--gray-1) text-(--gray-12);
 }
 
+/* icons are as tall as a line of the text they sit in. in base, so the
+   library's own icons and any size class still win */
+@layer base {
+  svg {
+    width: 1lh;
+    height: 1lh;
+  }
+}
+
 /* shiki writes both themes as variables; the code sits on the page's own
    background */
 .shiki,

@@ -49,18 +49,18 @@ export const generateMetadata = title('text-field')
 <Example>
   <TextField.Root placeholder={useText('common.search')}>
     <TextField.Slot>
-      <MagnifyingGlassIcon className="size-[1lh]" />
+      <MagnifyingGlassIcon />
     </TextField.Slot>
   </TextField.Root>
 
   <TextField.Root placeholder={useText('common.email')} type="email" variant="soft">
     <TextField.Slot>
-      <EnvelopeSimpleIcon className="size-[1lh]" />
+      <EnvelopeSimpleIcon />
     </TextField.Slot>
 
     <TextField.Slot className="-me-1" side="end">
       <IconButton aria-label={useText('text-field.clear')} size="1" variant="ghost">
-        <XIcon className="size-[1lh]" weight="bold" />
+        <XIcon weight="bold" />
       </IconButton>
     </TextField.Slot>
   </TextField.Root>

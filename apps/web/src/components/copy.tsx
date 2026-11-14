@@ -27,11 +27,7 @@ export function Copy({ className, code, label }: Props) {
       }}
       variant="ghost"
     >
-      {copied ? (
-        <CheckIcon className="size-[1lh]" />
-      ) : (
-        <CopyIcon className="size-[1lh]" />
-      )}
+      {copied ? <CheckIcon /> : <CopyIcon />}
     </IconButton>
   )
 }
