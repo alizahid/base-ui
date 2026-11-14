@@ -141,3 +141,15 @@
 body {
   @apply relative bg-(--gray-1) text-(--gray-12);
 }
+
+/* shiki writes both themes as variables; the code sits on the page's own
+   background */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+}

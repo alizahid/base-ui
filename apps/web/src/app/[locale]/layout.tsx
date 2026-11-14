@@ -92,7 +92,9 @@ export default async function Layout({
                 </div>
               </aside>
 
-              <main className="min-h-screen flex-1 p-6">{children}</main>
+              <main className="min-h-screen min-w-0 flex-1 p-6">
+                {children}
+              </main>
 
               <Toaster />
             </BaseProvider>

@@ -3,15 +3,11 @@ import { readFile } from 'node:fs/promises'
 import { createTranslator, hasLocale } from 'next-intl'
 
 import { pages } from '../../../../content'
+import { fill } from '../../../../intl/fill'
 import { routing } from '../../../../intl/routing'
 
 // imports and exports sit above the title; the page starts at it
 const title = /^# /mu
-
-// <Text /> and a useText child become the text, other useText calls a string
-const child =
-  /<Text id="(?<id>[^"]+)" \/>|(?<!=)\{useText\('(?<hook>[^']+)'\)\}/gu
-const prop = /\{useText\('(?<id>[^']+)'\)\}|useText\('(?<hook>[^']+)'\)/gu
 
 export const dynamicParams = false
 
@@ -44,22 +40,15 @@ export async function GET(
     messages: (await import(`../../../../intl/locales/${locale}.json`)).default,
   })
 
-  // ids come from our own files; a missing one fails the build
-  const text = (...match: Array<unknown>) => {
-    const { hook, id } = match.pop() as Record<string, string | undefined>
-
-    return t((id ?? hook) as Parameters<typeof t>[0])
-  }
-
   const source = await readFile(
     `src/app/[locale]/components/${page.slice(0, -'.md'.length)}/page.mdx`,
     'utf8',
   )
 
-  const markdown = source
-    .slice(source.search(title))
-    .replace(child, text)
-    .replace(prop, (...match) => JSON.stringify(text(...match)))
+  // ids come from our own files; a missing one fails the build
+  const markdown = fill(source.slice(source.search(title)), (id) =>
+    t(id as Parameters<typeof t>[0]),
+  )
 
   return new Response(markdown, {
     headers: {

@@ -39,33 +39,15 @@ import {
   Toolbar,
   Tooltip,
 } from '@repo/ui'
-import { cn } from 'cn'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
 import { type MDXComponents } from 'mdx/types'
-import { type ComponentProps } from 'react'
 
 import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
+import { Example } from './components/example'
 import { Source } from './components/source'
 import { Text } from './components/text'
-
-type ExampleProps = ComponentProps<'div'> & {
-  orientation?: 'horizontal' | 'vertical'
-}
-
-// vertical stacks larger components instead of wrapping them
-function Example({ orientation = 'horizontal', ...props }: ExampleProps) {
-  return (
-    <div
-      className={cn(
-        'mt-4 flex min-h-32 items-center justify-center gap-4 border border-(--gray-a6) p-6',
-        orientation === 'vertical' ? 'flex-col' : 'flex-wrap',
-      )}
-      {...props}
-    />
-  )
-}
 
 const components: MDXComponents = {
   AsyncCombobox,
