@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server'
 
 import { Toaster } from '../../components/demos/toast'
 import { LocaleSwitcher } from '../../components/locale'
+import { Menu } from '../../components/menu'
 import { Sidebar } from '../../components/sidebar'
 import { Theme } from '../../components/theme'
 import { directions, routing } from '../../intl/routing'
@@ -75,11 +76,15 @@ export default async function Layout({
                     <span className="text-2xl font-bold">{t('title')}</span>
 
                     <Theme />
+
+                    <Menu />
                   </div>
 
                   <LocaleSwitcher />
 
-                  <Sidebar />
+                  <div className="hidden md:block">
+                    <Sidebar />
+                  </div>
                 </div>
               </aside>
 

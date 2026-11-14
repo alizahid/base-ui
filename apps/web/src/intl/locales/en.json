@@ -1,5 +1,7 @@
 {
   "header": {
+    "close": "Close",
+    "menu": "Menu",
     "theme": "Toggle theme"
   },
   "locales": {
@@ -23,6 +25,7 @@
     "combobox": "Combobox",
     "components": "Components",
     "dialog": "Dialog",
+    "drawer": "Drawer",
     "field": "Field",
     "icon-button": "Icon Button",
     "menu": "Menu",

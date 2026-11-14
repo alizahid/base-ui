@@ -1,0 +1,321 @@
+export const fruits = { apple: 'Apple', banana: 'Banana', cherry: 'Cherry', carrot: 'Carrot', potato: 'Potato' }
+
+# Drawer
+
+## Examples
+
+### Basic
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button />}>Edit profile</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Edit profile</Drawer.Title>
+      <Drawer.Description>Make changes to your profile.</Drawer.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="Name">
+          <TextField.Root defaultValue="Ali Zahid" />
+        </Field>
+        <Field label="Email">
+          <TextField.Root defaultValue="ali@example.com" type="email" />
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Cancel</Drawer.Close>
+        <Drawer.Close render={<Button />}>Save</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Side
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button variant="soft" />}>Start</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="end">
+    <Drawer.Trigger render={<Button variant="soft" />}>End</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="top">
+    <Drawer.Trigger render={<Button variant="soft" />}>Top</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="bottom">
+    <Drawer.Trigger render={<Button variant="soft" />}>Bottom</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Size
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Size 1</Drawer.Trigger>
+    <Drawer.Content size="1">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Size 2</Drawer.Trigger>
+    <Drawer.Content size="2">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Size 3</Drawer.Trigger>
+    <Drawer.Content size="3">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Size 4</Drawer.Trigger>
+    <Drawer.Content size="4">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Inset
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Without inset</Drawer.Trigger>
+    <Drawer.Content inset={false}>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Attached to the edge of the screen.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Nested
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button variant="soft" />}>Start</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>First drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+        <Drawer.Root side="start">
+          <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Second drawer</Drawer.Title>
+            <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+              <Drawer.Root side="start">
+                <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Third drawer</Drawer.Title>
+                  <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>End</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>First drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+        <Drawer.Root>
+          <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Second drawer</Drawer.Title>
+            <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+              <Drawer.Root>
+                <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Third drawer</Drawer.Title>
+                  <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="top">
+    <Drawer.Trigger render={<Button variant="soft" />}>Top</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>First drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+        <Drawer.Root side="top">
+          <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Second drawer</Drawer.Title>
+            <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+              <Drawer.Root side="top">
+                <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Third drawer</Drawer.Title>
+                  <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+                  <div className="mt-4 flex flex-col gap-3">
+                    <Field label="Name">
+                      <TextField.Root defaultValue="Ali Zahid" />
+                    </Field>
+                    <Field label="Email">
+                      <TextField.Root defaultValue="ali@example.com" type="email" />
+                    </Field>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="bottom">
+    <Drawer.Trigger render={<Button variant="soft" />}>Bottom</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>First drawer</Drawer.Title>
+      <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+        <Drawer.Root side="bottom">
+          <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Second drawer</Drawer.Title>
+            <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+              <Drawer.Root side="bottom">
+                <Drawer.Trigger render={<Button />}>Open another</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Third drawer</Drawer.Title>
+                  <Drawer.Description>The quick brown fox jumps over the lazy dog.</Drawer.Description>
+                  <div className="mt-4 flex flex-col gap-3">
+                    <Field label="Name">
+                      <TextField.Root defaultValue="Ali Zahid" />
+                    </Field>
+                    <Field label="Email">
+                      <TextField.Root defaultValue="ali@example.com" type="email" />
+                    </Field>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### With a select
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Edit fruit</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Favorite fruit</Drawer.Title>
+      <Drawer.Description>Pick the fruit you like most.</Drawer.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="Fruit">
+          <Select.Root items={fruits} defaultValue="apple">
+            <Select.Trigger placeholder="Pick a fruit" />
+            <Select.Content>
+            <Select.Item value="apple">Apple</Select.Item>
+            <Select.Item value="banana">Banana</Select.Item>
+            <Select.Item value="cherry">Cherry</Select.Item>
+            <Select.Item value="carrot">Carrot</Select.Item>
+            <Select.Item value="potato">Potato</Select.Item>
+            </Select.Content>
+          </Select.Root>
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Close</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Navigation
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button color="gray" variant="soft" />}>Menu</Drawer.Trigger>
+    <Drawer.Content size="1">
+      <Drawer.Title>Menu</Drawer.Title>
+      <nav className="-mx-3 mt-2 flex flex-col">
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Home</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Components</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Themes</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Changelog</Drawer.Close>
+      </nav>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>

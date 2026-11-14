@@ -6,7 +6,12 @@ import { useTranslations } from 'next-intl'
 import { pages } from '../content'
 import { Link, usePathname } from '../intl/navigation'
 
-export function Sidebar() {
+type Props = {
+  // called when a link is followed
+  onNavigate?: () => void
+}
+
+export function Sidebar({ onNavigate }: Props) {
   const pathname = usePathname()
 
   const t = useTranslations('nav')
@@ -26,6 +31,7 @@ export function Sidebar() {
             )}
             href={href}
             key={page}
+            onClick={onNavigate}
           >
             {t(page)}
           </Link>

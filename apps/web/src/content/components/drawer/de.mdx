@@ -1,0 +1,321 @@
+export const fruits = { apple: 'Apfel', banana: 'Banane', cherry: 'Kirsche', carrot: 'Karotte', potato: 'Kartoffel' }
+
+# Drawer
+
+## Beispiele
+
+### Einfach
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button />}>Profil bearbeiten</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Profil bearbeiten</Drawer.Title>
+      <Drawer.Description>Nimm Änderungen an deinem Profil vor.</Drawer.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="Name">
+          <TextField.Root defaultValue="Ali Zahid" />
+        </Field>
+        <Field label="E-Mail">
+          <TextField.Root defaultValue="ali@example.com" type="email" />
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Abbrechen</Drawer.Close>
+        <Drawer.Close render={<Button />}>Speichern</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Seite
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button variant="soft" />}>Anfang</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="end">
+    <Drawer.Trigger render={<Button variant="soft" />}>Ende</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="top">
+    <Drawer.Trigger render={<Button variant="soft" />}>Oben</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="bottom">
+    <Drawer.Trigger render={<Button variant="soft" />}>Unten</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Größe
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Größe 1</Drawer.Trigger>
+    <Drawer.Content size="1">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Größe 2</Drawer.Trigger>
+    <Drawer.Content size="2">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Größe 3</Drawer.Trigger>
+    <Drawer.Content size="3">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Größe 4</Drawer.Trigger>
+    <Drawer.Content size="4">
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Abstand
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Ohne Abstand</Drawer.Trigger>
+    <Drawer.Content inset={false}>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Description>Liegt direkt am Bildschirmrand an.</Drawer.Description>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Verschachtelt
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button variant="soft" />}>Anfang</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Erster Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+        <Drawer.Root side="start">
+          <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Zweiter Drawer</Drawer.Title>
+            <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+              <Drawer.Root side="start">
+                <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Dritter Drawer</Drawer.Title>
+                  <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Ende</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Erster Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+        <Drawer.Root>
+          <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Zweiter Drawer</Drawer.Title>
+            <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+              <Drawer.Root>
+                <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Dritter Drawer</Drawer.Title>
+                  <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="top">
+    <Drawer.Trigger render={<Button variant="soft" />}>Oben</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Erster Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+        <Drawer.Root side="top">
+          <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Zweiter Drawer</Drawer.Title>
+            <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+              <Drawer.Root side="top">
+                <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Dritter Drawer</Drawer.Title>
+                  <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+                  <div className="mt-4 flex flex-col gap-3">
+                    <Field label="Name">
+                      <TextField.Root defaultValue="Ali Zahid" />
+                    </Field>
+                    <Field label="E-Mail">
+                      <TextField.Root defaultValue="ali@example.com" type="email" />
+                    </Field>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+  <Drawer.Root side="bottom">
+    <Drawer.Trigger render={<Button variant="soft" />}>Unten</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Erster Drawer</Drawer.Title>
+      <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+      <div className="mt-4 flex justify-end gap-3">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+        <Drawer.Root side="bottom">
+          <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+          <Drawer.Content>
+            <Drawer.Title>Zweiter Drawer</Drawer.Title>
+            <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+            <div className="mt-4 flex justify-end gap-3">
+              <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+              <Drawer.Root side="bottom">
+                <Drawer.Trigger render={<Button />}>Weitere öffnen</Drawer.Trigger>
+                <Drawer.Content>
+                  <Drawer.Title>Dritter Drawer</Drawer.Title>
+                  <Drawer.Description>Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.</Drawer.Description>
+                  <div className="mt-4 flex flex-col gap-3">
+                    <Field label="Name">
+                      <TextField.Root defaultValue="Ali Zahid" />
+                    </Field>
+                    <Field label="E-Mail">
+                      <TextField.Root defaultValue="ali@example.com" type="email" />
+                    </Field>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+                  </div>
+                </Drawer.Content>
+              </Drawer.Root>
+            </div>
+          </Drawer.Content>
+        </Drawer.Root>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Mit Auswahl
+
+<Example>
+  <Drawer.Root>
+    <Drawer.Trigger render={<Button variant="soft" />}>Obst bearbeiten</Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Title>Lieblingsobst</Drawer.Title>
+      <Drawer.Description>Wähle das Obst, das du am liebsten magst.</Drawer.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label="Obst">
+          <Select.Root items={fruits} defaultValue="apple">
+            <Select.Trigger placeholder="Obst wählen" />
+            <Select.Content>
+            <Select.Item value="apple">Apfel</Select.Item>
+            <Select.Item value="banana">Banane</Select.Item>
+            <Select.Item value="cherry">Kirsche</Select.Item>
+            <Select.Item value="carrot">Karotte</Select.Item>
+            <Select.Item value="potato">Kartoffel</Select.Item>
+            </Select.Content>
+          </Select.Root>
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end">
+        <Drawer.Close render={<Button color="gray" variant="soft" />}>Schließen</Drawer.Close>
+      </div>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>
+
+### Navigation
+
+<Example>
+  <Drawer.Root side="start">
+    <Drawer.Trigger render={<Button color="gray" variant="soft" />}>Menü</Drawer.Trigger>
+    <Drawer.Content size="1">
+      <Drawer.Title>Menü</Drawer.Title>
+      <nav className="-mx-3 mt-2 flex flex-col">
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Startseite</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Komponenten</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Themes</Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}>Änderungen</Drawer.Close>
+      </nav>
+    </Drawer.Content>
+  </Drawer.Root>
+</Example>

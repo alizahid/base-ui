@@ -1,5 +1,7 @@
 {
   "header": {
+    "close": "Schließen",
+    "menu": "Menü",
     "theme": "Design umschalten"
   },
   "locales": {
@@ -23,6 +25,7 @@
     "combobox": "Combobox",
     "components": "Komponenten",
     "dialog": "Dialog",
+    "drawer": "Drawer",
     "field": "Feld",
     "icon-button": "Icon-Button",
     "menu": "Menü",
