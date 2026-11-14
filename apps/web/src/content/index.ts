@@ -3,6 +3,7 @@ export const pages = [
   'avatar',
   'badge',
   'button',
+  'callout',
   'card',
   'checkbox',
   'checkbox-group',

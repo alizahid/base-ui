@@ -1,0 +1,83 @@
+import { InfoIcon, WarningIcon } from '@phosphor-icons/react/ssr'
+
+# Callout
+
+## Examples
+
+### Size
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" size="1">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" size="2">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" size="3">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+</Example>
+
+### Variant
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" variant="soft">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" variant="surface">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" variant="outline">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+</Example>
+
+### Color
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" color="blue">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="green">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="red">
+    <Callout.Icon><WarningIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>Access denied. Please contact the network administrator to view this page.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="gray">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+</Example>
+
+### High contrast
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" highContrast>
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>You will need admin privileges to install and access this application.</Callout.Text>
+  </Callout.Root>
+</Example>
+
+### With an action
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" color="orange">
+    <Callout.Icon><WarningIcon className="size-4" /></Callout.Icon>
+    <Callout.Text>Your trial ends in three days.</Callout.Text>
+    <div><Button color="orange" size="1" variant="soft">Upgrade</Button></div>
+  </Callout.Root>
+</Example>

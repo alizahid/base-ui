@@ -4,6 +4,7 @@ import {
   Badge,
   BaseProvider,
   Button,
+  Callout,
   Card,
   Checkbox,
   CheckboxGroup,
@@ -103,6 +104,7 @@ export function useMDXComponents(): MDXComponents {
       Title: AlertDialog.Title,
       Trigger: AlertDialog.Trigger,
     },
+    Callout,
     CheckboxGroup: {
       Item: CheckboxGroup.Item,
       Root: CheckboxGroup.Root,

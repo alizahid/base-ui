@@ -1436,3 +1436,9 @@
 [data-skeleton]::after {
   visibility: hidden !important;
 }
+
+/* anything in a callout that isn't its icon goes in the column beside the
+   icon. here for the same reason as the skeleton rule above */
+:where([data-callout]) > :where(:not([data-callout-icon])) {
+  grid-column-start: -1;
+}
