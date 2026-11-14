@@ -10,27 +10,33 @@ import { type CSSProperties } from 'react'
 import { merge } from '../../lib/stylex.js'
 
 export type ScrollAreaProps = ComponentProps & {
+  // the directions it scrolls in, and has scrollbars for
+  axis?: 'both' | 'x' | 'y'
   className?: string
-  scrollbars?: 'vertical' | 'horizontal' | 'both'
   size?: '1' | '2' | '3'
   style?: CSSProperties
   // when the scrollbars show: while the pointer is over the area or it is
-  // scrolling, only while scrolling, or always
-  type?: 'hover' | 'scroll' | 'always'
+  // scrolling, only while scrolling, always, or never. radix calls this
+  // `type`
+  visibility?: 'always' | 'hover' | 'never' | 'scroll'
 }
 
 // give it a height (or a max-height) with a className; the children scroll
 // inside. a scrollbar only exists while there is something to scroll
 export function ScrollArea({
+  axis = 'both',
   children,
   className,
-  scrollbars = 'both',
   size = '1',
   style,
-  type = 'hover',
+  visibility = 'hover',
   ...props
 }: ScrollAreaProps) {
-  const bar = stylex.props(styles.scrollbar, sizes[size], types[type])
+  const bar = stylex.props(
+    styles.scrollbar,
+    sizes[size],
+    visibility !== 'never' && visibilities[visibility],
+  )
   const thumb = stylex.props(styles.thumb)
 
   return (
@@ -38,23 +44,23 @@ export function ScrollArea({
       {...props}
       {...merge(stylex.props(styles.main), className, style)}
     >
-      <Component.Viewport {...stylex.props(styles.viewport)}>
+      <Component.Viewport {...stylex.props(styles.viewport, axes[axis])}>
         {children}
       </Component.Viewport>
 
-      {scrollbars === 'horizontal' ? null : (
+      {axis === 'x' || visibility === 'never' ? null : (
         <Component.Scrollbar {...bar}>
           <Component.Thumb {...thumb} />
         </Component.Scrollbar>
       )}
 
-      {scrollbars === 'vertical' ? null : (
+      {axis === 'y' || visibility === 'never' ? null : (
         <Component.Scrollbar orientation="horizontal" {...bar}>
           <Component.Thumb {...thumb} />
         </Component.Scrollbar>
       )}
 
-      {scrollbars === 'both' ? <Component.Corner /> : null}
+      {axis === 'both' && visibility !== 'never' ? <Component.Corner /> : null}
     </Component.Root>
   )
 }
@@ -136,7 +142,19 @@ const styles = stylex.create({
   },
 })
 
-const types = stylex.create({
+// base ui sets overflow on the viewport's own style, so these have to win
+// over it
+const axes = stylex.create({
+  both: {},
+  x: {
+    overflowY: 'hidden !important',
+  },
+  y: {
+    overflowX: 'hidden !important',
+  },
+})
+
+const visibilities = stylex.create({
   always: {
     '--scroll-area-opacity': '1',
   },

@@ -34,6 +34,7 @@ import {
   Tabs,
   TextArea,
   TextField,
+  Toolbar,
   Tooltip,
 } from '@repo/ui'
 import { cn } from 'cn'
@@ -157,6 +158,14 @@ export function useMDXComponents(): MDXComponents {
     TextField: {
       Root: TextField.Root,
       Slot: TextField.Slot,
+    },
+    Toolbar: {
+      Button: Toolbar.Button,
+      Group: Toolbar.Group,
+      Input: Toolbar.Input,
+      Link: Toolbar.Link,
+      Root: Toolbar.Root,
+      Separator: Toolbar.Separator,
     },
   } as unknown as MDXComponents
 }

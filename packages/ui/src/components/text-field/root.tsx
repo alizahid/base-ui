@@ -21,7 +21,7 @@ export type TextFieldRootProps = Omit<
   radius?: RadiusToken
   size?: '1' | '2' | '3'
   style?: CSSProperties
-  variant?: 'surface' | 'soft'
+  variant?: 'ghost' | 'soft' | 'surface'
 }
 
 // className and style go to the wrapper, everything else to the input. the

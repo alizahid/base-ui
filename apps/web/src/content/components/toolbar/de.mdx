@@ -1,0 +1,137 @@
+import { ArrowClockwiseIcon, ArrowCounterClockwiseIcon, MagnifyingGlassIcon, TextAlignCenterIcon, TextAlignLeftIcon, TextAlignRightIcon, TextBIcon, TextItalicIcon, TextUnderlineIcon } from '@phosphor-icons/react/ssr'
+
+export const fonts = { sans: 'Sans', serif: 'Serif', mono: 'Mono' }
+
+# Toolbar
+
+## Beispiele
+
+### Einfach
+
+<Example>
+  <ScrollArea className="max-w-full" axis="x" visibility="never">
+    <Toolbar.Root aria-label="Formatierung">
+      <Toolbar.Group aria-label="Stil">
+        <Toolbar.Button>Fett</Toolbar.Button>
+        <Toolbar.Button>Kursiv</Toolbar.Button>
+        <Toolbar.Button>Unterstrichen</Toolbar.Button>
+      </Toolbar.Group>
+      <Toolbar.Separator />
+      <Toolbar.Button disabled>Durchgestrichen</Toolbar.Button>
+      <Toolbar.Separator />
+      <Toolbar.Link href="#">Vor 51 Min. bearbeitet</Toolbar.Link>
+    </Toolbar.Root>
+  </ScrollArea>
+</Example>
+
+### Mit Icons
+
+<Example>
+  <ScrollArea className="max-w-full" axis="x" visibility="never">
+    <Toolbar.Root aria-label="Formatierung">
+      <Toolbar.Group aria-label="Verlauf">
+        <Toolbar.Button aria-label="Rückgängig" render={<IconButton color="gray" variant="ghost" />}><ArrowCounterClockwiseIcon /></Toolbar.Button>
+        <Toolbar.Button aria-label="Wiederholen" render={<IconButton color="gray" variant="ghost" />}><ArrowClockwiseIcon /></Toolbar.Button>
+      </Toolbar.Group>
+      <Toolbar.Separator />
+      <Toolbar.Group aria-label="Stil">
+        <Toolbar.Button aria-label="Fett" render={<IconButton color="gray" variant="ghost" />}><TextBIcon /></Toolbar.Button>
+        <Toolbar.Button aria-label="Kursiv" render={<IconButton color="gray" variant="ghost" />}><TextItalicIcon /></Toolbar.Button>
+        <Toolbar.Button aria-label="Unterstrichen" render={<IconButton color="gray" variant="ghost" />}><TextUnderlineIcon /></Toolbar.Button>
+      </Toolbar.Group>
+      <Toolbar.Separator />
+      <Toolbar.Group aria-label="Ausrichtung">
+        <Toolbar.Button aria-label="Linksbündig" render={<IconButton color="gray" variant="ghost" />}><TextAlignLeftIcon /></Toolbar.Button>
+        <Toolbar.Button aria-label="Zentriert" render={<IconButton color="gray" variant="ghost" />}><TextAlignCenterIcon /></Toolbar.Button>
+        <Toolbar.Button aria-label="Rechtsbündig" render={<IconButton color="gray" variant="ghost" />}><TextAlignRightIcon /></Toolbar.Button>
+      </Toolbar.Group>
+    </Toolbar.Root>
+  </ScrollArea>
+</Example>
+
+### Variante
+
+<Example>
+  <Toolbar.Root aria-label="Formatierung" variant="surface">
+    <Toolbar.Button>Fett</Toolbar.Button>
+    <Toolbar.Button>Kursiv</Toolbar.Button>
+    <Toolbar.Separator />
+    <Toolbar.Button>Unterstrichen</Toolbar.Button>
+  </Toolbar.Root>
+  <Toolbar.Root aria-label="Formatierung" variant="ghost">
+    <Toolbar.Button>Fett</Toolbar.Button>
+    <Toolbar.Button>Kursiv</Toolbar.Button>
+    <Toolbar.Separator />
+    <Toolbar.Button>Unterstrichen</Toolbar.Button>
+  </Toolbar.Root>
+</Example>
+
+### Buttons
+
+<Example>
+  <ScrollArea className="max-w-full" axis="x" visibility="never">
+    <Toolbar.Root aria-label="Formatierung">
+      <Toolbar.Button>Abbrechen</Toolbar.Button>
+      <Toolbar.Button color="red" variant="soft">Löschen</Toolbar.Button>
+      <Toolbar.Button color="plum" variant="solid">Speichern</Toolbar.Button>
+    </Toolbar.Root>
+  </ScrollArea>
+</Example>
+
+### Mit Auswahl und Menü
+
+<Example>
+  <ScrollArea className="max-w-full" axis="x" visibility="never">
+    <Toolbar.Root aria-label="Formatierung">
+      <Select.Root items={fonts} defaultValue="sans">
+        <Toolbar.Button render={<Select.Trigger variant="ghost" />} />
+        <Select.Content>
+          <Select.Item value="sans">Sans</Select.Item>
+          <Select.Item value="serif">Serif</Select.Item>
+          <Select.Item value="mono">Mono</Select.Item>
+        </Select.Content>
+      </Select.Root>
+      <Toolbar.Separator />
+      <Toolbar.Button>Fett</Toolbar.Button>
+      <Toolbar.Button>Kursiv</Toolbar.Button>
+      <Toolbar.Separator />
+      <Menu.Root>
+        <Toolbar.Button render={<Menu.Trigger render={<Button color="gray" variant="ghost" />} />}>Mehr</Toolbar.Button>
+        <Menu.Content>
+          <Menu.Item>Duplizieren</Menu.Item>
+          <Menu.Item>Teilen</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item color="red">Löschen</Menu.Item>
+        </Menu.Content>
+      </Menu.Root>
+    </Toolbar.Root>
+  </ScrollArea>
+</Example>
+
+### Mit Eingabefeld
+
+<Example>
+  <ScrollArea className="max-w-full" axis="x" visibility="never">
+    <Toolbar.Root aria-label="Formatierung">
+      <Toolbar.Button>Fett</Toolbar.Button>
+      <Toolbar.Button>Kursiv</Toolbar.Button>
+      <Toolbar.Separator />
+      <Toolbar.Input className="w-40" placeholder="Suchen…">
+        <TextField.Slot><MagnifyingGlassIcon /></TextField.Slot>
+      </Toolbar.Input>
+    </Toolbar.Root>
+  </ScrollArea>
+</Example>
+
+### Vertikal
+
+<Example>
+  <Toolbar.Root aria-label="Formatierung" orientation="vertical">
+    <Toolbar.Button aria-label="Fett" render={<IconButton color="gray" variant="ghost" />}><TextBIcon /></Toolbar.Button>
+    <Toolbar.Button aria-label="Kursiv" render={<IconButton color="gray" variant="ghost" />}><TextItalicIcon /></Toolbar.Button>
+    <Toolbar.Button aria-label="Unterstrichen" render={<IconButton color="gray" variant="ghost" />}><TextUnderlineIcon /></Toolbar.Button>
+    <Toolbar.Separator />
+    <Toolbar.Button aria-label="Rückgängig" render={<IconButton color="gray" variant="ghost" />}><ArrowCounterClockwiseIcon /></Toolbar.Button>
+    <Toolbar.Button aria-label="Wiederholen" render={<IconButton color="gray" variant="ghost" />}><ArrowClockwiseIcon /></Toolbar.Button>
+  </Toolbar.Root>
+</Example>

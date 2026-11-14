@@ -197,6 +197,25 @@ export const input = stylex.create({
 
 // variants only set variables, the styles above decide where they apply
 export const inputVariants = stylex.create({
+  // ours: no fill or border until it has focus, for a field inside something
+  // that already draws the frame, like a toolbar
+  ghost: {
+    '--text-field-background': 'transparent',
+    '--text-field-background-autofill': 'var(--focus-a2)',
+    '--text-field-background-disabled': 'transparent',
+    '--text-field-background-invalid': 'var(--red-a3)',
+    '--text-field-border-width': '0px',
+    '--text-field-color': 'var(--gray-12)',
+    '--text-field-focus-color': 'var(--focus-8)',
+    '--text-field-placeholder': 'var(--gray-a10)',
+    '--text-field-placeholder-opacity': '1',
+    '--text-field-selection-color': 'var(--focus-a5)',
+    '--text-field-shadow': 'none',
+    '--text-field-shadow-autofill': 'none',
+    '--text-field-shadow-disabled': 'none',
+    '--text-field-shadow-invalid': 'none',
+    '--text-field-slot': 'var(--gray-a11)',
+  },
   soft: {
     '--text-field-background': 'var(--accent-a3)',
     '--text-field-background-autofill': 'var(--accent-a3)',

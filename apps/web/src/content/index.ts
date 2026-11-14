@@ -34,6 +34,7 @@ export const pages = [
   'text-area',
   'text-field',
   'toast',
+  'toolbar',
   'tooltip',
 ] as const
 

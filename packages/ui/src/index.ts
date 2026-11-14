@@ -41,6 +41,7 @@ export * from './components/tabs/index.js'
 export * from './components/text-area/index.js'
 export * from './components/text-field/index.js'
 export * from './components/toast/index.js'
+export * from './components/toolbar/index.js'
 export * from './components/tooltip/index.js'
 
 // tokens
