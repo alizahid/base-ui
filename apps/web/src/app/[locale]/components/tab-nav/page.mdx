@@ -1,0 +1,71 @@
+import { BoatIcon, CastleTurretIcon, HouseLineIcon, TreePalmIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('tab-nav')
+
+# <Text id="nav.tab-nav" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96">
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+</Example>
+
+### <Text id="common.with-icons" />
+
+<Example>
+  <TabNav.Root aria-label={useText('tab-nav.sections')} highContrast>
+    <TabNav.Link active href="#"><TreePalmIcon /><Text id="tabs.beachfront" /></TabNav.Link>
+    <TabNav.Link href="#"><HouseLineIcon /><Text id="tabs.cabins" /></TabNav.Link>
+    <TabNav.Link href="#"><BoatIcon /><Text id="tabs.boats" /></TabNav.Link>
+    <TabNav.Link href="#"><CastleTurretIcon /><Text id="tabs.castles" /></TabNav.Link>
+  </TabNav.Root>
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96" size="1">
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96" size="2">
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96" color="indigo">
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96" color="orange">
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example orientation="vertical">
+  <TabNav.Root aria-label={useText('tab-nav.sections')} className="w-96" highContrast>
+    <TabNav.Link active href="#"><Text id="tab-nav.overview" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="tab-nav.pricing" /></TabNav.Link>
+    <TabNav.Link href="#"><Text id="common.changelog" /></TabNav.Link>
+  </TabNav.Root>
+</Example>

@@ -33,6 +33,7 @@ import {
   Spinner,
   Switch,
   Table,
+  TabNav,
   Tabs,
   TextArea,
   TextField,
@@ -152,6 +153,10 @@ export function useMDXComponents(): MDXComponents {
       Trigger: Select.Trigger,
     },
     Table,
+    TabNav: {
+      Link: TabNav.Link,
+      Root: TabNav.Root,
+    },
     Tabs,
     TextArea: {
       Root: TextArea.Root,

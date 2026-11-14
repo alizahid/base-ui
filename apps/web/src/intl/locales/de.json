@@ -239,6 +239,7 @@
     "slider": "Schieberegler",
     "spinner": "Spinner",
     "switch": "Schalter",
+    "tab-nav": "Tab-Navigation",
     "table": "Tabelle",
     "tabs": "Tabs",
     "text-area": "Textbereich",
@@ -365,6 +366,11 @@
   "switch": {
     "notifications": "Benachrichtigungen"
   },
+  "tab-nav": {
+    "overview": "Überblick",
+    "pricing": "Preise",
+    "sections": "Abschnitte"
+  },
   "table": {
     "active": "Aktiv",
     "admin": "Admin",
@@ -383,7 +389,6 @@
   "tabs": {
     "access-and-update-your-documents": "Greife auf deine Dokumente zu und aktualisiere sie.",
     "account": "Konto",
-    "as-links": "Als Links",
     "beachfront": "Am Strand",
     "boats": "Boote",
     "cabins": "Hütten",
@@ -392,8 +397,6 @@
     "edit-your-profile-or-update-contact": "Bearbeite dein Profil oder aktualisiere deine Kontaktdaten.",
     "make-changes-to-your-account": "Nimm Änderungen an deinem Konto vor.",
     "mountains": "Berge",
-    "overview": "Überblick",
-    "pricing": "Preise",
     "settings": "Einstellungen"
   },
   "text-area": {

@@ -239,6 +239,7 @@
     "slider": "Slider",
     "spinner": "Spinner",
     "switch": "Switch",
+    "tab-nav": "Tab Nav",
     "table": "Table",
     "tabs": "Tabs",
     "text-area": "Text Area",
@@ -365,6 +366,11 @@
   "switch": {
     "notifications": "Notifications"
   },
+  "tab-nav": {
+    "overview": "Overview",
+    "pricing": "Pricing",
+    "sections": "Sections"
+  },
   "table": {
     "active": "Active",
     "admin": "Admin",
@@ -383,7 +389,6 @@
   "tabs": {
     "access-and-update-your-documents": "Access and update your documents.",
     "account": "Account",
-    "as-links": "As links",
     "beachfront": "Beachfront",
     "boats": "Boats",
     "cabins": "Cabins",
@@ -392,8 +397,6 @@
     "edit-your-profile-or-update-contact": "Edit your profile or update contact information.",
     "make-changes-to-your-account": "Make changes to your account.",
     "mountains": "Mountains",
-    "overview": "Overview",
-    "pricing": "Pricing",
     "settings": "Settings"
   },
   "text-area": {

@@ -9,6 +9,7 @@ import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
 import { merge } from '../../lib/stylex.js'
+import { tabSizes, tabs } from './styles.js'
 
 export type TabsRootProps = Omit<
   ComponentProps,
@@ -36,33 +37,10 @@ export function Root({
       data-accent={color}
       {...props}
       {...merge(
-        stylex.props(sizes[size], highContrast && styles.contrast),
+        stylex.props(tabSizes[size], highContrast && tabs.contrast),
         className,
         style,
       )}
     />
   )
 }
-
-const styles = stylex.create({
-  contrast: {
-    '--tabs-indicator': 'var(--accent-12)',
-  },
-})
-
-const sizes = stylex.create({
-  1: {
-    '--tabs-gap': 'calc(var(--spacing) * 4)',
-    '--tabs-padding': 'calc(var(--spacing) * 2)',
-    '--tabs-tab-gap': 'var(--spacing)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
-  },
-  2: {
-    '--tabs-gap': 'calc(var(--spacing) * 6)',
-    '--tabs-padding': 'calc(var(--spacing) * 3)',
-    '--tabs-tab-gap': 'calc(var(--spacing) * 1.5)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
-  },
-})

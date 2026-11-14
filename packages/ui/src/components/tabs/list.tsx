@@ -8,6 +8,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { merge } from '../../lib/stylex.js'
+import { tabs } from './styles.js'
 
 export type TabsListProps = ComponentProps & {
   className?: string
@@ -19,7 +20,7 @@ export function List({ children, className, style, ...props }: TabsListProps) {
   return (
     <Component.List
       {...props}
-      {...merge(stylex.props(styles.main), className, style)}
+      {...merge(stylex.props(tabs.list), className, style)}
     >
       {children}
 
@@ -45,12 +46,5 @@ const styles = stylex.create({
     },
     transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
     width: 'var(--active-tab-width)',
-  },
-  main: {
-    // the baseline the indicator sits on
-    boxShadow: 'inset 0 -2px 0 var(--gray-a4)',
-    display: 'flex',
-    gap: 'var(--tabs-gap)',
-    position: 'relative',
   },
 })

@@ -239,6 +239,7 @@
     "slider": "شريط التمرير",
     "spinner": "مؤشر التحميل",
     "switch": "مفتاح التبديل",
+    "tab-nav": "تنقل بالتبويبات",
     "table": "الجدول",
     "tabs": "علامات التبويب",
     "text-area": "منطقة النص",
@@ -365,6 +366,11 @@
   "switch": {
     "notifications": "الإشعارات"
   },
+  "tab-nav": {
+    "overview": "نظرة عامة",
+    "pricing": "الأسعار",
+    "sections": "الأقسام"
+  },
   "table": {
     "active": "نشط",
     "admin": "مدير",
@@ -383,7 +389,6 @@
   "tabs": {
     "access-and-update-your-documents": "اطّلع على مستنداتك وحدّثها.",
     "account": "الحساب",
-    "as-links": "كروابط",
     "beachfront": "على الشاطئ",
     "boats": "قوارب",
     "cabins": "أكواخ",
@@ -392,8 +397,6 @@
     "edit-your-profile-or-update-contact": "عدّل ملفك الشخصي أو حدّث معلومات الاتصال.",
     "make-changes-to-your-account": "أجرِ تغييرات على حسابك.",
     "mountains": "جبال",
-    "overview": "نظرة عامة",
-    "pricing": "الأسعار",
     "settings": "الإعدادات"
   },
   "text-area": {
