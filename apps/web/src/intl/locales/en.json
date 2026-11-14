@@ -1,13 +1,198 @@
 {
+  "accordion": {
+    "base-ui-is-a-library-of": "Base UI is a library of unstyled components for building accessible user interfaces.",
+    "can-i-use-it-for-my": "Can I use it for my project?",
+    "how-do-i-get-started": "How do I get started?",
+    "install-the-package-import-a-component": "Install the package, import a component and style it however you like.",
+    "multiple": "Multiple",
+    "what-is-base-ui": "What is Base UI?",
+    "yes-it-is-free-and-open": "Yes. It is free and open source, for personal and commercial projects."
+  },
+  "alert-dialog": {
+    "are-you-sure-this-application-will": "Are you sure? This application will no longer be accessible and any existing sessions will be expired.",
+    "revoke-access": "Revoke access"
+  },
+  "avatar": {
+    "fallback": "Fallback"
+  },
+  "badge": {
+    "complete": "Complete",
+    "docs": "Docs",
+    "draft": "Draft",
+    "in-progress": "In progress",
+    "new": "New",
+    "rejected": "Rejected",
+    "trending": "Trending",
+    "verified": "Verified"
+  },
+  "button": {
+    "back": "Back",
+    "button": "Button",
+    "download": "Download",
+    "next": "Next",
+    "with-icons": "With icons"
+  },
+  "callout": {
+    "access-denied-please-contact-the-network": "Access denied. Please contact the network administrator to view this page.",
+    "upgrade": "Upgrade",
+    "with-an-action": "With an action",
+    "you-will-need-admin-privileges-to": "You will need admin privileges to install and access this application.",
+    "your-trial-ends-in-three-days": "Your trial ends in three days."
+  },
+  "card": {
+    "as-a-button": "As a button",
+    "as-a-link": "As a link",
+    "bold-typography": "Bold typography",
+    "bold-typography-on-a-colourful-background": "Bold typography on a colourful background",
+    "opaque-whatever-is-behind-it": "Opaque, whatever is behind it.",
+    "panel-background": "Panel background",
+    "quick-start": "Quick start",
+    "solid": "Solid",
+    "start-building-your-next-project-in": "Start building your next project in minutes.",
+    "the-default-shows-what-is-behind": "The default. Shows what is behind the card.",
+    "translucent": "Translucent",
+    "typography-is-the-art-and-technique": "Typography is the art and technique of arranging type to make written language legible.",
+    "with-image": "With image"
+  },
+  "checkbox": {
+    "option": "Option"
+  },
+  "combobox": {
+    "apricot": "Apricot",
+    "async": "Async",
+    "blueberry": "Blueberry",
+    "grape": "Grape",
+    "lemon": "Lemon",
+    "loading": "Loading…",
+    "mango": "Mango",
+    "no-fruits-found": "No fruits found.",
+    "orange": "Orange",
+    "peach": "Peach",
+    "pear": "Pear",
+    "search-inside-the-popup": "Search inside the popup",
+    "start-typing-to-filter": "Start typing to filter.",
+    "strawberry": "Strawberry",
+    "type-to-search": "Type to search."
+  },
+  "common": {
+    "apple": "Apple",
+    "banana": "Banana",
+    "basic": "Basic",
+    "bottom": "Bottom",
+    "cancel": "Cancel",
+    "carrot": "Carrot",
+    "changelog": "Changelog",
+    "cherry": "Cherry",
+    "close": "Close",
+    "collapsed-value": "Collapsed value",
+    "color": "Color",
+    "content-variant": "Content variant",
+    "delete": "Delete",
+    "disabled": "Disabled",
+    "duplicate": "Duplicate",
+    "edit-profile": "Edit profile",
+    "email": "Email",
+    "engineering": "Engineering",
+    "examples": "Examples",
+    "favourite-fruit": "Favourite fruit",
+    "high-contrast": "High contrast",
+    "in-a-field": "In a field",
+    "indeterminate": "Indeterminate",
+    "loading": "Loading",
+    "make-changes-to-your-profile": "Make changes to your profile.",
+    "menu": "Menu",
+    "more": "more",
+    "more-2": "More",
+    "multiple": "Multiple",
+    "name": "Name",
+    "pick-a-fruit": "Pick a fruit",
+    "pick-one-to-continue": "Pick one to continue.",
+    "radius": "Radius",
+    "radius-2": "Radius",
+    "save": "Save",
+    "search": "Search…",
+    "share": "Share",
+    "side": "Side",
+    "size": "Size",
+    "size-1": "Size 1",
+    "size-2": "Size 2",
+    "size-3": "Size 3",
+    "size-4": "Size 4",
+    "teodros-girmay": "Teodros Girmay",
+    "the-quick-brown-fox-jumps-over": "The quick brown fox jumps over the lazy dog.",
+    "themes": "Themes",
+    "top": "Top",
+    "undo": "Undo",
+    "variant": "Variant",
+    "vertical": "Vertical",
+    "view-as-markdown": "View as Markdown",
+    "with-icons": "With icons",
+    "with-slots": "With slots"
+  },
+  "dialog": {
+    "align": "Align",
+    "center": "Center",
+    "start": "Start"
+  },
+  "drawer": {
+    "attached-to-the-edge-of-the": "Attached to the edge of the screen.",
+    "bottom": "Bottom",
+    "components": "Components",
+    "drawer": "Drawer",
+    "edit-fruit": "Edit fruit",
+    "end": "End",
+    "favorite-fruit": "Favorite fruit",
+    "first-drawer": "First drawer",
+    "fruit": "Fruit",
+    "home": "Home",
+    "inset": "Inset",
+    "navigation": "Navigation",
+    "nested": "Nested",
+    "open-another": "Open another",
+    "pick-the-fruit-you-like-most": "Pick the fruit you like most.",
+    "potato": "Potato",
+    "second-drawer": "Second drawer",
+    "start": "Start",
+    "the-quick-brown-fox-jumps-over": "The quick brown fox jumps over the lazy dog.",
+    "third-drawer": "Third drawer",
+    "top": "Top",
+    "with-a-select": "With a select",
+    "without-inset": "Without inset"
+  },
+  "field": {
+    "this-email-is-already-taken": "This email is already taken.",
+    "we-ll-never-share-your-email": "We'll never share your email.",
+    "with-error": "With error",
+    "with-hint": "With hint"
+  },
   "header": {
     "close": "Close",
     "menu": "Menu",
     "theme": "Toggle theme"
   },
+  "icon-button": {
+    "loading": "Loading",
+    "search": "Search"
+  },
   "locales": {
     "ar": "العربية",
     "de": "Deutsch",
     "en": "English"
+  },
+  "menu": {
+    "add-to-favorites": "Add to favorites",
+    "advanced-options": "Advanced options…",
+    "archive": "Archive",
+    "checkbox-and-radio-items": "Checkbox and radio items",
+    "date": "Date",
+    "edit": "Edit",
+    "move-to-folder": "Move to folder…",
+    "move-to-project": "Move to project…",
+    "options": "Options",
+    "show-sidebar": "Show sidebar",
+    "show-status-bar": "Show status bar",
+    "sort-by": "Sort by",
+    "view": "View"
   },
   "metadata": {
     "title": "Base UI"
@@ -51,5 +236,203 @@
     "toast": "Toast",
     "toolbar": "Toolbar",
     "tooltip": "Tooltip"
+  },
+  "number-field": {
+    "between-1-and-10": "Between 1 and 10.",
+    "format": "Format",
+    "guests": "Guests",
+    "min-max-and-step": "Min, max and step",
+    "price": "Price",
+    "quantity": "Quantity"
+  },
+  "otp-field": {
+    "enter-the-6-digit-code-we": "Enter the 6-digit code we sent you.",
+    "length": "Length",
+    "masked": "Masked",
+    "pin": "PIN",
+    "that-code-is-not-right": "That code is not right.",
+    "verification-code": "Verification code"
+  },
+  "popover": {
+    "comment": "Comment",
+    "leave-a-comment": "Leave a comment",
+    "your-comment-will-be-visible-to": "Your comment will be visible to everyone on the team."
+  },
+  "preview-card": {
+    "a-set-of-unstyled-primitives-that": ", a set of unstyled primitives that handle behaviour and accessibility.",
+    "the-components-in-this-library-are": "The components in this library are built on",
+    "unstyled-react-components-for-building-accessible": "Unstyled React components for building accessible user interfaces."
+  },
+  "progress": {
+    "height": "Height",
+    "loading": "Loading",
+    "storage-used": "Storage used",
+    "upload-progress": "Upload progress",
+    "uploading": "Uploading",
+    "with-label-and-value": "With label and value"
+  },
+  "radio": {
+    "option-1": "Option 1",
+    "option-2": "Option 2"
+  },
+  "scroll-area": {
+    "always": "Always",
+    "horizontal": "Horizontal",
+    "hover": "Hover",
+    "scroll": "Scroll",
+    "three-fundamental-aspects-of-typography-are": "Three fundamental aspects of typography are legibility, readability, and aesthetics. Although in a non-technical sense legible and readable are often used synonymously, typographically they are separate but related concepts. Legibility describes how easily individual characters can be distinguished from one another, and readability how easy it is to read a text as a whole.",
+    "visibility": "Visibility"
+  },
+  "segmented-control": {
+    "day": "Day",
+    "drafts": "Drafts",
+    "grid": "Grid",
+    "inbox": "Inbox",
+    "list": "List",
+    "month": "Month",
+    "sent": "Sent",
+    "week": "Week",
+    "year": "Year"
+  },
+  "select": {
+    "british-pound": "British Pound",
+    "currency": "Currency",
+    "currency-picker": "Currency picker",
+    "euro": "Euro",
+    "fruits": "Fruits",
+    "groups": "Groups",
+    "potato": "Potato",
+    "uae-dirham": "UAE Dirham",
+    "us-dollar": "US Dollar",
+    "vegetables": "Vegetables",
+    "you-can-change-this-later": "You can change this later."
+  },
+  "separator": {
+    "colors": "Colors",
+    "icons": "Icons",
+    "orientation": "Orientation",
+    "primitives": "Primitives",
+    "thickness": "Thickness",
+    "tools-for-building-high-quality-accessible": "Tools for building high-quality, accessible UI."
+  },
+  "skeleton": {
+    "lorem-ipsum-dolor-sit-amet-consectetur": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "save-changes": "Save changes",
+    "skeleton": "Skeleton",
+    "with-components": "With components",
+    "with-text": "With text"
+  },
+  "slider": {
+    "price-range": "Price range",
+    "range": "Range",
+    "step": "Step",
+    "volume": "Volume"
+  },
+  "spinner": {
+    "bookmark": "Bookmark",
+    "with-children": "With children"
+  },
+  "switch": {
+    "notifications": "Notifications"
+  },
+  "table": {
+    "active": "Active",
+    "admin": "Admin",
+    "developer": "Developer",
+    "full-name": "Full name",
+    "group": "Group",
+    "invited": "Invited",
+    "select-all": "Select all",
+    "select-danilo-sousa": "Select Danilo Sousa",
+    "select-jasper-eriksson": "Select Jasper Eriksson",
+    "select-zahra-ambessa": "Select Zahra Ambessa",
+    "status": "Status",
+    "with-other-components": "With other components",
+    "with-selection": "With selection"
+  },
+  "tabs": {
+    "access-and-update-your-documents": "Access and update your documents.",
+    "account": "Account",
+    "as-links": "As links",
+    "beachfront": "Beachfront",
+    "boats": "Boats",
+    "cabins": "Cabins",
+    "castles": "Castles",
+    "documents": "Documents",
+    "edit-your-profile-or-update-contact": "Edit your profile or update contact information.",
+    "make-changes-to-your-account": "Make changes to your account.",
+    "mountains": "Mountains",
+    "overview": "Overview",
+    "pricing": "Pricing",
+    "settings": "Settings"
+  },
+  "text-area": {
+    "a-few-words-about-you": "A few words about you.",
+    "attach": "Attach",
+    "auto-resize": "Auto-resize",
+    "bio": "Bio",
+    "bio-is-too-long": "Bio is too long.",
+    "grows-as-you-type": "Grows as you type…",
+    "grows-up-to-a-max-height": "Grows up to a max height, then scrolls…",
+    "message": "Message",
+    "reply-to-comment": "Reply to comment…",
+    "send": "Send",
+    "tell-us-about-yourself": "Tell us about yourself…",
+    "write-a-message": "Write a message…"
+  },
+  "text-field": {
+    "clear": "Clear"
+  },
+  "toast": {
+    "a-new-version-is-available": "A new version is available",
+    "bottom-left": "Bottom left",
+    "bottom-right": "Bottom right",
+    "changes-saved": "Changes saved",
+    "could-not-save-changes": "Could not save changes",
+    "error": "Error",
+    "file-uploaded": "File uploaded",
+    "info": "Info",
+    "message-deleted": "Message deleted",
+    "payment-received": "Payment received",
+    "position": "Position",
+    "promise": "Promise",
+    "run-promise": "Run promise",
+    "show-toast": "Show toast",
+    "storage-almost-full": "Storage almost full",
+    "success": "Success",
+    "top-left": "Top left",
+    "top-right": "Top right",
+    "type": "Type",
+    "upload-failed": "Upload failed",
+    "uploading-file": "Uploading file…",
+    "warning": "Warning",
+    "with-action": "With action",
+    "with-description": "With description",
+    "your-profile-has-been-updated": "Your profile has been updated."
+  },
+  "toolbar": {
+    "align-center": "Align center",
+    "align-left": "Align left",
+    "align-right": "Align right",
+    "alignment": "Alignment",
+    "bold": "Bold",
+    "buttons": "Buttons",
+    "edited-51m-ago": "Edited 51m ago",
+    "formatting": "Formatting",
+    "history": "History",
+    "italic": "Italic",
+    "redo": "Redo",
+    "strikethrough": "Strikethrough",
+    "style": "Style",
+    "underline": "Underline",
+    "with-a-select-and-a-menu": "With a select and a menu",
+    "with-an-input": "With an input",
+    "with-icons": "With icons"
+  },
+  "tooltip": {
+    "add": "Add",
+    "add-to-library": "Add to library",
+    "left": "Left",
+    "right": "Right"
   }
 }

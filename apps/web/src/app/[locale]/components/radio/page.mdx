@@ -1,0 +1,120 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('radio')
+
+# <Text id="nav.radio" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} size="1" value="1" />
+    <Radio aria-label={useText('radio.option-2')} size="1" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} size="2" value="1" />
+    <Radio aria-label={useText('radio.option-2')} size="2" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} size="3" value="1" />
+    <Radio aria-label={useText('radio.option-2')} size="3" value="2" />
+  </RadioGroup.Root>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} variant="surface" value="1" />
+    <Radio aria-label={useText('radio.option-2')} variant="surface" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} variant="soft" value="2" />
+  </RadioGroup.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="indigo" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="indigo" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="cyan" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="cyan" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="orange" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="orange" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="crimson" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="crimson" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="gray" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="gray" value="2" />
+  </RadioGroup.Root>
+</Example>
+
+<Example>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="indigo" variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="indigo" variant="soft" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="cyan" variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="cyan" variant="soft" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="orange" variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="orange" variant="soft" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="crimson" variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="crimson" variant="soft" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="gray" variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="gray" variant="soft" value="2" />
+  </RadioGroup.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} highContrast variant="surface" value="1" />
+    <Radio aria-label={useText('radio.option-2')} highContrast variant="surface" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} highContrast variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} highContrast variant="soft" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="gray" highContrast variant="surface" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="gray" highContrast variant="surface" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1">
+    <Radio aria-label={useText('radio.option-1')} color="gray" highContrast variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} color="gray" highContrast variant="soft" value="2" />
+  </RadioGroup.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <RadioGroup.Root defaultValue="1" disabled>
+    <Radio aria-label={useText('radio.option-1')} variant="surface" value="1" />
+    <Radio aria-label={useText('radio.option-2')} variant="surface" value="2" />
+  </RadioGroup.Root>
+  <RadioGroup.Root defaultValue="1" disabled>
+    <Radio aria-label={useText('radio.option-1')} variant="soft" value="1" />
+    <Radio aria-label={useText('radio.option-2')} variant="soft" value="2" />
+  </RadioGroup.Root>
+</Example>

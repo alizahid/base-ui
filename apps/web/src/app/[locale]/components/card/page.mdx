@@ -1,0 +1,116 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('card')
+
+# <Text id="nav.card" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example orientation="vertical">
+  <Card className="w-64">
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium"><Text id="common.teodros-girmay" /></div>
+        <div className="text-(--gray-a11)"><Text id="common.engineering" /></div>
+      </div>
+    </div>
+  </Card>
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Card className="w-72" size="1">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+
+  <Card className="w-72" size="2">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+
+  <Card className="w-72" size="3">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2" variant="surface">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+
+  <Card className="w-72" size="2" variant="ghost">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+</Example>
+
+### <Text id="card.with-image" />
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2">
+    <img alt={useText('card.bold-typography-on-a-colourful-background')} className="-mx-4 -mt-4 mb-4 block h-36 w-[calc(100%+2rem)] max-w-none object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+
+    <div className="text-sm font-medium"><Text id="card.bold-typography" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.typography-is-the-art-and-technique" /></div>
+  </Card>
+</Example>
+
+### <Text id="card.panel-background" />
+
+<Example orientation="vertical">
+  <div className="flex flex-col gap-4 rounded-2xl bg-linear-to-tr from-(--plum-9) to-(--tomato-9) p-6">
+    <BaseProvider accent="plum" panelBackground="translucent">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium"><Text id="card.translucent" /></div>
+        <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.the-default-shows-what-is-behind" /></div>
+      </Card>
+    </BaseProvider>
+
+    <BaseProvider accent="plum" panelBackground="solid">
+      <Card className="w-72" size="2">
+        <div className="text-sm font-medium"><Text id="card.solid" /></div>
+        <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.opaque-whatever-is-behind-it" /></div>
+      </Card>
+    </BaseProvider>
+  </div>
+</Example>
+
+### <Text id="card.as-a-link" />
+
+<Example orientation="vertical">
+  <Card className="w-72" render={<a href="#card" />} size="2">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+
+  <Card className="w-72" render={<a href="#card" />} size="2" variant="ghost">
+    <div className="text-sm font-medium"><Text id="card.quick-start" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.start-building-your-next-project-in" /></div>
+  </Card>
+</Example>
+
+### <Text id="card.as-a-button" />
+
+<Example orientation="vertical">
+  <Card className="w-64" render={<button type="button" />}>
+    <div className="flex items-center gap-3">
+      <Avatar fallback="T" size="3" />
+
+      <div className="text-sm">
+        <div className="font-medium"><Text id="common.teodros-girmay" /></div>
+        <div className="text-(--gray-a11)"><Text id="common.engineering" /></div>
+      </div>
+    </div>
+  </Card>
+</Example>

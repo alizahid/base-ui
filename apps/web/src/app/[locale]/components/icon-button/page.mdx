@@ -1,0 +1,88 @@
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('icon-button')
+
+export const Icon = () => <MagnifyingGlassIcon className="size-[1lh]" weight="bold" />
+
+# <Text id="nav.icon-button" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} size="1"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} size="2"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} size="3"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} size="4"><Icon /></IconButton>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} variant="solid"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} variant="soft"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} variant="surface"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} variant="outline"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} variant="ghost"><Icon /></IconButton>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} color="indigo"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="cyan"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="orange"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="crimson"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="gray"><Icon /></IconButton>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} highContrast variant="solid"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} highContrast variant="soft"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} highContrast variant="surface"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} highContrast variant="outline"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} highContrast variant="ghost"><Icon /></IconButton>
+</Example>
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} color="gray" highContrast variant="solid"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="gray" highContrast variant="soft"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="gray" highContrast variant="surface"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="gray" highContrast variant="outline"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} color="gray" highContrast variant="ghost"><Icon /></IconButton>
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} radius="none"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} radius="md"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} radius="xl"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} radius="full"><Icon /></IconButton>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} disabled variant="solid"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} disabled variant="soft"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} disabled variant="surface"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} disabled variant="outline"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} disabled variant="ghost"><Icon /></IconButton>
+</Example>
+
+### <Text id="icon-button.loading" />
+
+<Example>
+  <IconButton aria-label={useText('icon-button.search')} loading variant="solid"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} loading variant="soft"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} loading variant="surface"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} loading variant="outline"><Icon /></IconButton>
+  <IconButton aria-label={useText('icon-button.search')} loading variant="ghost"><Icon /></IconButton>
+</Example>

@@ -1,0 +1,28 @@
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('spinner')
+
+# <Text id="nav.spinner" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Spinner size="1" />
+  <Spinner size="2" />
+  <Spinner size="3" />
+  <Spinner size="4" />
+</Example>
+
+### <Text id="spinner.with-children" />
+
+<Example>
+  <Spinner loading><Switch defaultChecked /></Spinner>
+  <Spinner loading={false}><Switch defaultChecked /></Spinner>
+</Example>
+
+<Example>
+  <Button disabled><Spinner loading><Text id="spinner.bookmark" /></Spinner></Button>
+  <Button><Spinner loading={false}><Text id="spinner.bookmark" /></Spinner></Button>
+</Example>

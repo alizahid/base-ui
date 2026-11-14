@@ -7,13 +7,14 @@ import { type Metadata } from 'next'
 import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getMessages, getTranslations } from 'next-intl/server'
 
 import { Toaster } from '../../components/demos/toast'
 import { LocaleSwitcher } from '../../components/locale'
 import { Menu } from '../../components/menu'
 import { Sidebar } from '../../components/sidebar'
 import { Theme } from '../../components/theme'
+import { pages } from '../../content'
 import { directions, routing } from '../../intl/routing'
 
 const sans = localFont({
@@ -55,6 +56,9 @@ export default async function Layout({
 
   const t = await getTranslations('metadata')
 
+  // client components only need these; page text stays on the server
+  const { header, locales, metadata, nav } = await getMessages()
+
   return (
     <html
       className={cn(sans.variable, mono.variable)}
@@ -63,7 +67,7 @@ export default async function Layout({
       suppressHydrationWarning
     >
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={{ header, locales, metadata, nav }}>
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <BaseProvider
               accent="plum"
@@ -77,13 +81,13 @@ export default async function Layout({
 
                     <Theme />
 
-                    <Menu />
+                    <Menu pages={pages} />
                   </div>
 
                   <LocaleSwitcher />
 
                   <div className="hidden md:block">
-                    <Sidebar />
+                    <Sidebar pages={pages} />
                   </div>
                 </div>
               </aside>

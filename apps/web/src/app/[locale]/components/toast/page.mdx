@@ -1,0 +1,61 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('toast')
+
+# <Text id="nav.toast" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <ToastDemo label={useText('toast.show-toast')} title={useText('toast.changes-saved')} />
+</Example>
+
+### <Text id="toast.with-description" />
+
+<Example>
+  <ToastDemo description={useText('toast.your-profile-has-been-updated')} label={useText('toast.show-toast')} title={useText('toast.changes-saved')} />
+</Example>
+
+### <Text id="toast.with-action" />
+
+<Example>
+  <ToastDemo action={useText('common.undo')} label={useText('toast.show-toast')} title={useText('toast.message-deleted')} />
+</Example>
+
+### <Text id="toast.type" />
+
+<Example>
+  <ToastDemo label={useText('toast.success')} title={useText('toast.payment-received')} type="success" />
+  <ToastDemo label={useText('toast.error')} title={useText('toast.could-not-save-changes')} type="error" />
+  <ToastDemo label={useText('toast.warning')} title={useText('toast.storage-almost-full')} type="warning" />
+  <ToastDemo label={useText('toast.info')} title={useText('toast.a-new-version-is-available')} type="info" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <ToastDemo label={useText('toast.success')} title={useText('toast.payment-received')} type="success" variant="solid" />
+  <ToastDemo label={useText('toast.error')} title={useText('toast.could-not-save-changes')} type="error" variant="solid" />
+  <ToastDemo label={useText('toast.warning')} title={useText('toast.storage-almost-full')} type="warning" variant="solid" />
+  <ToastDemo label={useText('toast.info')} title={useText('toast.a-new-version-is-available')} type="info" variant="solid" />
+</Example>
+
+### <Text id="toast.position" />
+
+<Example>
+  <ToastDemo label={useText('toast.top-left')} position="top-left" title={useText('toast.changes-saved')} />
+  <ToastDemo label={useText('common.top')} position="top" title={useText('toast.changes-saved')} />
+  <ToastDemo label={useText('toast.top-right')} position="top-right" title={useText('toast.changes-saved')} />
+  <ToastDemo label={useText('toast.bottom-left')} position="bottom-left" title={useText('toast.changes-saved')} />
+  <ToastDemo label={useText('common.bottom')} position="bottom" title={useText('toast.changes-saved')} />
+  <ToastDemo label={useText('toast.bottom-right')} position="bottom-right" title={useText('toast.changes-saved')} />
+</Example>
+
+### <Text id="toast.promise" />
+
+<Example>
+  <ToastPromiseDemo error={useText('toast.upload-failed')} label={useText('toast.run-promise')} loading={useText('toast.uploading-file')} success={useText('toast.file-uploaded')} />
+</Example>

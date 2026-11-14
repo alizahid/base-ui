@@ -1,13 +1,198 @@
 {
+  "accordion": {
+    "base-ui-is-a-library-of": "Base UI مكتبة من المكوّنات غير المنسّقة لبناء واجهات سهلة الوصول.",
+    "can-i-use-it-for-my": "هل يمكنني استخدامه في مشروعي؟",
+    "how-do-i-get-started": "كيف أبدأ؟",
+    "install-the-package-import-a-component": "ثبّت الحزمة، استورد مكوّنًا ونسّقه كما تشاء.",
+    "multiple": "متعدد",
+    "what-is-base-ui": "ما هو Base UI؟",
+    "yes-it-is-free-and-open": "نعم. إنه مجاني ومفتوح المصدر للمشاريع الشخصية والتجارية."
+  },
+  "alert-dialog": {
+    "are-you-sure-this-application-will": "هل أنت متأكد؟ لن يكون هذا التطبيق متاحًا بعد الآن وستنتهي جميع الجلسات الحالية.",
+    "revoke-access": "إلغاء الوصول"
+  },
+  "avatar": {
+    "fallback": "البديل"
+  },
+  "badge": {
+    "complete": "مكتمل",
+    "docs": "المستندات",
+    "draft": "مسودة",
+    "in-progress": "قيد التنفيذ",
+    "new": "جديد",
+    "rejected": "مرفوض",
+    "trending": "رائج",
+    "verified": "موثّق"
+  },
+  "button": {
+    "back": "السابق",
+    "button": "زر",
+    "download": "تنزيل",
+    "next": "التالي",
+    "with-icons": "مع الأيقونات"
+  },
+  "callout": {
+    "access-denied-please-contact-the-network": "تم رفض الوصول. يُرجى التواصل مع مسؤول الشبكة لعرض هذه الصفحة.",
+    "upgrade": "ترقية",
+    "with-an-action": "مع إجراء",
+    "you-will-need-admin-privileges-to": "ستحتاج إلى صلاحيات المدير لتثبيت هذا التطبيق والوصول إليه.",
+    "your-trial-ends-in-three-days": "تنتهي الفترة التجريبية خلال ثلاثة أيام."
+  },
+  "card": {
+    "as-a-button": "كزر",
+    "as-a-link": "كرابط",
+    "bold-typography": "خطوط عريضة",
+    "bold-typography-on-a-colourful-background": "خطوط عريضة على خلفية ملوّنة",
+    "opaque-whatever-is-behind-it": "معتمة أيًّا كان ما خلفها.",
+    "panel-background": "خلفية اللوحة",
+    "quick-start": "بداية سريعة",
+    "solid": "معتمة",
+    "start-building-your-next-project-in": "ابدأ مشروعك القادم في دقائق.",
+    "the-default-shows-what-is-behind": "الافتراضي. تُظهر ما خلف البطاقة.",
+    "translucent": "شفافة",
+    "typography-is-the-art-and-technique": "فن الخط هو فن وتقنية ترتيب الحروف لجعل اللغة المكتوبة مقروءة.",
+    "with-image": "مع صورة"
+  },
+  "checkbox": {
+    "option": "خيار"
+  },
+  "combobox": {
+    "apricot": "مشمش",
+    "async": "غير متزامن",
+    "blueberry": "توت أزرق",
+    "grape": "عنب",
+    "lemon": "ليمون",
+    "loading": "جارٍ التحميل…",
+    "mango": "مانجو",
+    "no-fruits-found": "لم يُعثر على فاكهة.",
+    "orange": "برتقال",
+    "peach": "خوخ",
+    "pear": "كمثرى",
+    "search-inside-the-popup": "البحث داخل القائمة",
+    "start-typing-to-filter": "ابدأ الكتابة للتصفية.",
+    "strawberry": "فراولة",
+    "type-to-search": "اكتب للبحث."
+  },
+  "common": {
+    "apple": "تفاح",
+    "banana": "موز",
+    "basic": "أساسي",
+    "bottom": "أسفل",
+    "cancel": "إلغاء",
+    "carrot": "جزر",
+    "changelog": "سجل التغييرات",
+    "cherry": "كرز",
+    "close": "إغلاق",
+    "collapsed-value": "قيمة مختصرة",
+    "color": "اللون",
+    "content-variant": "نمط المحتوى",
+    "delete": "حذف",
+    "disabled": "معطّل",
+    "duplicate": "تكرار",
+    "edit-profile": "تعديل الملف الشخصي",
+    "email": "البريد الإلكتروني",
+    "engineering": "الهندسة",
+    "examples": "أمثلة",
+    "favourite-fruit": "الفاكهة المفضلة",
+    "high-contrast": "تباين عالٍ",
+    "in-a-field": "داخل حقل",
+    "indeterminate": "غير محدد",
+    "loading": "التحميل",
+    "make-changes-to-your-profile": "أجرِ تغييرات على ملفك الشخصي.",
+    "menu": "القائمة",
+    "more": "أخرى",
+    "more-2": "المزيد",
+    "multiple": "اختيار متعدد",
+    "name": "الاسم",
+    "pick-a-fruit": "اختر فاكهة",
+    "pick-one-to-continue": "اختر واحدة للمتابعة.",
+    "radius": "الاستدارة",
+    "radius-2": "نصف القطر",
+    "save": "حفظ",
+    "search": "بحث…",
+    "share": "مشاركة",
+    "side": "الجانب",
+    "size": "الحجم",
+    "size-1": "الحجم 1",
+    "size-2": "الحجم 2",
+    "size-3": "الحجم 3",
+    "size-4": "الحجم 4",
+    "teodros-girmay": "تيودروس جيرماي",
+    "the-quick-brown-fox-jumps-over": "نص تجريبي لعرض محتوى مربع الحوار.",
+    "themes": "السمات",
+    "top": "أعلى",
+    "undo": "تراجع",
+    "variant": "النمط",
+    "vertical": "عمودي",
+    "view-as-markdown": "عرض بصيغة Markdown",
+    "with-icons": "مع أيقونات",
+    "with-slots": "مع الفتحات"
+  },
+  "dialog": {
+    "align": "المحاذاة",
+    "center": "الوسط",
+    "start": "البداية"
+  },
+  "drawer": {
+    "attached-to-the-edge-of-the": "ملتصق بحافة الشاشة.",
+    "bottom": "الأسفل",
+    "components": "المكونات",
+    "drawer": "الدرج",
+    "edit-fruit": "تعديل الفاكهة",
+    "end": "النهاية",
+    "favorite-fruit": "الفاكهة المفضلة",
+    "first-drawer": "الدرج الأول",
+    "fruit": "الفاكهة",
+    "home": "الرئيسية",
+    "inset": "الهامش",
+    "navigation": "التنقل",
+    "nested": "متداخل",
+    "open-another": "افتح درجًا آخر",
+    "pick-the-fruit-you-like-most": "اختر الفاكهة التي تفضلها.",
+    "potato": "بطاطا",
+    "second-drawer": "الدرج الثاني",
+    "start": "البداية",
+    "the-quick-brown-fox-jumps-over": "نص تجريبي قصير لعرض شكل المحتوى داخل الدرج.",
+    "third-drawer": "الدرج الثالث",
+    "top": "الأعلى",
+    "with-a-select": "مع قائمة اختيار",
+    "without-inset": "بدون هامش"
+  },
+  "field": {
+    "this-email-is-already-taken": "هذا البريد الإلكتروني مستخدم بالفعل.",
+    "we-ll-never-share-your-email": "لن نشارك بريدك الإلكتروني أبدًا.",
+    "with-error": "مع خطأ",
+    "with-hint": "مع تلميح"
+  },
   "header": {
     "close": "إغلاق",
     "menu": "القائمة",
     "theme": "تبديل المظهر"
   },
+  "icon-button": {
+    "loading": "جارٍ التحميل",
+    "search": "بحث"
+  },
   "locales": {
     "ar": "العربية",
     "de": "Deutsch",
     "en": "English"
+  },
+  "menu": {
+    "add-to-favorites": "إضافة إلى المفضلة",
+    "advanced-options": "خيارات متقدمة…",
+    "archive": "أرشفة",
+    "checkbox-and-radio-items": "عناصر الاختيار والراديو",
+    "date": "التاريخ",
+    "edit": "تعديل",
+    "move-to-folder": "نقل إلى مجلد…",
+    "move-to-project": "نقل إلى مشروع…",
+    "options": "خيارات",
+    "show-sidebar": "إظهار الشريط الجانبي",
+    "show-status-bar": "إظهار شريط الحالة",
+    "sort-by": "ترتيب حسب",
+    "view": "عرض"
   },
   "metadata": {
     "title": "Base UI"
@@ -51,5 +236,203 @@
     "toast": "الإشعار",
     "toolbar": "شريط الأدوات",
     "tooltip": "تلميح"
+  },
+  "number-field": {
+    "between-1-and-10": "بين 1 و10.",
+    "format": "التنسيق",
+    "guests": "الضيوف",
+    "min-max-and-step": "الحد الأدنى والأقصى والخطوة",
+    "price": "السعر",
+    "quantity": "الكمية"
+  },
+  "otp-field": {
+    "enter-the-6-digit-code-we": "أدخل الرمز المكوّن من 6 أرقام الذي أرسلناه إليك.",
+    "length": "الطول",
+    "masked": "مخفي",
+    "pin": "الرمز السري",
+    "that-code-is-not-right": "هذا الرمز غير صحيح.",
+    "verification-code": "رمز التحقق"
+  },
+  "popover": {
+    "comment": "تعليق",
+    "leave-a-comment": "اترك تعليقًا",
+    "your-comment-will-be-visible-to": "سيكون تعليقك مرئيًا لجميع أعضاء الفريق."
+  },
+  "preview-card": {
+    "a-set-of-unstyled-primitives-that": "، وهي مجموعة من العناصر الأساسية غير المنسقة التي تتولى السلوك وسهولة الوصول.",
+    "the-components-in-this-library-are": "مكونات هذه المكتبة مبنية على",
+    "unstyled-react-components-for-building-accessible": "مكونات React غير منسقة لبناء واجهات مستخدم سهلة الوصول."
+  },
+  "progress": {
+    "height": "الارتفاع",
+    "loading": "جارٍ التحميل",
+    "storage-used": "المساحة المستخدمة",
+    "upload-progress": "تقدم الرفع",
+    "uploading": "جارٍ الرفع",
+    "with-label-and-value": "مع تسمية وقيمة"
+  },
+  "radio": {
+    "option-1": "خيار 1",
+    "option-2": "خيار 2"
+  },
+  "scroll-area": {
+    "always": "دائمًا",
+    "horizontal": "أفقي",
+    "hover": "عند التحويم",
+    "scroll": "عند التمرير",
+    "three-fundamental-aspects-of-typography-are": "ثلاثة جوانب أساسية في فن الطباعة هي وضوح الحروف وسهولة القراءة والجمال. ومع أن المصطلحين يُستخدمان كثيرًا بمعنى واحد، فإنهما في فن الطباعة مفهومان منفصلان لكنهما مترابطان. وضوح الحروف يصف مدى سهولة تمييز كل حرف عن غيره، وسهولة القراءة تصف مدى سهولة قراءة النص كله.",
+    "visibility": "الظهور"
+  },
+  "segmented-control": {
+    "day": "يوم",
+    "drafts": "المسودات",
+    "grid": "شبكة",
+    "inbox": "الوارد",
+    "list": "قائمة",
+    "month": "شهر",
+    "sent": "المرسل",
+    "week": "أسبوع",
+    "year": "سنة"
+  },
+  "select": {
+    "british-pound": "جنيه إسترليني",
+    "currency": "العملة",
+    "currency-picker": "منتقي العملة",
+    "euro": "يورو",
+    "fruits": "الفواكه",
+    "groups": "المجموعات",
+    "potato": "بطاطس",
+    "uae-dirham": "درهم إماراتي",
+    "us-dollar": "دولار أمريكي",
+    "vegetables": "الخضروات",
+    "you-can-change-this-later": "يمكنك تغيير هذا لاحقًا."
+  },
+  "separator": {
+    "colors": "الألوان",
+    "icons": "الأيقونات",
+    "orientation": "الاتجاه",
+    "primitives": "العناصر الأساسية",
+    "thickness": "السماكة",
+    "tools-for-building-high-quality-accessible": "أدوات لبناء واجهات عالية الجودة وسهلة الوصول."
+  },
+  "skeleton": {
+    "lorem-ipsum-dolor-sit-amet-consectetur": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إيليت.",
+    "save-changes": "حفظ التغييرات",
+    "skeleton": "الهيكل",
+    "with-components": "مع مكوّنات",
+    "with-text": "مع نص"
+  },
+  "slider": {
+    "price-range": "نطاق السعر",
+    "range": "نطاق",
+    "step": "الخطوة",
+    "volume": "مستوى الصوت"
+  },
+  "spinner": {
+    "bookmark": "إشارة مرجعية",
+    "with-children": "مع عناصر فرعية"
+  },
+  "switch": {
+    "notifications": "الإشعارات"
+  },
+  "table": {
+    "active": "نشط",
+    "admin": "مدير",
+    "developer": "مطوّر",
+    "full-name": "الاسم الكامل",
+    "group": "المجموعة",
+    "invited": "مدعو",
+    "select-all": "تحديد الكل",
+    "select-danilo-sousa": "تحديد Danilo Sousa",
+    "select-jasper-eriksson": "تحديد Jasper Eriksson",
+    "select-zahra-ambessa": "تحديد Zahra Ambessa",
+    "status": "الحالة",
+    "with-other-components": "مع مكوّنات أخرى",
+    "with-selection": "مع التحديد"
+  },
+  "tabs": {
+    "access-and-update-your-documents": "اطّلع على مستنداتك وحدّثها.",
+    "account": "الحساب",
+    "as-links": "كروابط",
+    "beachfront": "على الشاطئ",
+    "boats": "قوارب",
+    "cabins": "أكواخ",
+    "castles": "قلاع",
+    "documents": "المستندات",
+    "edit-your-profile-or-update-contact": "عدّل ملفك الشخصي أو حدّث معلومات الاتصال.",
+    "make-changes-to-your-account": "أجرِ تغييرات على حسابك.",
+    "mountains": "جبال",
+    "overview": "نظرة عامة",
+    "pricing": "الأسعار",
+    "settings": "الإعدادات"
+  },
+  "text-area": {
+    "a-few-words-about-you": "بضع كلمات عنك.",
+    "attach": "إرفاق",
+    "auto-resize": "تغيير الحجم تلقائيًا",
+    "bio": "نبذة",
+    "bio-is-too-long": "النبذة طويلة جدًا.",
+    "grows-as-you-type": "يكبر أثناء الكتابة…",
+    "grows-up-to-a-max-height": "يكبر حتى أقصى ارتفاع ثم يُمرَّر…",
+    "message": "الرسالة",
+    "reply-to-comment": "الرد على التعليق…",
+    "send": "إرسال",
+    "tell-us-about-yourself": "أخبرنا عن نفسك…",
+    "write-a-message": "اكتب رسالة…"
+  },
+  "text-field": {
+    "clear": "مسح"
+  },
+  "toast": {
+    "a-new-version-is-available": "يتوفر إصدار جديد",
+    "bottom-left": "أسفل اليسار",
+    "bottom-right": "أسفل اليمين",
+    "changes-saved": "تم حفظ التغييرات",
+    "could-not-save-changes": "تعذّر حفظ التغييرات",
+    "error": "خطأ",
+    "file-uploaded": "تم رفع الملف",
+    "info": "معلومة",
+    "message-deleted": "تم حذف الرسالة",
+    "payment-received": "تم استلام الدفعة",
+    "position": "الموضع",
+    "promise": "وعد",
+    "run-promise": "تشغيل الوعد",
+    "show-toast": "إظهار الإشعار",
+    "storage-almost-full": "المساحة على وشك الامتلاء",
+    "success": "نجاح",
+    "top-left": "أعلى اليسار",
+    "top-right": "أعلى اليمين",
+    "type": "النوع",
+    "upload-failed": "فشل الرفع",
+    "uploading-file": "جارٍ رفع الملف…",
+    "warning": "تحذير",
+    "with-action": "مع إجراء",
+    "with-description": "مع وصف",
+    "your-profile-has-been-updated": "تم تحديث ملفك الشخصي."
+  },
+  "toolbar": {
+    "align-center": "توسيط",
+    "align-left": "محاذاة لليسار",
+    "align-right": "محاذاة لليمين",
+    "alignment": "المحاذاة",
+    "bold": "عريض",
+    "buttons": "الأزرار",
+    "edited-51m-ago": "عُدّل قبل 51 دقيقة",
+    "formatting": "التنسيق",
+    "history": "السجل",
+    "italic": "مائل",
+    "redo": "إعادة",
+    "strikethrough": "يتوسطه خط",
+    "style": "النمط",
+    "underline": "تحته خط",
+    "with-a-select-and-a-menu": "مع قائمة اختيار وقائمة",
+    "with-an-input": "مع حقل إدخال",
+    "with-icons": "مع أيقونات"
+  },
+  "tooltip": {
+    "add": "إضافة",
+    "add-to-library": "إضافة إلى المكتبة",
+    "left": "يسار",
+    "right": "يمين"
   }
 }

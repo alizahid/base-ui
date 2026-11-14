@@ -1,0 +1,113 @@
+import { BoatIcon, CastleTurretIcon, HouseLineIcon, MountainsIcon, TreePalmIcon } from '@phosphor-icons/react/ssr'
+
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('tabs')
+
+# <Text id="nav.tabs" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example orientation="vertical">
+  <Tabs.Root className="w-96" defaultValue="account">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+
+    <Tabs.Panel className="pt-4 text-sm" value="account"><Text id="tabs.make-changes-to-your-account" /></Tabs.Panel>
+    <Tabs.Panel className="pt-4 text-sm" value="documents"><Text id="tabs.access-and-update-your-documents" /></Tabs.Panel>
+    <Tabs.Panel className="pt-4 text-sm" value="settings"><Text id="tabs.edit-your-profile-or-update-contact" /></Tabs.Panel>
+  </Tabs.Root>
+</Example>
+
+### <Text id="common.with-icons" />
+
+<Example orientation="vertical">
+  <Tabs.Root defaultValue="beachfront" highContrast>
+    <Tabs.List>
+      <Tabs.Tab value="beachfront"><TreePalmIcon className="size-6" /><Text id="tabs.beachfront" /></Tabs.Tab>
+      <Tabs.Tab value="cabins"><HouseLineIcon className="size-6" /><Text id="tabs.cabins" /></Tabs.Tab>
+      <Tabs.Tab value="boats"><BoatIcon className="size-6" /><Text id="tabs.boats" /></Tabs.Tab>
+      <Tabs.Tab value="castles"><CastleTurretIcon className="size-6" /><Text id="tabs.castles" /></Tabs.Tab>
+      <Tabs.Tab disabled value="mountains"><MountainsIcon className="size-6" /><Text id="tabs.mountains" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### <Text id="tabs.as-links" />
+
+<Example orientation="vertical">
+  <Tabs.Root defaultValue="overview">
+    <Tabs.List>
+      <Tabs.Tab nativeButton={false} render={<a href="#overview" />} value="overview"><Text id="tabs.overview" /></Tabs.Tab>
+      <Tabs.Tab nativeButton={false} render={<a href="#pricing" />} value="pricing"><Text id="tabs.pricing" /></Tabs.Tab>
+      <Tabs.Tab nativeButton={false} render={<a href="#changelog" />} value="changelog"><Text id="common.changelog" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Tabs.Root className="w-96" defaultValue="account" size="1">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+  <Tabs.Root className="w-96" defaultValue="account" size="2">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <Tabs.Root className="w-96" defaultValue="account" color="indigo">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+  <Tabs.Root className="w-96" defaultValue="account" color="orange">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example orientation="vertical">
+  <Tabs.Root className="w-96" defaultValue="account" highContrast>
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example orientation="vertical">
+  <Tabs.Root className="w-96" defaultValue="account">
+    <Tabs.List>
+      <Tabs.Tab value="account"><Text id="tabs.account" /></Tabs.Tab>
+      <Tabs.Tab value="documents"><Text id="tabs.documents" /></Tabs.Tab>
+      <Tabs.Tab disabled value="settings"><Text id="tabs.settings" /></Tabs.Tab>
+    </Tabs.List>
+  </Tabs.Root>
+</Example>

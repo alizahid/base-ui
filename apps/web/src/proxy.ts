@@ -5,5 +5,6 @@ import { routing } from './intl/routing'
 export default createMiddleware(routing)
 
 export const config = {
-  matcher: '/((?!api|_next|_vercel|.*\\..*).*)',
+  // dotted paths are files, bar the .md version of a page
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)', '/(.*)\\.md'],
 }

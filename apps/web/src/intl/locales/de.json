@@ -1,13 +1,198 @@
 {
+  "accordion": {
+    "base-ui-is-a-library-of": "Base UI ist eine Bibliothek ungestylter Komponenten für barrierefreie Benutzeroberflächen.",
+    "can-i-use-it-for-my": "Kann ich es für mein Projekt nutzen?",
+    "how-do-i-get-started": "Wie fange ich an?",
+    "install-the-package-import-a-component": "Installiere das Paket, importiere eine Komponente und gestalte sie nach deinen Wünschen.",
+    "multiple": "Mehrfach",
+    "what-is-base-ui": "Was ist Base UI?",
+    "yes-it-is-free-and-open": "Ja. Es ist kostenlos und Open Source, für private und kommerzielle Projekte."
+  },
+  "alert-dialog": {
+    "are-you-sure-this-application-will": "Bist du sicher? Diese Anwendung ist dann nicht mehr erreichbar und alle bestehenden Sitzungen laufen ab.",
+    "revoke-access": "Zugriff widerrufen"
+  },
+  "avatar": {
+    "fallback": "Ersatz"
+  },
+  "badge": {
+    "complete": "Abgeschlossen",
+    "docs": "Doku",
+    "draft": "Entwurf",
+    "in-progress": "In Arbeit",
+    "new": "Neu",
+    "rejected": "Abgelehnt",
+    "trending": "Im Trend",
+    "verified": "Verifiziert"
+  },
+  "button": {
+    "back": "Zurück",
+    "button": "Button",
+    "download": "Herunterladen",
+    "next": "Weiter",
+    "with-icons": "Mit Icons"
+  },
+  "callout": {
+    "access-denied-please-contact-the-network": "Zugriff verweigert. Bitte wende dich an die Netzwerkadministration, um diese Seite zu sehen.",
+    "upgrade": "Upgrade",
+    "with-an-action": "Mit einer Aktion",
+    "you-will-need-admin-privileges-to": "Du benötigst Administratorrechte, um diese Anwendung zu installieren und zu nutzen.",
+    "your-trial-ends-in-three-days": "Dein Testzeitraum endet in drei Tagen."
+  },
+  "card": {
+    "as-a-button": "Als Button",
+    "as-a-link": "Als Link",
+    "bold-typography": "Kräftige Typografie",
+    "bold-typography-on-a-colourful-background": "Kräftige Typografie auf buntem Hintergrund",
+    "opaque-whatever-is-behind-it": "Deckend, egal was dahinter liegt.",
+    "panel-background": "Panel-Hintergrund",
+    "quick-start": "Schnellstart",
+    "solid": "Deckend",
+    "start-building-your-next-project-in": "Starte dein nächstes Projekt in wenigen Minuten.",
+    "the-default-shows-what-is-behind": "Der Standard. Zeigt, was hinter der Karte liegt.",
+    "translucent": "Durchscheinend",
+    "typography-is-the-art-and-technique": "Typografie ist die Kunst und Technik, Schrift so zu setzen, dass Sprache lesbar wird.",
+    "with-image": "Mit Bild"
+  },
+  "checkbox": {
+    "option": "Option"
+  },
+  "combobox": {
+    "apricot": "Aprikose",
+    "async": "Asynchron",
+    "blueberry": "Blaubeere",
+    "grape": "Traube",
+    "lemon": "Zitrone",
+    "loading": "Lädt…",
+    "mango": "Mango",
+    "no-fruits-found": "Kein Obst gefunden.",
+    "orange": "Orange",
+    "peach": "Pfirsich",
+    "pear": "Birne",
+    "search-inside-the-popup": "Suche im Popup",
+    "start-typing-to-filter": "Tippe, um zu filtern.",
+    "strawberry": "Erdbeere",
+    "type-to-search": "Tippe, um zu suchen."
+  },
+  "common": {
+    "apple": "Apfel",
+    "banana": "Banane",
+    "basic": "Einfach",
+    "bottom": "Unten",
+    "cancel": "Abbrechen",
+    "carrot": "Karotte",
+    "changelog": "Änderungen",
+    "cherry": "Kirsche",
+    "close": "Schließen",
+    "collapsed-value": "Zusammengefasster Wert",
+    "color": "Farbe",
+    "content-variant": "Inhaltsvariante",
+    "delete": "Löschen",
+    "disabled": "Deaktiviert",
+    "duplicate": "Duplizieren",
+    "edit-profile": "Profil bearbeiten",
+    "email": "E-Mail",
+    "engineering": "Entwicklung",
+    "examples": "Beispiele",
+    "favourite-fruit": "Lieblingsobst",
+    "high-contrast": "Hoher Kontrast",
+    "in-a-field": "In einem Feld",
+    "indeterminate": "Unbestimmt",
+    "loading": "Laden",
+    "make-changes-to-your-profile": "Nimm Änderungen an deinem Profil vor.",
+    "menu": "Menü",
+    "more": "weitere",
+    "more-2": "Mehr",
+    "multiple": "Mehrfachauswahl",
+    "name": "Name",
+    "pick-a-fruit": "Obst wählen",
+    "pick-one-to-continue": "Bitte wähle eine Option.",
+    "radius": "Radius",
+    "radius-2": "Radius",
+    "save": "Speichern",
+    "search": "Suchen…",
+    "share": "Teilen",
+    "side": "Seite",
+    "size": "Größe",
+    "size-1": "Größe 1",
+    "size-2": "Größe 2",
+    "size-3": "Größe 3",
+    "size-4": "Größe 4",
+    "teodros-girmay": "Teodros Girmay",
+    "the-quick-brown-fox-jumps-over": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+    "themes": "Themes",
+    "top": "Oben",
+    "undo": "Rückgängig",
+    "variant": "Variante",
+    "vertical": "Vertikal",
+    "view-as-markdown": "Als Markdown anzeigen",
+    "with-icons": "Mit Symbolen",
+    "with-slots": "Mit Slots"
+  },
+  "dialog": {
+    "align": "Ausrichtung",
+    "center": "Mitte",
+    "start": "Oben"
+  },
+  "drawer": {
+    "attached-to-the-edge-of-the": "Liegt direkt am Bildschirmrand an.",
+    "bottom": "Unten",
+    "components": "Komponenten",
+    "drawer": "Drawer",
+    "edit-fruit": "Obst bearbeiten",
+    "end": "Ende",
+    "favorite-fruit": "Lieblingsobst",
+    "first-drawer": "Erster Drawer",
+    "fruit": "Obst",
+    "home": "Startseite",
+    "inset": "Abstand",
+    "navigation": "Navigation",
+    "nested": "Verschachtelt",
+    "open-another": "Weitere öffnen",
+    "pick-the-fruit-you-like-most": "Wähle das Obst, das du am liebsten magst.",
+    "potato": "Kartoffel",
+    "second-drawer": "Zweiter Drawer",
+    "start": "Anfang",
+    "the-quick-brown-fox-jumps-over": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.",
+    "third-drawer": "Dritter Drawer",
+    "top": "Oben",
+    "with-a-select": "Mit Auswahl",
+    "without-inset": "Ohne Abstand"
+  },
+  "field": {
+    "this-email-is-already-taken": "Diese E-Mail ist bereits vergeben.",
+    "we-ll-never-share-your-email": "Wir geben deine E-Mail niemals weiter.",
+    "with-error": "Mit Fehler",
+    "with-hint": "Mit Hinweis"
+  },
   "header": {
     "close": "Schließen",
     "menu": "Menü",
     "theme": "Design umschalten"
   },
+  "icon-button": {
+    "loading": "Laden",
+    "search": "Suchen"
+  },
   "locales": {
     "ar": "العربية",
     "de": "Deutsch",
     "en": "English"
+  },
+  "menu": {
+    "add-to-favorites": "Zu Favoriten hinzufügen",
+    "advanced-options": "Erweiterte Optionen…",
+    "archive": "Archivieren",
+    "checkbox-and-radio-items": "Checkbox- und Radio-Einträge",
+    "date": "Datum",
+    "edit": "Bearbeiten",
+    "move-to-folder": "In Ordner verschieben…",
+    "move-to-project": "In Projekt verschieben…",
+    "options": "Optionen",
+    "show-sidebar": "Seitenleiste anzeigen",
+    "show-status-bar": "Statusleiste anzeigen",
+    "sort-by": "Sortieren nach",
+    "view": "Ansicht"
   },
   "metadata": {
     "title": "Base UI"
@@ -51,5 +236,203 @@
     "toast": "Toast",
     "toolbar": "Toolbar",
     "tooltip": "Tooltip"
+  },
+  "number-field": {
+    "between-1-and-10": "Zwischen 1 und 10.",
+    "format": "Format",
+    "guests": "Gäste",
+    "min-max-and-step": "Minimum, Maximum und Schritt",
+    "price": "Preis",
+    "quantity": "Menge"
+  },
+  "otp-field": {
+    "enter-the-6-digit-code-we": "Gib den 6-stelligen Code ein, den wir dir gesendet haben.",
+    "length": "Länge",
+    "masked": "Maskiert",
+    "pin": "PIN",
+    "that-code-is-not-right": "Dieser Code stimmt nicht.",
+    "verification-code": "Bestätigungscode"
+  },
+  "popover": {
+    "comment": "Kommentieren",
+    "leave-a-comment": "Kommentar hinterlassen",
+    "your-comment-will-be-visible-to": "Dein Kommentar ist für alle im Team sichtbar."
+  },
+  "preview-card": {
+    "a-set-of-unstyled-primitives-that": ", einer Sammlung ungestylter Bausteine für Verhalten und Barrierefreiheit.",
+    "the-components-in-this-library-are": "Die Komponenten dieser Bibliothek basieren auf",
+    "unstyled-react-components-for-building-accessible": "Ungestylte React-Komponenten für barrierefreie Benutzeroberflächen."
+  },
+  "progress": {
+    "height": "Höhe",
+    "loading": "Wird geladen",
+    "storage-used": "Genutzter Speicher",
+    "upload-progress": "Upload-Fortschritt",
+    "uploading": "Wird hochgeladen",
+    "with-label-and-value": "Mit Beschriftung und Wert"
+  },
+  "radio": {
+    "option-1": "Option 1",
+    "option-2": "Option 2"
+  },
+  "scroll-area": {
+    "always": "Immer",
+    "horizontal": "Horizontal",
+    "hover": "Hover",
+    "scroll": "Scrollen",
+    "three-fundamental-aspects-of-typography-are": "Drei grundlegende Aspekte der Typografie sind Leserlichkeit, Lesbarkeit und Ästhetik. Obwohl die Begriffe im Alltag oft gleichbedeutend verwendet werden, sind sie typografisch getrennte, aber verwandte Konzepte. Leserlichkeit beschreibt, wie leicht sich einzelne Zeichen voneinander unterscheiden lassen, Lesbarkeit, wie leicht sich ein Text als Ganzes lesen lässt.",
+    "visibility": "Sichtbarkeit"
+  },
+  "segmented-control": {
+    "day": "Tag",
+    "drafts": "Entwürfe",
+    "grid": "Raster",
+    "inbox": "Posteingang",
+    "list": "Liste",
+    "month": "Monat",
+    "sent": "Gesendet",
+    "week": "Woche",
+    "year": "Jahr"
+  },
+  "select": {
+    "british-pound": "Britisches Pfund",
+    "currency": "Währung",
+    "currency-picker": "Währungsauswahl",
+    "euro": "Euro",
+    "fruits": "Obst",
+    "groups": "Gruppen",
+    "potato": "Kartoffel",
+    "uae-dirham": "VAE-Dirham",
+    "us-dollar": "US-Dollar",
+    "vegetables": "Gemüse",
+    "you-can-change-this-later": "Das lässt sich später ändern."
+  },
+  "separator": {
+    "colors": "Farben",
+    "icons": "Icons",
+    "orientation": "Ausrichtung",
+    "primitives": "Primitives",
+    "thickness": "Stärke",
+    "tools-for-building-high-quality-accessible": "Werkzeuge für hochwertige, barrierefreie Oberflächen."
+  },
+  "skeleton": {
+    "lorem-ipsum-dolor-sit-amet-consectetur": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "save-changes": "Änderungen speichern",
+    "skeleton": "Skelett",
+    "with-components": "Mit Komponenten",
+    "with-text": "Mit Text"
+  },
+  "slider": {
+    "price-range": "Preisspanne",
+    "range": "Bereich",
+    "step": "Schritt",
+    "volume": "Lautstärke"
+  },
+  "spinner": {
+    "bookmark": "Merken",
+    "with-children": "Mit Kindelementen"
+  },
+  "switch": {
+    "notifications": "Benachrichtigungen"
+  },
+  "table": {
+    "active": "Aktiv",
+    "admin": "Admin",
+    "developer": "Entwicklung",
+    "full-name": "Name",
+    "group": "Gruppe",
+    "invited": "Eingeladen",
+    "select-all": "Alle auswählen",
+    "select-danilo-sousa": "Auswählen: Danilo Sousa",
+    "select-jasper-eriksson": "Auswählen: Jasper Eriksson",
+    "select-zahra-ambessa": "Auswählen: Zahra Ambessa",
+    "status": "Status",
+    "with-other-components": "Mit anderen Komponenten",
+    "with-selection": "Mit Auswahl"
+  },
+  "tabs": {
+    "access-and-update-your-documents": "Greife auf deine Dokumente zu und aktualisiere sie.",
+    "account": "Konto",
+    "as-links": "Als Links",
+    "beachfront": "Am Strand",
+    "boats": "Boote",
+    "cabins": "Hütten",
+    "castles": "Schlösser",
+    "documents": "Dokumente",
+    "edit-your-profile-or-update-contact": "Bearbeite dein Profil oder aktualisiere deine Kontaktdaten.",
+    "make-changes-to-your-account": "Nimm Änderungen an deinem Konto vor.",
+    "mountains": "Berge",
+    "overview": "Überblick",
+    "pricing": "Preise",
+    "settings": "Einstellungen"
+  },
+  "text-area": {
+    "a-few-words-about-you": "Ein paar Worte über dich.",
+    "attach": "Anhängen",
+    "auto-resize": "Automatische Größe",
+    "bio": "Bio",
+    "bio-is-too-long": "Die Bio ist zu lang.",
+    "grows-as-you-type": "Wächst beim Tippen…",
+    "grows-up-to-a-max-height": "Wächst bis zu einer Maximalhöhe und scrollt dann…",
+    "message": "Nachricht",
+    "reply-to-comment": "Auf Kommentar antworten…",
+    "send": "Senden",
+    "tell-us-about-yourself": "Erzähl uns von dir…",
+    "write-a-message": "Nachricht schreiben…"
+  },
+  "text-field": {
+    "clear": "Löschen"
+  },
+  "toast": {
+    "a-new-version-is-available": "Eine neue Version ist verfügbar",
+    "bottom-left": "Unten links",
+    "bottom-right": "Unten rechts",
+    "changes-saved": "Änderungen gespeichert",
+    "could-not-save-changes": "Änderungen konnten nicht gespeichert werden",
+    "error": "Fehler",
+    "file-uploaded": "Datei hochgeladen",
+    "info": "Info",
+    "message-deleted": "Nachricht gelöscht",
+    "payment-received": "Zahlung erhalten",
+    "position": "Position",
+    "promise": "Promise",
+    "run-promise": "Promise ausführen",
+    "show-toast": "Toast anzeigen",
+    "storage-almost-full": "Speicher fast voll",
+    "success": "Erfolg",
+    "top-left": "Oben links",
+    "top-right": "Oben rechts",
+    "type": "Typ",
+    "upload-failed": "Upload fehlgeschlagen",
+    "uploading-file": "Datei wird hochgeladen…",
+    "warning": "Warnung",
+    "with-action": "Mit Aktion",
+    "with-description": "Mit Beschreibung",
+    "your-profile-has-been-updated": "Dein Profil wurde aktualisiert."
+  },
+  "toolbar": {
+    "align-center": "Zentriert",
+    "align-left": "Linksbündig",
+    "align-right": "Rechtsbündig",
+    "alignment": "Ausrichtung",
+    "bold": "Fett",
+    "buttons": "Buttons",
+    "edited-51m-ago": "Vor 51 Min. bearbeitet",
+    "formatting": "Formatierung",
+    "history": "Verlauf",
+    "italic": "Kursiv",
+    "redo": "Wiederholen",
+    "strikethrough": "Durchgestrichen",
+    "style": "Stil",
+    "underline": "Unterstrichen",
+    "with-a-select-and-a-menu": "Mit Auswahl und Menü",
+    "with-an-input": "Mit Eingabefeld",
+    "with-icons": "Mit Icons"
+  },
+  "tooltip": {
+    "add": "Hinzufügen",
+    "add-to-library": "Zur Bibliothek hinzufügen",
+    "left": "Links",
+    "right": "Rechts"
   }
 }

@@ -1,45 +1,14 @@
-export const pages = [
-  'accordion',
-  'alert-dialog',
-  'avatar',
-  'badge',
-  'button',
-  'callout',
-  'card',
-  'checkbox',
-  'checkbox-group',
-  'combobox',
-  'dialog',
-  'drawer',
-  'field',
-  'icon-button',
-  'menu',
-  'number-field',
-  'otp-field',
-  'popover',
-  'preview-card',
-  'progress',
-  'radio',
-  'radio-group',
-  'scroll-area',
-  'segmented-control',
-  'select',
-  'separator',
-  'skeleton',
-  'slider',
-  'spinner',
-  'switch',
-  'table',
-  'tabs',
-  'text-area',
-  'text-field',
-  'toast',
-  'toolbar',
-  'tooltip',
-] as const
+import { readdirSync } from 'node:fs'
 
-export type Page = (typeof pages)[number]
+import { type Messages } from 'next-intl'
 
-export function isPage(slug: string): slug is Page {
-  return (pages as ReadonlyArray<string>).includes(slug)
-}
+export type Page = Exclude<keyof Messages['nav'], 'components'>
+
+// one folder per component page, bar the dynamic [page] routes. server only, and read at build time: every
+// page is prerendered, so src doesn't need to exist at runtime
+export const pages = readdirSync('src/app/[locale]/components', {
+  withFileTypes: true,
+})
+  .filter((entry) => entry.isDirectory() && !entry.name.startsWith('['))
+  .map((entry) => entry.name as Page)
+  .sort()

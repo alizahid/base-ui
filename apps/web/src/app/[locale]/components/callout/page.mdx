@@ -1,0 +1,87 @@
+import { InfoIcon, WarningIcon } from '@phosphor-icons/react/ssr'
+
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('callout')
+
+# <Text id="nav.callout" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" size="1">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" size="2">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" size="3">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" variant="soft">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" variant="surface">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" variant="outline">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" color="blue">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="green">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="red">
+    <Callout.Icon><WarningIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.access-denied-please-contact-the-network" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" color="gray">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md">
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+  <Callout.Root className="w-full max-w-md" highContrast>
+    <Callout.Icon><InfoIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.you-will-need-admin-privileges-to" /></Callout.Text>
+  </Callout.Root>
+</Example>
+
+### <Text id="callout.with-an-action" />
+
+<Example orientation="vertical">
+  <Callout.Root className="w-full max-w-md" color="orange">
+    <Callout.Icon><WarningIcon className="size-4" /></Callout.Icon>
+    <Callout.Text><Text id="callout.your-trial-ends-in-three-days" /></Callout.Text>
+    <div><Button color="orange" size="1" variant="soft"><Text id="callout.upgrade" /></Button></div>
+  </Callout.Root>
+</Example>

@@ -1,0 +1,102 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('dialog')
+
+# <Text id="nav.dialog" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button />}><Text id="common.edit-profile" /></Dialog.Trigger>
+    <Dialog.Content className="max-w-sm">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.make-changes-to-your-profile" /></Dialog.Description>
+      <div className="mt-4 flex flex-col gap-3">
+        <Field label={useText('common.name')}>
+          <TextField.Root defaultValue="Ali Zahid" />
+        </Field>
+        <Field label={useText('common.email')}>
+          <TextField.Root defaultValue="ali@example.com" type="email" />
+        </Field>
+      </div>
+      <div className="mt-4 flex justify-end gap-3">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.cancel" /></Dialog.Close>
+        <Dialog.Close render={<Button />}><Text id="common.save" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### <Text id="common.size" />
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="common.size-1" /></Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="1">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="common.size-2" /></Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="2">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="common.size-3" /></Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="3">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="common.size-4" /></Dialog.Trigger>
+    <Dialog.Content className="max-w-xs" size="4">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>
+
+### <Text id="dialog.align" />
+
+<Example>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="dialog.start" /></Dialog.Trigger>
+    <Dialog.Content align="start" className="max-w-sm">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+  <Dialog.Root>
+    <Dialog.Trigger render={<Button variant="soft" />}><Text id="dialog.center" /></Dialog.Trigger>
+    <Dialog.Content align="center" className="max-w-sm">
+      <Dialog.Title><Text id="common.edit-profile" /></Dialog.Title>
+      <Dialog.Description><Text id="common.the-quick-brown-fox-jumps-over" /></Dialog.Description>
+      <div className="mt-4 flex justify-end">
+        <Dialog.Close render={<Button color="gray" variant="soft" />}><Text id="common.close" /></Dialog.Close>
+      </div>
+    </Dialog.Content>
+  </Dialog.Root>
+</Example>

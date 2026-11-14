@@ -1,0 +1,70 @@
+import { ListIcon, SquaresFourIcon } from '@phosphor-icons/react/ssr'
+
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('segmented-control')
+
+# <Text id="nav.segmented-control" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" size="1">
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="2">
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="3">
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" radius="none">
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" radius="full">
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### <Text id="common.with-icons" />
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="list">
+    <SegmentedControl.Item value="list"><ListIcon className="size-[1lh]" /><Text id="segmented-control.list" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="grid"><SquaresFourIcon className="size-[1lh]" /><Text id="segmented-control.grid" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+
+  <SegmentedControl.Root defaultValue="week">
+    <SegmentedControl.Item value="day"><Text id="segmented-control.day" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="week"><Text id="segmented-control.week" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="month"><Text id="segmented-control.month" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="year"><Text id="segmented-control.year" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" disabled>
+    <SegmentedControl.Item value="inbox"><Text id="segmented-control.inbox" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts"><Text id="segmented-control.drafts" /></SegmentedControl.Item>
+    <SegmentedControl.Item value="sent"><Text id="segmented-control.sent" /></SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>

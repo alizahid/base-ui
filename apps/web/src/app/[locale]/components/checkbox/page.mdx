@@ -1,0 +1,68 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('checkbox')
+
+# <Text id="nav.checkbox" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked size="1" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked size="2" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} color="indigo" defaultChecked />
+  <Checkbox aria-label={useText('checkbox.option')} color="cyan" defaultChecked />
+  <Checkbox aria-label={useText('checkbox.option')} color="orange" defaultChecked />
+  <Checkbox aria-label={useText('checkbox.option')} color="crimson" defaultChecked />
+  <Checkbox aria-label={useText('checkbox.option')} color="gray" defaultChecked />
+</Example>
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} color="indigo" defaultChecked variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} color="cyan" defaultChecked variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} color="orange" defaultChecked variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} color="crimson" defaultChecked variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} color="gray" defaultChecked variant="soft" />
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked highContrast variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked highContrast variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} color="gray" defaultChecked highContrast variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} color="gray" defaultChecked highContrast variant="soft" />
+</Example>
+
+### <Text id="common.indeterminate" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} indeterminate variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} indeterminate variant="soft" />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <Checkbox aria-label={useText('checkbox.option')} disabled variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked disabled variant="surface" />
+  <Checkbox aria-label={useText('checkbox.option')} disabled variant="soft" />
+  <Checkbox aria-label={useText('checkbox.option')} defaultChecked disabled variant="soft" />
+</Example>

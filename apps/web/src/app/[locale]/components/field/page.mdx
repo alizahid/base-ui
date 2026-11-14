@@ -1,0 +1,28 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('field')
+
+# <Text id="nav.field" />
+
+## <Text id="common.examples" />
+
+### <Text id="field.with-hint" />
+
+<Example>
+  <Field className="w-64" hint={useText('field.we-ll-never-share-your-email')} label={useText('common.email')}>
+    <TextField.Root type="email" />
+  </Field>
+</Example>
+
+### <Text id="field.with-error" />
+
+<Example>
+  <Field className="w-64" error={useText('field.this-email-is-already-taken')} label={useText('common.email')}>
+    <TextField.Root defaultValue="ali@example.com" type="email" />
+  </Field>
+
+  <Field className="w-64" error={useText('field.this-email-is-already-taken')} label={useText('common.email')}>
+    <TextField.Root defaultValue="ali@example.com" type="email" variant="soft" />
+  </Field>
+</Example>

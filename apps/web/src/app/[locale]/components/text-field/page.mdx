@@ -1,0 +1,74 @@
+import { EnvelopeSimpleIcon, MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('text-field')
+
+# <Text id="nav.text-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <TextField.Root placeholder={useText('common.search')} size="1" />
+  <TextField.Root placeholder={useText('common.search')} size="2" />
+  <TextField.Root placeholder={useText('common.search')} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <TextField.Root placeholder={useText('common.search')} variant="surface" />
+  <TextField.Root placeholder={useText('common.search')} variant="soft" />
+  <TextField.Root placeholder={useText('common.search')} variant="ghost" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <TextField.Root color="indigo" placeholder={useText('common.search')} variant="soft" />
+  <TextField.Root color="cyan" placeholder={useText('common.search')} variant="soft" />
+  <TextField.Root color="orange" placeholder={useText('common.search')} variant="soft" />
+  <TextField.Root color="crimson" placeholder={useText('common.search')} variant="soft" />
+  <TextField.Root color="gray" placeholder={useText('common.search')} variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example>
+  <TextField.Root placeholder={useText('common.search')} radius="none" />
+  <TextField.Root placeholder={useText('common.search')} radius="md" />
+  <TextField.Root placeholder={useText('common.search')} radius="xl" />
+  <TextField.Root placeholder={useText('common.search')} radius="full" />
+</Example>
+
+### <Text id="common.with-slots" />
+
+<Example>
+  <TextField.Root placeholder={useText('common.search')}>
+    <TextField.Slot>
+      <MagnifyingGlassIcon className="size-[1lh]" />
+    </TextField.Slot>
+  </TextField.Root>
+
+  <TextField.Root placeholder={useText('common.email')} type="email" variant="soft">
+    <TextField.Slot>
+      <EnvelopeSimpleIcon className="size-[1lh]" />
+    </TextField.Slot>
+
+    <TextField.Slot className="-me-1" side="end">
+      <IconButton aria-label={useText('text-field.clear')} size="1" variant="ghost">
+        <XIcon className="size-[1lh]" weight="bold" />
+      </IconButton>
+    </TextField.Slot>
+  </TextField.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <TextField.Root disabled placeholder={useText('common.search')} variant="surface" />
+  <TextField.Root disabled placeholder={useText('common.search')} variant="soft" />
+</Example>

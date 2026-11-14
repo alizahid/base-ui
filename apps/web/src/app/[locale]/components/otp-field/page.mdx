@@ -1,0 +1,94 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('otp-field')
+
+# <Text id="nav.otp-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} size="1" />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} size="2" />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} size="3" />
+  </Field>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} defaultValue="123" variant="surface" />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} defaultValue="123" variant="soft" />
+  </Field>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} color="indigo" variant="soft" />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} color="orange" variant="soft" />
+  </Field>
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} radius="none" />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} radius="full" />
+  </Field>
+</Example>
+
+### <Text id="otp-field.length" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.pin')}>
+    <OTPField length={4} />
+  </Field>
+</Example>
+
+### <Text id="otp-field.masked" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.pin')}>
+    <OTPField defaultValue="12" length={4} mask />
+  </Field>
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example orientation="vertical">
+  <Field hint={useText('otp-field.enter-the-6-digit-code-we')} label={useText('otp-field.verification-code')}>
+    <OTPField length={6} />
+  </Field>
+
+  <Field error={useText('otp-field.that-code-is-not-right')} label={useText('otp-field.verification-code')}>
+    <OTPField defaultValue="123456" length={6} />
+  </Field>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example orientation="vertical">
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} defaultValue="123" disabled />
+  </Field>
+  <Field label={useText('otp-field.verification-code')}>
+    <OTPField length={6} defaultValue="123" disabled variant="soft" />
+  </Field>
+</Example>

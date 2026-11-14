@@ -1,0 +1,320 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('select')
+
+export const useItems = () => ({ apple: useText('common.apple'), banana: useText('common.banana'), cherry: useText('common.cherry'), carrot: useText('common.carrot'), potato: useText('select.potato') })
+
+export const useCurrencies = () => [
+  { code: 'usd', flag: 'us', name: useText('select.us-dollar') },
+  { code: 'eur', flag: 'eu', name: useText('select.euro') },
+  { code: 'aed', flag: 'ae', name: useText('select.uae-dirham') },
+  { code: 'gbp', flag: 'gb', name: useText('select.british-pound') },
+]
+
+export const Flag = ({ flag }) => (
+  <img alt={flag} className="size-4 rounded-full" src={`https://flags.willa.app/flags/${flag}.svg`} />
+)
+
+{/* what the trigger shows for each value: the flag and the code */}
+export const useCurrencyItems = () => Object.fromEntries(
+  useCurrencies().map((currency) => [
+    currency.code,
+    <span className="flex items-center gap-2" key={currency.code}>
+      <Flag flag={currency.flag} />
+      <span className="uppercase">{currency.code}</span>
+    </span>,
+  ]),
+)
+
+# <Text id="nav.select" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Select.Root items={useItems()} defaultValue="apple" size="1">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple" size="2">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple" size="3">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.content-variant" />
+
+<Example>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content variant="solid">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content variant="soft">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} color="indigo" variant="soft" />
+    <Select.Content color="indigo">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} color="cyan" variant="soft" />
+    <Select.Content color="cyan">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} color="orange" variant="soft" />
+    <Select.Content color="orange">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} color="crimson" variant="soft" />
+    <Select.Content color="crimson">
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content highContrast>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} defaultValue="apple">
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content color="gray" highContrast>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} radius="none" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} radius="md" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} radius="xl" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} radius="full" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="select.groups" />
+
+<Example>
+  <Select.Root items={useItems()}>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content>
+      <Select.Group>
+        <Select.Label><Text id="select.fruits" /></Select.Label>
+        <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+        <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+        <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+      </Select.Group>
+      <Select.Separator />
+      <Select.Group>
+        <Select.Label><Text id="select.vegetables" /></Select.Label>
+        <Select.Item value="carrot"><Text id="common.carrot" /></Select.Item>
+        <Select.Item value="potato" disabled><Text id="select.potato" /></Select.Item>
+      </Select.Group>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <Select.Root items={useItems()} disabled>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="surface" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} disabled>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+  <Select.Root items={useItems()} disabled>
+    <Select.Trigger placeholder={useText('common.pick-a-fruit')} variant="ghost" />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.multiple" />
+
+<Example>
+  <Select.Root defaultValue={["apple", "banana"]} items={useItems()} multiple>
+    <Select.Trigger className="w-48" placeholder={useText('common.pick-a-fruit')} />
+    <Select.Content>
+      <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+      <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+      <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+    </Select.Content>
+  </Select.Root>
+</Example>
+
+### <Text id="common.collapsed-value" />
+
+<Example>
+  <CollapsedSelect items={useItems()} more={useText('common.more')} placeholder={useText('common.pick-a-fruit')} />
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-64" hint={useText('select.you-can-change-this-later')} label={useText('common.favourite-fruit')}>
+    <Select.Root items={useItems()}>
+      <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+      <Select.Content>
+        <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+        <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+        <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+  <Field className="w-64" error={useText('common.pick-one-to-continue')} label={useText('common.favourite-fruit')}>
+    <Select.Root items={useItems()}>
+      <Select.Trigger placeholder={useText('common.pick-a-fruit')} />
+      <Select.Content>
+        <Select.Item value="apple"><Text id="common.apple" /></Select.Item>
+        <Select.Item value="banana"><Text id="common.banana" /></Select.Item>
+        <Select.Item value="cherry"><Text id="common.cherry" /></Select.Item>
+      </Select.Content>
+    </Select.Root>
+  </Field>
+</Example>
+
+### <Text id="select.currency-picker" />
+
+<Example>
+  <Select.Root defaultValue="usd" items={useCurrencyItems()}>
+    <Select.Trigger aria-label={useText('select.currency')} />
+    <Select.Content>
+      {useCurrencies().map((currency) => (
+        <Select.Item key={currency.code} value={currency.code}>
+          <span className="flex items-center gap-2">
+            <Flag flag={currency.flag} />
+            <span className="flex-1">{currency.name}</span>
+            <span className="uppercase opacity-60">{currency.code}</span>
+          </span>
+        </Select.Item>
+      ))}
+    </Select.Content>
+  </Select.Root>
+</Example>

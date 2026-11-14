@@ -1,0 +1,66 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('number-field')
+
+# <Text id="nav.number-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} size="1" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} size="2" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} variant="surface" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} color="indigo" variant="soft" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} color="orange" variant="soft" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} color="gray" variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} radius="none" />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} radius="full" />
+</Example>
+
+### <Text id="number-field.min-max-and-step" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={5} max={10} min={0} step={5} />
+</Example>
+
+### <Text id="number-field.format" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.price')} className="w-40" defaultValue={1250} format={{ currency: 'USD', style: 'currency' }} step={50} />
+  <NumberField aria-label={useText('number-field.price')} className="w-32" defaultValue={0.25} format={{ style: 'percent' }} step={0.05} />
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-40" hint={useText('number-field.between-1-and-10')} label={useText('number-field.guests')}>
+    <NumberField defaultValue={2} max={10} min={1} />
+  </Field>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} disabled />
+  <NumberField aria-label={useText('number-field.quantity')} className="w-32" defaultValue={1} disabled variant="soft" />
+</Example>

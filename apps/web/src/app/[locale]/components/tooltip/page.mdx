@@ -1,0 +1,33 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('tooltip')
+
+# <Text id="nav.tooltip" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <Tooltip content={useText('tooltip.add-to-library')}>
+    <Button><Text id="tooltip.add" /></Button>
+  </Tooltip>
+</Example>
+
+### <Text id="common.side" />
+
+<Example>
+  <Tooltip content={useText('tooltip.add-to-library')} side="top">
+    <Button variant="soft"><Text id="common.top" /></Button>
+  </Tooltip>
+  <Tooltip content={useText('tooltip.add-to-library')} side="right">
+    <Button variant="soft"><Text id="tooltip.right" /></Button>
+  </Tooltip>
+  <Tooltip content={useText('tooltip.add-to-library')} side="bottom">
+    <Button variant="soft"><Text id="common.bottom" /></Button>
+  </Tooltip>
+  <Tooltip content={useText('tooltip.add-to-library')} side="left">
+    <Button variant="soft"><Text id="tooltip.left" /></Button>
+  </Tooltip>
+</Example>

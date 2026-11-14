@@ -3,15 +3,16 @@
 import { cn } from 'cn'
 import { useTranslations } from 'next-intl'
 
-import { pages } from '../content'
+import { type Page } from '../content'
 import { Link, usePathname } from '../intl/navigation'
 
 type Props = {
+  pages: Array<Page>
   // called when a link is followed
   onNavigate?: () => void
 }
 
-export function Sidebar({ onNavigate }: Props) {
+export function Sidebar({ pages, onNavigate }: Props) {
   const pathname = usePathname()
 
   const t = useTranslations('nav')

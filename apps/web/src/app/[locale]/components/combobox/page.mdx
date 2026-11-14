@@ -1,0 +1,170 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('combobox')
+
+export const useFruits = () => ([
+  { label: useText('common.apple'), value: 'apple' },
+  { label: useText('combobox.apricot'), value: 'apricot' },
+  { label: useText('common.banana'), value: 'banana' },
+  { label: useText('combobox.blueberry'), value: 'blueberry' },
+  { label: useText('common.cherry'), value: 'cherry' },
+  { label: useText('combobox.grape'), value: 'grape' },
+  { label: useText('combobox.lemon'), value: 'lemon' },
+  { label: useText('combobox.mango'), value: 'mango' },
+  { label: useText('combobox.orange'), value: 'orange' },
+  { label: useText('combobox.peach'), value: 'peach' },
+  { label: useText('combobox.pear'), value: 'pear' },
+  { label: useText('combobox.strawberry'), value: 'strawberry' },
+])
+
+# <Text id="nav.combobox" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Combobox.Root items={useFruits()} size="1">
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()} size="2">
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()} size="3">
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} variant="surface" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.content-variant" />
+
+<Example>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} variant="solid" />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} variant="soft" />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} color="indigo" variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} color="indigo" />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} color="cyan" variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} color="cyan" />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} color="orange" variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} color="orange" />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} color="crimson" variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} color="crimson" />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} highContrast />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} color="gray" highContrast />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <Combobox.Root items={useFruits()} disabled>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} variant="surface" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+  <Combobox.Root items={useFruits()} disabled>
+    <Combobox.Input placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-64" hint={useText('combobox.start-typing-to-filter')} label={useText('common.favourite-fruit')}>
+    <Combobox.Root items={useFruits()}>
+      <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+      <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+    </Combobox.Root>
+  </Field>
+  <Field className="w-64" error={useText('common.pick-one-to-continue')} label={useText('common.favourite-fruit')}>
+    <Combobox.Root items={useFruits()}>
+      <Combobox.Input placeholder={useText('common.pick-a-fruit')} />
+      <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+    </Combobox.Root>
+  </Field>
+</Example>
+
+### <Text id="common.multiple" />
+
+<Example>
+  <Combobox.Root defaultValue={[useFruits()[0], useFruits()[2]]} items={useFruits()} multiple>
+    <Combobox.Input className="w-80" placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+
+  <Combobox.Root defaultValue={[useFruits()[4]]} items={useFruits()} multiple>
+    <Combobox.Input className="w-80" placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} />
+  </Combobox.Root>
+</Example>
+
+### <Text id="combobox.search-inside-the-popup" />
+
+<Example>
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Trigger placeholder={useText('common.pick-a-fruit')} />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} search={<Combobox.Search placeholder={useText('common.search')} />} />
+  </Combobox.Root>
+
+  <Combobox.Root items={useFruits()}>
+    <Combobox.Trigger placeholder={useText('common.pick-a-fruit')} variant="soft" />
+    <Combobox.Content empty={useText('combobox.no-fruits-found')} search={<Combobox.Search placeholder={useText('common.search')} />} />
+  </Combobox.Root>
+</Example>
+
+### <Text id="common.collapsed-value" />
+
+<Example>
+  <CollapsedCombobox empty={useText('combobox.no-fruits-found')} items={useFruits()} more={useText('common.more')} placeholder={useText('common.pick-a-fruit')} search={useText('common.search')} />
+</Example>
+
+### <Text id="combobox.async" />
+
+<Example>
+  <AsyncCombobox empty={useText('combobox.no-fruits-found')} hint={useText('combobox.type-to-search')} items={useFruits()} loading={useText('combobox.loading')} placeholder={useText('common.pick-a-fruit')} />
+</Example>

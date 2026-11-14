@@ -1,0 +1,70 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('switch')
+
+# <Text id="nav.switch" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} defaultChecked size="1" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked size="2" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} color="indigo" defaultChecked />
+  <Switch aria-label={useText('switch.notifications')} color="cyan" defaultChecked />
+  <Switch aria-label={useText('switch.notifications')} color="orange" defaultChecked />
+  <Switch aria-label={useText('switch.notifications')} color="crimson" defaultChecked />
+  <Switch aria-label={useText('switch.notifications')} color="gray" defaultChecked />
+</Example>
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} color="indigo" defaultChecked variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} color="cyan" defaultChecked variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} color="orange" defaultChecked variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} color="crimson" defaultChecked variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} color="gray" defaultChecked variant="soft" />
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} defaultChecked highContrast variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked highContrast variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} color="gray" defaultChecked highContrast variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} color="gray" defaultChecked highContrast variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} defaultChecked radius="none" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked radius="sm" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked radius="md" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked radius="full" />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <Switch aria-label={useText('switch.notifications')} disabled variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked disabled variant="surface" />
+  <Switch aria-label={useText('switch.notifications')} disabled variant="soft" />
+  <Switch aria-label={useText('switch.notifications')} defaultChecked disabled variant="soft" />
+</Example>

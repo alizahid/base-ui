@@ -1,0 +1,105 @@
+import { ArrowLeftIcon, ArrowRightIcon, CaretDownIcon, DownloadSimpleIcon } from '@phosphor-icons/react/ssr'
+
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('button')
+
+# <Text id="nav.button" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Button size="1"><Text id="button.button" /></Button>
+  <Button size="2"><Text id="button.button" /></Button>
+  <Button size="3"><Text id="button.button" /></Button>
+  <Button size="4"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Button variant="solid"><Text id="button.button" /></Button>
+  <Button variant="soft"><Text id="button.button" /></Button>
+  <Button variant="surface"><Text id="button.button" /></Button>
+  <Button variant="outline"><Text id="button.button" /></Button>
+  <Button variant="ghost"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <Button color="indigo"><Text id="button.button" /></Button>
+  <Button color="cyan"><Text id="button.button" /></Button>
+  <Button color="orange"><Text id="button.button" /></Button>
+  <Button color="crimson"><Text id="button.button" /></Button>
+  <Button color="gray"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <Button highContrast variant="solid"><Text id="button.button" /></Button>
+  <Button highContrast variant="soft"><Text id="button.button" /></Button>
+  <Button highContrast variant="surface"><Text id="button.button" /></Button>
+  <Button highContrast variant="outline"><Text id="button.button" /></Button>
+  <Button highContrast variant="ghost"><Text id="button.button" /></Button>
+</Example>
+
+<Example>
+  <Button color="gray" highContrast variant="solid"><Text id="button.button" /></Button>
+  <Button color="gray" highContrast variant="soft"><Text id="button.button" /></Button>
+  <Button color="gray" highContrast variant="surface"><Text id="button.button" /></Button>
+  <Button color="gray" highContrast variant="outline"><Text id="button.button" /></Button>
+  <Button color="gray" highContrast variant="ghost"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="common.radius" />
+
+<Example>
+  <Button radius="none"><Text id="button.button" /></Button>
+  <Button radius="md"><Text id="button.button" /></Button>
+  <Button radius="xl"><Text id="button.button" /></Button>
+  <Button radius="full"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="button.with-icons" />
+
+<Example>
+  <Button><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /><Text id="button.back" /></Button>
+  <Button><Text id="button.next" /><ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button><DownloadSimpleIcon className="size-[1lh]" weight="bold" /><Text id="button.download" /><CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
+</Example>
+
+<Example>
+  <Button variant="soft"><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /><Text id="button.back" /></Button>
+  <Button variant="soft"><Text id="button.next" /><ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button variant="soft"><DownloadSimpleIcon className="size-[1lh]" weight="bold" /><Text id="button.download" /><CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
+</Example>
+
+<Example>
+  <Button loading><ArrowLeftIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /><Text id="button.back" /></Button>
+  <Button loading><Text id="button.next" /><ArrowRightIcon className="size-[1lh] rtl:-scale-x-100" weight="bold" /></Button>
+  <Button loading><DownloadSimpleIcon className="size-[1lh]" weight="bold" /><Text id="button.download" /><CaretDownIcon className="size-[1lh]" weight="bold" /></Button>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <Button disabled variant="solid"><Text id="button.button" /></Button>
+  <Button disabled variant="soft"><Text id="button.button" /></Button>
+  <Button disabled variant="surface"><Text id="button.button" /></Button>
+  <Button disabled variant="outline"><Text id="button.button" /></Button>
+  <Button disabled variant="ghost"><Text id="button.button" /></Button>
+</Example>
+
+### <Text id="common.loading" />
+
+<Example>
+  <Button loading variant="solid"><Text id="button.button" /></Button>
+  <Button loading variant="soft"><Text id="button.button" /></Button>
+  <Button loading variant="surface"><Text id="button.button" /></Button>
+  <Button loading variant="outline"><Text id="button.button" /></Button>
+  <Button loading variant="ghost"><Text id="button.button" /></Button>
+</Example>

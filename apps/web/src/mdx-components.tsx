@@ -45,6 +45,8 @@ import { type ComponentProps } from 'react'
 import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
+import { Source } from './components/source'
+import { Text } from './components/text'
 
 type ExampleProps = ComponentProps<'div'> & {
   orientation?: 'horizontal' | 'vertical'
@@ -76,7 +78,13 @@ const components: MDXComponents = {
   Example,
   Field,
   h1: (props) => (
-    <h1 className="mb-4 text-4xl font-bold text-(--accent-11)" {...props} />
+    <div className="mb-4">
+      <h1 className="text-4xl font-bold text-(--accent-11)" {...props} />
+
+      <Source>
+        <Text id="common.view-as-markdown" />
+      </Source>
+    </div>
   ),
   h2: (props) => <h2 className="mt-10 mb-4 text-2xl font-bold" {...props} />,
   h3: (props) => <h3 className="mt-8 text-lg font-bold" {...props} />,
@@ -90,6 +98,7 @@ const components: MDXComponents = {
   Slider,
   Spinner,
   Switch,
+  Text,
   ToastDemo,
   ToastPromiseDemo,
   Tooltip,

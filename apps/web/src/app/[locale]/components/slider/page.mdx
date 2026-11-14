@@ -1,0 +1,69 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('slider')
+
+# <Text id="nav.slider" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={25} size="1" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} size="2" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={75} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} variant="surface" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} color="indigo" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} color="cyan" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} color="orange" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} color="crimson" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} color="gray" />
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} highContrast />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} highContrast variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} radius="none" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} radius="sm" />
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} radius="full" />
+</Example>
+
+### <Text id="slider.range" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.price-range')} className="w-64" defaultValue={[25, 75]} />
+  <Slider aria-label={useText('slider.price-range')} className="w-64" defaultValue={[25, 75]} variant="soft" />
+</Example>
+
+### <Text id="slider.step" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} step={10} />
+  <Slider aria-label={useText('slider.price-range')} className="w-64" defaultValue={[2, 8]} max={10} min={1} step={1} />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example orientation="vertical">
+  <Slider aria-label={useText('slider.volume')} className="w-64" defaultValue={50} disabled />
+  <Slider aria-label={useText('slider.price-range')} className="w-64" defaultValue={[25, 75]} disabled />
+</Example>

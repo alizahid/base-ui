@@ -1,0 +1,88 @@
+import { PaperclipIcon, PencilSimpleIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('text-area')
+
+# <Text id="nav.text-area" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} size="1" />
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} size="2" />
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} variant="surface" />
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <TextArea.Root className="w-64" color="indigo" placeholder={useText('text-area.reply-to-comment')} variant="soft" />
+  <TextArea.Root className="w-64" color="orange" placeholder={useText('text-area.reply-to-comment')} variant="soft" />
+  <TextArea.Root className="w-64" color="gray" placeholder={useText('text-area.reply-to-comment')} variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} radius="none" />
+  <TextArea.Root className="w-64" placeholder={useText('text-area.reply-to-comment')} radius="xl" />
+</Example>
+
+### <Text id="text-area.auto-resize" />
+
+<Example orientation="vertical">
+  <TextArea.Root autoResize className="w-64" placeholder={useText('text-area.grows-as-you-type')} />
+  <TextArea.Root autoResize className="max-h-40 w-64" placeholder={useText('text-area.grows-up-to-a-max-height')} />
+</Example>
+
+### <Text id="common.with-slots" />
+
+<Example orientation="vertical">
+  <TextArea.Root aria-label={useText('text-area.message')} autoResize className="max-h-40 w-80" placeholder={useText('text-area.write-a-message')}>
+    <TextArea.Slot className="-ms-1">
+      <IconButton aria-label={useText('text-area.attach')} color="gray" size="1" variant="ghost">
+        <PaperclipIcon className="size-[1lh]" />
+      </IconButton>
+    </TextArea.Slot>
+
+    <TextArea.Slot className="-me-1 self-end" side="end">
+      <Button size="1"><Text id="text-area.send" /></Button>
+    </TextArea.Slot>
+  </TextArea.Root>
+
+  <TextArea.Root aria-label={useText('text-area.message')} className="w-80" placeholder={useText('text-area.write-a-message')} variant="soft">
+    <TextArea.Slot>
+      <PencilSimpleIcon className="size-[1lh]" />
+    </TextArea.Slot>
+  </TextArea.Root>
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example orientation="vertical">
+  <Field className="w-64" hint={useText('text-area.a-few-words-about-you')} label={useText('text-area.bio')}>
+    <TextArea.Root autoResize placeholder={useText('text-area.tell-us-about-yourself')} />
+  </Field>
+
+  <Field className="w-64" error={useText('text-area.bio-is-too-long')} label={useText('text-area.bio')}>
+    <TextArea.Root autoResize defaultValue={useText('text-area.tell-us-about-yourself')} />
+  </Field>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example orientation="vertical">
+  <TextArea.Root className="w-64" disabled placeholder={useText('text-area.reply-to-comment')} variant="surface" />
+  <TextArea.Root className="w-64" disabled placeholder={useText('text-area.reply-to-comment')} variant="soft" />
+</Example>
