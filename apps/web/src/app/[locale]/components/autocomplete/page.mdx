@@ -1,3 +1,5 @@
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/ssr'
+
 import { useText } from '../../../../components/text'
 import { title } from '../../../../intl/metadata'
 
@@ -40,6 +42,17 @@ export const useGroups = () => ([
   </Autocomplete.Root>
   <Autocomplete.Root items={tags}>
     <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} variant="soft" />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+</Example>
+
+### <Text id="autocomplete.with-an-icon" />
+
+<Example>
+  <Autocomplete.Root items={tags}>
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')}>
+      <TextField.Slot><MagnifyingGlassIcon /></TextField.Slot>
+    </Autocomplete.Input>
     <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
   </Autocomplete.Root>
 </Example>

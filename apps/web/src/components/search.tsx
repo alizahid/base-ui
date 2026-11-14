@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr'
 import { CommandBar, IconButton } from '@repo/ui'
 import { useTranslations } from 'next-intl'
 
-// opens the site's command bar, which ⌘K does too
+// opens the site's command bar, as ⌘K does
 export function Search() {
   const t = useTranslations('header')
 

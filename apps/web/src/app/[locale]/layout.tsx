@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 
+import { Command } from '../../components/command'
 import { Toaster } from '../../components/demos/toast'
 import { LocaleSwitcher } from '../../components/locale'
 import { Menu } from '../../components/menu'
@@ -78,7 +79,7 @@ export default async function Layout({
             >
               {/* every page, a keystroke away: the bar goes around the site, so
                   a page could add commands of its own */}
-              <CommandBar.Root
+              <Command
                 empty={t('header.no-components-found')}
                 placeholder={t('header.search-components')}
               >
@@ -126,7 +127,7 @@ export default async function Layout({
                 </main>
 
                 <Toaster />
-              </CommandBar.Root>
+              </Command>
             </BaseProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

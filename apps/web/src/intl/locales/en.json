@@ -18,7 +18,8 @@
     "inline-completion": "Inline completion",
     "no-tags-found": "No tags found.",
     "search-tags": "Search tags…",
-    "type": "Type"
+    "type": "Type",
+    "with-an-icon": "With an icon"
   },
   "avatar": {
     "fallback": "Fallback"

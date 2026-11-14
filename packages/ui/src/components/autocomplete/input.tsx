@@ -29,8 +29,9 @@ export type AutocompleteInputProps = Omit<
 // looks like a TextField, with a button to clear what was typed. className
 // and style go to the wrapper, which is also what the popup is anchored to;
 // everything else goes to the input. `clearLabel` names the button for screen
-// readers
+// readers. children are TextField.Slots, e.g. a search icon at the start
 export function Input({
+  children,
   className,
   clearLabel = 'Clear',
   color,
@@ -56,6 +57,8 @@ export function Input({
       )}
     >
       <Component.Input {...props} {...stylex.props(input.input)} />
+
+      {children}
 
       <div
         data-side="end"

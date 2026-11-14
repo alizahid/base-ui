@@ -18,7 +18,8 @@
     "inline-completion": "إكمال داخل الحقل",
     "no-tags-found": "لم يُعثر على وسوم.",
     "search-tags": "ابحث في الوسوم…",
-    "type": "النوع"
+    "type": "النوع",
+    "with-an-icon": "مع أيقونة"
   },
   "avatar": {
     "fallback": "البديل"

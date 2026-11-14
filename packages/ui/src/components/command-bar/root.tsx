@@ -3,8 +3,7 @@
 import { Autocomplete } from '@base-ui/react/autocomplete'
 import { Dialog } from '@base-ui/react/dialog'
 import * as stylex from '@stylexjs/stylex'
-import { type ReactNode, use, useMemo, useState } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
+import { type ReactNode, use, useCallback, useMemo, useState } from 'react'
 
 import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
 import { ThemeContext } from '../../lib/theme.js'
@@ -20,28 +19,39 @@ export type CommandBarRootProps = {
   children?: ReactNode
   // shown when nothing matches what was typed
   empty?: ReactNode
-  // the keys that open and close it, as react-hotkeys-hook writes them:
-  // 'mod+k' by default, which is ⌘K on a mac and ctrl+K elsewhere. false for
-  // none, e.g. for a second bar on a page that already has one
-  hotkey?: string | false
+  onOpenChange?: (open: boolean) => void
+  // for opening and closing it yourself, e.g. from a keyboard shortcut: the
+  // bar binds no keys of its own. without it, the bar keeps track
+  open?: boolean
   // also names the dialog for screen readers
   placeholder?: string
 }
 
-// a dialog for finding and running commands, opened with its `hotkey` or a
-// Trigger. goes around the app: CommandBar.Items anywhere inside adds
+// a dialog for finding and running commands, opened with a Trigger or by
+// controlling `open`. goes around the app: CommandBar.Items anywhere inside adds
 // commands while it is mounted. the bar is a base ui autocomplete inside a
 // dialog; the look is our own
 export function Root({
   children,
   empty,
-  hotkey = 'mod+k',
+  onOpenChange,
+  open: controlled,
   placeholder,
 }: CommandBarRootProps) {
   const theme = use(ThemeContext)
   const filter = Autocomplete.useFilter()
 
-  const [open, setOpen] = useState(false)
+  const [uncontrolled, setUncontrolled] = useState(false)
+
+  const open = controlled ?? uncontrolled
+
+  const setOpen = useCallback(
+    (next: boolean) => {
+      setUncontrolled(next)
+      onOpenChange?.(next)
+    },
+    [onOpenChange],
+  )
   const [groups, setGroups] = useState<ReadonlyMap<string, CommandBarGroup>>(
     new Map(),
   )
@@ -53,11 +63,12 @@ export function Root({
     [groups],
   )
 
-  const context = useMemo(
+  // these two never change, so an Items only registers again when its own
+  // props do
+  const registry = useMemo(
     () => ({
       register: (id: string, group: CommandBarGroup) =>
         setGroups((previous) => new Map(previous).set(id, group)),
-      setOpen,
       unregister: (id: string) =>
         setGroups((previous) => {
           const next = new Map(previous)
@@ -70,14 +81,13 @@ export function Root({
     [],
   )
 
-  // also while typing in a field, the bar's own included, so the same keys
-  // close it again
-  useHotkeys(hotkey || 'mod+k', () => setOpen((previous) => !previous), {
-    enabled: hotkey !== false,
-    enableOnContentEditable: true,
-    enableOnFormTags: true,
-    preventDefault: true,
-  })
+  const context = useMemo(
+    () => ({
+      ...registry,
+      setOpen,
+    }),
+    [registry, setOpen],
+  )
 
   return (
     <CommandBarContext value={context}>

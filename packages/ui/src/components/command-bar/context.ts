@@ -12,7 +12,8 @@ export type CommandBarItem = {
   // the element for the row, for a command that is a link: <a href />, or a
   // framework's link
   render?: ReactElement
-  // shown at the end of the row, e.g. "⌘N". for display only
+  // shown at the end of the row, e.g. "⌘N". for display only: binding the
+  // keys is up to the app
   shortcut?: ReactNode
 }
 

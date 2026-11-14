@@ -12,7 +12,7 @@ export const generateMetadata = title('command-bar')
 ### <Text id="common.basic" />
 
 <Example>
-  <CommandBar.Root empty={useText('command-bar.no-commands-found')} hotkey={false} placeholder={useText('command-bar.type-a-command-or-search')}>
+  <CommandBar.Root empty={useText('command-bar.no-commands-found')} placeholder={useText('command-bar.type-a-command-or-search')}>
     <CommandBar.Items
       items={[
         { icon: <SquaresFourIcon />, label: useText('command-bar.dashboard'), render: <a href="#" /> },
