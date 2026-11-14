@@ -1,0 +1,66 @@
+import { ListIcon, SquaresFourIcon } from '@phosphor-icons/react/ssr'
+
+# عنصر التحكم المقسّم
+
+## أمثلة
+
+### الحجم
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" size="1">
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="2">
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="3">
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### نصف القطر
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" radius="none">
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" radius="full">
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### مع أيقونات
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="list">
+    <SegmentedControl.Item value="list"><ListIcon className="size-[1lh]" />قائمة</SegmentedControl.Item>
+    <SegmentedControl.Item value="grid"><SquaresFourIcon className="size-[1lh]" />شبكة</SegmentedControl.Item>
+  </SegmentedControl.Root>
+
+  <SegmentedControl.Root defaultValue="week">
+    <SegmentedControl.Item value="day">يوم</SegmentedControl.Item>
+    <SegmentedControl.Item value="week">أسبوع</SegmentedControl.Item>
+    <SegmentedControl.Item value="month">شهر</SegmentedControl.Item>
+    <SegmentedControl.Item value="year">سنة</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### معطّل
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" disabled>
+    <SegmentedControl.Item value="inbox">الوارد</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">المسودات</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">المرسل</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>

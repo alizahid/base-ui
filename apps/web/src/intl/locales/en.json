@@ -33,6 +33,7 @@
     "radio": "Radio",
     "radio-group": "Radio Group",
     "scroll-area": "Scroll Area",
+    "segmented-control": "Segmented Control",
     "select": "Select",
     "separator": "Separator",
     "skeleton": "Skeleton",

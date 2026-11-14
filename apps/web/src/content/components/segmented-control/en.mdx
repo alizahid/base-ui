@@ -1,0 +1,66 @@
+import { ListIcon, SquaresFourIcon } from '@phosphor-icons/react/ssr'
+
+# Segmented Control
+
+## Examples
+
+### Size
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" size="1">
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="2">
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" size="3">
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### Radius
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" radius="none">
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+  <SegmentedControl.Root defaultValue="inbox" radius="full">
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### With icons
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="list">
+    <SegmentedControl.Item value="list"><ListIcon className="size-[1lh]" />List</SegmentedControl.Item>
+    <SegmentedControl.Item value="grid"><SquaresFourIcon className="size-[1lh]" />Grid</SegmentedControl.Item>
+  </SegmentedControl.Root>
+
+  <SegmentedControl.Root defaultValue="week">
+    <SegmentedControl.Item value="day">Day</SegmentedControl.Item>
+    <SegmentedControl.Item value="week">Week</SegmentedControl.Item>
+    <SegmentedControl.Item value="month">Month</SegmentedControl.Item>
+    <SegmentedControl.Item value="year">Year</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>
+
+### Disabled
+
+<Example orientation="vertical">
+  <SegmentedControl.Root defaultValue="inbox" disabled>
+    <SegmentedControl.Item value="inbox">Inbox</SegmentedControl.Item>
+    <SegmentedControl.Item value="drafts">Drafts</SegmentedControl.Item>
+    <SegmentedControl.Item value="sent">Sent</SegmentedControl.Item>
+  </SegmentedControl.Root>
+</Example>

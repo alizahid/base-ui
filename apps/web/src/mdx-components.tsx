@@ -21,6 +21,7 @@ import {
   Radio,
   RadioGroup,
   ScrollArea,
+  SegmentedControl,
   Select,
   Separator,
   Skeleton,
@@ -126,6 +127,7 @@ export function useMDXComponents(): MDXComponents {
       Item: RadioGroup.Item,
       Root: RadioGroup.Root,
     },
+    SegmentedControl,
     Select: {
       Content: Select.Content,
       Group: Select.Group,
