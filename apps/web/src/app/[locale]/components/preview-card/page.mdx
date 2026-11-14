@@ -9,14 +9,14 @@ export const generateMetadata = title('preview-card')
 ### <Text id="common.basic" />
 
 <Example>
-  <p className="max-w-md"><Text id="preview-card.the-components-in-this-library-are" />{' '}<PreviewCard.Root><PreviewCard.Trigger className="underline" href="https://base-ui.com">Base UI</PreviewCard.Trigger><PreviewCard.Content className="max-w-xs"><div className="flex gap-3"><Avatar fallback="B" size="3" /><div><p className="font-medium">Base UI</p><p className="mt-1 text-sm text-(--gray-11)"><Text id="preview-card.unstyled-react-components-for-building-accessible" /></p></div></div></PreviewCard.Content></PreviewCard.Root><Text id="preview-card.a-set-of-unstyled-primitives-that" /></p>
+  <p className="max-w-md"><Text id="preview-card.the-components-in-this-library-are" />{' '}<PreviewCard.Root><PreviewCard.Trigger href="https://base-ui.com" render={<Link underline="always" />}>Base UI</PreviewCard.Trigger><PreviewCard.Content className="max-w-xs"><div className="flex gap-3"><Avatar fallback="B" size="3" /><div><p className="font-medium">Base UI</p><p className="mt-1 text-sm text-(--gray-11)"><Text id="preview-card.unstyled-react-components-for-building-accessible" /></p></div></div></PreviewCard.Content></PreviewCard.Root><Text id="preview-card.a-set-of-unstyled-primitives-that" /></p>
 </Example>
 
 ### <Text id="common.size" />
 
 <Example>
   <PreviewCard.Root>
-    <PreviewCard.Trigger className="underline" href="https://base-ui.com">@base_ui</PreviewCard.Trigger>
+    <PreviewCard.Trigger href="https://base-ui.com" render={<Link underline="always" />}>@base_ui</PreviewCard.Trigger>
     <PreviewCard.Content className="max-w-xs" size="1">
       <div className="flex gap-3">
         <Avatar fallback="B" size="3" />
@@ -28,7 +28,7 @@ export const generateMetadata = title('preview-card')
     </PreviewCard.Content>
   </PreviewCard.Root>
   <PreviewCard.Root>
-    <PreviewCard.Trigger className="underline" href="https://base-ui.com">@base_ui</PreviewCard.Trigger>
+    <PreviewCard.Trigger href="https://base-ui.com" render={<Link underline="always" />}>@base_ui</PreviewCard.Trigger>
     <PreviewCard.Content className="max-w-xs" size="2">
       <div className="flex gap-3">
         <Avatar fallback="B" size="3" />
@@ -40,7 +40,7 @@ export const generateMetadata = title('preview-card')
     </PreviewCard.Content>
   </PreviewCard.Root>
   <PreviewCard.Root>
-    <PreviewCard.Trigger className="underline" href="https://base-ui.com">@base_ui</PreviewCard.Trigger>
+    <PreviewCard.Trigger href="https://base-ui.com" render={<Link underline="always" />}>@base_ui</PreviewCard.Trigger>
     <PreviewCard.Content className="max-w-xs" size="3">
       <div className="flex gap-3">
         <Avatar fallback="B" size="3" />

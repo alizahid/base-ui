@@ -315,11 +315,11 @@ export const useFruits = () => ({ apple: useText('common.apple'), banana: useTex
     <Drawer.Trigger render={<Button color="gray" variant="soft" />}><Text id="common.menu" /></Drawer.Trigger>
     <Drawer.Content size="1">
       <Drawer.Title><Text id="common.menu" /></Drawer.Title>
-      <nav className="-mx-3 mt-2 flex flex-col">
-        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}><Text id="drawer.home" /></Drawer.Close>
-        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}><Text id="drawer.components" /></Drawer.Close>
-        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}><Text id="common.themes" /></Drawer.Close>
-        <Drawer.Close nativeButton={false} render={<a className="rounded-md px-3 py-2 hover:bg-(--gray-a3)" href="#" />}><Text id="common.changelog" /></Drawer.Close>
+      <nav className="mt-4 flex flex-col items-start gap-3">
+        <Drawer.Close nativeButton={false} render={<Link href="#" />}><Text id="drawer.home" /></Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<Link href="#" />}><Text id="drawer.components" /></Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<Link href="#" />}><Text id="common.themes" /></Drawer.Close>
+        <Drawer.Close nativeButton={false} render={<Link href="#" />}><Text id="common.changelog" /></Drawer.Close>
       </nav>
     </Drawer.Content>
   </Drawer.Root>

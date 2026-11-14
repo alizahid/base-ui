@@ -1,5 +1,6 @@
 'use client'
 
+import { Link } from '@repo/ui'
 import { usePathname } from 'next/navigation'
 import { type ReactNode } from 'react'
 
@@ -12,11 +13,8 @@ export function Source({ children }: Props) {
   const pathname = usePathname()
 
   return (
-    <a
-      className="text-sm text-(--gray-11) hover:underline"
-      href={`${pathname}.md`}
-    >
+    <Link className="text-sm" color="gray" href={`${pathname}.md`}>
       {children}
-    </a>
+    </Link>
   )
 }

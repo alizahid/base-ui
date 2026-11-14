@@ -174,6 +174,11 @@
     "loading": "جارٍ التحميل",
     "search": "بحث"
   },
+  "link": {
+    "dont-have-an-account": "ليس لديك حساب؟",
+    "sign-up": "سجّل الآن",
+    "underline": "التسطير"
+  },
   "locales": {
     "ar": "العربية",
     "de": "Deutsch",
@@ -213,6 +218,7 @@
     "drawer": "الدرج",
     "field": "الحقل",
     "icon-button": "زر الأيقونة",
+    "link": "الرابط",
     "menu": "القائمة",
     "navigation-menu": "قائمة التنقل",
     "number-field": "حقل الأرقام",

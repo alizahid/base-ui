@@ -14,6 +14,7 @@ import {
   Drawer,
   Field,
   IconButton,
+  Link,
   Menu,
   NavigationMenu,
   NumberField,
@@ -79,7 +80,7 @@ const components: MDXComponents = {
   Example,
   Field,
   h1: (props) => (
-    <div className="mb-4 flex flex-col gap-2">
+    <div className="mb-4 flex flex-col items-start gap-2">
       <h1 className="text-4xl font-bold text-(--accent-11)" {...props} />
 
       <Source>
@@ -90,6 +91,7 @@ const components: MDXComponents = {
   h2: (props) => <h2 className="mt-10 mb-4 text-2xl font-bold" {...props} />,
   h3: (props) => <h3 className="mt-8 text-lg font-bold" {...props} />,
   IconButton,
+  Link,
   NumberField,
   OTPField,
   Radio,
