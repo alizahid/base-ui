@@ -276,8 +276,10 @@ const styles = stylex.create({
         'calc(100% - var(--nested-drawers, 1) * var(--drawer-peek) * 2)',
       default: null,
     },
-    // the viewport is a row that starts on the left; top and bottom drawers
-    // stay in the middle of it as they narrow
+    // pushed to its own edge with an auto margin on the other side, whichever
+    // side the viewport's row starts from: it starts on the right where text
+    // runs right to left. top and bottom drawers stay in the middle as they
+    // narrow
     marginLeft: {
       [down]: 'auto',
       [right]: 'auto',
@@ -286,6 +288,7 @@ const styles = stylex.create({
     },
     marginRight: {
       [down]: 'auto',
+      [left]: 'auto',
       [up]: 'auto',
       default: 0,
     },
