@@ -1,0 +1,162 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('navigation-menu')
+
+# <Text id="nav.navigation-menu" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')}>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="grid sm:w-110 sm:grid-cols-2">
+          <NavigationMenu.Link description={useText('navigation-menu.install-and-assemble-your-first-component')} href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-how-we-build-accessible-components')} href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.see-whats-new-in-the-latest-versions')} href="#"><Text id="navigation-menu.releases" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-more-about-the-project')} href="#"><Text id="navigation-menu.about" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="sm:w-80">
+          <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link active href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')} color="indigo">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="grid sm:w-110 sm:grid-cols-2">
+          <NavigationMenu.Link description={useText('navigation-menu.install-and-assemble-your-first-component')} href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-how-we-build-accessible-components')} href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.see-whats-new-in-the-latest-versions')} href="#"><Text id="navigation-menu.releases" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-more-about-the-project')} href="#"><Text id="navigation-menu.about" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="sm:w-80">
+          <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link active href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')} color="orange">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="grid sm:w-110 sm:grid-cols-2">
+          <NavigationMenu.Link description={useText('navigation-menu.install-and-assemble-your-first-component')} href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-how-we-build-accessible-components')} href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.see-whats-new-in-the-latest-versions')} href="#"><Text id="navigation-menu.releases" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-more-about-the-project')} href="#"><Text id="navigation-menu.about" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="sm:w-80">
+          <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link active href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')} color="gray">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="grid sm:w-110 sm:grid-cols-2">
+          <NavigationMenu.Link description={useText('navigation-menu.install-and-assemble-your-first-component')} href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-how-we-build-accessible-components')} href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.see-whats-new-in-the-latest-versions')} href="#"><Text id="navigation-menu.releases" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-more-about-the-project')} href="#"><Text id="navigation-menu.about" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="sm:w-80">
+          <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link active href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Example>
+
+### <Text id="common.vertical" />
+
+<Example>
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')} className="w-40" orientation="vertical">
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="grid sm:w-110 sm:grid-cols-2">
+          <NavigationMenu.Link description={useText('navigation-menu.install-and-assemble-your-first-component')} href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-how-we-build-accessible-components')} href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.see-whats-new-in-the-latest-versions')} href="#"><Text id="navigation-menu.releases" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.learn-more-about-the-project')} href="#"><Text id="navigation-menu.about" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content className="sm:w-80">
+          <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+          <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link active href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Example>
+
+### <Text id="navigation-menu.nested-submenu" />
+
+<Example>
+  <NavigationMenu.Root aria-label={useText('navigation-menu.main')}>
+    <NavigationMenu.List>
+      <NavigationMenu.Item>
+        <NavigationMenu.Trigger><Text id="navigation-menu.overview" /></NavigationMenu.Trigger>
+        <NavigationMenu.Content>
+          <NavigationMenu.Root className="w-44" orientation="vertical">
+            <NavigationMenu.List>
+              <NavigationMenu.Link href="#"><Text id="navigation-menu.quick-start" /></NavigationMenu.Link>
+              <NavigationMenu.Link href="#"><Text id="navigation-menu.accessibility" /></NavigationMenu.Link>
+              <NavigationMenu.Item>
+                <NavigationMenu.Trigger><Text id="navigation-menu.handbook" /></NavigationMenu.Trigger>
+                <NavigationMenu.Content className="sm:w-80">
+                  <NavigationMenu.Link description={useText('navigation-menu.style-the-components-with-plain-css-or')} href="#"><Text id="navigation-menu.styling" /></NavigationMenu.Link>
+                  <NavigationMenu.Link description={useText('navigation-menu.animate-with-css-transitions-or-animations')} href="#"><Text id="navigation-menu.animation" /></NavigationMenu.Link>
+                  <NavigationMenu.Link description={useText('navigation-menu.replace-and-compose-parts-with-your-own')} href="#"><Text id="navigation-menu.composition" /></NavigationMenu.Link>
+                </NavigationMenu.Content>
+              </NavigationMenu.Item>
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
+        </NavigationMenu.Content>
+      </NavigationMenu.Item>
+      <NavigationMenu.Link href="#">GitHub</NavigationMenu.Link>
+    </NavigationMenu.List>
+  </NavigationMenu.Root>
+</Example>
