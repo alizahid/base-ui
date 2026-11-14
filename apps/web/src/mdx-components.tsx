@@ -79,7 +79,7 @@ const components: MDXComponents = {
   Example,
   Field,
   h1: (props) => (
-    <div className="mb-4">
+    <div className="mb-4 flex flex-col gap-2">
       <h1 className="text-4xl font-bold text-(--accent-11)" {...props} />
 
       <Source>
