@@ -1,0 +1,135 @@
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('data-list')
+
+# <Text id="nav.data-list" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <DataList.Root>
+    <DataList.Item align="center">
+      <DataList.Label><Text id="table.status" /></DataList.Label>
+      <DataList.Value><Badge color="jade" radius="full"><Text id="data-list.authorized" /></Badge></DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="data-list.id" /></DataList.Label>
+      <DataList.Value>u_2J89JSA4GJ</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value><Link href="mailto:vlad@example.com">vlad@example.com</Link></DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="data-list.company" /></DataList.Label>
+      <DataList.Value>WorkOS</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+</Example>
+
+### <Text id="data-list.orientation" />
+
+<Example orientation="vertical">
+  <DataList.Root orientation="horizontal">
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value>vlad@example.com</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+
+  <DataList.Root orientation="vertical">
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value>vlad@example.com</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <DataList.Root size="1">
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value>vlad@example.com</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+
+  <DataList.Root size="2">
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value>vlad@example.com</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+
+  <DataList.Root size="3">
+    <DataList.Item>
+      <DataList.Label><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Vlad Moroz</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label><Text id="common.email" /></DataList.Label>
+      <DataList.Value>vlad@example.com</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <DataList.Root orientation="vertical">
+    <DataList.Item>
+      <DataList.Label color="indigo"><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Indigo</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label color="cyan"><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Cyan</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label color="orange"><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Orange</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label color="crimson"><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Crimson</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+</Example>
+
+### <Text id="common.high-contrast" />
+
+<Example>
+  <DataList.Root orientation="vertical">
+    <DataList.Item>
+      <DataList.Label color="indigo"><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Indigo</DataList.Value>
+    </DataList.Item>
+    <DataList.Item>
+      <DataList.Label color="indigo" highContrast><Text id="common.name" /></DataList.Label>
+      <DataList.Value>Indigo</DataList.Value>
+    </DataList.Item>
+  </DataList.Root>
+</Example>

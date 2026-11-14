@@ -43,7 +43,7 @@ export async function Example({
     <div className="mt-4 border border-(--gray-a6)">
       <div
         className={cn(
-          'flex min-h-32 items-center justify-center gap-4 p-6',
+          'flex min-h-32 items-center justify-center gap-12 p-6',
           orientation === 'vertical' ? 'flex-col' : 'flex-wrap',
         )}
         {...props}

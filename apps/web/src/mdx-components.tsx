@@ -12,6 +12,7 @@ import {
   CheckboxGroup,
   Combobox,
   CommandBar,
+  DataList,
   Dialog,
   Drawer,
   Field,
@@ -124,6 +125,7 @@ export function useMDXComponents(): MDXComponents {
       Root: CommandBar.Root,
       Trigger: CommandBar.Trigger,
     },
+    DataList,
     Dialog: {
       Close: Dialog.Close,
       Content: Dialog.Content,

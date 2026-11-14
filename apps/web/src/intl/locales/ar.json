@@ -156,6 +156,12 @@
     "with-icons": "مع أيقونات",
     "with-slots": "مع الفتحات"
   },
+  "data-list": {
+    "authorized": "مصرّح",
+    "company": "الشركة",
+    "id": "المعرّف",
+    "orientation": "الاتجاه"
+  },
   "dialog": {
     "align": "المحاذاة",
     "center": "الوسط",
@@ -251,6 +257,7 @@
     "combobox": "مربع التحرير والسرد",
     "command-bar": "شريط الأوامر",
     "components": "المكونات",
+    "data-list": "قائمة البيانات",
     "dialog": "مربع الحوار",
     "drawer": "الدرج",
     "field": "الحقل",

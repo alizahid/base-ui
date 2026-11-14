@@ -156,6 +156,12 @@
     "with-icons": "Mit Symbolen",
     "with-slots": "Mit Slots"
   },
+  "data-list": {
+    "authorized": "Autorisiert",
+    "company": "Unternehmen",
+    "id": "ID",
+    "orientation": "Ausrichtung"
+  },
   "dialog": {
     "align": "Ausrichtung",
     "center": "Mitte",
@@ -251,6 +257,7 @@
     "combobox": "Combobox",
     "command-bar": "Befehlsleiste",
     "components": "Komponenten",
+    "data-list": "Datenliste",
     "dialog": "Dialog",
     "drawer": "Drawer",
     "field": "Feld",
