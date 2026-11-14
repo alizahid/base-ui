@@ -29,6 +29,9 @@ export async function Example({
     ? await codeToHtml(source, {
         defaultColor: false,
         lang: 'tsx',
+        // the scroll area around it is the tab stop; a second one on the
+        // pre only adds its own focus ring
+        tabindex: false,
         themes: {
           dark: 'github-dark',
           light: 'github-light',
