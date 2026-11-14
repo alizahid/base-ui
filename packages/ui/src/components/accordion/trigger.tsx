@@ -51,7 +51,7 @@ const styles = stylex.create({
   icon: {
     color: 'var(--gray-a11)',
     flexShrink: 0,
-    height: 15,
+    height: '1lh',
     transform: {
       ':is([data-panel-open] > *)': 'rotate(180deg)',
       default: 'none',
@@ -62,7 +62,7 @@ const styles = stylex.create({
       default: 'transform',
     },
     transitionTimingFunction: 'ease-out',
-    width: 15,
+    width: '1lh',
   },
   main: {
     alignItems: 'center',

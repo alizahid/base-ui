@@ -213,8 +213,8 @@ const styles = stylex.create({
     margin: 0,
   },
   icon: {
-    height: 15,
-    width: 15,
+    height: '1lh',
+    width: '1lh',
   },
   main: {
     '--toast-gap': 'calc(var(--spacing) * 3)',

@@ -2,8 +2,8 @@ import { type ComponentProps } from 'react'
 
 // from radix icons (radix-ui.com/icons), with their names. the paths are
 // copied in rather than adding the package as a dependency. drawn on a 15x15
-// grid, so they are sharpest at 15px. internal: not exported from the package.
-// size them with a className
+// grid. internal: not exported from the package. size them with a className;
+// standalone ones are 1lh, as tall as a line of the text beside them
 
 type Props = ComponentProps<'svg'>
 

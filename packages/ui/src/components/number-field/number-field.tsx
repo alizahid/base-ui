@@ -109,8 +109,6 @@ const styles = stylex.create({
   },
   icon: {
     height: '1lh',
-    maxHeight: 15,
-    maxWidth: 15,
     width: '1lh',
   },
   input: {

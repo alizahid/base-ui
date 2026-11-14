@@ -130,8 +130,8 @@ const styles = stylex.create({
     top: 0,
   },
   chevron: {
-    height: 15,
-    width: 15,
+    height: '1lh',
+    width: '1lh',
   },
   flip: {
     transform: 'scaleY(-1)',

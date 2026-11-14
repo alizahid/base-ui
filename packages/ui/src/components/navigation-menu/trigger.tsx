@@ -44,8 +44,8 @@ export function Trigger({
 const styles = stylex.create({
   chevron: {
     display: 'block',
-    height: 15,
-    width: 15,
+    height: '1lh',
+    width: '1lh',
   },
   icon: {
     color: 'var(--gray-a11)',
