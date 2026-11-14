@@ -204,6 +204,11 @@
     "loading": "جارٍ التحميل",
     "search": "بحث"
   },
+  "kbd": {
+    "in-text": "داخل النص",
+    "press": "اضغط",
+    "to-open-the-command-bar": "لفتح شريط الأوامر."
+  },
   "link": {
     "dont-have-an-account": "ليس لديك حساب؟",
     "sign-up": "سجّل الآن",
@@ -250,6 +255,7 @@
     "drawer": "الدرج",
     "field": "الحقل",
     "icon-button": "زر الأيقونة",
+    "kbd": "مفتاح",
     "link": "الرابط",
     "menu": "القائمة",
     "navigation-menu": "قائمة التنقل",

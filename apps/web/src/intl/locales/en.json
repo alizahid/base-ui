@@ -204,6 +204,11 @@
     "loading": "Loading",
     "search": "Search"
   },
+  "kbd": {
+    "in-text": "In text",
+    "press": "Press",
+    "to-open-the-command-bar": "to open the command bar."
+  },
   "link": {
     "dont-have-an-account": "Don’t have an account?",
     "sign-up": "Sign up",
@@ -250,6 +255,7 @@
     "drawer": "Drawer",
     "field": "Field",
     "icon-button": "Icon Button",
+    "kbd": "Kbd",
     "link": "Link",
     "menu": "Menu",
     "navigation-menu": "Navigation Menu",

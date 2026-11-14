@@ -204,6 +204,11 @@
     "loading": "Laden",
     "search": "Suchen"
   },
+  "kbd": {
+    "in-text": "Im Text",
+    "press": "Drücke",
+    "to-open-the-command-bar": ", um die Befehlsleiste zu öffnen."
+  },
   "link": {
     "dont-have-an-account": "Noch kein Konto?",
     "sign-up": "Registrieren",
@@ -250,6 +255,7 @@
     "drawer": "Drawer",
     "field": "Feld",
     "icon-button": "Icon-Button",
+    "kbd": "Kbd",
     "link": "Link",
     "menu": "Menü",
     "navigation-menu": "Navigationsmenü",
