@@ -1,4 +1,5 @@
 import {
+  Accordion,
   AlertDialog,
   Avatar,
   Badge,
@@ -96,6 +97,7 @@ export function useMDXComponents(): MDXComponents {
   // nested components don't fit the MDXComponents index signature
   return {
     ...components,
+    Accordion,
     AlertDialog: {
       Action: AlertDialog.Action,
       Cancel: AlertDialog.Cancel,

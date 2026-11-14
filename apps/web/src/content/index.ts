@@ -1,4 +1,5 @@
 export const pages = [
+  'accordion',
   'alert-dialog',
   'avatar',
   'badge',

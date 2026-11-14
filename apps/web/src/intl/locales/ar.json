@@ -11,6 +11,7 @@
     "title": "Base UI"
   },
   "nav": {
+    "accordion": "الأكورديون",
     "alert-dialog": "مربع حوار التنبيه",
     "avatar": "الصورة الرمزية",
     "badge": "الشارة",

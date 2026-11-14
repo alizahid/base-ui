@@ -11,6 +11,7 @@
     "title": "Base UI"
   },
   "nav": {
+    "accordion": "Accordion",
     "alert-dialog": "Alert Dialog",
     "avatar": "Avatar",
     "badge": "Badge",
