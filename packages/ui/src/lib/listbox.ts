@@ -4,8 +4,8 @@ import * as stylex from '@stylexjs/stylex'
 // labels and separators. ported from radix themes' select.css
 export const listbox = stylex.create({
   check: {
-    height: 'var(--listbox-check-size)',
-    width: 'var(--listbox-check-size)',
+    height: '1lh',
+    width: '1lh',
   },
   content: {
     backgroundColor: 'var(--panel-background)',
@@ -123,7 +123,6 @@ export const listboxVariants = stylex.create({
 export const listboxSizes = stylex.create({
   1: {
     '--listbox-align-extra': '20px',
-    '--listbox-check-size': '13px',
     '--listbox-content-padding': 'var(--spacing)',
     '--listbox-indicator-width': 'calc(var(--spacing) * 5)',
     '--listbox-item-height': 'calc(var(--spacing) * 6)',
@@ -137,7 +136,6 @@ export const listboxSizes = stylex.create({
   },
   2: {
     '--listbox-align-extra': '28px',
-    '--listbox-check-size': '15px',
     '--listbox-content-padding': 'calc(var(--spacing) * 2)',
     '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
     '--listbox-item-height': 'calc(var(--spacing) * 8)',
@@ -151,7 +149,6 @@ export const listboxSizes = stylex.create({
   },
   3: {
     '--listbox-align-extra': '20px',
-    '--listbox-check-size': '15px',
     '--listbox-content-padding': 'calc(var(--spacing) * 2)',
     '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
     '--listbox-item-height': 'calc(var(--spacing) * 8)',

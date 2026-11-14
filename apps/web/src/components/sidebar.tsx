@@ -30,7 +30,7 @@ export function Sidebar({ pages, onNavigate }: Props) {
 
   return (
     <nav className="flex flex-col gap-1" ref={ref}>
-      <h2 className="mb-1 text-(--gray-11)">{t('components')}</h2>
+      <h2 className="mb-1 text-xs text-(--gray-11)">{t('components')}</h2>
 
       {pages.map((page) => {
         const href = `/components/${page}`

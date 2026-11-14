@@ -11,19 +11,19 @@ const tinted = ':is([data-accent]:not([data-highlighted], [data-disabled]))'
 
 export const menu = stylex.create({
   check: {
-    height: 'var(--menu-icon-size)',
-    width: 'var(--menu-icon-size)',
+    height: '1lh',
+    width: '1lh',
   },
   // the chevron on a submenu trigger; flipped where text runs right to left
   chevron: {
     color: 'var(--menu-chevron)',
-    height: 'var(--menu-icon-size)',
+    height: '1lh',
     marginInlineEnd: -2,
     transform: {
       ':dir(rtl)': 'scaleX(-1)',
       default: 'none',
     },
-    width: 'var(--menu-icon-size)',
+    width: '1lh',
   },
   content: {
     backgroundColor: 'var(--panel-background)',
@@ -148,7 +148,6 @@ const checkable = ':has([role="menuitemcheckbox"], [role="menuitemradio"])'
 export const menuSizes = stylex.create({
   1: {
     '--menu-content-padding': 'var(--spacing)',
-    '--menu-icon-size': '13px',
     '--menu-item-height': 'calc(var(--spacing) * 6)',
     '--menu-item-padding-end': 'calc(var(--spacing) * 2)',
     '--menu-item-padding-start': {
@@ -162,7 +161,6 @@ export const menuSizes = stylex.create({
   },
   2: {
     '--menu-content-padding': 'calc(var(--spacing) * 2)',
-    '--menu-icon-size': '15px',
     '--menu-item-height': 'calc(var(--spacing) * 8)',
     '--menu-item-padding-end': 'calc(var(--spacing) * 3)',
     '--menu-item-padding-start': {

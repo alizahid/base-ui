@@ -23,8 +23,23 @@ export function Root<Value, Multiple extends boolean | undefined = false>({
   return (
     <SizeContext value={size}>
       <MultipleContext value={Boolean(props.multiple)}>
-        <Component.Root {...props} />
+        <Component.Root isItemEqualToValue={isEqual} {...props} />
       </MultipleContext>
     </SizeContext>
   )
+}
+
+// base ui compares items to the value by identity, so a { label, value }
+// object built apart from `items` (a default from a form, anything sent from
+// the server) would show as a chip but not as selected in the list. objects
+// with a `value` are compared by it instead. `isItemEqualToValue` overrides
+// this
+function isEqual(item: unknown, value: unknown) {
+  return hasValue(item) && hasValue(value)
+    ? Object.is(item.value, value.value)
+    : Object.is(item, value)
+}
+
+function hasValue(item: unknown): item is { value: unknown } {
+  return typeof item === 'object' && item !== null && 'value' in item
 }

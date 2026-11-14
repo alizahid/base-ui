@@ -1,6 +1,7 @@
 import {
   Accordion,
   AlertDialog,
+  Autocomplete,
   Avatar,
   Badge,
   BaseProvider,
@@ -10,6 +11,7 @@ import {
   Checkbox,
   CheckboxGroup,
   Combobox,
+  CommandBar,
   Dialog,
   Drawer,
   Field,
@@ -44,6 +46,7 @@ import {
 import { type MDXComponents } from 'mdx/types'
 
 import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
+import { CommandBarDemo } from './components/demos/command-bar'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 import { Example } from './components/example'
@@ -60,6 +63,7 @@ const components: MDXComponents = {
   Checkbox,
   CollapsedCombobox,
   CollapsedSelect,
+  CommandBarDemo,
   Example,
   Field,
   h1: (props) => (
@@ -104,12 +108,18 @@ export function useMDXComponents(): MDXComponents {
       Title: AlertDialog.Title,
       Trigger: AlertDialog.Trigger,
     },
+    Autocomplete,
     Callout,
     CheckboxGroup: {
       Item: CheckboxGroup.Item,
       Root: CheckboxGroup.Root,
     },
     Combobox,
+    CommandBar: {
+      Items: CommandBar.Items,
+      Root: CommandBar.Root,
+      Trigger: CommandBar.Trigger,
+    },
     Dialog: {
       Close: Dialog.Close,
       Content: Dialog.Content,

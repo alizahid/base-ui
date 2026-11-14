@@ -12,6 +12,14 @@
     "are-you-sure-this-application-will": "هل أنت متأكد؟ لن يكون هذا التطبيق متاحًا بعد الآن وستنتهي جميع الجلسات الحالية.",
     "revoke-access": "إلغاء الوصول"
   },
+  "autocomplete": {
+    "component": "المكوّن",
+    "grouped": "مجمّعة",
+    "inline-completion": "إكمال داخل الحقل",
+    "no-tags-found": "لم يُعثر على وسوم.",
+    "search-tags": "ابحث في الوسوم…",
+    "type": "النوع"
+  },
   "avatar": {
     "fallback": "البديل"
   },
@@ -73,6 +81,21 @@
     "start-typing-to-filter": "ابدأ الكتابة للتصفية.",
     "strawberry": "فراولة",
     "type-to-search": "اكتب للبحث."
+  },
+  "command-bar": {
+    "applicants": "المتقدمون",
+    "dashboard": "لوحة التحكم",
+    "details": "التفاصيل",
+    "interviews": "المقابلات",
+    "job": "الوظيفة",
+    "jobs": "الوظائف",
+    "navigation": "التنقل",
+    "no-commands-found": "لم يُعثر على أوامر.",
+    "on-a-job-page": "في صفحة وظيفة",
+    "open-command-bar": "افتح شريط الأوامر",
+    "publish": "نشر",
+    "settings": "الإعدادات",
+    "type-a-command-or-search": "اكتب أمرًا أو ابحث…"
   },
   "common": {
     "apple": "تفاح",
@@ -171,6 +194,9 @@
   "header": {
     "close": "إغلاق",
     "menu": "القائمة",
+    "no-components-found": "لم يُعثر على مكوّنات.",
+    "search": "بحث",
+    "search-components": "ابحث في المكوّنات…",
     "theme": "تبديل المظهر"
   },
   "icon-button": {
@@ -208,6 +234,7 @@
   "nav": {
     "accordion": "الأكورديون",
     "alert-dialog": "مربع حوار التنبيه",
+    "autocomplete": "الإكمال التلقائي",
     "avatar": "الصورة الرمزية",
     "badge": "الشارة",
     "button": "الزر",
@@ -216,6 +243,7 @@
     "checkbox": "خانة الاختيار",
     "checkbox-group": "مجموعة خانات الاختيار",
     "combobox": "مربع التحرير والسرد",
+    "command-bar": "شريط الأوامر",
     "components": "المكونات",
     "dialog": "مربع الحوار",
     "drawer": "الدرج",

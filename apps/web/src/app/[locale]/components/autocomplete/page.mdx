@@ -1,0 +1,63 @@
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('autocomplete')
+
+export const tags = ['feature', 'fix', 'bug', 'docs', 'internal', 'mobile', 'accessibility', 'performance']
+
+export const useGroups = () => ([
+  { label: useText('autocomplete.type'), items: ['feature', 'fix', 'bug', 'docs', 'internal'] },
+  { label: useText('autocomplete.component'), items: ['accordion', 'dialog', 'menu', 'select', 'tabs'] },
+])
+
+# <Text id="nav.autocomplete" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.size" />
+
+<Example>
+  <Autocomplete.Root items={tags} size="1">
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+  <Autocomplete.Root items={tags} size="2">
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+  <Autocomplete.Root items={tags} size="3">
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <Autocomplete.Root items={tags}>
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} variant="surface" />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+  <Autocomplete.Root items={tags}>
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} variant="soft" />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+</Example>
+
+### <Text id="autocomplete.inline-completion" />
+
+<Example>
+  <Autocomplete.Root items={tags} mode="both">
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+</Example>
+
+### <Text id="autocomplete.grouped" />
+
+<Example>
+  <Autocomplete.Root items={useGroups()}>
+    <Autocomplete.Input placeholder={useText('autocomplete.search-tags')} />
+    <Autocomplete.Content empty={useText('autocomplete.no-tags-found')} />
+  </Autocomplete.Root>
+</Example>

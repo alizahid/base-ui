@@ -1,0 +1,33 @@
+import { BriefcaseIcon, CalendarDotsIcon, GearIcon, SquaresFourIcon, UsersIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('command-bar')
+
+# <Text id="nav.command-bar" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <CommandBar.Root empty={useText('command-bar.no-commands-found')} hotkey={false} placeholder={useText('command-bar.type-a-command-or-search')}>
+    <CommandBar.Items
+      items={[
+        { icon: <SquaresFourIcon />, label: useText('command-bar.dashboard'), render: <a href="#" /> },
+        { icon: <BriefcaseIcon />, label: useText('command-bar.jobs'), render: <a href="#" /> },
+        { icon: <UsersIcon />, label: useText('command-bar.applicants'), render: <a href="#" /> },
+        { icon: <CalendarDotsIcon />, label: useText('command-bar.interviews'), render: <a href="#" /> },
+        { icon: <GearIcon />, label: useText('command-bar.settings'), render: <a href="#" />, shortcut: '⌘,' },
+      ]}
+      label={useText('command-bar.navigation')}
+    />
+    <CommandBarDemo
+      commands={[useText('command-bar.details'), useText('command-bar.applicants'), useText('command-bar.publish')]}
+      group={useText('command-bar.job')}
+      label={useText('command-bar.on-a-job-page')}
+    />
+    <CommandBar.Trigger render={<Button color="gray" variant="soft" />}><Text id="command-bar.open-command-bar" /></CommandBar.Trigger>
+  </CommandBar.Root>
+</Example>

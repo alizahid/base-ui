@@ -179,8 +179,8 @@ const styles = stylex.create({
     },
   },
   cross: {
-    height: 12,
-    width: 12,
+    height: '1lh',
+    width: '1lh',
   },
   // the input takes whatever is left of the row, and wraps when that is tight
   grow: {
@@ -191,8 +191,8 @@ const styles = stylex.create({
     width: 'auto',
   },
   icon: {
-    height: 'var(--combobox-icon-size)',
-    width: 'var(--combobox-icon-size)',
+    height: '1lh',
+    width: '1lh',
   },
   remove: {
     opacity: {
@@ -222,16 +222,13 @@ const sizes = stylex.create({
   1: {
     '--combobox-chip-height': 'calc(var(--spacing) * 4.5)',
     '--combobox-height': 'calc(var(--spacing) * 6)',
-    '--combobox-icon-size': '15px',
   },
   2: {
     '--combobox-chip-height': 'calc(var(--spacing) * 5.5)',
     '--combobox-height': 'calc(var(--spacing) * 8)',
-    '--combobox-icon-size': '15px',
   },
   3: {
     '--combobox-chip-height': 'calc(var(--spacing) * 7)',
     '--combobox-height': 'calc(var(--spacing) * 10)',
-    '--combobox-icon-size': '18px',
   },
 })

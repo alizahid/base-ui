@@ -21,7 +21,8 @@
     "@stylexjs/stylex": "^0.19.2",
     "cn": "^0.5.2",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "react-hotkeys-hook": "^5.4.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

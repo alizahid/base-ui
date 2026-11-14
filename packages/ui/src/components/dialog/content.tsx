@@ -30,11 +30,11 @@ export function Content({
 
   return (
     <Component.Portal>
-      <Component.Backdrop {...stylex.props(styles.backdrop)} />
+      <Component.Backdrop {...stylex.props(dialog.backdrop)} />
 
-      <Component.Viewport {...stylex.props(styles.viewport)}>
+      <Component.Viewport {...stylex.props(dialog.viewport)}>
         <div
-          {...stylex.props(styles.padding, align === 'start' && styles.start)}
+          {...stylex.props(dialog.padding, align === 'start' && dialog.start)}
         >
           {/* portaled out of the provider's element, so its colors are set
               again for everything inside */}
@@ -43,7 +43,7 @@ export function Content({
             data-gray={theme.gray}
             {...props}
             {...merge(
-              stylex.props(styles.content, sizes[size]),
+              stylex.props(dialog.content, sizes[size]),
               className,
               style,
             )}
@@ -59,8 +59,9 @@ const hidden = ':is([data-starting-style], [data-ending-style])'
 const still = '@media (prefers-reduced-motion: reduce)'
 
 // ported from radix themes' base-dialog.css. radix animates with keyframes;
-// here base ui's starting and ending styles drive transitions instead
-const styles = stylex.create({
+// here base ui's starting and ending styles drive transitions instead.
+// exported for CommandBar, which is a dialog with its own contents
+export const dialog = stylex.create({
   backdrop: {
     backgroundColor: 'var(--overlay)',
     inset: 0,

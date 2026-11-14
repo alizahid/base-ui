@@ -12,6 +12,14 @@
     "are-you-sure-this-application-will": "Bist du sicher? Diese Anwendung ist dann nicht mehr erreichbar und alle bestehenden Sitzungen laufen ab.",
     "revoke-access": "Zugriff widerrufen"
   },
+  "autocomplete": {
+    "component": "Komponente",
+    "grouped": "Gruppiert",
+    "inline-completion": "Inline-Vervollständigung",
+    "no-tags-found": "Keine Tags gefunden.",
+    "search-tags": "Tags suchen…",
+    "type": "Typ"
+  },
   "avatar": {
     "fallback": "Ersatz"
   },
@@ -73,6 +81,21 @@
     "start-typing-to-filter": "Tippe, um zu filtern.",
     "strawberry": "Erdbeere",
     "type-to-search": "Tippe, um zu suchen."
+  },
+  "command-bar": {
+    "applicants": "Bewerber",
+    "dashboard": "Dashboard",
+    "details": "Details",
+    "interviews": "Interviews",
+    "job": "Stelle",
+    "jobs": "Stellen",
+    "navigation": "Navigation",
+    "no-commands-found": "Keine Befehle gefunden.",
+    "on-a-job-page": "Auf einer Stellenseite",
+    "open-command-bar": "Befehlsleiste öffnen",
+    "publish": "Veröffentlichen",
+    "settings": "Einstellungen",
+    "type-a-command-or-search": "Befehl eingeben oder suchen…"
   },
   "common": {
     "apple": "Apfel",
@@ -171,6 +194,9 @@
   "header": {
     "close": "Schließen",
     "menu": "Menü",
+    "no-components-found": "Keine Komponenten gefunden.",
+    "search": "Suchen",
+    "search-components": "Komponenten suchen…",
     "theme": "Design umschalten"
   },
   "icon-button": {
@@ -208,6 +234,7 @@
   "nav": {
     "accordion": "Akkordeon",
     "alert-dialog": "Warndialog",
+    "autocomplete": "Autovervollständigung",
     "avatar": "Avatar",
     "badge": "Badge",
     "button": "Button",
@@ -216,6 +243,7 @@
     "checkbox": "Checkbox",
     "checkbox-group": "Checkbox-Gruppe",
     "combobox": "Combobox",
+    "command-bar": "Befehlsleiste",
     "components": "Komponenten",
     "dialog": "Dialog",
     "drawer": "Drawer",

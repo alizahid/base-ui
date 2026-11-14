@@ -12,6 +12,14 @@
     "are-you-sure-this-application-will": "Are you sure? This application will no longer be accessible and any existing sessions will be expired.",
     "revoke-access": "Revoke access"
   },
+  "autocomplete": {
+    "component": "Component",
+    "grouped": "Grouped",
+    "inline-completion": "Inline completion",
+    "no-tags-found": "No tags found.",
+    "search-tags": "Search tags…",
+    "type": "Type"
+  },
   "avatar": {
     "fallback": "Fallback"
   },
@@ -73,6 +81,21 @@
     "start-typing-to-filter": "Start typing to filter.",
     "strawberry": "Strawberry",
     "type-to-search": "Type to search."
+  },
+  "command-bar": {
+    "applicants": "Applicants",
+    "dashboard": "Dashboard",
+    "details": "Details",
+    "interviews": "Interviews",
+    "job": "Job",
+    "jobs": "Jobs",
+    "navigation": "Navigation",
+    "no-commands-found": "No commands found.",
+    "on-a-job-page": "On a job page",
+    "open-command-bar": "Open command bar",
+    "publish": "Publish",
+    "settings": "Settings",
+    "type-a-command-or-search": "Type a command or search…"
   },
   "common": {
     "apple": "Apple",
@@ -171,6 +194,9 @@
   "header": {
     "close": "Close",
     "menu": "Menu",
+    "no-components-found": "No components found.",
+    "search": "Search",
+    "search-components": "Search components…",
     "theme": "Toggle theme"
   },
   "icon-button": {
@@ -208,6 +234,7 @@
   "nav": {
     "accordion": "Accordion",
     "alert-dialog": "Alert Dialog",
+    "autocomplete": "Autocomplete",
     "avatar": "Avatar",
     "badge": "Badge",
     "button": "Button",
@@ -216,6 +243,7 @@
     "checkbox": "Checkbox",
     "checkbox-group": "Checkbox Group",
     "combobox": "Combobox",
+    "command-bar": "Command Bar",
     "components": "Components",
     "dialog": "Dialog",
     "drawer": "Drawer",

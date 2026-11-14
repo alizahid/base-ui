@@ -20,9 +20,9 @@ export const trigger = stylex.create({
   icon: {
     color: 'var(--select-icon)',
     flexShrink: 0,
-    height: 'var(--select-icon-size)',
+    height: '1lh',
     opacity: 'var(--select-icon-opacity, 0.9)',
-    width: 'var(--select-icon-size)',
+    width: '1lh',
   },
   trigger: {
     '--select-icon': {
@@ -130,7 +130,6 @@ export const triggerVariants = stylex.create({
 
 export const triggerSizes = stylex.create({
   1: {
-    '--select-icon-size': '15px',
     borderRadius: 'var(--radius-sm)',
     fontSize: 'var(--text-xs)',
     gap: 'var(--spacing)',
@@ -139,7 +138,6 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--spacing) * 2)',
   },
   2: {
-    '--select-icon-size': '15px',
     borderRadius: 'var(--radius-md)',
     fontSize: 'var(--text-sm)',
     gap: 'calc(var(--spacing) * 1.5)',
@@ -148,7 +146,6 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--spacing) * 3)',
   },
   3: {
-    '--select-icon-size': '18px',
     borderRadius: 'var(--radius-lg)',
     fontSize: 'var(--text-base)',
     gap: 'calc(var(--spacing) * 2)',
