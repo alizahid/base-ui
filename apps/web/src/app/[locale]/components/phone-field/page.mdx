@@ -7,6 +7,18 @@ export const generateMetadata = title('phone-field')
 
 # <Text id="nav.phone-field" />
 
+## <Text id="common.installation" />
+
+<Text id="common.installation-note" />
+
+```bash
+npm install libphonenumber-js
+```
+
+```tsx
+import { PhoneField } from '@repo/ui/phone-field'
+```
+
 ## <Text id="common.examples" />
 
 ### <Text id="common.basic" />
@@ -58,3 +70,5 @@ export const generateMetadata = title('phone-field')
 <Example>
   <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultValue="+971501234567" disabled empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} />
 </Example>
+
+<Props page="phone-field" />

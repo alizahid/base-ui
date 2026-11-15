@@ -155,6 +155,33 @@ export const generateMetadata = title('table')
   </Table.Root>
 </Example>
 
+### <Text id="table.layout" />
+
+<Example orientation="vertical">
+  <Table.Root className="w-full max-w-xl" layout="fixed" variant="surface">
+    <Table.Header>
+      <Table.Row>
+        <Table.ColumnHeaderCell><Text id="table.full-name" /></Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell><Text id="common.email" /></Table.ColumnHeaderCell>
+        <Table.ColumnHeaderCell><Text id="table.group" /></Table.ColumnHeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+        <Table.Cell>danilo@example.com</Table.Cell>
+        <Table.Cell><Text id="table.developer" /></Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+        <Table.Cell>zahra@example.com</Table.Cell>
+        <Table.Cell><Text id="table.admin" /></Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table.Root>
+</Example>
+
 ### <Text id="table.with-other-components" />
 
 <Example orientation="vertical">
@@ -228,3 +255,5 @@ export const generateMetadata = title('table')
     </Table.Root>
   </CheckboxGroup.Root>
 </Example>
+
+<Props page="table" />

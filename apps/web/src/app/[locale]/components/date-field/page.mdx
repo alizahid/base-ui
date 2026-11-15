@@ -8,6 +8,18 @@ export const generateMetadata = title('date-field')
 
 # <Text id="nav.date-field" />
 
+## <Text id="common.installation" />
+
+<Text id="common.installation-note" />
+
+```bash
+npm install use-lilius
+```
+
+```tsx
+import { DateField } from '@repo/ui/date-field'
+```
+
 ## <Text id="common.examples" />
 
 ### <Text id="date-field.single" />
@@ -62,3 +74,5 @@ export const generateMetadata = title('date-field')
 <Example>
   <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} defaultValue={new Date(2026, 10, 16)} disabled />
 </Example>
+
+<Props page="date-field" />

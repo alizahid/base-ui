@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { createTranslator, hasLocale } from 'next-intl'
 
 import { pages } from '@/content'
+import { markdown as tables } from '@/content/props'
 import { fill } from '@/intl/fill'
 import { routing } from '@/intl/routing'
 
@@ -46,9 +47,10 @@ export async function GET(
   )
 
   // ids come from our own files; a missing one fails the build
-  const markdown = fill(source.slice(source.search(title)), (id) =>
-    t(id as Parameters<typeof t>[0]),
-  )
+  const text = (id: string) => t(id as Parameters<typeof t>[0])
+
+  // the props tables are written out as markdown ones
+  const markdown = tables(fill(source.slice(source.search(title)), text), text)
 
   return new Response(markdown, {
     headers: {

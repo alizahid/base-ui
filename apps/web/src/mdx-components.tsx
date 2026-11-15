@@ -56,6 +56,7 @@ import { PhoneFieldDemo } from './components/demos/phone-field'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 import { Example } from './components/example'
+import { Props } from './components/props'
 import { Source } from './components/source'
 import { Text } from './components/text'
 
@@ -91,6 +92,15 @@ const components: MDXComponents = {
   OTPField,
   PhoneField,
   PhoneFieldDemo,
+  Props,
+  // code reads left to right in every locale
+  pre: (props) => (
+    <pre
+      className="mt-4 overflow-x-auto border border-(--gray-a6) p-4 text-sm"
+      dir="ltr"
+      {...props}
+    />
+  ),
   Radio,
   ScrollArea,
   Separator,

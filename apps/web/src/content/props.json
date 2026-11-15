@@ -1,0 +1,1966 @@
+{
+  "accordion": [
+    {
+      "name": "Accordion.Root",
+      "props": [
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'ghost'",
+          "name": "variant",
+          "type": "'ghost' | 'surface'"
+        }
+      ]
+    },
+    {
+      "name": "Accordion.Item",
+      "props": []
+    },
+    {
+      "name": "Accordion.Panel",
+      "props": []
+    },
+    {
+      "name": "Accordion.Trigger",
+      "props": []
+    }
+  ],
+  "alert-dialog": [
+    {
+      "name": "AlertDialog.Root",
+      "props": []
+    },
+    {
+      "name": "AlertDialog.Action",
+      "props": []
+    },
+    {
+      "name": "AlertDialog.Cancel",
+      "props": []
+    },
+    {
+      "name": "AlertDialog.Content",
+      "props": [
+        {
+          "default": "'center'",
+          "name": "align",
+          "type": "'start' | 'center'"
+        },
+        {
+          "default": "'3'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        }
+      ]
+    },
+    {
+      "name": "AlertDialog.Description",
+      "props": []
+    },
+    {
+      "name": "AlertDialog.Title",
+      "props": []
+    },
+    {
+      "name": "AlertDialog.Trigger",
+      "props": []
+    }
+  ],
+  "autocomplete": [
+    {
+      "name": "Autocomplete.Root",
+      "props": [
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "Autocomplete.Collection",
+      "props": []
+    },
+    {
+      "name": "Autocomplete.Content",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode | ((item: any, index: number) => ReactNode)"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "empty",
+          "type": "ReactNode"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "type": "ReactNode"
+        },
+        {
+          "default": "'solid'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Autocomplete.Group",
+      "props": []
+    },
+    {
+      "name": "Autocomplete.Input",
+      "props": [
+        {
+          "default": "'Clear'",
+          "name": "clearLabel",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Autocomplete.Item",
+      "props": []
+    },
+    {
+      "name": "Autocomplete.Label",
+      "props": []
+    },
+    {
+      "name": "Autocomplete.Separator",
+      "props": []
+    }
+  ],
+  "avatar": [
+    {
+      "name": "Avatar",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "delay",
+          "type": "number"
+        },
+        {
+          "name": "fallback",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'"
+        },
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "default": "'solid'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "badge": [
+    {
+      "name": "Badge",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'1'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'soft'",
+          "name": "variant",
+          "type": "'solid' | 'soft' | 'surface' | 'outline'"
+        }
+      ]
+    }
+  ],
+  "button": [
+    {
+      "name": "Button",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        },
+        {
+          "name": "variant",
+          "type": "'solid' | 'soft' | 'surface' | 'outline' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "callout": [
+    {
+      "name": "Callout.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'soft'",
+          "name": "variant",
+          "type": "'soft' | 'surface' | 'outline'"
+        }
+      ]
+    },
+    {
+      "name": "Callout.Icon",
+      "props": []
+    },
+    {
+      "name": "Callout.Text",
+      "props": []
+    }
+  ],
+  "card": [
+    {
+      "name": "Card",
+      "props": [
+        {
+          "default": "'1'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4' | '5'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "checkbox": [
+    {
+      "name": "Checkbox",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "checkbox-group": [
+    {
+      "name": "CheckboxGroup.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "CheckboxGroup.Item",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "combobox": [
+    {
+      "name": "Combobox.Root",
+      "props": [
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "Combobox.Content",
+      "props": [
+        {
+          "name": "anchor",
+          "type": "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null"
+        },
+        {
+          "name": "children",
+          "type": "ReactNode | ((item: any, index: number) => ReactNode)"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "empty",
+          "type": "ReactNode"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "type": "ReactNode"
+        },
+        {
+          "name": "status",
+          "type": "ReactNode"
+        },
+        {
+          "default": "'solid'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Combobox.Group",
+      "props": []
+    },
+    {
+      "name": "Combobox.Input",
+      "props": [
+        {
+          "default": "'Clear'",
+          "name": "clearLabel",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'Open'",
+          "name": "openLabel",
+          "type": "string"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'Remove'",
+          "name": "removeLabel",
+          "type": "string"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Combobox.Item",
+      "props": []
+    },
+    {
+      "name": "Combobox.Label",
+      "props": []
+    },
+    {
+      "name": "Combobox.Search",
+      "props": []
+    },
+    {
+      "name": "Combobox.Separator",
+      "props": []
+    },
+    {
+      "name": "Combobox.Trigger",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode | ((selectedValue: any) => ReactNode)"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "placeholder",
+          "type": "ReactNode"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "command-bar": [
+    {
+      "name": "CommandBar.Root",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode"
+        },
+        {
+          "name": "empty",
+          "type": "ReactNode"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "(open: boolean) => void"
+        },
+        {
+          "name": "open",
+          "type": "boolean"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CommandBar.Items",
+      "props": [
+        {
+          "name": "items",
+          "required": true,
+          "type": "ReadonlyArray<CommandBarItem>"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "order",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "CommandBar.Trigger",
+      "props": []
+    }
+  ],
+  "data-list": [
+    {
+      "name": "DataList.Root",
+      "props": [
+        {
+          "default": "'horizontal'",
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "DataList.Item",
+      "props": [
+        {
+          "name": "align",
+          "type": "'start' | 'center' | 'end' | 'baseline' | 'stretch'"
+        }
+      ]
+    },
+    {
+      "name": "DataList.Label",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "DataList.Value",
+      "props": []
+    }
+  ],
+  "date-field": [
+    {
+      "name": "DateField",
+      "props": [
+        {
+          "default": "'Close'",
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "defaultValue",
+          "type": "Date | Date[] | DateFieldRange | null"
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode"
+        },
+        {
+          "default": "'en'",
+          "name": "locale",
+          "type": "string"
+        },
+        {
+          "name": "max",
+          "type": "Date"
+        },
+        {
+          "name": "min",
+          "type": "Date"
+        },
+        {
+          "default": "'single'",
+          "name": "mode",
+          "type": "'single' | 'multiple' | 'range'"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "default": "'Next month'",
+          "name": "nextLabel",
+          "type": "string"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: Date | null) => void) | ((value: Date[]) => void) | ((value: DateFieldRange | null) => void)"
+        },
+        {
+          "name": "placeholder",
+          "type": "ReactNode"
+        },
+        {
+          "default": "'Previous month'",
+          "name": "previousLabel",
+          "type": "string"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "type": "Date | Date[] | DateFieldRange | null"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'ghost' | 'soft' | 'surface'"
+        },
+        {
+          "name": "weekStart",
+          "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+        }
+      ]
+    }
+  ],
+  "dialog": [
+    {
+      "name": "Dialog.Root",
+      "props": []
+    },
+    {
+      "name": "Dialog.Close",
+      "props": []
+    },
+    {
+      "name": "Dialog.Content",
+      "props": [
+        {
+          "default": "'center'",
+          "name": "align",
+          "type": "'start' | 'center'"
+        },
+        {
+          "default": "'3'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        }
+      ]
+    },
+    {
+      "name": "Dialog.Description",
+      "props": []
+    },
+    {
+      "name": "Dialog.Title",
+      "props": []
+    },
+    {
+      "name": "Dialog.Trigger",
+      "props": []
+    }
+  ],
+  "drawer": [
+    {
+      "name": "Drawer.Root",
+      "props": [
+        {
+          "default": "'end'",
+          "name": "side",
+          "type": "'bottom' | 'end' | 'start' | 'top'"
+        }
+      ]
+    },
+    {
+      "name": "Drawer.Close",
+      "props": []
+    },
+    {
+      "name": "Drawer.Content",
+      "props": [
+        {
+          "default": "true",
+          "name": "inset",
+          "type": "boolean"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        }
+      ]
+    },
+    {
+      "name": "Drawer.Description",
+      "props": []
+    },
+    {
+      "name": "Drawer.Title",
+      "props": []
+    },
+    {
+      "name": "Drawer.Trigger",
+      "props": []
+    }
+  ],
+  "field": [
+    {
+      "name": "Field",
+      "props": [
+        {
+          "name": "error",
+          "type": "string"
+        },
+        {
+          "name": "hint",
+          "type": "ReactNode"
+        },
+        {
+          "name": "label",
+          "type": "ReactNode"
+        }
+      ]
+    }
+  ],
+  "icon-button": [
+    {
+      "name": "IconButton",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        },
+        {
+          "name": "variant",
+          "type": "'solid' | 'soft' | 'surface' | 'outline' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "kbd": [
+    {
+      "name": "Kbd",
+      "props": []
+    },
+    {
+      "name": "KbdGroup",
+      "props": []
+    }
+  ],
+  "link": [
+    {
+      "name": "Link",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "default": "'auto'",
+          "name": "underline",
+          "type": "'always' | 'auto' | 'hover' | 'none'"
+        }
+      ]
+    }
+  ],
+  "menu": [
+    {
+      "name": "Menu.Root",
+      "props": []
+    },
+    {
+      "name": "Menu.CheckboxItem",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "shortcut",
+          "type": "ReactNode"
+        }
+      ]
+    },
+    {
+      "name": "Menu.Content",
+      "props": [
+        {
+          "default": "'start'",
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "alignOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "4",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2'"
+        },
+        {
+          "default": "'solid'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Menu.Group",
+      "props": []
+    },
+    {
+      "name": "Menu.Item",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "shortcut",
+          "type": "ReactNode"
+        }
+      ]
+    },
+    {
+      "name": "Menu.Label",
+      "props": []
+    },
+    {
+      "name": "Menu.RadioGroup",
+      "props": []
+    },
+    {
+      "name": "Menu.RadioItem",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "shortcut",
+          "type": "ReactNode"
+        }
+      ]
+    },
+    {
+      "name": "Menu.Separator",
+      "props": []
+    },
+    {
+      "name": "Menu.Sub",
+      "props": []
+    },
+    {
+      "name": "Menu.SubContent",
+      "props": [
+        {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "alignOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "1",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        }
+      ]
+    },
+    {
+      "name": "Menu.SubTrigger",
+      "props": []
+    },
+    {
+      "name": "Menu.Trigger",
+      "props": []
+    }
+  ],
+  "navigation-menu": [
+    {
+      "name": "NavigationMenu.Root",
+      "props": [
+        {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "8",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        }
+      ]
+    },
+    {
+      "name": "NavigationMenu.Content",
+      "props": []
+    },
+    {
+      "name": "NavigationMenu.Item",
+      "props": []
+    },
+    {
+      "name": "NavigationMenu.Link",
+      "props": [
+        {
+          "name": "description",
+          "type": "ReactNode"
+        }
+      ]
+    },
+    {
+      "name": "NavigationMenu.List",
+      "props": []
+    },
+    {
+      "name": "NavigationMenu.Trigger",
+      "props": []
+    }
+  ],
+  "number-field": [
+    {
+      "name": "NumberField",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "otp-field": [
+    {
+      "name": "OTPField",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "phone-field": [
+    {
+      "name": "PhoneField",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'Country'",
+          "name": "countryLabel",
+          "type": "string"
+        },
+        {
+          "name": "defaultCountry",
+          "type": "PhoneFieldCountry"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string"
+        },
+        {
+          "default": "'No countries found'",
+          "name": "empty",
+          "type": "ReactNode"
+        },
+        {
+          "default": "'Enter a valid phone number'",
+          "name": "invalidMessage",
+          "type": "string"
+        },
+        {
+          "default": "'en'",
+          "name": "locale",
+          "type": "string"
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string, details: PhoneFieldDetails) => void"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'Search'",
+          "name": "searchPlaceholder",
+          "type": "string"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'ghost' | 'soft' | 'surface'"
+        }
+      ]
+    }
+  ],
+  "popover": [
+    {
+      "name": "Popover.Root",
+      "props": []
+    },
+    {
+      "name": "Popover.Close",
+      "props": []
+    },
+    {
+      "name": "Popover.Content",
+      "props": [
+        {
+          "default": "'start'",
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "8",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        }
+      ]
+    },
+    {
+      "name": "Popover.Trigger",
+      "props": []
+    }
+  ],
+  "preview-card": [
+    {
+      "name": "PreviewCard.Root",
+      "props": []
+    },
+    {
+      "name": "PreviewCard.Content",
+      "props": [
+        {
+          "default": "'start'",
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "8",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "PreviewCard.Trigger",
+      "props": []
+    }
+  ],
+  "progress": [
+    {
+      "name": "Progress.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "null",
+          "name": "value",
+          "type": "number | null"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Progress.Label",
+      "props": []
+    },
+    {
+      "name": "Progress.Value",
+      "props": []
+    }
+  ],
+  "provider": [
+    {
+      "name": "BaseProvider",
+      "props": [
+        {
+          "default": "'blue'",
+          "name": "accent",
+          "type": "ColorToken"
+        },
+        {
+          "name": "children",
+          "required": true,
+          "type": "ReactNode"
+        },
+        {
+          "default": "'ltr'",
+          "name": "direction",
+          "type": "'ltr' | 'rtl'"
+        },
+        {
+          "name": "gray",
+          "type": "'gray' | 'mauve' | 'slate' | 'sage' | 'olive' | 'sand'"
+        },
+        {
+          "default": "'solid'",
+          "name": "panelBackground",
+          "type": "'solid' | 'translucent'"
+        }
+      ]
+    }
+  ],
+  "radio": [
+    {
+      "name": "Radio",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "radio-group": [
+    {
+      "name": "RadioGroup.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "RadioGroup.Item",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "scroll-area": [
+    {
+      "name": "ScrollArea",
+      "props": [
+        {
+          "default": "'both'",
+          "name": "axis",
+          "type": "'both' | 'x' | 'y'"
+        },
+        {
+          "default": "'1'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'hover'",
+          "name": "visibility",
+          "type": "'always' | 'hover' | 'never' | 'scroll'"
+        }
+      ]
+    }
+  ],
+  "segmented-control": [
+    {
+      "name": "SegmentedControl.Root",
+      "props": [
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "SegmentedControl.Item",
+      "props": []
+    }
+  ],
+  "select": [
+    {
+      "name": "Select.Root",
+      "props": [
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
+    },
+    {
+      "name": "Select.Content",
+      "props": [
+        {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "4",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        },
+        {
+          "default": "'solid'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
+        }
+      ]
+    },
+    {
+      "name": "Select.Group",
+      "props": []
+    },
+    {
+      "name": "Select.Item",
+      "props": []
+    },
+    {
+      "name": "Select.Label",
+      "props": []
+    },
+    {
+      "name": "Select.Separator",
+      "props": []
+    },
+    {
+      "name": "Select.Trigger",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode | ((value: any) => ReactNode)"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "placeholder",
+          "type": "ReactNode"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "separator": [
+    {
+      "name": "Separator",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'1'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | 'full'"
+        }
+      ]
+    }
+  ],
+  "skeleton": [
+    {
+      "name": "Skeleton",
+      "props": [
+        {
+          "default": "true",
+          "name": "loading",
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "slider": [
+    {
+      "name": "Slider",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "spinner": [
+    {
+      "name": "Spinner",
+      "props": [
+        {
+          "default": "true",
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        }
+      ]
+    }
+  ],
+  "switch": [
+    {
+      "name": "Switch",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
+  "tab-nav": [
+    {
+      "name": "TabNav.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2'"
+        }
+      ]
+    },
+    {
+      "name": "TabNav.Link",
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "table": [
+    {
+      "name": "Table.Root",
+      "props": [
+        {
+          "default": "'auto'",
+          "name": "layout",
+          "type": "'auto' | 'fixed'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'ghost'",
+          "name": "variant",
+          "type": "'surface' | 'ghost'"
+        }
+      ]
+    },
+    {
+      "name": "Table.Body",
+      "props": []
+    },
+    {
+      "name": "Table.Cell",
+      "props": []
+    },
+    {
+      "name": "Table.ColumnHeaderCell",
+      "props": []
+    },
+    {
+      "name": "Table.Header",
+      "props": []
+    },
+    {
+      "name": "Table.Row",
+      "props": []
+    },
+    {
+      "name": "Table.RowHeaderCell",
+      "props": []
+    }
+  ],
+  "tabs": [
+    {
+      "name": "Tabs.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2'"
+        }
+      ]
+    },
+    {
+      "name": "Tabs.List",
+      "props": []
+    },
+    {
+      "name": "Tabs.Panel",
+      "props": []
+    },
+    {
+      "name": "Tabs.Tab",
+      "props": []
+    }
+  ],
+  "text-area": [
+    {
+      "name": "TextArea.Root",
+      "props": [
+        {
+          "name": "autoResize",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string | number | readonly string[]"
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string, eventDetails: { reason: 'none'; event: Event; cancel: () => void; allowPropagation: () => void; isCanceled: boolean; isPropagationAllowed: boolean; trigger: Element | undefined; }) => void"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "type": "string | number | readonly string[]"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft' | 'ghost'"
+        }
+      ]
+    },
+    {
+      "name": "TextArea.Slot",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'start'",
+          "name": "side",
+          "type": "'start' | 'end'"
+        }
+      ]
+    }
+  ],
+  "text-field": [
+    {
+      "name": "TextField.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'ghost' | 'soft' | 'surface'"
+        }
+      ]
+    },
+    {
+      "name": "TextField.Slot",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'start'",
+          "name": "side",
+          "type": "'start' | 'end'"
+        }
+      ]
+    }
+  ],
+  "toast": [
+    {
+      "name": "Toast",
+      "props": [
+        {
+          "default": "'Close'",
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "limit",
+          "type": "number"
+        },
+        {
+          "default": "'bottom-right'",
+          "name": "position",
+          "type": "'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right'"
+        },
+        {
+          "name": "timeout",
+          "type": "number"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'solid'"
+        }
+      ]
+    }
+  ],
+  "toolbar": [
+    {
+      "name": "Toolbar.Root",
+      "props": [
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'ghost' | 'surface'"
+        }
+      ]
+    },
+    {
+      "name": "Toolbar.Button",
+      "props": [
+        {
+          "default": "'gray'",
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "highContrast",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3' | '4'"
+        },
+        {
+          "default": "'ghost'",
+          "name": "variant",
+          "type": "'solid' | 'soft' | 'surface' | 'outline' | 'ghost'"
+        }
+      ]
+    },
+    {
+      "name": "Toolbar.Group",
+      "props": []
+    },
+    {
+      "name": "Toolbar.Input",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "default": "'ghost'",
+          "name": "variant",
+          "type": "'ghost' | 'soft' | 'surface'"
+        }
+      ]
+    },
+    {
+      "name": "Toolbar.Link",
+      "props": []
+    },
+    {
+      "name": "Toolbar.Separator",
+      "props": []
+    }
+  ],
+  "tooltip": [
+    {
+      "name": "Tooltip",
+      "props": [
+        {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "children",
+          "required": true,
+          "type": "ReactElement"
+        },
+        {
+          "name": "closeDelay",
+          "type": "number"
+        },
+        {
+          "name": "content",
+          "required": true,
+          "type": "ReactNode"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean"
+        },
+        {
+          "default": "200",
+          "name": "delay",
+          "type": "number"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "(open: boolean, eventDetails: TooltipRootChangeEventDetails) => void"
+        },
+        {
+          "name": "open",
+          "type": "boolean"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "4",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@
         "@biomejs/biome": "2.6.7",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
+        "ts-api": "npm:typescript@^5.9",
         "turbo": "^2.11.11",
         "typescript": "7.0.2",
         "ultracite": "8.2.0",
@@ -24,7 +25,6 @@
         "@repo/ui": "workspace:*",
         "@wrksz/themes": "^2.1.1",
         "cn": "^0.5.2",
-        "date-fns": "^3.6.0",
         "libphonenumber-js": "^1.13.16",
         "next": "16.4.6",
         "next-intl": "^4.15.1",
@@ -67,19 +67,16 @@
         "@types/node": "26.6.6",
         "@types/react": "19.3.0",
         "@types/react-dom": "19.3.0",
-        "date-fns": "^3.6.0",
         "esbuild": "^0.28.2",
         "libphonenumber-js": "^1.13.16",
         "typescript": "7.0.2",
         "use-lilius": "^2.0.5",
       },
       "peerDependencies": {
-        "date-fns": "^3.6.0",
         "libphonenumber-js": "^1.13.16",
         "use-lilius": "^2.0.5",
       },
       "optionalPeers": [
-        "date-fns",
         "libphonenumber-js",
         "use-lilius",
       ],
@@ -983,6 +980,8 @@
     "trim-lines": ["trim-lines@3.0.1", "", {}, "sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg=="],
 
     "trough": ["trough@2.2.0", "", {}, "sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw=="],
+
+    "ts-api": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
     "tslib": ["tslib@2.9.1", "", {}, "sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA=="],
 

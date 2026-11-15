@@ -6,6 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev --port 3000",
+    "generate": "bun scripts/props.ts",
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit"
   },
@@ -17,7 +18,6 @@
     "@repo/ui": "workspace:*",
     "@wrksz/themes": "^2.1.1",
     "cn": "^0.5.2",
-    "date-fns": "^3.6.0",
     "libphonenumber-js": "^1.13.16",
     "next": "16.4.6",
     "next-intl": "^4.15.1",

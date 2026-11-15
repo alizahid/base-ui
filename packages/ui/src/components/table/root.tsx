@@ -4,6 +4,7 @@ import { type ComponentProps } from 'react'
 import { merge } from '#lib/stylex.js'
 
 export type TableRootProps = ComponentProps<'div'> & {
+  layout?: 'auto' | 'fixed'
   size?: '1' | '2' | '3'
   variant?: 'surface' | 'ghost'
 }
@@ -14,6 +15,7 @@ export type TableRootProps = ComponentProps<'div'> & {
 export function Root({
   children,
   className,
+  layout = 'auto',
   size = '2',
   style,
   variant = 'ghost',
@@ -31,7 +33,11 @@ export function Root({
       <div
         {...stylex.props(styles.box, variant === 'surface' && styles.surface)}
       >
-        <table {...stylex.props(styles.table)}>{children}</table>
+        <table
+          {...stylex.props(styles.table, layout === 'fixed' && styles.fixed)}
+        >
+          {children}
+        </table>
       </div>
     </div>
   )
@@ -45,6 +51,10 @@ const styles = stylex.create({
   box: {
     minWidth: '100%',
     width: 'fit-content',
+  },
+  // columns take their widths from the first row, not from their content
+  fixed: {
+    tableLayout: 'fixed',
   },
   // scrolls sideways without showing a scrollbar
   main: {
