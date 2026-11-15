@@ -162,6 +162,15 @@
     "id": "المعرّف",
     "orientation": "الاتجاه"
   },
+  "date-field": {
+    "pick-a-date": "اختر تاريخًا",
+    "pick-a-range": "اختر فترة",
+    "pick-dates": "اختر تواريخ",
+    "range": "فترة",
+    "single": "تاريخ واحد",
+    "with-an-icon": "مع أيقونة",
+    "within-limits": "ضمن حدود"
+  },
   "dialog": {
     "align": "المحاذاة",
     "center": "الوسط",
@@ -258,6 +267,7 @@
     "command-bar": "شريط الأوامر",
     "components": "المكونات",
     "data-list": "قائمة البيانات",
+    "date-field": "حقل التاريخ",
     "dialog": "مربع الحوار",
     "drawer": "الدرج",
     "field": "الحقل",

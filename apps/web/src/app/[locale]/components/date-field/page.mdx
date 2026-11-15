@@ -1,0 +1,64 @@
+import { CalendarDotsIcon } from '@phosphor-icons/react/ssr'
+import { useLocale } from 'next-intl'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('date-field')
+
+# <Text id="nav.date-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="date-field.single" />
+
+<Example>
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} />
+</Example>
+
+### <Text id="common.multiple" />
+
+<Example>
+  <DateField className="w-64" locale={useLocale()} mode="multiple" placeholder={useText('date-field.pick-dates')} />
+</Example>
+
+### <Text id="date-field.range" />
+
+<Example>
+  <DateField className="w-64" locale={useLocale()} mode="range" placeholder={useText('date-field.pick-a-range')} />
+</Example>
+
+### <Text id="date-field.with-an-icon" />
+
+<Example>
+  <DateField className="w-64" icon={<CalendarDotsIcon className="-ms-1" />} locale={useLocale()} placeholder={useText('date-field.pick-a-date')} />
+  <DateField className="w-64" defaultValue={new Date(2026, 10, 16)} icon={<CalendarDotsIcon className="-ms-1" />} locale={useLocale()} placeholder={useText('date-field.pick-a-date')} variant="soft" />
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} size="1" />
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} size="2" />
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} variant="surface" />
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} variant="soft" />
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} variant="ghost" />
+</Example>
+
+### <Text id="date-field.within-limits" />
+
+<Example>
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} defaultValue={new Date(2026, 10, 16)} max={new Date(2026, 10, 25)} min={new Date(2026, 10, 10)} />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <DateField className="w-64" locale={useLocale()} placeholder={useText('date-field.pick-a-date')} defaultValue={new Date(2026, 10, 16)} disabled />
+</Example>

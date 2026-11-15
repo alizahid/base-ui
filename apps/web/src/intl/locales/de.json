@@ -162,6 +162,15 @@
     "id": "ID",
     "orientation": "Ausrichtung"
   },
+  "date-field": {
+    "pick-a-date": "Datum wählen",
+    "pick-a-range": "Zeitraum wählen",
+    "pick-dates": "Daten wählen",
+    "range": "Zeitraum",
+    "single": "Einzeln",
+    "with-an-icon": "Mit Symbol",
+    "within-limits": "Innerhalb von Grenzen"
+  },
   "dialog": {
     "align": "Ausrichtung",
     "center": "Mitte",
@@ -258,6 +267,7 @@
     "command-bar": "Befehlsleiste",
     "components": "Komponenten",
     "data-list": "Datenliste",
+    "date-field": "Datumsfeld",
     "dialog": "Dialog",
     "drawer": "Drawer",
     "field": "Feld",
