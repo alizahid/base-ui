@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type ToolbarLinkProps = Omit<ComponentProps, 'className' | 'style'> & {
   className?: string

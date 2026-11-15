@@ -5,7 +5,8 @@ import { Drawer, IconButton } from '@repo/ui'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { type Page } from '../content'
+import { type Page } from '@/content'
+
 import { Sidebar } from './sidebar'
 
 type Props = {

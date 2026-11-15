@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { controlStyles, group } from '../../lib/control.js'
-import { merge } from '../../lib/stylex.js'
-import { Radio, type RadioProps } from '../radio/radio.js'
+import { Radio, type RadioProps } from '#components/radio/radio.js'
+import { controlStyles, group } from '#lib/control.js'
+import { merge } from '#lib/stylex.js'
 
 export type RadioGroupItemProps = RadioProps
 

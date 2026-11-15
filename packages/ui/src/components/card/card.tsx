@@ -3,7 +3,7 @@
 import { useRender } from '@base-ui/react/use-render'
 import * as stylex from '@stylexjs/stylex'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type CardProps = useRender.ComponentProps<'div'> & {
   size?: '1' | '2' | '3' | '4' | '5'

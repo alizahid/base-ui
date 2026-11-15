@@ -5,7 +5,8 @@ import {
   type ComboboxRootProps as ComponentRootProps,
 } from '@base-ui/react/combobox'
 
-import { type Size, SizeContext } from '../../lib/size.js'
+import { type Size, SizeContext } from '#lib/size.js'
+
 import { MultipleContext } from './context.js'
 
 export type ComboboxRootProps<
@@ -40,6 +41,8 @@ function isEqual(item: unknown, value: unknown) {
     : Object.is(item, value)
 }
 
-function hasValue(item: unknown): item is { value: unknown } {
+function hasValue(item: unknown): item is {
+  value: unknown
+} {
   return typeof item === 'object' && item !== null && 'value' in item
 }

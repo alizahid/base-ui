@@ -8,9 +8,10 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
+
 import { ContentContext } from './content.js'
 
 export type NavigationMenuRootProps = Omit<

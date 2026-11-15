@@ -1,4 +1,4 @@
-import '../main.css'
+import '@/app/main.css'
 
 import { BaseProvider, CommandBar, ScrollArea } from '@repo/ui'
 import { ThemeProvider } from '@wrksz/themes/next'
@@ -9,16 +9,16 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 
-import { Command } from '../../components/command'
-import { Toaster } from '../../components/demos/toast'
-import { LocaleSwitcher } from '../../components/locale'
-import { Menu } from '../../components/menu'
-import { Search } from '../../components/search'
-import { Sidebar } from '../../components/sidebar'
-import { Theme } from '../../components/theme'
-import { pages } from '../../content'
-import { Link } from '../../intl/navigation'
-import { directions, routing } from '../../intl/routing'
+import { Command } from '@/components/command'
+import { Toaster } from '@/components/demos/toast'
+import { LocaleSwitcher } from '@/components/locale'
+import { Menu } from '@/components/menu'
+import { Search } from '@/components/search'
+import { Sidebar } from '@/components/sidebar'
+import { Theme } from '@/components/theme'
+import { pages } from '@/content'
+import { Link } from '@/intl/navigation'
+import { directions, routing } from '@/intl/routing'
 
 const sans = localFont({
   src: '../../assets/fonts/sans.woff2',
@@ -70,7 +70,14 @@ export default async function Layout({
       suppressHydrationWarning
     >
       <body>
-        <NextIntlClientProvider messages={{ header, locales, metadata, nav }}>
+        <NextIntlClientProvider
+          messages={{
+            header,
+            locales,
+            metadata,
+            nav,
+          }}
+        >
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <BaseProvider
               accent="plum"

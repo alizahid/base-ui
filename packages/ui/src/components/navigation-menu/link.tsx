@@ -7,7 +7,8 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
+
 import { navigation } from './styles.js'
 
 export type NavigationMenuLinkProps = Omit<

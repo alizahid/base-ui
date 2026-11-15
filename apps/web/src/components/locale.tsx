@@ -4,8 +4,8 @@ import { IconButton } from '@repo/ui'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 
-import { Link, usePathname } from '../intl/navigation'
-import { flags, routing } from '../intl/routing'
+import { Link, usePathname } from '@/intl/navigation'
+import { flags, routing } from '@/intl/routing'
 
 export function LocaleSwitcher() {
   const pathname = usePathname()

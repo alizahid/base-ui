@@ -7,9 +7,9 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { CheckIcon, icon } from '../../lib/icons.js'
-import { listbox } from '../../lib/listbox.js'
-import { merge } from '../../lib/stylex.js'
+import { CheckIcon, icon } from '#lib/icons.js'
+import { listbox } from '#lib/listbox.js'
+import { merge } from '#lib/stylex.js'
 
 export type SelectItemProps = ComponentItemProps & {
   className?: string

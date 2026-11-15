@@ -3,9 +3,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps as ReactComponentProps } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { input, textArea } from '../../lib/input.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { input, textArea } from '#lib/input.js'
+import { merge } from '#lib/stylex.js'
 
 export type TextAreaSlotProps = Omit<ReactComponentProps<'div'>, 'color'> & {
   color?: ColorToken | 'gray'

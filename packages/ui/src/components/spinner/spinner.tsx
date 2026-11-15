@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ButtonHTMLAttributes, type DetailedHTMLProps } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type SpinnerProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLSpanElement>,

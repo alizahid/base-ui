@@ -7,11 +7,12 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { Cross2Icon, icon } from '../../lib/icons.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
-import { Button } from '../button/button.js'
-import { IconButton } from '../icon-button/icon-button.js'
+import { Button } from '#components/button/button.js'
+import { IconButton } from '#components/icon-button/icon-button.js'
+import { Cross2Icon, icon } from '#lib/icons.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
+
 import { toast } from './manager.js'
 
 export type ToastProps = Pick<ToastProviderProps, 'limit' | 'timeout'> & {

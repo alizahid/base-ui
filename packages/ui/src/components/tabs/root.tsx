@@ -7,8 +7,9 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
+
 import { tabSizes, tabs } from './styles.js'
 
 export type TabsRootProps = Omit<

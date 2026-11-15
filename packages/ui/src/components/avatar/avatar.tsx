@@ -7,9 +7,9 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { merge } from '#lib/stylex.js'
 
 export type AvatarProps = ComponentProps & {
   className?: string

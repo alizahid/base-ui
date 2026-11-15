@@ -8,12 +8,12 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { ChevronDownIcon, icon } from '../../lib/icons.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { SizeContext } from '../../lib/size.js'
-import { merge } from '../../lib/stylex.js'
-import { trigger, triggerSizes, triggerVariants } from '../../lib/trigger.js'
+import { type ColorToken } from '#lib/colors.js'
+import { ChevronDownIcon, icon } from '#lib/icons.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { SizeContext } from '#lib/size.js'
+import { merge } from '#lib/stylex.js'
+import { trigger, triggerSizes, triggerVariants } from '#lib/trigger.js'
 
 export type SelectTriggerProps = Omit<ComponentTriggerProps, 'children'> & {
   children?: SelectValueProps['children']

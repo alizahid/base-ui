@@ -7,8 +7,8 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
 
 export type DrawerContentProps = DrawerPopupProps & {
   className?: string

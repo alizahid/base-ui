@@ -5,10 +5,10 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { type ControlProps, control, controlStyles } from '../../lib/control.js'
-import { CheckIcon, MinusIcon } from '../../lib/icons.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { type ControlProps, control, controlStyles } from '#lib/control.js'
+import { CheckIcon, MinusIcon } from '#lib/icons.js'
+import { merge } from '#lib/stylex.js'
 
 export type CheckboxProps = ComponentProps &
   ControlProps & {

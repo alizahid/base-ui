@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { merge } from '#lib/stylex.js'
 
 export type CalloutRootProps = Omit<ComponentProps<'div'>, 'color'> & {
   color?: ColorToken | 'gray'

@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type DataListRootProps = ComponentProps<'dl'> & {
   orientation?: 'horizontal' | 'vertical'

@@ -4,8 +4,8 @@ import { cn } from 'cn'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 
-import { type Page } from '../content'
-import { Link, usePathname } from '../intl/navigation'
+import { type Page } from '@/content'
+import { Link, usePathname } from '@/intl/navigation'
 
 type Props = {
   pages: Array<Page>

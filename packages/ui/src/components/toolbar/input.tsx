@@ -6,7 +6,7 @@ import {
 } from '@base-ui/react/toolbar'
 import { type CSSProperties } from 'react'
 
-import { Root, type TextFieldRootProps } from '../text-field/root.js'
+import { Root, type TextFieldRootProps } from '#components/text-field/root.js'
 
 export type ToolbarInputProps = Omit<
   ComponentProps,

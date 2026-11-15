@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
-import { tabSizes, tabs } from '../tabs/styles.js'
+import { tabSizes, tabs } from '#components/tabs/styles.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
 
 export type TabNavRootProps = Omit<ComponentProps<'nav'>, 'color'> & {
   color?: ColorToken | 'gray'

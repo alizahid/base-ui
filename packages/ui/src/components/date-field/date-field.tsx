@@ -10,12 +10,13 @@ import {
   useState,
 } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { ChevronDownIcon, icon } from '../../lib/icons.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { merge } from '../../lib/stylex.js'
-import { trigger, triggerSizes, triggerVariants } from '../../lib/trigger.js'
-import { Content } from '../popover/content.js'
+import { Content } from '#components/popover/content.js'
+import { type ColorToken } from '#lib/colors.js'
+import { ChevronDownIcon, icon } from '#lib/icons.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { merge } from '#lib/stylex.js'
+import { trigger, triggerSizes, triggerVariants } from '#lib/trigger.js'
+
 import {
   Calendar,
   type CalendarMode,

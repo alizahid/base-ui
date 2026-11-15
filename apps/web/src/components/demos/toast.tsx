@@ -57,7 +57,10 @@ export function ToastDemo({
   return (
     <Button
       onClick={() => {
-        configure({ position, variant })
+        configure({
+          position,
+          variant,
+        })
 
         const id = toast.add({
           actionProps: action
@@ -101,9 +104,17 @@ export function ToastPromiseDemo({
             setTimeout(resolve, 2000)
           }),
           {
-            error: { title: error, type: 'error' },
-            loading: { title: loading },
-            success: { title: success, type: 'success' },
+            error: {
+              title: error,
+              type: 'error',
+            },
+            loading: {
+              title: loading,
+            },
+            success: {
+              title: success,
+              type: 'success',
+            },
           },
         )
       }}

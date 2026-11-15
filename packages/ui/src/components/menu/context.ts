@@ -2,7 +2,7 @@
 
 import { createContext } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
+import { type ColorToken } from '#lib/colors.js'
 
 export type MenuContextValue = {
   color?: ColorToken | 'gray'

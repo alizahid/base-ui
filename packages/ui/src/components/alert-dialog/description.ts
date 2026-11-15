@@ -1,5 +1,5 @@
-import { type DialogDescriptionProps } from '../dialog/description.js'
+import { type DialogDescriptionProps } from '#components/dialog/description.js'
 
-export { Description } from '../dialog/description.js'
+export { Description } from '#components/dialog/description.js'
 
 export type AlertDialogDescriptionProps = DialogDescriptionProps

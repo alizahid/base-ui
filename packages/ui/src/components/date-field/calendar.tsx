@@ -5,8 +5,8 @@ import * as stylex from '@stylexjs/stylex'
 import { type KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { type Day, useLilius } from 'use-lilius'
 
-import { ChevronRightIcon } from '../../lib/icons.js'
-import { IconButton } from '../icon-button/icon-button.js'
+import { IconButton } from '#components/icon-button/icon-button.js'
+import { ChevronRightIcon } from '#lib/icons.js'
 
 export type CalendarMode = 'multiple' | 'range' | 'single'
 

@@ -2,9 +2,9 @@ import { readFile } from 'node:fs/promises'
 
 import { createTranslator, hasLocale } from 'next-intl'
 
-import { pages } from '../../../../content'
-import { fill } from '../../../../intl/fill'
-import { routing } from '../../../../intl/routing'
+import { pages } from '@/content'
+import { fill } from '@/intl/fill'
+import { routing } from '@/intl/routing'
 
 // imports and exports sit above the title; the page starts at it
 const title = /^# /mu

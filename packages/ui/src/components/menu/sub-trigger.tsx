@@ -7,8 +7,9 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { ChevronRightIcon, icon } from '../../lib/icons.js'
-import { merge } from '../../lib/stylex.js'
+import { ChevronRightIcon, icon } from '#lib/icons.js'
+import { merge } from '#lib/stylex.js'
+
 import { MenuContext } from './context.js'
 import { menu, menuContrast, menuVariants } from './styles.js'
 

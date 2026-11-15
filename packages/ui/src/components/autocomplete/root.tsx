@@ -5,7 +5,7 @@ import {
   type AutocompleteRootProps as ComponentRootProps,
 } from '@base-ui/react/autocomplete'
 
-import { type Size, SizeContext } from '../../lib/size.js'
+import { type Size, SizeContext } from '#lib/size.js'
 
 export type AutocompleteRootProps<Value> = ComponentRootProps<Value> & {
   size?: Size

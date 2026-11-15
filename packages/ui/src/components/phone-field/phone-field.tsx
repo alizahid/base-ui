@@ -22,15 +22,15 @@ import {
   useState,
 } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { ChevronDownIcon, icon } from '../../lib/icons.js'
-import { input, inputSizes, inputVariants } from '../../lib/input.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { merge } from '../../lib/stylex.js'
-import { Content } from '../combobox/content.js'
-import { Item } from '../combobox/item.js'
-import { Root } from '../combobox/root.js'
-import { Search } from '../combobox/search.js'
+import { Content } from '#components/combobox/content.js'
+import { Item } from '#components/combobox/item.js'
+import { Root } from '#components/combobox/root.js'
+import { Search } from '#components/combobox/search.js'
+import { type ColorToken } from '#lib/colors.js'
+import { ChevronDownIcon, icon } from '#lib/icons.js'
+import { input, inputSizes, inputVariants } from '#lib/input.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { merge } from '#lib/stylex.js'
 
 export type PhoneFieldCountry = CountryCode
 

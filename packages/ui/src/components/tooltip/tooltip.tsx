@@ -14,9 +14,9 @@ import {
   use,
 } from 'react'
 
-import { panel } from '../../lib/panel.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { panel } from '#lib/panel.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
 
 export type TooltipProps = Pick<
   TooltipRootProps,

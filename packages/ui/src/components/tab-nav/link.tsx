@@ -3,8 +3,8 @@
 import { useRender } from '@base-ui/react/use-render'
 import * as stylex from '@stylexjs/stylex'
 
-import { merge } from '../../lib/stylex.js'
-import { tabs } from '../tabs/styles.js'
+import { tabs } from '#components/tabs/styles.js'
+import { merge } from '#lib/stylex.js'
 
 export type TabNavLinkProps = useRender.ComponentProps<'a'> & {
   // marks the link for the current page

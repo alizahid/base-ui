@@ -5,7 +5,7 @@ import {
   type ToolbarButtonProps as ComponentProps,
 } from '@base-ui/react/toolbar'
 
-import { Button, type ButtonProps } from '../button/button.js'
+import { Button, type ButtonProps } from '#components/button/button.js'
 
 export type ToolbarButtonProps = ComponentProps &
   Pick<

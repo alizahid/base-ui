@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { controlStyles, group } from '../../lib/control.js'
-import { merge } from '../../lib/stylex.js'
-import { Checkbox, type CheckboxProps } from '../checkbox/checkbox.js'
+import { Checkbox, type CheckboxProps } from '#components/checkbox/checkbox.js'
+import { controlStyles, group } from '#lib/control.js'
+import { merge } from '#lib/stylex.js'
 
 export type CheckboxGroupItemProps = CheckboxProps
 

@@ -8,10 +8,11 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { panel } from '../../lib/panel.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { type ColorToken } from '#lib/colors.js'
+import { panel } from '#lib/panel.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
+
 import { MenuContext } from './context.js'
 import { menu, menuSizes } from './styles.js'
 

@@ -3,8 +3,8 @@
 import { DirectionProvider } from '@base-ui/react/direction-provider'
 import { type ReactNode } from 'react'
 
-import { type ColorToken, type GrayToken, getGray } from '../../lib/colors.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { type ColorToken, type GrayToken, getGray } from '#lib/colors.js'
+import { ThemeContext } from '#lib/theme.js'
 
 export type BaseProviderProps = {
   accent?: ColorToken

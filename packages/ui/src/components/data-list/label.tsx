@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
 
 export type DataListLabelProps = Omit<ComponentProps<'dt'>, 'color'> & {
   color?: ColorToken | 'gray'

@@ -5,8 +5,8 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
 
 export type SeparatorProps = Omit<ComponentProps, 'className' | 'style'> & {
   className?: string

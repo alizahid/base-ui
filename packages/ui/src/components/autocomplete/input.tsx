@@ -7,12 +7,12 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { Cross2Icon, icon } from '../../lib/icons.js'
-import { input, inputSizes, inputVariants } from '../../lib/input.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { SizeContext } from '../../lib/size.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { Cross2Icon, icon } from '#lib/icons.js'
+import { input, inputSizes, inputVariants } from '#lib/input.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { SizeContext } from '#lib/size.js'
+import { merge } from '#lib/stylex.js'
 
 export type AutocompleteInputProps = Omit<
   ComponentInputProps,

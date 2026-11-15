@@ -3,8 +3,8 @@
 import { useRender } from '@base-ui/react/use-render'
 import * as stylex from '@stylexjs/stylex'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { merge } from '#lib/stylex.js'
 
 export type LinkProps = Omit<useRender.ComponentProps<'a'>, 'color'> & {
   color?: ColorToken | 'gray'

@@ -7,10 +7,10 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { type RadiusToken, radii } from '../../lib/radii.js'
-import { merge } from '../../lib/stylex.js'
-import { Spinner } from '../spinner/spinner.js'
+import { Spinner } from '#components/spinner/spinner.js'
+import { type ColorToken } from '#lib/colors.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
+import { merge } from '#lib/stylex.js'
 
 export type ButtonProps = ComponentProps & {
   className?: string

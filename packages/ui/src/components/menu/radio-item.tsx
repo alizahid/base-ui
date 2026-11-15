@@ -7,10 +7,11 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { CheckIcon, icon } from '../../lib/icons.js'
-import { listbox } from '../../lib/listbox.js'
-import { merge } from '../../lib/stylex.js'
+import { type ColorToken } from '#lib/colors.js'
+import { CheckIcon, icon } from '#lib/icons.js'
+import { listbox } from '#lib/listbox.js'
+import { merge } from '#lib/stylex.js'
+
 import { MenuContext } from './context.js'
 import { menu, menuContrast, menuVariants } from './styles.js'
 

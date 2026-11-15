@@ -6,7 +6,7 @@ import {
   type ReactElement,
 } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type SkeletonProps = ComponentProps<'span'> & {
   loading?: boolean

@@ -8,9 +8,9 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { panel, panelSizes } from '../../lib/panel.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { panel, panelSizes } from '#lib/panel.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
 
 export type PopoverContentProps = PopoverPopupProps &
   Pick<PopoverPositionerProps, 'align' | 'side' | 'sideOffset'> & {

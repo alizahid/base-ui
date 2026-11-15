@@ -5,8 +5,8 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { ChevronDownIcon, icon } from '../../lib/icons.js'
-import { merge } from '../../lib/stylex.js'
+import { ChevronDownIcon, icon } from '#lib/icons.js'
+import { merge } from '#lib/stylex.js'
 
 export type AccordionTriggerProps = Omit<
   ComponentProps,

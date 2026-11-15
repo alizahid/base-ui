@@ -9,12 +9,13 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
-import { type ColorToken } from '../../lib/colors.js'
-import { listbox, listboxSize, listboxVariants } from '../../lib/listbox.js'
-import { panel } from '../../lib/panel.js'
-import { SizeContext } from '../../lib/size.js'
-import { merge } from '../../lib/stylex.js'
-import { ThemeContext } from '../../lib/theme.js'
+import { type ColorToken } from '#lib/colors.js'
+import { listbox, listboxSize, listboxVariants } from '#lib/listbox.js'
+import { panel } from '#lib/panel.js'
+import { SizeContext } from '#lib/size.js'
+import { merge } from '#lib/stylex.js'
+import { ThemeContext } from '#lib/theme.js'
+
 import { Item } from './item.js'
 import { itemLabel } from './utils.js'
 

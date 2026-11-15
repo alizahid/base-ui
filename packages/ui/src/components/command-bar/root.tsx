@@ -5,10 +5,11 @@ import { Dialog } from '@base-ui/react/dialog'
 import * as stylex from '@stylexjs/stylex'
 import { type ReactNode, use, useCallback, useMemo, useState } from 'react'
 
-import { listbox, listboxSize, listboxVariants } from '../../lib/listbox.js'
-import { ThemeContext } from '../../lib/theme.js'
-import { flush } from '../autocomplete/styles.js'
-import { dialog } from '../dialog/content.js'
+import { flush } from '#components/autocomplete/styles.js'
+import { dialog } from '#components/dialog/content.js'
+import { listbox, listboxSize, listboxVariants } from '#lib/listbox.js'
+import { ThemeContext } from '#lib/theme.js'
+
 import {
   CommandBarContext,
   type CommandBarGroup,

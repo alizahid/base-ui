@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, createContext } from 'react'
 
-import { merge } from '../../lib/stylex.js'
+import { merge } from '#lib/stylex.js'
 
 export type NavigationMenuContentProps = Omit<
   ComponentProps,

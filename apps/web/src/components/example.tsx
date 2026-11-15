@@ -3,7 +3,8 @@ import { getTranslations } from 'next-intl/server'
 import { type ComponentProps } from 'react'
 import { codeToHtml } from 'shiki'
 
-import { fill } from '../intl/fill'
+import { fill } from '@/intl/fill'
+
 import { Code } from './code'
 
 type Props = ComponentProps<'div'> & {
