@@ -268,6 +268,7 @@
     "navigation-menu": "قائمة التنقل",
     "number-field": "حقل الأرقام",
     "otp-field": "حقل رمز التحقق",
+    "phone-field": "حقل الهاتف",
     "popover": "نافذة منبثقة",
     "preview-card": "بطاقة المعاينة",
     "progress": "شريط التقدم",
@@ -325,6 +326,17 @@
     "pin": "الرمز السري",
     "that-code-is-not-right": "هذا الرمز غير صحيح.",
     "verification-code": "رمز التحقق"
+  },
+  "phone-field": {
+    "country": "الدولة",
+    "enter-a-valid-phone-number": "أدخل رقم هاتف صالحًا.",
+    "in-a-form": "داخل نموذج",
+    "no-countries-found": "لم يُعثر على دول.",
+    "open-the-console": "افتح وحدة تحكم المتصفح لترى ما يُرسله الحقل.",
+    "phone-number": "رقم الهاتف",
+    "submit": "إرسال",
+    "we-ll-text-you-a-code": "سنرسل لك رمزًا في رسالة نصية.",
+    "with-a-number": "مع رقم"
   },
   "popover": {
     "comment": "تعليق",

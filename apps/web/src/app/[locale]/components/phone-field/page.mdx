@@ -1,0 +1,60 @@
+import { useLocale } from 'next-intl'
+
+import { useText } from '../../../../components/text'
+import { title } from '../../../../intl/metadata'
+
+export const generateMetadata = title('phone-field')
+
+# <Text id="nav.phone-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} />
+</Example>
+
+### <Text id="phone-field.with-a-number" />
+
+<Example>
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultValue="+14155552671" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} />
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} size="1" />
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} size="2" />
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} variant="surface" />
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} variant="soft" />
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} variant="ghost" />
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-64" hint={useText('phone-field.we-ll-text-you-a-code')} label={useText('phone-field.phone-number')} validationMode="onBlur">
+    <PhoneField countryLabel={useText('phone-field.country')} defaultCountry="AE" empty={useText('phone-field.no-countries-found')} invalidMessage={useText('phone-field.enter-a-valid-phone-number')} locale={useLocale()} searchPlaceholder={useText('common.search')} />
+  </Field>
+</Example>
+
+### <Text id="phone-field.in-a-form" />
+
+<Text id="phone-field.open-the-console" />
+
+<Example>
+  <PhoneFieldDemo country={useText('phone-field.country')} empty={useText('phone-field.no-countries-found')} label={useText('phone-field.phone-number')} locale={useLocale()} search={useText('common.search')} submit={useText('phone-field.submit')} />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <PhoneField aria-label={useText('phone-field.phone-number')} className="w-64" countryLabel={useText('phone-field.country')} defaultValue="+971501234567" disabled empty={useText('phone-field.no-countries-found')} locale={useLocale()} searchPlaceholder={useText('common.search')} />
+</Example>

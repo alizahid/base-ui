@@ -3,6 +3,7 @@
 import {
   type ComboboxListProps,
   type ComboboxPopupProps,
+  type ComboboxPositionerProps,
   Combobox as Component,
 } from '@base-ui/react/combobox'
 import * as stylex from '@stylexjs/stylex'
@@ -18,6 +19,7 @@ import { Item } from './item.js'
 import { itemLabel } from './utils.js'
 
 export type ComboboxContentProps = Omit<ComboboxPopupProps, 'children'> & {
+  anchor?: ComboboxPositionerProps['anchor']
   children?: ComboboxListProps['children']
   className?: string
   color?: ColorToken | 'gray'
@@ -34,8 +36,10 @@ export type ComboboxContentProps = Omit<ComboboxPopupProps, 'children'> & {
 // { label, value } objects. pass a function, (item) => <Combobox.Item />, for
 // custom rows. `empty` is shown when nothing matches what was typed, and
 // `status` whenever it is set ("Loading…"). `search` takes a Combobox.Search,
-// for a popup that holds its own filter input
+// for a popup that holds its own filter input.  positions the popup
+// against another element than the input or trigger
 export function Content({
+  anchor,
   children = renderItem,
   className,
   color,
@@ -52,7 +56,11 @@ export function Content({
 
   return (
     <Component.Portal>
-      <Component.Positioner sideOffset={4} {...stylex.props(panel.positioner)}>
+      <Component.Positioner
+        anchor={anchor}
+        sideOffset={4}
+        {...stylex.props(panel.positioner)}
+      >
         {/* portaled out of the provider's element, so its colors are set again */}
         <Component.Popup
           data-accent={color ?? theme.accent}

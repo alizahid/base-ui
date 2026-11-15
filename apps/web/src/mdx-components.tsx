@@ -24,6 +24,7 @@ import {
   NavigationMenu,
   NumberField,
   OTPField,
+  PhoneField,
   Popover,
   PreviewCard,
   Progress,
@@ -50,6 +51,7 @@ import { type MDXComponents } from 'mdx/types'
 
 import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CommandBarDemo } from './components/demos/command-bar'
+import { PhoneFieldDemo } from './components/demos/phone-field'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 import { Example } from './components/example'
@@ -86,6 +88,8 @@ const components: MDXComponents = {
   Link,
   NumberField,
   OTPField,
+  PhoneField,
+  PhoneFieldDemo,
   Radio,
   ScrollArea,
   Separator,

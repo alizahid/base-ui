@@ -268,6 +268,7 @@
     "navigation-menu": "Navigationsmenü",
     "number-field": "Zahlenfeld",
     "otp-field": "OTP-Feld",
+    "phone-field": "Telefonfeld",
     "popover": "Popover",
     "preview-card": "Vorschaukarte",
     "progress": "Fortschritt",
@@ -325,6 +326,17 @@
     "pin": "PIN",
     "that-code-is-not-right": "Dieser Code stimmt nicht.",
     "verification-code": "Bestätigungscode"
+  },
+  "phone-field": {
+    "country": "Land",
+    "enter-a-valid-phone-number": "Gib eine gültige Telefonnummer ein.",
+    "in-a-form": "In einem Formular",
+    "no-countries-found": "Keine Länder gefunden.",
+    "open-the-console": "Öffne die Browserkonsole, um zu sehen, was das Feld meldet.",
+    "phone-number": "Telefonnummer",
+    "submit": "Absenden",
+    "we-ll-text-you-a-code": "Wir senden dir einen Code per SMS.",
+    "with-a-number": "Mit einer Nummer"
   },
   "popover": {
     "comment": "Kommentieren",
