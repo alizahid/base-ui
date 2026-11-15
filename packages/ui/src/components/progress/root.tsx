@@ -194,18 +194,18 @@ const variants = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--progress-height': 'var(--spacing)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+    '--progress-height': 'var(--ui-spacing)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--progress-height': 'calc(var(--spacing) * 1.5)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--progress-height': 'calc(var(--ui-spacing) * 1.5)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--progress-height': 'calc(var(--spacing) * 2)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--progress-height': 'calc(var(--ui-spacing) * 2)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })

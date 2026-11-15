@@ -30,7 +30,7 @@ const styles = stylex.create({
     fontVariantNumeric: 'tabular-nums',
     gridColumnStart: 2,
     gridRow: 1,
-    paddingBlockEnd: 'calc(var(--spacing) * 2)',
+    paddingBlockEnd: 'calc(var(--ui-spacing) * 2)',
     textAlign: 'end',
   },
 })

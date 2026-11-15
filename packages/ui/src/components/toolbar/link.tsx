@@ -26,7 +26,7 @@ export function Link({ className, style, ...props }: ToolbarLinkProps) {
 
 const styles = stylex.create({
   main: {
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: 'var(--ui-radius-sm)',
     color: {
       ':hover': {
         '@media (hover: hover)': 'var(--gray-12)',
@@ -34,14 +34,14 @@ const styles = stylex.create({
       },
       default: 'var(--gray-11)',
     },
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
     },
     outlineOffset: 2,
-    paddingInline: 'calc(var(--spacing) * 2)',
+    paddingInline: 'calc(var(--ui-spacing) * 2)',
     whiteSpace: 'nowrap',
   },
 })

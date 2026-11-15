@@ -42,8 +42,8 @@ const styles = stylex.create({
       [upright]: 'auto',
       default: 1,
     },
-    marginBlock: 'calc(var(--spacing) * 1)',
-    marginInline: 'calc(var(--spacing) * 1)',
+    marginBlock: 'calc(var(--ui-spacing) * 1)',
+    marginInline: 'calc(var(--ui-spacing) * 1)',
     width: {
       [upright]: 1,
       default: 'auto',

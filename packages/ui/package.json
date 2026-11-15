@@ -8,6 +8,7 @@
       "types": "./src/index.ts",
       "default": "./dist/index.js"
     },
+    "./reset.css": "./src/reset.css",
     "./styles.css": "./dist/stylex.css",
     "./theme.css": "./src/theme.css"
   },

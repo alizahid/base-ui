@@ -74,7 +74,7 @@ const styles = stylex.create({
     display: 'flex',
   },
   main: {
-    borderRadius: 'var(--control-radius, var(--radius-sm))',
+    borderRadius: 'var(--control-radius, var(--ui-radius-sm))',
   },
   minus: {
     display: {

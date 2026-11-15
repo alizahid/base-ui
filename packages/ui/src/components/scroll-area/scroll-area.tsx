@@ -95,7 +95,7 @@ const styles = stylex.create({
     height: {
       [horizontal]: 'var(--scroll-area-size)',
     },
-    margin: 'var(--spacing)',
+    margin: 'var(--ui-spacing)',
     opacity: 'var(--scroll-area-opacity)',
     transitionDuration: '100ms',
     transitionProperty: {
@@ -113,8 +113,8 @@ const styles = stylex.create({
       content: '""',
       height: '100%',
       left: '50%',
-      minHeight: 'calc(var(--spacing) * 4)',
-      minWidth: 'calc(var(--spacing) * 4)',
+      minHeight: 'calc(var(--ui-spacing) * 4)',
+      minWidth: 'calc(var(--ui-spacing) * 4)',
       position: 'absolute',
       top: '50%',
       transform: 'translate(-50%, -50%)',
@@ -172,12 +172,12 @@ const visibilities = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--scroll-area-size': 'var(--spacing)',
+    '--scroll-area-size': 'var(--ui-spacing)',
   },
   2: {
-    '--scroll-area-size': 'calc(var(--spacing) * 2)',
+    '--scroll-area-size': 'calc(var(--ui-spacing) * 2)',
   },
   3: {
-    '--scroll-area-size': 'calc(var(--spacing) * 3)',
+    '--scroll-area-size': 'calc(var(--ui-spacing) * 3)',
   },
 })

@@ -19,12 +19,12 @@ const styles = stylex.create({
   main: {
     alignItems: 'center',
     backgroundColor: 'var(--gray-a3)',
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: 'var(--ui-radius-sm)',
     display: 'inline-flex',
-    height: 'calc(var(--spacing) * 6)',
+    height: 'calc(var(--ui-spacing) * 6)',
     justifyContent: 'center',
     // square for a single character, wider for whatever is longer
-    minWidth: 'calc(var(--spacing) * 6)',
-    paddingInline: 'var(--spacing)',
+    minWidth: 'calc(var(--ui-spacing) * 6)',
+    paddingInline: 'var(--ui-spacing)',
   },
 })

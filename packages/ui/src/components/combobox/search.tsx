@@ -37,7 +37,7 @@ const styles = stylex.create({
     },
     height: 'var(--listbox-item-height)',
     outline: 'none',
-    paddingInline: 'calc(var(--spacing) * 2)',
+    paddingInline: 'calc(var(--ui-spacing) * 2)',
     width: '100%',
   },
   // a row at the top of the popup, divided from the list

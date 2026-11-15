@@ -77,7 +77,7 @@ const styles = stylex.create({
   leaf: {
     '::before': {
       backgroundColor: 'var(--gray-12)',
-      borderRadius: 'var(--radius-xs)',
+      borderRadius: 'var(--ui-radius-xs)',
       content: '',
       display: 'block',
       height: '30%',
@@ -151,19 +151,19 @@ const styles = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    height: 'calc(var(--spacing) * 3)',
-    width: 'calc(var(--spacing) * 3)',
+    height: 'calc(var(--ui-spacing) * 3)',
+    width: 'calc(var(--ui-spacing) * 3)',
   },
   2: {
-    height: 'calc(var(--spacing) * 4)',
-    width: 'calc(var(--spacing) * 4)',
+    height: 'calc(var(--ui-spacing) * 4)',
+    width: 'calc(var(--ui-spacing) * 4)',
   },
   3: {
-    height: 'calc(var(--spacing) * 5)',
-    width: 'calc(var(--spacing) * 5)',
+    height: 'calc(var(--ui-spacing) * 5)',
+    width: 'calc(var(--ui-spacing) * 5)',
   },
   4: {
-    height: 'calc(var(--spacing) * 6)',
-    width: 'calc(var(--spacing) * 6)',
+    height: 'calc(var(--ui-spacing) * 6)',
+    width: 'calc(var(--ui-spacing) * 6)',
   },
 })

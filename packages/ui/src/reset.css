@@ -1,0 +1,119 @@
+/* the browser resets the components are written against. tailwind's preflight
+   already provides every one of these, so with tailwind this file is not
+   needed. without tailwind, import it BEFORE the library's styles:
+
+     @import "@repo/ui/reset.css";
+     @import "@repo/ui/theme.css";
+     @import "@repo/ui/styles.css";
+
+   it is global, like any reset: it applies to the page's own elements too.
+   the rules sit in a cascade layer so the library's styles, which are layered
+   as well, and any style of the page's own, win over them. that only holds
+   when this file comes first, as layers take their order from where they
+   first appear.
+
+   adapted from tailwind's preflight (MIT), cut down to what the library
+   relies on */
+@layer base {
+  /* sizes include padding and border; no default margins or padding; a
+     border needs only a width to show */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0 solid;
+  }
+
+  /* headings take the size and weight of the text around them */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  /* links look like the text around them until a component styles them */
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  /* a kbd is monospace, at the size of the text around it */
+  code,
+  kbd,
+  samp,
+  pre {
+    /* biome-ignore-start lint/suspicious/useBaseline: the system monospace font, with fallbacks after it */
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    /* biome-ignore-end lint/suspicious/useBaseline: the system monospace font, with fallbacks after it */
+    font-size: 1em;
+  }
+
+  table {
+    text-indent: 0;
+    border-collapse: collapse;
+    border-color: inherit;
+  }
+
+  ol,
+  ul,
+  menu {
+    list-style: none;
+  }
+
+  /* icons and images are blocks, so they don't sit on the text baseline */
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: block;
+    vertical-align: middle;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* form controls take the font and colour around them, with no fill or
+     corners of their own */
+  button,
+  input,
+  select,
+  optgroup,
+  textarea,
+  ::file-selector-button {
+    font: inherit;
+    font-variation-settings: inherit;
+    font-feature-settings: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  ::placeholder {
+    opacity: 1;
+  }
+
+  button,
+  input:where([type="button"], [type="reset"], [type="submit"]),
+  ::file-selector-button {
+    appearance: button;
+  }
+}

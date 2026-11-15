@@ -90,31 +90,31 @@ const styles = stylex.create({
   arrow: {
     backgroundColor: 'var(--gray-12)',
     bottom: {
-      ':is([data-side="top"])': 'calc(var(--spacing) * -1)',
+      ':is([data-side="top"])': 'calc(var(--ui-spacing) * -1)',
     },
-    height: 'calc(var(--spacing) * 2)',
+    height: 'calc(var(--ui-spacing) * 2)',
     left: {
-      ':is([data-side="right"])': 'calc(var(--spacing) * -1)',
+      ':is([data-side="right"])': 'calc(var(--ui-spacing) * -1)',
     },
     right: {
-      ':is([data-side="left"])': 'calc(var(--spacing) * -1)',
+      ':is([data-side="left"])': 'calc(var(--ui-spacing) * -1)',
     },
     top: {
-      ':is([data-side="bottom"])': 'calc(var(--spacing) * -1)',
+      ':is([data-side="bottom"])': 'calc(var(--ui-spacing) * -1)',
     },
     transform: 'rotate(45deg)',
-    width: 'calc(var(--spacing) * 2)',
+    width: 'calc(var(--ui-spacing) * 2)',
   },
   content: {
     backgroundColor: 'var(--gray-12)',
-    borderRadius: 'var(--radius-md)',
+    borderRadius: 'var(--ui-radius-md)',
     color: 'var(--gray-1)',
     cursor: 'default',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
-    maxWidth: 'calc(var(--spacing) * 96)',
-    paddingBlock: 'var(--spacing)',
-    paddingInline: 'calc(var(--spacing) * 2)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
+    maxWidth: 'calc(var(--ui-spacing) * 96)',
+    paddingBlock: 'var(--ui-spacing)',
+    paddingInline: 'calc(var(--ui-spacing) * 2)',
     // as in radix, only the delayed open animates: closing, and opening
     // straight after another tooltip, are instant
     transitionDuration: {

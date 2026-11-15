@@ -31,7 +31,7 @@ export const panel = stylex.create({
     backgroundColor: 'var(--panel-background)',
     boxShadow: 'var(--panel-shadow)',
     color: 'var(--gray-12)',
-    maxWidth: 'calc(var(--spacing) * 128)',
+    maxWidth: 'calc(var(--ui-spacing) * 128)',
     minWidth: 'var(--anchor-width)',
     outline: 'none',
     overflow: 'auto',
@@ -46,10 +46,10 @@ export const panel = stylex.create({
     },
     transform: {
       [other]: 'scale(0.97)',
-      [bottom]: 'translateY(calc(var(--spacing) * -1)) scale(0.97)',
-      [left]: 'translateX(var(--spacing)) scale(0.97)',
-      [right]: 'translateX(calc(var(--spacing) * -1)) scale(0.97)',
-      [top]: 'translateY(var(--spacing)) scale(0.97)',
+      [bottom]: 'translateY(calc(var(--ui-spacing) * -1)) scale(0.97)',
+      [left]: 'translateX(var(--ui-spacing)) scale(0.97)',
+      [right]: 'translateX(calc(var(--ui-spacing) * -1)) scale(0.97)',
+      [top]: 'translateY(var(--ui-spacing)) scale(0.97)',
       default: null,
     },
     transformOrigin: 'var(--transform-origin)',
@@ -74,19 +74,19 @@ export const panel = stylex.create({
 // PreviewCard only goes up to 3
 export const panelSizes = stylex.create({
   1: {
-    '--panel-padding': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-xl)',
+    '--panel-padding': 'calc(var(--ui-spacing) * 3)',
+    borderRadius: 'var(--ui-radius-xl)',
   },
   2: {
-    '--panel-padding': 'calc(var(--spacing) * 4)',
-    borderRadius: 'var(--radius-xl)',
+    '--panel-padding': 'calc(var(--ui-spacing) * 4)',
+    borderRadius: 'var(--ui-radius-xl)',
   },
   3: {
-    '--panel-padding': 'calc(var(--spacing) * 6)',
-    borderRadius: 'var(--radius-2xl)',
+    '--panel-padding': 'calc(var(--ui-spacing) * 6)',
+    borderRadius: 'var(--ui-radius-2xl)',
   },
   4: {
-    '--panel-padding': 'calc(var(--spacing) * 8)',
-    borderRadius: 'var(--radius-2xl)',
+    '--panel-padding': 'calc(var(--ui-spacing) * 8)',
+    borderRadius: 'var(--ui-radius-2xl)',
   },
 })

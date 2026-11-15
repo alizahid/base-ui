@@ -110,7 +110,7 @@ const styles = stylex.create({
   // minimum is for a narrow button trigger
   content: {
     maxWidth: 'var(--available-width)',
-    minWidth: 'calc(var(--spacing) * 48)',
+    minWidth: 'calc(var(--ui-spacing) * 48)',
     width: 'var(--anchor-width)',
   },
 })

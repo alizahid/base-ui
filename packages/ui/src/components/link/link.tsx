@@ -56,7 +56,7 @@ const styles = stylex.create({
     '--link-color': 'var(--accent-12)',
   },
   main: {
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: 'var(--ui-radius-sm)',
     color: 'var(--link-color, var(--accent-a11))',
     cursor: {
       ':is(:disabled, [data-disabled])': 'default',

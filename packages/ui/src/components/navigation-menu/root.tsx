@@ -97,7 +97,7 @@ const styles = stylex.create({
   },
   popup: {
     backgroundColor: 'var(--panel-background)',
-    borderRadius: 'var(--radius-xl)',
+    borderRadius: 'var(--ui-radius-xl)',
     boxShadow: 'var(--panel-shadow)',
     color: 'var(--gray-12)',
     height: 'var(--popup-height)',
@@ -129,7 +129,7 @@ const styles = stylex.create({
     // popup closing
     '::before': {
       content: '""',
-      inset: 'calc(var(--spacing) * -2.5)',
+      inset: 'calc(var(--ui-spacing) * -2.5)',
       position: 'absolute',
     },
     height: 'var(--positioner-height)',

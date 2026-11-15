@@ -57,18 +57,18 @@ const styles = stylex.create({
     // links in here are roomier rows
     '--navigation-item-justify': 'flex-start',
     '--navigation-item-padding':
-      'calc(var(--spacing) * 2) calc(var(--spacing) * 3)',
+      'calc(var(--ui-spacing) * 2) calc(var(--ui-spacing) * 3)',
     '--navigation-item-width': '100%',
     height: '100%',
     maxHeight: 'var(--available-height)',
     maxWidth:
-      'min(calc(var(--spacing) * 128), calc(100vw - var(--spacing) * 5))',
+      'min(calc(var(--ui-spacing) * 128), calc(100vw - var(--ui-spacing) * 5))',
     opacity: {
       ':is([data-starting-style], [data-ending-style])': 0,
       default: null,
     },
     overflowY: 'auto',
-    padding: 'calc(var(--spacing) * 2)',
+    padding: 'calc(var(--ui-spacing) * 2)',
     transform: {
       [endDown]: 'translateY(-50%)',
       [endLeft]: 'translateX(50%)',

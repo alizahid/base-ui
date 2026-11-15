@@ -134,14 +134,14 @@ const styles = stylex.create({
       ':is([data-highlighted])': 'var(--combobox-chip-highlight)',
       default: 'var(--combobox-chip)',
     },
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: 'var(--ui-radius-sm)',
     cursor: 'default',
     display: 'inline-flex',
-    gap: 'calc(var(--spacing) * 0.5)',
+    gap: 'calc(var(--ui-spacing) * 0.5)',
     height: 'var(--combobox-chip-height)',
     outline: 'none',
-    paddingInlineEnd: 'var(--spacing)',
-    paddingInlineStart: 'calc(var(--spacing) * 1.5)',
+    paddingInlineEnd: 'var(--ui-spacing)',
+    paddingInlineStart: 'calc(var(--ui-spacing) * 1.5)',
     whiteSpace: 'nowrap',
   },
   // chips and the input share one wrapping row. the space around a chip is
@@ -165,15 +165,15 @@ const styles = stylex.create({
   },
   // a step smaller than the line, so it reads as part of the chip
   cross: {
-    height: 'calc(1lh - var(--spacing) * 1.5)',
-    width: 'calc(1lh - var(--spacing) * 1.5)',
+    height: 'calc(1lh - var(--ui-spacing) * 1.5)',
+    width: 'calc(1lh - var(--ui-spacing) * 1.5)',
   },
   // the input takes whatever is left of the row, and wraps when that is tight
   grow: {
-    flexBasis: 'calc(var(--spacing) * 16)',
+    flexBasis: 'calc(var(--ui-spacing) * 16)',
     flexGrow: 1,
     height: 'var(--combobox-chip-height)',
-    minWidth: 'calc(var(--spacing) * 16)',
+    minWidth: 'calc(var(--ui-spacing) * 16)',
     width: 'auto',
   },
   remove: {
@@ -205,12 +205,12 @@ const chipVariants = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--combobox-chip-height': 'calc(var(--spacing) * 5)',
+    '--combobox-chip-height': 'calc(var(--ui-spacing) * 5)',
   },
   2: {
-    '--combobox-chip-height': 'calc(var(--spacing) * 6)',
+    '--combobox-chip-height': 'calc(var(--ui-spacing) * 6)',
   },
   3: {
-    '--combobox-chip-height': 'calc(var(--spacing) * 7)',
+    '--combobox-chip-height': 'calc(var(--ui-spacing) * 7)',
   },
 })

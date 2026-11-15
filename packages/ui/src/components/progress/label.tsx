@@ -29,6 +29,6 @@ const styles = stylex.create({
     color: 'var(--gray-12)',
     fontWeight: '500',
     gridRow: 1,
-    paddingBlockEnd: 'calc(var(--spacing) * 2)',
+    paddingBlockEnd: 'calc(var(--ui-spacing) * 2)',
   },
 })

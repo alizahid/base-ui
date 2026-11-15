@@ -81,6 +81,6 @@ const styles = stylex.create({
   // width before and after something is typed
   slot: {
     boxSizing: 'content-box',
-    minWidth: 'calc(1lh - var(--spacing))',
+    minWidth: 'calc(1lh - var(--ui-spacing))',
   },
 })

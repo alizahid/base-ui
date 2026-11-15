@@ -43,7 +43,7 @@ export const control = stylex.create({
     },
     display: 'inline-flex',
     flexShrink: 0,
-    height: 'var(--control-size, calc(var(--spacing) * 4))',
+    height: 'var(--control-size, calc(var(--ui-spacing) * 4))',
     justifyContent: 'center',
     // in a group item this centres the control on the first line of text
     marginBlock: 'var(--control-offset, 0px)',
@@ -54,7 +54,7 @@ export const control = stylex.create({
     outlineOffset: 2,
     position: 'relative',
     verticalAlign: 'top',
-    width: 'var(--control-size, calc(var(--spacing) * 4))',
+    width: 'var(--control-size, calc(var(--ui-spacing) * 4))',
   },
 })
 
@@ -94,22 +94,22 @@ export const controlContrast = stylex.create({
 // the font size and line height are for the label text in a group item
 export const controlSizes = stylex.create({
   1: {
-    '--control-font-size': 'var(--text-xs)',
-    '--control-line-height': 'var(--text-xs--line-height)',
-    '--control-radius': 'var(--radius-xs)',
-    '--control-size': 'calc(var(--spacing) * 3.5)',
+    '--control-font-size': 'var(--ui-text-xs)',
+    '--control-line-height': 'var(--ui-text-xs--line-height)',
+    '--control-radius': 'var(--ui-radius-xs)',
+    '--control-size': 'calc(var(--ui-spacing) * 3.5)',
   },
   2: {
-    '--control-font-size': 'var(--text-sm)',
-    '--control-line-height': 'var(--text-sm--line-height)',
-    '--control-radius': 'var(--radius-sm)',
-    '--control-size': 'calc(var(--spacing) * 4)',
+    '--control-font-size': 'var(--ui-text-sm)',
+    '--control-line-height': 'var(--ui-text-sm--line-height)',
+    '--control-radius': 'var(--ui-radius-sm)',
+    '--control-size': 'calc(var(--ui-spacing) * 4)',
   },
   3: {
-    '--control-font-size': 'var(--text-base)',
-    '--control-line-height': 'var(--text-base--line-height)',
-    '--control-radius': 'var(--radius-sm)',
-    '--control-size': 'calc(var(--spacing) * 5)',
+    '--control-font-size': 'var(--ui-text-base)',
+    '--control-line-height': 'var(--ui-text-base--line-height)',
+    '--control-radius': 'var(--ui-radius-sm)',
+    '--control-size': 'calc(var(--ui-spacing) * 5)',
   },
 })
 
@@ -120,22 +120,22 @@ export const group = stylex.create({
   // line height
   item: {
     '--control-offset':
-      'calc((1lh - var(--control-size, calc(var(--spacing) * 4))) / 2)',
+      'calc((1lh - var(--control-size, calc(var(--ui-spacing) * 4))) / 2)',
     alignItems: 'flex-start',
     cursor: {
       ':has([data-disabled])': 'not-allowed',
       default: 'pointer',
     },
     display: 'flex',
-    fontSize: 'var(--control-font-size, var(--text-sm))',
-    gap: 'calc(var(--spacing) * 2)',
-    lineHeight: 'var(--control-line-height, var(--text-sm--line-height))',
+    fontSize: 'var(--control-font-size, var(--ui-text-sm))',
+    gap: 'calc(var(--ui-spacing) * 2)',
+    lineHeight: 'var(--control-line-height, var(--ui-text-sm--line-height))',
     width: 'fit-content',
   },
   main: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--spacing)',
+    gap: 'var(--ui-spacing)',
   },
   text: {
     minWidth: 0,

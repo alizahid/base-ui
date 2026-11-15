@@ -159,12 +159,12 @@ const styles = stylex.create({
       default: null,
     },
     paddingBlockEnd:
-      'calc(var(--spacing) * 6 + env(safe-area-inset-bottom, 0px))',
+      'calc(var(--ui-spacing) * 6 + env(safe-area-inset-bottom, 0px))',
     paddingBlockStart: {
-      [inDown]: 'calc(var(--spacing) * 4)',
-      default: 'calc(var(--spacing) * 6)',
+      [inDown]: 'calc(var(--ui-spacing) * 4)',
+      default: 'calc(var(--ui-spacing) * 6)',
     },
-    paddingInline: 'calc(var(--spacing) * 6)',
+    paddingInline: 'calc(var(--ui-spacing) * 6)',
     transitionDuration: '300ms',
     transitionProperty: {
       [still]: 'none',
@@ -181,13 +181,13 @@ const styles = stylex.create({
       default: 'none',
     },
     flexShrink: 0,
-    height: 'var(--spacing)',
+    height: 'var(--ui-spacing)',
     marginBlockEnd: {
-      [inUp]: 'calc(var(--spacing) * 2)',
+      [inUp]: 'calc(var(--ui-spacing) * 2)',
       default: null,
     },
     marginBlockStart: {
-      [inDown]: 'calc(var(--spacing) * 2)',
+      [inDown]: 'calc(var(--ui-spacing) * 2)',
       default: null,
     },
     marginInline: 'auto',
@@ -205,21 +205,21 @@ const styles = stylex.create({
       [still]: 'none',
       default: 'opacity',
     },
-    width: 'calc(var(--spacing) * 9)',
+    width: 'calc(var(--ui-spacing) * 9)',
   },
   // on small screens the drawer always reaches the edges
   inset: {
     // floating, so there is no edge to stay attached to
     '--drawer-bleed': {
       [large]: '0px',
-      default: 'calc(var(--spacing) * 12)',
+      default: 'calc(var(--ui-spacing) * 12)',
     },
     '--drawer-edge-radius': {
-      [large]: 'var(--radius-2xl)',
+      [large]: 'var(--ui-radius-2xl)',
       default: '0px',
     },
     '--drawer-inset': {
-      [large]: 'calc(var(--spacing) * 2)',
+      [large]: 'calc(var(--ui-spacing) * 2)',
       default: '0px',
     },
   },
@@ -233,19 +233,19 @@ const styles = stylex.create({
     // the corners at the screen's edge are only round when inset; the others
     // of a top or bottom drawer always are
     borderEndEndRadius: {
-      [up]: 'var(--radius-2xl)',
+      [up]: 'var(--ui-radius-2xl)',
       default: 'var(--drawer-edge-radius)',
     },
     borderEndStartRadius: {
-      [up]: 'var(--radius-2xl)',
+      [up]: 'var(--ui-radius-2xl)',
       default: 'var(--drawer-edge-radius)',
     },
     borderStartEndRadius: {
-      [down]: 'var(--radius-2xl)',
+      [down]: 'var(--ui-radius-2xl)',
       default: 'var(--drawer-edge-radius)',
     },
     borderStartStartRadius: {
-      [down]: 'var(--radius-2xl)',
+      [down]: 'var(--ui-radius-2xl)',
       default: 'var(--drawer-edge-radius)',
     },
     // a slab of the panel past the screen's edge, so dragging the drawer the
@@ -341,12 +341,12 @@ const styles = stylex.create({
     willChange: 'transform',
   },
   viewport: {
-    '--drawer-bleed': 'calc(var(--spacing) * 12)',
+    '--drawer-bleed': 'calc(var(--ui-spacing) * 12)',
     '--drawer-edge-radius': '0px',
     '--drawer-inset': '0px',
     // how much of a drawer shows behind the one above it
     '--drawer-peek':
-      'clamp(calc(var(--spacing) * 4), 2.5vw, calc(var(--spacing) * 8))',
+      'clamp(calc(var(--ui-spacing) * 4), 2.5vw, calc(var(--ui-spacing) * 8))',
     display: 'flex',
     inset: 0,
     padding: 'var(--drawer-inset)',
@@ -358,25 +358,25 @@ const styles = stylex.create({
 const sizes = stylex.create({
   1: {
     '--drawer-width': {
-      [large]: 'calc(var(--spacing) * 80)',
+      [large]: 'calc(var(--ui-spacing) * 80)',
       default: '100%',
     },
   },
   2: {
     '--drawer-width': {
-      [large]: 'calc(var(--spacing) * 96)',
+      [large]: 'calc(var(--ui-spacing) * 96)',
       default: '100%',
     },
   },
   3: {
     '--drawer-width': {
-      [large]: 'calc(var(--spacing) * 128)',
+      [large]: 'calc(var(--ui-spacing) * 128)',
       default: '100%',
     },
   },
   4: {
     '--drawer-width': {
-      [large]: 'calc(var(--spacing) * 160)',
+      [large]: 'calc(var(--ui-spacing) * 160)',
       default: '100%',
     },
   },

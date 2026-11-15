@@ -109,7 +109,7 @@ const styles = stylex.create({
     color: 'var(--gray-11)',
     cursor: 'default',
     display: 'flex',
-    height: 'calc(var(--spacing) * 5)',
+    height: 'calc(var(--ui-spacing) * 5)',
     justifyContent: 'center',
     width: '100%',
     zIndex: 1,

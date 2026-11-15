@@ -47,15 +47,15 @@ const styles = stylex.create({
       ':is([data-orientation="vertical"])': 'column',
       default: null,
     },
-    gap: 'calc(var(--spacing) * 1)',
+    gap: 'calc(var(--ui-spacing) * 1)',
   },
 })
 
 const variants = stylex.create({
   surface: {
     backgroundColor: 'var(--panel-background)',
-    borderRadius: 'var(--radius-lg)',
+    borderRadius: 'var(--ui-radius-lg)',
     boxShadow: 'inset 0 0 0 1px var(--gray-a6)',
-    padding: 'calc(var(--spacing) * 1)',
+    padding: 'calc(var(--ui-spacing) * 1)',
   },
 })

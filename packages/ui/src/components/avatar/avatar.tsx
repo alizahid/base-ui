@@ -140,39 +140,39 @@ const contrast = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    borderRadius: 'var(--radius-xs)',
-    width: 'calc(var(--spacing) * 6)',
+    borderRadius: 'var(--ui-radius-xs)',
+    width: 'calc(var(--ui-spacing) * 6)',
   },
   2: {
-    borderRadius: 'var(--radius-sm)',
-    width: 'calc(var(--spacing) * 8)',
+    borderRadius: 'var(--ui-radius-sm)',
+    width: 'calc(var(--ui-spacing) * 8)',
   },
   3: {
-    borderRadius: 'var(--radius-md)',
-    width: 'calc(var(--spacing) * 10)',
+    borderRadius: 'var(--ui-radius-md)',
+    width: 'calc(var(--ui-spacing) * 10)',
   },
   4: {
-    borderRadius: 'var(--radius-lg)',
-    width: 'calc(var(--spacing) * 12)',
+    borderRadius: 'var(--ui-radius-lg)',
+    width: 'calc(var(--ui-spacing) * 12)',
   },
   5: {
-    borderRadius: 'var(--radius-xl)',
-    width: 'calc(var(--spacing) * 16)',
+    borderRadius: 'var(--ui-radius-xl)',
+    width: 'calc(var(--ui-spacing) * 16)',
   },
   6: {
-    borderRadius: 'var(--radius-2xl)',
-    width: 'calc(var(--spacing) * 20)',
+    borderRadius: 'var(--ui-radius-2xl)',
+    width: 'calc(var(--ui-spacing) * 20)',
   },
   7: {
-    borderRadius: 'var(--radius-3xl)',
-    width: 'calc(var(--spacing) * 24)',
+    borderRadius: 'var(--ui-radius-3xl)',
+    width: 'calc(var(--ui-spacing) * 24)',
   },
   8: {
-    borderRadius: 'var(--radius-4xl)',
-    width: 'calc(var(--spacing) * 32)',
+    borderRadius: 'var(--ui-radius-4xl)',
+    width: 'calc(var(--ui-spacing) * 32)',
   },
   9: {
     borderRadius: 'calc(infinity * 1px)',
-    width: 'calc(var(--spacing) * 40)',
+    width: 'calc(var(--ui-spacing) * 40)',
   },
 })

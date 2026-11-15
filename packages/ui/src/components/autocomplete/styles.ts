@@ -6,7 +6,7 @@ export const flush = stylex.create({
   // room above every group but the first
   group: {
     marginBlockStart: {
-      ':not(:first-child)': 'calc(var(--spacing) * 2)',
+      ':not(:first-child)': 'calc(var(--ui-spacing) * 2)',
       default: null,
     },
   },

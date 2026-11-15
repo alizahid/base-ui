@@ -4,13 +4,13 @@ import * as stylex from '@stylexjs/stylex'
 // themes' base-dialog.css
 export const dialog = stylex.create({
   description: {
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
   title: {
-    fontSize: 'var(--text-xl)',
+    fontSize: 'var(--ui-text-xl)',
     fontWeight: '700',
-    lineHeight: 'var(--text-xl--line-height)',
-    marginBlockEnd: 'calc(var(--spacing) * 3)',
+    lineHeight: 'var(--ui-text-xl--line-height)',
+    marginBlockEnd: 'calc(var(--ui-spacing) * 3)',
   },
 })

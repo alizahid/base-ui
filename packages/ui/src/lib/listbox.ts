@@ -28,11 +28,11 @@ export const listbox = stylex.create({
   // what a filtered list (Combobox, Autocomplete) shows when nothing matches
   empty: {
     color: 'var(--gray-a10)',
-    padding: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
+    padding: 'calc(var(--listbox-content-padding) + var(--ui-spacing) * 2)',
   },
   // a filtered list: shorter, and no padding once it is empty
   filtered: {
-    maxHeight: 'min(calc(var(--spacing) * 96), var(--available-height))',
+    maxHeight: 'min(calc(var(--ui-spacing) * 96), var(--available-height))',
     overscrollBehavior: 'contain',
     padding: {
       ':is([data-empty])': 0,
@@ -85,7 +85,7 @@ export const listbox = stylex.create({
     // a label that comes straight after an item gets some room above it
     marginBlockStart: {
       ':is(:is([role="option"], [role^="menuitem"]) + *)':
-        'calc(var(--spacing) * 2)',
+        'calc(var(--ui-spacing) * 2)',
     },
     paddingInlineEnd: 'var(--listbox-separator-margin)',
     paddingInlineStart: 'var(--listbox-indicator-width)',
@@ -98,12 +98,12 @@ export const listbox = stylex.create({
     padding: 'var(--listbox-content-padding)',
     position: 'relative',
     // keeps the highlighted item clear of the scroll arrows
-    scrollPaddingBlock: 'calc(var(--spacing) * 6)',
+    scrollPaddingBlock: 'calc(var(--ui-spacing) * 6)',
   },
   separator: {
     backgroundColor: 'var(--gray-a6)',
     height: 1,
-    marginBlock: 'calc(var(--spacing) * 2)',
+    marginBlock: 'calc(var(--ui-spacing) * 2)',
     marginInlineEnd: 'var(--listbox-separator-margin)',
     marginInlineStart: 'var(--listbox-indicator-width)',
   },
@@ -132,36 +132,36 @@ export const listboxVariants = stylex.create({
 // trigger's own padding
 const listboxSizes = stylex.create({
   1: {
-    '--listbox-align-extra': 'calc(var(--spacing) * 5)',
-    '--listbox-content-padding': 'var(--spacing)',
-    '--listbox-indicator-width': 'calc(var(--spacing) * 5)',
-    '--listbox-item-height': 'calc(var(--spacing) * 6)',
-    '--listbox-item-radius': 'var(--radius-sm)',
-    '--listbox-label-font-size': 'var(--text-xs)',
-    '--listbox-label-line-height': 'var(--text-xs--line-height)',
-    '--listbox-separator-margin': 'calc(var(--spacing) * 2)',
-    borderRadius: 'var(--radius-lg)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+    '--listbox-align-extra': 'calc(var(--ui-spacing) * 5)',
+    '--listbox-content-padding': 'var(--ui-spacing)',
+    '--listbox-indicator-width': 'calc(var(--ui-spacing) * 5)',
+    '--listbox-item-height': 'calc(var(--ui-spacing) * 6)',
+    '--listbox-item-radius': 'var(--ui-radius-sm)',
+    '--listbox-label-font-size': 'var(--ui-text-xs)',
+    '--listbox-label-line-height': 'var(--ui-text-xs--line-height)',
+    '--listbox-separator-margin': 'calc(var(--ui-spacing) * 2)',
+    borderRadius: 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--listbox-align-extra': 'calc(var(--spacing) * 7)',
-    '--listbox-content-padding': 'calc(var(--spacing) * 2)',
-    '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
-    '--listbox-item-height': 'calc(var(--spacing) * 8)',
-    '--listbox-item-radius': 'var(--radius-md)',
-    '--listbox-label-font-size': 'var(--text-sm)',
-    '--listbox-label-line-height': 'var(--text-sm--line-height)',
-    '--listbox-separator-margin': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-xl)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--listbox-align-extra': 'calc(var(--ui-spacing) * 7)',
+    '--listbox-content-padding': 'calc(var(--ui-spacing) * 2)',
+    '--listbox-indicator-width': 'calc(var(--ui-spacing) * 6)',
+    '--listbox-item-height': 'calc(var(--ui-spacing) * 8)',
+    '--listbox-item-radius': 'var(--ui-radius-md)',
+    '--listbox-label-font-size': 'var(--ui-text-sm)',
+    '--listbox-label-line-height': 'var(--ui-text-sm--line-height)',
+    '--listbox-separator-margin': 'calc(var(--ui-spacing) * 3)',
+    borderRadius: 'var(--ui-radius-xl)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   // on top of size 2: only the text grows
   3: {
-    '--listbox-align-extra': 'calc(var(--spacing) * 5)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--listbox-align-extra': 'calc(var(--ui-spacing) * 5)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })
 

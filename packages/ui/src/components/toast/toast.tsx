@@ -166,17 +166,17 @@ const styles = stylex.create({
       },
       default: 'color-mix(in oklab, currentColor 15%, transparent)',
     },
-    fontSize: 'var(--text-xs)',
+    fontSize: 'var(--ui-text-xs)',
     fontWeight: '500',
-    paddingInline: 'calc(var(--spacing) * 2)',
+    paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   button: {
     alignItems: 'center',
-    borderRadius: 'var(--radius-sm)',
+    borderRadius: 'var(--ui-radius-sm)',
     cursor: 'pointer',
     display: 'inline-flex',
     flexShrink: 0,
-    height: 'calc(var(--spacing) * 6)',
+    height: 'calc(var(--ui-spacing) * 6)',
     justifyContent: 'center',
     outline: {
       ':focus-visible': '2px solid currentColor',
@@ -193,20 +193,20 @@ const styles = stylex.create({
       },
       default: null,
     },
-    width: 'calc(var(--spacing) * 6)',
+    width: 'calc(var(--ui-spacing) * 6)',
   },
   content: {
     alignItems: 'center',
     display: 'flex',
-    gap: 'calc(var(--spacing) * 3)',
+    gap: 'calc(var(--ui-spacing) * 3)',
     // a toast behind the front one hides its content until the stack opens
     opacity: {
       ':is([data-behind]:not([data-expanded]))': 0,
       default: null,
     },
     overflow: 'hidden',
-    padding: 'calc(var(--spacing) * 3)',
-    paddingInlineStart: 'calc(var(--spacing) * 4)',
+    padding: 'calc(var(--ui-spacing) * 3)',
+    paddingInlineStart: 'calc(var(--ui-spacing) * 4)',
     transitionDuration: '300ms',
     transitionProperty: 'opacity',
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -215,12 +215,12 @@ const styles = stylex.create({
     color: 'var(--toast-muted, var(--gray-a11))',
   },
   main: {
-    '--toast-gap': 'calc(var(--spacing) * 3)',
+    '--toast-gap': 'calc(var(--ui-spacing) * 3)',
     // --toast-dir is 1 for a stack that grows upwards from the bottom, -1 for
     // one that grows downwards from the top
     '--toast-offset':
       'calc((var(--toast-offset-y) + var(--toast-index) * var(--toast-gap)) * var(--toast-dir) * -1 + var(--toast-swipe-movement-y))',
-    '--toast-peek': 'calc(var(--spacing) * 3)',
+    '--toast-peek': 'calc(var(--ui-spacing) * 3)',
     '--toast-scale': 'max(0, 1 - var(--toast-index) * 0.1)',
     '--toast-shrink': 'calc(1 - var(--toast-scale))',
     '--toast-size': 'var(--toast-frontmost-height, var(--toast-height))',
@@ -240,18 +240,18 @@ const styles = stylex.create({
       width: '100%',
     },
     backgroundColor: 'var(--panel-background)',
-    borderRadius: 'var(--radius-lg)',
+    borderRadius: 'var(--ui-radius-lg)',
     bottom: 'var(--toast-bottom)',
     boxShadow: 'var(--panel-shadow)',
     color: 'var(--gray-12)',
     cursor: 'default',
-    fontSize: 'var(--text-sm)',
+    fontSize: 'var(--ui-text-sm)',
     height: {
       ':is([data-expanded])': 'var(--toast-height)',
       default: 'var(--toast-size)',
     },
     insetInlineStart: 0,
-    lineHeight: 'var(--text-sm--line-height)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
     opacity: {
       ':is([data-limited], [data-ending-style])': 0,
       default: null,
@@ -299,7 +299,7 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    gap: 'calc(var(--spacing) * 0.5)',
+    gap: 'calc(var(--ui-spacing) * 0.5)',
     minWidth: 0,
   },
   title: {
@@ -310,7 +310,8 @@ const styles = stylex.create({
   viewport: {
     marginInline: 'auto',
     position: 'fixed',
-    width: 'min(calc(var(--spacing) * 96), calc(100vw - var(--spacing) * 8))',
+    width:
+      'min(calc(var(--ui-spacing) * 96), calc(100vw - var(--ui-spacing) * 8))',
     zIndex: 1,
   },
 })
@@ -322,7 +323,7 @@ const top = {
   '--toast-dir': '-1',
   '--toast-origin': 'top center',
   '--toast-top': '0',
-  top: 'calc(var(--spacing) * 4)',
+  top: 'calc(var(--ui-spacing) * 4)',
 }
 
 const bottom = {
@@ -332,7 +333,7 @@ const bottom = {
   '--toast-dir': '1',
   '--toast-origin': 'bottom center',
   '--toast-top': 'auto',
-  bottom: 'calc(var(--spacing) * 4)',
+  bottom: 'calc(var(--ui-spacing) * 4)',
 }
 
 // where the viewport sits, and which way its stack grows
@@ -343,11 +344,11 @@ const positions = stylex.create({
   },
   'bottom-left': {
     ...bottom,
-    left: 'calc(var(--spacing) * 4)',
+    left: 'calc(var(--ui-spacing) * 4)',
   },
   'bottom-right': {
     ...bottom,
-    right: 'calc(var(--spacing) * 4)',
+    right: 'calc(var(--ui-spacing) * 4)',
   },
   top: {
     ...top,
@@ -355,10 +356,10 @@ const positions = stylex.create({
   },
   'top-left': {
     ...top,
-    left: 'calc(var(--spacing) * 4)',
+    left: 'calc(var(--ui-spacing) * 4)',
   },
   'top-right': {
     ...top,
-    right: 'calc(var(--spacing) * 4)',
+    right: 'calc(var(--ui-spacing) * 4)',
   },
 })

@@ -83,7 +83,7 @@ export const dialog = stylex.create({
     boxShadow: 'var(--dialog-shadow)',
     color: 'var(--gray-12)',
     margin: 'auto',
-    maxWidth: 'calc(var(--spacing) * 144)',
+    maxWidth: 'calc(var(--ui-spacing) * 144)',
     opacity: {
       [hidden]: 0,
       default: null,
@@ -92,8 +92,8 @@ export const dialog = stylex.create({
     overflow: 'auto',
     position: 'relative',
     transform: {
-      ':is([data-ending-style])': 'translateY(var(--spacing)) scale(0.99)',
-      ':is([data-starting-style])': 'translateY(var(--spacing)) scale(0.97)',
+      ':is([data-ending-style])': 'translateY(var(--ui-spacing)) scale(0.99)',
+      ':is([data-starting-style])': 'translateY(var(--ui-spacing)) scale(0.97)',
       default: null,
     },
     transitionDuration: {
@@ -111,9 +111,9 @@ export const dialog = stylex.create({
   padding: {
     flexGrow: 1,
     margin: 'auto',
-    paddingBlockEnd: 'max(calc(var(--spacing) * 8), 6vh)',
-    paddingBlockStart: 'calc(var(--spacing) * 8)',
-    paddingInline: 'calc(var(--spacing) * 4)',
+    paddingBlockEnd: 'max(calc(var(--ui-spacing) * 8), 6vh)',
+    paddingBlockStart: 'calc(var(--ui-spacing) * 8)',
+    paddingInline: 'calc(var(--ui-spacing) * 4)',
   },
   start: {
     marginBlockStart: 0,
@@ -128,19 +128,19 @@ export const dialog = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    borderRadius: 'var(--radius-xl)',
-    padding: 'calc(var(--spacing) * 3)',
+    borderRadius: 'var(--ui-radius-xl)',
+    padding: 'calc(var(--ui-spacing) * 3)',
   },
   2: {
-    borderRadius: 'var(--radius-xl)',
-    padding: 'calc(var(--spacing) * 4)',
+    borderRadius: 'var(--ui-radius-xl)',
+    padding: 'calc(var(--ui-spacing) * 4)',
   },
   3: {
-    borderRadius: 'var(--radius-2xl)',
-    padding: 'calc(var(--spacing) * 6)',
+    borderRadius: 'var(--ui-radius-2xl)',
+    padding: 'calc(var(--ui-spacing) * 6)',
   },
   4: {
-    borderRadius: 'var(--radius-2xl)',
-    padding: 'calc(var(--spacing) * 8)',
+    borderRadius: 'var(--ui-radius-2xl)',
+    padding: 'calc(var(--ui-spacing) * 8)',
   },
 })

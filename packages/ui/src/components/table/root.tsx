@@ -87,24 +87,25 @@ const variants = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--table-cell-height': 'calc(var(--spacing) * 9)',
-    '--table-cell-padding': 'calc(var(--spacing) * 2)',
-    '--table-radius': 'var(--radius-md)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--table-cell-height': 'calc(var(--ui-spacing) * 9)',
+    '--table-cell-padding': 'calc(var(--ui-spacing) * 2)',
+    '--table-radius': 'var(--ui-radius-md)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   2: {
-    '--table-cell-height': 'calc(var(--spacing) * 11)',
-    '--table-cell-padding': 'calc(var(--spacing) * 3)',
-    '--table-radius': 'var(--radius-lg)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--table-cell-height': 'calc(var(--ui-spacing) * 11)',
+    '--table-cell-padding': 'calc(var(--ui-spacing) * 3)',
+    '--table-radius': 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--table-cell-height': 'calc(var(--spacing) * 12)',
-    '--table-cell-padding': 'calc(var(--spacing) * 3) calc(var(--spacing) * 4)',
-    '--table-radius': 'var(--radius-lg)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--table-cell-height': 'calc(var(--ui-spacing) * 12)',
+    '--table-cell-padding':
+      'calc(var(--ui-spacing) * 3) calc(var(--ui-spacing) * 4)',
+    '--table-radius': 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })

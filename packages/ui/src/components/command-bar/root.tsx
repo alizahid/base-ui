@@ -205,7 +205,7 @@ export function Root({
 const styles = stylex.create({
   empty: {
     color: 'var(--gray-a10)',
-    padding: 'calc(var(--spacing) * 6)',
+    padding: 'calc(var(--ui-spacing) * 6)',
     textAlign: 'center',
   },
   // a little air between the rows, so the highlight doesn't touch its
@@ -213,7 +213,7 @@ const styles = stylex.create({
   group: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'calc(var(--spacing) * 0.5)',
+    gap: 'calc(var(--ui-spacing) * 0.5)',
   },
   input: {
     '::placeholder': {
@@ -222,8 +222,8 @@ const styles = stylex.create({
     // divides it from the list
     boxShadow: 'inset 0 -1px var(--gray-a6)',
     flexShrink: 0,
-    fontSize: 'var(--text-base)',
-    height: 'calc(var(--spacing) * 12)',
+    fontSize: 'var(--ui-text-base)',
+    height: 'calc(var(--ui-spacing) * 12)',
     outline: 'none',
     paddingInline:
       'calc(var(--listbox-content-padding) + var(--listbox-separator-margin))',
@@ -237,11 +237,11 @@ const styles = stylex.create({
       default: 'inherit',
     },
     cursor: 'pointer',
-    gap: 'calc(var(--spacing) * 2)',
+    gap: 'calc(var(--ui-spacing) * 2)',
     // for a row rendered as a link
   },
   list: {
-    maxHeight: 'min(calc(var(--spacing) * 96), 60vh)',
+    maxHeight: 'min(calc(var(--ui-spacing) * 96), 60vh)',
     overscrollBehavior: 'contain',
     padding: {
       ':is([data-empty])': 0,
@@ -252,7 +252,7 @@ const styles = stylex.create({
   popup: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: 'calc(var(--spacing) * 144)',
+    maxWidth: 'calc(var(--ui-spacing) * 144)',
     overflow: 'hidden',
     padding: 0,
   },

@@ -21,7 +21,7 @@ export const navigation = stylex.create({
       [open]: 'var(--navigation-hover, var(--gray-a3))',
       default: null,
     },
-    borderRadius: 'var(--radius-md)',
+    borderRadius: 'var(--ui-radius-md)',
     color: {
       [active]: 'var(--accent-a11)',
       default: 'var(--gray-12)',
@@ -29,10 +29,10 @@ export const navigation = stylex.create({
     cursor: 'pointer',
     display: 'flex',
     flexGrow: 1,
-    fontSize: 'var(--text-sm)',
-    gap: 'var(--spacing)',
+    fontSize: 'var(--ui-text-sm)',
+    gap: 'var(--ui-spacing)',
     justifyContent: 'var(--navigation-item-justify, center)',
-    lineHeight: 'var(--text-sm--line-height)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
     // inside the item, as the popup clips whatever leaves it
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
@@ -42,7 +42,7 @@ export const navigation = stylex.create({
     // the height comes from the padding around one line of text, not a
     // min-height: safari doesn't center inside a stretched one
     padding:
-      'var(--navigation-item-padding, calc(var(--spacing) * 1.5) calc(var(--spacing) * 3))',
+      'var(--navigation-item-padding, calc(var(--ui-spacing) * 1.5) calc(var(--ui-spacing) * 3))',
     textAlign: 'start',
     userSelect: 'none',
     width: 'var(--navigation-item-width, auto)',

@@ -223,34 +223,34 @@ export const inputVariants = stylex.create({
 
 export const inputSizes = stylex.create({
   1: {
-    '--text-field-height': 'calc(var(--spacing) * 6)',
+    '--text-field-height': 'calc(var(--ui-spacing) * 6)',
     '--text-field-padding':
-      'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
-    '--text-field-slot-padding': 'var(--spacing)',
-    borderRadius: 'var(--radius-sm)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+      'calc(var(--ui-spacing) * 1.5 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 2)',
+    '--text-field-slot-padding': 'var(--ui-spacing)',
+    borderRadius: 'var(--ui-radius-sm)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--text-field-height': 'calc(var(--spacing) * 8)',
+    '--text-field-height': 'calc(var(--ui-spacing) * 8)',
     '--text-field-padding':
-      'calc(var(--spacing) * 2 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
-    '--text-field-slot-padding': 'calc(var(--spacing) * 2)',
-    borderRadius: 'var(--radius-md)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+      'calc(var(--ui-spacing) * 2 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 2)',
+    '--text-field-slot-padding': 'calc(var(--ui-spacing) * 2)',
+    borderRadius: 'var(--ui-radius-md)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--text-field-height': 'calc(var(--spacing) * 10)',
+    '--text-field-height': 'calc(var(--ui-spacing) * 10)',
     '--text-field-padding':
-      'calc(var(--spacing) * 3 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 3)',
-    '--text-field-slot-padding': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-lg)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+      'calc(var(--ui-spacing) * 3 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 3)',
+    '--text-field-slot-padding': 'calc(var(--ui-spacing) * 3)',
+    borderRadius: 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })
 
@@ -313,38 +313,38 @@ export const textArea = stylex.create({
 export const textAreaSizes = stylex.create({
   1: {
     '--text-area-padding-y':
-      'calc(var(--spacing) - var(--text-field-border-width))',
+      'calc(var(--ui-spacing) - var(--text-field-border-width))',
     '--text-field-padding':
-      'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
-    '--text-field-slot-padding': 'var(--spacing)',
-    borderRadius: 'var(--radius-sm)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
-    minHeight: 'calc(var(--spacing) * 10)',
+      'calc(var(--ui-spacing) * 1.5 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 2)',
+    '--text-field-slot-padding': 'var(--ui-spacing)',
+    borderRadius: 'var(--ui-radius-sm)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
+    minHeight: 'calc(var(--ui-spacing) * 10)',
   },
   2: {
     '--text-area-padding-y':
-      'calc(var(--spacing) * 1.5 - var(--text-field-border-width))',
+      'calc(var(--ui-spacing) * 1.5 - var(--text-field-border-width))',
     '--text-field-padding':
-      'calc(var(--spacing) * 2 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 2)',
-    '--text-field-slot-padding': 'calc(var(--spacing) * 2)',
-    borderRadius: 'var(--radius-md)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
-    minHeight: 'calc(var(--spacing) * 16)',
+      'calc(var(--ui-spacing) * 2 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 2)',
+    '--text-field-slot-padding': 'calc(var(--ui-spacing) * 2)',
+    borderRadius: 'var(--ui-radius-md)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
+    minHeight: 'calc(var(--ui-spacing) * 16)',
   },
   3: {
     '--text-area-padding-y':
-      'calc(var(--spacing) * 2 - var(--text-field-border-width))',
+      'calc(var(--ui-spacing) * 2 - var(--text-field-border-width))',
     '--text-field-padding':
-      'calc(var(--spacing) * 3 - var(--text-field-border-width))',
-    '--text-field-slot-gap': 'calc(var(--spacing) * 3)',
-    '--text-field-slot-padding': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-lg)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
-    minHeight: 'calc(var(--spacing) * 20)',
+      'calc(var(--ui-spacing) * 3 - var(--text-field-border-width))',
+    '--text-field-slot-gap': 'calc(var(--ui-spacing) * 3)',
+    '--text-field-slot-padding': 'calc(var(--ui-spacing) * 3)',
+    borderRadius: 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
+    minHeight: 'calc(var(--ui-spacing) * 20)',
   },
 })

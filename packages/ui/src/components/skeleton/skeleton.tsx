@@ -76,7 +76,7 @@ const styles = stylex.create({
   // the span form, around text or empty. it has its own corners, where a
   // skeleton on an element keeps that element's
   inline: {
-    borderRadius: 'var(--radius-xs)',
+    borderRadius: 'var(--ui-radius-xs)',
   },
   main: {
     animationDirection: 'alternate-reverse',
@@ -95,7 +95,7 @@ const styles = stylex.create({
       ':empty': 'block',
     },
     height: {
-      ':empty': 'calc(var(--spacing) * 3)',
+      ':empty': 'calc(var(--ui-spacing) * 3)',
     },
     outline: 'none !important',
     pointerEvents: 'none',

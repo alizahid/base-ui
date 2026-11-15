@@ -59,13 +59,13 @@ const styles = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--separator-size': 'calc(var(--spacing) * 4)',
+    '--separator-size': 'calc(var(--ui-spacing) * 4)',
   },
   2: {
-    '--separator-size': 'calc(var(--spacing) * 8)',
+    '--separator-size': 'calc(var(--ui-spacing) * 8)',
   },
   3: {
-    '--separator-size': 'calc(var(--spacing) * 16)',
+    '--separator-size': 'calc(var(--ui-spacing) * 16)',
   },
   full: {
     '--separator-size': '100%',

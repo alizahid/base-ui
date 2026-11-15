@@ -32,12 +32,12 @@ export const tabs = stylex.create({
     // the focus ring. a tab has no inline padding, so the ring is drawn on a
     // box that reaches into the gap on either side, and the text gets room
     '::before': {
-      borderRadius: 'var(--radius-md)',
+      borderRadius: 'var(--ui-radius-md)',
       content: {
         ':is(:focus-visible)': '""',
         default: 'none',
       },
-      inset: '0 calc(var(--spacing) * -2)',
+      inset: '0 calc(var(--ui-spacing) * -2)',
       outline: '2px solid var(--focus-8)',
       outlineOffset: -2,
       pointerEvents: 'none',
@@ -79,17 +79,17 @@ export const tabs = stylex.create({
 
 export const tabSizes = stylex.create({
   1: {
-    '--tabs-gap': 'calc(var(--spacing) * 4)',
-    '--tabs-padding': 'calc(var(--spacing) * 2)',
-    '--tabs-tab-gap': 'var(--spacing)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+    '--tabs-gap': 'calc(var(--ui-spacing) * 4)',
+    '--tabs-padding': 'calc(var(--ui-spacing) * 2)',
+    '--tabs-tab-gap': 'var(--ui-spacing)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--tabs-gap': 'calc(var(--spacing) * 6)',
-    '--tabs-padding': 'calc(var(--spacing) * 3)',
-    '--tabs-tab-gap': 'calc(var(--spacing) * 1.5)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--tabs-gap': 'calc(var(--ui-spacing) * 6)',
+    '--tabs-padding': 'calc(var(--ui-spacing) * 3)',
+    '--tabs-tab-gap': 'calc(var(--ui-spacing) * 1.5)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
 })

@@ -106,23 +106,23 @@ const variants = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--card-padding': 'calc(var(--spacing) * 3)',
-    '--card-radius': 'var(--radius-lg)',
+    '--card-padding': 'calc(var(--ui-spacing) * 3)',
+    '--card-radius': 'var(--ui-radius-lg)',
   },
   2: {
-    '--card-padding': 'calc(var(--spacing) * 4)',
-    '--card-radius': 'var(--radius-lg)',
+    '--card-padding': 'calc(var(--ui-spacing) * 4)',
+    '--card-radius': 'var(--ui-radius-lg)',
   },
   3: {
-    '--card-padding': 'calc(var(--spacing) * 6)',
-    '--card-radius': 'var(--radius-xl)',
+    '--card-padding': 'calc(var(--ui-spacing) * 6)',
+    '--card-radius': 'var(--ui-radius-xl)',
   },
   4: {
-    '--card-padding': 'calc(var(--spacing) * 8)',
-    '--card-radius': 'var(--radius-xl)',
+    '--card-padding': 'calc(var(--ui-spacing) * 8)',
+    '--card-radius': 'var(--ui-radius-xl)',
   },
   5: {
-    '--card-padding': 'calc(var(--spacing) * 12)',
-    '--card-radius': 'var(--radius-2xl)',
+    '--card-padding': 'calc(var(--ui-spacing) * 12)',
+    '--card-radius': 'var(--ui-radius-2xl)',
   },
 })

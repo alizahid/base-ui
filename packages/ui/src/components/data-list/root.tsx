@@ -46,14 +46,14 @@ const orientations = stylex.create({
     '--data-list-item-align': 'baseline',
     '--data-list-item-display': 'grid',
     '--data-list-item-gap': 'var(--data-list-gap)',
-    '--data-list-label-min-width': 'calc(var(--spacing) * 32)',
+    '--data-list-label-min-width': 'calc(var(--ui-spacing) * 32)',
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
   },
   vertical: {
     '--data-list-item-align': 'stretch',
     '--data-list-item-display': 'flex',
-    '--data-list-item-gap': 'var(--spacing)',
+    '--data-list-item-gap': 'var(--ui-spacing)',
     '--data-list-label-min-width': '0px',
     display: 'flex',
     flexDirection: 'column',
@@ -62,18 +62,18 @@ const orientations = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--data-list-gap': 'calc(var(--spacing) * 3)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+    '--data-list-gap': 'calc(var(--ui-spacing) * 3)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--data-list-gap': 'calc(var(--spacing) * 4)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--data-list-gap': 'calc(var(--ui-spacing) * 4)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--data-list-gap': 'calc(var(--spacing) * 5)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--data-list-gap': 'calc(var(--ui-spacing) * 5)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })

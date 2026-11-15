@@ -89,7 +89,7 @@ const styles = stylex.create({
   // item, hence `+ input + *` for "the next item"
   separator: {
     backgroundColor: 'var(--gray-a4)',
-    marginBlock: 'var(--spacing)',
+    marginBlock: 'var(--ui-spacing)',
     marginInlineStart: -1,
     opacity: {
       ':is(:first-of-type > *, :is([data-checked], :focus-visible) > *, :is([data-checked], :focus-visible) + input + * > *)': 0,

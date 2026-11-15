@@ -96,7 +96,7 @@ const styles = stylex.create({
     },
     display: 'flex',
     fontWeight: '500',
-    gap: 'calc(var(--spacing) * 4)',
+    gap: 'calc(var(--ui-spacing) * 4)',
     justifyContent: 'space-between',
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',

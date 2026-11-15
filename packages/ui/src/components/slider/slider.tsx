@@ -185,12 +185,12 @@ const contrast = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--slider-size': 'calc(var(--spacing) * 4)',
+    '--slider-size': 'calc(var(--ui-spacing) * 4)',
   },
   2: {
-    '--slider-size': 'calc(var(--spacing) * 5)',
+    '--slider-size': 'calc(var(--ui-spacing) * 5)',
   },
   3: {
-    '--slider-size': 'calc(var(--spacing) * 6)',
+    '--slider-size': 'calc(var(--ui-spacing) * 6)',
   },
 })

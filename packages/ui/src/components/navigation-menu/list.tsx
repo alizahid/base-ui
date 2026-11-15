@@ -30,7 +30,7 @@ const styles = stylex.create({
   main: {
     display: 'flex',
     flexDirection: 'var(--navigation-direction, row)',
-    gap: 'calc(var(--spacing) * 2)',
+    gap: 'calc(var(--ui-spacing) * 2)',
     position: 'relative',
   },
 })

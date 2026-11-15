@@ -35,6 +35,6 @@ const styles = stylex.create({
       ':is([data-orientation="vertical"])': 'column',
       default: null,
     },
-    gap: 'calc(var(--spacing) * 1)',
+    gap: 'calc(var(--ui-spacing) * 1)',
   },
 })

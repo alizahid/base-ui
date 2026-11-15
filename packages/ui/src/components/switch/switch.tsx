@@ -161,15 +161,15 @@ const contrast = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--switch-height': 'calc(var(--spacing) * 4)',
-    '--switch-width': 'calc(var(--spacing) * 7)',
+    '--switch-height': 'calc(var(--ui-spacing) * 4)',
+    '--switch-width': 'calc(var(--ui-spacing) * 7)',
   },
   2: {
-    '--switch-height': 'calc(var(--spacing) * 5)',
-    '--switch-width': 'calc(var(--spacing) * 9)',
+    '--switch-height': 'calc(var(--ui-spacing) * 5)',
+    '--switch-width': 'calc(var(--ui-spacing) * 9)',
   },
   3: {
-    '--switch-height': 'calc(var(--spacing) * 6)',
-    '--switch-width': 'calc(var(--spacing) * 10)',
+    '--switch-height': 'calc(var(--ui-spacing) * 6)',
+    '--switch-width': 'calc(var(--ui-spacing) * 10)',
   },
 })

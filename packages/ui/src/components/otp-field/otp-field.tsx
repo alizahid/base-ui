@@ -106,27 +106,27 @@ const styles = stylex.create({
   main: {
     display: 'flex',
     fontWeight: '400',
-    gap: 'calc(var(--spacing) * 2)',
+    gap: 'calc(var(--ui-spacing) * 2)',
   },
 })
 
 const sizes = stylex.create({
   1: {
-    '--otp-field-size': 'calc(var(--spacing) * 6)',
-    borderRadius: 'var(--radius-sm)',
-    fontSize: 'var(--text-xs)',
-    lineHeight: 'var(--text-xs--line-height)',
+    '--otp-field-size': 'calc(var(--ui-spacing) * 6)',
+    borderRadius: 'var(--ui-radius-sm)',
+    fontSize: 'var(--ui-text-xs)',
+    lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
-    '--otp-field-size': 'calc(var(--spacing) * 8)',
-    borderRadius: 'var(--radius-md)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--otp-field-size': 'calc(var(--ui-spacing) * 8)',
+    borderRadius: 'var(--ui-radius-md)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--otp-field-size': 'calc(var(--spacing) * 10)',
-    borderRadius: 'var(--radius-lg)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--otp-field-size': 'calc(var(--ui-spacing) * 10)',
+    borderRadius: 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })

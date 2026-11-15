@@ -68,23 +68,23 @@ export function Field({
 const styles = stylex.create({
   error: {
     color: 'var(--red-11)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   hint: {
     color: 'var(--gray-11)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   label: {
     color: 'var(--gray-12)',
-    fontSize: 'var(--text-sm)',
+    fontSize: 'var(--ui-text-sm)',
     fontWeight: '500',
-    lineHeight: 'var(--text-sm--line-height)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   main: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'calc(var(--spacing) * 1.5)',
+    gap: 'calc(var(--ui-spacing) * 1.5)',
   },
 })

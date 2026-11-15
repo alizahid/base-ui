@@ -17,8 +17,8 @@ export const icon = stylex.create({
   },
   // a step smaller: chevrons, clear buttons and the checks in lists
   small: {
-    height: 'calc(1lh - var(--spacing))',
-    width: 'calc(1lh - var(--spacing))',
+    height: 'calc(1lh - var(--ui-spacing))',
+    width: 'calc(1lh - var(--ui-spacing))',
   },
 })
 

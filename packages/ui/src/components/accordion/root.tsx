@@ -51,7 +51,7 @@ const variants = stylex.create({
   ghost: {
     '--accordion-hover': 'transparent',
     '--accordion-padding-x': '0px',
-    '--accordion-trigger-radius': 'var(--radius-sm)',
+    '--accordion-trigger-radius': 'var(--ui-radius-sm)',
   },
   // a panel, like Card: the provider's panelBackground applies
   surface: {
@@ -70,24 +70,24 @@ const variants = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--accordion-inset': 'calc(var(--spacing) * 3)',
-    '--accordion-padding-y': 'calc(var(--spacing) * 2)',
-    '--accordion-radius': 'var(--radius-md)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--accordion-inset': 'calc(var(--ui-spacing) * 3)',
+    '--accordion-padding-y': 'calc(var(--ui-spacing) * 2)',
+    '--accordion-radius': 'var(--ui-radius-md)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   2: {
-    '--accordion-inset': 'calc(var(--spacing) * 4)',
-    '--accordion-padding-y': 'calc(var(--spacing) * 3)',
-    '--accordion-radius': 'var(--radius-lg)',
-    fontSize: 'var(--text-sm)',
-    lineHeight: 'var(--text-sm--line-height)',
+    '--accordion-inset': 'calc(var(--ui-spacing) * 4)',
+    '--accordion-padding-y': 'calc(var(--ui-spacing) * 3)',
+    '--accordion-radius': 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-sm)',
+    lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
-    '--accordion-inset': 'calc(var(--spacing) * 5)',
-    '--accordion-padding-y': 'calc(var(--spacing) * 4)',
-    '--accordion-radius': 'var(--radius-lg)',
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
+    '--accordion-inset': 'calc(var(--ui-spacing) * 5)',
+    '--accordion-padding-y': 'calc(var(--ui-spacing) * 4)',
+    '--accordion-radius': 'var(--ui-radius-lg)',
+    fontSize: 'var(--ui-text-base)',
+    lineHeight: 'var(--ui-text-base--line-height)',
   },
 })

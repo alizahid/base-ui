@@ -22,6 +22,6 @@ const styles = stylex.create({
     direction: 'ltr',
     display: 'inline-flex',
     font: 'inherit',
-    gap: 'var(--spacing)',
+    gap: 'var(--ui-spacing)',
   },
 })
