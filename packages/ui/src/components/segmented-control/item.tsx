@@ -46,22 +46,19 @@ const styles = stylex.create({
       },
     },
     borderRadius: 'inherit',
-    boxSizing: 'border-box',
     display: 'flex',
     flexGrow: 1,
     gap: 'var(--segmented-control-gap)',
     justifyContent: 'center',
     paddingInline: 'var(--segmented-control-padding)',
     // heavier text for the selected item without changing its width
-    WebkitTextStrokeColor: 'currentColor',
     WebkitTextStrokeWidth: {
       ':is([data-checked] > *)': '0.35px',
-      default: 0,
+      default: null,
     },
     whiteSpace: 'nowrap',
   },
   main: {
-    alignItems: 'stretch',
     // the outer corners follow the root's
     borderEndEndRadius: {
       ':is(:last-of-type, :focus-visible)': 'inherit',
@@ -92,13 +89,13 @@ const styles = stylex.create({
   // item, hence `+ input + *` for "the next item"
   separator: {
     backgroundColor: 'var(--gray-a4)',
-    marginBlock: 3,
-    marginInline: -0.5,
+    marginBlock: 'var(--spacing)',
+    marginInlineStart: -1,
     opacity: {
       ':is(:first-of-type > *, :is([data-checked], :focus-visible) > *, :is([data-checked], :focus-visible) + input + * > *)': 0,
-      default: 1,
+      default: null,
     },
-    transitionDuration: '80ms',
+    transitionDuration: '100ms',
     transitionProperty: 'opacity',
     width: 1,
     zIndex: -1,

@@ -40,7 +40,6 @@ export function Root({
 const styles = stylex.create({
   main: {
     borderRadius: 'var(--accordion-radius)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     display: 'flex',
     flexDirection: 'column',
@@ -60,11 +59,10 @@ const variants = stylex.create({
     '--accordion-padding-x': 'var(--accordion-inset)',
     // inside the 1px border
     '--accordion-trigger-radius': 'calc(var(--accordion-radius) - 1px)',
-    backdropFilter: 'var(--panel-backdrop, blur(64px))',
+    backdropFilter: 'var(--panel-backdrop, none)',
     backgroundClip: 'padding-box',
-    backgroundColor: 'var(--panel, var(--panel-translucent))',
+    backgroundColor: 'var(--panel, var(--panel-background))',
     borderColor: 'color-mix(in oklab, var(--gray-a5), var(--gray-6))',
-    borderStyle: 'solid',
     borderWidth: 1,
     overflow: 'hidden',
   },

@@ -141,9 +141,9 @@ const styles = stylex.create({
       default: 'fixed',
     },
     transitionDuration: {
-      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 400ms)',
+      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 300ms)',
       [swiping]: '0ms',
-      default: '450ms',
+      default: '300ms',
     },
     transitionProperty: {
       [still]: 'none',
@@ -152,12 +152,11 @@ const styles = stylex.create({
     transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
   },
   content: {
-    boxSizing: 'border-box',
     flexGrow: 1,
     // only an empty strip of a drawer shows behind another
     opacity: {
       [inBehind]: 0,
-      default: 1,
+      default: null,
     },
     paddingBlockEnd:
       'calc(var(--spacing) * 6 + env(safe-area-inset-bottom, 0px))',
@@ -175,38 +174,38 @@ const styles = stylex.create({
   // the bar to drag a top or bottom drawer by
   handle: {
     backgroundColor: 'var(--gray-a6)',
-    borderRadius: 9999,
+    borderRadius: 'calc(infinity * 1px)',
     display: {
       [inDown]: 'block',
       [inUp]: 'block',
       default: 'none',
     },
     flexShrink: 0,
-    height: 4,
+    height: 'var(--spacing)',
     marginBlockEnd: {
       [inUp]: 'calc(var(--spacing) * 2)',
-      default: 0,
+      default: null,
     },
     marginBlockStart: {
       [inDown]: 'calc(var(--spacing) * 2)',
-      default: 0,
+      default: null,
     },
     marginInline: 'auto',
     // gone behind another drawer, like the content
     opacity: {
       [inBehind]: 0,
-      default: 1,
+      default: null,
     },
     order: {
       [inUp]: 1,
-      default: 0,
+      default: null,
     },
     transitionDuration: '300ms',
     transitionProperty: {
       [still]: 'none',
       default: 'opacity',
     },
-    width: 36,
+    width: 'calc(var(--spacing) * 9)',
   },
   // on small screens the drawer always reaches the edges
   inset: {
@@ -261,7 +260,6 @@ const styles = stylex.create({
       [up]: '0 calc(-1 * var(--drawer-bleed)) 0 0 var(--panel-background), var(--dialog-shadow)',
       default: 'var(--dialog-shadow)',
     },
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     display: 'flex',
     flexDirection: 'column',
@@ -274,7 +272,6 @@ const styles = stylex.create({
       // past the one above it
       [wideBehind]:
         'calc(100% - var(--nested-drawers, 1) * var(--drawer-peek) * 2)',
-      default: null,
     },
     // pushed to its own edge with an auto margin on the other side, whichever
     // side the viewport's row starts from: it starts on the right where text
@@ -284,13 +281,13 @@ const styles = stylex.create({
       [down]: 'auto',
       [right]: 'auto',
       [up]: 'auto',
-      default: 0,
+      default: null,
     },
     marginRight: {
       [down]: 'auto',
       [left]: 'auto',
       [up]: 'auto',
-      default: 0,
+      default: null,
     },
     maxHeight: '100%',
     maxWidth: '100%',
@@ -311,12 +308,12 @@ const styles = stylex.create({
       [upHidden]: 'translateY(calc(-100% - var(--drawer-inset)))',
       [upOpen]:
         'translateY(calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y, 0px)))',
-      default: 'none',
+      default: null,
     },
     transitionDuration: {
-      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 400ms)',
+      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 300ms)',
       [swiping]: '0ms',
-      default: '450ms',
+      default: '300ms',
     },
     transitionProperty: {
       [still]: 'none',
@@ -332,7 +329,7 @@ const styles = stylex.create({
       [rightBehind]:
         'calc(var(--nested-drawers, 1) * var(--drawer-peek) * -1) 0',
       [upBehind]: '0 calc(var(--nested-drawers, 1) * var(--drawer-peek))',
-      default: '0 0',
+      default: null,
     },
     width: {
       [tallBehind]:
@@ -350,7 +347,6 @@ const styles = stylex.create({
     // how much of a drawer shows behind the one above it
     '--drawer-peek':
       'clamp(calc(var(--spacing) * 4), 2.5vw, calc(var(--spacing) * 8))',
-    boxSizing: 'border-box',
     display: 'flex',
     inset: 0,
     padding: 'var(--drawer-inset)',
@@ -362,25 +358,25 @@ const styles = stylex.create({
 const sizes = stylex.create({
   1: {
     '--drawer-width': {
-      [large]: '320px',
+      [large]: 'calc(var(--spacing) * 80)',
       default: '100%',
     },
   },
   2: {
     '--drawer-width': {
-      [large]: '400px',
+      [large]: 'calc(var(--spacing) * 96)',
       default: '100%',
     },
   },
   3: {
     '--drawer-width': {
-      [large]: '520px',
+      [large]: 'calc(var(--spacing) * 128)',
       default: '100%',
     },
   },
   4: {
     '--drawer-width': {
-      [large]: '680px',
+      [large]: 'calc(var(--spacing) * 160)',
       default: '100%',
     },
   },

@@ -52,10 +52,6 @@ const styles = stylex.create({
     paddingInline: 'calc(var(--badge-padding) + 2px)',
   },
   main: {
-    '::selection': {
-      backgroundColor: 'var(--badge-selection)',
-      color: 'var(--badge-selection-color)',
-    },
     alignItems: 'center',
     backgroundColor: 'var(--badge-background)',
     boxShadow: 'var(--badge-shadow)',
@@ -85,8 +81,6 @@ const variants = stylex.create({
   solid: {
     '--badge-background': 'var(--accent-9)',
     '--badge-color': 'var(--accent-contrast)',
-    '--badge-selection': 'var(--accent-7)',
-    '--badge-selection-color': 'var(--accent-12)',
     '--badge-shadow': 'none',
   },
   surface: {
@@ -108,8 +102,6 @@ const contrast = stylex.create({
   solid: {
     '--badge-background': 'var(--accent-12)',
     '--badge-color': 'var(--accent-1)',
-    '--badge-selection': 'var(--accent-a11)',
-    '--badge-selection-color': 'var(--accent-1)',
   },
   surface: {
     '--badge-color': 'var(--accent-12)',

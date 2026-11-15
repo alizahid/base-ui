@@ -67,13 +67,13 @@ export const dialog = stylex.create({
     inset: 0,
     opacity: {
       [hidden]: 0,
-      default: 1,
+      default: null,
     },
     position: 'fixed',
     transitionDuration: {
-      ':is([data-ending-style])': '160ms',
+      ':is([data-ending-style])': '100ms',
       [still]: '0s',
-      default: '200ms',
+      default: '150ms',
     },
     transitionProperty: 'opacity',
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -81,27 +81,25 @@ export const dialog = stylex.create({
   content: {
     backgroundColor: 'var(--panel-background)',
     boxShadow: 'var(--dialog-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     margin: 'auto',
-    maxWidth: 600,
+    maxWidth: 'calc(var(--spacing) * 144)',
     opacity: {
       [hidden]: 0,
-      default: 1,
+      default: null,
     },
     outline: 'none',
     overflow: 'auto',
-    padding: 'var(--dialog-content-padding)',
     position: 'relative',
     transform: {
-      ':is([data-ending-style])': 'translateY(5px) scale(0.99)',
-      ':is([data-starting-style])': 'translateY(5px) scale(0.97)',
-      default: 'none',
+      ':is([data-ending-style])': 'translateY(var(--spacing)) scale(0.99)',
+      ':is([data-starting-style])': 'translateY(var(--spacing)) scale(0.97)',
+      default: null,
     },
     transitionDuration: {
       ':is([data-ending-style])': '100ms',
       [still]: '0s',
-      default: '200ms',
+      default: '150ms',
     },
     transitionProperty: 'opacity, transform',
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -130,19 +128,19 @@ export const dialog = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--dialog-content-padding': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
+    padding: 'calc(var(--spacing) * 3)',
   },
   2: {
-    '--dialog-content-padding': 'calc(var(--spacing) * 4)',
     borderRadius: 'var(--radius-xl)',
+    padding: 'calc(var(--spacing) * 4)',
   },
   3: {
-    '--dialog-content-padding': 'calc(var(--spacing) * 6)',
     borderRadius: 'var(--radius-2xl)',
+    padding: 'calc(var(--spacing) * 6)',
   },
   4: {
-    '--dialog-content-padding': 'calc(var(--spacing) * 8)',
     borderRadius: 'var(--radius-2xl)',
+    padding: 'calc(var(--spacing) * 8)',
   },
 })

@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
-import { Cross2Icon } from '../../lib/icons.js'
+import { Cross2Icon, icon } from '../../lib/icons.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
 import { Button } from '../button/button.js'
@@ -134,7 +134,7 @@ function List({ closeLabel, solid, swipe }: ListProps) {
             }
             {...stylex.props(filled && styles.button, filled && styles.close)}
           >
-            <Cross2Icon {...stylex.props(styles.icon)} />
+            <Cross2Icon {...stylex.props(icon.line)} />
           </Component.Close>
         </Component.Content>
       </Component.Root>
@@ -159,7 +159,11 @@ const styles = stylex.create({
   // the buttons of a filled toast: tinted with its text color
   action: {
     backgroundColor: {
-      ':hover': 'color-mix(in oklab, currentColor 25%, transparent)',
+      ':hover': {
+        '@media (hover: hover)':
+          'color-mix(in oklab, currentColor 25%, transparent)',
+        default: null,
+      },
       default: 'color-mix(in oklab, currentColor 15%, transparent)',
     },
     fontSize: 'var(--text-xs)',
@@ -169,12 +173,9 @@ const styles = stylex.create({
   button: {
     alignItems: 'center',
     borderRadius: 'var(--radius-sm)',
-    borderStyle: 'none',
-    color: 'inherit',
     cursor: 'pointer',
     display: 'inline-flex',
     flexShrink: 0,
-    font: 'inherit',
     height: 'calc(var(--spacing) * 6)',
     justifyContent: 'center',
     outline: {
@@ -182,39 +183,36 @@ const styles = stylex.create({
       default: 'none',
     },
     outlineOffset: 2,
-    padding: 0,
   },
   close: {
     backgroundColor: {
-      ':hover': 'color-mix(in oklab, currentColor 15%, transparent)',
-      default: 'transparent',
+      ':hover': {
+        '@media (hover: hover)':
+          'color-mix(in oklab, currentColor 15%, transparent)',
+        default: null,
+      },
+      default: null,
     },
     width: 'calc(var(--spacing) * 6)',
   },
   content: {
     alignItems: 'center',
-    boxSizing: 'border-box',
     display: 'flex',
     gap: 'calc(var(--spacing) * 3)',
     // a toast behind the front one hides its content until the stack opens
     opacity: {
       ':is([data-behind]:not([data-expanded]))': 0,
-      default: 1,
+      default: null,
     },
     overflow: 'hidden',
     padding: 'calc(var(--spacing) * 3)',
     paddingInlineStart: 'calc(var(--spacing) * 4)',
-    transitionDuration: '250ms',
+    transitionDuration: '300ms',
     transitionProperty: 'opacity',
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   },
   description: {
     color: 'var(--toast-muted, var(--gray-a11))',
-    margin: 0,
-  },
-  icon: {
-    height: '1lh',
-    width: '1lh',
   },
   main: {
     '--toast-gap': 'calc(var(--spacing) * 3)',
@@ -223,7 +221,7 @@ const styles = stylex.create({
     '--toast-offset':
       'calc((var(--toast-offset-y) + var(--toast-index) * var(--toast-gap)) * var(--toast-dir) * -1 + var(--toast-swipe-movement-y))',
     '--toast-peek': 'calc(var(--spacing) * 3)',
-    '--toast-scale': 'calc(max(0, 1 - (var(--toast-index) * 0.1)))',
+    '--toast-scale': 'max(0, 1 - var(--toast-index) * 0.1)',
     '--toast-shrink': 'calc(1 - var(--toast-scale))',
     '--toast-size': 'var(--toast-frontmost-height, var(--toast-height))',
     '--toast-title': {
@@ -245,7 +243,6 @@ const styles = stylex.create({
     borderRadius: 'var(--radius-lg)',
     bottom: 'var(--toast-bottom)',
     boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     cursor: 'default',
     fontSize: 'var(--text-sm)',
@@ -257,7 +254,7 @@ const styles = stylex.create({
     lineHeight: 'var(--text-sm--line-height)',
     opacity: {
       ':is([data-limited], [data-ending-style])': 0,
-      default: 1,
+      default: null,
     },
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
@@ -281,12 +278,12 @@ const styles = stylex.create({
         'translateX(var(--toast-swipe-movement-x)) translateY(calc(var(--toast-swipe-movement-y) - (var(--toast-index) * var(--toast-peek) + var(--toast-shrink) * var(--toast-size)) * var(--toast-dir))) scale(var(--toast-scale))',
     },
     transformOrigin: 'var(--toast-origin)',
-    transitionDuration: '500ms, 500ms, 150ms',
+    transitionDuration: '300ms, 300ms, 150ms',
     transitionProperty: {
       [still]: 'none',
       default: 'transform, opacity, height',
     },
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1), ease, ease',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1), ease, ease',
     userSelect: 'none',
     width: '100%',
     zIndex: 'calc(1000 - var(--toast-index))',
@@ -308,13 +305,12 @@ const styles = stylex.create({
   title: {
     color: 'var(--toast-title)',
     fontWeight: '500',
-    margin: 0,
   },
   // full width on a narrow screen
   viewport: {
     marginInline: 'auto',
     position: 'fixed',
-    width: 'min(calc(var(--spacing) * 90), calc(100vw - var(--spacing) * 8))',
+    width: 'min(calc(var(--spacing) * 96), calc(100vw - var(--spacing) * 8))',
     zIndex: 1,
   },
 })

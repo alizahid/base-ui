@@ -43,7 +43,7 @@ export function Code({ code, html, labels }: Props) {
         inert={long && !open}
       >
         <div
-          className="w-max min-w-full p-4 text-sm"
+          className="w-max min-w-full p-4 text-sm leading-relaxed"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: shiki's output, from our own source
           dangerouslySetInnerHTML={{
             __html: html,

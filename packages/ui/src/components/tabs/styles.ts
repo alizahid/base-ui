@@ -13,8 +13,17 @@ export const tabs = stylex.create({
     '--tabs-indicator': 'var(--accent-12)',
   },
   list: {
-    // the baseline the indicator sits on
-    boxShadow: 'inset 0 -2px 0 var(--gray-a4)',
+    // the baseline the indicator sits on. a box rather than a shadow, so its
+    // ends can be round; before the children, so the indicator covers it
+    '::before': {
+      backgroundColor: 'var(--gray-a4)',
+      borderRadius: 'calc(infinity * 1px)',
+      bottom: 0,
+      content: '""',
+      height: 2,
+      insetInline: 0,
+      position: 'absolute',
+    },
     display: 'flex',
     gap: 'var(--tabs-gap)',
     position: 'relative',
@@ -23,7 +32,7 @@ export const tabs = stylex.create({
     // the focus ring. a tab has no inline padding, so the ring is drawn on a
     // box that reaches into the gap on either side, and the text gets room
     '::before': {
-      borderRadius: 'var(--radius-sm)',
+      borderRadius: 'var(--radius-md)',
       content: {
         ':is(:focus-visible)': '""',
         default: 'none',
@@ -35,9 +44,6 @@ export const tabs = stylex.create({
       position: 'absolute',
     },
     alignItems: 'center',
-    backgroundColor: 'transparent',
-    borderRadius: 'var(--radius-sm)',
-    borderStyle: 'none',
     color: {
       [active]: 'var(--gray-12)',
       [disabled]: 'var(--gray-a8)',
@@ -54,21 +60,18 @@ export const tabs = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     flexShrink: 0,
-    font: 'inherit',
     gap: 'var(--tabs-tab-gap)',
     outline: 'none',
     paddingBlock: 'var(--tabs-padding)',
     paddingInline: 0,
     position: 'relative',
     // for a tab rendered as a link
-    textDecoration: 'none',
     userSelect: 'none',
     // heavier text for the active tab without changing its width, which
     // would move the tabs after it
-    WebkitTextStrokeColor: 'currentColor',
     WebkitTextStrokeWidth: {
       [active]: '0.35px',
-      default: 0,
+      default: null,
     },
     whiteSpace: 'nowrap',
   },

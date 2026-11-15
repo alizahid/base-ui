@@ -52,7 +52,6 @@ const styles = stylex.create({
   },
   main: {
     alignItems: 'flex-start',
-    boxSizing: 'border-box',
     color: 'var(--accent-a11)',
     display: 'grid',
     justifyContent: 'flex-start',

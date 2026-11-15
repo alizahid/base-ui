@@ -84,19 +84,13 @@ const disabled = ':is([data-disabled])'
 // as tall as the thumbs, the thumbs stay inside it, and the fill wraps them
 const styles = stylex.create({
   control: {
-    alignItems: 'center',
     backgroundColor: 'var(--slider-track)',
-    backgroundImage: {
-      [disabled]: 'none',
-      default: 'var(--slider-track-image, none)',
-    },
     borderRadius: 'inherit',
     boxShadow: 'var(--slider-track-shadow)',
     cursor: {
       [disabled]: 'not-allowed',
       default: 'pointer',
     },
-    display: 'flex',
     height: 'var(--slider-size)',
   },
   // base ui ends the fill at the centre of a thumb. the padding carries it on
@@ -105,10 +99,6 @@ const styles = stylex.create({
     backgroundColor: {
       [disabled]: 'var(--gray-a6)',
       default: 'var(--slider-range)',
-    },
-    backgroundImage: {
-      [disabled]: 'none',
-      default: 'var(--slider-range-image, none)',
     },
     borderRadius: 'inherit',
     boxShadow: {
@@ -137,7 +127,7 @@ const styles = stylex.create({
     },
     '--slider-thumb-shadow': {
       [disabled]: '0 0 0 1px var(--gray-6)',
-      default: 'var(--slider-thumb-shadow-color)',
+      default: '0 0 0 1px var(--black-a4)',
     },
     '::before': {
       backgroundColor: 'var(--slider-thumb)',
@@ -162,41 +152,34 @@ const styles = stylex.create({
   track: {
     borderRadius: 'inherit',
     height: '100%',
-    width: '100%',
   },
 })
 
 // variants only set variables, the styles above decide where they apply
 const variants = stylex.create({
   soft: {
-    '--slider-range': 'var(--accent-6)',
-    '--slider-range-image':
-      'linear-gradient(var(--accent-a5), var(--accent-a5))',
+    '--slider-range': 'var(--accent-7)',
     '--slider-range-shadow': 'none',
-    '--slider-thumb-shadow-color':
-      '0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3)',
     '--slider-track': 'var(--gray-a4)',
-    '--slider-track-image': 'linear-gradient(var(--white-a1), var(--white-a1))',
     '--slider-track-shadow': 'none',
   },
   surface: {
     '--slider-range': 'var(--accent-track)',
     '--slider-range-shadow': 'inset 0 0 0 1px var(--gray-a5)',
-    '--slider-thumb-shadow-color': '0 0 0 1px var(--black-a4)',
     '--slider-track': 'var(--gray-a3)',
     '--slider-track-shadow': 'inset 0 0 0 1px var(--gray-a5)',
   },
 })
 
-// a dark overlay over the fill, the switch's; transparent in dark mode
+// a darker fill, like the switch's; no change in dark mode
 const contrast = stylex.create({
   soft: {
-    '--slider-range-image':
-      'linear-gradient(var(--accent-a5), var(--accent-a5)), linear-gradient(var(--switch-high-contrast-overlay), var(--switch-high-contrast-overlay))',
+    '--slider-range':
+      'color-mix(in oklab, var(--accent-7), black var(--high-contrast-shade))',
   },
   surface: {
-    '--slider-range-image':
-      'linear-gradient(var(--switch-high-contrast-overlay), var(--switch-high-contrast-overlay))',
+    '--slider-range':
+      'color-mix(in oklab, var(--accent-track), black var(--high-contrast-shade))',
   },
 })
 

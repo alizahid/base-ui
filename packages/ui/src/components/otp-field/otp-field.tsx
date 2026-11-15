@@ -67,9 +67,6 @@ const disabled = ':is(:disabled)'
 // by the shared input variants
 const styles = stylex.create({
   input: {
-    '::selection': {
-      backgroundColor: 'var(--text-field-selection-color)',
-    },
     backgroundClip: 'var(--text-field-clip, border-box)',
     backgroundColor: {
       [disabled]: 'var(--text-field-background-disabled)',
@@ -80,13 +77,11 @@ const styles = stylex.create({
       [disabled]: 'var(--text-field-image-disabled, none)',
     },
     borderRadius: 'inherit',
-    borderStyle: 'none',
     boxShadow: {
       [disabled]: 'var(--text-field-shadow-disabled)',
       [invalid]: 'var(--text-field-shadow-invalid)',
       default: 'var(--text-field-shadow)',
     },
-    boxSizing: 'border-box',
     color: {
       [disabled]: 'var(--gray-a11)',
       default: 'var(--text-field-color)',
@@ -95,7 +90,6 @@ const styles = stylex.create({
       [disabled]: 'not-allowed',
       default: 'text',
     },
-    font: 'inherit',
     fontVariantNumeric: 'tabular-nums',
     height: 'var(--otp-field-size)',
     outline: {

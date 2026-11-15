@@ -66,7 +66,7 @@ const styles = stylex.create({
   stacked: {
     alignItems: 'stretch',
     flexDirection: 'column',
-    gap: 2,
+    gap: 'calc(var(--spacing) * 0.5)',
     // from the top, so titles in a grid row line up
     justifyContent: 'flex-start',
   },

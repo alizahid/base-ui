@@ -68,7 +68,7 @@ export function Root({
       <Component.Portal>
         <Component.Positioner
           align={align ?? (vertical ? 'start' : 'center')}
-          collisionPadding={10}
+          collisionPadding={8}
           side={side ?? (vertical ? 'inline-end' : 'bottom')}
           sideOffset={sideOffset}
           {...stylex.props(styles.positioner)}
@@ -99,30 +99,29 @@ const styles = stylex.create({
     backgroundColor: 'var(--panel-background)',
     borderRadius: 'var(--radius-xl)',
     boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     height: 'var(--popup-height)',
     opacity: {
       [hidden]: 0,
-      default: 1,
+      default: null,
     },
     outline: 'none',
     position: 'relative',
     transform: {
       [hidden]: 'scale(0.97)',
-      default: 'none',
+      default: null,
     },
     transformOrigin: 'var(--transform-origin)',
     // closes faster than it opens
     transitionDuration: {
       ':is([data-ending-style])': '150ms',
-      default: '350ms',
+      default: '300ms',
     },
     transitionProperty: {
       [still]: 'none',
       default: 'opacity, transform, width, height',
     },
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     width: 'var(--popup-width)',
   },
   positioner: {
@@ -130,20 +129,19 @@ const styles = stylex.create({
     // popup closing
     '::before': {
       content: '""',
-      inset: -10,
+      inset: 'calc(var(--spacing) * -2.5)',
       position: 'absolute',
     },
-    boxSizing: 'border-box',
     height: 'var(--positioner-height)',
     maxWidth: 'var(--available-width)',
-    transitionDuration: '350ms',
+    transitionDuration: '300ms',
     // slides from one trigger to the next, but not into place on opening
     transitionProperty: {
       ':is([data-instant])': 'none',
       [still]: 'none',
       default: 'top, left, right, bottom',
     },
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     width: 'var(--positioner-width)',
     zIndex: 1,
   },

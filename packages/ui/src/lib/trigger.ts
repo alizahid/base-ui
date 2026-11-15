@@ -20,9 +20,7 @@ export const trigger = stylex.create({
   icon: {
     color: 'var(--select-icon)',
     flexShrink: 0,
-    height: '1lh',
     opacity: 'var(--select-icon-opacity, 0.9)',
-    width: '1lh',
   },
   trigger: {
     '--select-icon': {
@@ -60,7 +58,6 @@ export const trigger = stylex.create({
       [open]: 'var(--select-shadow-hover, none)',
       default: 'var(--select-shadow, none)',
     },
-    boxSizing: 'border-box',
     color: {
       [off]: 'var(--gray-a11)',
       default: 'var(--select-color)',

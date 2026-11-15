@@ -59,12 +59,13 @@ export function Skeleton({
   )
 }
 
+// opacity rather than colour, so the pulse doesn't repaint
 const pulse = stylex.keyframes({
   from: {
-    backgroundColor: 'var(--gray-a3)',
+    opacity: 0.7,
   },
   to: {
-    backgroundColor: 'var(--gray-a4)',
+    opacity: 1,
   },
 })
 
@@ -73,12 +74,9 @@ const pulse = stylex.keyframes({
 // the children is in theme.css, as stylex can't target them
 const styles = stylex.create({
   // the span form, around text or empty. it has its own corners, where a
-  // skeleton on an element keeps that element's. the font takes font
-  // differences out of the height of a skeleton around text
+  // skeleton on an element keeps that element's
   inline: {
     borderRadius: 'var(--radius-xs)',
-    fontFamily: 'Arial, sans-serif !important',
-    lineHeight: 0,
   },
   main: {
     animationDirection: 'alternate-reverse',
@@ -86,6 +84,7 @@ const styles = stylex.create({
     animationIterationCount: 'infinite',
     animationName: pulse,
     backgroundClip: 'border-box !important',
+    backgroundColor: 'var(--gray-a4) !important',
     backgroundImage: 'none !important',
     borderStyle: 'none !important',
     boxDecorationBreak: 'clone',

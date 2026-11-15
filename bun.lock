@@ -21,7 +21,6 @@
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "^16.4.6",
         "@phosphor-icons/react": "^2.1.10",
-        "@radix-ui/colors": "^3.0.0",
         "@repo/ui": "workspace:*",
         "@wrksz/themes": "^2.1.1",
         "cn": "^0.5.2",
@@ -53,6 +52,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@base-ui/react": "^1.9.0",
+        "@radix-ui/colors": "^3.0.0",
         "@stylexjs/stylex": "^0.19.2",
         "cn": "^0.5.2",
         "react": "19.3.1",

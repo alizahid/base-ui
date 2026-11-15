@@ -67,7 +67,7 @@ const indeterminate = ':is([data-indeterminate])'
 const still = '@media (prefers-reduced-motion: reduce)'
 
 // the indeterminate bar creeps towards full over --progress-duration, then
-// pulses and shines until it is given a value
+// pulses until it is given a value
 const grow = stylex.keyframes({
   '0%': {
     transform: 'scaleX(0.01)',
@@ -86,27 +86,19 @@ const grow = stylex.keyframes({
   },
 })
 
+// opacity rather than colour, so the pulse doesn't repaint
 const fade = stylex.keyframes({
   '100%': {
-    backgroundColor: 'var(--progress-pulse)',
+    opacity: 'var(--progress-pulse)',
   },
 })
 
 const pulse = stylex.keyframes({
   '0%': {
-    backgroundColor: 'var(--progress-pulse)',
+    opacity: 'var(--progress-pulse)',
   },
   '100%': {
-    backgroundColor: 'var(--progress-pulse-end)',
-  },
-})
-
-const shine = stylex.keyframes({
-  '0%': {
-    transform: 'translateX(-100%)',
-  },
-  '100%': {
-    transform: 'translateX(0%)',
+    opacity: 'var(--progress-pulse-end)',
   },
 })
 
@@ -114,36 +106,11 @@ const shine = stylex.keyframes({
 const styles = stylex.create({
   contrast: {
     '--progress-color': 'var(--accent-12)',
-    '--progress-image': 'none',
-    '--progress-pulse':
-      'color-mix(in oklab, var(--accent-12) 80%, transparent)',
-    '--progress-pulse-end': 'var(--accent-12)',
-    '--progress-shine-opacity': '0.75',
+    '--progress-pulse': '0.8',
+    '--progress-pulse-end': '1',
   },
   // base ui sets the width for a known value
   indicator: {
-    '--progress-shine-display': {
-      [indeterminate]: 'block',
-      default: 'none',
-    },
-    '::after': {
-      animationDelay: 'calc(var(--progress-duration) + 5s)',
-      animationDuration: '5s',
-      animationFillMode: 'backwards',
-      animationIterationCount: 'infinite',
-      animationName: {
-        [still]: 'none',
-        default: shine,
-      },
-      backgroundImage:
-        'linear-gradient(to right, transparent 25%, var(--progress-shine), transparent 75%)',
-      content: '""',
-      display: 'var(--progress-shine-display)',
-      inset: 0,
-      opacity: 'var(--progress-shine-opacity, 1)',
-      position: 'absolute',
-      width: '400%',
-    },
     animationDelay: {
       [indeterminate]:
         '0s, calc(var(--progress-duration) + 5s), calc(var(--progress-duration) + 7.5s)',
@@ -167,12 +134,11 @@ const styles = stylex.create({
       },
     },
     backgroundColor: 'var(--progress-color)',
-    backgroundImage: 'var(--progress-image, none)',
     transformOrigin: {
       ':dir(rtl)': 'right center',
       default: 'left center',
     },
-    transitionDuration: '120ms',
+    transitionDuration: '150ms',
     transitionProperty: 'width',
     width: {
       [indeterminate]: '100%',
@@ -198,7 +164,6 @@ const styles = stylex.create({
       position: 'absolute',
     },
     backgroundColor: 'var(--progress-track)',
-    backgroundImage: 'var(--progress-track-image, none)',
     borderRadius: 'inherit',
     // a flex row, so the indicator stretches to the track's height
     display: 'flex',
@@ -214,18 +179,14 @@ const styles = stylex.create({
 const variants = stylex.create({
   soft: {
     '--progress-color': 'var(--accent-8)',
-    '--progress-image': 'linear-gradient(var(--accent-a5), var(--accent-a5))',
-    '--progress-pulse': 'var(--accent-5)',
-    '--progress-pulse-end': 'var(--accent-7)',
-    '--progress-shine-opacity': '0.75',
+    '--progress-pulse': '0.4',
+    '--progress-pulse-end': '0.7',
     '--progress-track': 'var(--gray-a4)',
-    '--progress-track-image':
-      'linear-gradient(var(--white-a1), var(--white-a1))',
   },
   surface: {
     '--progress-color': 'var(--accent-track)',
-    '--progress-pulse': 'var(--accent-7)',
-    '--progress-pulse-end': 'var(--accent-track)',
+    '--progress-pulse': '0.5',
+    '--progress-pulse-end': '1',
     '--progress-shadow': 'inset 0 0 0 1px var(--gray-a4)',
     '--progress-track': 'var(--gray-a3)',
   },

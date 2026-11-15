@@ -1,3 +1,4 @@
+import * as stylex from '@stylexjs/stylex'
 import { type ComponentProps } from 'react'
 
 // from radix icons (radix-ui.com/icons), with their names. the paths are
@@ -6,6 +7,20 @@ import { type ComponentProps } from 'react'
 // standalone ones are 1lh, as tall as a line of the text beside them
 
 type Props = ComponentProps<'svg'>
+
+// the two sizes the library's own icons come in
+export const icon = stylex.create({
+  // as tall as a line of the text beside it
+  line: {
+    height: '1lh',
+    width: '1lh',
+  },
+  // a step smaller: chevrons, clear buttons and the checks in lists
+  small: {
+    height: 'calc(1lh - var(--spacing))',
+    width: 'calc(1lh - var(--spacing))',
+  },
+})
 
 function Icon(props: Props) {
   return (

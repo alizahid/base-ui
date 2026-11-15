@@ -14,6 +14,7 @@ import {
   use,
 } from 'react'
 
+import { panel } from '../../lib/panel.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
 
@@ -57,15 +58,19 @@ export function Tooltip({
       <Component.Portal>
         <Component.Positioner
           align={align}
-          collisionPadding={10}
+          collisionPadding={8}
           side={side}
           sideOffset={sideOffset}
-          {...stylex.props(styles.positioner)}
+          {...stylex.props(panel.positioner)}
         >
           {/* portaled out of the provider's element, so its gray is set again */}
           <Component.Popup
             data-gray={theme.gray}
-            {...merge(stylex.props(styles.content), className, style)}
+            {...merge(
+              stylex.props(panel.motion, styles.content),
+              className,
+              style,
+            )}
           >
             {content}
 
@@ -77,23 +82,6 @@ export function Tooltip({
   )
 }
 
-const hidden = ':is([data-starting-style], [data-ending-style])'
-const still = '@media (prefers-reduced-motion: reduce)'
-
-// radix slides a popup 4px towards its trigger as it fades: the offset depends
-// on which side of the trigger it sits. written out, as stylex has to be able
-// to read these at build time
-const top =
-  ':is(:is([data-starting-style], [data-ending-style])[data-side="top"])'
-const bottom =
-  ':is(:is([data-starting-style], [data-ending-style])[data-side="bottom"])'
-const left =
-  ':is(:is([data-starting-style], [data-ending-style])[data-side="left"])'
-const right =
-  ':is(:is([data-starting-style], [data-ending-style])[data-side="right"])'
-const other =
-  ':is(:is([data-starting-style], [data-ending-style]):not([data-side="top"], [data-side="bottom"], [data-side="left"], [data-side="right"]))'
-
 // ported from radix themes' tooltip.css. inverted: the darkest gray behind the
 // lightest text
 const styles = stylex.create({
@@ -102,61 +90,37 @@ const styles = stylex.create({
   arrow: {
     backgroundColor: 'var(--gray-12)',
     bottom: {
-      ':is([data-side="top"])': -4,
+      ':is([data-side="top"])': 'calc(var(--spacing) * -1)',
     },
-    height: 8,
+    height: 'calc(var(--spacing) * 2)',
     left: {
-      ':is([data-side="right"])': -4,
+      ':is([data-side="right"])': 'calc(var(--spacing) * -1)',
     },
     right: {
-      ':is([data-side="left"])': -4,
+      ':is([data-side="left"])': 'calc(var(--spacing) * -1)',
     },
     top: {
-      ':is([data-side="bottom"])': -4,
+      ':is([data-side="bottom"])': 'calc(var(--spacing) * -1)',
     },
     transform: 'rotate(45deg)',
-    width: 8,
+    width: 'calc(var(--spacing) * 2)',
   },
   content: {
     backgroundColor: 'var(--gray-12)',
     borderRadius: 'var(--radius-md)',
-    boxSizing: 'border-box',
     color: 'var(--gray-1)',
     cursor: 'default',
     fontSize: 'var(--text-xs)',
     lineHeight: 'var(--text-xs--line-height)',
-    maxWidth: 360,
-    opacity: {
-      [hidden]: 0,
-      default: 1,
-    },
+    maxWidth: 'calc(var(--spacing) * 96)',
     paddingBlock: 'var(--spacing)',
     paddingInline: 'calc(var(--spacing) * 2)',
-    transform: {
-      [other]: 'scale(0.97)',
-      [bottom]: 'translateY(-4px) scale(0.97)',
-      [left]: 'translateX(4px) scale(0.97)',
-      [right]: 'translateX(-4px) scale(0.97)',
-      [top]: 'translateY(4px) scale(0.97)',
-      default: 'none',
-    },
-    transformOrigin: 'var(--transform-origin)',
     // as in radix, only the delayed open animates: closing, and opening
     // straight after another tooltip, are instant
     transitionDuration: {
       ':is([data-ending-style], [data-instant])': '0s',
-      default: '140ms',
+      default: '150ms',
     },
-    // no motion at all for people who ask for less of it
-    transitionProperty: {
-      [still]: 'none',
-      default: 'opacity, transform',
-    },
-    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     userSelect: 'none',
-  },
-  positioner: {
-    outline: 'none',
-    zIndex: 1,
   },
 })

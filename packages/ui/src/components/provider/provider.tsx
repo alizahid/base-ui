@@ -22,7 +22,7 @@ export function BaseProvider({
   className,
   direction = 'ltr',
   gray = getGray(accent),
-  panelBackground = 'translucent',
+  panelBackground = 'solid',
 }: BaseProviderProps) {
   return (
     <ThemeContext

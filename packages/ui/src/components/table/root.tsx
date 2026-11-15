@@ -43,7 +43,6 @@ const styles = stylex.create({
   // at least as wide as the wrapper, and as wide as the table once the table
   // can't shrink any further
   box: {
-    boxSizing: 'border-box',
     minWidth: '100%',
     width: 'fit-content',
   },
@@ -57,25 +56,20 @@ const styles = stylex.create({
   },
   // a panel, like Card: the provider's panelBackground applies
   surface: {
-    backdropFilter: 'var(--panel-backdrop, blur(64px))',
+    backdropFilter: 'var(--panel-backdrop, none)',
     backgroundClip: 'padding-box',
-    backgroundColor: 'var(--panel, var(--panel-translucent))',
+    backgroundColor: 'var(--panel, var(--panel-background))',
     borderColor: 'color-mix(in oklab, var(--gray-a5), var(--gray-6))',
     borderRadius: 'var(--table-radius)',
-    borderStyle: 'solid',
     borderWidth: 1,
     // clips the header's tint to the rounded corners
     overflow: 'hidden',
   },
   table: {
-    borderCollapse: 'collapse',
-    borderSpacing: 0,
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     // makes "height: 100%" work on content inside cells
     height: 0,
     textAlign: 'start',
-    verticalAlign: 'top',
     width: '100%',
   },
 })

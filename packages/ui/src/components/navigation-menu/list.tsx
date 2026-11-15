@@ -31,9 +31,6 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: 'var(--navigation-direction, row)',
     gap: 'calc(var(--spacing) * 2)',
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
     position: 'relative',
   },
 })

@@ -33,7 +33,8 @@ export function Link({
       ...merge(
         stylex.props(
           styles.main,
-          underlines[underline],
+          // auto is hover, plus the underline high contrast adds below
+          underlines[underline === 'auto' ? 'hover' : underline],
           highContrast && styles.contrast,
           highContrast && underline === 'auto' && styles.underlined,
         ),
@@ -48,7 +49,6 @@ export function Link({
 // stylex doesn't order these against each other, so they must not overlap
 const focus = ':is(:focus-visible)'
 const hover = ':is(:hover:not(:focus-visible))'
-const tap = ':is(:active:not(:focus-visible))'
 
 // ported from radix themes' link.css
 const styles = stylex.create({
@@ -64,20 +64,9 @@ const styles = stylex.create({
     },
     outline: {
       [focus]: '2px solid var(--focus-8)',
-      // a softer tap highlight than the browser's
-      [tap]: {
-        '@media (pointer: coarse)': '0.75em solid var(--accent-a4)',
-        default: null,
-      },
       default: 'none',
     },
-    outlineOffset: {
-      [focus]: '2px',
-      [tap]: {
-        '@media (pointer: coarse)': '-0.6em',
-        default: null,
-      },
-    },
+    outlineOffset: 2,
     textDecorationColor:
       'var(--link-decoration, color-mix(in oklab, var(--accent-a5), var(--gray-a6)))',
     // the focus ring stands in for the underline
@@ -89,9 +78,8 @@ const styles = stylex.create({
       },
       default: 'var(--link-rest)',
     },
-    textDecorationStyle: 'solid',
-    textDecorationThickness: 'min(2px, max(1px, 0.05em))',
-    textUnderlineOffset: 'calc(0.025em + 2px)',
+    textDecorationThickness: 1,
+    textUnderlineOffset: 2,
   },
   // a high contrast link is the color of the text around it, so auto keeps
   // it underlined
@@ -106,10 +94,6 @@ const underlines = stylex.create({
   always: {
     '--link-hover': 'underline',
     '--link-rest': 'underline',
-  },
-  auto: {
-    '--link-hover': 'underline',
-    '--link-rest': 'none',
   },
   hover: {
     '--link-hover': 'underline',

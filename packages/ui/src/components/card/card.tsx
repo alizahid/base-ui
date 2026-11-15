@@ -58,39 +58,14 @@ const styles = stylex.create({
       },
       default: 'var(--card-background)',
     },
-    // the ring is a shadow around a box inset by its width. it sits over the
-    // children, so content that bleeds to the edge still gets it
-    '::after': {
-      borderRadius: 'calc(var(--card-radius) - var(--card-border-width))',
-      boxShadow: 'var(--card-border)',
-      content: '""',
-      inset: 'var(--card-border-width)',
-      pointerEvents: 'none',
-      position: 'absolute',
-    },
-    // the fill stops short of the ring, as in radix, so the ring tints
-    // whatever is behind the card rather than the card's own background
-    '::before': {
-      backdropFilter: 'var(--card-backdrop)',
-      backgroundColor: 'var(--card-fill)',
-      borderRadius: 'calc(var(--card-radius) - var(--card-border-width))',
-      content: '""',
-      inset: 'var(--card-border-width)',
-      pointerEvents: 'none',
-      position: 'absolute',
-      zIndex: -1,
-    },
+    backdropFilter: 'var(--card-backdrop)',
+    backgroundColor: 'var(--card-fill)',
     borderRadius: 'var(--card-radius)',
-    borderStyle: 'none',
-    boxSizing: 'border-box',
-    color: 'inherit',
+    boxShadow: 'var(--card-border)',
     cursor: {
       ':is(:any-link, button, label)': 'pointer',
     },
     display: 'block',
-    font: 'inherit',
-    // keeps the fill behind the children but above the page
-    isolation: 'isolate',
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
@@ -100,7 +75,6 @@ const styles = stylex.create({
     padding: 'var(--card-padding)',
     position: 'relative',
     textAlign: 'start',
-    textDecoration: 'none',
   },
 })
 
@@ -114,21 +88,19 @@ const variants = stylex.create({
     '--card-border-active': 'none',
     '--card-border-hover': 'none',
     '--card-border-idle': 'none',
-    '--card-border-width': '0px',
   },
   // the provider's panelBackground decides between see-through and opaque
   surface: {
-    '--card-backdrop': 'var(--panel-backdrop, blur(64px))',
-    '--card-background': 'var(--panel, var(--panel-translucent))',
-    '--card-background-active': 'var(--panel, var(--panel-translucent))',
-    '--card-background-hover': 'var(--panel, var(--panel-translucent))',
+    '--card-backdrop': 'var(--panel-backdrop, none)',
+    '--card-background': 'var(--panel, var(--panel-background))',
+    '--card-background-active': 'var(--panel, var(--panel-background))',
+    '--card-background-hover': 'var(--panel, var(--panel-background))',
     '--card-border-active':
-      '0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%)',
+      'inset 0 0 0 1px color-mix(in oklab, var(--gray-a6), var(--gray-6) 25%)',
     '--card-border-hover':
-      '0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%)',
+      'inset 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%)',
     '--card-border-idle':
-      '0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%)',
-    '--card-border-width': '1px',
+      'inset 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%)',
   },
 })
 

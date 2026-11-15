@@ -55,7 +55,7 @@ export function Content({
         <Component.Positioner
           align={align}
           alignOffset={alignOffset}
-          collisionPadding={10}
+          collisionPadding={8}
           side={side}
           sideOffset={sideOffset}
           {...stylex.props(panel.positioner)}

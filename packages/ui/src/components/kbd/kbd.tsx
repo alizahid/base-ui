@@ -7,8 +7,8 @@ export type KbdProps = ComponentProps<'kbd'>
 
 // one key: <Kbd>⌘</Kbd>. for a combination, wrap several in a KbdGroup.
 // radix's raised keycap is not used: this is a flat gray square, a line of
-// small text tall, that takes the font and size of the text around it. one
-// look, so no variant, size or color props
+// small text tall, in the monospace font tailwind's preflight gives a kbd, at
+// the size of the text around it. one look, so no variant, size or color props
 export function Kbd({ className, style, ...props }: KbdProps) {
   return (
     <kbd {...props} {...merge(stylex.props(styles.main), className, style)} />

@@ -66,6 +66,11 @@ const styles = stylex.create({
       ':is(span:nth-of-type(9):last-of-type ~ *)': '9',
       ':is(span:nth-of-type(10):last-of-type ~ *)': '10',
     },
+    // the indicator travels the other way in rtl
+    '--segmented-control-dir': {
+      ':dir(rtl)': '-1',
+      default: '1',
+    },
     '--segmented-control-index': {
       ':is(span[data-checked]:nth-of-type(1) ~ *)': '0',
       ':is(span[data-checked]:nth-of-type(2) ~ *)': '1',
@@ -93,17 +98,19 @@ const styles = stylex.create({
       default: 'none',
     },
     height: '100%',
-    insetInlineStart:
-      'calc(100% / var(--segmented-control-count) * var(--segmented-control-index))',
+    insetInlineStart: 0,
     pointerEvents: 'none',
     position: 'absolute',
     top: 0,
     transitionDuration: '100ms',
     transitionProperty: {
       [still]: 'none',
-      default: 'inset-inline-start',
+      default: 'translate',
     },
-    transitionTimingFunction: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    // it is one share wide, so its own width is one step
+    translate:
+      'calc(100% * var(--segmented-control-index) * var(--segmented-control-dir)) 0',
     width: 'calc(100% / var(--segmented-control-count))',
     zIndex: -1,
   },
@@ -120,7 +127,6 @@ const styles = stylex.create({
       [disabled]: 'none',
       default: '0 0 0 1px var(--gray-a4)',
     },
-    alignItems: 'stretch',
     backgroundColor: {
       [disabled]: 'var(--gray-3)',
       default: 'var(--surface)',

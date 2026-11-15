@@ -5,7 +5,7 @@ import { Dialog } from '@base-ui/react/dialog'
 import * as stylex from '@stylexjs/stylex'
 import { type ReactNode, use, useCallback, useMemo, useState } from 'react'
 
-import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
+import { listbox, listboxSize, listboxVariants } from '../../lib/listbox.js'
 import { ThemeContext } from '../../lib/theme.js'
 import { flush } from '../autocomplete/styles.js'
 import { dialog } from '../dialog/content.js'
@@ -107,7 +107,7 @@ export function Root({
                 data-gray={theme.gray}
                 {...stylex.props(
                   dialog.content,
-                  listboxSizes[2],
+                  ...listboxSize('2'),
                   listboxVariants.soft,
                   styles.popup,
                 )}
@@ -218,20 +218,13 @@ const styles = stylex.create({
   input: {
     '::placeholder': {
       color: 'var(--gray-a10)',
-      opacity: 1,
     },
-    backgroundColor: 'transparent',
-    borderStyle: 'none',
     // divides it from the list
     boxShadow: 'inset 0 -1px var(--gray-a6)',
-    boxSizing: 'border-box',
-    color: 'inherit',
     flexShrink: 0,
-    font: 'inherit',
     fontSize: 'var(--text-base)',
     height: 'calc(var(--spacing) * 12)',
     outline: 'none',
-    padding: 0,
     paddingInline:
       'calc(var(--listbox-content-padding) + var(--listbox-separator-margin))',
     width: '100%',
@@ -246,10 +239,9 @@ const styles = stylex.create({
     cursor: 'pointer',
     gap: 'calc(var(--spacing) * 2)',
     // for a row rendered as a link
-    textDecoration: 'none',
   },
   list: {
-    maxHeight: 'min(24rem, 60vh)',
+    maxHeight: 'min(calc(var(--spacing) * 96), 60vh)',
     overscrollBehavior: 'contain',
     padding: {
       ':is([data-empty])': 0,
@@ -260,7 +252,7 @@ const styles = stylex.create({
   popup: {
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: 560,
+    maxWidth: 'calc(var(--spacing) * 144)',
     overflow: 'hidden',
     padding: 0,
   },

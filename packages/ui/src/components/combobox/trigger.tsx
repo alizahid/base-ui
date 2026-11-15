@@ -9,7 +9,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { ChevronDownIcon } from '../../lib/icons.js'
+import { ChevronDownIcon, icon } from '../../lib/icons.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
 import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
@@ -61,7 +61,7 @@ export function Trigger({
 
       <Component.Icon
         render={<ChevronDownIcon />}
-        {...stylex.props(trigger.icon)}
+        {...stylex.props(icon.small, trigger.icon)}
       />
     </Component.Trigger>
   )

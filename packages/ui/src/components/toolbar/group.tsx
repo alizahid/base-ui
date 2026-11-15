@@ -33,7 +33,7 @@ const styles = stylex.create({
     display: 'flex',
     flexDirection: {
       ':is([data-orientation="vertical"])': 'column',
-      default: 'row',
+      default: null,
     },
     gap: 'calc(var(--spacing) * 1)',
   },

@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 
 // ported from radix themes' base-menu.css. the popup sets the size variables
-// and the rows inside read them
+// and the rows inside read them. the variables are the listbox's, so the
+// check column, labels and separators can be the listbox's own styles
 
 // stylex doesn't order these against each other, so they must not overlap
 const off = ':is([data-disabled])'
@@ -10,38 +11,22 @@ const open = ':is([data-popup-open]:not([data-highlighted], [data-disabled]))'
 const tinted = ':is([data-accent]:not([data-highlighted], [data-disabled]))'
 
 export const menu = stylex.create({
-  check: {
-    height: '1lh',
-    width: '1lh',
-  },
   // the chevron on a submenu trigger; flipped where text runs right to left
   chevron: {
     color: 'var(--menu-chevron)',
-    height: '1lh',
-    marginInlineEnd: -2,
     transform: {
       ':dir(rtl)': 'scaleX(-1)',
-      default: 'none',
+      default: null,
     },
-    width: '1lh',
   },
   content: {
     backgroundColor: 'var(--panel-background)',
     boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     maxHeight: 'var(--available-height)',
     outline: 'none',
     overflow: 'auto',
-    padding: 'var(--menu-content-padding)',
-  },
-  indicator: {
-    alignItems: 'center',
-    display: 'inline-flex',
-    insetInlineStart: 0,
-    justifyContent: 'center',
-    position: 'absolute',
-    width: 'var(--menu-item-padding-start)',
+    padding: 'var(--listbox-content-padding)',
   },
   // every kind of row: item, checkbox item, radio item, submenu trigger
   item: {
@@ -62,8 +47,7 @@ export const menu = stylex.create({
       [highlighted]: 'var(--menu-highlight)',
       [open]: 'var(--menu-open)',
     },
-    borderRadius: 'var(--menu-item-radius)',
-    boxSizing: 'border-box',
+    borderRadius: 'var(--listbox-item-radius)',
     // a `color` on an item tints its text
     color: {
       [highlighted]: 'var(--menu-highlight-color)',
@@ -73,35 +57,13 @@ export const menu = stylex.create({
     cursor: 'default',
     display: 'flex',
     gap: 'calc(var(--spacing) * 2)',
-    height: 'var(--menu-item-height)',
+    height: 'var(--listbox-item-height)',
     outline: 'none',
-    paddingInlineEnd: 'var(--menu-item-padding-end)',
-    paddingInlineStart: 'var(--menu-item-padding-start)',
+    paddingInlineEnd: 'var(--listbox-separator-margin)',
+    paddingInlineStart: 'var(--listbox-indicator-width)',
     position: 'relative',
-    scrollMarginBlock: 'var(--menu-content-padding)',
+    scrollMarginBlock: 'var(--listbox-content-padding)',
     userSelect: 'none',
-  },
-  label: {
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    color: 'var(--gray-a10)',
-    cursor: 'default',
-    display: 'flex',
-    height: 'var(--menu-item-height)',
-    // a label that comes straight after a row gets some room above it
-    marginBlockStart: {
-      ':is([role^="menuitem"] + *)': 'calc(var(--spacing) * 2)',
-    },
-    paddingInlineEnd: 'var(--menu-item-padding-end)',
-    paddingInlineStart: 'var(--menu-item-padding-start)',
-    userSelect: 'none',
-  },
-  separator: {
-    backgroundColor: 'var(--gray-a6)',
-    height: 1,
-    marginBlock: 'calc(var(--spacing) * 2)',
-    marginInlineEnd: 'var(--menu-item-padding-end)',
-    marginInlineStart: 'var(--menu-item-padding-start)',
   },
   shortcut: {
     alignItems: 'center',
@@ -147,27 +109,27 @@ const checkable = ':has([role="menuitemcheckbox"], [role="menuitemradio"])'
 
 export const menuSizes = stylex.create({
   1: {
-    '--menu-content-padding': 'var(--spacing)',
-    '--menu-item-height': 'calc(var(--spacing) * 6)',
-    '--menu-item-padding-end': 'calc(var(--spacing) * 2)',
-    '--menu-item-padding-start': {
+    '--listbox-content-padding': 'var(--spacing)',
+    '--listbox-indicator-width': {
       [checkable]: 'calc(var(--spacing) * 5)',
       default: 'calc(var(--spacing) * 2)',
     },
-    '--menu-item-radius': 'var(--radius-sm)',
+    '--listbox-item-height': 'calc(var(--spacing) * 6)',
+    '--listbox-item-radius': 'var(--radius-sm)',
+    '--listbox-separator-margin': 'calc(var(--spacing) * 2)',
     borderRadius: 'var(--radius-lg)',
     fontSize: 'var(--text-xs)',
     lineHeight: 'var(--text-xs--line-height)',
   },
   2: {
-    '--menu-content-padding': 'calc(var(--spacing) * 2)',
-    '--menu-item-height': 'calc(var(--spacing) * 8)',
-    '--menu-item-padding-end': 'calc(var(--spacing) * 3)',
-    '--menu-item-padding-start': {
+    '--listbox-content-padding': 'calc(var(--spacing) * 2)',
+    '--listbox-indicator-width': {
       [checkable]: 'calc(var(--spacing) * 6)',
       default: 'calc(var(--spacing) * 3)',
     },
-    '--menu-item-radius': 'var(--radius-md)',
+    '--listbox-item-height': 'calc(var(--spacing) * 8)',
+    '--listbox-item-radius': 'var(--radius-md)',
+    '--listbox-separator-margin': 'calc(var(--spacing) * 3)',
     borderRadius: 'var(--radius-xl)',
     fontSize: 'var(--text-sm)',
     lineHeight: 'var(--text-sm--line-height)',

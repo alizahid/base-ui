@@ -119,16 +119,7 @@ const styles = stylex.create({
       default: 'pointer',
     },
     display: 'inline-flex',
-    filter: {
-      [active]: 'var(--button-filter-active, none)',
-      [hover]: {
-        '@media (hover: hover)': 'var(--button-filter-hover, none)',
-        default: null,
-      },
-      [open]: 'var(--button-filter-hover, none)',
-    },
     flexShrink: 0,
-    fontStyle: 'normal',
     fontWeight: '500',
     justifyContent: 'center',
     outline: {
@@ -136,7 +127,6 @@ const styles = stylex.create({
       default: 'none',
     },
     outlineOffset: 'var(--button-outline-offset, -1px)',
-    position: 'relative',
     textAlign: 'center',
     userSelect: 'none',
     verticalAlign: 'top',
@@ -170,11 +160,11 @@ const variants = stylex.create({
   },
   solid: {
     '--button-background': 'var(--accent-9)',
-    '--button-background-active': 'var(--accent-10)',
+    '--button-background-active':
+      'color-mix(in oklab, var(--accent-10), var(--accent-12) 12%)',
     '--button-background-disabled': 'var(--gray-a3)',
     '--button-background-hover': 'var(--accent-10)',
     '--button-color': 'var(--accent-contrast)',
-    '--button-filter-active': 'var(--button-solid-active-filter)',
     '--button-outline-offset': '2px',
   },
   surface: {
@@ -204,11 +194,11 @@ const contrast = stylex.create({
   },
   solid: {
     '--button-background': 'var(--accent-12)',
-    '--button-background-active': 'var(--accent-12)',
-    '--button-background-hover': 'var(--accent-12)',
+    '--button-background-active':
+      'color-mix(in oklab, var(--accent-12), var(--gray-1) 18%)',
+    '--button-background-hover':
+      'color-mix(in oklab, var(--accent-12), var(--gray-1) 10%)',
     '--button-color': 'var(--gray-1)',
-    '--button-filter-active': 'var(--button-high-contrast-active-filter)',
-    '--button-filter-hover': 'var(--button-high-contrast-hover-filter)',
   },
   surface: {
     '--button-color': 'var(--accent-12)',

@@ -13,18 +13,17 @@ export const cell = stylex.create({
   main: {
     backgroundColor: {
       [header]: 'var(--table-header)',
-      default: 'transparent',
+      default: null,
     },
     boxShadow: {
       [last]: 'var(--table-last-row)',
       default: 'inset 0 -1px var(--gray-a5)',
     },
-    boxSizing: 'border-box',
     fontWeight: '400',
     // works as a min-height
     height: 'var(--table-cell-height)',
     padding: 'var(--table-cell-padding)',
     textAlign: 'start',
-    verticalAlign: 'inherit',
+    verticalAlign: 'top',
   },
 })

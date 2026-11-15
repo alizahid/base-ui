@@ -49,7 +49,6 @@ const styles = stylex.create({
       ':is([data-accent])': 'var(--accent-a6)',
       default: 'var(--gray-a6)',
     },
-    display: 'block',
     flexShrink: 0,
   },
   vertical: {

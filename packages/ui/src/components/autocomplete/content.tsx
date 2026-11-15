@@ -9,7 +9,8 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, type ReactNode, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
+import { listbox, listboxSize, listboxVariants } from '../../lib/listbox.js'
+import { panel } from '../../lib/panel.js'
 import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
@@ -53,7 +54,7 @@ export function Content({
 
   return (
     <Component.Portal>
-      <Component.Positioner sideOffset={4} {...stylex.props(styles.positioner)}>
+      <Component.Positioner sideOffset={4} {...stylex.props(panel.positioner)}>
         {/* portaled out of the provider's element, so its colors are set again */}
         <Component.Popup
           data-accent={color ?? theme.accent}
@@ -64,7 +65,7 @@ export function Content({
               listbox.content,
               listboxVariants[variant],
               highContrast && variant === 'solid' && listbox.contrast,
-              listboxSizes[size],
+              ...listboxSize(size),
               styles.content,
             ),
             className,
@@ -72,7 +73,7 @@ export function Content({
           )}
         >
           {status ? (
-            <Component.Status {...stylex.props(styles.empty)}>
+            <Component.Status {...stylex.props(listbox.empty)}>
               {status}
             </Component.Status>
           ) : null}
@@ -81,11 +82,11 @@ export function Content({
               matches, so the padding is on the inner element */}
           {empty ? (
             <Component.Empty>
-              <div {...stylex.props(styles.empty)}>{empty}</div>
+              <div {...stylex.props(listbox.empty)}>{empty}</div>
             </Component.Empty>
           ) : null}
 
-          <Component.List {...stylex.props(listbox.list, styles.list)}>
+          <Component.List {...stylex.props(listbox.list, listbox.filtered)}>
             {children}
           </Component.List>
         </Component.Popup>
@@ -120,23 +121,5 @@ const styles = stylex.create({
   content: {
     maxWidth: 'var(--available-width)',
     width: 'var(--anchor-width)',
-  },
-  empty: {
-    color: 'var(--gray-a10)',
-    paddingBlock: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
-    paddingInline: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
-  },
-  list: {
-    maxHeight: 'min(22.5rem, var(--available-height))',
-    overscrollBehavior: 'contain',
-    padding: {
-      ':is([data-empty])': 0,
-      default: 'var(--listbox-content-padding)',
-    },
-    scrollPaddingBlock: 'var(--listbox-content-padding)',
-  },
-  positioner: {
-    outline: 'none',
-    zIndex: 1,
   },
 })

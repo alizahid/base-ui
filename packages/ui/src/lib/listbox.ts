@@ -1,16 +1,12 @@
 import * as stylex from '@stylexjs/stylex'
 
-// the popup list shared by Select and Combobox: the surface, its items, group
+// the popup list shared by Select, Combobox and Autocomplete: the surface,
+// its items, group labels and separators. Menu shares the check column,
 // labels and separators. ported from radix themes' select.css
 export const listbox = stylex.create({
-  check: {
-    height: '1lh',
-    width: '1lh',
-  },
   content: {
     backgroundColor: 'var(--panel-background)',
     boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
     maxHeight: 'var(--available-height)',
     // a select lines the selected item's text up with the trigger's, which
@@ -24,11 +20,25 @@ export const listbox = stylex.create({
     // base ui focuses the popup when it opens; the highlighted item shows focus
     outline: 'none',
     overflow: 'hidden',
-    transformOrigin: 'var(--transform-origin)',
   },
   contrast: {
     '--listbox-highlight': 'var(--accent-12)',
     '--listbox-highlight-color': 'var(--accent-1)',
+  },
+  // what a filtered list (Combobox, Autocomplete) shows when nothing matches
+  empty: {
+    color: 'var(--gray-a10)',
+    padding: 'calc(var(--listbox-content-padding) + var(--spacing) * 2)',
+  },
+  // a filtered list: shorter, and no padding once it is empty
+  filtered: {
+    maxHeight: 'min(calc(var(--spacing) * 96), var(--available-height))',
+    overscrollBehavior: 'contain',
+    padding: {
+      ':is([data-empty])': 0,
+      default: 'var(--listbox-content-padding)',
+    },
+    scrollPaddingBlock: 'var(--listbox-content-padding)',
   },
   indicator: {
     alignItems: 'center',
@@ -45,7 +55,6 @@ export const listbox = stylex.create({
         'var(--listbox-highlight)',
     },
     borderRadius: 'var(--listbox-item-radius)',
-    boxSizing: 'border-box',
     color: {
       ':is([data-disabled])': 'var(--gray-a8)',
       ':is([data-highlighted]:not([data-disabled]))':
@@ -68,20 +77,21 @@ export const listbox = stylex.create({
     color: 'var(--gray-a10)',
     cursor: 'default',
     display: 'flex',
-    // stays a step smaller than the items at size 3
+    // stays a step smaller than the items at size 3. a menu doesn't set
+    // these, and keeps the size it inherits
     fontSize: 'var(--listbox-label-font-size)',
     height: 'var(--listbox-item-height)',
     lineHeight: 'var(--listbox-label-line-height)',
     // a label that comes straight after an item gets some room above it
     marginBlockStart: {
-      ':is([role="option"] + *)': 'calc(var(--spacing) * 2)',
+      ':is(:is([role="option"], [role^="menuitem"]) + *)':
+        'calc(var(--spacing) * 2)',
     },
     paddingInlineEnd: 'var(--listbox-separator-margin)',
     paddingInlineStart: 'var(--listbox-indicator-width)',
     userSelect: 'none',
   },
   list: {
-    boxSizing: 'border-box',
     maxHeight: 'var(--available-height)',
     outline: 'none',
     overflowY: 'auto',
@@ -120,9 +130,9 @@ export const listboxVariants = stylex.create({
 // --listbox-align-extra is how far the popup overhangs a select trigger of the
 // same size on both sides combined: its padding and gutters less the
 // trigger's own padding
-export const listboxSizes = stylex.create({
+const listboxSizes = stylex.create({
   1: {
-    '--listbox-align-extra': '20px',
+    '--listbox-align-extra': 'calc(var(--spacing) * 5)',
     '--listbox-content-padding': 'var(--spacing)',
     '--listbox-indicator-width': 'calc(var(--spacing) * 5)',
     '--listbox-item-height': 'calc(var(--spacing) * 6)',
@@ -135,7 +145,7 @@ export const listboxSizes = stylex.create({
     lineHeight: 'var(--text-xs--line-height)',
   },
   2: {
-    '--listbox-align-extra': '28px',
+    '--listbox-align-extra': 'calc(var(--spacing) * 7)',
     '--listbox-content-padding': 'calc(var(--spacing) * 2)',
     '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
     '--listbox-item-height': 'calc(var(--spacing) * 8)',
@@ -147,17 +157,16 @@ export const listboxSizes = stylex.create({
     fontSize: 'var(--text-sm)',
     lineHeight: 'var(--text-sm--line-height)',
   },
+  // on top of size 2: only the text grows
   3: {
-    '--listbox-align-extra': '20px',
-    '--listbox-content-padding': 'calc(var(--spacing) * 2)',
-    '--listbox-indicator-width': 'calc(var(--spacing) * 6)',
-    '--listbox-item-height': 'calc(var(--spacing) * 8)',
-    '--listbox-item-radius': 'var(--radius-md)',
-    '--listbox-label-font-size': 'var(--text-sm)',
-    '--listbox-label-line-height': 'var(--text-sm--line-height)',
-    '--listbox-separator-margin': 'calc(var(--spacing) * 3)',
-    borderRadius: 'var(--radius-xl)',
+    '--listbox-align-extra': 'calc(var(--spacing) * 5)',
     fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-sm--line-height)',
+    lineHeight: 'var(--text-base--line-height)',
   },
 })
+
+export function listboxSize(size: '1' | '2' | '3') {
+  return size === '3'
+    ? [listboxSizes[2], listboxSizes[3]]
+    : [listboxSizes[size]]
+}

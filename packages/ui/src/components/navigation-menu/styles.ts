@@ -19,11 +19,9 @@ export const navigation = stylex.create({
         default: null,
       },
       [open]: 'var(--navigation-hover, var(--gray-a3))',
-      default: 'transparent',
+      default: null,
     },
     borderRadius: 'var(--radius-md)',
-    borderWidth: 0,
-    boxSizing: 'border-box',
     color: {
       [active]: 'var(--accent-a11)',
       default: 'var(--gray-12)',
@@ -31,12 +29,10 @@ export const navigation = stylex.create({
     cursor: 'pointer',
     display: 'flex',
     flexGrow: 1,
-    fontFamily: 'inherit',
     fontSize: 'var(--text-sm)',
     gap: 'var(--spacing)',
     justifyContent: 'var(--navigation-item-justify, center)',
     lineHeight: 'var(--text-sm--line-height)',
-    margin: 0,
     // inside the item, as the popup clips whatever leaves it
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
@@ -48,7 +44,6 @@ export const navigation = stylex.create({
     padding:
       'var(--navigation-item-padding, calc(var(--spacing) * 1.5) calc(var(--spacing) * 3))',
     textAlign: 'start',
-    textDecoration: 'none',
     userSelect: 'none',
     width: 'var(--navigation-item-width, auto)',
   },

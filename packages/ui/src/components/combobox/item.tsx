@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { CheckIcon } from '../../lib/icons.js'
+import { CheckIcon, icon } from '../../lib/icons.js'
 import { listbox } from '../../lib/listbox.js'
 import { merge } from '../../lib/stylex.js'
 
@@ -28,7 +28,7 @@ export function Item({
       {...merge(stylex.props(listbox.item), className, style)}
     >
       <Component.ItemIndicator {...stylex.props(listbox.indicator)}>
-        <CheckIcon {...stylex.props(listbox.check)} />
+        <CheckIcon {...stylex.props(icon.small)} />
       </Component.ItemIndicator>
 
       <span {...stylex.props(listbox.text)}>{children}</span>

@@ -34,16 +34,9 @@ const styles = stylex.create({
   input: {
     '::placeholder': {
       color: 'var(--gray-a10)',
-      opacity: 1,
     },
-    backgroundColor: 'transparent',
-    borderStyle: 'none',
-    boxSizing: 'border-box',
-    color: 'inherit',
-    font: 'inherit',
     height: 'var(--listbox-item-height)',
     outline: 'none',
-    padding: 0,
     paddingInline: 'calc(var(--spacing) * 2)',
     width: '100%',
   },

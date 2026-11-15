@@ -30,9 +30,8 @@ export const panel = stylex.create({
   content: {
     backgroundColor: 'var(--panel-background)',
     boxShadow: 'var(--panel-shadow)',
-    boxSizing: 'border-box',
     color: 'var(--gray-12)',
-    maxWidth: 480,
+    maxWidth: 'calc(var(--spacing) * 128)',
     minWidth: 'var(--anchor-width)',
     outline: 'none',
     overflow: 'auto',
@@ -43,21 +42,21 @@ export const panel = stylex.create({
   motion: {
     opacity: {
       [hidden]: 0,
-      default: 1,
+      default: null,
     },
     transform: {
       [other]: 'scale(0.97)',
-      [bottom]: 'translateY(-4px) scale(0.97)',
-      [left]: 'translateX(4px) scale(0.97)',
-      [right]: 'translateX(-4px) scale(0.97)',
-      [top]: 'translateY(4px) scale(0.97)',
-      default: 'none',
+      [bottom]: 'translateY(calc(var(--spacing) * -1)) scale(0.97)',
+      [left]: 'translateX(var(--spacing)) scale(0.97)',
+      [right]: 'translateX(calc(var(--spacing) * -1)) scale(0.97)',
+      [top]: 'translateY(var(--spacing)) scale(0.97)',
+      default: null,
     },
     transformOrigin: 'var(--transform-origin)',
     // closes faster than it opens
     transitionDuration: {
       ':is([data-ending-style])': '100ms',
-      default: '160ms',
+      default: '150ms',
     },
     // no motion at all for people who ask for less of it
     transitionProperty: {

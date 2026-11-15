@@ -35,16 +35,18 @@ const styles = stylex.create({
   // base ui measures the active tab; the line slides to it
   indicator: {
     backgroundColor: 'var(--tabs-indicator, var(--accent-indicator))',
+    borderRadius: 'calc(infinity * 1px)',
     bottom: 0,
     height: 2,
-    left: 'var(--active-tab-left)',
+    left: 0,
     position: 'absolute',
-    transitionDuration: '200ms',
+    transitionDuration: '150ms',
     transitionProperty: {
       [still]: 'none',
-      default: 'left, width',
+      default: 'translate, width',
     },
-    transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    translate: 'var(--active-tab-left) 0',
     width: 'var(--active-tab-width)',
   },
 })

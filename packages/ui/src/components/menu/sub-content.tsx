@@ -40,7 +40,7 @@ export function SubContent({
         align={align}
         // radix lines the submenu's first row up with its trigger
         alignOffset={alignOffset ?? -Number(size) * 4}
-        collisionPadding={10}
+        collisionPadding={8}
         side={side}
         sideOffset={sideOffset}
         {...stylex.props(panel.positioner)}

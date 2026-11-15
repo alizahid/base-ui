@@ -7,6 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
+import { dialog } from '../../lib/dialog.js'
 import { merge } from '../../lib/stylex.js'
 
 export type DialogDescriptionProps = ComponentDescriptionProps & {
@@ -22,17 +23,7 @@ export function Description({
   return (
     <Component.Description
       {...props}
-      {...merge(stylex.props(styles.description), className, style)}
+      {...merge(stylex.props(dialog.description), className, style)}
     />
   )
 }
-
-// ported from radix themes' base-dialog.css. radix animates with keyframes;
-// here base ui's starting and ending styles drive transitions instead
-const styles = stylex.create({
-  description: {
-    fontSize: 'var(--text-base)',
-    lineHeight: 'var(--text-base--line-height)',
-    margin: 0,
-  },
-})

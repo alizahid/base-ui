@@ -22,7 +22,7 @@ export type NavigationMenuContentProps = Omit<
 export const ContentContext = createContext(false)
 
 // what a trigger opens, shown in the shared popup: a list of Links. as wide as
-// what is inside it, up to 480px; lay the links out with a className
+// what is inside it, up to 512px; lay the links out with a className
 export function Content({
   children,
   className,
@@ -59,15 +59,13 @@ const styles = stylex.create({
     '--navigation-item-padding':
       'calc(var(--spacing) * 2) calc(var(--spacing) * 3)',
     '--navigation-item-width': '100%',
-    boxSizing: 'border-box',
     height: '100%',
-    listStyle: 'none',
-    margin: 0,
     maxHeight: 'var(--available-height)',
-    maxWidth: 'min(480px, calc(100vw - 20px))',
+    maxWidth:
+      'min(calc(var(--spacing) * 128), calc(100vw - var(--spacing) * 5))',
     opacity: {
       ':is([data-starting-style], [data-ending-style])': 0,
-      default: 1,
+      default: null,
     },
     overflowY: 'auto',
     padding: 'calc(var(--spacing) * 2)',
@@ -80,15 +78,15 @@ const styles = stylex.create({
       [startLeft]: 'translateX(-50%)',
       [startRight]: 'translateX(50%)',
       [startUp]: 'translateY(-50%)',
-      default: 'none',
+      default: null,
     },
     // the fade is over before the slide
-    transitionDuration: '175ms, 350ms',
+    transitionDuration: '150ms, 300ms',
     transitionProperty: {
       '@media (prefers-reduced-motion: reduce)': 'none',
       default: 'opacity, transform',
     },
-    transitionTimingFunction: 'ease, cubic-bezier(0.22, 1, 0.36, 1)',
+    transitionTimingFunction: 'ease, cubic-bezier(0.16, 1, 0.3, 1)',
     width: 'max-content',
   },
 })

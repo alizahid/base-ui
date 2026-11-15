@@ -31,7 +31,7 @@ export type TextAreaRootProps = Omit<
     radius?: RadiusToken
     size?: '1' | '2' | '3'
     style?: CSSProperties
-    variant?: 'surface' | 'soft'
+    variant?: 'surface' | 'soft' | 'ghost'
   }
 
 // base ui has no textarea of its own, so its Input renders one and keeps the

@@ -5,7 +5,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { ChevronDownIcon } from '../../lib/icons.js'
+import { ChevronDownIcon, icon } from '../../lib/icons.js'
 import { merge } from '../../lib/stylex.js'
 
 export type AccordionTriggerProps = Omit<
@@ -24,14 +24,14 @@ export function Trigger({
   ...props
 }: AccordionTriggerProps) {
   return (
-    <Component.Header {...stylex.props(styles.header)}>
+    <Component.Header>
       <Component.Trigger
         {...props}
         {...merge(stylex.props(styles.main), className, style)}
       >
         {children}
 
-        <ChevronDownIcon {...stylex.props(styles.icon)} />
+        <ChevronDownIcon {...stylex.props(icon.small, styles.icon)} />
       </Component.Trigger>
     </Component.Header>
   )
@@ -44,17 +44,12 @@ const hover = ':is(:hover:not([data-disabled], [data-panel-open]))'
 const still = '@media (prefers-reduced-motion: reduce)'
 
 const styles = stylex.create({
-  header: {
-    font: 'inherit',
-    margin: 0,
-  },
   icon: {
     color: 'var(--gray-a11)',
     flexShrink: 0,
-    height: '1lh',
     transform: {
       ':is([data-panel-open] > *)': 'rotate(180deg)',
-      default: 'none',
+      default: null,
     },
     transitionDuration: '150ms',
     transitionProperty: {
@@ -62,7 +57,6 @@ const styles = stylex.create({
       default: 'transform',
     },
     transitionTimingFunction: 'ease-out',
-    width: '1lh',
   },
   main: {
     alignItems: 'center',
@@ -71,39 +65,36 @@ const styles = stylex.create({
         '@media (hover: hover)': 'var(--accordion-hover)',
         default: null,
       },
-      default: 'transparent',
+      default: null,
     },
     // the corners of the panel, so the focus ring follows them
     borderEndEndRadius: {
       ':is(:last-child > * > *):not([data-panel-open])':
         'var(--accordion-trigger-radius)',
-      default: 0,
+      default: null,
     },
     borderEndStartRadius: {
       ':is(:last-child > * > *):not([data-panel-open])':
         'var(--accordion-trigger-radius)',
-      default: 0,
+      default: null,
     },
     borderStartEndRadius: {
       ':is(:first-child > * > *)': 'var(--accordion-trigger-radius)',
-      default: 0,
+      default: null,
     },
     borderStartStartRadius: {
       ':is(:first-child > * > *)': 'var(--accordion-trigger-radius)',
-      default: 0,
+      default: null,
     },
-    borderStyle: 'none',
-    boxSizing: 'border-box',
     color: {
       [disabled]: 'var(--gray-a8)',
-      default: 'inherit',
+      default: null,
     },
     cursor: {
       [disabled]: 'not-allowed',
       default: 'pointer',
     },
     display: 'flex',
-    font: 'inherit',
     fontWeight: '500',
     gap: 'calc(var(--spacing) * 4)',
     justifyContent: 'space-between',

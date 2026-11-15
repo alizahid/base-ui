@@ -6,7 +6,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { MinusIcon, PlusIcon } from '../../lib/icons.js'
+import { icon, MinusIcon, PlusIcon } from '../../lib/icons.js'
 import { input, inputSizes, inputVariants } from '../../lib/input.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
 import { merge } from '../../lib/stylex.js'
@@ -54,7 +54,7 @@ export function NumberField({
         )}
       >
         <Component.Decrement {...stylex.props(styles.button, styles.start)}>
-          <MinusIcon {...stylex.props(styles.icon)} />
+          <MinusIcon {...stylex.props(icon.line)} />
         </Component.Decrement>
 
         <Component.Input
@@ -65,7 +65,7 @@ export function NumberField({
         />
 
         <Component.Increment {...stylex.props(styles.button, styles.end)}>
-          <PlusIcon {...stylex.props(styles.icon)} />
+          <PlusIcon {...stylex.props(icon.line)} />
         </Component.Increment>
       </Component.Group>
     </Component.Root>
@@ -76,19 +76,24 @@ const hover = ':is(:hover:not(:active, :disabled))'
 const active = ':is(:active:not(:disabled))'
 
 const styles = stylex.create({
-  // a square at each end, as tall as the field
+  // a square at each end, as tall as the field. it reaches under the field's
+  // border on its three outer sides and takes the field's corners, with a
+  // transparent border of the same width that its fill stops at. that puts
+  // the fill's corners exactly on the inside of the field's border
   button: {
     alignItems: 'center',
     aspectRatio: '1',
+    backgroundClip: 'padding-box',
     backgroundColor: {
       [active]: 'var(--gray-a4)',
       [hover]: {
         '@media (hover: hover)': 'var(--gray-a3)',
         default: null,
       },
-      default: 'transparent',
+      default: null,
     },
-    borderStyle: 'none',
+    borderBlockWidth: 'var(--text-field-border-width)',
+    borderColor: 'transparent',
     color: {
       ':disabled': 'var(--gray-a8)',
       default: 'var(--text-field-slot)',
@@ -100,16 +105,14 @@ const styles = stylex.create({
     display: 'flex',
     flexShrink: 0,
     justifyContent: 'center',
+    marginBlock: 'calc(var(--text-field-border-width) * -1)',
     outline: 'none',
-    padding: 0,
   },
   end: {
     borderEndEndRadius: 'inherit',
+    borderInlineEndWidth: 'var(--text-field-border-width)',
     borderStartEndRadius: 'inherit',
-  },
-  icon: {
-    height: '1lh',
-    width: '1lh',
+    marginInlineEnd: 'calc(var(--text-field-border-width) * -1)',
   },
   input: {
     fontVariantNumeric: 'tabular-nums',
@@ -122,6 +125,8 @@ const styles = stylex.create({
   },
   start: {
     borderEndStartRadius: 'inherit',
+    borderInlineStartWidth: 'var(--text-field-border-width)',
     borderStartStartRadius: 'inherit',
+    marginInlineStart: 'calc(var(--text-field-border-width) * -1)',
   },
 })

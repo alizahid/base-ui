@@ -7,7 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
-import { ChevronDownIcon } from '../../lib/icons.js'
+import { ChevronDownIcon, icon } from '../../lib/icons.js'
 import { merge } from '../../lib/stylex.js'
 import { navigation } from './styles.js'
 
@@ -35,27 +35,21 @@ export function Trigger({
       {children}
 
       <Component.Icon {...stylex.props(styles.icon)}>
-        <ChevronDownIcon {...stylex.props(styles.chevron)} />
+        <ChevronDownIcon {...stylex.props(icon.small)} />
       </Component.Icon>
     </Component.Trigger>
   )
 }
 
 const styles = stylex.create({
-  chevron: {
-    display: 'block',
-    height: '1lh',
-    width: '1lh',
-  },
   icon: {
     color: 'var(--gray-a11)',
     flexShrink: 0,
-    marginInlineEnd: -2,
     rotate: {
       ':is([data-popup-open])': 'var(--navigation-icon-open, 180deg)',
       default: 'var(--navigation-icon-rotate, 0deg)',
     },
-    transitionDuration: '200ms',
+    transitionDuration: '150ms',
     transitionProperty: {
       '@media (prefers-reduced-motion: reduce)': 'none',
       default: 'rotate',

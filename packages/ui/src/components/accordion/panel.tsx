@@ -42,7 +42,6 @@ const styles = stylex.create({
   },
   // base ui measures the content; the height opens to it and closes to 0
   main: {
-    boxSizing: 'border-box',
     height: {
       ':is([data-starting-style], [data-ending-style])': 0,
       default: 'var(--accordion-panel-height)',

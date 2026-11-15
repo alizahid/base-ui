@@ -41,6 +41,7 @@ const styles = stylex.create({
   main: {
     '::after': {
       backgroundColor: 'var(--tabs-indicator, var(--accent-indicator))',
+      borderRadius: 'calc(infinity * 1px)',
       bottom: 0,
       content: {
         ':is([data-active])': '""',

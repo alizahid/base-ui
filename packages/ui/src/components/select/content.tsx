@@ -9,8 +9,9 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { ChevronDownIcon } from '../../lib/icons.js'
-import { listbox, listboxSizes, listboxVariants } from '../../lib/listbox.js'
+import { ChevronDownIcon, icon } from '../../lib/icons.js'
+import { listbox, listboxSize, listboxVariants } from '../../lib/listbox.js'
+import { panel } from '../../lib/panel.js'
 import { SizeContext } from '../../lib/size.js'
 import { merge } from '../../lib/stylex.js'
 import { ThemeContext } from '../../lib/theme.js'
@@ -45,7 +46,7 @@ export function Content({
         align={align}
         side={side}
         sideOffset={sideOffset}
-        {...stylex.props(styles.positioner)}
+        {...stylex.props(panel.positioner)}
       >
         {/* portaled out of the provider's element, so its colors are set again */}
         <Component.Popup
@@ -57,7 +58,7 @@ export function Content({
               listbox.content,
               listboxVariants[variant],
               highContrast && variant === 'solid' && listbox.contrast,
-              listboxSizes[size],
+              ...listboxSize(size),
             ),
             className,
             style,
@@ -68,7 +69,7 @@ export function Content({
           <Component.ScrollUpArrow
             {...stylex.props(styles.arrow, styles.arrowUp)}
           >
-            <ChevronDownIcon {...stylex.props(styles.chevron, styles.flip)} />
+            <ChevronDownIcon {...stylex.props(icon.small, styles.flip)} />
           </Component.ScrollUpArrow>
 
           <Component.List {...stylex.props(listbox.list)}>
@@ -78,7 +79,7 @@ export function Content({
           <Component.ScrollDownArrow
             {...stylex.props(styles.arrow, styles.arrowDown)}
           >
-            <ChevronDownIcon {...stylex.props(styles.chevron)} />
+            <ChevronDownIcon {...stylex.props(icon.small)} />
           </Component.ScrollDownArrow>
         </Component.Popup>
       </Component.Positioner>
@@ -129,15 +130,7 @@ const styles = stylex.create({
     borderStartStartRadius: 'inherit',
     top: 0,
   },
-  chevron: {
-    height: '1lh',
-    width: '1lh',
-  },
   flip: {
     transform: 'scaleY(-1)',
-  },
-  positioner: {
-    outline: 'none',
-    zIndex: 1,
   },
 })

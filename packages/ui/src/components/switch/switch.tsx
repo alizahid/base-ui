@@ -6,7 +6,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { type RadiusToken } from '../../lib/radii.js'
+import { type RadiusToken, radii } from '../../lib/radii.js'
 import { merge } from '../../lib/stylex.js'
 
 export type SwitchProps = ComponentProps & {
@@ -54,198 +54,122 @@ export function Switch({
 // uses more than one of them they must not overlap
 const checked = ':is([data-checked])'
 const disabled = ':is([data-disabled])'
-const active = ':is(:active:not([data-disabled]))'
+const active = ':is(:active:not([data-checked], [data-disabled]))'
 const checkedIdle = ':is([data-checked]:not(:active, [data-disabled]))'
 const checkedActive = ':is([data-checked]:active:not([data-disabled]))'
-const checkedEnabled = ':is([data-checked]:not([data-disabled]))'
+const still = '@media (prefers-reduced-motion: reduce)'
 
-// ported from radix themes' switch.css. the track is one wide gradient that
-// slides behind the thumb
+// radix themes' switch, with its sliding gradient track, filters and stacked
+// thumb shadows reduced to a colour fade and a thumb that moves on the
+// compositor
 const styles = stylex.create({
   main: {
-    '--switch-width': 'calc(var(--switch-height) * 1.75)',
+    // the thumb travels the other way in rtl
+    '--switch-dir': {
+      ':dir(rtl)': '-1',
+      default: '1',
+    },
     alignItems: 'center',
     backgroundColor: {
       [active]: 'var(--switch-color-active)',
+      [checkedActive]: 'var(--switch-color-checked-active)',
       [checkedIdle]: 'var(--switch-color-checked)',
-      [disabled]: 'var(--switch-color-disabled)',
-      default: 'var(--switch-color)',
+      default: 'var(--gray-a3)',
     },
-    backgroundImage: {
-      [disabled]: 'none',
-      default: 'var(--switch-image)',
-    },
-    backgroundPositionX: {
-      [checked]: '0%',
-      default: '100%',
-    },
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'calc(var(--switch-width) * 2 + var(--switch-height)) 100%',
-    borderRadius: 'var(--switch-radius, calc(infinity * 1px))',
+    borderRadius: 'calc(infinity * 1px)',
     boxShadow: {
-      [disabled]: 'var(--switch-shadow-disabled)',
-      default: 'var(--switch-shadow)',
+      [disabled]: 'var(--switch-shadow-disabled, none)',
+      default: 'var(--switch-shadow, none)',
     },
     cursor: {
       [disabled]: 'not-allowed',
       default: 'pointer',
     },
     display: 'inline-flex',
-    filter: {
-      [checkedActive]: 'var(--switch-filter-active)',
-    },
     flexShrink: 0,
     height: 'var(--switch-height)',
-    mixBlendMode: {
-      [disabled]: 'var(--switch-disabled-blend-mode)',
-    },
     outline: {
       ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
     },
     outlineOffset: 2,
     transitionDuration: {
-      [active]: '30ms',
-      [checkedIdle]: '160ms, 140ms, 140ms, 140ms',
-      default: '120ms, 140ms, 140ms, 140ms',
+      [still]: '0s',
+      default: '150ms',
     },
-    transitionProperty:
-      'background-position, background-color, box-shadow, filter',
-    transitionTimingFunction: 'linear, ease-in-out, ease-in-out, ease-in-out',
+    transitionProperty: 'background-color',
     verticalAlign: 'top',
     width: 'var(--switch-width)',
   },
-  // moved with a logical margin rather than a transform, so it travels the
-  // right way in rtl
   thumb: {
     backgroundColor: {
       [disabled]: 'var(--gray-2)',
       default: 'white',
     },
-    // the track's radius less the 1px inset, as in radix
-    borderRadius:
-      'max(0px, calc(var(--switch-radius, calc(infinity * 1px)) - 1px))',
+    borderRadius: 'inherit',
     boxShadow: {
-      [checkedEnabled]: 'var(--switch-thumb-shadow-checked)',
       [disabled]: '0 0 0 1px var(--gray-a2), 0 1px 3px var(--black-a1)',
-      default: 'var(--switch-thumb-shadow)',
-    },
-    filter: {
-      [disabled]: 'none',
-      default: 'var(--switch-thumb-filter, none)',
+      default: '0 0 0 1px var(--black-a2), 0 1px 3px var(--black-a2)',
     },
     height: 'calc(var(--switch-height) - 2px)',
-    marginInlineStart: {
-      [checked]: 'calc(var(--switch-width) - var(--switch-height) + 1px)',
-      default: 1,
-    },
+    marginInlineStart: 1,
     transitionDuration: {
-      [disabled]: '0s',
-      default: '140ms',
+      [still]: '0s',
+      default: '150ms',
     },
-    transitionProperty: 'margin-inline-start, box-shadow',
-    transitionTimingFunction:
-      'cubic-bezier(0.45, 0.05, 0.55, 0.95), ease-in-out',
+    transitionProperty: 'translate',
+    translate: {
+      [checked]:
+        'calc((var(--switch-width) - var(--switch-height)) * var(--switch-dir)) 0',
+    },
     width: 'calc(var(--switch-height) - 2px)',
   },
 })
 
-// variants only set variables, the main and thumb styles decide where they apply
+// variants only set variables, the main style decides where they apply
 const variants = stylex.create({
-  // radix stacks translucent accent layers here, so the soft track tints with
-  // whatever is behind it
   soft: {
-    '--switch-color': 'var(--gray-a3)',
     '--switch-color-active': 'var(--gray-a4)',
-    '--switch-color-checked': 'transparent',
-    '--switch-color-disabled': 'var(--gray-a4)',
-    '--switch-filter-active': 'none',
-    '--switch-image':
-      'linear-gradient(to right, var(--accent-a4) 40%, transparent 60%), linear-gradient(to right, var(--accent-a4) 40%, transparent 60%), linear-gradient(to right, var(--accent-a4) 40%, var(--white-a1) 60%), linear-gradient(to right, var(--gray-a2) 40%, var(--gray-a3) 60%)',
-    '--switch-shadow': 'none',
-    '--switch-shadow-disabled': 'none',
-    '--switch-thumb-filter': 'saturate(0.45)',
-    '--switch-thumb-shadow':
-      '0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a1), 0 1px 3px var(--black-a1), 0 2px 4px -1px var(--black-a1)',
-    '--switch-thumb-shadow-checked':
-      '0 0 0 1px var(--black-a1), 0 1px 3px var(--black-a2), 0 1px 3px var(--accent-a3), 0 2px 4px -1px var(--accent-a3)',
+    '--switch-color-checked': 'var(--accent-a6)',
+    '--switch-color-checked-active': 'var(--accent-a7)',
   },
   surface: {
-    '--switch-color': 'var(--gray-a3)',
     '--switch-color-active': 'var(--gray-a4)',
-    '--switch-color-checked': 'var(--gray-a3)',
-    '--switch-color-disabled': 'var(--gray-a3)',
-    '--switch-filter-active': 'var(--switch-active-filter)',
-    '--switch-image':
-      'linear-gradient(to right, var(--accent-track) 40%, transparent 60%)',
+    '--switch-color-checked': 'var(--accent-track)',
+    '--switch-color-checked-active':
+      'color-mix(in oklab, var(--accent-track), var(--accent-12) 12%)',
     '--switch-shadow': 'inset 0 0 0 1px var(--gray-a5)',
     '--switch-shadow-disabled': 'inset 0 0 0 1px var(--gray-a3)',
-    '--switch-thumb-shadow':
-      '0 0 1px 1px var(--black-a2), 0 1px 1px var(--black-a1), 0 2px 4px -1px var(--black-a1)',
-    '--switch-thumb-shadow-checked':
-      '0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a1), 0 0 0 1px var(--accent-a4), -1px 0 1px var(--black-a2)',
   },
 })
 
-// a dark overlay over the checked half of the track; transparent in dark mode
+// a darker checked track; no change in dark mode
 const contrast = stylex.create({
   soft: {
-    '--switch-filter-active': 'var(--switch-high-contrast-active-filter)',
-    '--switch-image':
-      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, transparent 60%), linear-gradient(to right, var(--accent-a6) 40%, var(--white-a1) 60%), linear-gradient(to right, var(--accent-a3) 40%, var(--gray-a3) 60%)',
+    '--switch-color-checked':
+      'color-mix(in oklab, var(--accent-a8), black var(--high-contrast-shade))',
+    '--switch-color-checked-active':
+      'color-mix(in oklab, var(--accent-a9), black var(--high-contrast-shade))',
   },
   surface: {
-    '--switch-filter-active': 'var(--switch-high-contrast-active-filter)',
-    '--switch-image':
-      'linear-gradient(to right, var(--switch-high-contrast-overlay) 40%, transparent 60%), linear-gradient(to right, var(--accent-track) 40%, transparent 60%)',
-    '--switch-thumb-shadow-checked':
-      '0 1px 3px var(--black-a2), 0 2px 4px -1px var(--black-a1), 0 0 0 1px var(--black-a2), -1px 0 1px var(--black-a2)',
+    '--switch-color-checked':
+      'color-mix(in oklab, var(--accent-track), black var(--high-contrast-shade))',
+    '--switch-color-checked-active':
+      'color-mix(in oklab, var(--accent-track), black var(--high-contrast-shade))',
   },
 })
 
 const sizes = stylex.create({
   1: {
     '--switch-height': 'calc(var(--spacing) * 4)',
+    '--switch-width': 'calc(var(--spacing) * 7)',
   },
   2: {
     '--switch-height': 'calc(var(--spacing) * 5)',
+    '--switch-width': 'calc(var(--spacing) * 9)',
   },
   3: {
     '--switch-height': 'calc(var(--spacing) * 6)',
-  },
-})
-
-// a variable rather than the shared radii, so the thumb can derive its own
-// biome-ignore assist/source/useSortedKeys: go away
-const radii = stylex.create({
-  xs: {
-    '--switch-radius': 'var(--radius-xs)',
-  },
-  sm: {
-    '--switch-radius': 'var(--radius-sm)',
-  },
-  md: {
-    '--switch-radius': 'var(--radius-md)',
-  },
-  lg: {
-    '--switch-radius': 'var(--radius-lg)',
-  },
-  xl: {
-    '--switch-radius': 'var(--radius-xl)',
-  },
-  '2xl': {
-    '--switch-radius': 'var(--radius-2xl)',
-  },
-  '3xl': {
-    '--switch-radius': 'var(--radius-3xl)',
-  },
-  '4xl': {
-    '--switch-radius': 'var(--radius-4xl)',
-  },
-  none: {
-    '--switch-radius': '0px',
-  },
-  full: {
-    '--switch-radius': 'calc(infinity * 1px)',
+    '--switch-width': 'calc(var(--spacing) * 10)',
   },
 })

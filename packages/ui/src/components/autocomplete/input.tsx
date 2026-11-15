@@ -8,7 +8,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import { Cross2Icon } from '../../lib/icons.js'
+import { Cross2Icon, icon } from '../../lib/icons.js'
 import { input, inputSizes, inputVariants } from '../../lib/input.js'
 import { type RadiusToken, radii } from '../../lib/radii.js'
 import { SizeContext } from '../../lib/size.js'
@@ -67,9 +67,9 @@ export function Input({
         {/* base ui only renders this while there is something to clear */}
         <Component.Clear
           aria-label={clearLabel}
-          {...stylex.props(styles.clear)}
+          {...stylex.props(input.action)}
         >
-          <Cross2Icon {...stylex.props(styles.icon)} />
+          <Cross2Icon {...stylex.props(icon.small)} />
         </Component.Clear>
       </div>
     </Component.InputGroup>
@@ -77,34 +77,10 @@ export function Input({
 }
 
 const styles = stylex.create({
-  clear: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    borderStyle: 'none',
-    color: {
-      ':is([data-disabled])': 'var(--gray-a9)',
-      default: 'inherit',
-    },
-    cursor: {
-      ':is([data-disabled])': 'not-allowed',
-      default: 'pointer',
-    },
-    display: 'flex',
-    opacity: {
-      ':hover': 1,
-      default: 0.9,
-    },
-    outline: 'none',
-    padding: 0,
-  },
-  icon: {
-    height: '1lh',
-    width: '1lh',
-  },
   // keeps the button's room while it is not there, so the field is the same
   // width before and after something is typed
   slot: {
     boxSizing: 'content-box',
-    minWidth: '1lh',
+    minWidth: 'calc(1lh - var(--spacing))',
   },
 })

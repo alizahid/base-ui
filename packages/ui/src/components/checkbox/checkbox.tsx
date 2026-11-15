@@ -63,7 +63,7 @@ const styles = stylex.create({
   check: {
     display: {
       [indeterminate]: 'none',
-      default: 'block',
+      default: null,
     },
   },
   icon: {

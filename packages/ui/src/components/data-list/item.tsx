@@ -8,16 +8,15 @@ export type DataListItemProps = ComponentProps<'div'> & {
 }
 
 // one label and its value
-export function Item({
-  align = 'baseline',
-  className,
-  style,
-  ...props
-}: DataListItemProps) {
+export function Item({ align, className, style, ...props }: DataListItemProps) {
   return (
     <div
       {...props}
-      {...merge(stylex.props(styles.main, aligns[align]), className, style)}
+      {...merge(
+        stylex.props(styles.main, align && aligns[align]),
+        className,
+        style,
+      )}
     />
   )
 }
@@ -36,41 +35,20 @@ const styles = stylex.create({
   },
 })
 
-// which sides of the row a tall value may poke out of. the first and last
-// items stay inside the root, unless centered, where both sides must match
 const aligns = stylex.create({
   baseline: {
-    '--data-list-first-trim-start': '0px',
-    '--data-list-last-trim-end': '0px',
-    '--data-list-trim-end': 'var(--data-list-trim)',
-    '--data-list-trim-start': 'var(--data-list-trim)',
+    alignItems: 'baseline',
   },
   center: {
-    '--data-list-first-trim-start': 'var(--data-list-trim)',
-    '--data-list-last-trim-end': 'var(--data-list-trim)',
-    '--data-list-trim-end': 'var(--data-list-trim)',
-    '--data-list-trim-start': 'var(--data-list-trim)',
     alignItems: 'center',
   },
   end: {
-    '--data-list-first-trim-start': '0px',
-    '--data-list-last-trim-end': '0px',
-    '--data-list-trim-end': '0px',
-    '--data-list-trim-start': 'var(--data-list-trim)',
     alignItems: 'end',
   },
   start: {
-    '--data-list-first-trim-start': '0px',
-    '--data-list-last-trim-end': '0px',
-    '--data-list-trim-end': 'var(--data-list-trim)',
-    '--data-list-trim-start': '0px',
     alignItems: 'start',
   },
   stretch: {
-    '--data-list-first-trim-start': '0px',
-    '--data-list-last-trim-end': '0px',
-    '--data-list-trim-end': '0px',
-    '--data-list-trim-start': '0px',
     alignItems: 'stretch',
   },
 })

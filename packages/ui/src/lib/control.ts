@@ -48,7 +48,7 @@ export const control = stylex.create({
     // in a group item this centres the control on the first line of text
     marginBlock: 'var(--control-offset, 0px)',
     outline: {
-      ':focus-visible': '2px solid var(--control-focus, var(--focus-8))',
+      ':focus-visible': '2px solid var(--focus-8)',
       default: 'none',
     },
     outlineOffset: 2,
@@ -58,29 +58,16 @@ export const control = stylex.create({
   },
 })
 
-// radix tints a soft radio a step lighter than a soft checkbox, and gives it
-// a translucent focus ring. set on the Radio and on RadioGroup.Root, so they
-// resolve wherever the variant is set
-export const controlRadio = stylex.create({
-  main: {
-    '--control-soft-background': 'var(--accent-a4)',
-    '--control-soft-focus': 'var(--focus-a8)',
-  },
-})
-
 // variants only set variables. each also carries its high contrast values,
 // which `controlContrast` swaps in
 export const controlVariants = stylex.create({
   soft: {
-    '--control-background': 'var(--control-soft-background, var(--accent-a5))',
-    '--control-background-checked':
-      'var(--control-soft-background, var(--accent-a5))',
+    '--control-background': 'var(--accent-a5)',
+    '--control-background-checked': 'var(--accent-a5)',
     '--control-border': 'transparent',
     '--control-border-disabled': 'transparent',
-    '--control-contrast-background-checked':
-      'var(--control-soft-background, var(--accent-a5))',
+    '--control-contrast-background-checked': 'var(--accent-a5)',
     '--control-contrast-indicator': 'var(--accent-12)',
-    '--control-focus': 'var(--control-soft-focus, var(--focus-8))',
     '--control-indicator': 'var(--accent-a11)',
   },
   surface: {
@@ -90,7 +77,6 @@ export const controlVariants = stylex.create({
     '--control-border-disabled': 'var(--gray-a6)',
     '--control-contrast-background-checked': 'var(--accent-12)',
     '--control-contrast-indicator': 'var(--accent-1)',
-    '--control-focus': 'var(--focus-8)',
     '--control-indicator': 'var(--accent-contrast)',
   },
 })
@@ -142,7 +128,7 @@ export const group = stylex.create({
     },
     display: 'flex',
     fontSize: 'var(--control-font-size, var(--text-sm))',
-    gap: '0.5em',
+    gap: 'calc(var(--spacing) * 2)',
     lineHeight: 'var(--control-line-height, var(--text-sm--line-height))',
     width: 'fit-content',
   },

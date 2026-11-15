@@ -83,11 +83,9 @@ const styles = stylex.create({
     color: 'var(--avatar-color)',
     display: 'flex',
     fontStyle: 'normal',
-    height: '100%',
     inset: 0,
     justifyContent: 'center',
     position: 'absolute',
-    width: '100%',
   },
   image: {
     height: '100%',
@@ -97,13 +95,12 @@ const styles = stylex.create({
     width: '100%',
   },
   main: {
-    alignItems: 'center',
+    aspectRatio: '1',
     containerType: 'size',
-    display: 'inline-flex',
+    display: 'inline-block',
     // keeps its square in a flex row, as in radix
     flexShrink: 0,
     fontWeight: '500',
-    justifyContent: 'center',
     overflow: 'hidden',
     position: 'relative',
     userSelect: 'none',
@@ -144,47 +141,38 @@ const contrast = stylex.create({
 const sizes = stylex.create({
   1: {
     borderRadius: 'var(--radius-xs)',
-    height: 'calc(var(--spacing) * 6)',
     width: 'calc(var(--spacing) * 6)',
   },
   2: {
     borderRadius: 'var(--radius-sm)',
-    height: 'calc(var(--spacing) * 8)',
     width: 'calc(var(--spacing) * 8)',
   },
   3: {
     borderRadius: 'var(--radius-md)',
-    height: 'calc(var(--spacing) * 10)',
     width: 'calc(var(--spacing) * 10)',
   },
   4: {
     borderRadius: 'var(--radius-lg)',
-    height: 'calc(var(--spacing) * 12)',
     width: 'calc(var(--spacing) * 12)',
   },
   5: {
     borderRadius: 'var(--radius-xl)',
-    height: 'calc(var(--spacing) * 16)',
     width: 'calc(var(--spacing) * 16)',
   },
   6: {
     borderRadius: 'var(--radius-2xl)',
-    height: 'calc(var(--spacing) * 20)',
     width: 'calc(var(--spacing) * 20)',
   },
   7: {
     borderRadius: 'var(--radius-3xl)',
-    height: 'calc(var(--spacing) * 24)',
     width: 'calc(var(--spacing) * 24)',
   },
   8: {
     borderRadius: 'var(--radius-4xl)',
-    height: 'calc(var(--spacing) * 32)',
     width: 'calc(var(--spacing) * 32)',
   },
   9: {
     borderRadius: 'calc(infinity * 1px)',
-    height: 'calc(var(--spacing) * 40)',
     width: 'calc(var(--spacing) * 40)',
   },
 })

@@ -20,7 +20,7 @@ export type PreviewCardContentProps = PreviewCardPopupProps &
   }
 
 // opens below the trigger, lined up with its start edge, as in radix. `side`,
-// `align` and `sideOffset` move it. capped at 480px wide; a max-w class
+// `align` and `sideOffset` move it. capped at 512px wide; a max-w class
 // changes that
 export function Content({
   align = 'start',
@@ -37,7 +37,7 @@ export function Content({
     <Component.Portal>
       <Component.Positioner
         align={align}
-        collisionPadding={10}
+        collisionPadding={8}
         side={side}
         sideOffset={sideOffset}
         {...stylex.props(panel.positioner)}

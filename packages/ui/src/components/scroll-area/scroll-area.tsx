@@ -44,7 +44,9 @@ export function ScrollArea({
       {...props}
       {...merge(stylex.props(styles.main), className, style)}
     >
-      <Component.Viewport {...stylex.props(styles.viewport, axes[axis])}>
+      <Component.Viewport
+        {...stylex.props(styles.viewport, axis !== 'both' && axes[axis])}
+      >
         {children}
       </Component.Viewport>
 
@@ -88,7 +90,6 @@ const styles = stylex.create({
     borderRadius: 'calc(infinity * 1px)',
     display: 'flex',
     flexDirection: {
-      [horizontal]: 'row',
       [vertical]: 'column',
     },
     height: {
@@ -96,14 +97,12 @@ const styles = stylex.create({
     },
     margin: 'var(--spacing)',
     opacity: 'var(--scroll-area-opacity)',
-    touchAction: 'none',
-    transitionDuration: '120ms',
+    transitionDuration: '100ms',
     transitionProperty: {
       [still]: 'none',
       default: 'opacity',
     },
     transitionTimingFunction: 'ease-out',
-    userSelect: 'none',
     width: {
       [vertical]: 'var(--scroll-area-size)',
     },
@@ -145,7 +144,6 @@ const styles = stylex.create({
 // base ui sets overflow on the viewport's own style, so these have to win
 // over it
 const axes = stylex.create({
-  both: {},
   x: {
     overflowY: 'hidden !important',
   },

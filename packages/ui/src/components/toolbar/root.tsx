@@ -27,7 +27,11 @@ export function Root({
   return (
     <Component.Root
       {...props}
-      {...merge(stylex.props(styles.main, variants[variant]), className, style)}
+      {...merge(
+        stylex.props(styles.main, variant === 'surface' && variants.surface),
+        className,
+        style,
+      )}
     />
   )
 }
@@ -38,22 +42,19 @@ const styles = stylex.create({
       ':is([data-orientation="vertical"])': 'stretch',
       default: 'center',
     },
-    boxSizing: 'border-box',
     display: 'inline-flex',
     flexDirection: {
       ':is([data-orientation="vertical"])': 'column',
-      default: 'row',
+      default: null,
     },
     gap: 'calc(var(--spacing) * 1)',
   },
 })
 
 const variants = stylex.create({
-  ghost: {},
-  // the radius is a size 2 button's, plus the padding around it
   surface: {
     backgroundColor: 'var(--panel-background)',
-    borderRadius: 'calc(var(--radius-md) + var(--spacing) * 1)',
+    borderRadius: 'var(--radius-lg)',
     boxShadow: 'inset 0 0 0 1px var(--gray-a6)',
     padding: 'calc(var(--spacing) * 1)',
   },

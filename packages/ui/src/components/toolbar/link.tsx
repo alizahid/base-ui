@@ -42,7 +42,6 @@ const styles = stylex.create({
     },
     outlineOffset: 2,
     paddingInline: 'calc(var(--spacing) * 2)',
-    textDecoration: 'none',
     whiteSpace: 'nowrap',
   },
 })

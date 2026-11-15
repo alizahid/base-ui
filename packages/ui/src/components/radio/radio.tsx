@@ -6,12 +6,7 @@ import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
 import { type ColorToken } from '../../lib/colors.js'
-import {
-  type ControlProps,
-  control,
-  controlRadio,
-  controlStyles,
-} from '../../lib/control.js'
+import { type ControlProps, control, controlStyles } from '../../lib/control.js'
 import { merge } from '../../lib/stylex.js'
 
 export type RadioProps = ComponentProps &
@@ -39,7 +34,6 @@ export function Radio({
       {...merge(
         stylex.props(
           control.main,
-          controlRadio.main,
           styles.main,
           ...controlStyles({
             highContrast,

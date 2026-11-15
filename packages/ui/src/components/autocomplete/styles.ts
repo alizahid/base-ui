@@ -7,7 +7,7 @@ export const flush = stylex.create({
   group: {
     marginBlockStart: {
       ':not(:first-child)': 'calc(var(--spacing) * 2)',
-      default: 0,
+      default: null,
     },
   },
   row: {
