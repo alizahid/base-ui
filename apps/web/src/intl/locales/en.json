@@ -141,6 +141,7 @@
     "props-note": "Each component also takes the props of the Base UI component or HTML element it renders.",
     "radius": "Radius",
     "radius-2": "Radius",
+    "remove": "Remove",
     "required": "Required",
     "save": "Save",
     "search": "Search…",
@@ -215,6 +216,16 @@
     "with-error": "With error",
     "with-hint": "With hint"
   },
+  "file-field": {
+    "accept": "Accept",
+    "attachments": "Attachments",
+    "count-files": "{count} files",
+    "drop-a-file": "Drop a file here or click to browse",
+    "drop-files": "Drop files here or click to browse",
+    "drop-images": "Drop images here or click to browse",
+    "layout": "Layout",
+    "up-to-10-mb-each": "Up to 10 MB each."
+  },
   "header": {
     "close": "Close",
     "menu": "Menu",
@@ -279,6 +290,7 @@
     "dialog": "Dialog",
     "drawer": "Drawer",
     "field": "Field",
+    "file-field": "File Field",
     "icon-button": "Icon Button",
     "kbd": "Kbd",
     "link": "Link",

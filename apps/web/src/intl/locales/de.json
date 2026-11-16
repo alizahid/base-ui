@@ -141,6 +141,7 @@
     "props-note": "Jede Komponente akzeptiert außerdem die Props der Base-UI-Komponente oder des HTML-Elements, das sie rendert.",
     "radius": "Radius",
     "radius-2": "Radius",
+    "remove": "Entfernen",
     "required": "Erforderlich",
     "save": "Speichern",
     "search": "Suchen…",
@@ -215,6 +216,16 @@
     "with-error": "Mit Fehler",
     "with-hint": "Mit Hinweis"
   },
+  "file-field": {
+    "accept": "Akzeptierte Typen",
+    "attachments": "Anhänge",
+    "count-files": "{count} Dateien",
+    "drop-a-file": "Datei hier ablegen oder klicken, um sie auszuwählen",
+    "drop-files": "Dateien hier ablegen oder klicken, um sie auszuwählen",
+    "drop-images": "Bilder hier ablegen oder klicken, um sie auszuwählen",
+    "layout": "Layout",
+    "up-to-10-mb-each": "Jeweils bis zu 10 MB."
+  },
   "header": {
     "close": "Schließen",
     "menu": "Menü",
@@ -279,6 +290,7 @@
     "dialog": "Dialog",
     "drawer": "Drawer",
     "field": "Feld",
+    "file-field": "Dateifeld",
     "icon-button": "Icon-Button",
     "kbd": "Kbd",
     "link": "Link",

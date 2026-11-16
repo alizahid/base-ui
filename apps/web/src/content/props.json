@@ -787,6 +787,67 @@
       ]
     }
   ],
+  "file-field": [
+    {
+      "name": "FileField",
+      "props": [
+        {
+          "default": "'Drop files here or click to browse'",
+          "name": "children",
+          "type": "ReactNode"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "default": "'{count} files'",
+          "name": "filesLabel",
+          "type": "string"
+        },
+        {
+          "default": "'field'",
+          "name": "layout",
+          "type": "'field' | 'zone'"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "locale",
+          "type": "string"
+        },
+        {
+          "name": "onValueChange",
+          "type": "(files: Array<File>) => void"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'Remove'",
+          "name": "removeLabel",
+          "type": "string"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "type": "Array<File>"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
   "icon-button": [
     {
       "name": "IconButton",

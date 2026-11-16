@@ -1,0 +1,115 @@
+import { useLocale } from 'next-intl'
+
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('file-field')
+
+# <Text id="nav.file-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <FileField className="w-80" locale={useLocale()} removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="common.multiple" />
+
+<Example>
+  <FileField className="w-80" locale={useLocale()} filesLabel={useText('file-field.count-files', { count: '{count}' })} multiple removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-files" />
+  </FileField>
+</Example>
+
+### <Text id="file-field.accept" />
+
+<Example>
+  <FileField accept="image/*" className="w-80" locale={useLocale()} filesLabel={useText('file-field.count-files', { count: '{count}' })} multiple removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-images" />
+  </FileField>
+</Example>
+
+### <Text id="common.variant" />
+
+<Example>
+  <FileField className="w-64" locale={useLocale()} removeLabel={useText('common.remove')} variant="surface">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" locale={useLocale()} removeLabel={useText('common.remove')} variant="soft">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" layout="zone" locale={useLocale()} removeLabel={useText('common.remove')} variant="soft">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="common.size" />
+
+<Example>
+  <FileField className="w-64" locale={useLocale()} removeLabel={useText('common.remove')} size="1">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" locale={useLocale()} removeLabel={useText('common.remove')} size="2">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" locale={useLocale()} removeLabel={useText('common.remove')} size="3">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="common.color" />
+
+<Example>
+  <FileField className="w-64" color="indigo" locale={useLocale()} removeLabel={useText('common.remove')} variant="soft">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" color="crimson" locale={useLocale()} removeLabel={useText('common.remove')} variant="soft">
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="file-field.layout" />
+
+<Example>
+  <FileField className="w-64" layout="field" locale={useLocale()} removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-80" filesLabel={useText('file-field.count-files', { count: '{count}' })} layout="zone" locale={useLocale()} multiple removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-files" />
+  </FileField>
+</Example>
+
+### <Text id="common.loading" />
+
+<Example>
+  <FileField className="w-64" loading locale={useLocale()} removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+  <FileField className="w-64" layout="zone" loading locale={useLocale()} removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <FileField className="w-80" disabled locale={useLocale()} removeLabel={useText('common.remove')}>
+    <Text id="file-field.drop-a-file" />
+  </FileField>
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-80" hint={useText('file-field.up-to-10-mb-each')} label={useText('file-field.attachments')}>
+    <FileField locale={useLocale()} filesLabel={useText('file-field.count-files', { count: '{count}' })} multiple removeLabel={useText('common.remove')} required>
+      <Text id="file-field.drop-files" />
+    </FileField>
+  </Field>
+</Example>
+
+<Props page="file-field" />
