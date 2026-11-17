@@ -1633,6 +1633,22 @@
       ]
     }
   ],
+  "slot": [
+    {
+      "name": "Slot",
+      "props": [
+        {
+          "name": "children",
+          "required": true,
+          "type": "ReactElement"
+        },
+        {
+          "name": "ref",
+          "type": "Ref<HTMLElement>"
+        }
+      ]
+    }
+  ],
   "spinner": [
     {
       "name": "Spinner",
