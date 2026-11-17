@@ -238,6 +238,10 @@
     "loading": "Laden",
     "search": "Suchen"
   },
+  "inset": {
+    "clip": "Beschnitt",
+    "side": "Seite"
+  },
   "kbd": {
     "in-text": "Im Text",
     "press": "Drücke",
@@ -292,6 +296,7 @@
     "field": "Feld",
     "file-field": "Dateifeld",
     "icon-button": "Icon-Button",
+    "inset": "Inset",
     "kbd": "Kbd",
     "link": "Link",
     "menu": "Menü",

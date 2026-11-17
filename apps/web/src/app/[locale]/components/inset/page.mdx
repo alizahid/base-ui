@@ -1,0 +1,139 @@
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('inset')
+
+# <Text id="nav.inset" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example orientation="vertical">
+  <Card className="w-72" size="2">
+    <Inset className="mb-4" side={['x', 'top']}>
+      <img alt={useText('card.bold-typography-on-a-colourful-background')} className="block h-36 w-full object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+    </Inset>
+
+    <div className="text-sm font-medium"><Text id="card.bold-typography" /></div>
+    <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.typography-is-the-art-and-technique" /></div>
+  </Card>
+</Example>
+
+### <Text id="inset.side" />
+
+<Example>
+  <Card className="w-40" size="2">
+    <Inset className="mb-4" side={['x', 'top']}>
+      <div className="h-16 bg-(--accent-a5)" />
+    </Inset>
+
+    <div className="text-sm"><code>x, top</code></div>
+  </Card>
+
+  <Card className="w-40" size="2">
+    <div className="text-sm"><code>x, bottom</code></div>
+
+    <Inset className="mt-4" side={['x', 'bottom']}>
+      <div className="h-16 bg-(--accent-a5)" />
+    </Inset>
+  </Card>
+
+  <Card className="flex w-40" size="2">
+    <Inset className="me-4" side={['y', 'start']}>
+      <div className="h-full w-12 bg-(--accent-a5)" />
+    </Inset>
+
+    <div className="py-6 text-sm"><code>y, start</code></div>
+  </Card>
+
+  <Card className="flex w-40 justify-between" size="2">
+    <div className="py-6 text-sm"><code>y, end</code></div>
+
+    <Inset className="ms-4" side={['y', 'end']}>
+      <div className="h-full w-12 bg-(--accent-a5)" />
+    </Inset>
+  </Card>
+
+  <Card className="w-40" size="2">
+    <Inset side="x">
+      <div className="bg-(--accent-a5) p-4 text-sm"><code>x</code></div>
+    </Inset>
+  </Card>
+
+  <Card className="flex w-40" size="2">
+    <Inset side="y">
+      <div className="h-full bg-(--accent-a5) p-4 text-sm"><code>y</code></div>
+    </Inset>
+  </Card>
+
+  <Card className="flex w-40" size="2">
+    <Inset className="me-4 mb-4" side={['top', 'start']}>
+      <div className="size-16 bg-(--accent-a5)" />
+    </Inset>
+
+    <div className="text-sm"><code>top, start</code></div>
+  </Card>
+
+  <Card className="w-40" size="2">
+    <Inset side="all">
+      <div className="bg-(--accent-a5) p-4 text-sm"><code>all</code></div>
+    </Inset>
+  </Card>
+</Example>
+
+### <Text id="inset.clip" />
+
+<Example>
+  <Card className="w-40" size="2">
+    <Inset clip="border-box" side="all">
+      <div className="bg-(--accent-a5) p-4 text-sm"><code>border-box</code></div>
+    </Inset>
+  </Card>
+
+  <Card className="w-40" size="2">
+    <Inset clip="padding-box" side="all">
+      <div className="bg-(--accent-a5) p-4 text-sm"><code>padding-box</code></div>
+    </Inset>
+  </Card>
+</Example>
+
+### <Text id="nav.table" />
+
+<Example orientation="vertical">
+  <Card className="w-full max-w-xl" size="3">
+    <div className="mb-4 text-sm font-medium"><Text id="table.group" /></div>
+
+    <Inset side="x">
+      <Table.Root variant="ghost">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeaderCell><Text id="table.full-name" /></Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell><Text id="common.email" /></Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell><Text id="table.group" /></Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          <Table.Row>
+            <Table.RowHeaderCell>Danilo Sousa</Table.RowHeaderCell>
+            <Table.Cell>danilo@example.com</Table.Cell>
+            <Table.Cell><Text id="table.developer" /></Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.RowHeaderCell>Zahra Ambessa</Table.RowHeaderCell>
+            <Table.Cell>zahra@example.com</Table.Cell>
+            <Table.Cell><Text id="table.admin" /></Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.RowHeaderCell>Jasper Eriksson</Table.RowHeaderCell>
+            <Table.Cell>jasper@example.com</Table.Cell>
+            <Table.Cell><Text id="table.developer" /></Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table.Root>
+    </Inset>
+  </Card>
+</Example>
+
+<Props page="inset" />

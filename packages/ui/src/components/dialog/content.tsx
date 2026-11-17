@@ -80,6 +80,7 @@ export const dialog = stylex.create({
   },
   content: {
     backgroundColor: 'var(--panel-background)',
+    borderRadius: 'var(--inset-radius)',
     boxShadow: 'var(--dialog-shadow)',
     color: 'var(--gray-12)',
     margin: 'auto',
@@ -90,6 +91,7 @@ export const dialog = stylex.create({
     },
     outline: 'none',
     overflow: 'auto',
+    padding: 'var(--inset-padding)',
     position: 'relative',
     transform: {
       ':is([data-ending-style])': 'translateY(var(--ui-spacing)) scale(0.99)',
@@ -126,21 +128,22 @@ export const dialog = stylex.create({
   },
 })
 
+// the padding and radius, named for Inset, which reads them
 const sizes = stylex.create({
   1: {
-    borderRadius: 'var(--ui-radius-xl)',
-    padding: 'calc(var(--ui-spacing) * 3)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 3)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   2: {
-    borderRadius: 'var(--ui-radius-xl)',
-    padding: 'calc(var(--ui-spacing) * 4)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 4)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   3: {
-    borderRadius: 'var(--ui-radius-2xl)',
-    padding: 'calc(var(--ui-spacing) * 6)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 6)',
+    '--inset-radius': 'var(--ui-radius-2xl)',
   },
   4: {
-    borderRadius: 'var(--ui-radius-2xl)',
-    padding: 'calc(var(--ui-spacing) * 8)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 8)',
+    '--inset-radius': 'var(--ui-radius-2xl)',
   },
 })

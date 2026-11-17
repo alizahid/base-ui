@@ -811,6 +811,7 @@
           "type": "'field' | 'zone'"
         },
         {
+          "default": "false",
           "name": "loading",
           "type": "boolean"
         },
@@ -880,6 +881,23 @@
         {
           "name": "variant",
           "type": "'solid' | 'soft' | 'surface' | 'outline' | 'ghost'"
+        }
+      ]
+    }
+  ],
+  "inset": [
+    {
+      "name": "Inset",
+      "props": [
+        {
+          "default": "'border-box'",
+          "name": "clip",
+          "type": "'border-box' | 'padding-box'"
+        },
+        {
+          "default": "'all'",
+          "name": "side",
+          "type": "'all' | 'bottom' | 'end' | 'start' | 'top' | 'x' | 'y' | Array<'all' | 'bottom' | 'end' | 'start' | 'top' | 'x' | 'y'>"
         }
       ]
     }

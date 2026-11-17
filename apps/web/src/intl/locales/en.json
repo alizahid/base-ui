@@ -238,6 +238,10 @@
     "loading": "Loading",
     "search": "Search"
   },
+  "inset": {
+    "clip": "Clip",
+    "side": "Side"
+  },
   "kbd": {
     "in-text": "In text",
     "press": "Press",
@@ -292,6 +296,7 @@
     "field": "Field",
     "file-field": "File Field",
     "icon-button": "Icon Button",
+    "inset": "Inset",
     "kbd": "Kbd",
     "link": "Link",
     "menu": "Menu",

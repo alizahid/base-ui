@@ -29,13 +29,14 @@ export const panel = stylex.create({
   },
   content: {
     backgroundColor: 'var(--panel-background)',
+    borderRadius: 'var(--inset-radius)',
     boxShadow: 'var(--panel-shadow)',
     color: 'var(--gray-12)',
     maxWidth: 'calc(var(--ui-spacing) * 128)',
     minWidth: 'var(--anchor-width)',
     outline: 'none',
     overflow: 'auto',
-    padding: 'var(--panel-padding)',
+    padding: 'var(--inset-padding)',
     position: 'relative',
   },
   // the fade and slide a popup opens and closes with
@@ -71,22 +72,23 @@ export const panel = stylex.create({
   },
 })
 
-// PreviewCard only goes up to 3
+// PreviewCard only goes up to 3. the padding and radius are named for Inset,
+// which reads them
 export const panelSizes = stylex.create({
   1: {
-    '--panel-padding': 'calc(var(--ui-spacing) * 3)',
-    borderRadius: 'var(--ui-radius-xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 3)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   2: {
-    '--panel-padding': 'calc(var(--ui-spacing) * 4)',
-    borderRadius: 'var(--ui-radius-xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 4)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   3: {
-    '--panel-padding': 'calc(var(--ui-spacing) * 6)',
-    borderRadius: 'var(--ui-radius-2xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 6)',
+    '--inset-radius': 'var(--ui-radius-2xl)',
   },
   4: {
-    '--panel-padding': 'calc(var(--ui-spacing) * 8)',
-    borderRadius: 'var(--ui-radius-2xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 8)',
+    '--inset-radius': 'var(--ui-radius-2xl)',
   },
 })

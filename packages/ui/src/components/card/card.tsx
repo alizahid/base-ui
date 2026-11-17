@@ -60,7 +60,7 @@ const styles = stylex.create({
     },
     backdropFilter: 'var(--card-backdrop)',
     backgroundColor: 'var(--card-fill)',
-    borderRadius: 'var(--card-radius)',
+    borderRadius: 'var(--inset-radius)',
     boxShadow: 'var(--card-border)',
     cursor: {
       ':is(:any-link, button, label)': 'pointer',
@@ -72,7 +72,7 @@ const styles = stylex.create({
     },
     outlineOffset: -1,
     overflow: 'hidden',
-    padding: 'var(--card-padding)',
+    padding: 'var(--inset-padding)',
     position: 'relative',
     textAlign: 'start',
   },
@@ -88,6 +88,7 @@ const variants = stylex.create({
     '--card-border-active': 'none',
     '--card-border-hover': 'none',
     '--card-border-idle': 'none',
+    '--inset-border-width': '0px',
   },
   // the provider's panelBackground decides between see-through and opaque
   surface: {
@@ -101,28 +102,30 @@ const variants = stylex.create({
       'inset 0 0 0 1px color-mix(in oklab, var(--gray-a7), var(--gray-7) 25%)',
     '--card-border-idle':
       'inset 0 0 0 1px color-mix(in oklab, var(--gray-a5), var(--gray-5) 25%)',
+    '--inset-border-width': '1px',
   },
 })
 
+// the padding and radius, named for Inset, which reads them
 const sizes = stylex.create({
   1: {
-    '--card-padding': 'calc(var(--ui-spacing) * 3)',
-    '--card-radius': 'var(--ui-radius-lg)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 3)',
+    '--inset-radius': 'var(--ui-radius-lg)',
   },
   2: {
-    '--card-padding': 'calc(var(--ui-spacing) * 4)',
-    '--card-radius': 'var(--ui-radius-lg)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 4)',
+    '--inset-radius': 'var(--ui-radius-lg)',
   },
   3: {
-    '--card-padding': 'calc(var(--ui-spacing) * 6)',
-    '--card-radius': 'var(--ui-radius-xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 6)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   4: {
-    '--card-padding': 'calc(var(--ui-spacing) * 8)',
-    '--card-radius': 'var(--ui-radius-xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 8)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   5: {
-    '--card-padding': 'calc(var(--ui-spacing) * 12)',
-    '--card-radius': 'var(--ui-radius-2xl)',
+    '--inset-padding': 'calc(var(--ui-spacing) * 12)',
+    '--inset-radius': 'var(--ui-radius-2xl)',
   },
 })

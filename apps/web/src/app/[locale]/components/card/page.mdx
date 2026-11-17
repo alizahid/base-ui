@@ -59,7 +59,9 @@ export const generateMetadata = title('card')
 
 <Example orientation="vertical">
   <Card className="w-72" size="2">
-    <img alt={useText('card.bold-typography-on-a-colourful-background')} className="-mx-4 -mt-4 mb-4 block h-36 w-[calc(100%+2rem)] max-w-none object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+    <Inset className="mb-4" side={['x', 'top']}>
+      <img alt={useText('card.bold-typography-on-a-colourful-background')} className="block h-36 w-full object-cover" src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?auto=format&fit=crop&w=600&q=80" />
+    </Inset>
 
     <div className="text-sm font-medium"><Text id="card.bold-typography" /></div>
     <div className="mt-1 text-sm text-(--gray-a11)"><Text id="card.typography-is-the-art-and-technique" /></div>
