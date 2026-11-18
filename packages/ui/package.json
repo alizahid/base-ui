@@ -1,6 +1,6 @@
 {
   "name": "basedkit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React components with the look of Radix Themes, built on Base UI",
   "homepage": "https://base-ui-wine.vercel.app",
   "repository": {
