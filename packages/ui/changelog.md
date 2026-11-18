@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0 (2026-11-18)
+
+### Features
+
+* add a clear button to DateField and size its calendar to fit ([69caf32](https://github.com/alizahid/basedkit/commit/69caf324769c3ea5d3f721c8bd722a40ba6e4b0e))
+* add a radius prop to BaseProvider ([73a6d2c](https://github.com/alizahid/basedkit/commit/73a6d2c3a90faf5f0d741e59b941608b1aebae10))
+* sit button icons closer to the edge ([c6f7a12](https://github.com/alizahid/basedkit/commit/c6f7a120c676acea5753fd91ce8a781d8b212a98))
+
+### Bug Fixes
+
+* fill the screen under safari's bars on ios ([26362af](https://github.com/alizahid/basedkit/commit/26362afc2127207d93ac0005e21ffc89ea2dfeaf))
+* give Badge the default cursor ([ab00979](https://github.com/alizahid/basedkit/commit/ab00979fc5bc2f95c6b7312e8b9cf66e51fe3b7d))
+* match radix's radius steps on controls and popups ([6cf6547](https://github.com/alizahid/basedkit/commit/6cf65477c022e1e6f783d605ab74210edad8f096))
+
 ## 0.1.0 (2026-11-18)
 
 ### Features
