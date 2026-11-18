@@ -607,6 +607,16 @@
       "name": "DateField",
       "props": [
         {
+          "default": "'Clear'",
+          "name": "clearLabel",
+          "type": "string"
+        },
+        {
+          "default": "true",
+          "name": "clearable",
+          "type": "boolean"
+        },
+        {
           "default": "'Close'",
           "name": "closeLabel",
           "type": "string"
@@ -1253,6 +1263,10 @@
           "default": "'start'",
           "name": "align",
           "type": "'center' | 'end' | 'start'"
+        },
+        {
+          "name": "anchor",
+          "type": "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null"
         },
         {
           "name": "side",

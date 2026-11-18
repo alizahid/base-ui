@@ -12,7 +12,8 @@ import {
 
 import { Content } from '#components/popover/content.js'
 import { type ColorToken } from '#lib/colors.js'
-import { ChevronDownIcon, icon } from '#lib/icons.js'
+import { ChevronDownIcon, Cross2Icon, icon } from '#lib/icons.js'
+import { input } from '#lib/input.js'
 import { type RadiusToken, radii } from '#lib/radii.js'
 import { merge } from '#lib/stylex.js'
 import { trigger, triggerSizes, triggerVariants } from '#lib/trigger.js'
@@ -58,6 +59,8 @@ export type DateFieldProps = Omit<
 > &
   (Single | Multiple | Range) & {
     className?: string
+    clearable?: boolean
+    clearLabel?: string
     closeLabel?: string
     color?: ColorToken | 'gray'
     icon?: ReactNode
@@ -85,9 +88,13 @@ type Value = Array<Date> | Date | DateFieldRange | null | undefined
 // limit what can be picked, `locale` sets the language, the date format and
 // the day the week starts on. `icon` goes before the value, a calendar for
 // instance. while the calendar is open it keeps the focus: tab goes round the
-// month buttons and the days. className and style go to the button
+// month buttons and the days. with a value, a button beside it clears it,
+// unless `clearable` is false. className and style go to the wrapper, which
+// is what looks like the field; everything else goes to the button inside
 export function DateField({
   className,
+  clearable = true,
+  clearLabel = 'Clear',
   closeLabel = 'Close',
   color,
   defaultValue,
@@ -110,6 +117,7 @@ export function DateField({
   weekStart,
   ...props
 }: DateFieldProps) {
+  const field = useRef<HTMLDivElement>(null)
   const popup = useRef<HTMLDivElement>(null)
 
   const [open, setOpen] = useState(false)
@@ -181,37 +189,66 @@ export function DateField({
       }}
       open={open}
     >
-      <Component.Trigger
+      {/* a button can't hold another button, so the field is a wrapper with
+          the trigger and the clear button side by side. it carries the
+          trigger's states itself, for the shared trigger styles */}
+      <div
         data-accent={color}
+        data-disabled={disabled ? '' : undefined}
         data-placeholder={label ? undefined : ''}
-        disabled={disabled}
-        {...props}
+        data-popup-open={open ? '' : undefined}
+        ref={field}
         {...merge(
           stylex.props(
             trigger.trigger,
             triggerVariants[variant],
             triggerSizes[size],
             radius && radii[radius],
+            styles.field,
           ),
           className,
           style,
         )}
       >
-        {glyph ? (
-          <span {...stylex.props(trigger.icon, styles.icon)}>{glyph}</span>
+        <Component.Trigger
+          disabled={disabled}
+          {...props}
+          {...stylex.props(styles.trigger)}
+        >
+          {glyph ? (
+            <span {...stylex.props(trigger.icon, styles.icon)}>{glyph}</span>
+          ) : null}
+
+          {/* a date is formatted in the reader's time zone, which the server
+              may not share */}
+          <span
+            suppressHydrationWarning
+            {...stylex.props(trigger.value, styles.value)}
+          >
+            {label || placeholder}
+          </span>
+        </Component.Trigger>
+
+        {clearable && label && !disabled ? (
+          <button
+            aria-label={clearLabel}
+            onClick={() => {
+              commit([])
+
+              // the button is about to go, and would take the focus with it
+              field.current?.querySelector('button')?.focus()
+            }}
+            type="button"
+            {...stylex.props(input.action, trigger.icon, styles.clear)}
+          >
+            <Cross2Icon {...stylex.props(icon.small)} />
+          </button>
         ) : null}
 
-        {/* a date is formatted in the reader's time zone, which the server
-            may not share */}
-        <span
-          suppressHydrationWarning
-          {...stylex.props(trigger.value, styles.value)}
-        >
-          {label || placeholder}
-        </span>
-
-        <ChevronDownIcon {...stylex.props(icon.small, trigger.icon)} />
-      </Component.Trigger>
+        <ChevronDownIcon
+          {...stylex.props(icon.small, trigger.icon, styles.chevron)}
+        />
+      </div>
 
       {name
         ? selected.map((date) => (
@@ -227,6 +264,8 @@ export function DateField({
       {/* focus starts on a day, the picked one or today, so the arrow keys
           work straight away */}
       <Content
+        anchor={field}
+        className={stylex.props(styles.popup).className}
         initialFocus={() =>
           popup.current?.querySelector<HTMLElement>(
             '[data-date][tabindex="0"]',
@@ -261,6 +300,14 @@ export function DateField({
 }
 
 const styles = stylex.create({
+  // its opacity lifts it above the trigger's hit area, so clicks go through
+  chevron: {
+    pointerEvents: 'none',
+  },
+  // above the trigger's stretched hit area
+  clear: {
+    position: 'relative',
+  },
   // there for screen readers only
   close: {
     clipPath: 'inset(50%)',
@@ -270,10 +317,40 @@ const styles = stylex.create({
     whiteSpace: 'nowrap',
     width: 1,
   },
+  // the ring shows for the button inside, as the wrapper never has the focus
+  field: {
+    outline: {
+      ':has(:focus-visible):not([data-invalid])': '2px solid var(--focus-8)',
+      ':is([data-invalid]):has(:focus-visible)': '2px solid var(--red-8)',
+      default: 'none',
+    },
+    position: 'relative',
+  },
   // as tall as the line of text beside it, like the library's own icons
   icon: {
     display: 'flex',
     height: '1lh',
+  },
+  // as wide as the calendar, not as the field
+  popup: {
+    '--panel-min-width': '0px',
+  },
+  // the whole field opens the calendar: the button's hit area covers the
+  // wrapper, chevron included
+  trigger: {
+    '::after': {
+      content: '',
+      inset: 0,
+      position: 'absolute',
+    },
+    alignItems: 'center',
+    cursor: 'inherit',
+    display: 'flex',
+    flexGrow: 1,
+    gap: 'inherit',
+    minWidth: 0,
+    outline: 'none',
+    textAlign: 'start',
   },
   // takes the room between the icon and the chevron, so the value starts
   // right after the icon instead of sitting in the middle

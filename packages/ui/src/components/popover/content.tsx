@@ -13,7 +13,7 @@ import { merge } from '#lib/stylex.js'
 import { ThemeContext } from '#lib/theme.js'
 
 export type PopoverContentProps = PopoverPopupProps &
-  Pick<PopoverPositionerProps, 'align' | 'side' | 'sideOffset'> & {
+  Pick<PopoverPositionerProps, 'align' | 'anchor' | 'side' | 'sideOffset'> & {
     className?: string
     size?: '1' | '2' | '3' | '4'
     style?: CSSProperties
@@ -24,6 +24,7 @@ export type PopoverContentProps = PopoverPopupProps &
 // changes that
 export function Content({
   align = 'start',
+  anchor,
   className,
   side,
   sideOffset = 8,
@@ -37,6 +38,7 @@ export function Content({
     <Component.Portal>
       <Component.Positioner
         align={align}
+        anchor={anchor}
         collisionPadding={8}
         side={side}
         sideOffset={sideOffset}

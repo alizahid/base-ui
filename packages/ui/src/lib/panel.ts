@@ -33,7 +33,9 @@ export const panel = stylex.create({
     boxShadow: 'var(--panel-shadow)',
     color: 'var(--gray-12)',
     maxWidth: 'calc(var(--ui-spacing) * 128)',
-    minWidth: 'var(--anchor-width)',
+    // as wide as its trigger at least, unless what is inside has a width of
+    // its own, like a calendar
+    minWidth: 'var(--panel-min-width, var(--anchor-width))',
     outline: 'none',
     overflow: 'auto',
     padding: 'var(--inset-padding)',
