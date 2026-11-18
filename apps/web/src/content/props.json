@@ -920,7 +920,13 @@
   "kbd": [
     {
       "name": "Kbd",
-      "props": []
+      "props": [
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        }
+      ]
     },
     {
       "name": "KbdGroup",
