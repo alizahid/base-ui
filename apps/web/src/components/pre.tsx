@@ -1,3 +1,4 @@
+import { ScrollArea } from 'basedkit'
 import { type ComponentProps, type ReactElement } from 'react'
 import { codeToHtml } from 'shiki'
 
@@ -31,14 +32,15 @@ export async function Block({ code, lang }: Props) {
 
   return (
     // code reads left to right in every locale
-    <div
-      className="mt-4 overflow-x-auto border border-(--gray-a6) p-4 text-sm leading-relaxed"
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: shiki's output, from our own source
-      dangerouslySetInnerHTML={{
-        __html: html,
-      }}
-      dir="ltr"
-    />
+    <ScrollArea axis="x" className="mt-4 border border-(--gray-a6)" dir="ltr">
+      <div
+        className="w-max min-w-full p-4 text-sm leading-relaxed"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: shiki's output, from our own source
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+      />
+    </ScrollArea>
   )
 }
 

@@ -1,7 +1,12 @@
 import '@/app/main.css'
 
 import { ThemeProvider } from '@wrksz/themes/next'
-import { BaseProvider, CommandBar, ScrollArea } from 'basedkit'
+import {
+  BaseProvider,
+  CommandBar,
+  ScrollArea,
+  Link as StyledLink,
+} from 'basedkit'
 import { cn } from 'cn'
 import { type Metadata } from 'next'
 import localFont from 'next/font/local'
@@ -23,11 +28,13 @@ import { directions, routing } from '@/intl/routing'
 const sans = localFont({
   src: '../../assets/fonts/sans.woff2',
   variable: '--font-sans',
+  weight: '100 900',
 })
 
 const mono = localFont({
   src: '../../assets/fonts/mono.woff2',
   variable: '--font-mono',
+  weight: '100 900',
 })
 
 export function generateStaticParams() {
@@ -106,13 +113,23 @@ export default async function Layout({
                 <aside className="w-full border-b border-(--gray-a6) p-6 md:sticky md:top-0 md:h-screen md:w-64 md:shrink-0 md:self-start md:border-e md:border-b-0 md:pb-0">
                   <div className="flex flex-col gap-6 md:h-full">
                     <div className="flex items-center gap-4">
-                      <Link className="text-2xl font-bold" href="/">
+                      {/* the library's link for its focus ring, in the text's
+                          own color */}
+                      <StyledLink
+                        className="text-[32px] leading-none font-medium"
+                        color="gray"
+                        highContrast
+                        render={<Link href="/" />}
+                        underline="none"
+                      >
                         {t('metadata.title')}
-                      </Link>
+                      </StyledLink>
 
-                      <Search />
+                      <div className="flex md:ms-auto">
+                        <Search />
 
-                      <Theme />
+                        <Theme />
+                      </div>
 
                       <Menu sections={sections} />
                     </div>
@@ -132,7 +149,8 @@ export default async function Layout({
                   </div>
                 </aside>
 
-                <main className="min-h-screen min-w-0 flex-1 p-6">
+                {/* pretty, so a paragraph's last line is never a single word */}
+                <main className="min-h-screen min-w-0 flex-1 p-6 text-pretty">
                   {children}
                 </main>
 

@@ -14,7 +14,7 @@ export function LocaleSwitcher() {
   const t = useTranslations('locales')
 
   return (
-    <nav className="-mx-1.5 flex gap-2">
+    <nav className="-ms-1.5 flex gap-2">
       {routing.locales.map((item) => (
         <IconButton
           key={item}
