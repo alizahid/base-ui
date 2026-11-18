@@ -26,6 +26,7 @@
       "types": "./src/components/phone-field/index.ts",
       "default": "./dist/components/phone-field/index.js"
     },
+    "./CHANGELOG.md": "./CHANGELOG.md",
     "./reset.css": "./src/reset.css",
     "./styles.css": "./dist/stylex.css",
     "./theme.css": "./src/theme.css"
@@ -33,6 +34,7 @@
   "scripts": {
     "build": "node ./esbuild.config.mjs",
     "dev": "node ./esbuild.config.mjs --watch",
+    "release": "release-it",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -44,6 +46,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^12.0.2",
     "@repo/typescript-config": "workspace:*",
     "@stylexjs/unplugin": "^0.19.2",
     "@types/node": "26.6.6",
@@ -51,6 +54,7 @@
     "@types/react-dom": "19.3.0",
     "esbuild": "^0.28.2",
     "libphonenumber-js": "^1.13.16",
+    "release-it": "^21.1.2",
     "typescript": "7.0.2",
     "use-lilius": "^2.0.5"
   },

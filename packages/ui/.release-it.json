@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/release-it@21/schema/release-it.json",
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "gitRawCommitsOpts": {
+        "path": "."
+      },
+      "infile": "CHANGELOG.md",
+      "preset": "conventionalcommits"
+    }
+  }
+}
