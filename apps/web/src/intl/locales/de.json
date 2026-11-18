@@ -321,6 +321,7 @@
     "slider": "Schieberegler",
     "slot": "Slot",
     "spinner": "Spinner",
+    "stepper": "Stepper",
     "switch": "Schalter",
     "tab-nav": "Tab-Navigation",
     "table": "Tabelle",
@@ -479,6 +480,24 @@
     "bookmark": "Merken",
     "custom-size": "Eigene Größe",
     "with-children": "Mit Kindelementen"
+  },
+  "stepper": {
+    "back": "Zurück",
+    "completed": "Alle Schritte abgeschlossen. Geh zurück, um etwas zu ändern.",
+    "create-an-account": "Konto erstellen",
+    "final-step": "Letzter Schritt",
+    "first-step": "Erster Schritt",
+    "get-full-access": "Vollen Zugriff erhalten",
+    "icons-only": "Nur Symbole",
+    "linear": "Linear",
+    "links": "Links",
+    "next-step": "Nächster Schritt",
+    "second-step": "Zweiter Schritt",
+    "step-1-content": "Inhalt von Schritt 1: Konto erstellen.",
+    "step-2-content": "Inhalt von Schritt 2: E-Mail bestätigen.",
+    "step-3-content": "Inhalt von Schritt 3: vollen Zugriff erhalten.",
+    "step-color": "Farbe eines Schritts",
+    "verify-email": "E-Mail bestätigen"
   },
   "switch": {
     "notifications": "Benachrichtigungen"

@@ -1,0 +1,139 @@
+import { CheckIcon, EnvelopeOpenIcon, ShieldCheckIcon, UserCheckIcon, XIcon } from '@phosphor-icons/react/ssr'
+
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('stepper')
+
+# <Text id="nav.stepper" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <StepperDemo back={useText('stepper.back')} completed={useText('stepper.completed')} next={useText('stepper.next-step')} steps={[{ content: useText('stepper.step-1-content'), label: useText('stepper.first-step') }, { content: useText('stepper.step-2-content'), label: useText('stepper.second-step') }, { content: useText('stepper.step-3-content'), label: useText('stepper.final-step') }]} />
+</Example>
+
+### <Text id="stepper.linear" />
+
+<Example>
+  <StepperDemo back={useText('stepper.back')} completed={useText('stepper.completed')} linear next={useText('stepper.next-step')} steps={[{ content: useText('stepper.step-1-content'), label: useText('stepper.first-step') }, { content: useText('stepper.step-2-content'), label: useText('stepper.second-step') }, { content: useText('stepper.step-3-content'), label: useText('stepper.final-step') }]} />
+</Example>
+
+### <Text id="stepper.links" />
+
+<Example>
+  <Stepper.Root className="w-full max-w-2xl" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} render={<a className="no-underline" href="#first" />} />
+    <Stepper.Step label={useText('stepper.second-step')} render={<a className="no-underline" href="#second" />} />
+    <Stepper.Step label={useText('stepper.final-step')} render={<a className="no-underline" href="#final" />} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <Stepper.Root className="w-full max-w-2xl" size="1" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+  <Stepper.Root className="w-full max-w-2xl" size="2" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+  <Stepper.Root className="w-full max-w-2xl" size="3" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <Stepper.Root className="w-full max-w-2xl" color="indigo" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+  <Stepper.Root className="w-full max-w-2xl" color="orange" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+  <Stepper.Root className="w-full max-w-2xl" color="gray" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <Stepper.Root className="w-full max-w-2xl" radius="none" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+  <Stepper.Root className="w-full max-w-2xl" radius="md" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.with-icons" />
+
+<Example>
+  <Stepper.Root className="w-full max-w-2xl" value={1}>
+    <Stepper.Step icon={<UserCheckIcon />} label={useText('stepper.first-step')} />
+    <Stepper.Step icon={<EnvelopeOpenIcon />} label={useText('stepper.second-step')} />
+    <Stepper.Step icon={<ShieldCheckIcon />} label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="stepper.icons-only" />
+
+<Example>
+  <Stepper.Root className="w-64" value={1}>
+    <Stepper.Step aria-label={useText('stepper.create-an-account')} icon={<UserCheckIcon />} />
+    <Stepper.Step aria-label={useText('stepper.verify-email')} icon={<EnvelopeOpenIcon />} />
+    <Stepper.Step aria-label={useText('stepper.get-full-access')} icon={<ShieldCheckIcon />} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="stepper.step-color" />
+
+<Example>
+  <Stepper.Root className="w-full max-w-2xl" completedIcon={<CheckIcon className="size-4" weight="bold" />} value={2}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step color="red" completedIcon={<XIcon className="size-4" weight="bold" />} label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.vertical" />
+
+<Example>
+  <Stepper.Root orientation="vertical" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+### <Text id="common.loading" />
+
+<Example>
+  <Stepper.Root className="w-full max-w-2xl" value={1}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} loading />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
+<Props page="stepper" />

@@ -321,6 +321,7 @@
     "slider": "Slider",
     "slot": "Slot",
     "spinner": "Spinner",
+    "stepper": "Stepper",
     "switch": "Switch",
     "tab-nav": "Tab Nav",
     "table": "Table",
@@ -479,6 +480,24 @@
     "bookmark": "Bookmark",
     "custom-size": "Custom size",
     "with-children": "With children"
+  },
+  "stepper": {
+    "back": "Back",
+    "completed": "All steps completed. Go back to change something.",
+    "create-an-account": "Create an account",
+    "final-step": "Final step",
+    "first-step": "First step",
+    "get-full-access": "Get full access",
+    "icons-only": "Icons only",
+    "linear": "Linear",
+    "links": "Links",
+    "next-step": "Next step",
+    "second-step": "Second step",
+    "step-1-content": "Step 1 content: create an account.",
+    "step-2-content": "Step 2 content: verify your email.",
+    "step-3-content": "Step 3 content: get full access.",
+    "step-color": "Step color",
+    "verify-email": "Verify email"
   },
   "switch": {
     "notifications": "Notifications"

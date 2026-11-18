@@ -1696,6 +1696,94 @@
       ]
     }
   ],
+  "stepper": [
+    {
+      "name": "Stepper.Root",
+      "props": [
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "completedIcon",
+          "type": "ReactNode"
+        },
+        {
+          "name": "linear",
+          "type": "boolean"
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: number) => void"
+        },
+        {
+          "default": "'horizontal'",
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "Stepper.Completed",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode"
+        }
+      ]
+    },
+    {
+      "name": "Stepper.Step",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "completedIcon",
+          "type": "ReactNode"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode"
+        },
+        {
+          "name": "label",
+          "type": "ReactNode"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "render",
+          "type": "ReactElement"
+        }
+      ]
+    }
+  ],
   "switch": [
     {
       "name": "Switch",

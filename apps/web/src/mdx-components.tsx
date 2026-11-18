@@ -39,6 +39,7 @@ import {
   Slider,
   Slot,
   Spinner,
+  Stepper,
   Switch,
   Table,
   TabNav,
@@ -57,6 +58,7 @@ import { AsyncCombobox, CollapsedCombobox } from './components/demos/combobox'
 import { CommandBarDemo } from './components/demos/command-bar'
 import { PhoneFieldDemo } from './components/demos/phone-field'
 import { CollapsedSelect } from './components/demos/select'
+import { StepperDemo } from './components/demos/stepper'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
 import { UseCopyDemo } from './components/demos/use-copy'
 import { UseLocalStateDemo } from './components/demos/use-local-state'
@@ -110,6 +112,7 @@ const components: MDXComponents = {
   Slider,
   Slot,
   Spinner,
+  StepperDemo,
   Switch,
   Text,
   ToastDemo,
@@ -197,6 +200,7 @@ export function useMDXComponents(): MDXComponents {
       Separator: Select.Separator,
       Trigger: Select.Trigger,
     },
+    Stepper,
     Table,
     TabNav: {
       Link: TabNav.Link,
