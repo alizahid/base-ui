@@ -1,0 +1,11 @@
+import Changelog from 'basedkit/CHANGELOG.md'
+
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('changelog')
+
+# <Text id="nav.changelog" />
+
+{/* release-it writes the file on each release. its own title is left out */}
+
+<Changelog components={{ h1: () => null }} />

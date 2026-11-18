@@ -69,6 +69,7 @@ import { Text } from './components/text'
 const components: MDXComponents = {
   AsyncCombobox,
   Avatar,
+  a: Link,
   Badge,
   BaseProvider,
   Button,
@@ -116,6 +117,14 @@ const components: MDXComponents = {
   Tooltip,
   UseCopyDemo,
   UseLocalStateDemo,
+  // auto, so a list in another language than the page's reads its own way
+  ul: (props) => (
+    <ul
+      className="mt-2 flex list-disc flex-col gap-1 ps-5"
+      dir="auto"
+      {...props}
+    />
+  ),
 }
 
 export function useMDXComponents(): MDXComponents {

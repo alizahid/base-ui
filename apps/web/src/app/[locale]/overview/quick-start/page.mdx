@@ -1,18 +1,22 @@
-# <Text id="metadata.title" />
+import { title } from '@/intl/metadata'
 
-<Text id="home.description" />
+export const generateMetadata = title('quick-start')
 
-## <Text id="home.installation" />
+# <Text id="nav.quick-start" />
 
-<Text id="home.install" />
+<Text id="quick-start.description" />
+
+## <Text id="quick-start.installation" />
+
+<Text id="quick-start.install" />
 
 ```bash
 bun add basedkit
 ```
 
-## <Text id="home.styles" />
+## <Text id="quick-start.styles" />
 
-<Text id="home.styles-tailwind" />
+<Text id="quick-start.styles-tailwind" />
 
 ```css
 @layer theme, base, ui, components, utilities;
@@ -23,7 +27,7 @@ bun add basedkit
 @import "basedkit/styles.css" layer(ui);
 ```
 
-<p className="mt-4"><Text id="home.styles-plain" /></p>
+<p className="mt-4"><Text id="quick-start.styles-plain" /></p>
 
 ```css
 @import "basedkit/reset.css";
@@ -31,7 +35,7 @@ bun add basedkit
 @import "basedkit/styles.css";
 ```
 
-<p className="mt-4"><Text id="home.styles-body" /></p>
+<p className="mt-4"><Text id="quick-start.styles-body" /></p>
 
 ```css
 body {
@@ -40,9 +44,9 @@ body {
 }
 ```
 
-## <Text id="home.provider" />
+## <Text id="quick-start.provider" />
 
-<Text id="home.provider-description" />
+<Text id="quick-start.provider-description" />
 
 ```tsx
 import './main.css'
@@ -61,23 +65,23 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-## <Text id="home.dark-mode" />
+## <Text id="quick-start.dark-mode" />
 
-<Text id="home.dark-mode-description" />
+<Text id="quick-start.dark-mode-description" />
 
 ```html
 <html class="dark">
 ```
 
-<p className="mt-4"><Text id="home.dark-mode-tailwind" /></p>
+<p className="mt-4"><Text id="quick-start.dark-mode-tailwind" /></p>
 
 ```css
 @custom-variant dark (&:where(.dark, .dark *));
 ```
 
-## <Text id="home.usage" />
+## <Text id="quick-start.usage" />
 
-<Text id="home.usage-description" />
+<Text id="quick-start.usage-description" />
 
 ```tsx
 import { Button } from 'basedkit'
@@ -87,9 +91,9 @@ export function Save() {
 }
 ```
 
-## <Text id="home.optional" />
+## <Text id="quick-start.optional" />
 
-<Text id="home.optional-description" />
+<Text id="quick-start.optional-description" />
 
 ```bash
 # DateField, from basedkit/date-field
