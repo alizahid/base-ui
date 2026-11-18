@@ -58,7 +58,7 @@ export function Code({ code, html, labels }: Props) {
           className={cn(
             'pointer-events-none bottom-0 flex justify-center pb-3',
             open
-              ? 'sticky -mt-10'
+              ? 'sticky -mt-9'
               : 'absolute inset-x-0 bg-linear-to-t from-(--gray-1) pt-10',
           )}
         >
