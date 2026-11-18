@@ -20,8 +20,13 @@ export function params(section: Section) {
   )
 }
 
-// a page's MDX source with the translations filled in
-export async function markdown(section: Section, locale: string, page: string) {
+// a page's MDX source with the translations filled in. the home page when no
+// section is given
+export async function markdown(
+  locale: string,
+  section?: Section,
+  page?: string,
+) {
   if (!hasLocale(routing.locales, locale)) {
     return new Response(null, {
       status: 404,
@@ -34,10 +39,10 @@ export async function markdown(section: Section, locale: string, page: string) {
     messages: (await import(`../intl/locales/${locale}.json`)).default,
   })
 
-  const source = await readFile(
-    `src/app/[locale]/${section}/${page.slice(0, -'.md'.length)}/page.mdx`,
-    'utf8',
-  )
+  const folder =
+    section && page ? `${section}/${page.slice(0, -'.md'.length)}/` : ''
+
+  const source = await readFile(`src/app/[locale]/${folder}page.mdx`, 'utf8')
 
   // ids come from our own files; a missing one fails the build
   const text = (id: string) => t(id as Parameters<typeof t>[0])

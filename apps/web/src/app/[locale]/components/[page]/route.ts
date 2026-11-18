@@ -12,5 +12,5 @@ export async function GET(
 ) {
   const { locale, page } = await context.params
 
-  return markdown('components', locale, page)
+  return markdown(locale, 'components', page)
 }

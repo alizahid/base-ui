@@ -1,0 +1,100 @@
+# <Text id="metadata.title" />
+
+<Text id="home.description" />
+
+## <Text id="home.installation" />
+
+<Text id="home.install" />
+
+```bash
+bun add basedkit
+```
+
+## <Text id="home.styles" />
+
+<Text id="home.styles-tailwind" />
+
+```css
+@layer theme, base, ui, components, utilities;
+
+@import "tailwindcss";
+
+@import "basedkit/theme.css";
+@import "basedkit/styles.css" layer(ui);
+```
+
+<p className="mt-4"><Text id="home.styles-plain" /></p>
+
+```css
+@import "basedkit/reset.css";
+@import "basedkit/theme.css";
+@import "basedkit/styles.css";
+```
+
+<p className="mt-4"><Text id="home.styles-body" /></p>
+
+```css
+body {
+  color: var(--gray-12);
+  background: var(--gray-1);
+}
+```
+
+## <Text id="home.provider" />
+
+<Text id="home.provider-description" />
+
+```tsx
+import './main.css'
+
+import { BaseProvider } from 'basedkit'
+import { type ReactNode } from 'react'
+
+export default function Layout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <BaseProvider accent="plum">{children}</BaseProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+## <Text id="home.dark-mode" />
+
+<Text id="home.dark-mode-description" />
+
+```html
+<html class="dark">
+```
+
+<p className="mt-4"><Text id="home.dark-mode-tailwind" /></p>
+
+```css
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+## <Text id="home.usage" />
+
+<Text id="home.usage-description" />
+
+```tsx
+import { Button } from 'basedkit'
+
+export function Save() {
+  return <Button>Save</Button>
+}
+```
+
+## <Text id="home.optional" />
+
+<Text id="home.optional-description" />
+
+```bash
+# DateField, from basedkit/date-field
+bun add use-lilius
+
+# PhoneField, from basedkit/phone-field
+bun add libphonenumber-js
+```

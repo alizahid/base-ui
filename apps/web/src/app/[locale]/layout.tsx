@@ -106,9 +106,9 @@ export default async function Layout({
                 <aside className="w-full border-b border-(--gray-a6) p-6 md:sticky md:top-0 md:h-screen md:w-64 md:shrink-0 md:self-start md:border-e md:border-b-0 md:pb-0">
                   <div className="flex flex-col gap-6 md:h-full">
                     <div className="flex items-center gap-4">
-                      <span className="text-2xl font-bold">
+                      <Link className="text-2xl font-bold" href="/">
                         {t('metadata.title')}
-                      </span>
+                      </Link>
 
                       <Search />
 
