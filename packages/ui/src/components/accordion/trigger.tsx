@@ -62,14 +62,15 @@ const styles = stylex.create({
     // the focus ring, on a box of its own so a variant can move its edges.
     // it follows the trigger's corners unless the variant gives it its own
     '::before': {
+      // an inset shadow, not an outline: an outline on an edge that falls
+      // between two pixels is drawn blurred, as if twice
       borderRadius: 'var(--accordion-ring-radius, inherit)',
+      boxShadow: 'inset 0 0 0 2px var(--focus-8)',
       content: {
         ':is(:focus-visible)': '""',
         default: 'none',
       },
       inset: '0 var(--accordion-ring-inset, 0px)',
-      outline: '2px solid var(--focus-8)',
-      outlineOffset: -2,
       pointerEvents: 'none',
       position: 'absolute',
     },

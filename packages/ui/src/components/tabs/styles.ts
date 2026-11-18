@@ -47,14 +47,15 @@ export const tabs = stylex.create({
     // the focus ring. a tab has no inline padding, so the ring is drawn on a
     // box that reaches into the gap on either side, and the text gets room
     '::before': {
+      // an inset shadow, not an outline: an outline on an edge that falls
+      // between two pixels is drawn blurred, as if twice
       borderRadius: 'var(--ui-radius-md)',
+      boxShadow: 'inset 0 0 0 2px var(--focus-8)',
       content: {
         ':is(:focus-visible)': '""',
         default: 'none',
       },
       inset: '0 calc(var(--ui-spacing) * -2)',
-      outline: '2px solid var(--focus-8)',
-      outlineOffset: -2,
       pointerEvents: 'none',
       position: 'absolute',
     },
