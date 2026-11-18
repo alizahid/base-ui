@@ -100,12 +100,12 @@ export function pretty(type: string, indent = ''): string {
   return type.slice(0, start) + body + pretty(type.slice(end + 1), indent)
 }
 
-const tag = /^<Props page="(?<page>[^"]+)" \/>$/mu
+const tag = /^<Props (?<bare>bare )?page="(?<page>[^"]+)" \/>$/mu
 
 // the same tables as markdown, for the .md route
 export function markdown(source: string, t: (id: string) => string) {
   return source.replace(tag, (...match) => {
-    const { page } = match.pop() as { page: string }
+    const { bare, page } = match.pop() as { bare?: string; page: string }
     const list = parts(page)
 
     if (list.length === 0) {
@@ -134,11 +134,10 @@ export function markdown(source: string, t: (id: string) => string) {
       ].join('\n'),
     )
 
-    return [
-      ...(hook
-        ? [`## ${t('common.parameters')}`]
-        : [`## ${t('common.props')}`, t('common.props-note')]),
-      ...tables,
-    ].join('\n\n')
+    const heading = hook
+      ? [`## ${t('common.parameters')}`]
+      : [`## ${t('common.props')}`, t('common.props-note')]
+
+    return [...(bare ? [] : heading), ...tables].join('\n\n')
   })
 }

@@ -6,13 +6,15 @@ import { named, parts, pretty } from '@/content/props'
 import { Block } from './pre'
 
 type Props = {
+  // just the tables, for a page that has its own heading for them
+  bare?: boolean
   page: string
 }
 
 // the props a page's components declare themselves, one table per component.
 // the columns have widths wide enough for their longest word, so nothing
 // breaks mid-word: wider pages share out the extra, narrower ones scroll
-export async function Props({ page }: Props) {
+export async function Props({ bare, page }: Props) {
   const t = await getTranslations()
 
   const list = parts(page)
@@ -26,11 +28,13 @@ export async function Props({ page }: Props) {
 
   return (
     <>
-      <h2 className="mt-10 mb-4 text-2xl font-bold">
-        {t(hook ? 'common.parameters' : 'common.props')}
-      </h2>
+      {bare ? null : (
+        <h2 className="mt-10 mb-4 text-2xl font-bold">
+          {t(hook ? 'common.parameters' : 'common.props')}
+        </h2>
+      )}
 
-      {hook ? null : (
+      {hook || bare ? null : (
         <p className="text-(--gray-11)">{t('common.props-note')}</p>
       )}
 
