@@ -1,0 +1,78 @@
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('tags-field')
+
+# <Text id="nav.tags-field" />
+
+## <Text id="common.examples" />
+
+### <Text id="common.basic" />
+
+<Example>
+  <TagsField className="w-80" placeholder={useText('tags-field.add-a-tag')} />
+</Example>
+
+### <Text id="tags-field.with-tags" />
+
+<Example>
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript', 'CSS']} placeholder={useText('tags-field.add-a-tag')} />
+</Example>
+
+### <Text id="common.size" />
+
+<Example orientation="vertical">
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} size="1" />
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} size="2" />
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} size="3" />
+</Example>
+
+### <Text id="common.variant" />
+
+<Example orientation="vertical">
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} variant="surface" />
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} variant="soft" />
+</Example>
+
+### <Text id="common.color" />
+
+<Example orientation="vertical">
+  <TagsField className="w-80" color="indigo" defaultValue={['React', 'TypeScript']} variant="soft" />
+  <TagsField className="w-80" color="orange" defaultValue={['React', 'TypeScript']} variant="soft" />
+  <TagsField className="w-80" color="gray" defaultValue={['React', 'TypeScript']} variant="soft" />
+</Example>
+
+### <Text id="common.radius-2" />
+
+<Example orientation="vertical">
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} radius="none" />
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} radius="full" />
+</Example>
+
+### <Text id="tags-field.limit" />
+
+<Example>
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} max={3} placeholder={useText('tags-field.up-to-three')} />
+</Example>
+
+### <Text id="tags-field.tall" />
+
+<Example>
+  <TagsField className="min-h-32 w-80" defaultValue={['React', 'TypeScript']} placeholder={useText('tags-field.add-a-tag')} />
+</Example>
+
+### <Text id="common.disabled" />
+
+<Example>
+  <TagsField className="w-80" defaultValue={['React', 'TypeScript']} disabled />
+</Example>
+
+### <Text id="common.in-a-field" />
+
+<Example>
+  <Field className="w-80" hint={useText('tags-field.type-and-press-enter')} label={useText('tags-field.skills')}>
+    <TagsField name="skills" />
+  </Field>
+</Example>
+
+<Props page="tags-field" />

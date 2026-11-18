@@ -1920,6 +1920,62 @@
       "props": []
     }
   ],
+  "tags-field": [
+    {
+      "name": "TagsField",
+      "props": [
+        {
+          "default": "'Clear'",
+          "name": "clearLabel",
+          "type": "string"
+        },
+        {
+          "default": "true",
+          "name": "clearable",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "type": "ColorToken | 'gray'"
+        },
+        {
+          "name": "defaultValue",
+          "type": "Array<string>"
+        },
+        {
+          "name": "max",
+          "type": "number"
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: Array<string>) => void"
+        },
+        {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "default": "'Remove'",
+          "name": "removeLabel",
+          "type": "string"
+        },
+        {
+          "default": "'2'",
+          "name": "size",
+          "type": "'1' | '2' | '3'"
+        },
+        {
+          "name": "value",
+          "type": "Array<string>"
+        },
+        {
+          "default": "'surface'",
+          "name": "variant",
+          "type": "'surface' | 'soft'"
+        }
+      ]
+    }
+  ],
   "text-area": [
     {
       "name": "TextArea.Root",

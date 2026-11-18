@@ -326,6 +326,7 @@
     "tab-nav": "تنقل بالتبويبات",
     "table": "الجدول",
     "tabs": "علامات التبويب",
+    "tags-field": "حقل الوسوم",
     "text-area": "منطقة النص",
     "text-field": "حقل النص",
     "toast": "الإشعار",
@@ -535,6 +536,15 @@
     "make-changes-to-your-account": "أجرِ تغييرات على حسابك.",
     "mountains": "جبال",
     "settings": "الإعدادات"
+  },
+  "tags-field": {
+    "add-a-tag": "أضف وسمًا",
+    "limit": "الحدّ",
+    "skills": "المهارات",
+    "tall": "طويل",
+    "type-and-press-enter": "اكتب مهارة ثم اضغط Enter.",
+    "up-to-three": "حتى ثلاثة",
+    "with-tags": "مع وسوم"
   },
   "text-area": {
     "a-few-words-about-you": "بضع كلمات عنك.",

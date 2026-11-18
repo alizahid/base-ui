@@ -326,6 +326,7 @@
     "tab-nav": "Tab-Navigation",
     "table": "Tabelle",
     "tabs": "Tabs",
+    "tags-field": "Tag-Feld",
     "text-area": "Textbereich",
     "text-field": "Textfeld",
     "toast": "Toast",
@@ -535,6 +536,15 @@
     "make-changes-to-your-account": "Nimm Änderungen an deinem Konto vor.",
     "mountains": "Berge",
     "settings": "Einstellungen"
+  },
+  "tags-field": {
+    "add-a-tag": "Tag hinzufügen",
+    "limit": "Begrenzung",
+    "skills": "Fähigkeiten",
+    "tall": "Hoch",
+    "type-and-press-enter": "Gib eine Fähigkeit ein und drücke die Eingabetaste.",
+    "up-to-three": "Bis zu drei",
+    "with-tags": "Mit Tags"
   },
   "text-area": {
     "a-few-words-about-you": "Ein paar Worte über dich.",

@@ -7,6 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties, use } from 'react'
 
+import { chipSizes, chips, chipVariants } from '#lib/chips.js'
 import { type ColorToken } from '#lib/colors.js'
 import { ChevronDownIcon, Cross2Icon, icon } from '#lib/icons.js'
 import { input, inputSizes, inputVariants } from '#lib/input.js'
@@ -53,7 +54,7 @@ export function Input({
   const field = (
     <Component.Input
       {...props}
-      {...stylex.props(input.input, multiple && styles.grow)}
+      {...stylex.props(input.input, multiple && chips.grow)}
     />
   )
 
@@ -66,8 +67,8 @@ export function Input({
           inputVariants[variant],
           inputSizes[size],
           chipVariants[variant],
-          sizes[size],
-          multiple && styles.tall,
+          chipSizes[size],
+          multiple && chips.tall,
           radius && radii[radius],
         ),
         className,
@@ -75,7 +76,7 @@ export function Input({
       )}
     >
       {multiple ? (
-        <Component.Chips {...stylex.props(styles.chips)}>
+        <Component.Chips {...stylex.props(chips.chips)}>
           <Component.Value>
             {(values: ReadonlyArray<unknown>) =>
               values.map((value) => {
@@ -86,15 +87,15 @@ export function Input({
                     aria-label={label}
                     data-chip=""
                     key={label}
-                    {...stylex.props(styles.chip)}
+                    {...stylex.props(chips.chip)}
                   >
                     {label}
 
                     <Component.ChipRemove
                       aria-label={removeLabel}
-                      {...stylex.props(input.action, styles.remove)}
+                      {...stylex.props(input.action, chips.remove)}
                     >
-                      <Cross2Icon {...stylex.props(styles.cross)} />
+                      <Cross2Icon {...stylex.props(chips.cross)} />
                     </Component.ChipRemove>
                   </Component.Chip>
                 )
@@ -108,7 +109,10 @@ export function Input({
         field
       )}
 
-      <div data-side="end" {...stylex.props(input.slot, input.end)}>
+      <div
+        data-side="end"
+        {...stylex.props(input.slot, input.end, multiple && chips.slot)}
+      >
         {/* base ui only renders this while there is something to clear */}
         <Component.Clear
           aria-label={clearLabel}
@@ -127,91 +131,3 @@ export function Input({
     </Component.InputGroup>
   )
 }
-
-const styles = stylex.create({
-  chip: {
-    alignItems: 'center',
-    backgroundColor: {
-      ':is([data-highlighted])': 'var(--combobox-chip-highlight)',
-      default: 'var(--combobox-chip)',
-    },
-    borderRadius: 'var(--ui-radius-sm)',
-    cursor: 'default',
-    display: 'inline-flex',
-    gap: 'calc(var(--ui-spacing) * 0.5)',
-    height: 'var(--combobox-chip-height)',
-    outline: 'none',
-    paddingInlineEnd: 'var(--ui-spacing)',
-    paddingInlineStart: 'calc(var(--ui-spacing) * 1.5)',
-    whiteSpace: 'nowrap',
-  },
-  // chips and the input share one wrapping row. the space around a chip is
-  // what a single row leaves above and below it, so it is the same on every
-  // side and between rows. the field's border takes its width out of the edges
-  chips: {
-    '--combobox-chip-space':
-      'calc((var(--text-field-height) - var(--combobox-chip-height)) / 2)',
-    alignItems: 'center',
-    display: 'flex',
-    flexGrow: 1,
-    flexWrap: 'wrap',
-    gap: 'var(--combobox-chip-space)',
-    minWidth: 0,
-    paddingBlock:
-      'calc(var(--combobox-chip-space) - var(--text-field-border-width))',
-    paddingInlineStart: {
-      ':has([data-chip])':
-        'calc(var(--combobox-chip-space) - var(--text-field-border-width))',
-    },
-  },
-  // a step smaller than the line, so it reads as part of the chip
-  cross: {
-    height: 'calc(1lh - var(--ui-spacing) * 1.5)',
-    width: 'calc(1lh - var(--ui-spacing) * 1.5)',
-  },
-  // the input takes whatever is left of the row, and wraps when that is tight
-  grow: {
-    flexBasis: 'calc(var(--ui-spacing) * 16)',
-    flexGrow: 1,
-    height: 'var(--combobox-chip-height)',
-    minWidth: 'calc(var(--ui-spacing) * 16)',
-    width: 'auto',
-  },
-  remove: {
-    opacity: {
-      ':hover': {
-        '@media (hover: hover)': 1,
-        default: null,
-      },
-      default: 0.6,
-    },
-  },
-  // with chips the field grows with its rows instead of keeping a fixed height
-  tall: {
-    height: 'auto',
-    minHeight: 'var(--text-field-height)',
-  },
-})
-
-const chipVariants = stylex.create({
-  soft: {
-    '--combobox-chip': 'var(--accent-a5)',
-    '--combobox-chip-highlight': 'var(--accent-a6)',
-  },
-  surface: {
-    '--combobox-chip': 'var(--accent-a3)',
-    '--combobox-chip-highlight': 'var(--accent-a5)',
-  },
-})
-
-const sizes = stylex.create({
-  1: {
-    '--combobox-chip-height': 'calc(var(--ui-spacing) * 5)',
-  },
-  2: {
-    '--combobox-chip-height': 'calc(var(--ui-spacing) * 6)',
-  },
-  3: {
-    '--combobox-chip-height': 'calc(var(--ui-spacing) * 7)',
-  },
-})

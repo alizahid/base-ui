@@ -326,6 +326,7 @@
     "tab-nav": "Tab Nav",
     "table": "Table",
     "tabs": "Tabs",
+    "tags-field": "Tags Field",
     "text-area": "Text Area",
     "text-field": "Text Field",
     "toast": "Toast",
@@ -535,6 +536,15 @@
     "make-changes-to-your-account": "Make changes to your account.",
     "mountains": "Mountains",
     "settings": "Settings"
+  },
+  "tags-field": {
+    "add-a-tag": "Add a tag",
+    "limit": "Limit",
+    "skills": "Skills",
+    "tall": "Tall",
+    "type-and-press-enter": "Type a skill and press Enter.",
+    "up-to-three": "Up to three",
+    "with-tags": "With tags"
   },
   "text-area": {
     "a-few-words-about-you": "A few words about you.",
