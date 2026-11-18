@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.1 (2026-11-18)
+
+### Features
+
+* cap the Stepper's lines and scroll its row sideways ([a8ea678](https://github.com/alizahid/basedkit/commit/a8ea6783bdd291c2f8d1d1d444a0660c81a9ae35))
+* keep a step's number when completedIcon is null ([37867c2](https://github.com/alizahid/basedkit/commit/37867c20f1a8a341b39190647ff78a80090b1339))
+* make the active step solid and completed steps green ([36f96d2](https://github.com/alizahid/basedkit/commit/36f96d23bff2172937708bda936a903955216d4b))
+* open Tabs, TabNav and Stepper rows at their active item ([3dcaf1b](https://github.com/alizahid/basedkit/commit/3dcaf1be471af9dd7cfc65599ac7d7ec06944af0))
+* scroll Tabs and TabNav sideways when they don't fit ([15fc96a](https://github.com/alizahid/basedkit/commit/15fc96ae5921dc65147846bbc8ca0d6329b1dd20))
+* size the input beside chips to its placeholder ([32c9d4a](https://github.com/alizahid/basedkit/commit/32c9d4a744380ac5ffe778a887197b37399ccb9a))
+
+### Bug Fixes
+
+* draw focus rings as shadows so their edges stay sharp ([7898908](https://github.com/alizahid/basedkit/commit/789890801f9a60d0a2258dcbaa293a701bab510d))
+* give the Stepper's focus ring the same room on every side ([d4dcb9d](https://github.com/alizahid/basedkit/commit/d4dcb9d7f1f7ac8e1e0aa09728fad125a86b5e60))
+* keep a focus indicator in forced colors where the ring is a shadow ([f0fe223](https://github.com/alizahid/basedkit/commit/f0fe22315c24388bd6d326c1c468eb8054c96dc6))
+
 ## 0.3.0 (2026-11-18)
 
 ### Features
