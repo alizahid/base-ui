@@ -88,6 +88,23 @@ const styles = stylex.create({
     '--spinner-opacity': {
       [off]: '1',
     },
+    // the focus ring, on a box laid over the element instead of an outline:
+    // an outline is painted under anything inside that is its own layer, an
+    // avatar for instance, and one against the edge would cover it. this is
+    // painted last, in the same place. the variant
+    // decides how far out it sits
+    '::after': {
+      borderRadius:
+        'calc(var(--outer-radius) + var(--button-outline-offset, -1px) + 2px)',
+      boxShadow: 'inset 0 0 0 2px var(--focus-8)',
+      content: {
+        ':focus-visible': '""',
+        default: 'none',
+      },
+      inset: 'calc(var(--button-outline-offset, -1px) * -1 - 2px)',
+      pointerEvents: 'none',
+      position: 'absolute',
+    },
     alignItems: 'center',
     backgroundColor: {
       [active]: 'var(--button-background-active)',
@@ -122,11 +139,13 @@ const styles = stylex.create({
     flexShrink: 0,
     fontWeight: '500',
     justifyContent: 'center',
+    // forced colors mode drops the ring's shadow and shows this instead
     outline: {
-      ':focus-visible': '2px solid var(--focus-8)',
+      ':focus-visible': '2px solid transparent',
       default: 'none',
     },
     outlineOffset: 'var(--button-outline-offset, -1px)',
+    position: 'relative',
     textAlign: 'center',
     userSelect: 'none',
     verticalAlign: 'top',
@@ -207,6 +226,7 @@ const contrast = stylex.create({
 
 const sizes = stylex.create({
   1: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-xs)',
     gap: 'var(--ui-spacing)',
@@ -215,6 +235,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   2: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     gap: 'calc(var(--ui-spacing) * 2)',
@@ -223,6 +244,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 3)',
   },
   3: {
+    '--outer-radius': 'var(--ui-radius-md)',
     borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     gap: 'calc(var(--ui-spacing) * 3)',
@@ -231,6 +253,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 4)',
   },
   4: {
+    '--outer-radius': 'var(--ui-radius-lg)',
     borderRadius: 'var(--ui-radius-lg)',
     fontSize: 'var(--ui-text-lg)',
     gap: 'calc(var(--ui-spacing) * 3)',

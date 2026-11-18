@@ -58,6 +58,21 @@ const styles = stylex.create({
       },
       default: 'var(--card-background)',
     },
+    // the focus ring of a card that is a link or a button, on a box laid over
+    // it instead of an outline: an outline is painted under an image inside,
+    // and one against the edge would cover it. this is painted last. the card
+    // clips what is inside it, so the ring sits within its edge
+    '::after': {
+      borderRadius: 'inherit',
+      boxShadow: 'inset 0 0 0 2px var(--focus-8)',
+      content: {
+        ':focus-visible': '""',
+        default: 'none',
+      },
+      inset: 0,
+      pointerEvents: 'none',
+      position: 'absolute',
+    },
     backdropFilter: 'var(--card-backdrop)',
     backgroundColor: 'var(--card-fill)',
     borderRadius: 'var(--inset-radius)',
@@ -66,8 +81,9 @@ const styles = stylex.create({
       ':is(:any-link, button, label)': 'pointer',
     },
     display: 'block',
+    // forced colors mode drops the ring's shadow and shows this instead
     outline: {
-      ':focus-visible': '2px solid var(--focus-8)',
+      ':focus-visible': '2px solid transparent',
       default: 'none',
     },
     outlineOffset: -1,

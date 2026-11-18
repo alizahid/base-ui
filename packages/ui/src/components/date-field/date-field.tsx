@@ -204,7 +204,6 @@ export function DateField({
             triggerVariants[variant],
             triggerSizes[size],
             radius && radii[radius],
-            styles.field,
           ),
           className,
           style,
@@ -331,15 +330,6 @@ const styles = stylex.create({
     position: 'absolute',
     whiteSpace: 'nowrap',
     width: 1,
-  },
-  // the ring shows for the button inside, as the wrapper never has the focus
-  field: {
-    outline: {
-      ':has(:focus-visible):not([data-invalid])': '2px solid var(--focus-8)',
-      ':is([data-invalid]):has(:focus-visible)': '2px solid var(--red-8)',
-      default: 'none',
-    },
-    position: 'relative',
   },
   // as tall as the line of text beside it, like the library's own icons
   icon: {

@@ -6,6 +6,10 @@ import * as stylex from '@stylexjs/stylex'
 // stylex doesn't order these against each other, so they must not overlap
 const off = ':is([data-disabled])'
 
+// the trigger has the focus, or, where the trigger is a wrapper (DateField),
+// the button inside it has
+const focused = ':is(:focus-visible, :has(:focus-visible))'
+
 const invalid = ':is([data-invalid]:not([data-disabled]))'
 
 const open = ':is([data-popup-open]:not([data-disabled], [data-invalid]))'
@@ -27,6 +31,15 @@ export const trigger = stylex.create({
       [off]: 'var(--gray-a9)',
       default: 'currentColor',
     },
+    // the focus ring, on a box laid over the element instead of an outline:
+    // an outline is painted under anything inside that is its own layer, an
+    // avatar for instance, and one against the edge would cover it. this is
+    // painted last, in the same place. red while
+    // the value is invalid
+    '--trigger-ring': {
+      ':is([data-invalid])': 'var(--red-8)',
+      default: 'var(--focus-8)',
+    },
     // the placeholder look is decided here, where data-placeholder is set, and
     // read by the value inside
     '--trigger-value-color': {
@@ -36,6 +49,17 @@ export const trigger = stylex.create({
     '--trigger-value-opacity': {
       ':is([data-placeholder])': 'var(--select-placeholder-opacity)',
       default: '1',
+    },
+    '::after': {
+      borderRadius: 'calc(var(--outer-radius) + 1px)',
+      boxShadow: 'inset 0 0 0 2px var(--trigger-ring)',
+      content: {
+        [focused]: '""',
+        default: 'none',
+      },
+      inset: -1,
+      pointerEvents: 'none',
+      position: 'absolute',
     },
     alignItems: 'center',
     backgroundColor: {
@@ -70,12 +94,13 @@ export const trigger = stylex.create({
     flexShrink: 0,
     fontWeight: '400',
     justifyContent: 'space-between',
+    // forced colors mode drops the ring's shadow and shows this instead
     outline: {
-      ':is(:focus-visible:not([data-invalid]))': '2px solid var(--focus-8)',
-      ':is([data-invalid]:focus-visible)': '2px solid var(--red-8)',
+      [focused]: '2px solid transparent',
       default: 'none',
     },
     outlineOffset: -1,
+    position: 'relative',
     textAlign: 'start',
     userSelect: 'none',
     verticalAlign: 'top',
@@ -127,6 +152,7 @@ export const triggerVariants = stylex.create({
 
 export const triggerSizes = stylex.create({
   1: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-xs)',
     gap: 'var(--ui-spacing)',
@@ -135,6 +161,7 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   2: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     gap: 'calc(var(--ui-spacing) * 1.5)',
@@ -143,6 +170,7 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 3)',
   },
   3: {
+    '--outer-radius': 'var(--ui-radius-md)',
     borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     gap: 'calc(var(--ui-spacing) * 2)',
