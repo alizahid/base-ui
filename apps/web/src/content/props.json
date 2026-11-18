@@ -1378,6 +1378,11 @@
           "default": "'solid'",
           "name": "panelBackground",
           "type": "'solid' | 'translucent'"
+        },
+        {
+          "default": "'medium'",
+          "name": "radius",
+          "type": "'none' | 'small' | 'medium' | 'large'"
         }
       ]
     }

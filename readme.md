@@ -44,7 +44,7 @@ body {
 
 ## Provider
 
-Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, and panelBackground to make cards translucent.
+Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, panelBackground to make cards translucent, and radius to make every corner sharper or rounder.
 
 ```tsx
 import './main.css'

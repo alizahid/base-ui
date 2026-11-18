@@ -14,6 +14,8 @@ export type BaseProviderProps = {
   gray?: GrayToken
   // the background of cards: see-through with a blur, or opaque
   panelBackground?: 'solid' | 'translucent'
+  // scales every component's corners, as radix themes' `radius` does
+  radius?: 'none' | 'small' | 'medium' | 'large'
 }
 
 export function BaseProvider({
@@ -23,6 +25,7 @@ export function BaseProvider({
   direction = 'ltr',
   gray = getGray(accent),
   panelBackground = 'solid',
+  radius = 'medium',
 }: BaseProviderProps) {
   return (
     <ThemeContext
@@ -40,6 +43,7 @@ export function BaseProvider({
           data-accent={accent}
           data-gray={gray}
           data-panel-background={panelBackground}
+          data-radius={radius}
         >
           {children}
         </div>

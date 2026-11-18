@@ -410,7 +410,7 @@
     "optional": "Optional packages",
     "optional-description": "The date field and the phone field each rely on a third-party package and have their own import path. Install the package only if you use the component.",
     "provider": "Provider",
-    "provider-description": "Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, and panelBackground to make cards translucent.",
+    "provider-description": "Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, panelBackground to make cards translucent, and radius to make every corner sharper or rounder.",
     "styles": "Styles",
     "styles-body": "The background and text color of the page are yours to set. Steps 1 and 12 of the gray scale are the usual choice.",
     "styles-ios": "On iOS 26 and later, Safari shows the page under its status bar and toolbar. Give the body a position, so a drawer lines up with the screen wherever the page is scrolled to.",
