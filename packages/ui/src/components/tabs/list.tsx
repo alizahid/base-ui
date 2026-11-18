@@ -7,6 +7,7 @@ import {
 import * as stylex from '@stylexjs/stylex'
 import { type CSSProperties } from 'react'
 
+import { Scroller } from '#lib/scroller.js'
 import { merge } from '#lib/stylex.js'
 
 import { tabs } from './styles.js'
@@ -17,10 +18,11 @@ export type TabsListProps = ComponentProps & {
 }
 
 // the row of tabs, with the line under the active one. it scrolls sideways
-// when the tabs don't fit. className and style go to the list
+// when the tabs don't fit, starting at the active tab. className and style go
+// to the list
 export function List({ children, className, style, ...props }: TabsListProps) {
   return (
-    <div {...stylex.props(tabs.scroll)}>
+    <Scroller {...stylex.props(tabs.scroll)}>
       <Component.List
         {...props}
         {...merge(stylex.props(tabs.list), className, style)}
@@ -29,7 +31,7 @@ export function List({ children, className, style, ...props }: TabsListProps) {
 
         <Component.Indicator {...stylex.props(styles.indicator)} />
       </Component.List>
-    </div>
+    </Scroller>
   )
 }
 

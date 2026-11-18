@@ -14,6 +14,7 @@ import { Spinner } from '#components/spinner/spinner.js'
 import { type ColorToken } from '#lib/colors.js'
 import { CheckIcon, icon } from '#lib/icons.js'
 import { type RadiusToken, radii } from '#lib/radii.js'
+import { Scroller } from '#lib/scroller.js'
 import { merge } from '#lib/stylex.js'
 
 import { Completed, type StepperCompletedProps } from './completed.js'
@@ -86,7 +87,7 @@ export function Root({
       {...props}
       {...merge(stylex.props(styles.main, sizes[size]), className, style)}
     >
-      <ol {...stylex.props(styles.list)}>
+      <Scroller as="ol" {...stylex.props(styles.list)}>
         {steps.map((step, index) => {
           const state = stateOf(index, value)
 
@@ -144,7 +145,7 @@ export function Root({
             </li>
           )
         })}
-      </ol>
+      </Scroller>
 
       {content ? <div>{content}</div> : null}
     </div>

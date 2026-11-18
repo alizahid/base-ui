@@ -3,6 +3,7 @@ import { type ComponentProps } from 'react'
 
 import { tabSizes, tabs } from '#components/tabs/styles.js'
 import { type ColorToken } from '#lib/colors.js'
+import { Scroller } from '#lib/scroller.js'
 import { merge } from '#lib/stylex.js'
 
 export type TabNavRootProps = Omit<ComponentProps<'nav'>, 'color'> & {
@@ -37,9 +38,9 @@ export function Root({
       {/* the scroller is wider than the nav, to leave room for a focus ring
           at either end, so it is its own element and a width given to the
           nav is the width of the row */}
-      <div {...stylex.props(tabs.scroll)}>
+      <Scroller {...stylex.props(tabs.scroll)}>
         <div {...stylex.props(tabs.list)}>{children}</div>
-      </div>
+      </Scroller>
     </nav>
   )
 }
