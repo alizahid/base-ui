@@ -13,8 +13,8 @@
    letters and open figures. tailwind's base applies these to the page, and
    leaves them off the mono */
 @theme {
-  --default-font-feature-settings: "ss01", "ss02", "ss03";
-  --default-font-variation-settings: "ROND" 0;
+  --default-font-feature-settings: "ss01", "ss03", "cv01", "zero";
+  --default-font-variation-settings: "ROND" 10;
 }
 
 body {
