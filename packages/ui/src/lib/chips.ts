@@ -52,9 +52,17 @@ export const chips = stylex.create({
   },
   // the input takes whatever is left of the row, and wraps when that is tight
   grow: {
-    flexBasis: 'calc(var(--ui-spacing) * 16)',
+    // as wide as its text, or its placeholder while it is empty, so it moves
+    // to the next row when that no longer fits. a browser without
+    // field-sizing keeps the fixed starting width
+    fieldSizing: 'content',
+    flexBasis: {
+      '@supports (field-sizing: content)': 'auto',
+      default: 'calc(var(--ui-spacing) * 16)',
+    },
     flexGrow: 1,
     height: 'var(--combobox-chip-height)',
+    maxWidth: '100%',
     minWidth: 'calc(var(--ui-spacing) * 16)',
     // a smaller indent beside a chip: the text starts a little way from the
     // last chip on its row, and nearly under the chips' own text on a row of
