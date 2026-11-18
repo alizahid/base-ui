@@ -139,7 +139,6 @@
     "pick-one-to-continue": "Bitte wähle eine Option.",
     "prop": "Prop",
     "props": "Props",
-    "props-note": "Jede Komponente akzeptiert außerdem die Props der Base-UI-Komponente oder des HTML-Elements, das sie rendert.",
     "radius": "Radius",
     "radius-2": "Radius",
     "remove": "Entfernen",

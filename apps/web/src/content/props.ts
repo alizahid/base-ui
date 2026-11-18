@@ -134,10 +134,8 @@ export function markdown(source: string, t: (id: string) => string) {
       ].join('\n'),
     )
 
-    const heading = hook
-      ? [`## ${t('common.parameters')}`]
-      : [`## ${t('common.props')}`, t('common.props-note')]
+    const heading = `## ${t(hook ? 'common.parameters' : 'common.props')}`
 
-    return [...(bare ? [] : heading), ...tables].join('\n\n')
+    return [...(bare ? [] : [heading]), ...tables].join('\n\n')
   })
 }

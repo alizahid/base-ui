@@ -139,7 +139,6 @@
     "pick-one-to-continue": "Pick one to continue.",
     "prop": "Prop",
     "props": "Props",
-    "props-note": "Each component also takes the props of the Base UI component or HTML element it renders.",
     "radius": "Radius",
     "radius-2": "Radius",
     "remove": "Remove",

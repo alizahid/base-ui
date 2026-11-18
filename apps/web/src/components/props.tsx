@@ -34,10 +34,6 @@ export async function Props({ bare, page }: Props) {
         </h2>
       )}
 
-      {hook || bare ? null : (
-        <p className="text-(--gray-11)">{t('common.props-note')}</p>
-      )}
-
       {list.map((part) => (
         <section key={part.name}>
           {named(page) ? (
