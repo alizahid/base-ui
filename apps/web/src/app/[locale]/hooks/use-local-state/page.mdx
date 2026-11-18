@@ -1,0 +1,27 @@
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('use-local-state')
+
+# <Text id="nav.use-local-state" />
+
+<Text id="use-local-state.description" />
+
+## <Text id="common.examples" />
+
+<div className="mt-4 flex min-h-32 items-center justify-center border border-(--gray-a6) p-6">
+  <UseLocalStateDemo label={useText('use-local-state.remember-me')} />
+</div>
+
+```tsx
+import { Switch, useLocalState } from '@repo/ui'
+
+function RememberMe() {
+  // undefined until something is stored, unless a second argument is passed
+  const [on, setOn] = useLocalState('is-on', false)
+
+  return <Switch checked={on} onCheckedChange={setOn} />
+}
+```
+
+<Props page="use-local-state" />

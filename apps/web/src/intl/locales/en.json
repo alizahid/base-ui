@@ -134,6 +134,7 @@
     "more-2": "More",
     "multiple": "Multiple",
     "name": "Name",
+    "parameters": "Parameters",
     "pick-a-fruit": "Pick a fruit",
     "pick-one-to-continue": "Pick one to continue.",
     "prop": "Prop",
@@ -143,6 +144,7 @@
     "radius-2": "Radius",
     "remove": "Remove",
     "required": "Required",
+    "returns": "Returns",
     "save": "Save",
     "search": "Search…",
     "share": "Share",
@@ -231,7 +233,6 @@
     "menu": "Menu",
     "no-components-found": "No components found.",
     "search": "Search",
-    "search-components": "Search components…",
     "theme": "Toggle theme"
   },
   "icon-button": {
@@ -295,6 +296,7 @@
     "drawer": "Drawer",
     "field": "Field",
     "file-field": "File Field",
+    "hooks": "Hooks",
     "icon-button": "Icon Button",
     "inset": "Inset",
     "kbd": "Kbd",
@@ -325,7 +327,10 @@
     "text-field": "Text Field",
     "toast": "Toast",
     "toolbar": "Toolbar",
-    "tooltip": "Tooltip"
+    "tooltip": "Tooltip",
+    "use-copy": "useCopy",
+    "use-local-state": "useLocalState",
+    "use-refs": "useRefs"
   },
   "navigation-menu": {
     "about": "About",
@@ -558,5 +563,17 @@
     "add-to-library": "Add to library",
     "left": "Left",
     "right": "Right"
+  },
+  "use-copy": {
+    "copied": "Copied",
+    "copy": "Copy",
+    "description": "Copies text to the clipboard. copied is true for a moment after a copy succeeds; copy rejects if the browser refuses the write."
+  },
+  "use-local-state": {
+    "description": "Like useState, but the value is kept in localStorage as JSON, so it survives a reload. Every use of a key stays in sync, across tabs too. Pass a second argument for the value to use until one is stored.",
+    "remember-me": "Remember me"
+  },
+  "use-refs": {
+    "description": "Merges refs into one, so a component can use a ref it also forwards. Takes any number of object or callback refs."
   }
 }

@@ -1,0 +1,27 @@
+import { useText } from '@/components/text'
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('use-copy')
+
+# <Text id="nav.use-copy" />
+
+<Text id="use-copy.description" />
+
+## <Text id="common.examples" />
+
+<div className="mt-4 flex min-h-32 items-center justify-center border border-(--gray-a6) p-6">
+  <UseCopyDemo copied={useText('use-copy.copied')} label={useText('use-copy.copy')} text="bun add @repo/ui" />
+</div>
+
+```tsx
+import { Button, useCopy } from '@repo/ui'
+
+function Copy({ text }: { text: string }) {
+  // true for 2000ms after a copy; pass another delay to change it
+  const { copied, copy } = useCopy()
+
+  return <Button onClick={() => copy(text)}>{copied ? 'Copied' : 'Copy'}</Button>
+}
+```
+
+<Props page="use-copy" />

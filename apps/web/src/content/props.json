@@ -2057,5 +2057,47 @@
         }
       ]
     }
+  ],
+  "use-copy": [
+    {
+      "name": "useCopy",
+      "props": [
+        {
+          "default": "2000",
+          "name": "delay",
+          "type": "number"
+        }
+      ],
+      "returns": "{ copied: boolean; copy: (text: string) => Promise<void>; }"
+    }
+  ],
+  "use-local-state": [
+    {
+      "name": "useLocalState",
+      "props": [
+        {
+          "name": "key",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "initial",
+          "type": "T"
+        }
+      ],
+      "returns": "[T, Dispatch<SetStateAction<T>>]"
+    }
+  ],
+  "use-refs": [
+    {
+      "name": "useRefs",
+      "props": [
+        {
+          "name": "...refs",
+          "type": "Array<Ref<T> | undefined>"
+        }
+      ],
+      "returns": "RefCallback<T>"
+    }
   ]
 }

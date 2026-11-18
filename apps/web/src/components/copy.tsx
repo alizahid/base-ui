@@ -1,8 +1,7 @@
 'use client'
 
 import { CheckIcon, CopyIcon } from '@phosphor-icons/react/dist/ssr'
-import { IconButton } from '@repo/ui'
-import { useState } from 'react'
+import { IconButton, useCopy } from '@repo/ui'
 
 type Props = {
   className?: string
@@ -11,20 +10,14 @@ type Props = {
 }
 
 export function Copy({ className, code, label }: Props) {
-  const [copied, setCopied] = useState(false)
+  const { copied, copy } = useCopy()
 
   return (
     <IconButton
       aria-label={label}
       className={className}
       color="gray"
-      onClick={async () => {
-        await navigator.clipboard.writeText(code)
-
-        setCopied(true)
-
-        setTimeout(() => setCopied(false), 2000)
-      }}
+      onClick={() => copy(code)}
       variant="ghost"
     >
       {copied ? <CheckIcon /> : <CopyIcon />}

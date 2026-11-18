@@ -16,7 +16,7 @@ import { Menu } from '@/components/menu'
 import { Search } from '@/components/search'
 import { Sidebar } from '@/components/sidebar'
 import { Theme } from '@/components/theme'
-import { pages } from '@/content'
+import { type Section, sections } from '@/content'
 import { Link } from '@/intl/navigation'
 import { directions, routing } from '@/intl/routing'
 
@@ -88,15 +88,18 @@ export default async function Layout({
                   a page could add commands of its own */}
               <Command
                 empty={t('header.no-components-found')}
-                placeholder={t('header.search-components')}
+                placeholder={t('common.search')}
               >
-                <CommandBar.Items
-                  items={pages.map((page) => ({
-                    label: t(`nav.${page}`),
-                    render: <Link href={`/components/${page}`} />,
-                  }))}
-                  label={t('nav.components')}
-                />
+                {(Object.keys(sections) as Array<Section>).map((section) => (
+                  <CommandBar.Items
+                    items={sections[section].map((page) => ({
+                      label: t(`nav.${page}`),
+                      render: <Link href={`/${section}/${page}`} />,
+                    }))}
+                    key={section}
+                    label={t(`nav.${section}`)}
+                  />
+                ))}
 
                 {/* on desktop it stays in view at the height of the window, and
                   the list of pages scrolls inside it */}
@@ -111,7 +114,7 @@ export default async function Layout({
 
                       <Theme />
 
-                      <Menu pages={pages} />
+                      <Menu sections={sections} />
                     </div>
 
                     <LocaleSwitcher />
@@ -123,7 +126,7 @@ export default async function Layout({
                       visibility="scroll"
                     >
                       <div className="px-[calc(6*var(--spacing)+1px)] pb-6">
-                        <Sidebar pages={pages} />
+                        <Sidebar sections={sections} />
                       </div>
                     </ScrollArea>
                   </div>

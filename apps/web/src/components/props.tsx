@@ -1,7 +1,9 @@
 import { Table } from '@repo/ui'
 import { getTranslations } from 'next-intl/server'
 
-import { named, parts } from '@/content/props'
+import { named, parts, pretty } from '@/content/props'
+
+import { Block } from './pre'
 
 type Props = {
   page: string
@@ -19,11 +21,18 @@ export async function Props({ page }: Props) {
     return null
   }
 
+  // a hook's table lists its parameters
+  const hook = list.some((part) => part.returns)
+
   return (
     <>
-      <h2 className="mt-10 mb-4 text-2xl font-bold">{t('common.props')}</h2>
+      <h2 className="mt-10 mb-4 text-2xl font-bold">
+        {t(hook ? 'common.parameters' : 'common.props')}
+      </h2>
 
-      <p className="text-(--gray-11)">{t('common.props-note')}</p>
+      {hook ? null : (
+        <p className="text-(--gray-11)">{t('common.props-note')}</p>
+      )}
 
       {list.map((part) => (
         <section key={part.name}>
@@ -40,7 +49,7 @@ export async function Props({ page }: Props) {
             <Table.Header>
               <Table.Row>
                 <Table.ColumnHeaderCell className="w-44">
-                  {t('common.prop')}
+                  {t(hook ? 'common.name' : 'common.prop')}
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className="w-72">
                   {t('common.type')}
@@ -69,8 +78,11 @@ export async function Props({ page }: Props) {
 
                   {/* code reads left to right in every locale */}
                   <Table.Cell>
-                    <code className="text-(--gray-11)" dir="ltr">
-                      {prop.type}
+                    <code
+                      className="whitespace-pre-wrap text-(--gray-11)"
+                      dir="ltr"
+                    >
+                      {pretty(prop.type)}
                     </code>
                   </Table.Cell>
 
@@ -85,6 +97,16 @@ export async function Props({ page }: Props) {
               ))}
             </Table.Body>
           </Table.Root>
+
+          {part.returns ? (
+            <>
+              <h2 className="mt-10 mb-4 text-2xl font-bold">
+                {t('common.returns')}
+              </h2>
+
+              <Block code={pretty(part.returns)} lang="ts" />
+            </>
+          ) : null}
         </section>
       ))}
     </>

@@ -1,0 +1,27 @@
+import { title } from '@/intl/metadata'
+
+export const generateMetadata = title('use-refs')
+
+# <Text id="nav.use-refs" />
+
+<Text id="use-refs.description" />
+
+## <Text id="common.examples" />
+
+```tsx
+import { useRefs } from '@repo/ui'
+import { type ComponentProps, useEffect, useRef } from 'react'
+
+function Input({ ref, ...props }: ComponentProps<'input'>) {
+  const local = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    local.current?.focus()
+  }, [])
+
+  // the parent's ref and ours both get the element
+  return <input ref={useRefs(local, ref)} {...props} />
+}
+```
+
+<Props page="use-refs" />

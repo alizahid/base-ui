@@ -5,16 +5,16 @@ import { Drawer, IconButton } from '@repo/ui'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-import { type Page } from '@/content'
+import { type Page, type Section } from '@/content'
 
 import { Sidebar } from './sidebar'
 
 type Props = {
-  pages: Array<Page>
+  sections: Record<Section, Array<Page>>
 }
 
 // the sidebar's links in a drawer, for small screens
-export function Menu({ pages }: Props) {
+export function Menu({ sections }: Props) {
   const t = useTranslations()
 
   const [open, setOpen] = useState(false)
@@ -54,7 +54,7 @@ export function Menu({ pages }: Props) {
 
         {/* the links bleed 1px past the drawer's padding */}
         <div className="px-px">
-          <Sidebar onNavigate={() => setOpen(false)} pages={pages} />
+          <Sidebar onNavigate={() => setOpen(false)} sections={sections} />
         </div>
       </Drawer.Content>
     </Drawer.Root>

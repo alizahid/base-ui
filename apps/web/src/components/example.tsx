@@ -1,11 +1,11 @@
 import { cn } from 'cn'
 import { getTranslations } from 'next-intl/server'
 import { type ComponentProps } from 'react'
-import { codeToHtml } from 'shiki'
 
 import { fill } from '@/intl/fill'
 
 import { Code } from './code'
+import { highlight } from './pre'
 
 type Props = ComponentProps<'div'> & {
   // the example's source, added by the remark plugin in src/mdx
@@ -26,19 +26,7 @@ export async function Example({
     ? fill(code, (id) => t(id as Parameters<typeof t>[0]))
     : undefined
 
-  const html = source
-    ? await codeToHtml(source, {
-        defaultColor: false,
-        lang: 'tsx',
-        // the scroll area around it is the tab stop; a second one on the
-        // pre only adds its own focus ring
-        tabindex: false,
-        themes: {
-          dark: 'github-dark',
-          light: 'github-light',
-        },
-      })
-    : undefined
+  const html = source ? await highlight(source, 'tsx') : undefined
 
   return (
     <div className="mt-4 border border-(--gray-a6)">

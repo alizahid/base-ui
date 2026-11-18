@@ -134,6 +134,7 @@
     "more-2": "Mehr",
     "multiple": "Mehrfachauswahl",
     "name": "Name",
+    "parameters": "Parameter",
     "pick-a-fruit": "Obst wählen",
     "pick-one-to-continue": "Bitte wähle eine Option.",
     "prop": "Prop",
@@ -143,6 +144,7 @@
     "radius-2": "Radius",
     "remove": "Entfernen",
     "required": "Erforderlich",
+    "returns": "Rückgabewert",
     "save": "Speichern",
     "search": "Suchen…",
     "share": "Teilen",
@@ -231,7 +233,6 @@
     "menu": "Menü",
     "no-components-found": "Keine Komponenten gefunden.",
     "search": "Suchen",
-    "search-components": "Komponenten suchen…",
     "theme": "Design umschalten"
   },
   "icon-button": {
@@ -295,6 +296,7 @@
     "drawer": "Drawer",
     "field": "Feld",
     "file-field": "Dateifeld",
+    "hooks": "Hooks",
     "icon-button": "Icon-Button",
     "inset": "Inset",
     "kbd": "Kbd",
@@ -325,7 +327,10 @@
     "text-field": "Textfeld",
     "toast": "Toast",
     "toolbar": "Toolbar",
-    "tooltip": "Tooltip"
+    "tooltip": "Tooltip",
+    "use-copy": "useCopy",
+    "use-local-state": "useLocalState",
+    "use-refs": "useRefs"
   },
   "navigation-menu": {
     "about": "Über uns",
@@ -558,5 +563,17 @@
     "add-to-library": "Zur Bibliothek hinzufügen",
     "left": "Links",
     "right": "Rechts"
+  },
+  "use-copy": {
+    "copied": "Kopiert",
+    "copy": "Kopieren",
+    "description": "Kopiert Text in die Zwischenablage. copied ist nach einem erfolgreichen Kopieren kurz true; copy schlägt fehl, wenn der Browser das Schreiben verweigert."
+  },
+  "use-local-state": {
+    "description": "Wie useState, aber der Wert wird als JSON in localStorage gespeichert und übersteht so ein Neuladen. Jede Verwendung eines Schlüssels bleibt synchron, auch über Tabs hinweg. Ein zweites Argument legt den Wert fest, der gilt, bis einer gespeichert ist.",
+    "remember-me": "Angemeldet bleiben"
+  },
+  "use-refs": {
+    "description": "Führt Refs zu einem zusammen, damit eine Komponente ein Ref verwenden kann, das sie auch weiterreicht. Nimmt beliebig viele Objekt- oder Callback-Refs."
   }
 }

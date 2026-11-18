@@ -58,7 +58,10 @@ import { CommandBarDemo } from './components/demos/command-bar'
 import { PhoneFieldDemo } from './components/demos/phone-field'
 import { CollapsedSelect } from './components/demos/select'
 import { ToastDemo, ToastPromiseDemo } from './components/demos/toast'
+import { UseCopyDemo } from './components/demos/use-copy'
+import { UseLocalStateDemo } from './components/demos/use-local-state'
 import { Example } from './components/example'
+import { Pre } from './components/pre'
 import { Props } from './components/props'
 import { Source } from './components/source'
 import { Text } from './components/text'
@@ -98,14 +101,7 @@ const components: MDXComponents = {
   PhoneField,
   PhoneFieldDemo,
   Props,
-  // code reads left to right in every locale
-  pre: (props) => (
-    <pre
-      className="mt-4 overflow-x-auto border border-(--gray-a6) p-4 text-sm"
-      dir="ltr"
-      {...props}
-    />
-  ),
+  pre: Pre,
   Radio,
   ScrollArea,
   Separator,
@@ -118,6 +114,8 @@ const components: MDXComponents = {
   ToastDemo,
   ToastPromiseDemo,
   Tooltip,
+  UseCopyDemo,
+  UseLocalStateDemo,
 }
 
 export function useMDXComponents(): MDXComponents {

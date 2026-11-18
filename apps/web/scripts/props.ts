@@ -53,6 +53,8 @@ type Prop = {
 type Part = {
   name: string
   props: Array<Prop>
+  // a hook's return type; its props are its parameters
+  returns?: string
 }
 
 function local(node: ts.Node) {
@@ -250,6 +252,52 @@ function part(name: string, type: ts.Type): Part | undefined {
   }
 }
 
+// a hook's parameters, as its implementation declares them, and what its
+// first overload returns
+function hook(
+  name: string,
+  symbol: ts.Symbol,
+  type: ts.Type,
+): Part | undefined {
+  const declaration = symbol.declarations?.find(
+    (item) => ts.isFunctionDeclaration(item) && item.body,
+  )
+  const [signature] = type.getCallSignatures()
+
+  if (!(declaration && ts.isFunctionDeclaration(declaration) && signature)) {
+    return
+  }
+
+  return {
+    name,
+    props: declaration.parameters.map((parameter) => {
+      const initializer = parameter.initializer?.getText()
+
+      return {
+        default:
+          initializer && literal.test(initializer) ? initializer : undefined,
+        name: `${parameter.dotDotDotToken ? '...' : ''}${parameter.name.getText()}`,
+        required:
+          parameter.questionToken ||
+          parameter.initializer ||
+          parameter.dotDotDotToken
+            ? undefined
+            : true,
+        type:
+          parameter.type?.getText().replace(space, ' ') ??
+          checker.typeToString(
+            checker.getTypeAtLocation(parameter),
+            undefined,
+            flags,
+          ),
+      } satisfies Prop
+    }),
+    returns: checker
+      .typeToString(signature.getReturnType(), undefined, flags)
+      .replace(space, ' '),
+  }
+}
+
 const pages: Record<string, Array<Part>> = {}
 
 for (const entry of entries) {
@@ -261,8 +309,28 @@ for (const entry of entries) {
       item.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(item) : item
     const declaration = symbol.valueDeclaration
 
-    // components start with a capital; types have no value
-    if (!(declaration && capital.test(item.name))) {
+    // types have no value
+    if (!declaration) {
+      continue
+    }
+
+    // a hook's page is named after its file
+    if (item.name.startsWith('use')) {
+      const found = hook(
+        item.name,
+        symbol,
+        checker.getTypeOfSymbolAtLocation(symbol, declaration),
+      )
+
+      if (found) {
+        pages[basename(declaration.getSourceFile().fileName, '.ts')] = [found]
+      }
+
+      continue
+    }
+
+    // components start with a capital
+    if (!capital.test(item.name)) {
       continue
     }
 
