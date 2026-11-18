@@ -56,6 +56,7 @@ const styles = stylex.create({
     backgroundColor: 'var(--badge-background)',
     boxShadow: 'var(--badge-shadow)',
     color: 'var(--badge-color)',
+    cursor: 'default',
     display: 'inline-flex',
     flexShrink: 0,
     fontWeight: '500',
