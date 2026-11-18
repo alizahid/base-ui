@@ -51,7 +51,11 @@ const variants = stylex.create({
   ghost: {
     '--accordion-hover': 'transparent',
     '--accordion-padding-x': '0px',
-    '--accordion-trigger-radius': 'var(--ui-radius-sm)',
+    // a trigger has no inline padding, so its focus ring reaches out on
+    // either side to give the text room, as a tab's does
+    '--accordion-ring-inset': 'calc(var(--ui-spacing) * -2)',
+    '--accordion-ring-radius': 'var(--ui-radius-md)',
+    '--accordion-trigger-radius': '0px',
   },
   // a panel, like Card: the provider's panelBackground applies
   surface: {

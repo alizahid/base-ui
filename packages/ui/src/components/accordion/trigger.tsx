@@ -59,6 +59,20 @@ const styles = stylex.create({
     transitionTimingFunction: 'ease-out',
   },
   main: {
+    // the focus ring, on a box of its own so a variant can move its edges.
+    // it follows the trigger's corners unless the variant gives it its own
+    '::before': {
+      borderRadius: 'var(--accordion-ring-radius, inherit)',
+      content: {
+        ':is(:focus-visible)': '""',
+        default: 'none',
+      },
+      inset: '0 var(--accordion-ring-inset, 0px)',
+      outline: '2px solid var(--focus-8)',
+      outlineOffset: -2,
+      pointerEvents: 'none',
+      position: 'absolute',
+    },
     alignItems: 'center',
     backgroundColor: {
       [hover]: {
@@ -67,7 +81,7 @@ const styles = stylex.create({
       },
       default: null,
     },
-    // the corners of the panel, so the focus ring follows them
+    // the corners of the panel, which the focus ring follows
     borderEndEndRadius: {
       ':is(:last-child > * > *):not([data-panel-open])':
         'var(--accordion-trigger-radius)',
@@ -98,13 +112,10 @@ const styles = stylex.create({
     fontWeight: '500',
     gap: 'calc(var(--ui-spacing) * 4)',
     justifyContent: 'space-between',
-    outline: {
-      ':focus-visible': '2px solid var(--focus-8)',
-      default: 'none',
-    },
-    outlineOffset: -2,
+    outline: 'none',
     paddingBlock: 'var(--accordion-padding-y)',
     paddingInline: 'var(--accordion-padding-x)',
+    position: 'relative',
     textAlign: 'start',
     userSelect: 'none',
     width: '100%',
