@@ -113,7 +113,12 @@ const styles = stylex.create({
     fontWeight: '500',
     gap: 'calc(var(--ui-spacing) * 4)',
     justifyContent: 'space-between',
-    outline: 'none',
+    // the ring is a shadow, which forced colors mode drops. an outline that
+    // can't be seen otherwise takes its place there
+    outline: {
+      ':focus-visible': '2px solid transparent',
+      default: 'none',
+    },
     paddingBlock: 'var(--accordion-padding-y)',
     paddingInline: 'var(--accordion-padding-x)',
     position: 'relative',

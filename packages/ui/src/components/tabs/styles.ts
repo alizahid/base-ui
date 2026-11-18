@@ -77,7 +77,12 @@ export const tabs = stylex.create({
     flexDirection: 'column',
     flexShrink: 0,
     gap: 'var(--tabs-tab-gap)',
-    outline: 'none',
+    // the ring is a shadow, which forced colors mode drops. an outline that
+    // can't be seen otherwise takes its place there
+    outline: {
+      ':focus-visible': '2px solid transparent',
+      default: 'none',
+    },
     paddingBlock: 'var(--tabs-padding)',
     paddingInline: 0,
     position: 'relative',

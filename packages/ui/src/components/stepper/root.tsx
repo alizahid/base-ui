@@ -401,7 +401,12 @@ const styles = stylex.create({
     display: 'flex',
     gap: 'var(--stepper-gap)',
     minWidth: 0,
-    outline: 'none',
+    // the ring is a shadow, which forced colors mode drops. an outline that
+    // can't be seen otherwise takes its place there
+    outline: {
+      ':focus-visible': '2px solid transparent',
+      default: 'none',
+    },
     position: 'relative',
     textAlign: 'start',
     userSelect: 'none',
