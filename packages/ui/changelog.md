@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 (2026-11-18)
+
+### Reverts
+
+* leave button icon spacing to the consumer ([1cc615d](https://github.com/alizahid/basedkit/commit/1cc615d5129c18e26eeb7e2d0dadba1246cf5fb9))
+
 ## 0.2.1 (2026-11-18)
 
 ### Features
