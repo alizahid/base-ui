@@ -195,13 +195,12 @@ const vertical = ':is([data-orientation="vertical"] *)'
 const still = '@media (prefers-reduced-motion: reduce)'
 
 // our own design, in radix themes' colors: an upcoming step is gray, the
-// active one a tinted surface, a completed one solid
+// active one solid in the accent, a completed one solid green
 const styles = stylex.create({
   indicator: {
     alignItems: 'center',
     backgroundColor: 'var(--stepper-indicator-background)',
     borderRadius: 'calc(infinity * 1px)',
-    boxShadow: 'var(--stepper-indicator-shadow)',
     color: 'var(--stepper-indicator-color)',
     display: 'flex',
     flexShrink: 0,
@@ -212,23 +211,34 @@ const styles = stylex.create({
     transitionDuration: '150ms',
     transitionProperty: {
       [still]: 'none',
-      default: 'background-color, box-shadow, color',
+      default: 'background-color, color',
     },
     width: 'var(--stepper-indicator-size)',
   },
   // a step and the line to the next one. the state only sets variables here;
   // the indicator, the label and the line read them
   item: {
+    // a step with a `color` of its own is that color once it is done, in
+    // place of the root's green
+    '--stepper-done': {
+      ':is([data-accent])': 'var(--accent-9)',
+    },
+    '--stepper-done-contrast': {
+      ':is([data-accent])': 'var(--accent-contrast)',
+    },
+    '--stepper-done-hover': {
+      ':is([data-accent])': 'var(--accent-10)',
+    },
     '--stepper-indicator-background': {
-      [active]: 'var(--accent-a3)',
+      [active]: 'var(--accent-9)',
       [activeHover]: {
-        '@media (hover: hover)': 'var(--accent-a4)',
-        default: 'var(--accent-a3)',
-      },
-      [completed]: 'var(--accent-9)',
-      [completedHover]: {
         '@media (hover: hover)': 'var(--accent-10)',
         default: 'var(--accent-9)',
+      },
+      [completed]: 'var(--stepper-done)',
+      [completedHover]: {
+        '@media (hover: hover)': 'var(--stepper-done-hover)',
+        default: 'var(--stepper-done)',
       },
       [upcomingHover]: {
         '@media (hover: hover)': 'var(--gray-a4)',
@@ -237,20 +247,16 @@ const styles = stylex.create({
       default: 'var(--gray-a3)',
     },
     '--stepper-indicator-color': {
-      ':is([data-state="active"])': 'var(--accent-a11)',
-      ':is([data-state="completed"])': 'var(--accent-contrast)',
+      ':is([data-state="active"])': 'var(--accent-contrast)',
+      ':is([data-state="completed"])': 'var(--stepper-done-contrast)',
       default: 'var(--gray-a11)',
-    },
-    '--stepper-indicator-shadow': {
-      ':is([data-state="active"])': 'inset 0 0 0 1px var(--accent-a7)',
-      default: 'none',
     },
     '--stepper-label': {
       ':is([data-state="upcoming"])': 'var(--gray-a11)',
       default: 'var(--gray-12)',
     },
     '--stepper-line': {
-      ':is([data-state="completed"])': 'var(--accent-9)',
+      ':is([data-state="completed"])': 'var(--stepper-done)',
       default: 'var(--gray-a5)',
     },
     // the room between two steps in a column, which the line runs through
@@ -357,6 +363,10 @@ const styles = stylex.create({
     scrollbarWidth: 'none',
   },
   main: {
+    // a finished step is green, whatever the accent
+    '--stepper-done': 'var(--green-9)',
+    '--stepper-done-contrast': 'white',
+    '--stepper-done-hover': 'var(--green-10)',
     color: 'var(--gray-12)',
     display: 'flex',
     flexDirection: 'column',
