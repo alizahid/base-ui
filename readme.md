@@ -2,7 +2,7 @@
 
 React components with the look of Radix Themes, built on Base UI. Install the package, import the styles and wrap your app in a provider.
 
-The [documentation](https://base-ui-wine.vercel.app) has every component, with examples and props.
+The [documentation](https://basedkit.vercel.app) has every component, with examples and props.
 
 ## Installation
 
