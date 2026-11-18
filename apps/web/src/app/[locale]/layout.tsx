@@ -90,6 +90,7 @@ export default async function Layout({
               accent="plum"
               className="mx-auto flex max-w-6xl flex-col border-(--gray-a6) md:flex-row xl:border-x"
               direction={directions[locale]}
+              radius="large"
             >
               {/* every page, a keystroke away: the bar goes around the site, so
                   a page could add commands of its own */}
