@@ -58,11 +58,21 @@ const hidden = ':is([data-starting-style], [data-ending-style])'
 
 const still = '@media (prefers-reduced-motion: reduce)'
 
+// ios 26 and later, where safari's status bar and toolbar float over the page
+const bars = '@supports (-webkit-touch-callout: none) and (anchor-name: --a)'
+
 // ported from radix themes' base-dialog.css. radix animates with keyframes;
 // here base ui's starting and ending styles drive transitions instead.
 // exported for CommandBar, which is a dialog with its own contents
 export const dialog = stylex.create({
   backdrop: {
+    ':is([data-ending-style])::after': {
+      backgroundColor: 'var(--overlay)',
+      content: '""',
+      inset: 0,
+      position: 'fixed',
+      visibility: 'visible',
+    },
     backgroundColor: 'var(--overlay)',
     inset: 0,
     opacity: {
@@ -77,6 +87,14 @@ export const dialog = stylex.create({
     },
     transitionProperty: 'opacity',
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    // ios: nothing fixed can draw under safari's status bar and toolbar.
+    // safari fills them itself, dimmed to match a fixed backdrop like this
+    // one, for as long as it is visible. so it hides as it starts to close,
+    // for the bars to fade with it, and this fades in its place
+    visibility: {
+      ':is([data-ending-style])': 'hidden',
+      default: null,
+    },
   },
   content: {
     backgroundColor: 'var(--panel-background)',
@@ -105,6 +123,8 @@ export const dialog = stylex.create({
     },
     transitionProperty: 'opacity, transform',
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    // the viewport is hidden
+    visibility: 'visible',
     width: '100%',
     zIndex: 1,
   },
@@ -125,6 +145,12 @@ export const dialog = stylex.create({
     inset: 0,
     overflow: 'auto',
     position: 'fixed',
+    // ios: hidden, with only the dialog showing, so the backdrop is what
+    // safari finds at the edges of the screen
+    visibility: {
+      [bars]: 'hidden',
+      default: null,
+    },
   },
 })
 

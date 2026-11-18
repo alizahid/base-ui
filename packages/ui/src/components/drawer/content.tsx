@@ -35,6 +35,7 @@ export function Content({
         <Component.Backdrop {...stylex.props(styles.backdrop)} />
 
         <Component.Viewport
+          ref={place}
           {...stylex.props(styles.viewport, sizes[size], inset && styles.inset)}
         >
           {/* portaled out of the provider's element, so its colors are set
@@ -51,14 +52,49 @@ export function Content({
               {children}
             </Component.Content>
           </Component.Popup>
+
+          <div aria-hidden {...stylex.props(styles.fill, styles.fillTop)} />
+
+          <div aria-hidden {...stylex.props(styles.fill, styles.fillBottom)} />
         </Component.Viewport>
       </Component.Portal>
     </Component.VirtualKeyboardProvider>
   )
 }
 
+// ios: the viewport is part of the page there, so it is told where the screen
+// is on the page, and again if the page moves under it
+function place(element: HTMLElement | null) {
+  if (!element) {
+    return
+  }
+
+  const update = () => {
+    const page = element.offsetParent?.getBoundingClientRect()
+
+    element.style.setProperty('--drawer-screen-x', `${-(page?.left ?? 0)}px`)
+    element.style.setProperty('--drawer-screen-y', `${-(page?.top ?? 0)}px`)
+  }
+
+  update()
+
+  window.addEventListener('scroll', update, { passive: true })
+  window.addEventListener('resize', update)
+
+  return () => {
+    window.removeEventListener('scroll', update)
+    window.removeEventListener('resize', update)
+  }
+}
+
 const large = '@media (min-width: 640px)'
 const still = '@media (prefers-reduced-motion: reduce)'
+
+// ios 26 and later, where safari's status bar and toolbar float over the page.
+// only the page itself can draw under them: anything fixed or sticky is cut
+// off at their edges. so the viewport is put on the page there, and the popup
+// paints past its own edges to reach under the bars
+const bars = '@supports (-webkit-touch-callout: none) and (anchor-name: --a)'
 
 const hidden = ':is([data-starting-style], [data-ending-style])'
 const ending = ':is([data-ending-style])'
@@ -123,6 +159,20 @@ const inBehind =
 const inUp = ':is([data-swipe-direction="up"] > *)'
 const inDown = ':is([data-swipe-direction="down"] > *)'
 
+// after a drawer that is open, in front and at rest, at the top or the bottom
+// of the screen
+const afterTop =
+  ':is(:is([data-swipe-direction="up"], [data-swipe-direction="left"], [data-swipe-direction="right"]):not([data-starting-style], [data-ending-style], [data-nested-drawer-open], [data-swiping]) ~ *)'
+const afterBottom =
+  ':is(:is([data-swipe-direction="down"], [data-swipe-direction="left"], [data-swipe-direction="right"]):not([data-starting-style], [data-ending-style], [data-nested-drawer-open], [data-swiping]) ~ *)'
+
+// a moment after the drawer starts to open, when it is nearly there
+const late = stylex.keyframes({
+  from: {
+    height: 0,
+  },
+})
+
 // the look is Dialog's panel; the motion follows base ui's drawer examples,
 // where the popup tracks the finger and a faster swipe closes faster
 const styles = stylex.create({
@@ -135,13 +185,15 @@ const styles = stylex.create({
       [hidden]: 0,
       default: 'calc(1 - var(--drawer-swipe-progress, 0))',
     },
-    // ios: covers the whole visible viewport
+    // ios: on the page, so it dims what shows under safari's bars as well. a
+    // fixed backdrop has safari dim its bars itself, as in Dialog, but it
+    // dims the one the drawer is under too, for a moment as the drawer opens
     position: {
       '@supports (-webkit-touch-callout: none)': 'absolute',
       default: 'fixed',
     },
     transitionDuration: {
-      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 300ms)',
+      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 200ms)',
       [swiping]: '0ms',
       default: '300ms',
     },
@@ -149,7 +201,11 @@ const styles = stylex.create({
       [still]: 'none',
       default: 'opacity',
     },
-    transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
+    // fades with the drawer
+    transitionTimingFunction: {
+      [ending]: 'cubic-bezier(0.4, 0, 1, 1)',
+      default: 'cubic-bezier(0.32, 0.72, 0, 1)',
+    },
   },
   content: {
     flexGrow: 1,
@@ -170,6 +226,44 @@ const styles = stylex.create({
       [still]: 'none',
       default: 'opacity',
     },
+  },
+  // ios: the page ends at its first and last pixel, so at the very top or
+  // bottom of it there is nothing under safari's bars to paint on. safari
+  // fills them itself, with the color of whatever is fixed at that edge of
+  // the screen: these. one is only there while its drawer is open, so the bar
+  // is filled as the drawer arrives and let go as it starts to leave
+  fill: {
+    animationDuration: '100ms',
+    animationFillMode: 'both',
+    animationName: late,
+    animationTimingFunction: 'step-end',
+    backgroundColor: 'var(--panel-background)',
+    // nothing when the drawer floats off the edges of the screen
+    height: 'min(var(--drawer-bleed), calc(var(--ui-spacing) * 3))',
+    insetInline: 0,
+    pointerEvents: 'none',
+    position: 'fixed',
+    zIndex: 1,
+  },
+  fillBottom: {
+    bottom: 0,
+    display: {
+      [bars]: {
+        [afterBottom]: 'block',
+        default: 'none',
+      },
+      default: 'none',
+    },
+  },
+  fillTop: {
+    display: {
+      [bars]: {
+        [afterTop]: 'block',
+        default: 'none',
+      },
+      default: 'none',
+    },
+    top: 0,
   },
   // the bar to drag a top or bottom drawer by
   handle: {
@@ -212,7 +306,7 @@ const styles = stylex.create({
     // floating, so there is no edge to stay attached to
     '--drawer-bleed': {
       [large]: '0px',
-      default: 'calc(var(--ui-spacing) * 12)',
+      default: 'calc(var(--ui-spacing) * 32)',
     },
     '--drawer-edge-radius': {
       [large]: 'var(--ui-radius-2xl)',
@@ -222,8 +316,17 @@ const styles = stylex.create({
       [large]: 'calc(var(--ui-spacing) * 2)',
       default: '0px',
     },
+    '--drawer-ring': {
+      [large]: '0px',
+      default: '1px',
+    },
   },
   popup: {
+    // behind another, a start or end drawer is shorter, and stays inside it
+    '--drawer-bleed-block': {
+      [behind]: '0px',
+      default: 'var(--drawer-bleed)',
+    },
     alignSelf: {
       [down]: 'flex-end',
       [up]: 'flex-start',
@@ -248,15 +351,16 @@ const styles = stylex.create({
       [down]: 'var(--ui-radius-2xl)',
       default: 'var(--drawer-edge-radius)',
     },
-    // a slab of the panel past the screen's edge, so dragging the drawer the
-    // other way doesn't pull it off the edge. first, so it covers the ring
+    // slabs of the panel past the screen's edges, so dragging the drawer the
+    // other way doesn't pull it off the edge, and on ios it reaches under
+    // safari's bars. first, so they cover the ring
     boxShadow: {
       [down]:
         '0 var(--drawer-bleed) 0 0 var(--panel-background), var(--dialog-shadow)',
       [left]:
-        'calc(-1 * var(--drawer-bleed)) 0 0 0 var(--panel-background), var(--dialog-shadow)',
+        'calc(-1 * var(--drawer-bleed)) 0 0 0 var(--panel-background), 0 var(--drawer-bleed-block) 0 0 var(--panel-background), 0 calc(-1 * var(--drawer-bleed-block)) 0 0 var(--panel-background), var(--dialog-shadow)',
       [right]:
-        'var(--drawer-bleed) 0 0 0 var(--panel-background), var(--dialog-shadow)',
+        'var(--drawer-bleed) 0 0 0 var(--panel-background), 0 var(--drawer-bleed-block) 0 0 var(--panel-background), 0 calc(-1 * var(--drawer-bleed-block)) 0 0 var(--panel-background), var(--dialog-shadow)',
       [up]: '0 calc(-1 * var(--drawer-bleed)) 0 0 var(--panel-background), var(--dialog-shadow)',
       default: 'var(--dialog-shadow)',
     },
@@ -299,19 +403,21 @@ const styles = stylex.create({
     overscrollBehavior: 'contain',
     position: 'relative',
     transform: {
-      [downHidden]: 'translateY(calc(100% + var(--drawer-inset)))',
+      [downHidden]:
+        'translateY(calc(100% + var(--drawer-inset) + var(--drawer-under)))',
       [downOpen]:
         'translateY(calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y, 0px)))',
       [leftHidden]: 'translateX(calc(-100% - var(--drawer-inset)))',
       [rightHidden]: 'translateX(calc(100% + var(--drawer-inset)))',
       [sidesOpen]: 'translateX(var(--drawer-swipe-movement-x, 0px))',
-      [upHidden]: 'translateY(calc(-100% - var(--drawer-inset)))',
+      [upHidden]:
+        'translateY(calc(-100% - var(--drawer-inset) - var(--drawer-under)))',
       [upOpen]:
         'translateY(calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y, 0px)))',
       default: null,
     },
     transitionDuration: {
-      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 300ms)',
+      [ending]: 'calc(var(--drawer-swipe-strength, 1) * 200ms)',
       [swiping]: '0ms',
       default: '300ms',
     },
@@ -319,7 +425,12 @@ const styles = stylex.create({
       [still]: 'none',
       default: 'transform, translate, height, width',
     },
-    transitionTimingFunction: 'cubic-bezier(0.32, 0.72, 0, 1)',
+    // speeds up on the way out, so the drawer leaves the screen as the
+    // transition ends. ios: that is when safari lets go of its bars
+    transitionTimingFunction: {
+      [ending]: 'cubic-bezier(0.4, 0, 1, 1)',
+      default: 'cubic-bezier(0.32, 0.72, 0, 1)',
+    },
     // behind other drawers, it moves out by the peek for each one above it.
     // start and end drawers only line up when they are the same width
     translate: {
@@ -332,6 +443,9 @@ const styles = stylex.create({
       default: null,
     },
     width: {
+      // a top or bottom drawer stops short of the sides of the screen, so its
+      // ring shows there
+      [tall]: 'calc(100% - var(--drawer-ring) * 2)',
       [tallBehind]:
         'calc(100% - var(--nested-drawers, 1) * var(--drawer-peek) * 2)',
       [wide]: 'var(--drawer-width)',
@@ -341,16 +455,38 @@ const styles = stylex.create({
     willChange: 'transform',
   },
   viewport: {
-    '--drawer-bleed': 'calc(var(--ui-spacing) * 12)',
+    '--drawer-bleed': 'calc(var(--ui-spacing) * 32)',
     '--drawer-edge-radius': '0px',
     '--drawer-inset': '0px',
     // how much of a drawer shows behind the one above it
     '--drawer-peek':
       'clamp(calc(var(--ui-spacing) * 4), 2.5vw, calc(var(--ui-spacing) * 8))',
+    '--drawer-ring': '1px',
+    // ios: how far past the screen's edge a closed drawer goes, to be out
+    // from under safari's bars as well
+    '--drawer-under': {
+      [bars]: 'calc(var(--ui-spacing) * 28)',
+      default: '0px',
+    },
     display: 'flex',
-    inset: 0,
+    height: {
+      [bars]: '100dvh',
+      default: null,
+    },
+    inset: {
+      [bars]:
+        'var(--drawer-screen-y, 0px) auto auto var(--drawer-screen-x, 0px)',
+      default: 0,
+    },
     padding: 'var(--drawer-inset)',
-    position: 'fixed',
+    position: {
+      [bars]: 'absolute',
+      default: 'fixed',
+    },
+    width: {
+      [bars]: '100vw',
+      default: null,
+    },
   },
 })
 
