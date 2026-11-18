@@ -13,6 +13,13 @@ export default {
     // biome-ignore lint/suspicious/noTemplateCurlyInString: release-it's placeholder
     tagName: 'v${version}',
   },
+  // a release on github for the tag, with the version's changelog as its
+  // notes. needs GITHUB_TOKEN, which the release script takes from gh
+  github: {
+    release: true,
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: release-it's placeholder
+    releaseName: 'v${version}',
+  },
   plugins: {
     '@release-it/conventional-changelog': {
       commitsOpts: commits,

@@ -47,7 +47,7 @@
     "build": "node ./esbuild.config.mjs",
     "dev": "node ./esbuild.config.mjs --watch",
     "prepublishOnly": "rm -rf dist && bun run build && cp ../../readme.md ../../license .",
-    "release": "release-it",
+    "release": "GITHUB_TOKEN=$(gh auth token) release-it",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
