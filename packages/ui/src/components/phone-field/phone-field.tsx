@@ -22,7 +22,10 @@ import {
   useState,
 } from 'react'
 
-import { Content } from '#components/combobox/content.js'
+import {
+  type ComboboxContentProps,
+  Content,
+} from '#components/combobox/content.js'
 import { Item } from '#components/combobox/item.js'
 import { Root } from '#components/combobox/root.js'
 import { Search } from '#components/combobox/search.js'
@@ -65,7 +68,7 @@ export type PhoneFieldProps = Omit<
   style?: CSSProperties
   value?: string
   variant?: 'ghost' | 'soft' | 'surface'
-}
+} & Pick<ComboboxContentProps, 'align' | 'side' | 'sideOffset'>
 
 type Country = {
   code: string
@@ -84,6 +87,7 @@ type Country = {
 // validity, so a Field around it shows `invalidMessage` when it validates.
 // className and style go to the wrapper, everything else to the input
 export function PhoneField({
+  align,
   className,
   color,
   countryLabel = 'Country',
@@ -95,6 +99,8 @@ export function PhoneField({
   onValueChange,
   radius,
   searchPlaceholder = 'Search',
+  side,
+  sideOffset,
   size = '2',
   style,
   value,
@@ -272,9 +278,12 @@ export function PhoneField({
             </Component.Trigger>
 
             <Content
+              align={align}
               anchor={wrapper}
               empty={empty}
               search={<Search placeholder={searchPlaceholder} />}
+              side={side}
+              sideOffset={sideOffset}
             >
               {(item: Country) => (
                 <Item key={item.value} value={item}>

@@ -3,6 +3,7 @@
 import {
   type AutocompleteListProps,
   type AutocompletePopupProps,
+  type AutocompletePositionerProps,
   Autocomplete as Component,
 } from '@base-ui/react/autocomplete'
 import * as stylex from '@stylexjs/stylex'
@@ -23,28 +24,33 @@ import { Label } from './label.js'
 export type AutocompleteContentProps = Omit<
   AutocompletePopupProps,
   'children'
-> & {
-  children?: AutocompleteListProps['children']
-  className?: string
-  color?: ColorToken | 'gray'
-  empty?: ReactNode
-  highContrast?: boolean
-  status?: ReactNode
-  style?: CSSProperties
-  variant?: 'solid' | 'soft'
-}
+> &
+  Pick<AutocompletePositionerProps, 'align' | 'side' | 'sideOffset'> & {
+    children?: AutocompleteListProps['children']
+    className?: string
+    color?: ColorToken | 'gray'
+    empty?: ReactNode
+    highContrast?: boolean
+    status?: ReactNode
+    style?: CSSProperties
+    variant?: 'solid' | 'soft'
+  }
 
 // children are optional. left out, each of the root's `items` renders as an
 // Item showing its label, which covers a plain list of strings or of
 // { label } objects, and { label, items } renders as a labelled group. pass a function, (item) => <Autocomplete.Item />, for
 // custom rows. `empty` is shown when nothing matches what was typed, and
-// `status` whenever it is set ("Loading…")
+// `status` whenever it is set ("Loading…"). `side`, `align` and `sideOffset`
+// move the popup
 export function Content({
+  align,
   children = renderItem,
   className,
   color,
   empty,
   highContrast,
+  side,
+  sideOffset = 4,
   status,
   style,
   variant = 'solid',
@@ -55,7 +61,12 @@ export function Content({
 
   return (
     <Component.Portal>
-      <Component.Positioner sideOffset={4} {...stylex.props(panel.positioner)}>
+      <Component.Positioner
+        align={align}
+        side={side}
+        sideOffset={sideOffset}
+        {...stylex.props(panel.positioner)}
+      >
         {/* portaled out of the provider's element, so its colors are set again */}
         <Component.Popup
           data-accent={color ?? theme.accent}

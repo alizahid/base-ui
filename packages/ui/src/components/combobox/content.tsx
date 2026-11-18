@@ -19,27 +19,29 @@ import { ThemeContext } from '#lib/theme.js'
 import { Item } from './item.js'
 import { itemLabel } from './utils.js'
 
-export type ComboboxContentProps = Omit<ComboboxPopupProps, 'children'> & {
-  anchor?: ComboboxPositionerProps['anchor']
-  children?: ComboboxListProps['children']
-  className?: string
-  color?: ColorToken | 'gray'
-  empty?: ReactNode
-  highContrast?: boolean
-  search?: ReactNode
-  status?: ReactNode
-  style?: CSSProperties
-  variant?: 'solid' | 'soft'
-}
+export type ComboboxContentProps = Omit<ComboboxPopupProps, 'children'> &
+  Pick<ComboboxPositionerProps, 'align' | 'anchor' | 'side' | 'sideOffset'> & {
+    children?: ComboboxListProps['children']
+    className?: string
+    color?: ColorToken | 'gray'
+    empty?: ReactNode
+    highContrast?: boolean
+    search?: ReactNode
+    status?: ReactNode
+    style?: CSSProperties
+    variant?: 'solid' | 'soft'
+  }
 
 // children are optional. left out, each of the root's `items` renders as an
 // Item showing its label, which covers a plain list of strings or of
 // { label, value } objects. pass a function, (item) => <Combobox.Item />, for
 // custom rows. `empty` is shown when nothing matches what was typed, and
 // `status` whenever it is set ("Loading…"). `search` takes a Combobox.Search,
-// for a popup that holds its own filter input.  positions the popup
-// against another element than the input or trigger
+// for a popup that holds its own filter input. `side`, `align` and
+// `sideOffset` move the popup, and `anchor` positions it against another
+// element than the input or trigger
 export function Content({
+  align,
   anchor,
   children = renderItem,
   className,
@@ -47,6 +49,8 @@ export function Content({
   empty,
   highContrast,
   search,
+  side,
+  sideOffset = 4,
   status,
   style,
   variant = 'solid',
@@ -58,8 +62,10 @@ export function Content({
   return (
     <Component.Portal>
       <Component.Positioner
+        align={align}
         anchor={anchor}
-        sideOffset={4}
+        side={side}
+        sideOffset={sideOffset}
         {...stylex.props(panel.positioner)}
       >
         {/* portaled out of the provider's element, so its colors are set again */}

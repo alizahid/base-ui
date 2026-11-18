@@ -10,7 +10,10 @@ import {
   useState,
 } from 'react'
 
-import { Content } from '#components/popover/content.js'
+import {
+  Content,
+  type PopoverContentProps,
+} from '#components/popover/content.js'
 import { type ColorToken } from '#lib/colors.js'
 import { ChevronDownIcon, Cross2Icon, icon } from '#lib/icons.js'
 import { input } from '#lib/input.js'
@@ -57,7 +60,8 @@ export type DateFieldProps = Omit<
   ReactComponentProps<'button'>,
   'children' | 'className' | 'color' | 'defaultValue' | 'style' | 'value'
 > &
-  (Single | Multiple | Range) & {
+  (Single | Multiple | Range) &
+  Pick<PopoverContentProps, 'align' | 'side' | 'sideOffset'> & {
     className?: string
     clearable?: boolean
     clearLabel?: string
@@ -87,11 +91,13 @@ type Value = Array<Date> | Date | DateFieldRange | null | undefined
 // days are sent in a form as 2026-11-16, one entry each. `min` and `max`
 // limit what can be picked, `locale` sets the language, the date format and
 // the day the week starts on. `icon` goes before the value, a calendar for
-// instance. while the calendar is open it keeps the focus: tab goes round the
+// instance. `side`, `align` and `sideOffset` move the calendar. while the
+// calendar is open it keeps the focus: tab goes round the
 // month buttons and the days. with a value, a button beside it clears it,
 // and so does escape, unless `clearable` is false. className and style go to the wrapper, which
 // is what looks like the field; everything else goes to the button inside
 export function DateField({
+  align,
   className,
   clearable = true,
   clearLabel = 'Clear',
@@ -110,6 +116,8 @@ export function DateField({
   placeholder,
   previousLabel = 'Previous month',
   radius,
+  side,
+  sideOffset,
   size = '2',
   style,
   value,
@@ -278,6 +286,7 @@ export function DateField({
       {/* focus starts on a day, the picked one or today, so the arrow keys
           work straight away */}
       <Content
+        align={align}
         anchor={field}
         className={stylex.props(styles.popup).className}
         initialFocus={() =>
@@ -286,6 +295,8 @@ export function DateField({
           ) ?? null
         }
         ref={popup}
+        side={side}
+        sideOffset={sideOffset}
         size="1"
       >
         <Calendar

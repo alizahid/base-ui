@@ -88,6 +88,10 @@
       "name": "Autocomplete.Content",
       "props": [
         {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
           "name": "children",
           "type": "ReactNode | ((item: any, index: number) => ReactNode)"
         },
@@ -102,6 +106,15 @@
         {
           "name": "highContrast",
           "type": "boolean"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "4",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
         },
         {
           "name": "status",
@@ -396,6 +409,10 @@
       "name": "Combobox.Content",
       "props": [
         {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
           "name": "anchor",
           "type": "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null"
         },
@@ -418,6 +435,15 @@
         {
           "name": "search",
           "type": "ReactNode"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "default": "4",
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
         },
         {
           "name": "status",
@@ -612,6 +638,10 @@
       "name": "DateField",
       "props": [
         {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
           "default": "'Clear'",
           "name": "clearLabel",
           "type": "string"
@@ -681,6 +711,14 @@
         {
           "name": "radius",
           "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
         },
         {
           "default": "'2'",
@@ -1197,6 +1235,10 @@
       "name": "PhoneField",
       "props": [
         {
+          "name": "align",
+          "type": "'center' | 'end' | 'start'"
+        },
+        {
           "name": "color",
           "type": "ColorToken | 'gray'"
         },
@@ -1240,6 +1282,14 @@
           "default": "'Search'",
           "name": "searchPlaceholder",
           "type": "string"
+        },
+        {
+          "name": "side",
+          "type": "'bottom' | 'left' | 'right' | 'top' | 'inline-start' | 'inline-end'"
+        },
+        {
+          "name": "sideOffset",
+          "type": "number | OffsetFunction"
         },
         {
           "default": "'2'",
