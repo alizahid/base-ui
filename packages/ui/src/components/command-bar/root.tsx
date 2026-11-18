@@ -27,6 +27,8 @@ export type CommandBarRootProps = {
   open?: boolean
   // also names the dialog for screen readers
   placeholder?: string
+  // what the highlighted command looks like
+  variant?: 'solid' | 'soft'
 }
 
 // a dialog for finding and running commands, opened with a Trigger or by
@@ -39,6 +41,7 @@ export function Root({
   onOpenChange,
   open: controlled,
   placeholder,
+  variant = 'soft',
 }: CommandBarRootProps) {
   const theme = use(ThemeContext)
   const filter = Autocomplete.useFilter()
@@ -110,7 +113,7 @@ export function Root({
                 {...stylex.props(
                   dialog.content,
                   ...listboxSize('2'),
-                  listboxVariants.soft,
+                  listboxVariants[variant],
                   styles.popup,
                 )}
               >
@@ -235,6 +238,15 @@ const styles = stylex.create({
     width: '100%',
   },
   item: {
+    // the shortcut is muted until the row is highlighted
+    '--command-bar-shortcut': {
+      ':is([data-highlighted]:not([data-disabled]))': 'inherit',
+      default: 'var(--gray-a10)',
+    },
+    // a row rendered as a Link looks like any other row: the text's color,
+    // and an underline nobody sees
+    '--link-color': 'currentColor',
+    '--link-decoration': 'transparent',
     color: {
       ':is([data-disabled])': 'var(--gray-a8)',
       ':is([data-highlighted]:not([data-disabled]))':
@@ -243,7 +255,6 @@ const styles = stylex.create({
     },
     cursor: 'pointer',
     gap: 'calc(var(--ui-spacing) * 2)',
-    // for a row rendered as a link
   },
   list: {
     maxHeight: 'none',
@@ -254,6 +265,9 @@ const styles = stylex.create({
     },
   },
   popup: {
+    // the rows' and the input's inset: as much inside the highlight as there
+    // is around it
+    '--listbox-separator-margin': 'var(--listbox-content-padding)',
     display: 'flex',
     flexDirection: 'column',
     maxWidth: 'calc(var(--ui-spacing) * 144)',
@@ -264,7 +278,7 @@ const styles = stylex.create({
     maxHeight: 'min(calc(var(--ui-spacing) * 96), 60vh)',
   },
   shortcut: {
-    color: 'var(--gray-a10)',
+    color: 'var(--command-bar-shortcut)',
   },
   // nearer the top of the screen than a dialog, and it stays put as the list
   // gets shorter

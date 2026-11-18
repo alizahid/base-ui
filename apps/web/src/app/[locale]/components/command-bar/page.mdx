@@ -32,4 +32,20 @@ export const generateMetadata = title('command-bar')
   </CommandBar.Root>
 </Example>
 
+### <Text id="common.variant" />
+
+<Example>
+  <CommandBar.Root empty={useText('command-bar.no-commands-found')} placeholder={useText('command-bar.type-a-command-or-search')} variant="solid">
+    <CommandBar.Items
+      items={[
+        { icon: <SquaresFourIcon />, label: useText('command-bar.dashboard'), render: <a href="#" /> },
+        { icon: <BriefcaseIcon />, label: useText('command-bar.jobs'), render: <a href="#" /> },
+        { icon: <GearIcon />, label: useText('command-bar.settings'), render: <a href="#" />, shortcut: <KbdGroup><Kbd>⌘</Kbd><Kbd>,</Kbd></KbdGroup> },
+      ]}
+      label={useText('command-bar.navigation')}
+    />
+    <CommandBar.Trigger render={<Button color="gray" variant="soft" />}><Text id="command-bar.open-command-bar" /></CommandBar.Trigger>
+  </CommandBar.Root>
+</Example>
+
 <Props page="command-bar" />

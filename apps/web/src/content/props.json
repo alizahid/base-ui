@@ -533,6 +533,11 @@
         {
           "name": "placeholder",
           "type": "string"
+        },
+        {
+          "default": "'soft'",
+          "name": "variant",
+          "type": "'solid' | 'soft'"
         }
       ]
     },
