@@ -16,7 +16,7 @@ export async function GET(
 
   // already markdown: release-it writes it. read at build time, like the pages
   if (page === 'changelog.md') {
-    return new Response(await readFile('../../packages/ui/CHANGELOG.md'), {
+    return new Response(await readFile('../../packages/ui/changelog.md'), {
       headers: {
         'content-type': 'text/markdown; charset=utf-8',
       },

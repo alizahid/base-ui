@@ -9,7 +9,7 @@
       "gitRawCommitsOpts": {
         "path": "."
       },
-      "infile": "CHANGELOG.md",
+      "infile": "changelog.md",
       "preset": "conventionalcommits"
     }
   }

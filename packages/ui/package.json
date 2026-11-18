@@ -26,7 +26,7 @@
       "types": "./src/components/phone-field/index.ts",
       "default": "./dist/components/phone-field/index.js"
     },
-    "./CHANGELOG.md": "./CHANGELOG.md",
+    "./changelog.md": "./changelog.md",
     "./reset.css": "./src/reset.css",
     "./styles.css": "./dist/stylex.css",
     "./theme.css": "./src/theme.css"
