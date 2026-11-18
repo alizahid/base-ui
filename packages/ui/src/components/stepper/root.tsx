@@ -242,6 +242,9 @@ const styles = stylex.create({
     '--stepper-done-hover': {
       ':is([data-accent])': 'var(--accent-10)',
     },
+    '--stepper-done-ring': {
+      ':is([data-accent])': 'var(--focus-8)',
+    },
     '--stepper-indicator-background': {
       [active]: 'var(--accent-9)',
       [activeHover]: {
@@ -271,6 +274,12 @@ const styles = stylex.create({
     '--stepper-line': {
       ':is([data-state="completed"])': 'var(--stepper-done)',
       default: 'var(--gray-a5)',
+    },
+    // the focus ring is the color of the step it is around
+    '--stepper-ring': {
+      ':is([data-state="completed"])': 'var(--stepper-done-ring)',
+      ':is([data-state="upcoming"])': 'var(--gray-8)',
+      default: 'var(--focus-8)',
     },
     // the room between two steps in a column, which the line runs through
     '--stepper-space': 'calc(var(--ui-spacing) * 6)',
@@ -380,6 +389,7 @@ const styles = stylex.create({
     '--stepper-done': 'var(--green-9)',
     '--stepper-done-contrast': 'white',
     '--stepper-done-hover': 'var(--green-10)',
+    '--stepper-done-ring': 'var(--green-8)',
     color: 'var(--gray-12)',
     // one column, as wide as the row of steps and in the middle of the root:
     // the content sits under the steps at their width. in a column of steps
@@ -398,7 +408,7 @@ const styles = stylex.create({
       // an inset shadow, not an outline: an outline on an edge that falls
       // between two pixels is drawn blurred, as if twice
       borderRadius: 'var(--ui-radius-md)',
-      boxShadow: 'inset 0 0 0 2px var(--focus-8)',
+      boxShadow: 'inset 0 0 0 2px var(--stepper-ring)',
       content: {
         ':is(:focus-visible)': '""',
         default: 'none',
