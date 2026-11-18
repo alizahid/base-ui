@@ -7,6 +7,7 @@ import { type ReactNode, use, useCallback, useMemo, useState } from 'react'
 
 import { flush } from '#components/autocomplete/styles.js'
 import { dialog } from '#components/dialog/content.js'
+import { ScrollArea } from '#components/scroll-area/scroll-area.js'
 import { listbox, listboxSize, listboxVariants } from '#lib/listbox.js'
 import { ThemeContext } from '#lib/theme.js'
 
@@ -142,57 +143,60 @@ export function Root({
                     </Autocomplete.Empty>
                   ) : null}
 
-                  <Autocomplete.List
-                    {...stylex.props(listbox.list, styles.list)}
-                  >
-                    {(group: CommandBarGroup, index: number) => (
-                      <Autocomplete.Group
-                        items={group.items}
-                        key={index}
-                        {...stylex.props(flush.group, styles.group)}
-                      >
-                        {group.label ? (
-                          <Autocomplete.GroupLabel
-                            {...stylex.props(listbox.label, flush.row)}
-                          >
-                            {group.label}
-                          </Autocomplete.GroupLabel>
-                        ) : null}
-
-                        <Autocomplete.Collection>
-                          {(item: CommandBarItem) => (
-                            <Autocomplete.Item
-                              disabled={item.disabled}
-                              key={item.label}
-                              onClick={() => {
-                                item.onSelect?.()
-                                setOpen(false)
-                              }}
-                              render={item.render}
-                              value={item}
-                              {...stylex.props(
-                                listbox.item,
-                                flush.row,
-                                styles.item,
-                              )}
+                  {/* the area scrolls, not the list inside it */}
+                  <ScrollArea axis="y" {...stylex.props(styles.scroll)}>
+                    <Autocomplete.List
+                      {...stylex.props(listbox.list, styles.list)}
+                    >
+                      {(group: CommandBarGroup, index: number) => (
+                        <Autocomplete.Group
+                          items={group.items}
+                          key={index}
+                          {...stylex.props(flush.group, styles.group)}
+                        >
+                          {group.label ? (
+                            <Autocomplete.GroupLabel
+                              {...stylex.props(listbox.label, flush.row)}
                             >
-                              {item.icon}
+                              {group.label}
+                            </Autocomplete.GroupLabel>
+                          ) : null}
 
-                              <span {...stylex.props(listbox.text)}>
-                                {item.label}
-                              </span>
+                          <Autocomplete.Collection>
+                            {(item: CommandBarItem) => (
+                              <Autocomplete.Item
+                                disabled={item.disabled}
+                                key={item.label}
+                                onClick={() => {
+                                  item.onSelect?.()
+                                  setOpen(false)
+                                }}
+                                render={item.render}
+                                value={item}
+                                {...stylex.props(
+                                  listbox.item,
+                                  flush.row,
+                                  styles.item,
+                                )}
+                              >
+                                {item.icon}
 
-                              {item.shortcut ? (
-                                <span {...stylex.props(styles.shortcut)}>
-                                  {item.shortcut}
+                                <span {...stylex.props(listbox.text)}>
+                                  {item.label}
                                 </span>
-                              ) : null}
-                            </Autocomplete.Item>
-                          )}
-                        </Autocomplete.Collection>
-                      </Autocomplete.Group>
-                    )}
-                  </Autocomplete.List>
+
+                                {item.shortcut ? (
+                                  <span {...stylex.props(styles.shortcut)}>
+                                    {item.shortcut}
+                                  </span>
+                                ) : null}
+                              </Autocomplete.Item>
+                            )}
+                          </Autocomplete.Collection>
+                        </Autocomplete.Group>
+                      )}
+                    </Autocomplete.List>
+                  </ScrollArea>
                 </Autocomplete.Root>
               </Dialog.Popup>
             </div>
@@ -242,13 +246,12 @@ const styles = stylex.create({
     // for a row rendered as a link
   },
   list: {
-    maxHeight: 'min(calc(var(--ui-spacing) * 96), 60vh)',
-    overscrollBehavior: 'contain',
+    maxHeight: 'none',
+    overflowY: 'visible',
     padding: {
       ':is([data-empty])': 0,
       default: 'var(--listbox-content-padding)',
     },
-    scrollPaddingBlock: 'var(--listbox-content-padding)',
   },
   popup: {
     display: 'flex',
@@ -256,6 +259,9 @@ const styles = stylex.create({
     maxWidth: 'calc(var(--ui-spacing) * 144)',
     overflow: 'hidden',
     padding: 0,
+  },
+  scroll: {
+    maxHeight: 'min(calc(var(--ui-spacing) * 96), 60vh)',
   },
   shortcut: {
     color: 'var(--gray-a10)',
