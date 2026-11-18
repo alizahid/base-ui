@@ -1,7 +1,14 @@
 {
   "name": "basedkit",
   "version": "0.0.0",
-  "private": true,
+  "description": "React components with the look of Radix Themes, built on Base UI",
+  "homepage": "https://base-ui-wine.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alizahid/base-ui.git",
+    "directory": "packages/ui"
+  },
+  "license": "MIT",
   "type": "module",
   "imports": {
     "#components/*": {
@@ -31,9 +38,15 @@
     "./styles.css": "./dist/stylex.css",
     "./theme.css": "./src/theme.css"
   },
+  "files": [
+    "dist",
+    "src",
+    "changelog.md"
+  ],
   "scripts": {
     "build": "node ./esbuild.config.mjs",
     "dev": "node ./esbuild.config.mjs --watch",
+    "prepublishOnly": "rm -rf dist && bun run build && cp ../../readme.md ../../license .",
     "release": "release-it",
     "typecheck": "tsc --noEmit"
   },
@@ -41,9 +54,7 @@
     "@base-ui/react": "^1.9.0",
     "@radix-ui/colors": "^3.0.0",
     "@stylexjs/stylex": "^0.19.2",
-    "cn": "^0.5.2",
-    "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "cn": "^0.5.2"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^12.0.2",
@@ -54,13 +65,17 @@
     "@types/react-dom": "19.3.0",
     "esbuild": "^0.28.2",
     "libphonenumber-js": "^1.13.16",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "release-it": "^21.1.2",
     "typescript": "7.0.2",
     "use-lilius": "^2.0.5"
   },
   "peerDependencies": {
-    "libphonenumber-js": "^1.13.16",
-    "use-lilius": "^2.0.5"
+    "libphonenumber-js": "^1.9.46",
+    "react": ">=19",
+    "react-dom": ">=19",
+    "use-lilius": "^2"
   },
   "peerDependenciesMeta": {
     "libphonenumber-js": {
