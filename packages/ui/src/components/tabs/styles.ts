@@ -26,7 +26,22 @@ export const tabs = stylex.create({
     },
     display: 'flex',
     gap: 'var(--tabs-gap)',
+    // as wide as its tabs when they don't fit, so the baseline runs under all
+    // of them
+    minWidth: '100%',
     position: 'relative',
+    width: 'max-content',
+  },
+  // around the list: the row scrolls sideways when the tabs don't fit, with
+  // no scrollbar, as in radix. a tab's focus ring reaches into the gap beside
+  // it, which a scroller would clip at either end, so the scroller is that
+  // much wider on both sides and pads the difference
+  scroll: {
+    marginInline: 'calc(var(--ui-spacing) * -2)',
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    paddingInline: 'calc(var(--ui-spacing) * 2)',
+    scrollbarWidth: 'none',
   },
   tab: {
     // the focus ring. a tab has no inline padding, so the ring is drawn on a

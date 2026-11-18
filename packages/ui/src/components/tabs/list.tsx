@@ -16,17 +16,20 @@ export type TabsListProps = ComponentProps & {
   style?: CSSProperties
 }
 
-// the row of tabs, with the line under the active one
+// the row of tabs, with the line under the active one. it scrolls sideways
+// when the tabs don't fit. className and style go to the list
 export function List({ children, className, style, ...props }: TabsListProps) {
   return (
-    <Component.List
-      {...props}
-      {...merge(stylex.props(tabs.list), className, style)}
-    >
-      {children}
+    <div {...stylex.props(tabs.scroll)}>
+      <Component.List
+        {...props}
+        {...merge(stylex.props(tabs.list), className, style)}
+      >
+        {children}
 
-      <Component.Indicator {...stylex.props(styles.indicator)} />
-    </Component.List>
+        <Component.Indicator {...stylex.props(styles.indicator)} />
+      </Component.List>
+    </div>
   )
 }
 
