@@ -76,8 +76,9 @@ const styles = stylex.create({
   },
   leaf: {
     '::before': {
-      backgroundColor: 'var(--gray-12)',
-      borderRadius: 'var(--ui-radius-xs)',
+      backgroundColor: 'currentColor',
+      // round ends at any size, square when the provider's radius is none
+      borderRadius: 'calc(9999px * var(--ui-radius-factor, 1))',
       content: '',
       display: 'block',
       height: '30%',

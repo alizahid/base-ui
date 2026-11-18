@@ -477,6 +477,7 @@
   },
   "spinner": {
     "bookmark": "Bookmark",
+    "custom-size": "Custom size",
     "with-children": "With children"
   },
   "switch": {
