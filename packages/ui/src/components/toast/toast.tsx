@@ -10,6 +10,7 @@ import { type CSSProperties, use } from 'react'
 import { Button } from '#components/button/button.js'
 import { IconButton } from '#components/icon-button/icon-button.js'
 import { Cross2Icon, icon } from '#lib/icons.js'
+import { type RadiusToken, radii } from '#lib/radii.js'
 import { merge } from '#lib/stylex.js'
 import { ThemeContext } from '#lib/theme.js'
 
@@ -25,6 +26,8 @@ export type ToastProps = Pick<ToastProviderProps, 'limit' | 'timeout'> & {
     | 'bottom-left'
     | 'bottom'
     | 'bottom-right'
+  // the corners of every toast, in place of the default
+  radius?: RadiusToken
   style?: CSSProperties
   // surface tints the title of a typed toast, solid fills its background
   variant?: 'surface' | 'solid'
@@ -37,6 +40,7 @@ export function Toast({
   closeLabel = 'Close',
   limit,
   position = 'bottom-right',
+  radius,
   style,
   timeout,
   variant = 'surface',
@@ -59,6 +63,7 @@ export function Toast({
         >
           <List
             closeLabel={closeLabel}
+            radius={radius}
             solid={variant === 'solid'}
             swipe={swipes[position]}
           />
@@ -89,11 +94,12 @@ const colors: Record<string, string> = {
 
 type ListProps = {
   closeLabel: string
+  radius?: RadiusToken
   solid: boolean
   swipe: Array<Swipe>
 }
 
-function List({ closeLabel, solid, swipe }: ListProps) {
+function List({ closeLabel, radius, solid, swipe }: ListProps) {
   const { toasts } = Component.useToastManager()
 
   return toasts.map((item) => {
@@ -107,7 +113,11 @@ function List({ closeLabel, solid, swipe }: ListProps) {
         key={item.id}
         swipeDirection={swipe}
         toast={item}
-        {...stylex.props(styles.main, filled && styles.solid)}
+        {...stylex.props(
+          styles.main,
+          filled && styles.solid,
+          radius && radii[radius],
+        )}
       >
         <Component.Content {...stylex.props(styles.content)}>
           <div {...stylex.props(styles.text)}>

@@ -1934,6 +1934,10 @@
           "type": "'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right'"
         },
         {
+          "name": "radius",
+          "type": "'xs' | 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'"
+        },
+        {
           "name": "timeout",
           "type": "number"
         },
