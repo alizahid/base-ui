@@ -277,6 +277,17 @@ export function FileField({
           setDrag(undefined)
           add(event.dataTransfer.files)
         }}
+        // escape removes the files, as in a combobox. the event stops here,
+        // so a dialog around the field stays open
+        onKeyDown={(event) => {
+          props.onKeyDown?.(event)
+
+          if (event.key === 'Escape' && files.length > 0 && !loading) {
+            event.stopPropagation()
+
+            commit([])
+          }
+        }}
         ref={ref}
         render={<input type="file" />}
         {...stylex.props(styles.input)}
@@ -290,7 +301,12 @@ export function FileField({
           inert={loading}
           onClick={() => {
             commit([])
+
+            // the button is about to go, and would take the focus with it
+            ref.current?.focus()
           }}
+          // for the pointer: the keyboard has escape
+          tabIndex={-1}
           type="button"
           {...stylex.props(input.action, styles.remove)}
         >
@@ -390,10 +406,6 @@ const styles = stylex.create({
       'var(--file-field-remove, calc((var(--file-field-height) - var(--file-field-icon)) / 2 - 1px))',
     insetInlineEnd: 'var(--file-field-padding)',
     justifyContent: 'center',
-    outline: {
-      ':focus-visible': '2px solid var(--focus-8)',
-      default: 'none',
-    },
     position: 'absolute',
     width: 'var(--file-field-icon)',
   },

@@ -89,7 +89,7 @@ type Value = Array<Date> | Date | DateFieldRange | null | undefined
 // the day the week starts on. `icon` goes before the value, a calendar for
 // instance. while the calendar is open it keeps the focus: tab goes round the
 // month buttons and the days. with a value, a button beside it clears it,
-// unless `clearable` is false. className and style go to the wrapper, which
+// and so does escape, unless `clearable` is false. className and style go to the wrapper, which
 // is what looks like the field; everything else goes to the button inside
 export function DateField({
   className,
@@ -213,6 +213,18 @@ export function DateField({
         <Component.Trigger
           disabled={disabled}
           {...props}
+          // escape clears the value, as in a combobox: by then the calendar
+          // is shut, as it keeps the focus while open. the event stops here,
+          // so a dialog around the field stays open
+          onKeyDown={(event) => {
+            props.onKeyDown?.(event)
+
+            if (event.key === 'Escape' && clearable && label) {
+              event.stopPropagation()
+
+              commit([])
+            }
+          }}
           {...stylex.props(styles.trigger)}
         >
           {glyph ? (
@@ -230,6 +242,8 @@ export function DateField({
         </Component.Trigger>
 
         {clearable && label && !disabled ? (
+          // for the pointer: out of the tab order, as it has no focus ring
+          // of its own. the keyboard has escape
           <button
             aria-label={clearLabel}
             onClick={() => {
@@ -238,6 +252,7 @@ export function DateField({
               // the button is about to go, and would take the focus with it
               field.current?.querySelector('button')?.focus()
             }}
+            tabIndex={-1}
             type="button"
             {...stylex.props(input.action, trigger.icon, styles.clear)}
           >
