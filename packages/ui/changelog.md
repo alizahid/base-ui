@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0 (2026-11-18)
+
+### Features
+
+* add a solid variant to CommandBar and tighten its insets ([682a122](https://github.com/alizahid/basedkit/commit/682a122129b28e8c113f74de40c8518e25e76f79))
+* add sizes to Kbd ([fcec117](https://github.com/alizahid/basedkit/commit/fcec117a2c7dda169f2bf7ac1b73005bab7d7491))
+* add Stepper ([b769942](https://github.com/alizahid/basedkit/commit/b76994281addd02fd0c2adec5ad5c04d2c19ba9a))
+* add TagsField ([ab212fe](https://github.com/alizahid/basedkit/commit/ab212fe7a7f48616fb7bf80563d9adaf3c5487bd))
+* let Spinner take its color and any size from its surroundings ([0299c69](https://github.com/alizahid/basedkit/commit/0299c698e4b28e60d756d657c37b7449b54c50f5))
+* round nested elements less than what holds them ([77c0169](https://github.com/alizahid/basedkit/commit/77c016966ac738625ae7d8dbbc9bcc320ccf23d2))
+* tighten Field and shrink its hint and error ([68eb020](https://github.com/alizahid/basedkit/commit/68eb0206f147939fa69fd40b17cc5196332cbdb6))
+
+### Bug Fixes
+
+* give the ghost accordion's focus ring room around the text ([4cc94c6](https://github.com/alizahid/basedkit/commit/4cc94c6180d15628184b2f417bd517c0e5096246))
+
 ## 0.2.2 (2026-11-18)
 
 ### Reverts
