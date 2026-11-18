@@ -42,6 +42,14 @@ body {
 }
 ```
 
+On iOS 26 and later, Safari shows the page under its status bar and toolbar. Give the body a position, so a drawer lines up with the screen wherever the page is scrolled to.
+
+```css
+body {
+  position: relative;
+}
+```
+
 ## Provider
 
 Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, panelBackground to make cards translucent, and radius to make every corner sharper or rounder.
