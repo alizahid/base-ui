@@ -294,6 +294,9 @@ const styles = stylex.create({
     '--toast-muted': 'color-mix(in oklab, currentColor 80%, transparent)',
     '--toast-title': 'inherit',
     backgroundColor: 'var(--accent-9)',
+    // a ring in its own color, a step darker than the fill: the panel's gray
+    // one reads as a pale halo around a color
+    boxShadow: '0 0 0 1px var(--accent-10), 0 12px 32px -16px var(--black-a4)',
     color: 'var(--accent-contrast)',
   },
   text: {
