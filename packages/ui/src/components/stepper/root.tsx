@@ -25,7 +25,8 @@ export type StepperRootProps = Omit<
 > & {
   className?: string
   color?: ColorToken | 'gray'
-  // the check a finished step shows, unless the step has its own
+  // the check a finished step shows, unless the step has its own. null
+  // leaves the step's number or icon in place
   completedIcon?: ReactNode
   // steps ahead of the active one can't be clicked, only the ones behind
   linear?: boolean
@@ -171,11 +172,13 @@ function mark(
     return <Spinner size={size} />
   }
 
-  if (state === 'completed') {
-    return (
-      step.completedIcon ??
-      completedIcon ?? <CheckIcon {...stylex.props(icon.line)} />
-    )
+  // the step's own completed icon, else the root's. undefined is the check;
+  // null is no icon at all, so the step keeps its icon or number
+  const done =
+    step.completedIcon === undefined ? completedIcon : step.completedIcon
+
+  if (state === 'completed' && done !== null) {
+    return done ?? <CheckIcon {...stylex.props(icon.line)} />
   }
 
   return step.icon ?? index + 1

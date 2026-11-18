@@ -106,6 +106,16 @@ export const generateMetadata = title('stepper')
   </Stepper.Root>
 </Example>
 
+### <Text id="stepper.keep-the-numbers" />
+
+<Example>
+  <Stepper.Root className="w-full max-w-2xl" completedIcon={null} value={2}>
+    <Stepper.Step label={useText('stepper.first-step')} />
+    <Stepper.Step label={useText('stepper.second-step')} />
+    <Stepper.Step label={useText('stepper.final-step')} />
+  </Stepper.Root>
+</Example>
+
 ### <Text id="stepper.step-color" />
 
 <Example>
