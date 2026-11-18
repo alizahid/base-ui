@@ -2,7 +2,7 @@
 
 import { cn } from 'cn'
 import { useTranslations } from 'next-intl'
-import { Fragment, useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef, useSyncExternalStore } from 'react'
 
 import { type Page, type Section } from '@/content'
 import { Link, usePathname } from '@/intl/navigation'
@@ -19,6 +19,14 @@ export function Sidebar({ sections, onNavigate }: Props) {
   const t = useTranslations('nav')
 
   const ref = useRef<HTMLElement>(null)
+
+  // true on the server and while its HTML hydrates, false for a render that
+  // starts on the client, as after a change of locale
+  const server = useSyncExternalStore<boolean>(
+    subscribe,
+    () => false,
+    () => true,
+  )
 
   // when it mounts on the client, as in the drawer. on a page load the
   // script below has already done it, before the first paint
@@ -57,15 +65,29 @@ export function Sidebar({ sections, onNavigate }: Props) {
         </Fragment>
       ))}
 
-      {/* runs as the HTML is parsed, so the list never shows unscrolled */}
-      <script
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: our own function, as source
-        dangerouslySetInnerHTML={{
-          __html: `(${centre.toString()})(document.currentScript.parentElement)`,
-        }}
-      />
+      {/* runs as the HTML is parsed, so the list never shows unscrolled. only
+          in the server's HTML: react won't run a script it renders on the
+          client, and says so; the effect above covers that */}
+      {server ? (
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: our own function, as source
+          dangerouslySetInnerHTML={{
+            __html: `(${centre.toString()})(document.currentScript.parentElement)`,
+          }}
+        />
+      ) : null}
     </nav>
   )
+}
+
+// nothing to listen to: the store only tells the server's render from the
+// client's
+function subscribe() {
+  return noop
+}
+
+function noop() {
+  // nothing to unsubscribe from
 }
 
 // centres the current page's link in whatever scrolls the list, unless it has
