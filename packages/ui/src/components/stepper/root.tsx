@@ -255,8 +255,8 @@ const styles = stylex.create({
     },
     // the room between two steps in a column, which the line runs through
     '--stepper-space': 'calc(var(--ui-spacing) * 6)',
-    // the line to the next step: it takes the room left in a row, and runs
-    // down from the indicator in a column
+    // the line to the next step: a set length in a row, and down from the
+    // indicator in a column
     '::after': {
       backgroundColor: 'var(--stepper-line)',
       borderRadius: 'calc(infinity * 1px)',
@@ -268,7 +268,6 @@ const styles = stylex.create({
         ':is(:last-child)': 'none',
         default: '""',
       },
-      flexGrow: 1,
       height: {
         [vertical]: 'auto',
         default: 2,
@@ -276,10 +275,6 @@ const styles = stylex.create({
       insetInlineStart: {
         [vertical]: 'calc(var(--stepper-indicator-size) / 2 - 1px)',
         default: null,
-      },
-      minWidth: {
-        [vertical]: 0,
-        default: 'calc(var(--ui-spacing) * 4)',
       },
       position: {
         [vertical]: 'absolute',
@@ -303,13 +298,19 @@ const styles = stylex.create({
       },
     },
     alignItems: 'center',
-    display: 'flex',
-    flexGrow: {
-      ':is(:last-child)': 0,
-      default: 1,
+    // in a row, a grid of the step and its line: the line's column is as long
+    // as it is allowed when there is room and gives way down to a stub when
+    // there isn't, before the row has to overflow. the last step has no line
+    display: {
+      [vertical]: 'flex',
+      default: 'grid',
     },
     gap: 'var(--stepper-gap)',
-    minWidth: 0,
+    gridTemplateColumns: {
+      ':is(:last-child)': 'max-content',
+      default:
+        'max-content minmax(calc(var(--ui-spacing) * 4), calc(var(--ui-spacing) * 24))',
+    },
     paddingBottom: {
       [`${vertical}:not(:last-child)`]: 'var(--stepper-space)',
       default: null,
@@ -325,7 +326,17 @@ const styles = stylex.create({
       [still]: 'none',
       default: 'color',
     },
+    // one line in a row, where the lines between the steps give way instead.
+    // in a column it wraps
+    whiteSpace: {
+      [vertical]: 'normal',
+      default: 'nowrap',
+    },
   },
+  // the steps sit together in the middle of a row wider than they need, and
+  // the row scrolls sideways, with no scrollbar, when it is narrower. a step's
+  // focus ring reaches past the step, which a scroller would clip, so the
+  // scroller is that much bigger on every side and pads the difference
   list: {
     display: 'flex',
     flexDirection: {
@@ -336,6 +347,14 @@ const styles = stylex.create({
       [vertical]: 0,
       default: 'var(--stepper-gap)',
     },
+    // safe: a row too long to centre starts at its start, where it can be
+    // scrolled from
+    justifyContent: 'safe center',
+    margin: 'calc(var(--ui-spacing) * -1.5)',
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    padding: 'calc(var(--ui-spacing) * 1.5)',
+    scrollbarWidth: 'none',
   },
   main: {
     color: 'var(--gray-12)',
