@@ -88,13 +88,6 @@ const styles = stylex.create({
     '--spinner-opacity': {
       [off]: '1',
     },
-    // an icon is optically lighter than text, so it sits closer to the edge:
-    // pulled out by the trim on both sides, with the gap widened by as much
-    // to keep its distance from the text. css can't tell which side of bare
-    // text an icon is on, and this doesn't need to know
-    ':is(*) svg': {
-      marginInline: 'calc(var(--button-icon-trim) * -1)',
-    },
     alignItems: 'center',
     backgroundColor: {
       [active]: 'var(--button-background-active)',
@@ -214,49 +207,33 @@ const contrast = stylex.create({
 
 const sizes = stylex.create({
   1: {
-    '--button-icon-trim': 'calc(var(--ui-spacing) * 0.5)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-xs)',
-    gap: {
-      ':has(svg)': 'calc(var(--ui-spacing) * 1.5)',
-      default: 'var(--ui-spacing)',
-    },
+    gap: 'var(--ui-spacing)',
     height: 'calc(var(--ui-spacing) * 6)',
     lineHeight: 'var(--ui-text-xs--line-height)',
     paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   2: {
-    '--button-icon-trim': 'var(--ui-spacing)',
     borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
-    gap: {
-      ':has(svg)': 'calc(var(--ui-spacing) * 3)',
-      default: 'calc(var(--ui-spacing) * 2)',
-    },
+    gap: 'calc(var(--ui-spacing) * 2)',
     height: 'calc(var(--ui-spacing) * 8)',
     lineHeight: 'var(--ui-text-sm--line-height)',
     paddingInline: 'calc(var(--ui-spacing) * 3)',
   },
   3: {
-    '--button-icon-trim': 'var(--ui-spacing)',
     borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
-    gap: {
-      ':has(svg)': 'calc(var(--ui-spacing) * 4)',
-      default: 'calc(var(--ui-spacing) * 3)',
-    },
+    gap: 'calc(var(--ui-spacing) * 3)',
     height: 'calc(var(--ui-spacing) * 10)',
     lineHeight: 'var(--ui-text-base--line-height)',
     paddingInline: 'calc(var(--ui-spacing) * 4)',
   },
   4: {
-    '--button-icon-trim': 'calc(var(--ui-spacing) * 2)',
     borderRadius: 'var(--ui-radius-lg)',
     fontSize: 'var(--ui-text-lg)',
-    gap: {
-      ':has(svg)': 'calc(var(--ui-spacing) * 5)',
-      default: 'calc(var(--ui-spacing) * 3)',
-    },
+    gap: 'calc(var(--ui-spacing) * 3)',
     height: 'calc(var(--ui-spacing) * 12)',
     lineHeight: 'var(--ui-text-lg--line-height)',
     paddingInline: 'calc(var(--ui-spacing) * 6)',
