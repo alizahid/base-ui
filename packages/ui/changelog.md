@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.1 (2026-11-18)
+
+### Features
+
+* add a radius prop to Toast ([2a03a35](https://github.com/alizahid/basedkit/commit/2a03a3545815adc90aa063f3b3959509a5e9d26f))
+* clear DateField and FileField with escape ([4678033](https://github.com/alizahid/basedkit/commit/467803317d3fbc7b854616514e97890bf04c6381))
+* tint the ring of solid toasts ([12317e0](https://github.com/alizahid/basedkit/commit/12317e081dc33e5aef8adb4089d465c87511b88c))
+
+### Bug Fixes
+
+* size the calendar's month arrows ([5500b5b](https://github.com/alizahid/basedkit/commit/5500b5bfcf2f7cf4b10680cca6e154aa2677ee99))
+
 ## 0.2.0 (2026-11-18)
 
 ### Features
