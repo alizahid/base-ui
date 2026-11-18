@@ -135,7 +135,7 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   2: {
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     gap: 'calc(var(--ui-spacing) * 1.5)',
     height: 'calc(var(--ui-spacing) * 8)',
@@ -143,7 +143,7 @@ export const triggerSizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 3)',
   },
   3: {
-    borderRadius: 'var(--ui-radius-lg)',
+    borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     gap: 'calc(var(--ui-spacing) * 2)',
     height: 'calc(var(--ui-spacing) * 10)',

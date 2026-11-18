@@ -77,18 +77,18 @@ export const panel = stylex.create({
 export const panelSizes = stylex.create({
   1: {
     '--inset-padding': 'calc(var(--ui-spacing) * 3)',
-    '--inset-radius': 'var(--ui-radius-xl)',
+    '--inset-radius': 'var(--ui-radius-lg)',
   },
   2: {
     '--inset-padding': 'calc(var(--ui-spacing) * 4)',
-    '--inset-radius': 'var(--ui-radius-xl)',
+    '--inset-radius': 'var(--ui-radius-lg)',
   },
   3: {
     '--inset-padding': 'calc(var(--ui-spacing) * 6)',
-    '--inset-radius': 'var(--ui-radius-2xl)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
   4: {
     '--inset-padding': 'calc(var(--ui-spacing) * 8)',
-    '--inset-radius': 'var(--ui-radius-2xl)',
+    '--inset-radius': 'var(--ui-radius-xl)',
   },
 })

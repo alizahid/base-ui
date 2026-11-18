@@ -215,7 +215,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 2)',
   },
   2: {
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     gap: 'calc(var(--ui-spacing) * 2)',
     height: 'calc(var(--ui-spacing) * 8)',
@@ -223,7 +223,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 3)',
   },
   3: {
-    borderRadius: 'var(--ui-radius-lg)',
+    borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     gap: 'calc(var(--ui-spacing) * 3)',
     height: 'calc(var(--ui-spacing) * 10)',
@@ -231,7 +231,7 @@ const sizes = stylex.create({
     paddingInline: 'calc(var(--ui-spacing) * 4)',
   },
   4: {
-    borderRadius: 'var(--ui-radius-xl)',
+    borderRadius: 'var(--ui-radius-lg)',
     fontSize: 'var(--ui-text-lg)',
     gap: 'calc(var(--ui-spacing) * 3)',
     height: 'calc(var(--ui-spacing) * 12)',

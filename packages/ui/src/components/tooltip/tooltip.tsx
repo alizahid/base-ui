@@ -107,7 +107,7 @@ const styles = stylex.create({
   },
   content: {
     backgroundColor: 'var(--gray-12)',
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--ui-radius-sm)',
     color: 'var(--gray-1)',
     cursor: 'default',
     fontSize: 'var(--ui-text-xs)',

@@ -124,13 +124,13 @@ const sizes = stylex.create({
   },
   2: {
     '--otp-field-size': 'calc(var(--ui-spacing) * 8)',
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
     '--otp-field-size': 'calc(var(--ui-spacing) * 10)',
-    borderRadius: 'var(--ui-radius-lg)',
+    borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     lineHeight: 'var(--ui-text-base--line-height)',
   },

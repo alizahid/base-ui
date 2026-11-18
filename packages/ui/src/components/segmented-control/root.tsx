@@ -161,7 +161,7 @@ const sizes = stylex.create({
   2: {
     '--segmented-control-gap': 'calc(var(--ui-spacing) * 2)',
     '--segmented-control-padding': 'calc(var(--ui-spacing) * 4)',
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--ui-radius-sm)',
     fontSize: 'var(--ui-text-sm)',
     height: 'calc(var(--ui-spacing) * 8)',
     lineHeight: 'var(--ui-text-sm--line-height)',
@@ -169,7 +169,7 @@ const sizes = stylex.create({
   3: {
     '--segmented-control-gap': 'calc(var(--ui-spacing) * 3)',
     '--segmented-control-padding': 'calc(var(--ui-spacing) * 4)',
-    borderRadius: 'var(--ui-radius-lg)',
+    borderRadius: 'var(--ui-radius-md)',
     fontSize: 'var(--ui-text-base)',
     height: 'calc(var(--ui-spacing) * 10)',
     lineHeight: 'var(--ui-text-base--line-height)',
