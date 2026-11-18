@@ -6,7 +6,7 @@ import { type KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { type Day, useLilius } from 'use-lilius'
 
 import { IconButton } from '#components/icon-button/icon-button.js'
-import { ChevronRightIcon } from '#lib/icons.js'
+import { ChevronRightIcon, icon } from '#lib/icons.js'
 
 export type CalendarMode = 'multiple' | 'range' | 'single'
 
@@ -121,7 +121,7 @@ export function Calendar({
           size="1"
           variant="ghost"
         >
-          <ChevronRightIcon {...stylex.props(styles.previous)} />
+          <ChevronRightIcon {...stylex.props(icon.line, styles.previous)} />
         </IconButton>
 
         <span aria-live="polite" {...stylex.props(styles.month)}>
@@ -138,7 +138,7 @@ export function Calendar({
           size="1"
           variant="ghost"
         >
-          <ChevronRightIcon {...stylex.props(styles.next)} />
+          <ChevronRightIcon {...stylex.props(icon.line, styles.next)} />
         </IconButton>
       </div>
 
