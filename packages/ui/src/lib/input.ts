@@ -223,6 +223,7 @@ export const inputVariants = stylex.create({
 
 export const inputSizes = stylex.create({
   1: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     '--text-field-height': 'calc(var(--ui-spacing) * 6)',
     '--text-field-padding':
       'calc(var(--ui-spacing) * 1.5 - var(--text-field-border-width))',
@@ -233,6 +234,7 @@ export const inputSizes = stylex.create({
     lineHeight: 'var(--ui-text-xs--line-height)',
   },
   2: {
+    '--outer-radius': 'var(--ui-radius-sm)',
     '--text-field-height': 'calc(var(--ui-spacing) * 8)',
     '--text-field-padding':
       'calc(var(--ui-spacing) * 2 - var(--text-field-border-width))',
@@ -243,6 +245,7 @@ export const inputSizes = stylex.create({
     lineHeight: 'var(--ui-text-sm--line-height)',
   },
   3: {
+    '--outer-radius': 'var(--ui-radius-md)',
     '--text-field-height': 'calc(var(--ui-spacing) * 10)',
     '--text-field-padding':
       'calc(var(--ui-spacing) * 3 - var(--text-field-border-width))',

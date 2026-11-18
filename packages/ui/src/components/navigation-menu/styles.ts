@@ -21,7 +21,7 @@ export const navigation = stylex.create({
       [open]: 'var(--navigation-hover, var(--gray-a3))',
       default: null,
     },
-    borderRadius: 'var(--ui-radius-md)',
+    borderRadius: 'var(--navigation-item-radius, var(--ui-radius-md))',
     color: {
       [active]: 'var(--accent-a11)',
       default: 'var(--gray-12)',

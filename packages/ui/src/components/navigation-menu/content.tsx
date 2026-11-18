@@ -58,6 +58,8 @@ const styles = stylex.create({
     '--navigation-item-justify': 'flex-start',
     '--navigation-item-padding':
       'calc(var(--ui-spacing) * 2) calc(var(--ui-spacing) * 3)',
+    // the popup's radius less half the padding around the links
+    '--navigation-item-radius': 'calc(var(--ui-radius-xl) - var(--ui-spacing))',
     '--navigation-item-width': '100%',
     height: '100%',
     maxHeight: 'var(--available-height)',
