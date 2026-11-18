@@ -147,7 +147,7 @@ export function Root({
         })}
       </Scroller>
 
-      {content ? <div>{content}</div> : null}
+      {content ? <div {...stylex.props(styles.content)}>{content}</div> : null}
     </div>
   )
 }
@@ -201,6 +201,15 @@ const still = '@media (prefers-reduced-motion: reduce)'
 // our own design, in radix themes' colors: an upcoming step is gray, the
 // active one solid in the accent, a completed one solid green
 const styles = stylex.create({
+  // takes the column's width without adding to it, so a long line of content
+  // wraps at the steps' width and doesn't widen them
+  content: {
+    minWidth: '100%',
+    width: {
+      [vertical]: 'auto',
+      default: 0,
+    },
+  },
   indicator: {
     alignItems: 'center',
     backgroundColor: 'var(--stepper-indicator-background)',
@@ -372,9 +381,16 @@ const styles = stylex.create({
     '--stepper-done-contrast': 'white',
     '--stepper-done-hover': 'var(--green-10)',
     color: 'var(--gray-12)',
-    display: 'flex',
-    flexDirection: 'column',
+    // one column, as wide as the row of steps and in the middle of the root:
+    // the content sits under the steps at their width. in a column of steps
+    // it has the root's whole width instead
+    display: 'grid',
     gap: 'calc(var(--ui-spacing) * 4)',
+    gridTemplateColumns: {
+      ':is([data-orientation="vertical"])': 'minmax(0, 1fr)',
+      default: 'minmax(0, max-content)',
+    },
+    justifyContent: 'center',
   },
   step: {
     // the focus ring, on a box of its own, a little way out from the step
