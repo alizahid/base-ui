@@ -377,8 +377,7 @@ const styles = stylex.create({
     gap: 'calc(var(--ui-spacing) * 4)',
   },
   step: {
-    // the focus ring, on a box of its own so it can reach further past the
-    // label than around the indicator, and the text gets room
+    // the focus ring, on a box of its own, a little way out from the step
     '::before': {
       // an inset shadow, not an outline: an outline on an edge that falls
       // between two pixels is drawn blurred, as if twice
@@ -388,12 +387,9 @@ const styles = stylex.create({
         ':is(:focus-visible)': '""',
         default: 'none',
       },
-      insetBlock: 'calc(var(--ui-spacing) * -1)',
-      insetInlineEnd: {
-        ':has(> :nth-child(2))': 'calc(var(--ui-spacing) * -1.5)',
-        default: 'calc(var(--ui-spacing) * -1)',
-      },
-      insetInlineStart: 'calc(var(--ui-spacing) * -1)',
+      // the same room on every side: around the indicator, and after the
+      // label
+      inset: 'calc(var(--ui-spacing) * -1.5)',
       pointerEvents: 'none',
       position: 'absolute',
     },
