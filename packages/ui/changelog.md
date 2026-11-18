@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.2 (2026-11-18)
+
+### Features
+
+* add side, align and sideOffset to the remaining popups ([3ced7ee](https://github.com/alizahid/basedkit/commit/3ced7eebb4efc54527ec99f8ef68547c3f1ebdbb))
+* centre the Stepper's content at the width of its steps ([6de3c2f](https://github.com/alizahid/basedkit/commit/6de3c2f9f31e817ba9899018ef0f9713ea9e3098))
+* color the Stepper's focus rings like their steps ([c9a2682](https://github.com/alizahid/basedkit/commit/c9a2682ca7bb035e95867f892297e20d5cb1a859))
+
+### Bug Fixes
+
+* draw button, trigger and card focus rings above their content ([69f478f](https://github.com/alizahid/basedkit/commit/69f478f88ec5e1fc5da9173819ec98afc341054d))
+
 ## 0.3.1 (2026-11-18)
 
 ### Features
