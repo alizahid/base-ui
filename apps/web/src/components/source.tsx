@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@repo/ui'
+import { Link } from 'basedkit'
 import { usePathname } from 'next/navigation'
 import { type ReactNode } from 'react'
 

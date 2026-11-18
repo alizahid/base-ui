@@ -2,9 +2,9 @@
    already provides every one of these, so with tailwind this file is not
    needed. without tailwind, import it BEFORE the library's styles:
 
-     @import "@repo/ui/reset.css";
-     @import "@repo/ui/theme.css";
-     @import "@repo/ui/styles.css";
+     @import "basedkit/reset.css";
+     @import "basedkit/theme.css";
+     @import "basedkit/styles.css";
 
    it is global, like any reset: it applies to the page's own elements too.
    the rules sit in a cascade layer so the library's styles, which are layered

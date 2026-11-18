@@ -1,8 +1,8 @@
 'use client'
 
 import { MoonIcon, SunIcon } from '@phosphor-icons/react/dist/ssr'
-import { IconButton } from '@repo/ui'
 import { useTheme } from '@wrksz/themes/client'
+import { IconButton } from 'basedkit'
 import { useTranslations } from 'next-intl'
 
 export function Theme() {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Switch, useLocalState } from '@repo/ui'
+import { Switch, useLocalState } from 'basedkit'
 
 type Props = {
   label: string

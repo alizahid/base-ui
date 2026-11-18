@@ -1,7 +1,7 @@
 import '@/app/main.css'
 
-import { BaseProvider, CommandBar, ScrollArea } from '@repo/ui'
 import { ThemeProvider } from '@wrksz/themes/next'
+import { BaseProvider, CommandBar, ScrollArea } from 'basedkit'
 import { cn } from 'cn'
 import { type Metadata } from 'next'
 import localFont from 'next/font/local'

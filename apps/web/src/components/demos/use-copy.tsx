@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, useCopy } from '@repo/ui'
+import { Button, useCopy } from 'basedkit'
 
 type Props = {
   copied: string

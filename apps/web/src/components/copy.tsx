@@ -1,7 +1,7 @@
 'use client'
 
 import { CheckIcon, CopyIcon } from '@phosphor-icons/react/dist/ssr'
-import { IconButton, useCopy } from '@repo/ui'
+import { IconButton, useCopy } from 'basedkit'
 
 type Props = {
   className?: string

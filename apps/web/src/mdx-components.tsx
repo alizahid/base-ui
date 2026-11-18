@@ -47,9 +47,9 @@ import {
   TextField,
   Toolbar,
   Tooltip,
-} from '@repo/ui'
-import { DateField } from '@repo/ui/date-field'
-import { PhoneField } from '@repo/ui/phone-field'
+} from 'basedkit'
+import { DateField } from 'basedkit/date-field'
+import { PhoneField } from 'basedkit/phone-field'
 // biome-ignore lint/correctness/noUndeclaredDependencies: types-only module from @types/mdx
 import { type MDXComponents } from 'mdx/types'
 

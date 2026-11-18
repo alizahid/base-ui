@@ -1,7 +1,7 @@
 'use client'
 
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr'
-import { CommandBar, IconButton } from '@repo/ui'
+import { CommandBar, IconButton } from 'basedkit'
 import { useTranslations } from 'next-intl'
 
 // opens the site's command bar, as ⌘K does

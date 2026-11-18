@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, ScrollArea } from '@repo/ui'
+import { Button, ScrollArea } from 'basedkit'
 import { cn } from 'cn'
 import { useState } from 'react'
 

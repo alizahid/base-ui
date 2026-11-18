@@ -1,6 +1,6 @@
 'use client'
 
-import { CommandBar, type CommandBarRootProps } from '@repo/ui'
+import { CommandBar, type CommandBarRootProps } from 'basedkit'
 import { useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 

@@ -10,11 +10,11 @@ export const generateMetadata = title('use-copy')
 ## <Text id="common.examples" />
 
 <div className="mt-4 flex min-h-32 items-center justify-center border border-(--gray-a6) p-6">
-  <UseCopyDemo copied={useText('use-copy.copied')} label={useText('use-copy.copy')} text="bun add @repo/ui" />
+  <UseCopyDemo copied={useText('use-copy.copied')} label={useText('use-copy.copy')} text="bun add basedkit" />
 </div>
 
 ```tsx
-import { Button, useCopy } from '@repo/ui'
+import { Button, useCopy } from 'basedkit'
 
 function Copy({ text }: { text: string }) {
   // true for 2000ms after a copy; pass another delay to change it

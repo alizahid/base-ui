@@ -1,4 +1,4 @@
-import { Table } from '@repo/ui'
+import { Table } from 'basedkit'
 import { getTranslations } from 'next-intl/server'
 
 import { named, parts, pretty } from '@/content/props'

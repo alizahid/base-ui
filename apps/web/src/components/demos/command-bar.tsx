@@ -1,6 +1,6 @@
 'use client'
 
-import { CommandBar, Switch } from '@repo/ui'
+import { CommandBar, Switch } from 'basedkit'
 import { useState } from 'react'
 
 type Props = {

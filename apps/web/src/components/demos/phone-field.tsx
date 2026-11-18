@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@repo/ui'
-import { PhoneField } from '@repo/ui/phone-field'
+import { Button } from 'basedkit'
+import { PhoneField } from 'basedkit/phone-field'
 
 type Props = {
   country: string

@@ -1,6 +1,6 @@
 'use client'
 
-import { Combobox } from '@repo/ui'
+import { Combobox } from 'basedkit'
 import { useRef, useState } from 'react'
 
 type Item = {

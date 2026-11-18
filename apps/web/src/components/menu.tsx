@@ -1,7 +1,7 @@
 'use client'
 
 import { ListIcon, XIcon } from '@phosphor-icons/react/dist/ssr'
-import { Drawer, IconButton } from '@repo/ui'
+import { Drawer, IconButton } from 'basedkit'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 

@@ -9,7 +9,7 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["@repo/ui#build"]
+      "dependsOn": ["basedkit#build"]
     },
     "generate": {
       "cache": false

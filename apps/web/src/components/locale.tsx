@@ -1,6 +1,6 @@
 'use client'
 
-import { IconButton } from '@repo/ui'
+import { IconButton } from 'basedkit'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 

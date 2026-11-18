@@ -1,6 +1,6 @@
 'use client'
 
-import { Select } from '@repo/ui'
+import { Select } from 'basedkit'
 
 type Props = {
   items: Record<string, string>

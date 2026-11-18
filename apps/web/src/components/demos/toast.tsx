@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Toast, type ToastProps, toast } from '@repo/ui'
+import { Button, Toast, type ToastProps, toast } from 'basedkit'
 import { useSyncExternalStore } from 'react'
 
 type Options = Pick<ToastProps, 'position' | 'variant'>
