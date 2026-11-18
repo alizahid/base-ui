@@ -413,6 +413,7 @@
     "provider-description": "Wrap your app in a BaseProvider. Its accent and gray props set the colors of everything inside it; the gray defaults to the one that suits the accent. Pass direction for a right-to-left layout, and panelBackground to make cards translucent.",
     "styles": "Styles",
     "styles-body": "The background and text color of the page are yours to set. Steps 1 and 12 of the gray scale are the usual choice.",
+    "styles-ios": "On iOS 26 and later, Safari shows the page under its status bar and toolbar. Give the body a position, so a drawer lines up with the screen wherever the page is scrolled to.",
     "styles-plain": "Without Tailwind, import the reset first. It has the browser resets the components are written against.",
     "styles-tailwind": "With Tailwind CSS, import the theme and the styles after Tailwind. The styles go in a layer between base and utilities, so a Tailwind class on a component overrides the component's own style.",
     "usage": "Usage",

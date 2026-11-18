@@ -413,6 +413,7 @@
     "provider-description": "Umschließe deine App mit einem BaseProvider. Die Props accent und gray legen die Farben für alles darin fest; gray richtet sich standardmäßig nach dem Akzent. Mit direction stellst du ein Layout von rechts nach links ein, mit panelBackground werden Karten durchscheinend.",
     "styles": "Styles",
     "styles-body": "Hintergrund und Textfarbe der Seite legst du selbst fest. Üblich sind die Stufen 1 und 12 der Grauskala.",
+    "styles-ios": "Ab iOS 26 zeigt Safari die Seite unter seiner Statusleiste und Symbolleiste. Gib dem body eine Position, damit ein Drawer am Bildschirm ausgerichtet ist, egal wie weit die Seite gescrollt ist.",
     "styles-plain": "Ohne Tailwind importierst du zuerst das Reset. Es enthält die Browser-Resets, auf denen die Komponenten aufbauen.",
     "styles-tailwind": "Mit Tailwind CSS importierst du das Theme und die Styles nach Tailwind. Die Styles liegen in einer Ebene zwischen base und utilities, sodass eine Tailwind-Klasse an einer Komponente deren eigenen Stil überschreibt.",
     "usage": "Verwendung",
