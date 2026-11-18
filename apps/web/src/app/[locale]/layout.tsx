@@ -116,7 +116,7 @@ export default async function Layout({
                       {/* the library's link for its focus ring, in the text's
                           own color */}
                       <StyledLink
-                        className="text-[32px] leading-none font-medium"
+                        className="rounded-xs text-2xl leading-none font-bold"
                         color="gray"
                         highContrast
                         render={<Link href="/" />}
